@@ -20,8 +20,8 @@ Role: Project Manager
 '''
 
 === Cheong Chee Mun Brandon
-image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
+image::brandonccm1996.jpg[width="150", align="left"]
+{empty}[http://github.com/brandonccm1996[github]] [<<johndoe#, portfolio>>]
 
 Role: Development Lead
 
