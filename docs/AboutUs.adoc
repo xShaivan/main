@@ -21,7 +21,7 @@ Role: Project Manager
 
 === Cheong Chee Mun Brandon
 image::brandonccm1996.jpg[width="150", align="left"]
-{empty}[http://github.com/brandonccm1996[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/brandonccm1996[github]]
 
 Role: Development Lead
 
