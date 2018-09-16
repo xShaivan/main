@@ -43,8 +43,8 @@ Role: Design Lead
 '''
 
 === Cheng XianHao
-image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+image::xhxh96.jpg[width="150", align="left"]
+{empty}[http://github.com/xhxh96[github]]
 
 Role: Subject Matter Expert
 
