@@ -35,9 +35,8 @@ Role: Quality Assurance Lead
 '''
 
 === Chok Xin Yan
-image::m133225.jpg[width="150", align="left"]
-{empty}[http://github.com/m133225[github]] [<<johndoe#, portfolio>>]
-
+image::chokxy.jpg[width="150", align="left"]
+{empty}[http://github.com/chokxy[github]]
 Role: Design Lead
 
 '''
