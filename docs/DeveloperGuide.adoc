@@ -813,15 +813,17 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 [appendix]
 == Product Scope
 
-*Target user profile*:
+Health Book is an address book application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. Command Line Interface is utilized mainly for the input, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
 
-* has a need to manage a significant number of contacts
+*Target user profile*: Health Book is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place.
+
+* has a need to manage a significant number of patients
 * prefer desktop apps over other types
 * can type fast
 * prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Value proposition*: With many patients to attend to, healthcare professionals need to focus much of their attention and care on their patients and less on administrative matters. Health Book is a one-stop application for healthcare professionals to create, read, update or delete (CRUD) patient’s information, reducing the need for long and troublesome paperwork and simplifying administrative work.
 
 [appendix]
 == User Stories
