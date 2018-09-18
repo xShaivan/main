@@ -1410,11 +1410,27 @@ Use case ends.
 [appendix]
 == Non Functional Requirements
 
+[discrete]
+=== Environment Requirements
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `9` or higher installed.
-.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  Should work on both 32-bit and 64-bit environments.
 
-_{More to be added}_
+[discrete]
+=== Business/Domain Rules
+.  Should be able to store up to 1000 patients' information without a noticeable sluggishness in performance for typical usage.
+
+[discrete]
+=== Constraints
+.  System data is only stored locally and not on the cloud.
+
+[discrete]
+=== Quality requirements
+.  The layout of the system will be simple and understandable by even doctors who are not proficient with computer systems.
+.  Might-have: all information will be encrypted.
+
+[discrete]
+=== Notes about project scope
+.  The product is not required to handle the printing of reports/profile pages.
 
 [appendix]
 == Glossary
