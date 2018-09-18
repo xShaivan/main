@@ -869,35 +869,265 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `Health Book`, unless specified otherwise)
 
-[discrete]
-=== Use case: Delete person
+=== Use case: Viewing of available commands: help 
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to see a list of available commands.
+2.  System displays the list of commands that the user can enter.
++
+Use case ends.
+
+=== Use case: Adding a patient: add
+
+*MSS*
+
+1.  User requests to add a patient into the System.
+2.  System adds the patient into the System and displays a message that the addition is successful.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 2a. The list is empty.
+* 1a. User uses the wrong format to add patient.
++
+[none]
+** 1a1. System gives user an example on the correct format of adding a patient.
 +
 Use case ends.
 
-* 3a. The given index is invalid.
+=== Use case: Listing all patients: list
+
+*MSS*
+
+1.  User requests to see a list of all patients in the System.
+2.  System shows user a list of all patients.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. List is empty.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 2a1. System shows user a message that there are no patients entered yet and prompts user to add patient.
 +
-Use case resumes at step 2.
+Use case ends.
 
-_{More to be added}_
+=== Use case: Editing basic information of patient: edit
+Assume that user has already requested the System to display a list of patients.
+
+*MSS*
+
+1.  User requests to edit a specific patient in the list with updated details.
+2.  System updates the patient’s information with the new details and displays a message that the edit is successful.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to edit patient.
++
+[none]
+** 1a1. System gives user an example on the correct format of editing a patient.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+=== Use case: Finding patients by categories: find
+
+*MSS*
+
+1.  User requests to find a patient in the list by categories. (eg. name, age, blood type, marital status)
+2.  System shows user a list of patients who are in requested category.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to find patient.
++
+[none]
+** 1a1. System gives user an example on the correct format of finding a patient.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid category or keyword.
++
+[none]
+** 1b1. System shows an error message that category or keyword is invalid.
++
+Use case ends.
+
+=== Use case: Deleting a patient: delete
+Assume that user has already requested the System to display a list of patients.
+
+*MSS*
+
+1.  User requests to delete a person in the list using the patient’s index.
+2.  System deletes the user who has that index and displays a message that deletion is successful.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to delete patient.
++
+[none]
+** 1a1. System gives user an example on the correct format of editing a patient.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+=== Use case: Adding an appointment into patient’s timetable: addappt
+Assume that user has already requested the System to display a list of patients.
+
+*MSS*
+
+1.  User requests to add an entry into patient’s timetable.
+2.  System adds the entry into patient’s timetable and displays a message that the addition is successful.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to add appointment.
++
+[none]
+** 1a1. System gives user an example on the correct format of adding appointment.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. Patient’s timetable already has an entry which overlaps with the new entry in terms of timing.
++
+[none]
+** 1c1. System shows an error message that there is an overlapped entry, and shows both the entries which overlap each other.
++
+Use case ends.
+
+=== Use case: Viewing a patient’s appointments: viewappts
+Assume that user has already requested the System to display a list of patients.
+
+*MSS*
+
+1.  User requests to view all entries in the patient’s timetable.
+2.  System displays all entries in the patient’s timetable.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to view appointments.
++
+[none]
+** 1a1. System gives user an example on the correct format of viewing appointments.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+=== Use case: Editing an appointment in a patient’s timetable: editappt
+Assume that user has already requested the System to view appointments for a patient.
+
+*MSS*
+
+1.  User requests to edit an entry in the patient’s timetable with new details.
+2.  System updates the entry in the patient’s timetable with the new details and displays a message that edit is successful.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to edit appointment.
++
+[none]
+** 1a1. System gives user an example on the correct format of editing appointment.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. Patient’s timetable already has an entry which overlaps with the new entry in terms of timing.
++
+[none]
+** 1c1. System shows an error message that there is an overlapped entry, and shows both the entries which overlap each other.
++
+Use case ends.
+
+=== Use case: Deleting an appointment in a patient’s timetable: deleteappt
+Assume that user has already requested the System to view appointments for a patient.
+
+*MSS*
+
+1.  User requests to delete an entry in the patient’s timetable.
+2.  System deletes the entry in the patient’s timetable and displays a message that deletion is successful.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to delete appointment.
++
+[none]
+** 1a1. System gives user an example on the correct format of deleting appointment.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
 
 [appendix]
 == Non Functional Requirements
