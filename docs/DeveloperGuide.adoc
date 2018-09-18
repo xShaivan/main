@@ -1006,8 +1006,8 @@ Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
-1.  User requests to add an entry into patient’s timetable.
-2.  System adds the entry into patient’s timetable and displays a message that the addition is successful.
+1.  User requests to add an appointment into patient’s timetable.
+2.  System adds the appointment into patient’s timetable and displays a message that the addition is successful.
 +
 Use case ends.
 
@@ -1030,10 +1030,10 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1c. Patient’s timetable already has an entry which overlaps with the new entry in terms of timing.
+* 1c. Patient’s timetable already has an appointment which overlaps with the new appointment in terms of timing.
 +
 [none]
-** 1c1. System shows an error message that there is an overlapped entry, and shows both the entries which overlap each other.
+** 1c1. System shows an error message that there is an overlapped appointment, and shows both the appointments which overlap each other.
 +
 Use case ends.
 
@@ -1042,8 +1042,8 @@ Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
-1.  User requests to view all entries in the patient’s timetable.
-2.  System displays all entries in the patient’s timetable.
+1.  User requests to view all appointments in the patient’s timetable.
+2.  System displays all appointments in the patient’s timetable.
 +
 Use case ends.
 
@@ -1070,8 +1070,8 @@ Assume that user has already requested the System to view appointments for a pat
 
 *MSS*
 
-1.  User requests to edit an entry in the patient’s timetable with new details.
-2.  System updates the entry in the patient’s timetable with the new details and displays a message that edit is successful.
+1.  User requests to edit an appointment in the patient’s timetable with new details.
+2.  System updates the appointment in the patient’s timetable with the new details and displays a message that edit is successful.
 +
 Use case ends.
 
@@ -1094,10 +1094,10 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1c. Patient’s timetable already has an entry which overlaps with the new entry in terms of timing.
+* 1c. Patient’s timetable already has an appointment which overlaps with the new appointment in terms of timing.
 +
 [none]
-** 1c1. System shows an error message that there is an overlapped entry, and shows both the entries which overlap each other.
+** 1c1. System shows an error message that there is an overlapped appointment, and shows both the appointments which overlap each other.
 +
 Use case ends.
 
@@ -1106,8 +1106,8 @@ Assume that user has already requested the System to view appointments for a pat
 
 *MSS*
 
-1.  User requests to delete an entry in the patient’s timetable.
-2.  System deletes the entry in the patient’s timetable and displays a message that deletion is successful.
+1.  User requests to delete an appointment in the patient’s timetable.
+2.  System deletes the appointment in the patient’s timetable and displays a message that deletion is successful.
 +
 Use case ends.
 
