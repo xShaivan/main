@@ -1,18 +1,18 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddApptCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
-
 /**
  * Parses input arguments and creates a new {@code AddApptCommand} object
  */
-public class AddApptCommandParser implements Parser<AddApptCommand>{
+public class AddApptCommandParser implements Parser<AddApptCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the {@code AddApptCommand}
      * and returns a {@code AddApptCommand} object for execution.
