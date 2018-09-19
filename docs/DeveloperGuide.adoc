@@ -871,7 +871,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 (For all use cases below, the *System* is the `Health Book`, unless specified otherwise)
 
-=== Use case: Viewing of available commands: help 
+=== Use case: Viewing of available commands: `help`
 
 *MSS*
 
@@ -880,7 +880,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 +
 Use case ends.
 
-=== Use case: Adding a patient: add
+=== Use case: Adding a patient: `add`
 
 *MSS*
 
@@ -899,7 +899,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Listing all patients: list
+=== Use case: Listing all patients: `list`
 
 *MSS*
 
@@ -918,7 +918,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing basic information of patient: edit
+=== Use case: Editing basic information of patient: `edit`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -946,7 +946,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Finding patients by categories: find
+=== Use case: Finding patients by categories: `find`
 
 *MSS*
 
@@ -973,7 +973,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Deleting a patient: delete
+=== Use case: Deleting a patient: `delete`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1001,7 +1001,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Adding an appointment into patient’s timetable: addappt
+=== Use case: Adding an appointment into patient’s timetable: `addappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1037,7 +1037,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Viewing a patient’s appointments: viewappts
+=== Use case: Viewing a patient’s appointments: `viewappts`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1073,7 +1073,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing an appointment in a patient’s timetable: editappt
+=== Use case: Editing an appointment in a patient’s timetable: `editappt`
 Assume that user has already requested the System to view appointments for a patient.
 
 *MSS*
@@ -1109,7 +1109,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Deleting an appointment in a patient’s timetable: deleteappt
+=== Use case: Deleting an appointment in a patient’s timetable: `deleteappt`
 Assume that user has already requested the System to view appointments for a patient.
 
 *MSS*
@@ -1137,7 +1137,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Adding optional information of patient: addinfo
+=== Use case: Adding optional information of patient: `addinfo`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1165,7 +1165,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing optional information of patient: editinfo
+=== Use case: Editing optional information of patient: `editinfo`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1201,7 +1201,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Adding of Medical Report: addreport
+=== Use case: Adding of Medical Report: `addreport`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1229,7 +1229,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing of Medical Report: editreport
+=== Use case: Editing of Medical Report: `editreport`
 Assume that user has already requested the System to display a list of medical reports for a patient.
 
 *MSS*
@@ -1257,7 +1257,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: List of Medical Report: listreport
+=== Use case: List of Medical Report: `listreport`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1270,10 +1270,10 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to edit medical report.
+* 1a. User uses the wrong format to list medical reports.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of listing medical reports.
 +
 Use case ends.
 
@@ -1293,7 +1293,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Sort patients list: sortlist
+=== Use case: Sort patients list: `sortlist`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1321,7 +1321,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Viewing information of patients: view
+=== Use case: Viewing information of patients: `view`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1353,7 +1353,7 @@ Use case ends.
 +
 Use case resumes at step 4.
 
-=== Use case: Import files to other computers: import
+=== Use case: Import files to other computers: `import`
 
 *MSS*
 
@@ -1380,7 +1380,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Export files to other computers: export
+=== Use case: Export files to other computers: `export`
 
 *MSS*
 
