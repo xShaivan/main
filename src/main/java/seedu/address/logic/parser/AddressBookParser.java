@@ -88,7 +88,7 @@ public class AddressBookParser {
 
         case AddApptCommand.COMMAND_WORD:
             return new AddApptCommandParser().parse(arguments);
-            
+
         case EditInfoCommand.COMMAND_WORD:
             return new EditInfoCommand();
 
