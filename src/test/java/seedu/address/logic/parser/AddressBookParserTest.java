@@ -144,7 +144,7 @@ public class AddressBookParserTest {
         parser.parseCommand("unknownCommand");
     }
 
-    // Tests for appointment timetable commands
+    // Tests for appt timetable commands
     @Test
     public void parseCommand_addAppt() throws Exception {
         final String appt = "Some appt";
