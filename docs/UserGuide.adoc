@@ -50,6 +50,24 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 * Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+
+*Application Workflow*
+
+1. Healthcare professionals can create new patient entries with the following mandatory details (i.e. regarded as basic information):
+   a. Name
+   b. Phone Number
+   c. Email Address
+2. The following information are optional (i.e. regarded as additional information) and is not required for the creation of patient entries. In fact, these information can only be filled in after the patient entry has been created in step 1:
+   a. NRIC Number
+   b. Date of Birth
+   c. Height
+   d. Weight
+   e. Gender
+   f. Occupation.
+   g. Marital Status
+   h. Family Members
+3. Medical report/diagnosis can only be added or after patient entries have been created. Additional information need not be completed to attach medical report/diagnosis to a patient. All fields in medical report are mandatory and cannot be omitted during the creation process. 
+
 ====
 
 === Viewing help : `help`
