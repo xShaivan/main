@@ -11,11 +11,11 @@ https://gitter.im/se-edu/Lobby[image:https://badges.gitter.im/se-edu/Lobby.svg[G
 ////
 
 ifdef::env-github[]
-image::docs/images/Ui.png[width="600"]
+image::docs/images/MockUi.png[width="600"]
 endif::[]
 
 ifndef::env-github[]
-image::images/Ui.png[width="600"]
+image::images/MockUi.png[width="600"]
 endif::[]
 
 Health Book is a desktop address book application targeted at health care professionals who seek to retrieve their patients' personal details and health-related information all in one place.
