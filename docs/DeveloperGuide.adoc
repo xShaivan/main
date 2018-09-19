@@ -12,9 +12,9 @@ ifdef::env-github[]
 :note-caption: :information_source:
 :warning-caption: :warning:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level4/tree/master
+:repoURL: https://github.com/CS2113-AY1819S1-T12-2/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team T12-2`      Since: `Aug 2018`      Licence: `MIT`
 
 == Setting up
 
@@ -97,6 +97,20 @@ When you are ready to start coding,
 
 1. Get some sense of the overall design by reading <<Design-Architecture>>.
 2. Take a look at <<GetStartedProgramming>>.
+
+== Introduction
+
+Health Book (or some other name that we will be deciding later) is an address book application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. Command Line Interface is utilized mainly for the input, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
+
+=== User Profile
+
+Health Book is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place.
+
+=== Value Proposition
+
+With many patients to attend to, healthcare professionals need to focus much of their attention and care on their patients and less on administrative matters. Health Book is a one-stop application for healthcare professionals to create, read, update or delete (CRUD) patient’s information, reducing the need for long and troublesome paperwork and simplifying administrative work.
+
+Command Line Interface is utilized mainly for the input, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book also aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
 
 == Design
 
