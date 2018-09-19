@@ -228,7 +228,7 @@ gender, occupation, marital status, family member. +
 Note: age field will be auto-calculated once DOB is populated +
 Format: `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
-Examples: 
+Examples:
 
 * `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3` +
 For patient in index 2, populate NRIC field with S91234567A, date of birth field
@@ -268,7 +268,7 @@ Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [mr/MEDICAL_RE
 * `INDEX_REPORT` refers to the index shown in the displayed report list
 ****
 
-Examples: 
+Examples:
 
 * `editreport 3 1 t/DEPRESSION d/02012018 mr/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018` +
 Edits title, date and information of existing medical report at index 1 for patient at index 3 titled DEPRESSION, dated 02-01-2018 with the report stating that the patient has been diagnosed with depression and is prescribed XXX medicine. Next appointment on 03-02-2018.
@@ -321,7 +321,7 @@ Example:
 Export patient’s info as a txt file to a specified directory and file name. +
 Format: `export INDEX DIRECTORY_NAME/FILE_NAME`
 
-Example: 
+Example:
 
 * `export 1 Desktop/patient1info.txt`
 
