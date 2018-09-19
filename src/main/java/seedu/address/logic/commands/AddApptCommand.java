@@ -28,7 +28,7 @@ public class AddApptCommand extends Command {
             //+ PREFIX_APPT_END + "16/09/2018 1530 "
             //+ PREFIX_APPT_VENUE + "Consultation Room 12 "
             + PREFIX_APPT_INFO + "Diabetes Checkup ";
-            //+ PREFIX_APPT_DRNAME + "Dr Tan";
+    //+ PREFIX_APPT_DRNAME + "Dr Tan";
 
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Appt: %2$s";
 
