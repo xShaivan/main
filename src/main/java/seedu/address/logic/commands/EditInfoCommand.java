@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -14,6 +15,6 @@ public class EditInfoCommand extends Command {
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
-        throw new CommandException("COMMAND NOT YET IMPLEMENTED");
+        throw new CommandException(Messages.MESSAGE_COMMAND_NOT_YET_IMPLEMENTED);
     }
 }
