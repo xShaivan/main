@@ -18,7 +18,7 @@ By: `Team T12-2`      Since: `Aug 2018`      Licence: `NUS`
 
 == Introduction
 
-Health Book (or some other name that we will be deciding later) is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface is utilized mainly for the input*, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI. 
+Health Book (or some other name that we will be deciding later) is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface is utilized mainly for the input*, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
 
 == Quick Start (to be edited in the future)
 
@@ -66,7 +66,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
    f. Occupation.
    g. Marital Status
    h. Family Members
-3. Medical report/diagnosis can only be added or after patient entries have been created. Additional information need not be completed to attach medical report/diagnosis to a patient. All fields in medical report are mandatory and cannot be omitted during the creation process. 
+3. Medical report/diagnosis can only be added or after patient entries have been created. Additional information need not be completed to attach medical report/diagnosis to a patient. All fields in medical report are mandatory and cannot be omitted during the creation process.
 
 ====
 
