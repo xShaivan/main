@@ -8,6 +8,7 @@ import seedu.address.logic.commands.AddHistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.core.index.Index;
+import seedu.address.model.person.MedHistory;
 
 /**
  * Parses input arguments and create a {@code AddHistCommand} object
@@ -33,7 +34,7 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE), ive);
         }
 
-        String remark = argMultimap.getValue(PREFIX_HISTORY).orElse("");
-        return new AddHistCommand(index, remark);
+        String medhistory = argMultimap.getValue(PREFIX_HISTORY).orElse("");
+        return new AddHistCommand(index, new MedHistory (medhistory));
     }
 }

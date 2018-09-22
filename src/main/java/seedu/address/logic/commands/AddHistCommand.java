@@ -8,6 +8,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.MedHistory;
 
 /**
  * Adds/Edits medical history of a patient in the Health Book.
@@ -24,12 +25,12 @@ public class AddHistCommand extends Command {
 
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, MedHist: %2$s";
     private final Index index;
-    private final String medhistory;
+    private final MedHistory medhistory;
     /**
      * @param index of the patient in the filtered patient list to add medical history
      * @param medhistory of the person to be updated to
      */
-    public AddHistCommand(Index index, String medhistory) {
+    public AddHistCommand(Index index, MedHistory medhistory) {
         requireAllNonNull(index, medhistory);
         this.index = index;
         this.medhistory = medhistory;

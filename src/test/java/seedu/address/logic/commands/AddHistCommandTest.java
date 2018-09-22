@@ -16,6 +16,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.MedHistory;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for RemarkCommand.
@@ -27,7 +28,7 @@ public class AddHistCommandTest {
 
     @Test
     public void execute() {
-        final String medhist = "Some medical history";
+        final MedHistory medhist = new MedHistory("Some medical history");
 
         assertCommandFailure(new AddHistCommand(INDEX_FIRST_PERSON, medhist), model, new CommandHistory(),
                 String.format(MESSAGE_ARGUMENTS, INDEX_FIRST_PERSON.getOneBased(), medhist));
@@ -35,9 +36,9 @@ public class AddHistCommandTest {
 
     @Test
     public void equals() {
-        final AddHistCommand standardCommand = new AddHistCommand(INDEX_FIRST_PERSON, VALID_HISTORY_AMY);
+        final AddHistCommand standardCommand = new AddHistCommand(INDEX_FIRST_PERSON, new MedHistory(VALID_HISTORY_AMY));
         // same values -> returns true
-        AddHistCommand commandWithSameValues = new AddHistCommand(INDEX_FIRST_PERSON, VALID_HISTORY_AMY);
+        AddHistCommand commandWithSameValues = new AddHistCommand(INDEX_FIRST_PERSON, new MedHistory(VALID_HISTORY_AMY));
         assertTrue(standardCommand.equals(commandWithSameValues));
         // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
@@ -46,8 +47,8 @@ public class AddHistCommandTest {
         // different types -> returns false
         assertFalse(standardCommand.equals(new ClearCommand()));
         // different index -> returns false
-        assertFalse(standardCommand.equals(new AddHistCommand(INDEX_SECOND_PERSON, VALID_HISTORY_AMY)));
+        assertFalse(standardCommand.equals(new AddHistCommand(INDEX_SECOND_PERSON, new MedHistory(VALID_HISTORY_AMY))));
         // different remark -> returns false
-        assertFalse(standardCommand.equals(new AddHistCommand(INDEX_FIRST_PERSON, VALID_HISTORY_BOB)));
+        assertFalse(standardCommand.equals(new AddHistCommand(INDEX_FIRST_PERSON, new MedHistory(VALID_HISTORY_BOB))));
     }
 }
