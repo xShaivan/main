@@ -91,6 +91,14 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code MedHistory} of the {@code Person} that we are building
+     */
+    public PersonBuilder withMedHistory(String medhistory) {
+        this.medhistory = new MedHistory(medhistory);
+        return this;
+    }
+
     public Person build() {
         return new Person(name, phone, email, address, medhistory, tags);
     }
