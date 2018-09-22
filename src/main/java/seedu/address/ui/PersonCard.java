@@ -49,6 +49,7 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        medhistory.setText(person.getMedHistory().value);
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
