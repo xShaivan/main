@@ -33,6 +33,8 @@ public class XmlAdaptedPerson {
     private String email;
     @XmlElement(required = true)
     private String address;
+    @XmlElement(required = true)
+    private String medhistory;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -66,6 +68,7 @@ public class XmlAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        medhistory = source.getMedHistory().value;
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -114,7 +117,10 @@ public class XmlAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        final MedHistory modelMedHistory = new MedHistory(""); // unfinished business
+        if (medhistory == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, MedHistory.class.getSimpleName()));
+        }
+        final MedHistory modelMedHistory = new MedHistory(medhistory);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelMedHistory, modelTags);
