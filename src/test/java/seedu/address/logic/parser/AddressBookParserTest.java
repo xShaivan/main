@@ -145,7 +145,6 @@ public class AddressBookParserTest {
         thrown.expectMessage(MESSAGE_UNKNOWN_COMMAND);
         parser.parseCommand("unknownCommand");
     }
-  
     @Test
     public void parseCommand_addhist() throws Exception {
         final MedHistory medhistory = new MedHistory("Some medical history");
