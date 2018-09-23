@@ -16,7 +16,7 @@ public class AddMedicalReportCommandParserTest {
     private AddMedicalReportCommandParser parser = new AddMedicalReportCommandParser();
     private final String nonEmptyMedicalReport = "Some remark.";
     @Test
-    public void parse_indexSpecified_success() {
+    public void parseIndexSpecifiedSuccess() {
         // have remark
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + " " + PREFIX_MEDICAL_REPORT + nonEmptyMedicalReport;
@@ -28,7 +28,7 @@ public class AddMedicalReportCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
     }
     @Test
-    public void parse_missingCompulsoryField_failure() {
+    public void parseMissingCompulsoryFieldFailure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMedicalReportCommand.MESSAGE_USAGE);
         // no parameters
         assertParseFailure(parser, AddMedicalReportCommand.COMMAND_WORD, expectedMessage);

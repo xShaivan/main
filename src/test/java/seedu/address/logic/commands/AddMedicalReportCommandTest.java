@@ -35,7 +35,7 @@ public class AddMedicalReportCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void execute_addRemarkUnfilteredList_success() {
+    public void executeAddRemarkUnfilteredListSuccess() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withMedicalReport(REMARK_STUB).build();
 
@@ -51,7 +51,7 @@ public class AddMedicalReportCommandTest {
     }
 
     @Test
-    public void execute_deleteRemarkUnfilteredList_success() {
+    public void executeDeleteRemarkUnfilteredListSuccess() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withMedicalReport("").build();
 
@@ -68,7 +68,7 @@ public class AddMedicalReportCommandTest {
     }
 
     @Test
-    public void execute_filteredList_success() {
+    public void executeFilteredListSuccess() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
@@ -87,7 +87,7 @@ public class AddMedicalReportCommandTest {
     }
 
     @Test
-    public void execute_invalidPersonIndexUnfilteredList_failure() {
+    public void executeInvalidPersonIndexUnfilteredListFailure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AddMedicalReportCommand addMedicalReportCommand = new AddMedicalReportCommand(outOfBoundIndex, new MedicalReport(VALID_REMARK_BOB));
 
@@ -99,7 +99,7 @@ public class AddMedicalReportCommandTest {
      * but smaller than size of address book
      */
     @Test
-    public void execute_invalidPersonIndexFilteredList_failure() {
+    public void executeInvalidPersonIndexFilteredListFailure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
@@ -111,7 +111,7 @@ public class AddMedicalReportCommandTest {
     }
 
     @Test
-    public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
+    public void executeUndoRedoValidIndexUnfilteredListSuccess() throws Exception {
         Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person modifiedPerson = new PersonBuilder(personToModify).withMedicalReport(REMARK_STUB).build();
         AddMedicalReportCommand addMedicalReportCommand = new AddMedicalReportCommand(INDEX_FIRST_PERSON, new MedicalReport(REMARK_STUB));
@@ -132,7 +132,7 @@ public class AddMedicalReportCommandTest {
     }
 
     @Test
-    public void executeUndoRedo_invalidIndexUnfilteredList_failure() {
+    public void executeUndoRedoInvalidIndexUnfilteredListFailure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AddMedicalReportCommand addMedicalReportCommand = new AddMedicalReportCommand(outOfBoundIndex, new MedicalReport(""));
 
@@ -152,7 +152,7 @@ public class AddMedicalReportCommandTest {
      * 4. Redo the modification. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
      */
     @Test
-    public void executeUndoRedo_validIndexFilteredList_samePersonDeleted() throws Exception {
+    public void executeUndoRedoValidIndexFilteredListSamePersonDeleted() throws Exception {
         AddMedicalReportCommand addMedicalReportCommand = new AddMedicalReportCommand(INDEX_FIRST_PERSON, new MedicalReport(REMARK_STUB));
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
@@ -186,7 +186,7 @@ public class AddMedicalReportCommandTest {
         assertTrue(standardCommand.equals(standardCommand));
 
         // null -> returns false
-        assertFalse(standardCommand.equals(null));
+        assertFalse(standardCommand == null);
 
         // different types -> returns false
         assertFalse(standardCommand.equals(new ClearCommand()));

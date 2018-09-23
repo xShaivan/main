@@ -17,10 +17,9 @@ public class AddMedicalReportTest {
         // different types -> returns false
         assertFalse(report.equals(1));
         // null -> returns false
-        assertFalse(report.equals(null));
+        assertFalse(report == null);
         // different report -> returns false
         MedicalReport differentMedicalReport = new MedicalReport("Bye");
         assertFalse(report.equals(differentMedicalReport));
-
     }
 }

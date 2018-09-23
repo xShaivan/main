@@ -75,7 +75,7 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_remark() throws Exception {
+    public void parseCommandRemark() throws Exception {
         final MedicalReport report = new MedicalReport("Some remark.");
         AddMedicalReportCommand command = (AddMedicalReportCommand) parser.parseCommand(AddMedicalReportCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_MEDICAL_REPORT + report.value);
