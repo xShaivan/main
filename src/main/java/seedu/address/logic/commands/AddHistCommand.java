@@ -1,6 +1,5 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -12,8 +11,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.MedHistory;
+import seedu.address.model.person.Person;
 
 /**
  * Adds/Edits medical history of a patient in the Health Book.
@@ -24,22 +23,22 @@ public class AddHistCommand extends Command {
     public static final String COMMAND_WORD = "addhist";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient in the Health Book "
-            + "by the index number used in the last person listing."
+            + "by their index number."
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_HISTORY + "Diabetes.";
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
-    private final MedHistory medhistory;
+    private final MedHistory med;
     /**
      * @param index of the patient in the filtered patient list to add medical history
-     * @param medhistory of the person to be updated to
+     * @param med of the person to be updated to
      */
-    public AddHistCommand(Index index, MedHistory medhistory) {
-        requireAllNonNull(index, medhistory);
+    public AddHistCommand(Index index, MedHistory med) {
+        requireAllNonNull(index, med);
         this.index = index;
-        this.medhistory = medhistory;
+        this.med = med;
     }
 
     @Override
@@ -50,7 +49,7 @@ public class AddHistCommand extends Command {
         }
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), medhistory, personToEdit.getTags());
+                personToEdit.getAddress(), med, personToEdit.getTags());
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
@@ -62,7 +61,7 @@ public class AddHistCommand extends Command {
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = !medhistory.value.isEmpty() ? MESSAGE_ADD_MEDHISTORY_SUCCESS : MESSAGE_DELETE_MEDHISTORY_SUCCESS;
+        String message = !med.value.isEmpty() ? MESSAGE_ADD_MEDHISTORY_SUCCESS : MESSAGE_DELETE_MEDHISTORY_SUCCESS;
         return String.format(message, personToEdit);
     }
 
@@ -79,6 +78,6 @@ public class AddHistCommand extends Command {
         // state check
         AddHistCommand e = (AddHistCommand) other;
         return index.equals(e.index)
-                && medhistory.equals(e.medhistory);
+                && med.equals(e.med);
     }
 }
