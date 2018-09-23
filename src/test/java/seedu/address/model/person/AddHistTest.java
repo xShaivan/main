@@ -23,5 +23,4 @@ public class AddHistTest {
         medhistory differentmedhistory = new medhistory("Bye");
         assertFalse(medhistory.equals(differentmedhistory));
     }
-    }
 }
