@@ -22,7 +22,7 @@ public class AddHistCommand extends Command {
 
     public static final String COMMAND_WORD = "addhist";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient in the Health Book "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
             + "by their index number."
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_HISTORY + "Diabetes.";
