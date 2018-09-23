@@ -1,13 +1,13 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICAL_REPORT;
 
-import seedu.address.logic.commands.AddMedicalReportCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.commands.AddMedicalReportCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medicalreport.MedicalReport;
 
 /**
@@ -28,30 +28,8 @@ public class AddMedicalReportCommandParser implements Parser<AddMedicalReportCom
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMedicalReportCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND, AddMedicalReportCommand.MESSAGE_USAGE));
         }
-        /**
-        requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DATE, PREFIX_MEDICAL_REPORT_INFO);
-
-         if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_DATE, PREFIX_MEDICAL_REPORT_INFO)
-         || !argMultimap.getPreamble().isEmpty()) {
-             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMedicalReportCommand.MESSAGE_USAGE));
-         }
-
-         Index index;
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMedicalReportCommand.MESSAGE_USAGE));
-        }
-
-        /*Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
-        MedicalReportInformation information = ParserUtil.parseMedicalReportInformation(argMultimap.getValue(PREFIX_MEDICAL_REPORT_INFO).get());
-
-        return new AddMedicalReportCommand(index, new MedicalReport(title, date, information));
-        */
 
         String report = argMultimap.getValue(PREFIX_MEDICAL_REPORT).orElse("");
 

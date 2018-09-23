@@ -1,8 +1,8 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICAL_REPORT;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 
@@ -11,27 +11,24 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.person.Person;
 
-public class AddMedicalReportCommand extends Command{
+/**
+ * Adds a medical report to a person.
+ */
+public class AddMedicalReportCommand extends Command {
 
     public static final String COMMAND_WORD = "addreport";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person's medical report by the index number used in the list.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person's medical report by the index number"
+            + " used in the list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_MEDICAL_REPORT + "[MEDICAL REPORT]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_MEDICAL_REPORT + "Title: Asthma, Date: 01012018, Actions: prescribed XXX medicine, next appointment on 02022018. ";
-            /**
-            + PREFIX_TITLE + "TITLE "
-            + PREFIX_DATE + "DATE "
-            + PREFIX_MEDICAL_REPORT_INFO + "[MEDICAL REPORT]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TITLE + "NEW CASE: ASTHMA "
-            + PREFIX_DATE + "01012018 "
-            + PREFIX_MEDICAL_REPORT_INFO + "Title: Asthma, Date: 01012018, Actions: prescribed XXX medicine, next appointment on 02022018. ";
-            */
+            + PREFIX_MEDICAL_REPORT + "Title: Asthma, Date: 01012018,"
+            + " Actions: prescribed XXX medicine, next appointment on 02022018. ";
+
     public static final String MESSAGE_ADD_REPORT_SUCCESS = "Added medical report to Person: %1$s";
     public static final String MESSAGE_DELETE_REPORT_SUCCESS = "Removed medical report from Person: %1$s";
 
@@ -49,7 +46,6 @@ public class AddMedicalReportCommand extends Command{
         this.index = index;
         this.report = report;
     }
-
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {

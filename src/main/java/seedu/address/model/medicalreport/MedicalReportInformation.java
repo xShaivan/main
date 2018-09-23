@@ -3,9 +3,13 @@ package seedu.address.model.medicalreport;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a Medical Report's information in the address book.
+ */
 public class MedicalReportInformation {
     public static final String MESSAGE_INFORMATION_CONSTRAINTS =
-            "Medical information report should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Medical information report should only contain alphanumeric characters and spaces,"
+            + " and it should not be blank";
 
     /*
      * The first character of the date must not be a whitespace,

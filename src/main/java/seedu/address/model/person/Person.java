@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.tag.Tag;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
@@ -55,7 +55,9 @@ public class Person {
         return address;
     }
 
-    public MedicalReport getMedicalReport() { return report; }
+    public MedicalReport getMedicalReport() {
+        return report;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
