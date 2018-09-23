@@ -7,6 +7,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.timetable.Appt;
 
 /**
  * Adds an appointment to a person's timetable.
@@ -33,13 +34,13 @@ public class AddApptCommand extends Command {
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Appt: %2$s";
 
     private final Index index;
-    private final String appt;
+    private final Appt appt;
 
     /**
      * @param index of the person in the filtered person list to add appt
      * @param appt of the person to be updated to
      */
-    public AddApptCommand(Index index, String appt) {
+    public AddApptCommand(Index index, Appt appt) {
         requireAllNonNull(index, appt);
         this.index = index;
         this.appt = appt;

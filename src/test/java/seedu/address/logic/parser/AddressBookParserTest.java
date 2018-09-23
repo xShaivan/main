@@ -32,6 +32,7 @@ import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.timetable.Appt;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
@@ -146,9 +147,9 @@ public class AddressBookParserTest {
     // Tests for appt timetable commands
     @Test
     public void parseCommand_addAppt() throws Exception {
-        final String appt = "Some appt";
+        final Appt appt = new Appt("Some appt");
         AddApptCommand command = (AddApptCommand) parser.parseCommand(AddApptCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_APPT_INFO + appt);
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_APPT_INFO + appt.value);
         assertEquals(new AddApptCommand(INDEX_FIRST_PERSON, appt), command);
     }
 }

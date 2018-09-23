@@ -16,6 +16,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.timetable.Appt;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for AddApptCommand.
@@ -26,17 +27,17 @@ public class AddApptCommandTest {
 
     @Test
     public void execute() {
-        final String appt = "Some appt";
+        final Appt appt = new Appt("Some appt");
         assertCommandFailure(new AddApptCommand(INDEX_FIRST_PERSON, appt), model, new CommandHistory(),
                 String.format(MESSAGE_ARGUMENTS, INDEX_FIRST_PERSON.getOneBased(), appt));
     }
 
     @Test
     public void equals() {
-        final AddApptCommand standardCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_DUMMY1);
+        final AddApptCommand standardCommand = new AddApptCommand(INDEX_FIRST_PERSON, new Appt(APPT_DUMMY1));
 
         // same values -> returns true
-        AddApptCommand commandWithSameValues = new AddApptCommand(INDEX_FIRST_PERSON, APPT_DUMMY1);
+        AddApptCommand commandWithSameValues = new AddApptCommand(INDEX_FIRST_PERSON, new Appt(APPT_DUMMY1));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -49,9 +50,9 @@ public class AddApptCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new AddApptCommand(INDEX_SECOND_PERSON, APPT_DUMMY1)));
+        assertFalse(standardCommand.equals(new AddApptCommand(INDEX_SECOND_PERSON, new Appt(APPT_DUMMY1))));
 
         // different remark -> returns false
-        assertFalse(standardCommand.equals(new AddApptCommand(INDEX_FIRST_PERSON, APPT_DUMMY2)));
+        assertFalse(standardCommand.equals(new AddApptCommand(INDEX_FIRST_PERSON, new Appt(APPT_DUMMY2))));
     }
 }
