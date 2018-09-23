@@ -3,6 +3,11 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a Person's Blood Type in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidType(String)}
+ */
+
 public class BloodType {
     public static final String BLOODTYPE_CONSTRAINTS =
             "Blood type should be A, B, O or AB followed by - or +";
