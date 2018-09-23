@@ -21,5 +21,6 @@ public class AddMedicalReportTest {
         // different report -> returns false
         MedicalReport differentMedicalReport = new MedicalReport("Bye");
         assertFalse(report.equals(differentMedicalReport));
+
     }
 }
