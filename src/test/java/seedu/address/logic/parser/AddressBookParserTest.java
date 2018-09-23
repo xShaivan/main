@@ -78,7 +78,7 @@ public class AddressBookParserTest {
     public void parseCommandRemark() throws Exception {
         final MedicalReport report = new MedicalReport("Some remark.");
         AddMedicalReportCommand command =
-                (AddMedicalReportCommand)parser.parseCommand(AddMedicalReportCommand.COMMAND_WORD + " "
+                (AddMedicalReportCommand) parser.parseCommand(AddMedicalReportCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_MEDICAL_REPORT + report.value);
         assertEquals(new AddMedicalReportCommand(INDEX_FIRST_PERSON, report), command);
     }
