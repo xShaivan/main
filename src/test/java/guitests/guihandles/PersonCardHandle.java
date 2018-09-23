@@ -69,7 +69,9 @@ public class PersonCardHandle extends NodeHandle<Node> {
         return emailLabel.getText();
     }
 
-    public String getMedicalReport() { return medicalReportLabel.getText(); }
+    public String getMedicalReport() {
+        return medicalReportLabel.getText();
+    }
 
     public List<String> getTags() {
         return tagLabels
