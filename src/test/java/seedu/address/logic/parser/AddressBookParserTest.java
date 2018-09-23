@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICAL_REPORT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
@@ -33,6 +34,8 @@ import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
+import seedu.address.logic.commands.AddMedicalReportCommand;
+import seedu.address.model.medicalreport.MedicalReport;
 
 public class AddressBookParserTest {
     @Rule
@@ -67,6 +70,14 @@ public class AddressBookParserTest {
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+    }
+
+    @Test
+    public void parseCommand_remark() throws Exception {
+        final MedicalReport report = new MedicalReport("Some remark.");
+        AddMedicalReportCommand command = (AddMedicalReportCommand) parser.parseCommand(AddMedicalReportCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_MEDICAL_REPORT + report.value);
+        assertEquals(new AddMedicalReportCommand(INDEX_FIRST_PERSON, report), command);
     }
 
     @Test

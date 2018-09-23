@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.tag.Tag;
+import seedu.address.model.medicalreport.MedicalReport;
 
 /**
  * Represents a Person in the address book.
@@ -23,16 +24,18 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final MedicalReport report;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address, MedicalReport report, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, report, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.report = report;
         this.tags.addAll(tags);
     }
 
@@ -51,6 +54,8 @@ public class Person {
     public Address getAddress() {
         return address;
     }
+
+    public MedicalReport getMedicalReport() { return report; }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -116,5 +121,6 @@ public class Person {
         getTags().forEach(builder::append);
         return builder.toString();
     }
+
 
 }

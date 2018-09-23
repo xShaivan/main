@@ -14,6 +14,9 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.medicalreport.Title;
+import seedu.address.model.medicalreport.Date;
+import seedu.address.model.medicalreport.MedicalReportInformation;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -93,6 +96,51 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_EMAIL_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String title} into an {@code Title}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code title} is invalid.
+     */
+    public static Title parseTitle(String title) throws ParseException {
+        requireNonNull(title);
+        String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new ParseException(Title.MESSAGE_TITLE_CONSTRAINTS);
+        }
+        return new Title(trimmedTitle);
+    }
+
+    /**
+     * Parses a {@code String date} into an {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static Date parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!Date.isValidDate(trimmedDate)) {
+            throw new ParseException(Date.MESSAGE_DATE_CONSTRAINTS);
+        }
+        return new Date(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String information} into an {@code MedicalReportInformation}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code information} is invalid.
+     */
+    public static MedicalReportInformation parseMedicalReportInformation(String information) throws ParseException {
+        requireNonNull(information);
+        String trimmedInformation = information.trim();
+        if (!MedicalReportInformation.isValidInformation(trimmedInformation)) {
+            throw new ParseException(MedicalReportInformation.MESSAGE_INFORMATION_CONSTRAINTS);
+        }
+        return new MedicalReportInformation(trimmedInformation);
     }
 
     /**

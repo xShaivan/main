@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Person;
 
 /**
@@ -61,7 +62,13 @@ public class ModelManager extends ComponentManager implements Model {
         requireNonNull(person);
         return versionedAddressBook.hasPerson(person);
     }
-
+    /**
+    @Override
+    public boolean hasReport(MedicalReport report) {
+        requireNonNull(report);
+        return versionedAddressBook.hasReport(report);
+    }
+    */
     @Override
     public void deletePerson(Person target) {
         versionedAddressBook.removePerson(target);

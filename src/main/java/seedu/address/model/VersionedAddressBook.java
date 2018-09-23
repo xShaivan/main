@@ -3,6 +3,8 @@ package seedu.address.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import seedu.address.model.medicalreport.MedicalReport;
+
 /**
  * {@code AddressBook} that keeps track of its own history.
  */
