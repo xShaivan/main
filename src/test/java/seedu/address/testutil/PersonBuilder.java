@@ -91,6 +91,14 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Appt} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withAppt(String appt) {
+        this.appt = new Appt(appt);
+        return this;
+    }
+
     public Person build() {
         return new Person(name, phone, email, address, appt, tags);
     }
