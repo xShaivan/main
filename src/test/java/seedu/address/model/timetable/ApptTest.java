@@ -15,8 +15,8 @@ public class ApptTest {
         assertTrue(appt.equals(appt));
 
         // same values -> returns true
-        Appt remarkCopy = new Appt(appt.value);
-        assertTrue(appt.equals(remarkCopy));
+        Appt apptCopy = new Appt(appt.value);
+        assertTrue(appt.equals(apptCopy));
 
         // different types -> returns false
         assertFalse(appt.equals(1));
@@ -25,7 +25,7 @@ public class ApptTest {
         assertFalse(appt.equals(null));
 
         // different remark -> returns false
-        Appt differentRemark = new Appt("Bye");
-        assertFalse(appt.equals(differentRemark));
+        Appt differentAppt = new Appt("Bye");
+        assertFalse(appt.equals(differentAppt));
     }
 }
