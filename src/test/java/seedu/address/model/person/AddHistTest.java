@@ -22,7 +22,7 @@ public class AddHistTest {
         assertFalse(medhistory.equals(1));
 
         // null -> returns false
-        assertFalse(medhistory.equals(null));
+        assertFalse(medhistory == null);
 
         // different medhistory -> returns false
         MedHistory differentmedhistory = new MedHistory("Bye");

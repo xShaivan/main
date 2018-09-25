@@ -146,7 +146,7 @@ public class AddressBookParserTest {
         parser.parseCommand("unknownCommand");
     }
     @Test
-    public void parseCommand_addhist() throws Exception {
+    public void parseCommandaddhist() throws Exception {
         final MedHistory medhistory = new MedHistory("Some medical history");
         AddHistCommand command = (AddHistCommand) parser.parseCommand(AddHistCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_HISTORY + medhistory.value);

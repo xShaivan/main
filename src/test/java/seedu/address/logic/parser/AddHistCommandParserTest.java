@@ -17,7 +17,7 @@ public class AddHistCommandParserTest {
     private final String nonEmptyMedHistory = "Some medical history.";
 
     @Test
-    public void parse_indexSpecified_success() {
+    public void parseindexSpecifiedsuccess() {
         // have remark
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + " " + PREFIX_HISTORY + nonEmptyMedHistory;
@@ -29,7 +29,7 @@ public class AddHistCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
     }
     @Test
-    public void parse_missingCompulsoryField_failure() {
+    public void parsemissingCompulsoryFieldfailure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE);
         // no parameters
         assertParseFailure(parser, AddHistCommand.COMMAND_WORD, expectedMessage);
