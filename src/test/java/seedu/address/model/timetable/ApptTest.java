@@ -15,7 +15,7 @@ public class ApptTest {
         assertTrue(appt.equals(appt));
 
         // same values -> returns true
-        Appt apptCopy = new Appt(appt.value);
+        Appt apptCopy = new Appt(appt.toString());
         assertTrue(appt.equals(apptCopy));
 
         // different types -> returns false

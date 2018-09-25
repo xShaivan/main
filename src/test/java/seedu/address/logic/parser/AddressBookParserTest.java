@@ -149,7 +149,7 @@ public class AddressBookParserTest {
     public void parseCommand_addAppt() throws Exception {
         final Appt appt = new Appt("Some appt");
         AddApptCommand command = (AddApptCommand) parser.parseCommand(AddApptCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_APPT_INFO + appt.value);
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_APPT_INFO + appt.toString());
         assertEquals(new AddApptCommand(INDEX_FIRST_PERSON, appt), command);
     }
 }

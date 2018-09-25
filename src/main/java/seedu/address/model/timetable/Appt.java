@@ -7,7 +7,7 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Appt {
-    public final String value;
+    private final String value;
 
     public Appt(String apptInfo) {
         requireNonNull(apptInfo);

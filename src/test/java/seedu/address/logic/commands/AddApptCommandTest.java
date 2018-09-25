@@ -39,7 +39,7 @@ public class AddApptCommandTest {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withAppt(APPT_STUB).build();
 
-        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, new Appt(editedPerson.getAppt().value));
+        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, new Appt(editedPerson.getAppt().toString()));
 
         String expectedMessage = String.format(AddApptCommand.MESSAGE_ADD_APPT_SUCCESS, editedPerson);
 
@@ -75,7 +75,7 @@ public class AddApptCommandTest {
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
                 .withAppt(APPT_STUB).build();
 
-        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, new Appt(editedPerson.getAppt().value));
+        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, new Appt(editedPerson.getAppt().toString()));
 
         String expectedMessage = String.format(AddApptCommand.MESSAGE_ADD_APPT_SUCCESS, editedPerson);
 

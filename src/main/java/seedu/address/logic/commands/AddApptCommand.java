@@ -76,7 +76,7 @@ public class AddApptCommand extends Command {
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = !appt.value.isEmpty() ? MESSAGE_ADD_APPT_SUCCESS : MESSAGE_DELETE_APPT_SUCCESS;
+        String message = !appt.toString().isEmpty() ? MESSAGE_ADD_APPT_SUCCESS : MESSAGE_DELETE_APPT_SUCCESS;
         return String.format(message, personToEdit);
     }
 
