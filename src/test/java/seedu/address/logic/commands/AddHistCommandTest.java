@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -39,7 +39,8 @@ public class AddHistCommandTest {
     public void execute_addRemarkUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withMedHistory(MEDHISTORY_STUB).build();
-        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, new MedHistory(editedPerson.getMedHistory().value));
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON,
+                new MedHistory(editedPerson.getMedHistory().value));
         String expectedMessage = String.format(AddHistCommand.MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.updatePerson(firstPerson, editedPerson);
@@ -64,7 +65,8 @@ public class AddHistCommandTest {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
                 .withMedHistory(MEDHISTORY_STUB).build();
-        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, new MedHistory(editedPerson.getMedHistory().value));
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON,
+                new MedHistory(editedPerson.getMedHistory().value));
         String expectedMessage = String.format(AddHistCommand.MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.updatePerson(firstPerson, editedPerson);
@@ -148,9 +150,11 @@ public class AddHistCommandTest {
 
     @Test
     public void equals() {
-        final AddHistCommand standardCommand = new AddHistCommand(INDEX_FIRST_PERSON, new MedHistory(VALID_HISTORY_AMY));
+        final AddHistCommand standardCommand = new AddHistCommand(INDEX_FIRST_PERSON,
+                new MedHistory(VALID_HISTORY_AMY));
         // same values -> returns true
-        AddHistCommand commandWithSameValues = new AddHistCommand(INDEX_FIRST_PERSON, new MedHistory(VALID_HISTORY_AMY));
+        AddHistCommand commandWithSameValues = new AddHistCommand(INDEX_FIRST_PERSON,
+                new MedHistory(VALID_HISTORY_AMY));
         assertTrue(standardCommand.equals(commandWithSameValues));
         // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
