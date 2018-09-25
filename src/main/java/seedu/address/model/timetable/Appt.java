@@ -22,7 +22,7 @@ public class Appt {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-        || (other instanceof Appt // instanceof handles nulls
-                && value.equals(((Appt) other).value)); // state check
+            || (other instanceof Appt // instanceof handles nulls
+            && value.equals(((Appt) other).value)); // state check
     }
 }

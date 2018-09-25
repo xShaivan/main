@@ -22,7 +22,7 @@ public class ApptTest {
         assertFalse(appt.equals(1));
 
         // null -> returns false
-        assertFalse(appt.equals(null));
+        assertFalse(appt == null);
 
         // different remark -> returns false
         Appt differentAppt = new Appt("Bye");
