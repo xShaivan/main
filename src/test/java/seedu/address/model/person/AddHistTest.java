@@ -12,15 +12,19 @@ public class AddHistTest {
 
         // same object -> returns true
         assertTrue(medhistory.equals(medhistory));
+
         // same values -> returns true
-        medhistory medhistoryCopy = new medhistory(medhistory.value);
+        MedHistory medhistoryCopy = new MedHistory(medhistory.value);
         assertTrue(medhistory.equals(medhistoryCopy));
+
         // different types -> returns false
         assertFalse(medhistory.equals(1));
+
         // null -> returns false
         assertFalse(medhistory.equals(null));
+
         // different medhistory -> returns false
-        medhistory differentmedhistory = new medhistory("Bye");
+        MedHistory differentmedhistory = new MedHistory("Bye");
         assertFalse(medhistory.equals(differentmedhistory));
     }
 }
