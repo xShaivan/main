@@ -16,6 +16,14 @@ public class Appt {
     private final ApptInfo info;
     private final ApptDrName drName;
 
+//    public Appt() {
+//        start = new ApptDateTime("a");
+//        end = new ApptDateTime("b");
+//        venue = new ApptVenue("c");
+//        info = new ApptInfo("d");
+//        drName = new ApptDrName("e");
+//    }
+
     public Appt(ApptDateTime start, ApptDateTime end, ApptVenue venue, ApptInfo info, ApptDrName drName) {
         requireAllNonNull(start, end, venue, info, drName);
         this.start = start;
