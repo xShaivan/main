@@ -3,6 +3,8 @@ package seedu.address.model.timetable;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Objects;
+
 /**
  * Represents a Person's remark in the address book.
  * Guarantees: immutable; is always valid
@@ -43,10 +45,17 @@ public class Appt {
         return drName;
     }
 
-    // temporarily returns the ApptInfo
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(start, end, venue, info, drName);
+    }
+
+    // temporary
     @Override
     public String toString() {
-        return info.toString();
+        return start.toString() + " " + end.toString() + " " + venue.toString() + " " + info.toString() + " "
+                + drName.toString();
     }
 
     @Override
