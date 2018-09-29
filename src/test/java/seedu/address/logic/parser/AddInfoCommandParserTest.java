@@ -13,14 +13,14 @@ import seedu.address.logic.commands.AddInfoCommand;
 
 public class AddInfoCommandParserTest {
     private AddInfoCommandParser parser = new AddInfoCommandParser();
-    private final String nonEmptyNRIC = "S8010517G";
+    private final String nonEmptyNric = "S8010517G";
 
     @Test
     public void parse_indexSpecified_success() {
         // Have NRIC
         Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + " " + PREFIX_ADD_INFO_NRIC + nonEmptyNRIC;
-        AddInfoCommand expectedCommand = new AddInfoCommand(INDEX_FIRST_PERSON, nonEmptyNRIC);
+        String userInput = targetIndex.getOneBased() + " " + PREFIX_ADD_INFO_NRIC + nonEmptyNric;
+        AddInfoCommand expectedCommand = new AddInfoCommand(INDEX_FIRST_PERSON, nonEmptyNric);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // No NRIC
@@ -37,6 +37,6 @@ public class AddInfoCommandParserTest {
         assertParseFailure(parser, AddInfoCommand.COMMAND_WORD, expectedMessage);
 
         // no index
-        assertParseFailure(parser, AddInfoCommand.COMMAND_WORD + " " + nonEmptyNRIC, expectedMessage);
+        assertParseFailure(parser, AddInfoCommand.COMMAND_WORD + " " + nonEmptyNric, expectedMessage);
     }
 }

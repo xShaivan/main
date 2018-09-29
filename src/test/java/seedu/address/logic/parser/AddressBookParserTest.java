@@ -149,8 +149,8 @@ public class AddressBookParserTest {
     public void parseCommand_addInfo() throws Exception {
         final String nric = "S8010517G";
 
-        AddInfoCommand command = (AddInfoCommand) parser.parseCommand(AddInfoCommand.COMMAND_WORD + " " +
-                INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_ADD_INFO_NRIC + nric);
+        AddInfoCommand command = (AddInfoCommand) parser.parseCommand(AddInfoCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_ADD_INFO_NRIC + nric);
 
         assertEquals(new AddInfoCommand(INDEX_FIRST_PERSON, nric), command);
 
