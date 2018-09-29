@@ -14,7 +14,8 @@ import seedu.address.model.Model;
 public class AddInfoCommand extends Command {
     public static final String COMMAND_WORD = "addinfo";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the additional information of the person identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Edits the additional information of the person identified "
             + "by the index number used in the last person listing. "
             + "Existing information will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
