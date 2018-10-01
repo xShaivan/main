@@ -11,6 +11,10 @@ public class CliSyntax {
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
+    public static final Prefix PREFIX_MEDICAL_REPORT = new Prefix("mr/");
+    public static final Prefix PREFIX_MEDICAL_REPORT_INFO = new Prefix("mr/");
+    public static final Prefix PREFIX_TITLE = new Prefix("t/");
+    public static final Prefix PREFIX_DATE = new Prefix("d/");
 
     /* Prefix definitions for MedHistory */
     public static final Prefix PREFIX_HISTORY = new Prefix("hs/");
