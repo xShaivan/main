@@ -70,8 +70,11 @@ public class PersonCardHandle extends NodeHandle<Node> {
     public String getEmail() {
         return emailLabel.getText();
     }
-  
-    public String getNric() { return nricLabel.getText(); }
+
+    public String getNric() {
+        return nricLabel.getText();
+    }
+
     public String getAppt() {
         return apptLabel.getText();
     }
