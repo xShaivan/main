@@ -84,7 +84,7 @@ public class AddInfoCommandTest {
     }
 
     @Test
-    public void execute_invalidPersonindexUnfilteredList_failure() {
+    public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AddInfoCommand addInfoCommand = new AddInfoCommand(outOfBoundIndex, new Nric(VALID_NRIC_BOB));
 
