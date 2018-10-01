@@ -2,6 +2,9 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents a person's NRIC in Health Book.
+ */
 public class Nric {
     public final String value;
 

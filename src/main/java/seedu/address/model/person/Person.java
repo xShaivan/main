@@ -56,7 +56,9 @@ public class Person {
         return address;
     }
 
-    public Nric getNric() { return nric; }
+    public Nric getNric() {
+        return nric;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
