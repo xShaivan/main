@@ -59,7 +59,6 @@ public class Person {
         return address;
     }
 
-
     public Nric getNric() {
         return nric;
     }

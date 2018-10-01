@@ -36,7 +36,7 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String nric;
-
+    @XmlElement(required = true)
     private String appt;
 
 
