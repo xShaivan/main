@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
@@ -17,6 +18,7 @@ import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.commands.AddApptCommand;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddHistCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -30,6 +32,7 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.timetable.Appt;
@@ -142,6 +145,13 @@ public class AddressBookParserTest {
         thrown.expect(ParseException.class);
         thrown.expectMessage(MESSAGE_UNKNOWN_COMMAND);
         parser.parseCommand("unknownCommand");
+    }
+    @Test
+    public void parseCommandaddhist() throws Exception {
+        final MedHistory medhistory = new MedHistory("Some medical history");
+        AddHistCommand command = (AddHistCommand) parser.parseCommand(AddHistCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_HISTORY + medhistory.value);
+        assertEquals(new AddHistCommand(INDEX_FIRST_PERSON, medhistory), command);
     }
 
     // Tests for appt timetable commands
