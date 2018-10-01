@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddInfoCommand;
+import seedu.address.model.person.Nric;
 
 public class AddInfoCommandParserTest {
     private AddInfoCommandParser parser = new AddInfoCommandParser();
@@ -20,12 +21,12 @@ public class AddInfoCommandParserTest {
         // Have NRIC
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + " " + PREFIX_ADD_INFO_NRIC + nonEmptyNric;
-        AddInfoCommand expectedCommand = new AddInfoCommand(INDEX_FIRST_PERSON, nonEmptyNric);
+        AddInfoCommand expectedCommand = new AddInfoCommand(INDEX_FIRST_PERSON, new Nric(nonEmptyNric));
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // No NRIC
         userInput = targetIndex.getOneBased() + " " + PREFIX_ADD_INFO_NRIC;
-        expectedCommand = new AddInfoCommand(INDEX_FIRST_PERSON, "");
+        expectedCommand = new AddInfoCommand(INDEX_FIRST_PERSON, new Nric(""));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 

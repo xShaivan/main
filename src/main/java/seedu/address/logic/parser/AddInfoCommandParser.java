@@ -8,6 +8,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddInfoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Nric;
 
 /**
  * Parses input arguments and creates a new {@code AddInfoCommand} object
@@ -32,6 +33,6 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
 
         String nric = argMultiMap.getValue(PREFIX_ADD_INFO_NRIC).orElse("");
 
-        return new AddInfoCommand(index, nric);
+        return new AddInfoCommand(index, new Nric(nric));
     }
 }
