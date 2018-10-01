@@ -17,6 +17,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.timetable.Appt;
 
 /**
  * JAXB-friendly version of the Person.
@@ -35,6 +36,8 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String medhistory;
+    @XmlElement(required = true)
+    private String appt;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -69,6 +72,7 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         medhistory = source.getMedHistory().value;
+        appt = source.getAppt().value;
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -123,8 +127,13 @@ public class XmlAdaptedPerson {
         }
         final MedHistory modelMedHistory = new MedHistory(medhistory);
 
+        if (appt == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
+        }
+        final Appt modelAppt = new Appt(appt);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelMedHistory, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelMedHistory, modelAppt, modelTags);
     }
 
     @Override
