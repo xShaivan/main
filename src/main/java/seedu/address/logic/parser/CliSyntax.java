@@ -16,6 +16,10 @@ public class CliSyntax {
     public static final Prefix PREFIX_TITLE = new Prefix("t/");
     public static final Prefix PREFIX_DATE = new Prefix("d/");
 
+    /* Prefix definitions for MedHistory */
+    public static final Prefix PREFIX_HISTORY = new Prefix("hs/");
+    public static final Prefix PREFIX_BLOODTYPE = new Prefix("b/");
+
     /* Prefix definitions for Appt */
     public static final Prefix PREFIX_APPT_START = new Prefix("s/");
     public static final Prefix PREFIX_APPT_END = new Prefix("e/");

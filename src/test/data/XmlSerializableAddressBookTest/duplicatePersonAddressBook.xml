@@ -7,6 +7,8 @@
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
         <report></report>
+        <medhistory></medhistory>
+        <appt></appt>
         <tagged>friends</tagged>
     </persons>
 
@@ -15,8 +17,10 @@
         <name>Alice Pauline</name>
         <phone>94351253</phone>
         <email>pauline@example.com</email>
-        <report></report>
         <address>4th street</address>
+        <report></report>
+        <medhistory></medhistory>
+        <appt></appt>
     </persons>
 
 </addressbook>

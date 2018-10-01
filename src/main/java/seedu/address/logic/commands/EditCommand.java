@@ -23,10 +23,12 @@ import seedu.address.model.Model;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.timetable.Appt;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -100,10 +102,15 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        MedicalReport updatedReport = personToEdit.getMedicalReport();
+
+        MedicalReport updatedReport = personToEdit.getMedicalReport(); // edit command does not edit MedicalReport now
+        MedHistory updatedMedHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
+        Appt updatedAppt = personToEdit.getAppt(); // edit command does not allow editing appts
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedReport, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedReport, 
+                          updatedMedHistory, updatedAppt, updatedTags);
+
     }
 
     @Override
