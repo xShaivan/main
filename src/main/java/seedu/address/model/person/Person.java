@@ -59,10 +59,10 @@ public class Person {
 
     public MedHistory getMedHistory() {
         return medhistory;
+    }
 
     public Appt getAppt() {
         return appt;
-
     }
 
     /**
