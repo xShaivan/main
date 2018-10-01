@@ -77,7 +77,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     public String getMedicalReport() {
         return medicalReportLabel.getText();
     }
-  
+
     public String getMedHistory() {
         return medhistoryLabel.getText();
     }

@@ -90,13 +90,13 @@ public class AddressBookParser {
 
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
-            
+
         case AddApptCommand.COMMAND_WORD:
             return new AddApptCommandParser().parse(arguments);
 
         case EditInfoCommand.COMMAND_WORD:
             return new EditInfoCommand();
-            
+
         case AddHistCommand.COMMAND_WORD:
             return new AddHistCommandParser().parse(arguments);
 
