@@ -7,6 +7,7 @@
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
+        <appt></appt>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -15,6 +16,7 @@
         <email>johnd@example.com</email>
         <address>311, Clementi Ave 2, #02-25</address>
         <nric></nric>
+        <appt></appt>
         <tagged>owesMoney</tagged>
         <tagged>friends</tagged>
     </persons>
@@ -24,12 +26,14 @@
         <email>heinz@example.com</email>
         <address>wall street</address>
         <nric></nric>
+        <appt></appt>
     </persons>
     <persons>
         <name>Daniel Meier</name>
         <phone>87652533</phone>
         <email>cornelia@example.com</email>
         <address>10th street</address>
+        <appt></appt>
         <tagged>friends</tagged>
         <nric></nric>
     </persons>
@@ -39,6 +43,7 @@
         <email>werner@example.com</email>
         <address>michegan ave</address>
         <nric></nric>
+        <appt></appt>
     </persons>
     <persons>
         <name>Fiona Kunz</name>
@@ -46,6 +51,7 @@
         <email>lydia@example.com</email>
         <address>little tokyo</address>
         <nric></nric>
+        <appt></appt>
     </persons>
     <persons>
         <name>George Best</name>
@@ -53,5 +59,6 @@
         <email>anna@example.com</email>
         <address>4th street</address>
         <nric>S5185093I</nric>
+        <appt>Eye Checkup</appt>
     </persons>
 </addressbook>
