@@ -6,6 +6,8 @@
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false"></appt>
     </persons>
     <persons>
@@ -14,6 +16,8 @@
         <email isPrivate="false">ruth@example.com</email>
         <address isPrivate="false">81th street</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false"></appt>
     </persons>
     <persons>
@@ -22,6 +26,8 @@
         <email isPrivate="false">heinz@example.com</email>
         <address isPrivate="false">wall street</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false"></appt>
     </persons>
     <persons>
@@ -30,6 +36,8 @@
         <email isPrivate="false">cornelia@example.com</email>
         <address isPrivate="false">10th street</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false">Diabetes Checkup</appt>
     </persons>
     <persons>
@@ -38,6 +46,8 @@
         <email isPrivate="false">werner@example.com</email>
         <address isPrivate="false">michegan ave</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false"></appt>
     </persons>
     <persons>
@@ -46,6 +56,8 @@
         <email isPrivate="false">lydia@example.com</email>
         <address isPrivate="false">little tokyo</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false"></appt>
     </persons>
     <persons>
@@ -54,6 +66,8 @@
         <email isPrivate="false">anna@example.com</email>
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false"></appt>
     </persons>
     <persons>
@@ -62,6 +76,8 @@
         <email isPrivate="false">stefan@example.com</email>
         <address isPrivate="false">little india</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false">Asthma Checkup</appt>
     </persons>
     <persons>
@@ -70,6 +86,8 @@
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">chicago ave</address>
         <nric isPrivate="false"></nric>
+        <report isPrivate="false"></report>
+        <medhistory isPrivate="false"></medhistory>
         <appt isPrivate="false"></appt>
     </persons>
 </addressbook>

@@ -7,6 +7,8 @@
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false">S9888625G</nric>
+        <report isPrivate="false">Some remarks</report>
+        <medhistory isPrivate="false">Some Medical History</medhistory>
         <appt isPrivate="false">Some appt</appt>
     </persons>
     <!-- Person with invalid phone field -->
@@ -16,6 +18,8 @@
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false">S9164776A</nric>
+        <report isPrivate="false">Some remarks</report>
+        <medhistory isPrivate="false">Some Medical History</medhistory>
         <appt isPrivate="false">Some appt</appt>
     </persons>
 </addressbook>

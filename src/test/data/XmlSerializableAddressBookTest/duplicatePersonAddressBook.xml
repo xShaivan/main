@@ -6,9 +6,11 @@
         <phone>94351253</phone>
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
+        <nric></nric>
+        <report></report>
+        <medhistory></medhistory>
         <appt></appt>
         <tagged>friends</tagged>
-        <nric></nric>
     </persons>
 
     <!-- Person with same identity as Alice Pauline -->
@@ -18,6 +20,8 @@
         <email>pauline@example.com</email>
         <address>4th street</address>
         <nric></nric>
+        <report></report>
+        <medhistory></medhistory>
         <appt></appt>
     </persons>
 

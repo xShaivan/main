@@ -10,8 +10,10 @@ import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
@@ -37,8 +39,11 @@ public class XmlAdaptedPerson {
     @XmlElement(required = true)
     private String nric;
     @XmlElement(required = true)
+    private String report;
+    @XmlElement(required = true)
+    private String medhistory;
+    @XmlElement(required = true)
     private String appt;
-
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -73,6 +78,8 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
+        report = source.getMedicalReport().value;
+        medhistory = source.getMedHistory().value;
         appt = source.getAppt().value;
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
@@ -127,13 +134,26 @@ public class XmlAdaptedPerson {
         }
         final Nric modelNric = new Nric(nric);
 
+        if (report == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    MedicalReport.class.getSimpleName()));
+        }
+        final MedicalReport modelReport = new MedicalReport(report);
+
+        if (medhistory == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    MedHistory.class.getSimpleName()));
+        }
+        final MedHistory modelMedHistory = new MedHistory(medhistory);
+
         if (appt == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
         }
         final Appt modelAppt = new Appt(appt);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelAppt, modelNric, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
+                          modelMedHistory, modelAppt, modelNric, modelTags);
     }
 
     @Override
