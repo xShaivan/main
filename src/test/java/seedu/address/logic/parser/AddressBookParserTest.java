@@ -20,8 +20,8 @@ import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.commands.AddApptCommand;
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddInfoCommand;
 import seedu.address.logic.commands.AddHistCommand;
+import seedu.address.logic.commands.AddInfoCommand;
 import seedu.address.logic.commands.AddMedicalReportCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
