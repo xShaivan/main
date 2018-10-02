@@ -63,7 +63,8 @@ public class AddInfoCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getAppt(), nric, personToEdit.getTags());
+                personToEdit.getAddress(), personToEdit.getMedicalReport(), personToEdit.getMedHistory(),
+                personToEdit.getAppt(), nric, personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
