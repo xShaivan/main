@@ -8,6 +8,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddApptCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.timetable.Appt;
 
 /**
  * Parses input arguments and creates a new {@code AddApptCommand} object
@@ -31,6 +32,6 @@ public class AddApptCommandParser implements Parser<AddApptCommand> {
 
         // there is no appt class yet, so just return the appt info for now
         String appt = argMultimap.getValue(PREFIX_APPT_INFO).orElse("");
-        return new AddApptCommand(index, appt);
+        return new AddApptCommand(index, new Appt(appt));
     }
 }
