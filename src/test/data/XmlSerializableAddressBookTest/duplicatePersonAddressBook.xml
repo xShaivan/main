@@ -9,7 +9,11 @@
         <nric></nric>
         <report></report>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
         <tagged>friends</tagged>
     </persons>
 
@@ -22,7 +26,11 @@
         <nric></nric>
         <report></report>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
     </persons>
 
 </addressbook>
