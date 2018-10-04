@@ -4,6 +4,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
 import seedu.address.logic.commands.AddMedicalReportCommand;
 import seedu.address.model.medicalreport.MedicalReport;
 
@@ -15,7 +16,8 @@ public class ReportUtil {
      * Returns an add command string for adding the {@code person}.
      */
     public static String getAddMedicalReportCommand(MedicalReport report) {
-        return AddMedicalReportCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " " + getMedicalReportDetails(report);
+        return AddMedicalReportCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " " 
+                + getMedicalReportDetails(report);
     }
 
     /**

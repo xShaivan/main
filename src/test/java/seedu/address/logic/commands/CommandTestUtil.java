@@ -65,7 +65,7 @@ public class CommandTestUtil {
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     //Medical Report
-    public static final String VALID_TITLE1= "Asthma";
+    public static final String VALID_TITLE1 = "Asthma";
     public static final String VALID_TITLE2 = "Depression";
     public static final String VALID_DATE1 = "01/01/2018";
     public static final String VALID_DATE2 = "02/02/2018";

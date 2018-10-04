@@ -1,17 +1,17 @@
 package seedu.address.model.person;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE2;
 import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
 import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE2;
 
 import org.junit.Test;
 
-import seedu.address.testutil.ReportBuilder;
-
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.testutil.ReportBuilder;
 
 public class AddMedicalReportTest {
     @Test

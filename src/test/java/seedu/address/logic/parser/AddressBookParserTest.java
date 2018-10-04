@@ -42,10 +42,10 @@ import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.timetable.Appt;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
-import seedu.address.testutil.ReportBuilder;
-import seedu.address.testutil.ReportUtil;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
+import seedu.address.testutil.ReportBuilder;
+import seedu.address.testutil.ReportUtil;
 
 public class AddressBookParserTest {
     @Rule
@@ -85,7 +85,8 @@ public class AddressBookParserTest {
     @Test
     public void parseCommandaddreport() throws Exception {
         MedicalReport report = new ReportBuilder().build();
-        AddMedicalReportCommand command = (AddMedicalReportCommand) parser.parseCommand(ReportUtil.getAddMedicalReportCommand(report));
+        AddMedicalReportCommand command =
+                (AddMedicalReportCommand) parser.parseCommand(ReportUtil.getAddMedicalReportCommand(report));
         assertEquals(new AddMedicalReportCommand(INDEX_FIRST_PERSON, report), command);
     }
 
