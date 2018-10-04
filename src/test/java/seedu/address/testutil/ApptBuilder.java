@@ -1,5 +1,11 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DRNAME_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_APPT1;
+
 import seedu.address.model.timetable.Appt;
 import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
@@ -11,11 +17,11 @@ import seedu.address.model.timetable.ApptVenue;
  */
 public class ApptBuilder {
 
-    public static final String DEFAULT_APPT_START = "01/01/2018 14:00";
-    public static final String DEFAULT_APPT_END = "01/01/2018 15:00";
-    public static final String DEFAULT_APPT_VENUE = "Consultation Room 1";
-    public static final String DEFAULT_APPT_INFO = "Diabetes Appt";
-    public static final String DEFAULT_APPT_DR_NAME = "Dr Tan";
+    public static final String DEFAULT_APPT_START = VALID_START_APPT1;
+    public static final String DEFAULT_APPT_END = VALID_END_APPT1;
+    public static final String DEFAULT_APPT_VENUE = VALID_VENUE_APPT1;
+    public static final String DEFAULT_APPT_INFO = VALID_INFO_APPT1;
+    public static final String DEFAULT_APPT_DRNAME = VALID_DRNAME_APPT1;
 
     private ApptDateTime apptStart;
     private ApptDateTime apptEnd;
@@ -28,7 +34,7 @@ public class ApptBuilder {
         apptEnd = new ApptDateTime(DEFAULT_APPT_END);
         apptVenue = new ApptVenue(DEFAULT_APPT_VENUE);
         apptInfo = new ApptInfo(DEFAULT_APPT_INFO);
-        apptDrName = new ApptDrName(DEFAULT_APPT_DR_NAME);
+        apptDrName = new ApptDrName(DEFAULT_APPT_DRNAME);
     }
 
     /**

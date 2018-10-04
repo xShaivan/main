@@ -1,5 +1,16 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DRNAME_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DRNAME_APPT2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_APPT2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO_APPT2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_APPT2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_APPT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_APPT2;
+
 import seedu.address.model.timetable.Appt;
 
 /**
@@ -7,10 +18,10 @@ import seedu.address.model.timetable.Appt;
  */
 public class TypicalAppts {
 
-    public static final Appt APPT_EXAMPLE1 = new ApptBuilder().withApptStart("01/01/2018 14:00")
-            .withApptEnd("01/01/2018 15:00").withApptVenue("Consultation Room 1").withApptInfo("Diabetes Checkup")
-            .withApptDrName("Dr Tan").build();
-    public static final Appt APPT_EXAMPLE2 = new ApptBuilder().withApptStart("02/02/2018 15:00")
-            .withApptEnd("02/02/2018 16:00").withApptVenue("Consultation Room 2").withApptInfo("Asthma Checkup")
-            .withApptDrName("Dr Lim").build();
+    public static final Appt APPT_EXAMPLE1 = new ApptBuilder().withApptStart(VALID_START_APPT1)
+            .withApptEnd(VALID_END_APPT1).withApptVenue(VALID_VENUE_APPT1).withApptInfo(VALID_INFO_APPT1)
+            .withApptDrName(VALID_DRNAME_APPT1).build();
+    public static final Appt APPT_EXAMPLE2 = new ApptBuilder().withApptStart(VALID_START_APPT2)
+            .withApptEnd(VALID_END_APPT2).withApptVenue(VALID_VENUE_APPT2).withApptInfo(VALID_INFO_APPT2)
+            .withApptDrName(VALID_DRNAME_APPT2).build();
 }
