@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE1;
+import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +29,7 @@ public class PersonBuilder {
     public static final String DEFAULT_NRIC = "";
     public static final String DEFAULT_MEDICAL_REPORT = "";
     public static final String DEFAULT_MEDHISTORY = "";
-    public static final Appt DEFAULT_APPT = APPT_EXAMPLE1;
+    public static final Appt DEFAULT_APPT = EMPTY_APPT;
 
     private Name name;
     private Phone phone;

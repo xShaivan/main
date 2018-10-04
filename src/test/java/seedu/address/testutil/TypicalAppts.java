@@ -24,4 +24,6 @@ public class TypicalAppts {
     public static final Appt APPT_EXAMPLE2 = new ApptBuilder().withApptStart(VALID_START_APPT2)
             .withApptEnd(VALID_END_APPT2).withApptVenue(VALID_VENUE_APPT2).withApptInfo(VALID_INFO_APPT2)
             .withApptDrName(VALID_DRNAME_APPT2).build();
+    public static final Appt EMPTY_APPT = new ApptBuilder().withApptStart("").withApptEnd("").withApptVenue("")
+            .withApptInfo("").withApptDrName("").build();
 }
