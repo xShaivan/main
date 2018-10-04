@@ -7,7 +7,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICAL_REPORT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
@@ -43,6 +42,8 @@ import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.timetable.Appt;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.ReportBuilder;
+import seedu.address.testutil.ReportUtil;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 
@@ -82,11 +83,9 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommandRemark() throws Exception {
-        final MedicalReport report = new MedicalReport("Some remark.");
-        AddMedicalReportCommand command =
-                (AddMedicalReportCommand) parser.parseCommand(AddMedicalReportCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_MEDICAL_REPORT + report.value);
+    public void parseCommand_addreport() throws Exception {
+        MedicalReport report = new ReportBuilder().build();
+        AddMedicalReportCommand command = (AddMedicalReportCommand) parser.parseCommand(ReportUtil.getAddMedicalReportCommand(report));
         assertEquals(new AddMedicalReportCommand(INDEX_FIRST_PERSON, report), command);
     }
 

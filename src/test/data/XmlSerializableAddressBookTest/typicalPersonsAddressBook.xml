@@ -7,7 +7,9 @@
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
-        <report>Title: Asthma, Date: 01012018, Actions: prescribed XXX medicine, next appointment on 02022018.</report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory></medhistory>
         <appt></appt>
         <tagged>friends</tagged>
@@ -18,7 +20,9 @@
         <email>johnd@example.com</email>
         <address>311, Clementi Ave 2, #02-25</address>
         <nric></nric>
-        <report></report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory></medhistory>
         <appt></appt>
         <tagged>owesMoney</tagged>
@@ -30,7 +34,9 @@
         <email>heinz@example.com</email>
         <address>wall street</address>
         <nric></nric>
-        <report></report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory></medhistory>
         <appt></appt>
     </persons>
@@ -40,7 +46,9 @@
         <email>cornelia@example.com</email>
         <address>10th street</address>
         <nric></nric>
-        <report></report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory></medhistory>
         <appt></appt>
         <tagged>friends</tagged>
@@ -51,7 +59,9 @@
         <email>werner@example.com</email>
         <address>michegan ave</address>
         <nric></nric>
-        <report></report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory></medhistory>
         <appt></appt>
     </persons>
@@ -61,7 +71,9 @@
         <email>lydia@example.com</email>
         <address>little tokyo</address>
         <nric></nric>
-        <report></report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory></medhistory>
         <appt></appt>
     </persons>
@@ -71,7 +83,9 @@
         <email>anna@example.com</email>
         <address>4th street</address>
         <nric>S5185093I</nric>
-        <report></report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory>Has Ebola.</medhistory>
         <appt>Eye Checkup</appt>
     </persons>

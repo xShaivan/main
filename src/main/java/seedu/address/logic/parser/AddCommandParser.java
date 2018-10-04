@@ -12,7 +12,10 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medicalreport.Date;
+import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MedHistory;
@@ -47,10 +50,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        MedicalReport report = new MedicalReport(""); // add command does not allow adding medical report now
+
         MedHistory medhistory = new MedHistory(""); // add command does not allow adding medhistory now
         Appt appt = new Appt(""); // add command does not allow adding appts straight away
         Nric nric = new Nric("");
+        MedicalReport report = new MedicalReport(new Title(""), new Date(""), new Information("")); // add command does not allow adding medical report now
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Person person = new Person(name, phone, email, address, report, medhistory, appt, nric, tagList);

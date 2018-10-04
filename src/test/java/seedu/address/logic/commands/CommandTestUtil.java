@@ -64,6 +64,14 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
+    //Medical Report
+    public static final String VALID_TITLE1= "Asthma";
+    public static final String VALID_TITLE2 = "Depression";
+    public static final String VALID_DATE1 = "01/01/2018";
+    public static final String VALID_DATE2 = "02/02/2018";
+    public static final String VALID_INFO1 = "Prescribed XXX medicine, next appointment on 02022018.";
+    public static final String VALID_INFO2 = "Prescribed XXX medicine, next appointment on 03032018.";
+
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 

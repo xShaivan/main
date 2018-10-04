@@ -10,7 +10,10 @@ import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.medicalreport.Date;
+import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MedHistory;
@@ -39,11 +42,15 @@ public class XmlAdaptedPerson {
     @XmlElement(required = true)
     private String nric;
     @XmlElement(required = true)
-    private String report;
-    @XmlElement(required = true)
     private String medhistory;
     @XmlElement(required = true)
     private String appt;
+    @XmlElement(required = true)
+    private String title;
+    @XmlElement(required = true)
+    private String date;
+    @XmlElement(required = true)
+    private String information;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -78,9 +85,11 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
-        report = source.getMedicalReport().value;
         medhistory = source.getMedHistory().value;
         appt = source.getAppt().value;
+        title = source.getMedicalReport().getTitle().toString();
+        date = source.getMedicalReport().getDate().toString();
+        information = source.getMedicalReport().getInformation().toString();
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -134,11 +143,20 @@ public class XmlAdaptedPerson {
         }
         final Nric modelNric = new Nric(nric);
 
-        if (report == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedicalReport.class.getSimpleName()));
+        if (title == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
-        final MedicalReport modelReport = new MedicalReport(report);
+        final Title modelTitle = new Title(title);
+
+        if (date == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName()));
+        }
+        final Date modelDate = new Date(date);
+
+        if (information == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Information.class.getSimpleName()));
+        }
+        final Information modelInformation = new Information(information);
 
         if (medhistory == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -146,12 +164,14 @@ public class XmlAdaptedPerson {
         }
         final MedHistory modelMedHistory = new MedHistory(medhistory);
 
+        final MedicalReport modelReport = new MedicalReport(modelTitle, modelDate, modelInformation);
+        final Set<Tag> modelTags = new HashSet<>(personTags);
+
         if (appt == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
         }
         final Appt modelAppt = new Appt(appt);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
                           modelMedHistory, modelAppt, modelNric, modelTags);
     }
@@ -171,6 +191,9 @@ public class XmlAdaptedPerson {
                 && Objects.equals(phone, otherPerson.phone)
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(address, otherPerson.address)
+                && Objects.equals(title, otherPerson.title)
+                && Objects.equals(date, otherPerson.date)
+                && Objects.equals(information, otherPerson.information)
                 && tagged.equals(otherPerson.tagged);
     }
 }

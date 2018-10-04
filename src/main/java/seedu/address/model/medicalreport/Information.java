@@ -6,13 +6,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 /**
  * Represents a Medical Report's information in the address book.
  */
-public class MedicalReportInformation {
+public class Information {
     public static final String MESSAGE_INFORMATION_CONSTRAINTS =
-            "Medical information report should only contain alphanumeric characters and spaces,"
+            "Information in medical report should only contain alphanumeric characters and spaces,"
             + " and it should not be blank";
 
     /*
-     * The first character of the date must not be a whitespace,
+     * The first character of the information must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String INFORMATION_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
@@ -24,9 +24,8 @@ public class MedicalReportInformation {
      *
      * @param information A valid information.
      */
-    public MedicalReportInformation(String information) {
+    public Information(String information) {
         requireNonNull(information);
-        checkArgument(isValidInformation(information), MESSAGE_INFORMATION_CONSTRAINTS);
         fullInformation = information;
     }
 
@@ -46,8 +45,8 @@ public class MedicalReportInformation {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof MedicalReportInformation // instanceof handles nulls
-                && fullInformation.equals(((MedicalReportInformation) other).fullInformation)); // state check
+                || (other instanceof Information // instanceof handles nulls
+                && fullInformation.equals(((Information) other).fullInformation)); // state check
     }
 
     @Override

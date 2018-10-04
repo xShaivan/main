@@ -10,7 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Date {
 
     public static final String MESSAGE_DATE_CONSTRAINTS =
-            "Dates should only contain numbers, and it should not be blank";
+            "The full Date should be of the format: " +
+            "DD/MM/YYYY";
 
     /*
      * The first character of the date must not be a whitespace,
@@ -27,7 +28,6 @@ public class Date {
      */
     public Date(String date) {
         requireNonNull(date);
-        checkArgument(isValidDate(date), MESSAGE_DATE_CONSTRAINTS);
         fullDate = date;
     }
 

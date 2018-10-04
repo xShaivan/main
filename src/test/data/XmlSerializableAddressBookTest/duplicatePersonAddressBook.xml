@@ -7,7 +7,9 @@
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
-        <report></report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory></medhistory>
         <appt></appt>
         <tagged>friends</tagged>
@@ -20,7 +22,9 @@
         <email>pauline@example.com</email>
         <address>4th street</address>
         <nric></nric>
-        <report></report>
+        <title></title>
+        <date></date>
+        <information></information>
         <medhistory></medhistory>
         <appt></appt>
     </persons>

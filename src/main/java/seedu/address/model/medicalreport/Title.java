@@ -24,10 +24,9 @@ public class Title {
      * Constructs a {@code Title}.
      *
      * @param title A valid title.
-     */
+    */
     public Title(String title) {
         requireNonNull(title);
-        checkArgument(isValidTitle(title), MESSAGE_TITLE_CONSTRAINTS);
         fullTitle = title;
     }
 
