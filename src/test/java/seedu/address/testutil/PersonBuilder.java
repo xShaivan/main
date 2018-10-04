@@ -1,7 +1,6 @@
 package seedu.address.testutil;
 
 import static seedu.address.testutil.TypicalReports.EMPTY_MEDICAL_REPORT;
-import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
 
 import java.util.HashSet;
 import java.util.Set;
