@@ -29,16 +29,20 @@ public class Person {
     private final Set<Tag> tags = new HashSet<>();
     private final MedicalReport report;
 
+    // Additional information fields
+    private final Nric nric;
+
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, MedicalReport report,
-                  MedHistory medhistory, Appt appt, Set<Tag> tags) {
+                  MedHistory medhistory, Appt appt, Nric nric, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.nric = nric;
         this.report = report;
         this.medhistory = medhistory;
         this.appt = appt;
@@ -67,6 +71,10 @@ public class Person {
 
     public MedHistory getMedHistory() {
         return medhistory;
+    }
+
+    public Nric getNric() {
+        return nric;
     }
 
     public Appt getAppt() {

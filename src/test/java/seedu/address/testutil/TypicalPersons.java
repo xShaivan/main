@@ -41,7 +41,7 @@ public class TypicalPersons {
             .withEmail("lydia@example.com").withAddress("little tokyo").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withAddress("4th street").withMedicalReport("Asthma")
-            .withMedHistory("Has Ebola.").withAppt("Eye Checkup").build();
+            .withMedHistory("Has Ebola.").withAppt("Eye Checkup").withNric("S5185093I").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")

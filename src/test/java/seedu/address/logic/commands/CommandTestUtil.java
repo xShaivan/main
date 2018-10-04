@@ -50,6 +50,9 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
+    public static final String VALID_NRIC_AMY = "S9799909J";
+    public static final String VALID_NRIC_BOB = "S9880095F";
+
     public static final String APPT_DUMMY1 = "Asthma Appt";
     public static final String APPT_DUMMY2 = "Diabetes Appt";
     public static final String VALID_HISTORY_AMY = "Cancer: 10 years old.";
