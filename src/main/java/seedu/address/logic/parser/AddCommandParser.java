@@ -54,7 +54,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         MedHistory medhistory = new MedHistory(""); // add command does not allow adding medhistory now
         Appt appt = new Appt(""); // add command does not allow adding appts straight away
         Nric nric = new Nric("");
-        MedicalReport report = new MedicalReport(new Title(""), new Date(""), new Information("")); // add command does not allow adding medical report now
+        MedicalReport report = new MedicalReport(new Title(""), new Date(""), new Information(""));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Person person = new Person(name, phone, email, address, report, medhistory, appt, nric, tagList);

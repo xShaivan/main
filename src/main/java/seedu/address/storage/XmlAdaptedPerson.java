@@ -154,7 +154,8 @@ public class XmlAdaptedPerson {
         final Date modelDate = new Date(date);
 
         if (information == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Information.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Information.class.getSimpleName()));
         }
         final Information modelInformation = new Information(information);
 

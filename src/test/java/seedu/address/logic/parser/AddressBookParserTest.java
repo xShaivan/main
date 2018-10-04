@@ -83,7 +83,7 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_addReport() throws Exception {
+    public void parseCommandaddreport() throws Exception {
         MedicalReport report = new ReportBuilder().build();
         AddMedicalReportCommand command = (AddMedicalReportCommand) parser.parseCommand(ReportUtil.getAddMedicalReportCommand(report));
         assertEquals(new AddMedicalReportCommand(INDEX_FIRST_PERSON, report), command);

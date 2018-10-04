@@ -20,15 +20,15 @@ public class MedicalReport {
         this.information = information;
     }
 
-    public Title getTitle(){
+    public Title getTitle() {
         return title;
     }
 
-    public Date getDate(){
+    public Date getDate() {
         return date;
     }
 
-    public Information getInformation(){
+    public Information getInformation() {
         return information;
     }
 
@@ -38,7 +38,7 @@ public class MedicalReport {
     }
 
     @Override
-    public boolean equals(Object other){
+    public boolean equals(Object other) {
         if (other == this) {
             return true;
         }
