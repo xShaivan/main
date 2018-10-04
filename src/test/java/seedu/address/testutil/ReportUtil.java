@@ -16,7 +16,7 @@ public class ReportUtil {
      * Returns an add command string for adding the {@code person}.
      */
     public static String getAddMedicalReportCommand(MedicalReport report) {
-        return AddMedicalReportCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " " 
+        return AddMedicalReportCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " "
                 + getMedicalReportDetails(report);
     }
 
