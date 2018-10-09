@@ -19,7 +19,6 @@ import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddApptCommand;
-import seedu.address.model.timetable.Appt;
 import seedu.address.testutil.ApptBuilder;
 
 public class AddApptCommandParserTest {
@@ -37,10 +36,10 @@ public class AddApptCommandParserTest {
                 + " " + PREFIX_APPT_INFO + VALID_INFO_APPT1
                 + " " + PREFIX_APPT_DRNAME + VALID_DRNAME_APPT1, expectedCommand);
 
-//        // no appt --> MIGHT REMOVE
-//        userInput = targetIndex.getOneBased() + " " + PREFIX_APPT_INFO;
-//        expectedCommand = new AddApptCommand(INDEX_FIRST_PERSON, new Appt(""));
-//        assertParseSuccess(parser, userInput, expectedCommand);
+        // no appt --> MIGHT REMOVE
+        // userInput = targetIndex.getOneBased() + " " + PREFIX_APPT_INFO;
+        // expectedCommand = new AddApptCommand(INDEX_FIRST_PERSON, new Appt(""));
+        // assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     // MIGHT ADD ON SOME MORE
