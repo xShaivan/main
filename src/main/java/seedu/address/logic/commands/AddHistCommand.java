@@ -66,8 +66,8 @@ public class AddHistCommand extends Command {
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = !medHistory.toString().isEmpty() ? MESSAGE_ADD_MEDHISTORY_SUCCESS :
-                MESSAGE_DELETE_MEDHISTORY_SUCCESS;
+        String message = !medHistory.toString().isEmpty() ? MESSAGE_ADD_MEDHISTORY_SUCCESS
+                : MESSAGE_DELETE_MEDHISTORY_SUCCESS;
         return String.format(message, personToEdit);
     }
 
