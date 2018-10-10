@@ -1,7 +1,7 @@
 package seedu.address.model.medhistory;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
+//import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents the date of medical history.
@@ -25,7 +25,7 @@ public class Date {
     public Date(String date) {
         requireNonNull(date);
         // isValidDate will is found in test file.
-        checkArgument(isValidDate(date), MESSAGE_DATE_CONSTRAINTS);
+        //checkArgument(isValidDate(date), MESSAGE_DATE_CONSTRAINTS);
         value = date;
     }
 

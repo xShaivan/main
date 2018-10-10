@@ -14,6 +14,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.Date;
+import seedu.address.model.medhistory.PrevCountry;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -120,5 +124,47 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String allergy} into an {@code Allergy}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code allergy} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static Allergy parseAllergy(String allergy) {
+        requireNonNull(allergy);
+        String trimmedAllergy = allergy.trim();
+
+        return new Allergy(trimmedAllergy);
+    }
+
+    /**
+     * Parses a {@code String date} into an {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static Date parseDate(String date) {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+
+        return new Date(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code prevCountry} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static PrevCountry parsePrevCountry(String prevCountry) {
+        requireNonNull(prevCountry);
+        String trimmedPrevCountry = prevCountry.trim();
+
+        return new PrevCountry(trimmedPrevCountry);
     }
 }

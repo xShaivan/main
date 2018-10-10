@@ -1,7 +1,7 @@
 package seedu.address.model.medhistory;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
+//import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents the previous country visited of medical history.
@@ -25,7 +25,7 @@ public class PrevCountry {
     public PrevCountry(String prevCountry) {
         requireNonNull(prevCountry);
         // isValidprevCountry will is found in test file.
-        checkArgument(isValidprevCountry(prevCountry), MESSAGE_PREVCOUNTRY_CONSTRAINTS);
+        //checkArgument(isValidprevCountry(prevCountry), MESSAGE_PREVCOUNTRY_CONSTRAINTS);
         value = prevCountry;
     }
 

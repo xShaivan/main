@@ -1,7 +1,7 @@
 package seedu.address.model.medhistory;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
+//import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents the allergy of medical history.
@@ -22,10 +22,10 @@ public class Allergy {
      *
      * @param allergy A valid allergy.
      */
-    public allergy(String allergy) {
+    public Allergy(String allergy) {
         requireNonNull(allergy);
         // isValidAllergy will is found in test file.
-        checkArgument(isValidAllergy(allergy), MESSAGE_ALLERGY_CONSTRAINTS);
+        //checkArgument(isValidAllergy(allergy), MESSAGE_ALLERGY_CONSTRAINTS);
         value = allergy;
     }
 

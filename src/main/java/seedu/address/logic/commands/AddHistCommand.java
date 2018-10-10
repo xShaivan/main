@@ -2,6 +2,9 @@ package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -11,8 +14,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.Person;
+import seedu.address.model.medhistory.MedHistory;
 
 /**
  * Adds/Edits medical history of a patient in the Health Book.
@@ -25,7 +28,10 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
             + "by their index number."
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_HISTORY + "Diabetes.";
+            + PREFIX_HISTORY + "Diabetes"
+            + PREFIX_HISTORY_DATE + "24/08/1993"
+            + PREFIX_HISTORY_COUNTRY + "Kuwait"
+            + PREFIX_HISTORY_ALLERGY + "Alcohol, Peanuts";
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";

@@ -2,13 +2,22 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
+
+
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddHistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.MedHistory;
+import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.Date;
+import seedu.address.model.medhistory.PrevCountry;
+
 
 /**
  * Parses input arguments and create a {@code AddHistCommand} object
@@ -23,7 +32,13 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
 
     public AddHistCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_HISTORY);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_HISTORY_ALLERGY,
+                PREFIX_HISTORY_COUNTRY, PREFIX_HISTORY_DATE);
+
+        if (!arePrefixesPresent(argMultimap, PREFIX_HISTORY_ALLERGY,
+                PREFIX_HISTORY_COUNTRY, PREFIX_HISTORY_DATE)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE));
+        }
 
         Index index;
 
@@ -34,7 +49,17 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE), ive);
         }
 
-        String medhistory = argMultimap.getValue(PREFIX_HISTORY).orElse("");
-        return new AddHistCommand(index, new MedHistory (medhistory));
+        Allergy allergy = ParserUtil.parseAllergy(argMultimap.getValue(PREFIX_HISTORY_ALLERGY).get());
+        PrevCountry prevCountry = ParserUtil.parsePrevCountry(argMultimap.getValue(PREFIX_HISTORY_COUNTRY).get());
+        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_HISTORY_DATE).get());
+        return new AddHistCommand(index, new MedHistory (date, allergy, prevCountry));
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
