@@ -1,7 +1,9 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICAL_REPORT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -23,11 +25,14 @@ public class AddMedicalReportCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person's medical report by the index number"
             + " used in the list.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_MEDICAL_REPORT + "[MEDICAL REPORT]\n"
+            + "Parameters: [INDEX] (must be a positive integer) "
+            + PREFIX_TITLE + "[TITLE] "
+            + PREFIX_DATE + "[DATE] "
+            + PREFIX_INFORMATION + "[INFORMATION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_MEDICAL_REPORT + "Title: Asthma, Date: 01012018,"
-            + " Actions: prescribed XXX medicine, next appointment on 02022018. ";
+            + PREFIX_TITLE + "Asthma "
+            + PREFIX_DATE + "01012018 "
+            + PREFIX_INFORMATION + "prescribed XXX medicine, next appointment on 02022018. ";
 
     public static final String MESSAGE_ADD_REPORT_SUCCESS = "Added medical report to Person: %1$s";
     public static final String MESSAGE_DELETE_REPORT_SUCCESS = "Removed medical report from Person: %1$s";
@@ -67,18 +72,8 @@ public class AddMedicalReportCommand extends Command {
         return new CommandResult(generateSuccessMessage(editedPerson));
     }
 
-    /**
-     * Generates a command execution success message based on whether the report is added to
-     * {@code personToEdit}.
-
     private String generateSuccessMessage(Person personToEdit) {
-        String message = (report.title.isFull() && report.date.isFull() && report.information.isFull())
-                ? MESSAGE_ADD_REPORT_SUCCESS : MESSAGE_ADD_REPORT_FAILURE;
-        return String.format(message, personToEdit);
-    }*/
-
-    private String generateSuccessMessage(Person personToEdit) {
-        String message = (!report.value.isEmpty()) ? MESSAGE_ADD_REPORT_SUCCESS : MESSAGE_DELETE_REPORT_SUCCESS;
+        String message = (!report.toString().isEmpty()) ? MESSAGE_ADD_REPORT_SUCCESS : MESSAGE_DELETE_REPORT_SUCCESS;
         return String.format(message, personToEdit);
     }
 

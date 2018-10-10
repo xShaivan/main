@@ -9,6 +9,9 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medicalreport.Date;
+import seedu.address.model.medicalreport.Information;
+import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -125,6 +128,48 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
+    /**
+     * ==================================================
+     * PARSER FOR MEDICAL REPORT SUBFIELDS
+     * ==================================================
+     */
+
+    /**
+     * Parses a {@code String title} into an {@code Title}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static Title parseTitle(String title) {
+        requireNonNull(title);
+        String trimmedTitle = title.trim();
+        return new Title(trimmedTitle);
+    }
+
+    /**
+     * Parses a {@code String date} into an {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static Date parseDate(String date) {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        return new Date(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String information} into an {@code Information}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static Information parseInformation(String information) {
+        requireNonNull(information);
+        String trimmedInformation = information.trim();
+        return new Information(trimmedInformation);
+    }
+
+    /**
+     * ==================================================
+     * PARSER FOR APPT SUBFIELDS
+     * ==================================================
+     */
 
     /**
      * Parses a {@code String apptDateTime} into an {@code ApptDateTime}.

@@ -6,7 +6,10 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.medicalreport.Date;
+import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MedHistory;
@@ -27,8 +30,9 @@ import seedu.address.model.timetable.ApptVenue;
 public class SampleDataUtil {
 
     public static final Nric EMPTY_NRIC = new Nric("");
-    public static final MedicalReport EMPTY_MEDICAL_REPORT = new MedicalReport("");
     public static final MedHistory EMPTY_MEDHISTORY = new MedHistory("");
+    public static final MedicalReport EMPTY_MEDICAL_REPORT = new MedicalReport(new Title(""), new Date(""),
+            new Information(""));
     public static final Appt EMPTY_APPT = new Appt(new ApptDateTime(""), new ApptDateTime(""),
             new ApptVenue(""), new ApptInfo(""), new ApptDrName(""));
 
