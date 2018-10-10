@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_PREFIX;
 
 import java.util.Arrays;
 
@@ -10,6 +11,7 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
+ * Switch cases for static attributes
  */
 public class FindCommandParser implements Parser<FindCommand> {
 
@@ -25,9 +27,33 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
+
         String[] nameKeywords = trimmedArgs.split("\\s+");
 
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        switch(nameKeywords[0]) {
+
+        case "n/":
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        case "p/":
+            //create PhoneContainsKeywordsPredicate
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        case "e/":
+            //create EmailContainsKeywordsPredicate
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        case "a/":
+            //create AddressContainsKeywordsPredicate
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        case "t/":
+            //create TagContainsKeywordsPredicate
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        default:
+            throw new ParseException(MESSAGE_UNKNOWN_PREFIX);
+        }
     }
 
 }
