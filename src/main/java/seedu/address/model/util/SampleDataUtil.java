@@ -34,7 +34,8 @@ import seedu.address.model.timetable.ApptVenue;
 public class SampleDataUtil {
 
     public static final Nric EMPTY_NRIC = new Nric("");
-    public static final MedHistory EMPTY_MEDHISTORY = new MedHistory(new MedHistDate(""), new Allergy(""), new PrevCountry(""));
+    public static final MedHistory EMPTY_MEDHISTORY = new MedHistory(new MedHistDate(""),
+            new Allergy(""), new PrevCountry(""));
     public static final MedicalReport EMPTY_MEDICAL_REPORT = new MedicalReport(new Title(""), new Date(""),
             new Information(""));
     public static final Appt EMPTY_APPT = new Appt(new ApptDateTime(""), new ApptDateTime(""),
