@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
