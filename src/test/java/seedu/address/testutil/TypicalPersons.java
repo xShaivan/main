@@ -10,8 +10,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE1;
+import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
