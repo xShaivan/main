@@ -172,7 +172,7 @@ public class XmlAdaptedPerson {
         }
         final Appt modelAppt = new Appt(appt);
 
-        final MedHistory modelMedHistory = new MedHistory(date, allergy, prevCountry);
+        final MedHistory modelMedHistory = new MedHistory(modelDate, modelAllergy, modelPrevCountry);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,

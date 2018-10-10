@@ -15,7 +15,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
