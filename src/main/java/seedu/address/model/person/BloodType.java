@@ -17,12 +17,12 @@ public class BloodType {
     /**
      * Constructs a {@code BloodType}.
      *
-     * @param Type A valid bloodtype.
+     * @param type A valid bloodtype.
      */
-    public BloodType(String Type) {
-        requireNonNull(Type);
-        checkArgument(isValidType(Type), BLOODTYPE_CONSTRAINTS);
-        value = Type;
+    public BloodType(String type) {
+        requireNonNull(type);
+        checkArgument(isValidType(type), BLOODTYPE_CONSTRAINTS);
+        value = type;
     }
 
     /**
