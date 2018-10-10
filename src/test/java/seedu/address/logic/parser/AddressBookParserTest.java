@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
@@ -34,8 +33,8 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
@@ -43,12 +42,12 @@ import seedu.address.model.timetable.Appt;
 import seedu.address.testutil.ApptBuilder;
 import seedu.address.testutil.ApptUtil;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.MedHistoryBuilder;
+import seedu.address.testutil.MedHistoryUtil;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 import seedu.address.testutil.ReportBuilder;
 import seedu.address.testutil.ReportUtil;
-import seedu.address.testutil.MedHistoryBuilder;
-import seedu.address.testutil.MedHistoryUtil;
 
 
 public class AddressBookParserTest {

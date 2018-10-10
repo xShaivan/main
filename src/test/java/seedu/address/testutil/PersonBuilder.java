@@ -1,12 +1,13 @@
 package seedu.address.testutil;
 
 import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
-import static seedu.address.testutil.TypicalReports.EMPTY_MEDICAL_REPORT;
 import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
+import static seedu.address.testutil.TypicalReports.EMPTY_MEDICAL_REPORT;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -16,7 +17,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
-import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.util.SampleDataUtil;
 
 /**

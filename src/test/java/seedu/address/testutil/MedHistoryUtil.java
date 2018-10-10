@@ -1,8 +1,8 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import seedu.address.logic.commands.AddHistCommand;
