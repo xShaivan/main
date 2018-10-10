@@ -11,7 +11,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class BloodType {
     public static final String BLOODTYPE_CONSTRAINTS =
             "Blood type should be A, B, O or AB followed by - or +";
-    public static final String TYPE_VALIDATION_REGEX = "\\d{3,}";
+    public static final String TYPE_VALIDATION_REGEX = "[ABO]*" + "[-+]";
     public final String value;
 
     /**
