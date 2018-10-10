@@ -123,7 +123,8 @@ public class UniquePersonList implements Iterable<Person> {
     /**
      * Returns the sorted list as an unmodifiable {@code ObservableList}.
      */
-    public ObservableList<Person> SortedPersonList() {
+
+    public ObservableList<Person> sortedPersonList() {
         ObservableList<Person> sortedInternalList = internalList;
         sortedInternalList.sort(Comparator.comparing(p -> p.getName().fullName));
 
