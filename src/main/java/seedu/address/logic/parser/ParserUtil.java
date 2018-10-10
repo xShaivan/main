@@ -129,9 +129,11 @@ public class ParserUtil {
         return tagSet;
     }
 
-    /**==================================================
+    /**
+     * ==================================================
      * PARSER FOR MEDICAL REPORT SUBFIELDS
-     */==================================================
+     * ==================================================
+     */
   
     /**
      * Parses a {@code String title} into an {@code Title}.
@@ -163,9 +165,11 @@ public class ParserUtil {
         return new Information(trimmedInformation);
     }
 
-    /**==================================================
+    /**
+     * ==================================================
      * PARSER FOR APPT SUBFIELDS
-     */==================================================
+     * ==================================================
+     */
   
     /**
      * Parses a {@code String apptDateTime} into an {@code ApptDateTime}.

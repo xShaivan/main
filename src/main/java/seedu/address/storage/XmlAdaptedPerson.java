@@ -164,18 +164,22 @@ public class XmlAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        /**==================================================
+        /**
+         * ==================================================
          * ADDITIONAL INFO SUBFIELDS
-         */==================================================
+         * ==================================================
+         */
            
         if (nric == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Nric.class.getSimpleName()));
         }
         final Nric modelNric = new Nric(nric);
 
-        /**==================================================
+        /**
+         * ==================================================
          * MEDICAL REPORT SUBFIELDS
-         */==================================================
+         * ==================================================
+         */
       
         if (title == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
@@ -195,19 +199,23 @@ public class XmlAdaptedPerson {
       
         final MedicalReport modelReport = new MedicalReport(modelTitle, modelDate, modelInformation);
 
-        /**==================================================
+        /**
+         * ==================================================
          * MED HISTORY SUBFIELDS
-         */==================================================
+         * ==================================================
+         */
            
         if (medhistory == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     MedHistory.class.getSimpleName()));
         }
         final MedHistory modelMedHistory = new MedHistory(medhistory);
-        
-        /**==================================================
+
+        /**
+         * ==================================================
          * APPT SUBFIELDS
-         */==================================================
+         * ==================================================
+         */
           
         if (apptStart == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
