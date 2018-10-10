@@ -31,8 +31,10 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddInfoCommand.MESSAGE_USAGE), ive);
         }
 
-        String nric = argMultiMap.getValue(PREFIX_ADD_INFO_NRIC).orElse("");
+        //String nric = argMultiMap.getValue(PREFIX_ADD_INFO_NRIC).orElse("");
 
-        return new AddInfoCommand(index, new Nric(nric));
+        Nric nric = ParserUtil.parseNric(argMultiMap.getValue(PREFIX_ADD_INFO_NRIC).get());
+
+        return new AddInfoCommand(index, new Nric(nric.value));
     }
 }
