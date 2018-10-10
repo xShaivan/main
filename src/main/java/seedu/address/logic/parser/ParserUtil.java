@@ -134,7 +134,7 @@ public class ParserUtil {
      * PARSER FOR MEDICAL REPORT SUBFIELDS
      * ==================================================
      */
-  
+
     /**
      * Parses a {@code String title} into an {@code Title}.
      * Leading and trailing whitespaces will be trimmed.
@@ -144,7 +144,7 @@ public class ParserUtil {
         String trimmedTitle = title.trim();
         return new Title(trimmedTitle);
     }
-  
+
     /**
      * Parses a {@code String date} into an {@code Date}.
      * Leading and trailing whitespaces will be trimmed.
@@ -154,7 +154,7 @@ public class ParserUtil {
         String trimmedDate = date.trim();
         return new Date(trimmedDate);
     }
-  
+
     /**
      * Parses a {@code String information} into an {@code Information}.
      * Leading and trailing whitespaces will be trimmed.
@@ -170,7 +170,7 @@ public class ParserUtil {
      * PARSER FOR APPT SUBFIELDS
      * ==================================================
      */
-  
+
     /**
      * Parses a {@code String apptDateTime} into an {@code ApptDateTime}.
      * Leading and trailing whitespaces will be trimmed.

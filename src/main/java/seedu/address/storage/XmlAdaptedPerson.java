@@ -103,12 +103,12 @@ public class XmlAdaptedPerson {
         address = source.getAddress().value;
         nric = source.getNric().value;
         medhistory = source.getMedHistory().value;
-        
+
         // Medical Report
         title = source.getMedicalReport().getTitle().toString();
         date = source.getMedicalReport().getDate().toString();
         information = source.getMedicalReport().getInformation().toString();
-        
+
         // Appt
         apptStart = source.getAppt().getStart().toString();
         apptEnd = source.getAppt().getEnd().toString();
@@ -169,7 +169,7 @@ public class XmlAdaptedPerson {
          * ADDITIONAL INFO SUBFIELDS
          * ==================================================
          */
-           
+
         if (nric == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Nric.class.getSimpleName()));
         }
@@ -180,7 +180,7 @@ public class XmlAdaptedPerson {
          * MEDICAL REPORT SUBFIELDS
          * ==================================================
          */
-      
+
         if (title == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
@@ -196,7 +196,7 @@ public class XmlAdaptedPerson {
                     Information.class.getSimpleName()));
         }
         final Information modelInformation = new Information(information);
-      
+
         final MedicalReport modelReport = new MedicalReport(modelTitle, modelDate, modelInformation);
 
         /**
@@ -204,7 +204,7 @@ public class XmlAdaptedPerson {
          * MED HISTORY SUBFIELDS
          * ==================================================
          */
-           
+
         if (medhistory == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     MedHistory.class.getSimpleName()));
@@ -216,7 +216,7 @@ public class XmlAdaptedPerson {
          * APPT SUBFIELDS
          * ==================================================
          */
-          
+
         if (apptStart == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     ApptDateTime.class.getSimpleName()));
@@ -248,7 +248,7 @@ public class XmlAdaptedPerson {
         final ApptDrName modelApptDrName = new ApptDrName(apptDrName);
 
         final Appt modelAppt = new Appt(modelApptStart, modelApptEnd, modelApptVenue, modelApptInfo, modelApptDrName);
-        
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
                           modelMedHistory, modelAppt, modelNric, modelTags);
@@ -279,7 +279,7 @@ public class XmlAdaptedPerson {
                 && Objects.equals(apptVenue, otherPerson.apptVenue)
                 && Objects.equals(apptInfo, otherPerson.apptInfo)
                 && Objects.equals(apptDrName, otherPerson.apptDrName)
-                // Tag
+                // Tags
                 && tagged.equals(otherPerson.tagged);
     }
 }
