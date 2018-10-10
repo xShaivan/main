@@ -11,14 +11,18 @@ public class CliSyntax {
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
-    public static final Prefix PREFIX_MEDICAL_REPORT = new Prefix("mr/");
-    public static final Prefix PREFIX_MEDICAL_REPORT_INFO = new Prefix("mr/");
+
+    /* Prefix definitions for Medical Report */
+    //public static final Prefix PREFIX_MEDICAL_REPORT = new Prefix("mr/");
+    public static final Prefix PREFIX_INFORMATION = new Prefix("i/");
     public static final Prefix PREFIX_TITLE = new Prefix("t/");
     public static final Prefix PREFIX_DATE = new Prefix("d/");
 
     /* Prefix definitions for MedHistory */
-    public static final Prefix PREFIX_HISTORY = new Prefix("hs/");
-    public static final Prefix PREFIX_BLOODTYPE = new Prefix("b/");
+    public static final Prefix PREFIX_HISTORY_BLOODTYPE = new Prefix("hsb/");
+    public static final Prefix PREFIX_HISTORY_DATE = new Prefix("hsd/");
+    public static final Prefix PREFIX_HISTORY_COUNTRY = new Prefix("hsc/");
+    public static final Prefix PREFIX_HISTORY_ALLERGY = new Prefix("hsa/");
 
     /* Prefix definitions for Additional Information */
     public static final Prefix PREFIX_ADD_INFO_NRIC = new Prefix("i/");

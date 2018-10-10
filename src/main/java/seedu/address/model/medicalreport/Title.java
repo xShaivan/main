@@ -1,7 +1,6 @@
 package seedu.address.model.medicalreport;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Medical Report's title in the address book.
@@ -24,10 +23,9 @@ public class Title {
      * Constructs a {@code Title}.
      *
      * @param title A valid title.
-     */
+    */
     public Title(String title) {
         requireNonNull(title);
-        checkArgument(isValidTitle(title), MESSAGE_TITLE_CONSTRAINTS);
         fullTitle = title;
     }
 

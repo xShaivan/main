@@ -5,9 +5,6 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICAL_REPORT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
@@ -36,15 +33,22 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
-import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.timetable.Appt;
+import seedu.address.testutil.ApptBuilder;
+import seedu.address.testutil.ApptUtil;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.MedHistoryBuilder;
+import seedu.address.testutil.MedHistoryUtil;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
+import seedu.address.testutil.ReportBuilder;
+import seedu.address.testutil.ReportUtil;
+
 
 public class AddressBookParserTest {
     @Rule
@@ -82,11 +86,10 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommandRemark() throws Exception {
-        final MedicalReport report = new MedicalReport("Some remark.");
+    public void parseCommandaddreport() throws Exception {
+        MedicalReport report = new ReportBuilder().build();
         AddMedicalReportCommand command =
-                (AddMedicalReportCommand) parser.parseCommand(AddMedicalReportCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_MEDICAL_REPORT + report.value);
+                (AddMedicalReportCommand) parser.parseCommand(ReportUtil.getAddMedicalReportCommand(report));
         assertEquals(new AddMedicalReportCommand(INDEX_FIRST_PERSON, report), command);
     }
 
@@ -163,9 +166,8 @@ public class AddressBookParserTest {
     }
     @Test
     public void parseCommandaddhist() throws Exception {
-        final MedHistory medhistory = new MedHistory("Some medical history");
-        AddHistCommand command = (AddHistCommand) parser.parseCommand(AddHistCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_HISTORY + medhistory.value);
+        MedHistory medhistory = new MedHistoryBuilder().build();
+        AddHistCommand command = (AddHistCommand) parser.parseCommand(MedHistoryUtil.getAddHistCommand(medhistory));
         assertEquals(new AddHistCommand(INDEX_FIRST_PERSON, medhistory), command);
     }
 
@@ -183,9 +185,8 @@ public class AddressBookParserTest {
     // Tests for appt timetable commands
     @Test
     public void parseCommand_addAppt() throws Exception {
-        final Appt appt = new Appt("Some appt");
-        AddApptCommand command = (AddApptCommand) parser.parseCommand(AddApptCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_APPT_INFO + appt.value);
+        Appt appt = new ApptBuilder().build();
+        AddApptCommand command = (AddApptCommand) parser.parseCommand(ApptUtil.getAddApptCommand(appt));
         assertEquals(new AddApptCommand(INDEX_FIRST_PERSON, appt), command);
     }
 }
