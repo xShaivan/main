@@ -20,6 +20,10 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptDateTime;
+import seedu.address.model.timetable.ApptDrName;
+import seedu.address.model.timetable.ApptInfo;
+import seedu.address.model.timetable.ApptVenue;
 
 /**
  * JAXB-friendly version of the Person.
@@ -43,7 +47,15 @@ public class XmlAdaptedPerson {
     @XmlElement(required = true)
     private String medhistory;
     @XmlElement(required = true)
-    private String appt;
+    private String apptStart;
+    @XmlElement(required = true)
+    private String apptEnd;
+    @XmlElement(required = true)
+    private String apptVenue;
+    @XmlElement(required = true)
+    private String apptInfo;
+    @XmlElement(required = true)
+    private String apptDrName;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -80,7 +92,12 @@ public class XmlAdaptedPerson {
         nric = source.getNric().value;
         report = source.getMedicalReport().value;
         medhistory = source.getMedHistory().value;
-        appt = source.getAppt().value;
+        apptStart = source.getAppt().getStart().toString();
+        apptEnd = source.getAppt().getEnd().toString();
+        apptVenue = source.getAppt().getVenue().toString();
+        apptInfo = source.getAppt().getInfo().toString();
+        apptDrName = source.getAppt().getDrName().toString();
+
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -146,11 +163,37 @@ public class XmlAdaptedPerson {
         }
         final MedHistory modelMedHistory = new MedHistory(medhistory);
 
-        if (appt == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
+        if (apptStart == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptDateTime.class.getSimpleName()));
         }
-        final Appt modelAppt = new Appt(appt);
+        final ApptDateTime modelApptStart = new ApptDateTime(apptStart);
 
+        if (apptEnd == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptDateTime.class.getSimpleName()));
+        }
+        final ApptDateTime modelApptEnd = new ApptDateTime(apptEnd);
+
+        if (apptVenue == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptVenue.class.getSimpleName()));
+        }
+        final ApptVenue modelApptVenue = new ApptVenue(apptVenue);
+
+        if (apptInfo == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptInfo.class.getSimpleName()));
+        }
+        final ApptInfo modelApptInfo = new ApptInfo(apptInfo);
+
+        if (apptDrName == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptDrName.class.getSimpleName()));
+        }
+        final ApptDrName modelApptDrName = new ApptDrName(apptDrName);
+
+        final Appt modelAppt = new Appt(modelApptStart, modelApptEnd, modelApptVenue, modelApptInfo, modelApptDrName);
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
                           modelMedHistory, modelAppt, modelNric, modelTags);
@@ -171,6 +214,11 @@ public class XmlAdaptedPerson {
                 && Objects.equals(phone, otherPerson.phone)
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(address, otherPerson.address)
+                && Objects.equals(apptStart, otherPerson.apptStart)
+                && Objects.equals(apptEnd, otherPerson.apptEnd)
+                && Objects.equals(apptVenue, otherPerson.apptVenue)
+                && Objects.equals(apptInfo, otherPerson.apptInfo)
+                && Objects.equals(apptDrName, otherPerson.apptDrName)
                 && tagged.equals(otherPerson.tagged);
     }
 }

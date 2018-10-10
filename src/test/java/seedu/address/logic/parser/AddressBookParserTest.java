@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICAL_REPORT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -42,6 +41,8 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.timetable.Appt;
+import seedu.address.testutil.ApptBuilder;
+import seedu.address.testutil.ApptUtil;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
@@ -183,9 +184,8 @@ public class AddressBookParserTest {
     // Tests for appt timetable commands
     @Test
     public void parseCommand_addAppt() throws Exception {
-        final Appt appt = new Appt("Some appt");
-        AddApptCommand command = (AddApptCommand) parser.parseCommand(AddApptCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_APPT_INFO + appt.value);
+        Appt appt = new ApptBuilder().build();
+        AddApptCommand command = (AddApptCommand) parser.parseCommand(ApptUtil.getAddApptCommand(appt));
         assertEquals(new AddApptCommand(INDEX_FIRST_PERSON, appt), command);
     }
 }

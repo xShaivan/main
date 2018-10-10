@@ -1,5 +1,7 @@
 package seedu.address.testutil;
 
+import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,7 +29,7 @@ public class PersonBuilder {
     public static final String DEFAULT_NRIC = "";
     public static final String DEFAULT_MEDICAL_REPORT = "";
     public static final String DEFAULT_MEDHISTORY = "";
-    public static final String DEFAULT_APPT = "";
+    public static final Appt DEFAULT_APPT = EMPTY_APPT;
 
     private Name name;
     private Phone phone;
@@ -47,7 +49,7 @@ public class PersonBuilder {
         nric = new Nric(DEFAULT_NRIC);
         report = new MedicalReport(DEFAULT_MEDICAL_REPORT);
         medhistory = new MedHistory(DEFAULT_MEDHISTORY);
-        appt = new Appt(DEFAULT_APPT);
+        appt = DEFAULT_APPT;
         tags = new HashSet<>();
     }
 
@@ -133,8 +135,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code Appt} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAppt(String appt) {
-        this.appt = new Appt(appt);
+    public PersonBuilder withAppt(Appt appt) {
+        this.appt = appt;
         return this;
     }
 

@@ -9,7 +9,11 @@
         <nric></nric>
         <report>Title: Asthma, Date: 01012018, Actions: prescribed XXX medicine, next appointment on 02022018.</report>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -20,7 +24,11 @@
         <nric></nric>
         <report></report>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
         <tagged>owesMoney</tagged>
         <tagged>friends</tagged>
     </persons>
@@ -32,7 +40,11 @@
         <nric></nric>
         <report></report>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
     </persons>
     <persons>
         <name>Daniel Meier</name>
@@ -42,7 +54,11 @@
         <nric></nric>
         <report></report>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -53,7 +69,11 @@
         <nric></nric>
         <report></report>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
     </persons>
     <persons>
         <name>Fiona Kunz</name>
@@ -63,7 +83,11 @@
         <nric></nric>
         <report></report>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
     </persons>
     <persons>
         <name>George Best</name>
@@ -73,6 +97,10 @@
         <nric>S5185093I</nric>
         <report></report>
         <medhistory>Has Ebola.</medhistory>
-        <appt>Eye Checkup</appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo>Eye Checkup</apptInfo>
+        <apptDrName></apptDrName>
     </persons>
 </addressbook>

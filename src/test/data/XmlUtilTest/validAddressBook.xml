@@ -8,7 +8,11 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Ruth Mueller</name>
@@ -18,7 +22,11 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Heinz Kurz</name>
@@ -28,7 +36,11 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Cornelia Meier</name>
@@ -38,7 +50,11 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false">Diabetes Checkup</appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Werner Meyer</name>
@@ -48,7 +64,11 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Lydia Kunz</name>
@@ -58,7 +78,11 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Anna Best</name>
@@ -68,7 +92,11 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Stefan Meier</name>
@@ -78,7 +106,11 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false">Asthma Checkup</appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Martin Mueller</name>
@@ -88,6 +120,10 @@
         <nric isPrivate="false"></nric>
         <report isPrivate="false"></report>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
 </addressbook>
