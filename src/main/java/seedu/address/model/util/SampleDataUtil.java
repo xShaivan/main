@@ -19,6 +19,10 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptDateTime;
+import seedu.address.model.timetable.ApptDrName;
+import seedu.address.model.timetable.ApptInfo;
+import seedu.address.model.timetable.ApptVenue;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -27,9 +31,10 @@ public class SampleDataUtil {
 
     public static final Nric EMPTY_NRIC = new Nric("");
     public static final MedHistory EMPTY_MEDHISTORY = new MedHistory("");
-    public static final Appt EMPTY_APPT = new Appt("");
     public static final MedicalReport EMPTY_MEDICAL_REPORT = new MedicalReport(new Title(""), new Date(""),
             new Information(""));
+    public static final Appt EMPTY_APPT = new Appt(new ApptDateTime(""), new ApptDateTime(""),
+            new ApptVenue(""), new ApptInfo(""), new ApptDrName(""));
 
     public static Person[] getSamplePersons() {
         return new Person[] {

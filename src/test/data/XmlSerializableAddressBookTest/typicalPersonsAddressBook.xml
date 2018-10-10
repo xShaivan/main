@@ -11,7 +11,11 @@
         <date></date>
         <information></information>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -24,7 +28,11 @@
         <date></date>
         <information></information>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
         <tagged>owesMoney</tagged>
         <tagged>friends</tagged>
     </persons>
@@ -38,7 +46,11 @@
         <date></date>
         <information></information>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
     </persons>
     <persons>
         <name>Daniel Meier</name>
@@ -50,7 +62,11 @@
         <date></date>
         <information></information>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -63,7 +79,11 @@
         <date></date>
         <information></information>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
     </persons>
     <persons>
         <name>Fiona Kunz</name>
@@ -75,7 +95,11 @@
         <date></date>
         <information></information>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
     </persons>
     <persons>
         <name>George Best</name>
@@ -87,6 +111,10 @@
         <date></date>
         <information></information>
         <medhistory>Has Ebola.</medhistory>
-        <appt>Eye Checkup</appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo>Eye Checkup</apptInfo>
+        <apptDrName></apptDrName>
     </persons>
 </addressbook>

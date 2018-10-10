@@ -11,7 +11,11 @@
         <date></date>
         <information></information>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
         <tagged>friends</tagged>
     </persons>
 
@@ -26,7 +30,11 @@
         <date></date>
         <information></information>
         <medhistory></medhistory>
-        <appt></appt>
+        <apptStart></apptStart>
+        <apptEnd></apptEnd>
+        <apptVenue></apptVenue>
+        <apptInfo></apptInfo>
+        <apptDrName></apptDrName>
     </persons>
 
 </addressbook>

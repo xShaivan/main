@@ -25,6 +25,10 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptDateTime;
+import seedu.address.model.timetable.ApptDrName;
+import seedu.address.model.timetable.ApptInfo;
+import seedu.address.model.timetable.ApptVenue;
 
 
 /**
@@ -52,7 +56,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
 
         MedHistory medhistory = new MedHistory(""); // add command does not allow adding medhistory now
-        Appt appt = new Appt(""); // add command does not allow adding appts straight away
+        Appt appt = new Appt(new ApptDateTime(""), new ApptDateTime(""), new ApptVenue(""), new ApptInfo(""),
+                new ApptDrName("")); // add command does not allow adding appts straight away
         Nric nric = new Nric("");
         MedicalReport report = new MedicalReport(new Title(""), new Date(""), new Information(""));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));

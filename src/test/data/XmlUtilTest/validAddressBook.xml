@@ -10,7 +10,11 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Ruth Mueller</name>
@@ -22,7 +26,11 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Heinz Kurz</name>
@@ -34,7 +42,11 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Cornelia Meier</name>
@@ -46,7 +58,11 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false">Diabetes Checkup</appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Werner Meyer</name>
@@ -58,7 +74,11 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Lydia Kunz</name>
@@ -70,7 +90,11 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Anna Best</name>
@@ -82,7 +106,11 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Stefan Meier</name>
@@ -94,7 +122,11 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false">Asthma Checkup</appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Martin Mueller</name>
@@ -106,6 +138,10 @@
         <date isPrivate="false"></date>
         <information isPrivate="false"></information>
         <medhistory isPrivate="false"></medhistory>
-        <appt isPrivate="false"></appt>
+        <apptStart isPrivate="false"></apptStart>
+        <apptEnd isPrivate="false"></apptEnd>
+        <apptVenue isPrivate="false"></apptVenue>
+        <apptInfo isPrivate="false"></apptInfo>
+        <apptDrName isPrivate="false"></apptDrName>
     </persons>
 </addressbook>
