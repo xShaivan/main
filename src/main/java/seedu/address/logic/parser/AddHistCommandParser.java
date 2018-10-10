@@ -32,11 +32,11 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
 
     public AddHistCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_HISTORY_ALLERGY,
-                PREFIX_HISTORY_COUNTRY, PREFIX_HISTORY_DATE);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_HISTORY_DATE, PREFIX_HISTORY_ALLERGY,
+                PREFIX_HISTORY_COUNTRY);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_HISTORY_ALLERGY,
-                PREFIX_HISTORY_COUNTRY, PREFIX_HISTORY_DATE)) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_HISTORY_DATE, PREFIX_HISTORY_ALLERGY,
+                PREFIX_HISTORY_COUNTRY)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE));
         }
 
@@ -44,7 +44,6 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
-
         } catch (IllegalValueException ive) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE), ive);
         }
