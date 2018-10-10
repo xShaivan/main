@@ -10,13 +10,16 @@ import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Date;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
@@ -45,6 +48,14 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String nric;
+    @XmlElement(required = true)
+    private String report;
+    @XmlElement(required = true)
+    private String medHistDate;
+    @XmlElement(required = true)
+    private String allergy;
+    @XmlElement(required = true)
+    private String prevCountry;
     @XmlElement(required = true)
     private String medhistory;
 
@@ -102,8 +113,9 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
-        medhistory = source.getMedHistory().value;
-
+        date = source.getMedHistory().getMedHistDate().value;
+        allergy = source.getMedHistory().getAllergy().value;
+        prevCountry = source.getMedHistory().getPrevCountry().value;
         // Medical Report
         title = source.getMedicalReport().getTitle().toString();
         date = source.getMedicalReport().getDate().toString();
@@ -115,7 +127,6 @@ public class XmlAdaptedPerson {
         apptVenue = source.getAppt().getVenue().toString();
         apptInfo = source.getAppt().getInfo().toString();
         apptDrName = source.getAppt().getDrName().toString();
-
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -205,11 +216,23 @@ public class XmlAdaptedPerson {
          * ==================================================
          */
 
-        if (medhistory == null) {
+        if (medHistDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     MedHistory.class.getSimpleName()));
         }
-        final MedHistory modelMedHistory = new MedHistory(medhistory);
+        final MedHistDate modelMedHistDate = new MedHistDate(medHistDate);
+
+        if (allergy == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    MedHistory.class.getSimpleName()));
+        }
+        final Allergy modelAllergy = new Allergy(allergy);
+
+        if (prevCountry == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    MedHistory.class.getSimpleName()));
+        }
+        final PrevCountry modelPrevCountry = new PrevCountry(prevCountry);
 
         /**
          * ==================================================
@@ -249,6 +272,8 @@ public class XmlAdaptedPerson {
 
         final Appt modelAppt = new Appt(modelApptStart, modelApptEnd, modelApptVenue, modelApptInfo, modelApptDrName);
 
+        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
                           modelMedHistory, modelAppt, modelNric, modelTags);
@@ -269,6 +294,10 @@ public class XmlAdaptedPerson {
                 && Objects.equals(phone, otherPerson.phone)
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(address, otherPerson.address)
+                // Medical History
+                && Objects.equals(date, otherPerson.date)
+                && Objects.equals(allergy, otherPerson.allergy)
+                && Objects.equals(prevCountry, otherPerson.prevCountry)
                 // Medical Report
                 && Objects.equals(title, otherPerson.title)
                 && Objects.equals(date, otherPerson.date)

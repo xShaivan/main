@@ -9,6 +9,9 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Date;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.Title;
@@ -146,6 +149,48 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String allergy} into an {@code Allergy}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code allergy} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static Allergy parseAllergy(String allergy) {
+        requireNonNull(allergy);
+        String trimmedAllergy = allergy.trim();
+
+        return new Allergy(trimmedAllergy);
+    }
+
+    /**
+     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code prevCountry} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static MedHistDate parseMedHistDate(String medHistDate) {
+        requireNonNull(medHistDate);
+        String trimmedMedHistDate = medHistDate.trim();
+
+        return new MedHistDate(trimmedMedHistDate);
+    }
+
+    /**
+     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code prevCountry} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static PrevCountry parsePrevCountry(String prevCountry) {
+        requireNonNull(prevCountry);
+        String trimmedPrevCountry = prevCountry.trim();
+
+        return new PrevCountry(trimmedPrevCountry);
+    }
+
+    /**
      * ==================================================
      * PARSER FOR MEDICAL REPORT SUBFIELDS
      * ==================================================
@@ -164,6 +209,10 @@ public class ParserUtil {
     /**
      * Parses a {@code String date} into an {@code Date}.
      * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     * ParseException is omitted for now.
+
      */
     public static Date parseDate(String date) {
         requireNonNull(date);
