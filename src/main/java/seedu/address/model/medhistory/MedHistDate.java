@@ -8,25 +8,25 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
  */
 
-public class Date {
+public class MedHistDate {
 
-    public static final String MESSAGE_DATE_CONSTRAINTS =
+    public static final String MESSAGE_MEDHISTDATE_CONSTRAINTS =
             "Date needs to be in day/month/year (dd/mm/yyyy) format.";
 
-    public static final String DATE_VALIDATION_REGEX = "[^\\s].*";
+    public static final String MEDHISTDATE_VALIDATION_REGEX = "[^\\s].*";
 
     public final String value;
 
     /**
-     * Constructs an {@code Date}.
+     * Constructs an {@code MedHistDate}.
      *
-     * @param date A valid date.
+     * @param medHistDate A valid date.
      */
-    public Date(String date) {
-        requireNonNull(date);
+    public MedHistDate(String medHistDate) {
+        requireNonNull(medHistDate);
         // isValidDate will is found in test file.
         //checkArgument(isValidDate(date), MESSAGE_DATE_CONSTRAINTS);
-        value = date;
+        value = medHistDate;
     }
 
     @Override
@@ -37,8 +37,8 @@ public class Date {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Date // instanceof handles nulls
-                && value.equals(((Date) other).value)); // state check
+                || (other instanceof MedHistDate // instanceof handles nulls
+                && value.equals(((MedHistDate) other).value)); // state check
     }
 
     @Override

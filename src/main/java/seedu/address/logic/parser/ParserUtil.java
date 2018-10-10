@@ -19,7 +19,7 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.Allergy;
-import seedu.address.model.medhistory.Date;
+import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
@@ -148,6 +148,34 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code prevCountry} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static MedHistDate parseMedHistDate(String medHistDate) {
+        requireNonNull(medHistDate);
+        String trimmedMedHistDate = medHistDate.trim();
+
+        return new MedHistDate(trimmedMedHistDate);
+    }
+
+    /**
+     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code prevCountry} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static PrevCountry parsePrevCountry(String prevCountry) {
+        requireNonNull(prevCountry);
+        String trimmedPrevCountry = prevCountry.trim();
+
+        return new PrevCountry(trimmedPrevCountry);
+    }
+
+    /**
      * ==================================================
      * PARSER FOR MEDICAL REPORT SUBFIELDS
      * ==================================================
@@ -175,21 +203,6 @@ public class ParserUtil {
         requireNonNull(date);
         String trimmedDate = date.trim();
         return new Date(trimmedDate);
-    }
-
-    /**
-
-     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code prevCountry} is invalid.
-     * ParseException is omitted for now.
-     */
-    public static PrevCountry parsePrevCountry(String prevCountry) {
-        requireNonNull(prevCountry);
-        String trimmedPrevCountry = prevCountry.trim();
-
-        return new PrevCountry(trimmedPrevCountry);
     }
 
     /**

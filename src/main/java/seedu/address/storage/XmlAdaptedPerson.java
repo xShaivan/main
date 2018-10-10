@@ -15,7 +15,7 @@ import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.medhistory.MedHistory;
-import seedu.address.model.medhistory.Date;
+import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.person.Address;
@@ -51,7 +51,7 @@ public class XmlAdaptedPerson {
     @XmlElement(required = true)
     private String report;
     @XmlElement(required = true)
-    private String date;
+    private String medHistDate;
     @XmlElement(required = true)
     private String allergy;
     @XmlElement(required = true)
@@ -113,8 +113,7 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
-        report = source.getMedicalReport().value;
-        date = source.getMedHistory().getDate().value;
+        date = source.getMedHistory().getMedHistDate().value;
         allergy = source.getMedHistory().getAllergy().value;
         prevCountry = source.getMedHistory().getPrevCountry().value;
         // Medical Report
@@ -217,11 +216,11 @@ public class XmlAdaptedPerson {
          * ==================================================
          */
 
-        if (date == null) {
+        if (medHistDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     MedHistory.class.getSimpleName()));
         }
-        final Date modelDate = new Date(date);
+        final MedHistDate modelMedHistDate = new MedHistDate(medHistDate);
 
         if (allergy == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -273,7 +272,7 @@ public class XmlAdaptedPerson {
 
         final Appt modelAppt = new Appt(modelApptStart, modelApptEnd, modelApptVenue, modelApptInfo, modelApptDrName);
 
-        final MedHistory modelMedHistory = new MedHistory(modelDate, modelAllergy, modelPrevCountry);
+        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,

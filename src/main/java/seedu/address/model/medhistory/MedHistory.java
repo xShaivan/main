@@ -12,19 +12,19 @@ import java.util.Objects;
 public class MedHistory {
 
     // Data fields
-    private final Date date;
+    private final MedHistDate medHistDate;
     private final Allergy allergy;
     private final PrevCountry prevCountry;
 
-    public MedHistory(Date date, Allergy allergy, PrevCountry prevCountry) {
-        requireAllNonNull(date, allergy, prevCountry);
-        this.date = date;
+    public MedHistory(MedHistDate medHistDate, Allergy allergy, PrevCountry prevCountry) {
+        requireAllNonNull(medHistDate, allergy, prevCountry);
+        this.medHistDate = medHistDate;
         this.allergy = allergy;
         this.prevCountry = prevCountry;
     }
 
-    public Date getDate() {
-        return date;
+    public MedHistDate getMedHistDate() {
+        return medHistDate;
     }
     public Allergy getAllergy() {
         return allergy;
@@ -44,7 +44,7 @@ public class MedHistory {
         }
 
         MedHistory otherPerson = (MedHistory) other;
-        return otherPerson.getDate().equals(getDate())
+        return otherPerson.getMedHistDate().equals(getMedHistDate())
                 && otherPerson.getAllergy().equals(getAllergy())
                 && otherPerson.getPrevCountry().equals(getPrevCountry());
     }
@@ -52,13 +52,13 @@ public class MedHistory {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(date, allergy, prevCountry);
+        return Objects.hash(medHistDate, allergy, prevCountry);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getDate())
+        builder.append(getMedHistDate())
                 .append(" Phone: ")
                 .append(getAllergy())
                 .append(" Email: ")

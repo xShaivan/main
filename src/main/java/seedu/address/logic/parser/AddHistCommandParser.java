@@ -15,7 +15,7 @@ import seedu.address.logic.commands.AddHistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.Allergy;
-import seedu.address.model.medhistory.Date;
+import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.PrevCountry;
 
 
@@ -50,8 +50,8 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
 
         Allergy allergy = ParserUtil.parseAllergy(argMultimap.getValue(PREFIX_HISTORY_ALLERGY).get());
         PrevCountry prevCountry = ParserUtil.parsePrevCountry(argMultimap.getValue(PREFIX_HISTORY_COUNTRY).get());
-        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_HISTORY_DATE).get());
-        return new AddHistCommand(index, new MedHistory (date, allergy, prevCountry));
+        MedHistDate medHistDate = ParserUtil.parseMedHistDate(argMultimap.getValue(PREFIX_HISTORY_DATE).get());
+        return new AddHistCommand(index, new MedHistory (medHistDate, allergy, prevCountry));
     }
 
     /**
