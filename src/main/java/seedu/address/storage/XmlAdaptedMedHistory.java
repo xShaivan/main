@@ -1,12 +1,13 @@
 package seedu.address.storage;
 
 import java.util.Objects;
+
 import javax.xml.bind.annotation.XmlValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.medhistory.MedHistory;
-import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
 
 

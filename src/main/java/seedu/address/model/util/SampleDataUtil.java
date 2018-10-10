@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Date;
 import seedu.address.model.medicalreport.Information;

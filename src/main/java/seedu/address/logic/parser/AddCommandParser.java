@@ -12,6 +12,10 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Date;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
@@ -28,10 +32,6 @@ import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
-import seedu.address.model.medhistory.MedHistory;
-import seedu.address.model.medhistory.Allergy;
-import seedu.address.model.medhistory.MedHistDate;
-import seedu.address.model.medhistory.PrevCountry;
 
 
 /**
