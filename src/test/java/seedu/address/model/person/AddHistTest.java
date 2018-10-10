@@ -2,9 +2,9 @@ package seedu.address.model.person;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_ALLERGY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
 
