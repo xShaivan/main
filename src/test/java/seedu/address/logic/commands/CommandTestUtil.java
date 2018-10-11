@@ -54,8 +54,6 @@ public class CommandTestUtil {
     public static final String VALID_NRIC_AMY = "S9799909J";
     public static final String VALID_NRIC_BOB = "S9880095F";
 
-    public static final String APPT_DUMMY1 = "Asthma Appt";
-    public static final String APPT_DUMMY2 = "Diabetes Appt";
     public static final String VALID_HISTORY_AMY = "Cancer: 10 years old.";
     public static final String VALID_HISTORY_BOB = "Diabetes: 11 years old.";
 
@@ -64,6 +62,14 @@ public class CommandTestUtil {
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+
+    //Medical Report
+    public static final String VALID_TITLE1 = "Asthma";
+    public static final String VALID_TITLE2 = "Depression";
+    public static final String VALID_DATE1 = "01/01/2018";
+    public static final String VALID_DATE2 = "02/02/2018";
+    public static final String VALID_INFO1 = "Prescribed XXX medicine, next appointment on 02022018.";
+    public static final String VALID_INFO2 = "Prescribed XXX medicine, next appointment on 03032018.";
 
     // Appt
     public static final String VALID_START_APPT1 = "01/01/2018 14:00";
