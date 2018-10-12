@@ -48,16 +48,14 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String nric;
-    @XmlElement(required = true)
-    private String report;
+
+    // Med History
     @XmlElement(required = true)
     private String medHistDate;
     @XmlElement(required = true)
     private String allergy;
     @XmlElement(required = true)
     private String prevCountry;
-    @XmlElement(required = true)
-    private String medhistory;
 
     // Medical Report
     @XmlElement(required = true)
@@ -113,9 +111,12 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
+
+        // Med History
         medHistDate = source.getMedHistory().getMedHistDate().value;
         allergy = source.getMedHistory().getAllergy().value;
         prevCountry = source.getMedHistory().getPrevCountry().value;
+
         // Medical Report
         title = source.getMedicalReport().getTitle().toString();
         date = source.getMedicalReport().getDate().toString();
@@ -127,6 +128,7 @@ public class XmlAdaptedPerson {
         apptVenue = source.getAppt().getVenue().toString();
         apptInfo = source.getAppt().getInfo().toString();
         apptDrName = source.getAppt().getDrName().toString();
+
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -234,6 +236,8 @@ public class XmlAdaptedPerson {
         }
         final PrevCountry modelPrevCountry = new PrevCountry(prevCountry);
 
+        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
+
         /**
          * ==================================================
          * APPT SUBFIELDS
@@ -271,8 +275,6 @@ public class XmlAdaptedPerson {
         final ApptDrName modelApptDrName = new ApptDrName(apptDrName);
 
         final Appt modelAppt = new Appt(modelApptStart, modelApptEnd, modelApptVenue, modelApptInfo, modelApptDrName);
-
-        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
