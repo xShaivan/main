@@ -10,7 +10,9 @@
         <title></title>
         <date></date>
         <information></information>
-        <medhistory></medhistory>
+        <medHistDate></medHistDate>
+        <allergy></allergy>
+        <prevCountry></prevCountry>
         <apptStart></apptStart>
         <apptEnd></apptEnd>
         <apptVenue></apptVenue>
@@ -27,7 +29,9 @@
         <title></title>
         <date></date>
         <information></information>
-        <medhistory></medhistory>
+        <medHistDate></medHistDate>
+        <allergy></allergy>
+        <prevCountry></prevCountry>
         <apptStart></apptStart>
         <apptEnd></apptEnd>
         <apptVenue></apptVenue>
@@ -45,7 +49,9 @@
         <title></title>
         <date></date>
         <information></information>
-        <medhistory></medhistory>
+        <medHistDate></medHistDate>
+        <allergy></allergy>
+        <prevCountry></prevCountry>
         <apptStart></apptStart>
         <apptEnd></apptEnd>
         <apptVenue></apptVenue>
@@ -61,7 +67,9 @@
         <title></title>
         <date></date>
         <information></information>
-        <medhistory></medhistory>
+        <medHistDate></medHistDate>
+        <allergy></allergy>
+        <prevCountry></prevCountry>
         <apptStart></apptStart>
         <apptEnd></apptEnd>
         <apptVenue></apptVenue>
@@ -78,7 +86,9 @@
         <title></title>
         <date></date>
         <information></information>
-        <medhistory></medhistory>
+        <medHistDate></medHistDate>
+        <allergy></allergy>
+        <prevCountry></prevCountry>
         <apptStart></apptStart>
         <apptEnd></apptEnd>
         <apptVenue></apptVenue>
@@ -94,7 +104,9 @@
         <title></title>
         <date></date>
         <information></information>
-        <medhistory></medhistory>
+        <medHistDate></medHistDate>
+        <allergy></allergy>
+        <prevCountry></prevCountry>
         <apptStart></apptStart>
         <apptEnd></apptEnd>
         <apptVenue></apptVenue>
@@ -110,7 +122,9 @@
         <title></title>
         <date></date>
         <information></information>
-        <medhistory>Has Ebola.</medhistory>
+        <medHistDate></medHistDate>
+        <allergy></allergy>
+        <prevCountry></prevCountry>
         <apptStart></apptStart>
         <apptEnd></apptEnd>
         <apptVenue></apptVenue>
