@@ -12,13 +12,16 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Date;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
@@ -54,8 +57,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-
-        MedHistory medhistory = new MedHistory(""); // add command does not allow adding medhistory now
+        MedHistory medhistory = new MedHistory(new MedHistDate(""), new Allergy(""), new PrevCountry(""));
         Appt appt = new Appt(new ApptDateTime(""), new ApptDateTime(""), new ApptVenue(""), new ApptInfo(""),
                 new ApptDrName("")); // add command does not allow adding appts straight away
         Nric nric = new Nric("");

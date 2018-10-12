@@ -11,6 +11,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE1;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
 import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class TypicalPersons {
             .withEmail("lydia@example.com").withAddress("little tokyo").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withAddress("4th street").withMedicalReport(REPORT_EXAMPLE1)
-            .withMedHistory("Has Ebola.").withAppt(APPT_EXAMPLE1).withNric("S5185093I").build();
+            .withMedHistory(MEDHISTORY1).withAppt(APPT_EXAMPLE1).withNric("S5185093I").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")

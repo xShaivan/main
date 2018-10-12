@@ -54,14 +54,19 @@ public class CommandTestUtil {
     public static final String VALID_NRIC_AMY = "S9799909J";
     public static final String VALID_NRIC_BOB = "S9880095F";
 
-    public static final String VALID_HISTORY_AMY = "Cancer: 10 years old.";
-    public static final String VALID_HISTORY_BOB = "Diabetes: 11 years old.";
-
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+
+    // MedHistory
+    public static final String VALID_HISTORY_DATE = "10/10/2010";
+    public static final String VALID_HISTORY_DATE2 = "20/20/2020";
+    public static final String VALID_HISTORY_ALLERGY = "Pollen";
+    public static final String VALID_HISTORY_ALLERGY2 = "Alcohol";
+    public static final String VALID_HISTORY_COUNTRY = "USA";
+    public static final String VALID_HISTORY_COUNTRY2 = "Russia";
 
     //Medical Report
     public static final String VALID_TITLE1 = "Asthma";

@@ -6,13 +6,16 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Date;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
@@ -24,13 +27,15 @@ import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
 
+
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
 
     public static final Nric EMPTY_NRIC = new Nric("");
-    public static final MedHistory EMPTY_MEDHISTORY = new MedHistory("");
+    public static final MedHistory EMPTY_MEDHISTORY = new MedHistory(new MedHistDate(""),
+            new Allergy(""), new PrevCountry(""));
     public static final MedicalReport EMPTY_MEDICAL_REPORT = new MedicalReport(new Title(""), new Date(""),
             new Information(""));
     public static final Appt EMPTY_APPT = new Appt(new ApptDateTime(""), new ApptDateTime(""),
