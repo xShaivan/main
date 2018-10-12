@@ -113,7 +113,7 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
-        date = source.getMedHistory().getMedHistDate().value;
+        medHistDate = source.getMedHistory().getMedHistDate().value;
         allergy = source.getMedHistory().getAllergy().value;
         prevCountry = source.getMedHistory().getPrevCountry().value;
         // Medical Report

@@ -57,12 +57,6 @@ public class MedHistory {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(getMedHistDate())
-                .append(" Phone: ")
-                .append(getAllergy())
-                .append(" Email: ")
-                .append(getPrevCountry());
-        return builder.toString();
+        return medHistDate.toString() + " \n" + allergy.toString() + " \n" + prevCountry.toString();
     }
 }
