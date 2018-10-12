@@ -22,13 +22,13 @@ public class AddHistCommandParserTest {
 
     @Test
     public void parseindexSpecifiedsuccess() {
-        // have remark
+        // have medical history
         Index targetIndex = INDEX_FIRST_PERSON;
         AddHistCommand expectedCommand = new AddHistCommand(INDEX_FIRST_PERSON, new MedHistoryBuilder().build());
         assertParseSuccess(parser, targetIndex.getOneBased()
-                + "" + PREFIX_HISTORY_DATE + VALID_HISTORY_DATE
-                + PREFIX_HISTORY_ALLERGY + VALID_HISTORY_ALLERGY
-                + PREFIX_HISTORY_COUNTRY + VALID_HISTORY_COUNTRY, expectedCommand);
+                + " " + PREFIX_HISTORY_DATE + VALID_HISTORY_DATE
+                + " " + PREFIX_HISTORY_ALLERGY + VALID_HISTORY_ALLERGY
+                + " " + PREFIX_HISTORY_COUNTRY + VALID_HISTORY_COUNTRY, expectedCommand);
     }
     @Test
     public void parsemissingCompulsoryFieldfailure() {
