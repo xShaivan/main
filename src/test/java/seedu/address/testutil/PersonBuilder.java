@@ -1,15 +1,16 @@
 package seedu.address.testutil;
 
 import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
+import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
 import static seedu.address.testutil.TypicalReports.EMPTY_MEDICAL_REPORT;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.MedHistory;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
@@ -28,7 +29,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
-    public static final String DEFAULT_MEDHISTORY = "";
+    public static final MedHistory DEFAULT_MEDHISTORY = EMPTY_MEDHISTORY;
     public static final MedicalReport DEFAULT_MEDICAL_REPORT = EMPTY_MEDICAL_REPORT;
     public static final Appt DEFAULT_APPT = EMPTY_APPT;
 
@@ -48,7 +49,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         nric = new Nric(DEFAULT_NRIC);
-        medhistory = new MedHistory(DEFAULT_MEDHISTORY);
+        medhistory = DEFAULT_MEDHISTORY;
         report = DEFAULT_MEDICAL_REPORT;
         appt = DEFAULT_APPT;
         tags = new HashSet<>();
@@ -128,8 +129,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code MedHistory} of the {@code Person} that we are building
      */
-    public PersonBuilder withMedHistory(String medhistory) {
-        this.medhistory = new MedHistory(medhistory);
+    public PersonBuilder withMedHistory(MedHistory medhistory) {
+        this.medhistory = medhistory;
         return this;
     }
 
