@@ -1,5 +1,9 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_ALLERGY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE;
+
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
@@ -9,9 +13,9 @@ import seedu.address.model.medhistory.PrevCountry;
  * A utility class to help with building MedHistory objects.
  */
 public class MedHistoryBuilder {
-    public static final String DEFAULT_MEDHISTDATE = "12/12/2012";
-    public static final String DEFAULT_ALLERGY = "nuts";
-    public static final String DEFAULT_PREVCOUNTRY = "Mother Russia";
+    public static final String DEFAULT_MEDHISTDATE = VALID_HISTORY_DATE;
+    public static final String DEFAULT_ALLERGY = VALID_HISTORY_ALLERGY;
+    public static final String DEFAULT_PREVCOUNTRY = VALID_HISTORY_COUNTRY;
 
     private MedHistDate medHistDate;
     private Allergy allergy;
