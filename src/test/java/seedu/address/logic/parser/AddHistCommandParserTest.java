@@ -37,7 +37,7 @@ public class AddHistCommandParserTest {
         assertParseFailure(parser, AddHistCommand.COMMAND_WORD, expectedMessage);
         // no index
         assertParseFailure(parser, PREFIX_HISTORY_DATE + VALID_HISTORY_DATE
-                + PREFIX_HISTORY_ALLERGY + VALID_HISTORY_ALLERGY
-                + PREFIX_HISTORY_COUNTRY + VALID_HISTORY_COUNTRY, expectedMessage);
+                + " " + PREFIX_HISTORY_ALLERGY + VALID_HISTORY_ALLERGY
+                + " " + PREFIX_HISTORY_COUNTRY + VALID_HISTORY_COUNTRY, expectedMessage);
     }
 }
