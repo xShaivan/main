@@ -1,8 +1,8 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_ALLERGY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE;
 
 import seedu.address.model.medhistory.MedHistory;
 /**
