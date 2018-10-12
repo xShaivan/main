@@ -17,6 +17,7 @@ public class AddHistTest {
 
     @Test
     public void equals() {
+        
         MedHistory medHistory1 = new MedHistoryBuilder(MEDHISTORY1).build();
 
         // same object -> returns true
