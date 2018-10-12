@@ -56,9 +56,7 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         nric.setText(person.getNric().value);
-        medhistory.setText(person.getMedHistory().getMedHistDate().toString());
-        medhistory.setText(person.getMedHistory().getAllergy().toString());
-        medhistory.setText(person.getMedHistory().getPrevCountry().toString());
+        medhistory.setText(person.getMedHistory().toString());
         medicalreport.setText(person.getMedicalReport().toString());
         appt.setText(person.getAppt().toString());
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
