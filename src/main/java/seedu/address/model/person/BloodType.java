@@ -11,18 +11,18 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class BloodType {
     public static final String BLOODTYPE_CONSTRAINTS =
             "Blood type should be A, B, O or AB followed by - or +";
-    public static final String TYPE_VALIDATION_REGEX = "\\d{3,}";
+    public static final String TYPE_VALIDATION_REGEX = "[ABO]*" + "[-+]";
     public final String value;
 
     /**
      * Constructs a {@code BloodType}.
      *
-     * @param Type A valid bloodtype.
+     * @param type A valid bloodtype.
      */
-    public BloodType(String Type) {
-        requireNonNull(Type);
-        checkArgument(isValidType(Type), BLOODTYPE_CONSTRAINTS);
-        value = Type;
+    public BloodType(String type) {
+        requireNonNull(type);
+        checkArgument(isValidType(type), BLOODTYPE_CONSTRAINTS);
+        value = type;
     }
 
     /**
