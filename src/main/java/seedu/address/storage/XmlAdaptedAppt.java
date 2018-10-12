@@ -66,27 +66,32 @@ public class XmlAdaptedAppt {
      */
     public Appt toModelType() throws IllegalValueException {
         if (apptStart == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptDateTime.class.getSimpleName()));
         }
         final ApptDateTime modelApptStart = new ApptDateTime(apptStart);
 
         if (apptEnd == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptDateTime.class.getSimpleName()));
         }
         final ApptDateTime modelApptEnd = new ApptDateTime(apptEnd);
 
         if (apptVenue == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptVenue.class.getSimpleName()));
         }
         final ApptVenue modelApptVenue = new ApptVenue(apptVenue);
 
         if (apptInfo == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptInfo.class.getSimpleName()));
         }
         final ApptInfo modelApptInfo = new ApptInfo(apptInfo);
 
         if (apptDrName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Appt.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ApptDrName.class.getSimpleName()));
         }
         final ApptDrName modelApptDrName = new ApptDrName(apptDrName);
 
