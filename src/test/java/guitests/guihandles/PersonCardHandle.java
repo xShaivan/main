@@ -89,7 +89,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
         return medhistoryLabel.getText();
     }
 
-    public String getAppt() {
+    public String getAppts() {
         return apptLabel.getText();
     }
 

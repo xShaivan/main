@@ -79,7 +79,7 @@ public class Person {
     }
 
     public Set<Appt> getAppts() {
-        return appts;
+        return Collections.unmodifiableSet(appts);
     }
 
     /**
