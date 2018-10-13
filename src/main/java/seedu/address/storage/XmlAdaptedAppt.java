@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import java.util.Objects;
 
-import javax.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.timetable.Appt;
@@ -18,15 +18,15 @@ public class XmlAdaptedAppt {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Appt's %s field is missing!";
 
-    @XmlValue
+    @XmlElement
     private String apptStart;
-    @XmlValue
+    @XmlElement
     private String apptEnd;
-    @XmlValue
+    @XmlElement
     private String apptVenue;
-    @XmlValue
+    @XmlElement
     private String apptInfo;
-    @XmlValue
+    @XmlElement
     private String apptDrName;
 
     /**

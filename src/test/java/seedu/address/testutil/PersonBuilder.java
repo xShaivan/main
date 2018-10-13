@@ -1,6 +1,5 @@
 package seedu.address.testutil;
 
-import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
 import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
 import static seedu.address.testutil.TypicalReports.EMPTY_MEDICAL_REPORT;
 
