@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Represents Date of Birth in Health Book
+ * Represents ReportDate of Birth in Health Book
  */
 public class DateOfBirth {
     public final Date dateOfBirth;

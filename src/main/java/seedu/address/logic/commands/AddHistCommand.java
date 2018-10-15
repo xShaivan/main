@@ -53,7 +53,7 @@ public class AddHistCommand extends Command {
         }
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getMedicalReport(), medHistory, personToEdit.getAppt(),
+                personToEdit.getAddress(), personToEdit.getMedicalReports(), medHistory, personToEdit.getAppt(),
                 personToEdit.getNric(), personToEdit.getTags());
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

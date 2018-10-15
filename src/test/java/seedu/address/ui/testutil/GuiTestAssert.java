@@ -37,10 +37,10 @@ public class GuiTestAssert {
         assertEquals(expectedPerson.getEmail().value, actualCard.getEmail());
         assertEquals(expectedPerson.getAddress().value, actualCard.getAddress());
         assertEquals(expectedPerson.getNric().value, actualCard.getNric());
-        assertEquals(expectedPerson.getMedicalReport().toString(), actualCard.getMedicalReport());
         assertEquals(expectedPerson.getMedHistory().toString(), actualCard.getMedHistory());
-        assertEquals(expectedPerson.getMedicalReport().toString(), actualCard.getMedicalReport());
         assertEquals(expectedPerson.getAppt().toString(), actualCard.getAppt());
+        assertEquals(expectedPerson.getMedicalReports().stream()
+                .map(report -> report.toString()).collect(Collectors.toList()), actualCard.getMedicalReports());
         assertEquals(expectedPerson.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
                 actualCard.getTags());
     }

@@ -12,8 +12,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.PrevCountry;
-import seedu.address.model.medicalreport.Date;
 import seedu.address.model.medicalreport.Information;
+import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -207,17 +207,17 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String date} into an {@code Date}.
+     * Parses a {@code String date} into an {@code ReportDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code date} is invalid.
      * ParseException is omitted for now.
 
      */
-    public static Date parseDate(String date) {
+    public static ReportDate parseDate(String date) {
         requireNonNull(date);
         String trimmedDate = date.trim();
-        return new Date(trimmedDate);
+        return new ReportDate(trimmedDate);
     }
 
     /**

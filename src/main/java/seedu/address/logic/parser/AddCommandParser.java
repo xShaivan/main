@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -16,10 +17,7 @@ import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
-import seedu.address.model.medicalreport.Date;
-import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
-import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -61,11 +59,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Appt appt = new Appt(new ApptDateTime(""), new ApptDateTime(""), new ApptVenue(""), new ApptInfo(""),
                 new ApptDrName("")); // add command does not allow adding appts straight away
         Nric nric = new Nric("");
-        MedicalReport report = new MedicalReport(new Title(""), new Date(""), new Information(""));
+        Set<MedicalReport> reports = new HashSet<>(); // add command does not allow adding reports straight away
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, phone, email, address, report, medhistory, appt, nric, tagList);
-
+        Person person = new Person(name, phone, email, address, reports, medhistory, appt, nric, tagList);
         return new AddCommand(person);
     }
 

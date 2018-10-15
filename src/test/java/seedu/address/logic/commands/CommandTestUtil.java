@@ -29,12 +29,16 @@ public class CommandTestUtil {
     // Person
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
+    public static final String VALID_NAME_COY = "Coy Doh";
     public static final String VALID_PHONE_AMY = "11111111";
     public static final String VALID_PHONE_BOB = "22222222";
+    public static final String VALID_PHONE_COY = "33333333";
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
+    public static final String VALID_EMAIL_COY = "coy@example.com";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_ADDRESS_COY = "Block 456, Coy Street 5";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_REMARK_AMY = "Like skiing.";
@@ -42,12 +46,16 @@ public class CommandTestUtil {
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
+    public static final String NAME_DESC_COY = " " + PREFIX_NAME + VALID_NAME_COY;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
     public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + VALID_PHONE_BOB;
+    public static final String PHONE_DESC_COY = " " + PREFIX_PHONE + VALID_PHONE_COY;
     public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
+    public static final String EMAIL_DESC_COY = " " + PREFIX_EMAIL + VALID_EMAIL_COY;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
+    public static final String ADDRESS_DESC_COY = " " + PREFIX_ADDRESS + VALID_ADDRESS_COY;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
@@ -73,8 +81,8 @@ public class CommandTestUtil {
     public static final String VALID_TITLE2 = "Depression";
     public static final String VALID_DATE1 = "01/01/2018";
     public static final String VALID_DATE2 = "02/02/2018";
-    public static final String VALID_INFO1 = "Prescribed XXX medicine, next appointment on 02022018.";
-    public static final String VALID_INFO2 = "Prescribed XXX medicine, next appointment on 03032018.";
+    public static final String VALID_INFO1 = "Prescribed XXX medicine, next appointment on 02/02/2018.";
+    public static final String VALID_INFO2 = "Prescribed XXX medicine, next appointment on 03/03/2018.";
 
     // Appt
     public static final String VALID_START_APPT1 = "01/01/2018 14:00";
