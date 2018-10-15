@@ -117,8 +117,8 @@ public class PersonCardHandle extends NodeHandle<Node> {
                 && getAddress().equals(person.getAddress().value)
                 && getPhone().equals(person.getPhone().value)
                 && getEmail().equals(person.getEmail().value)
-                && ImmutableMultiset.copyOf(getMedicalReports()).
-                equals(ImmutableMultiset.copyOf(person.getMedicalReports().stream()
+                && ImmutableMultiset.copyOf(getMedicalReports())
+                .equals(ImmutableMultiset.copyOf(person.getMedicalReports().stream()
                         .map(report -> report.toString())
                         .collect(Collectors.toList())))
                 && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(person.getTags().stream()

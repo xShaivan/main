@@ -30,8 +30,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
-import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE2;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
@@ -39,6 +37,8 @@ import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.COY;
 import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
+import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
+import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE2;
 
 import org.junit.Test;
 
@@ -122,8 +122,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         index = INDEX_SECOND_PERSON;
         command = EditCommand.COMMAND_WORD + "  " + index.getOneBased() + "  " + NAME_DESC_COY + "  "
                 + PHONE_DESC_COY + " " + EMAIL_DESC_COY + "  " + ADDRESS_DESC_COY + " " + TAG_DESC_FRIEND;
-        editedPerson = new PersonBuilder(COY).withTags(VALID_TAG_FRIEND).withMedicalReports(REPORT_EXAMPLE1, REPORT_EXAMPLE2)
-                .build();
+        editedPerson = new PersonBuilder(COY).withTags(VALID_TAG_FRIEND)
+                .withMedicalReports(REPORT_EXAMPLE1, REPORT_EXAMPLE2).build();
         assertCommandSuccess(command, index, editedPerson);
 
         /* ------------------ Performing edit operation while a filtered list is being shown ------------------------ */

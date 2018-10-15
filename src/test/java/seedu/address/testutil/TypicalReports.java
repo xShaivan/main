@@ -1,11 +1,11 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE1;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE2;
 
 import seedu.address.model.medicalreport.MedicalReport;
 /**
