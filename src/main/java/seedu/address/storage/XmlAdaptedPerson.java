@@ -48,8 +48,6 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String nric;
-    @XmlElement(required = true)
-    private String report;
 
     // Medical Report
     @XmlElement(required = true)
@@ -115,6 +113,7 @@ public class XmlAdaptedPerson {
         // MedHistory
         medHistories = source.getMedHistory().stream().map(XmlAdaptedMedHistory::new).collect(Collectors.toList());
 
+
         // Medical Report
         title = source.getMedicalReport().getTitle().toString();
         date = source.getMedicalReport().getDate().toString();
@@ -126,6 +125,7 @@ public class XmlAdaptedPerson {
         apptVenue = source.getAppt().getVenue().toString();
         apptInfo = source.getAppt().getInfo().toString();
         apptDrName = source.getAppt().getDrName().toString();
+
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -221,6 +221,8 @@ public class XmlAdaptedPerson {
         }
 
         final Set<MedHistory> modelMedHistory = new HashSet<>(personMedHistories);
+
+        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
 
         /**
          * ==================================================
