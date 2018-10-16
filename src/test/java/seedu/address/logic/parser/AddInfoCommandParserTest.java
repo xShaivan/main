@@ -26,8 +26,7 @@ public class AddInfoCommandParserTest {
 
         // No NRIC
         userInput = targetIndex.getOneBased() + " " + PREFIX_ADD_INFO_NRIC;
-        expectedCommand = new AddInfoCommand(INDEX_FIRST_PERSON, new Nric(""));
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, Nric.MESSAGE_NRIC_CONSTRAINTS);
     }
 
     @Test
