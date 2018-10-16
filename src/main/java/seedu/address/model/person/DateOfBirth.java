@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class DateOfBirth {
     public static final String DATE_OF_BIRTH_CONSTRAINTS = "Date of birth should be of the format dd-MM-yyyy";
+    public static final String DATE_OF_BIRTH_VALUE_EXCEEDED = "Date values have exceeded. Please check again.";
     public static final String DATE_OF_BIRTH_VALIDATION_REGEX = "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
 
     public final LocalDate value;

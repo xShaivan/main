@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
@@ -107,6 +106,7 @@ public class ParserUtil {
         if (!Email.isValidEmail(trimmedEmail)) {
             throw new ParseException(Email.MESSAGE_EMAIL_CONSTRAINTS);
         }
+
         return new Email(trimmedEmail);
     }
 
@@ -136,6 +136,13 @@ public class ParserUtil {
         String trimmedDateOfBirth = dateOfBirth.trim();
         if (!DateOfBirth.isValidDate(trimmedDateOfBirth)) {
             throw new ParseException(DateOfBirth.DATE_OF_BIRTH_CONSTRAINTS);
+        }
+
+        try {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate.parse(dateOfBirth, dateTimeFormatter);
+        } catch (Exception e) {
+            throw new ParseException(DateOfBirth.DATE_OF_BIRTH_VALUE_EXCEEDED);
         }
 
         return new DateOfBirth(trimmedDateOfBirth);
