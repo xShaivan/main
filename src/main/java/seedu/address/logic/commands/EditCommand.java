@@ -23,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
@@ -108,10 +109,11 @@ public class EditCommand extends Command {
         MedHistory updatedMedHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
         Appt updatedAppt = personToEdit.getAppt(); // edit command does not allow editing appts
         Nric updatedNric = personToEdit.getNric();
+        DateOfBirth updatedDateOfBirth = personToEdit.getDateOfBirth();
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedReport,
-                          updatedMedHistory, updatedAppt, updatedNric, updatedTags);
+                          updatedMedHistory, updatedAppt, updatedNric, updatedDateOfBirth, updatedTags);
 
     }
 

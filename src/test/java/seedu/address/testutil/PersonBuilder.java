@@ -10,6 +10,7 @@ import java.util.Set;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
@@ -29,6 +30,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
+    public static final String DEFAULT_DOB = "10-01-2010";
     public static final MedHistory DEFAULT_MEDHISTORY = EMPTY_MEDHISTORY;
     public static final MedicalReport DEFAULT_MEDICAL_REPORT = EMPTY_MEDICAL_REPORT;
     public static final Appt DEFAULT_APPT = EMPTY_APPT;
@@ -38,6 +40,7 @@ public class PersonBuilder {
     private Email email;
     private Address address;
     private Nric nric;
+    private DateOfBirth dateOfBirth;
     private MedicalReport report;
     private MedHistory medhistory;
     private Appt appt;
@@ -48,6 +51,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        dateOfBirth = new DateOfBirth(DEFAULT_DOB);
         nric = new Nric(DEFAULT_NRIC);
         medhistory = DEFAULT_MEDHISTORY;
         report = DEFAULT_MEDICAL_REPORT;
@@ -63,6 +67,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
+        dateOfBirth = personToCopy.getDateOfBirth();
         nric = personToCopy.getNric();
         report = personToCopy.getMedicalReport();
         medhistory = personToCopy.getMedHistory();
@@ -119,6 +124,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code dateOfBirth} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = new DateOfBirth(dateOfBirth);
+        return this;
+    }
+
+    /**
      * Sets the {@code MedicalReport} of the {@code Person} that we are building.
      */
     public PersonBuilder withMedicalReport(MedicalReport report) {
@@ -143,7 +156,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, report, medhistory, appt, nric, tags);
+        return new Person(name, phone, email, address, report, medhistory, appt, nric, dateOfBirth, tags);
     }
 
 }

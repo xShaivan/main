@@ -39,6 +39,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label nric;
     @FXML
+    private Label dateOfBirth;
+    @FXML
     private Label medicalreport;
     @FXML
     private Label medhistory;
@@ -56,6 +58,7 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         nric.setText(person.getNric().value);
+        dateOfBirth.setText(person.getDateOfBirth().toString());
         medhistory.setText(person.getMedHistory().toString());
         medicalreport.setText(person.getMedicalReport().toString());
         appt.setText(person.getAppt().toString());

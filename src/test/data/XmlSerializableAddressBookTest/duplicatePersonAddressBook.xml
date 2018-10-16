@@ -8,7 +8,7 @@
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -29,7 +29,7 @@
         <address>4th street</address>
         <nric></nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>

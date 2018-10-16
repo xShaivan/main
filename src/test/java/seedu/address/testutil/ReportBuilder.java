@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import seedu.address.model.medicalreport.Date;
+import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.Title;
@@ -14,12 +14,12 @@ public class ReportBuilder {
     public static final String DEFAULT_INFO = "Prescribed XXX medicine, next appointment on 02022018";
 
     private Title title;
-    private Date date;
+    private ReportDate reportDate;
     private Information information;
 
     public ReportBuilder() {
         title = new Title(DEFAULT_TITLE);
-        date = new Date(DEFAULT_DATE);
+        reportDate = new ReportDate(DEFAULT_DATE);
         information = new Information(DEFAULT_INFO);
     }
     /**
@@ -27,7 +27,7 @@ public class ReportBuilder {
      */
     public ReportBuilder(MedicalReport reportToCopy) {
         title = reportToCopy.getTitle();
-        date = reportToCopy.getDate();
+        reportDate = reportToCopy.getReportDate();
         information = reportToCopy.getInformation();
     }
     /**
@@ -38,10 +38,10 @@ public class ReportBuilder {
         return this;
     }
     /**
-     * Sets the {@code Date} of the {@code MedicalReport} that we are building.
+     * Sets the {@code ReportDate} of the {@code MedicalReport} that we are building.
      */
     public ReportBuilder withDate(String date) {
-        this.date = new Date(date);
+        this.reportDate = new ReportDate(date);
         return this;
     }
     /**
@@ -53,6 +53,6 @@ public class ReportBuilder {
     }
 
     public MedicalReport build() {
-        return new MedicalReport(title, date, information);
+        return new MedicalReport(title, reportDate, information);
     }
 }

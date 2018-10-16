@@ -7,7 +7,7 @@
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
@@ -25,7 +25,7 @@
         <address isPrivate="false">81th street</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
@@ -43,7 +43,7 @@
         <address isPrivate="false">wall street</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
@@ -61,7 +61,7 @@
         <address isPrivate="false">10th street</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
@@ -79,7 +79,7 @@
         <address isPrivate="false">michegan ave</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
@@ -97,7 +97,7 @@
         <address isPrivate="false">little tokyo</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
@@ -115,7 +115,7 @@
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
@@ -133,7 +133,7 @@
         <address isPrivate="false">little india</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
@@ -151,7 +151,7 @@
         <address isPrivate="false">chicago ave</address>
         <nric isPrivate="false"></nric>
         <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
+        <reportDate isPrivate="false"></reportDate>
         <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>

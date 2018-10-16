@@ -8,7 +8,7 @@
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -27,7 +27,7 @@
         <address>311, Clementi Ave 2, #02-25</address>
         <nric></nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -47,7 +47,7 @@
         <address>wall street</address>
         <nric></nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -65,7 +65,7 @@
         <address>10th street</address>
         <nric></nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -84,7 +84,7 @@
         <address>michegan ave</address>
         <nric></nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -102,7 +102,7 @@
         <address>little tokyo</address>
         <nric></nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -120,7 +120,7 @@
         <address>4th street</address>
         <nric>S5185093I</nric>
         <title></title>
-        <date></date>
+        <reportDate></reportDate>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>

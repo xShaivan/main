@@ -1,6 +1,8 @@
 package seedu.address.storage;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -14,11 +16,12 @@ import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
-import seedu.address.model.medicalreport.Date;
+import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
@@ -35,7 +38,6 @@ import seedu.address.model.timetable.ApptVenue;
  * JAXB-friendly version of the Person.
  */
 public class XmlAdaptedPerson {
-
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
     @XmlElement(required = true)
@@ -48,6 +50,8 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String nric;
+    @XmlElement(required = true)
+    private String dateOfBirth;
 
     // Med History
     @XmlElement(required = true)
@@ -112,6 +116,8 @@ public class XmlAdaptedPerson {
         address = source.getAddress().value;
         nric = source.getNric().value;
 
+        dateOfBirth = source.getDateOfBirth().toString();
+
         // Med History
         medHistDate = source.getMedHistory().getMedHistDate().value;
         allergy = source.getMedHistory().getAllergy().value;
@@ -119,7 +125,7 @@ public class XmlAdaptedPerson {
 
         // Medical Report
         title = source.getMedicalReport().getTitle().toString();
-        date = source.getMedicalReport().getDate().toString();
+        date = source.getMedicalReport().getReportDate().toString();
         information = source.getMedicalReport().getInformation().toString();
 
         // Appt
@@ -188,6 +194,11 @@ public class XmlAdaptedPerson {
         }
         final Nric modelNric = new Nric(nric);
 
+        if (dateOfBirth == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DateOfBirth.class.getSimpleName()));
+        }
+        final DateOfBirth modelDateOfBirth = new DateOfBirth(dateOfBirth);
+
         /**
          * ==================================================
          * MEDICAL REPORT SUBFIELDS
@@ -200,9 +211,9 @@ public class XmlAdaptedPerson {
         final Title modelTitle = new Title(title);
 
         if (date == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ReportDate.class.getSimpleName()));
         }
-        final Date modelDate = new Date(date);
+        final ReportDate modelReportDate = new ReportDate(date);
 
         if (information == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -210,7 +221,7 @@ public class XmlAdaptedPerson {
         }
         final Information modelInformation = new Information(information);
 
-        final MedicalReport modelReport = new MedicalReport(modelTitle, modelDate, modelInformation);
+        final MedicalReport modelReport = new MedicalReport(modelTitle, modelReportDate, modelInformation);
 
         /**
          * ==================================================
@@ -278,7 +289,7 @@ public class XmlAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
-                          modelMedHistory, modelAppt, modelNric, modelTags);
+                          modelMedHistory, modelAppt, modelNric, modelDateOfBirth, modelTags);
     }
 
     @Override

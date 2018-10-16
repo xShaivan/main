@@ -2,6 +2,9 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,10 +15,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.PrevCountry;
-import seedu.address.model.medicalreport.Date;
+import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
@@ -122,6 +126,22 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String nric} into an {@code Nric}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code nric} is invalid.
+     */
+    public static DateOfBirth parseDateOfBirth(String dateOfBirth) throws ParseException {
+        requireNonNull(dateOfBirth);
+        String trimmedDateOfBirth = dateOfBirth.trim();
+        if (!DateOfBirth.isValidDate(trimmedDateOfBirth)) {
+            throw new ParseException(DateOfBirth.DATE_OF_BIRTH_CONSTRAINTS);
+        }
+
+        return new DateOfBirth(trimmedDateOfBirth);
+    }
+
+    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -207,17 +227,17 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String date} into an {@code Date}.
+     * Parses a {@code String date} into an {@code ReportDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code date} is invalid.
      * ParseException is omitted for now.
 
      */
-    public static Date parseDate(String date) {
+    public static ReportDate parseDate(String date) {
         requireNonNull(date);
         String trimmedDate = date.trim();
-        return new Date(trimmedDate);
+        return new ReportDate(trimmedDate);
     }
 
     /**

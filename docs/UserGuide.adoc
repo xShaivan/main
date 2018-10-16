@@ -231,7 +231,7 @@ Format: `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCU
 Examples:
 
 * `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3` +
-For patient in index 2, populate NRIC field with S91234567A, date of birth field
+For patient in index 2, populate NRIC field with S91234567A, reportDate of birth field
 with 01-01-1990, height field with 154, gender field with Male and associate
 patient in index 3 as family member.
 
@@ -244,7 +244,7 @@ Format: `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCC
 Examples:
 
 * `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3` +
-For patient in index 2, edit NRIC field with S91234567A, date of birth field with
+For patient in index 2, edit NRIC field with S91234567A, reportDate of birth field with
 01-01-1990, height field with 154, gender field with Male and remove patient in
 index 3 as family member.
 
@@ -271,7 +271,7 @@ Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [mr/MEDICAL_RE
 Examples:
 
 * `editreport 3 1 t/DEPRESSION d/02012018 mr/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018` +
-Edits title, date and information of existing medical report at index 1 for patient at index 3 titled DEPRESSION, dated 02-01-2018 with the report stating that the patient has been diagnosed with depression and is prescribed XXX medicine. Next appointment on 03-02-2018.
+Edits title, reportDate and information of existing medical report at index 1 for patient at index 3 titled DEPRESSION, dated 02-01-2018 with the report stating that the patient has been diagnosed with depression and is prescribed XXX medicine. Next appointment on 03-02-2018.
 
 === List of Medical Report: `listreport`
 
