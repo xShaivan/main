@@ -25,7 +25,8 @@ public class AddReportCommandParserTest {
     public void parseIndexSpecifiedSuccess() {
         // have report
         Index targetIndex = INDEX_FIRST_PERSON;
-        AddMedicalReportCommand expectedCommand = new AddMedicalReportCommand(INDEX_FIRST_PERSON, new ReportBuilder().build());
+        AddMedicalReportCommand expectedCommand =
+                new AddMedicalReportCommand(INDEX_FIRST_PERSON, new ReportBuilder().build());
         assertParseSuccess(parser, targetIndex.getOneBased()
                 + " " + PREFIX_TITLE + VALID_TITLE1
                 + " " + PREFIX_DATE + VALID_DATE1
