@@ -81,11 +81,11 @@ public class AddApptCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
 
-        return new CommandResult(generateSuccessMessage(personToEdit));
+        return new CommandResult(generateSuccessMessage(editedPerson));
     }
 
     /**
-     * Generates a command execution success message based on whether the appt is added to or removed from
+     * Generates a command execution success message when the appt is added to
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
