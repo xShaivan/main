@@ -5,4 +5,9 @@
     <email>hans@example</email>
     <address>4th street</address>
     <tagged>friends</tagged>
+    <medHistories>
+        <medHistDate>10/10/2010</medHistDate>
+        <allergy>Alcohol</allergy>
+        <prevCountry>Columbia</prevCountry>
+    </medHistories>
 </person>

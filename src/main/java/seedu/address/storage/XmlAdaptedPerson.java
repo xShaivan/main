@@ -50,14 +50,6 @@ public class XmlAdaptedPerson {
     private String nric;
     @XmlElement(required = true)
     private String report;
-    @XmlElement(required = true)
-    private String medHistDate;
-    @XmlElement(required = true)
-    private String allergy;
-    @XmlElement(required = true)
-    private String prevCountry;
-    @XmlElement(required = true)
-    private String medhistory;
 
     // Medical Report
     @XmlElement(required = true)
@@ -79,9 +71,11 @@ public class XmlAdaptedPerson {
     @XmlElement(required = true)
     private String apptDrName;
 
-
+    // Sets
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
+    @XmlElement
+    private List<XmlAdaptedMedHistory> medHistories = new ArrayList<>();
 
     /**
      * Constructs an XmlAdaptedPerson.
@@ -92,13 +86,17 @@ public class XmlAdaptedPerson {
     /**
      * Constructs an {@code XmlAdaptedPerson} with the given person details.
      */
-    public XmlAdaptedPerson(String name, String phone, String email, String address, List<XmlAdaptedTag> tagged) {
+    public XmlAdaptedPerson(String name, String phone, String email, String address, List<XmlAdaptedTag> tagged,
+                            List<XmlAdaptedMedHistory> medHistories) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         if (tagged != null) {
             this.tagged = new ArrayList<>(tagged);
+        }
+        if(medHistories !=null) {
+            this.medHistories = new ArrayList<>(medHistories);
         }
     }
 
@@ -113,9 +111,10 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
-        medHistDate = source.getMedHistory().getMedHistDate().value;
-        allergy = source.getMedHistory().getAllergy().value;
-        prevCountry = source.getMedHistory().getPrevCountry().value;
+
+        // MedHistory
+        medHistories = source.getMedHistory().stream().map(XmlAdaptedMedHistory::new).collect(Collectors.toList());
+
         // Medical Report
         title = source.getMedicalReport().getTitle().toString();
         date = source.getMedicalReport().getDate().toString();
@@ -216,23 +215,12 @@ public class XmlAdaptedPerson {
          * ==================================================
          */
 
-        if (medHistDate == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
+        final List<MedHistory> personMedHistories = new ArrayList<>();
+        for (XmlAdaptedMedHistory medHistory : medHistories) {
+            personMedHistories.add(medHistory.toModelType());
         }
-        final MedHistDate modelMedHistDate = new MedHistDate(medHistDate);
 
-        if (allergy == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
-        }
-        final Allergy modelAllergy = new Allergy(allergy);
-
-        if (prevCountry == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
-        }
-        final PrevCountry modelPrevCountry = new PrevCountry(prevCountry);
+        final Set<MedHistory> modelMedHistory = new HashSet<>(personMedHistories);
 
         /**
          * ==================================================
@@ -272,8 +260,6 @@ public class XmlAdaptedPerson {
 
         final Appt modelAppt = new Appt(modelApptStart, modelApptEnd, modelApptVenue, modelApptInfo, modelApptDrName);
 
-        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
-
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
                           modelMedHistory, modelAppt, modelNric, modelTags);
@@ -295,9 +281,7 @@ public class XmlAdaptedPerson {
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(address, otherPerson.address)
                 // Medical History
-                && Objects.equals(date, otherPerson.date)
-                && Objects.equals(allergy, otherPerson.allergy)
-                && Objects.equals(prevCountry, otherPerson.prevCountry)
+                && medHistories.equals(otherPerson.medHistories)
                 // Medical Report
                 && Objects.equals(title, otherPerson.title)
                 && Objects.equals(date, otherPerson.date)

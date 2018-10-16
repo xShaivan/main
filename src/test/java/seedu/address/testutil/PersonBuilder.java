@@ -1,7 +1,6 @@
 package seedu.address.testutil;
 
 import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
-import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
 import static seedu.address.testutil.TypicalReports.EMPTY_MEDICAL_REPORT;
 
 import java.util.HashSet;
@@ -29,7 +28,6 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
-    public static final MedHistory DEFAULT_MEDHISTORY = EMPTY_MEDHISTORY;
     public static final MedicalReport DEFAULT_MEDICAL_REPORT = EMPTY_MEDICAL_REPORT;
     public static final Appt DEFAULT_APPT = EMPTY_APPT;
 
@@ -39,7 +37,7 @@ public class PersonBuilder {
     private Address address;
     private Nric nric;
     private MedicalReport report;
-    private MedHistory medhistory;
+    private Set<MedHistory> medHistories;
     private Appt appt;
     private Set<Tag> tags;
 
@@ -49,7 +47,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         nric = new Nric(DEFAULT_NRIC);
-        medhistory = DEFAULT_MEDHISTORY;
+        medHistories = new HashSet<>();
         report = DEFAULT_MEDICAL_REPORT;
         appt = DEFAULT_APPT;
         tags = new HashSet<>();
@@ -65,7 +63,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         nric = personToCopy.getNric();
         report = personToCopy.getMedicalReport();
-        medhistory = personToCopy.getMedHistory();
+        medHistories = personToCopy.getMedHistory();
         appt = personToCopy.getAppt();
         tags = new HashSet<>(personToCopy.getTags());
     }
@@ -129,8 +127,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code MedHistory} of the {@code Person} that we are building
      */
-    public PersonBuilder withMedHistory(MedHistory medhistory) {
-        this.medhistory = medhistory;
+    public PersonBuilder withMedHistories(MedHistory... medHistories) {
+        this.medHistories = SampleDataUtil.getMedHistorySet(medHistories);
         return this;
     }
 

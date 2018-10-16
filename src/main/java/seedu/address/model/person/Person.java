@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.tag.Tag;
@@ -25,7 +26,7 @@ public class Person {
 
     // Data fields
     private final Address address;
-    private final MedHistory medhistory;
+    private final Set<MedHistory> medHistories = new HashSet<>();
     private final Appt appt;
     private final Set<Tag> tags = new HashSet<>();
     private final MedicalReport report;
@@ -37,7 +38,7 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, MedicalReport report,
-                  MedHistory medhistory, Appt appt, Nric nric, Set<Tag> tags) {
+                  Set<MedHistory> medHistories, Appt appt, Nric nric, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -45,7 +46,7 @@ public class Person {
         this.address = address;
         this.nric = nric;
         this.report = report;
-        this.medhistory = medhistory;
+        this.medHistories.addAll(medHistories);
         this.appt = appt;
         this.tags.addAll(tags);
     }
@@ -70,8 +71,8 @@ public class Person {
         return report;
     }
 
-    public MedHistory getMedHistory() {
-        return medhistory;
+    public Set<MedHistory> getMedHistory() {
+        return Collections.unmodifiableSet(medHistories);
     }
 
     public Nric getNric() {
