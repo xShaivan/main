@@ -1,5 +1,9 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE1;
+
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.ReportDate;
@@ -9,9 +13,9 @@ import seedu.address.model.medicalreport.Title;
  * A utility class to help with building Report objects.
  */
 public class ReportBuilder {
-    public static final String DEFAULT_TITLE = "Asthma";
-    public static final String DEFAULT_DATE = "01/01/2018";
-    public static final String DEFAULT_INFO = "Prescribed XXX medicine, next appointment on 02022018";
+    public static final String DEFAULT_TITLE = VALID_TITLE1;
+    public static final String DEFAULT_DATE = VALID_DATE1;
+    public static final String DEFAULT_INFO = VALID_INFO1;
 
     private Title title;
     private ReportDate date;
