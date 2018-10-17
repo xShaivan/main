@@ -175,7 +175,7 @@ Adds a medical history entry for the 1st person in the list on 10/10/2010 with a
 === Adding an appointment into patient's timetable: `addappt`
 
 Adds an appointment into the specified patient's timetable. +
-Format: `addappt INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFORMATION dn/DOCTOR_NAME`
+Format: `addappt INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFORMATION d/DOCTOR_NAME`
 
 ****
 * Adds an appointment for the patient at the specified INDEX.
@@ -184,7 +184,7 @@ Format: `addappt INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFO
 
 Examples:
 
-* `addappt 2 d/12092018 s/1300 e/1400 v/Consultation Room 12 i/Diabetes Checkup dn/Dr Tan` +
+* `addappt 2 d/12092018 s/1300 e/1400 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
 Adds an appointment for the 2nd person in the list on 12/09/2018 from 1300-1400 at Consultation Room 12 for a diabetes checkup by Dr Tan
 
 === Viewing a patient's appointments timetable: `viewappts`
@@ -206,7 +206,7 @@ Views all appointments of the 2nd person in the list.
 
 Edits a specified appointment in the patient's timetable. +
 Format: `editappt INDEX [d/DATE] [s/START_TIME] [e/END_TIME]
-[v/VENUE] [i/APPOINTMENT_INFORMATION] [dn/DOCTOR_NAME]`
+[v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]`
 
 ****
 * Edits a patient’s appointment at the specified index.
