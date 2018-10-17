@@ -251,17 +251,17 @@ index 3 as family member.
 === Adding of Medical Report: `addreport`
 
 Add medical diagnosis/report to the patient. +
-Format: `addreport INDEX [t/TITLE] [d/DATE] [mr/MEDICAL_REPORT]`
+Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `addreport 3 t/ASTHMA d/01012018 mr/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.` +
-Adds a new medical report for patient at index 3 titled ASTHMA, dated 01-01-2018 with the report stating that the patient has been diagnosed with asthma and is prescribed XXX medicine. Next appointment on 02-02-2018.
+* `addreport 3 t/Asthma d/01/01/2018 i/Prescribed XXX medicine, next appointment on 02/02/2018.` +
+Adds a new medical report for patient at index 3 titled Asthma, dated 01/01/2018 with the report's information.
 
 === Editing of Medical Report: `editreport`
 
 Edit existing medical diagnosis/report of the patient. +
-Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [mr/MEDICAL_REPORT]`
+Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 ****
 * `INDEX_PATIENT` refers to the index shown in the displayed person list
@@ -270,8 +270,8 @@ Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [mr/MEDICAL_RE
 
 Examples:
 
-* `editreport 3 1 t/DEPRESSION d/02012018 mr/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018` +
-Edits title, date and information of existing medical report at index 1 for patient at index 3 titled DEPRESSION, dated 02-01-2018 with the report stating that the patient has been diagnosed with depression and is prescribed XXX medicine. Next appointment on 03-02-2018.
+* `editreport 3 1 t/Depression d/02/02/2018 i/Prescribed XXX medicine, next appointment on 03/03/2018.` +
+Edits title, date and information of existing medical report at index 1 for patient at index 3.
 
 === List of Medical Report: `listreport`
 
