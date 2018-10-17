@@ -352,7 +352,7 @@ Step 1. The user launches the application. If it is the first time he/she is lau
 
 Step 2. The user executes `addappt 1 s/16/09/2018 1500 e/16/09/2018 1530 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` command to add an appointment to the 1st person in the list that the address book is currently showing. The `addappt` command obtains the data of the person that the user is trying to change based on the index that the user has input.
 
-Step 3. The `addappt` command will obtain the set of appts that the person previously had, copy it to a new set of appts, and add the appt which the user wants to add into the new set. 
+Step 3. The `addappt` command will obtain the set of appts that the person previously had, copy it to a new set of appts, and add the appt which the user wants to add into the new set.
 
 Step 4. The `addappt` command will call `Model#updatePerson()` to update the person with this new set of appts. The `addappt` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user. Lastly, the `addappt` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
