@@ -1,6 +1,5 @@
 package seedu.address.testutil;
 
-import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
 import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
 
 import java.util.HashSet;
@@ -29,7 +28,6 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
     public static final MedHistory DEFAULT_MEDHISTORY = EMPTY_MEDHISTORY;
-    public static final Appt DEFAULT_APPT = EMPTY_APPT;
 
     private Name name;
     private Phone phone;
@@ -38,7 +36,7 @@ public class PersonBuilder {
     private Nric nric;
     private Set<MedicalReport> reports;
     private MedHistory medhistory;
-    private Appt appt;
+    private Set<Appt> appts;
     private Set<Tag> tags;
 
     public PersonBuilder() {
@@ -48,8 +46,8 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         nric = new Nric(DEFAULT_NRIC);
         medhistory = DEFAULT_MEDHISTORY;
-        appt = DEFAULT_APPT;
         reports = new HashSet<>();
+        appts = new HashSet<>();
         tags = new HashSet<>();
     }
 
@@ -64,7 +62,7 @@ public class PersonBuilder {
         nric = personToCopy.getNric();
         reports = personToCopy.getMedicalReports();
         medhistory = personToCopy.getMedHistory();
-        appt = personToCopy.getAppt();
+        appts = personToCopy.getAppts();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -135,13 +133,12 @@ public class PersonBuilder {
     /**
      * Sets the {@code Appt} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAppt(Appt appt) {
-        this.appt = appt;
+    public PersonBuilder withAppts(Appt... appts) {
+        this.appts = SampleDataUtil.getApptSet(appts);
         return this;
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, reports, medhistory, appt, nric, tags);
+        return new Person(name, phone, email, address, reports, medhistory, appts, nric, tags);
     }
-
 }

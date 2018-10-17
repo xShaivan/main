@@ -106,13 +106,12 @@ public class EditCommand extends Command {
 
         Set<MedicalReport> updatedReports = personToEdit.getMedicalReports(); // edit command disallow editing reports
         MedHistory updatedMedHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
-        Appt updatedAppt = personToEdit.getAppt(); // edit command does not allow editing appts
+        Set<Appt> updatedAppts = personToEdit.getAppts(); // edit command does not allow editing appts
         Nric updatedNric = personToEdit.getNric();
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedReports,
-                          updatedMedHistory, updatedAppt, updatedNric, updatedTags);
-
+                          updatedMedHistory, updatedAppts, updatedNric, updatedTags);
     }
 
     @Override

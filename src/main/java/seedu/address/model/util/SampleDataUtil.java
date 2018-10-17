@@ -20,11 +20,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptDateTime;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
-
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -36,27 +31,29 @@ public class SampleDataUtil {
             new Allergy(""), new PrevCountry(""));
     public static final Appt EMPTY_APPT = new Appt(new ApptDateTime(""), new ApptDateTime(""),
             new ApptVenue(""), new ApptInfo(""), new ApptDrName(""));
+    public static final MedicalReport EMPTY_MEDICAL_REPORT = new MedicalReport(new Title(""), new Date(""),
+            new Information(""));
 
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"), getReportSet(),
-                       EMPTY_MEDHISTORY, EMPTY_APPT, EMPTY_NRIC, getTagSet("friends")),
+                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("friends")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), getReportSet(),
-                       EMPTY_MEDHISTORY, EMPTY_APPT, EMPTY_NRIC, getTagSet("colleagues", "friends")),
+                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("colleagues", "friends")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), getReportSet(),
-                       EMPTY_MEDHISTORY, EMPTY_APPT, EMPTY_NRIC, getTagSet("neighbours")),
+                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("neighbours")),
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
                 new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), getReportSet(),
-                       EMPTY_MEDHISTORY, EMPTY_APPT, EMPTY_NRIC, getTagSet("family")),
+                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("family")),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                 new Address("Blk 47 Tampines Street 20, #17-35"), getReportSet(),
-                       EMPTY_MEDHISTORY, EMPTY_APPT, EMPTY_NRIC, getTagSet("classmates")),
+                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("classmates")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"), getReportSet(),
-                       EMPTY_MEDHISTORY, EMPTY_APPT, EMPTY_NRIC, getTagSet("colleagues"))
+                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("colleagues"))
         };
     }
 
@@ -89,4 +86,15 @@ public class SampleDataUtil {
         return reportSet;
     }
 
+    /**
+     * Returns an appt set containing the list of appts given.
+     */
+    // TODO: (Appt) MIGHT CONVERT TO USE STREAM IN FUTURE
+    public static Set<Appt> getApptSet(Appt... appts) {
+        Set<Appt> apptSet = new HashSet<>();
+        for (Appt appt : appts) {
+            apptSet.add(appt);
+        }
+        return apptSet;
+    }
 }

@@ -69,7 +69,7 @@ public class AddMedicalReportCommand extends Command {
         }
         newReports.add(report);
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), newReports, personToEdit.getMedHistory(), personToEdit.getAppt(),
+                personToEdit.getAddress(), newReports, personToEdit.getMedHistory(), personToEdit.getAppts(),
                 personToEdit.getNric(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
