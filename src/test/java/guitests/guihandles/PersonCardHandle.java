@@ -117,6 +117,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
                         .collect(Collectors.toList())))
                 && ImmutableMultiset.copyOf(getMedHistory())
                 .equals(ImmutableMultiset.copyOf(person.getMedHistory().stream()
-                        .map(medHistory -> medHistory.toString()).collect(Collectors.toList()))));
+                        .map(medHistory -> medHistory.toString()).collect(Collectors.toList())));
     }
 }
