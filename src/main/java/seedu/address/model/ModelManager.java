@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -35,7 +36,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         versionedAddressBook = new VersionedAddressBook(addressBook);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
-        sortedPersons = new FilteredList<>(versionedAddressBook.getPersonList());
+        sortedPersons = new FilteredList<>(sortedPersonList(versionedAddressBook.getPersonList()));
     }
 
     public ModelManager() {
@@ -119,11 +120,19 @@ public class ModelManager extends ComponentManager implements Model {
         return FXCollections.unmodifiableObservableList(sortedPersons);
     }
 
+    public ObservableList<Person> sortedPersonList(ObservableList<Person> personList) {
+        ObservableList<Person> sortedList = FXCollections.observableArrayList();
+        sortedList.addAll(personList);
+        sortedList.sort(Comparator.comparing(person -> person.getName().fullName));
+
+        return FXCollections.unmodifiableObservableList(sortedList);
+    }
     @Override
     public void updateSortedPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         sortedPersons.setPredicate(predicate);
     }
+
 
     //=========== Undo/Redo =================================================================================
 
