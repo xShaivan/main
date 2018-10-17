@@ -236,32 +236,27 @@ Examples:
 * `deleteappt 2` +
 Deletes the 2nd appointment in the displayed appointment list.
 
-=== Adding optional information of patient: `addinfo`
+=== Adding additional information of patient: `addinfo`
 
-Add the following optional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
+Add the following additional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
 gender, occupation, marital status, family member. +
 Note: age field will be auto-calculated once DOB is populated +
-Format: `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
+Format: `addinfo INDEX [i/NRIC] [d/DOB]`
+
+.Constraints for `[i/NRIC]`:
+* Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
+
+.Constraints for `[d/DOB]`:
+* Must be in the format `dd-MM-YYYY`
+
+Work In Progress: `[h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
 Examples:
 
-* `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3` +
+* `addinfo 2 n/S9123456A d/01-01-1990` +
 For patient in index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male and associate
 patient in index 3 as family member.
-
-===  Editing optional information of patient: `editinfo`
-
-Edit the following optional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
-gender, occupation, marital status, family member. +
-Format: `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
-
-Examples:
-
-* `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3` +
-For patient in index 2, edit NRIC field with S91234567A, date of birth field with
-01-01-1990, height field with 154, gender field with Male and remove patient in
-index 3 as family member.
 
 === Adding of Medical Report: `addreport`
 
