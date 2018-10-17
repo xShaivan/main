@@ -89,15 +89,15 @@ public class AddInfoCommand extends Command {
         Phone phone = personToEdit.getPhone();
         Email email = personToEdit.getEmail();
         Address address = personToEdit.getAddress();
-        Appt appt = personToEdit.getAppt();
-        MedicalReport medicalReport = personToEdit.getMedicalReport();
-        MedHistory medHistory = personToEdit.getMedHistory();
+        Set<Appt> appts = personToEdit.getAppts();
+        Set<MedicalReport> medicalReports = personToEdit.getMedicalReports();
+        Set<MedHistory> medHistory = personToEdit.getMedHistory();
         Set<Tag> tags = personToEdit.getTags();
 
         Nric updatedNric = addInfoPersonDescriptor.getNric().orElse(personToEdit.getNric());
         DateOfBirth updatedDateOfBirth = addInfoPersonDescriptor.getDateOfBirth().orElse(personToEdit.getDateOfBirth());
 
-        return new Person(name, phone, email, address, medicalReport, medHistory, appt,
+        return new Person(name, phone, email, address, medicalReports, medHistory, appts,
                 updatedNric, updatedDateOfBirth, tags);
     }
 

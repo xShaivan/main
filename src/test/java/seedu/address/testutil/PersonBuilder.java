@@ -1,9 +1,5 @@
 package seedu.address.testutil;
 
-import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
-import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
-import static seedu.address.testutil.TypicalReports.EMPTY_MEDICAL_REPORT;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,9 +27,6 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
     public static final String DEFAULT_DOB = "10-01-2010";
-    public static final MedHistory DEFAULT_MEDHISTORY = EMPTY_MEDHISTORY;
-    public static final MedicalReport DEFAULT_MEDICAL_REPORT = EMPTY_MEDICAL_REPORT;
-    public static final Appt DEFAULT_APPT = EMPTY_APPT;
 
     private Name name;
     private Phone phone;
@@ -41,9 +34,9 @@ public class PersonBuilder {
     private Address address;
     private Nric nric;
     private DateOfBirth dateOfBirth;
-    private MedicalReport report;
-    private MedHistory medhistory;
-    private Appt appt;
+    private Set<MedicalReport> reports;
+    private Set<MedHistory> medHistories;
+    private Set<Appt> appts;
     private Set<Tag> tags;
 
     public PersonBuilder() {
@@ -53,9 +46,9 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         dateOfBirth = new DateOfBirth(DEFAULT_DOB);
         nric = new Nric(DEFAULT_NRIC);
-        medhistory = DEFAULT_MEDHISTORY;
-        report = DEFAULT_MEDICAL_REPORT;
-        appt = DEFAULT_APPT;
+        reports = new HashSet<>();
+        medHistories = new HashSet<>();
+        appts = new HashSet<>();
         tags = new HashSet<>();
     }
 
@@ -69,9 +62,9 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         dateOfBirth = personToCopy.getDateOfBirth();
         nric = personToCopy.getNric();
-        report = personToCopy.getMedicalReport();
-        medhistory = personToCopy.getMedHistory();
-        appt = personToCopy.getAppt();
+        reports = personToCopy.getMedicalReports();
+        medHistories = personToCopy.getMedHistory();
+        appts = personToCopy.getAppts();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -134,29 +127,28 @@ public class PersonBuilder {
     /**
      * Sets the {@code MedicalReport} of the {@code Person} that we are building.
      */
-    public PersonBuilder withMedicalReport(MedicalReport report) {
-        this.report = report;
+    public PersonBuilder withMedicalReports(MedicalReport ... reports) {
+        this.reports = SampleDataUtil.getReportSet(reports);
         return this;
     }
 
     /**
      * Sets the {@code MedHistory} of the {@code Person} that we are building
      */
-    public PersonBuilder withMedHistory(MedHistory medhistory) {
-        this.medhistory = medhistory;
+    public PersonBuilder withMedHistories(MedHistory... medHistories) {
+        this.medHistories = SampleDataUtil.getMedHistorySet(medHistories);
         return this;
     }
 
     /**
      * Sets the {@code Appt} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAppt(Appt appt) {
-        this.appt = appt;
+    public PersonBuilder withAppts(Appt... appts) {
+        this.appts = SampleDataUtil.getApptSet(appts);
         return this;
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, report, medhistory, appt, nric, dateOfBirth, tags);
+        return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, tags);
     }
-
 }
