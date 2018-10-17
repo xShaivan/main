@@ -6,9 +6,6 @@
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
@@ -19,9 +16,6 @@
         <email isPrivate="false">ruth@example.com</email>
         <address isPrivate="false">81th street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
@@ -32,9 +26,6 @@
         <email isPrivate="false">heinz@example.com</email>
         <address isPrivate="false">wall street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
@@ -45,9 +36,6 @@
         <email isPrivate="false">cornelia@example.com</email>
         <address isPrivate="false">10th street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
@@ -58,9 +46,6 @@
         <email isPrivate="false">werner@example.com</email>
         <address isPrivate="false">michegan ave</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
@@ -71,9 +56,6 @@
         <email isPrivate="false">lydia@example.com</email>
         <address isPrivate="false">little tokyo</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
@@ -84,9 +66,6 @@
         <email isPrivate="false">anna@example.com</email>
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
@@ -97,9 +76,6 @@
         <email isPrivate="false">stefan@example.com</email>
         <address isPrivate="false">little india</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
@@ -110,9 +86,6 @@
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">chicago ave</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>

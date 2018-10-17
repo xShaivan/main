@@ -20,7 +20,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private static final String PHONE_FIELD_ID = "#phone";
     private static final String EMAIL_FIELD_ID = "#email";
     private static final String NRIC_FIELD_ID = "#nric";
-    private static final String MEDICAL_REPORT_FIELD_ID = "#medicalreport";
+    private static final String MEDICAL_REPORTS_FIELD_ID = "#reports";
     private static final String MEDHISTORY_FIELD_ID = "#medhistory";
     private static final String APPTS_FIELD_ID = "#appts";
     private static final String TAGS_FIELD_ID = "#tags";
@@ -31,7 +31,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private final Label phoneLabel;
     private final Label emailLabel;
     private final Label nricLabel;
-    private final Label medicalReportLabel;
+    private final List<Label> medicalReportLabels;
     private final Label medhistoryLabel;
     private final List<Label> apptLabels;
     private final List<Label> tagLabels;
@@ -45,8 +45,14 @@ public class PersonCardHandle extends NodeHandle<Node> {
         phoneLabel = getChildNode(PHONE_FIELD_ID);
         emailLabel = getChildNode(EMAIL_FIELD_ID);
         nricLabel = getChildNode(NRIC_FIELD_ID);
-        medicalReportLabel = getChildNode(MEDICAL_REPORT_FIELD_ID);
         medhistoryLabel = getChildNode(MEDHISTORY_FIELD_ID);
+
+        Region reportsContainer = getChildNode(MEDICAL_REPORTS_FIELD_ID);
+        medicalReportLabels = reportsContainer
+                .getChildrenUnmodifiable()
+                .stream()
+                .map(Label.class::cast)
+                .collect(Collectors.toList());
 
         Region apptsContainer = getChildNode(APPTS_FIELD_ID);
         apptLabels = apptsContainer
@@ -54,6 +60,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
                 .stream()
                 .map(Label.class::cast)
                 .collect(Collectors.toList());
+
         Region tagsContainer = getChildNode(TAGS_FIELD_ID);
         tagLabels = tagsContainer
                 .getChildrenUnmodifiable()
@@ -86,16 +93,19 @@ public class PersonCardHandle extends NodeHandle<Node> {
         return nricLabel.getText();
     }
 
-    public String getMedicalReport() {
-        return medicalReportLabel.getText();
-    }
-
     public String getMedHistory() {
         return medhistoryLabel.getText();
     }
 
     public List<String> getAppts() {
         return apptLabels
+                .stream()
+                .map(Label::getText)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getMedicalReports() {
+        return medicalReportLabels
                 .stream()
                 .map(Label::getText)
                 .collect(Collectors.toList());
@@ -116,6 +126,10 @@ public class PersonCardHandle extends NodeHandle<Node> {
                 && getAddress().equals(person.getAddress().value)
                 && getPhone().equals(person.getPhone().value)
                 && getEmail().equals(person.getEmail().value)
+                && ImmutableMultiset.copyOf(getMedicalReports())
+                .equals(ImmutableMultiset.copyOf(person.getMedicalReports().stream()
+                        .map(report -> report.toString())
+                        .collect(Collectors.toList())))
                 && ImmutableMultiset.copyOf(getAppts()).equals(ImmutableMultiset.copyOf(person.getAppts().stream()
                 .map(appt -> appt.toString())
                 .collect(Collectors.toList())))

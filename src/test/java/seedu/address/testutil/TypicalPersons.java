@@ -18,6 +18,7 @@ import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE1;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE2;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
 import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
+import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +39,7 @@ public class TypicalPersons {
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("98765432")
+            .withMedicalReports(REPORT_EXAMPLE1, REPORT_EXAMPLE2)
             .withAppts(APPT_EXAMPLE1, APPT_EXAMPLE2)
             .withTags("owesMoney", "friends").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
@@ -49,7 +51,7 @@ public class TypicalPersons {
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withAddress("little tokyo").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@example.com").withAddress("4th street").withMedicalReport(REPORT_EXAMPLE1)
+            .withEmail("anna@example.com").withAddress("4th street").withMedicalReports(REPORT_EXAMPLE1)
             .withMedHistory(MEDHISTORY1).withAppts(APPT_EXAMPLE1).withNric("S5185093I").build();
 
     // Manually added

@@ -14,10 +14,7 @@ import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
-import seedu.address.model.medicalreport.Date;
-import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
-import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -44,23 +41,14 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String nric;
-
-    // Med History
     @XmlElement(required = true)
     private String medHistDate;
     @XmlElement(required = true)
     private String allergy;
     @XmlElement(required = true)
     private String prevCountry;
-
-    // Medical Report
-    @XmlElement(required = true)
-    private String title;
-    @XmlElement(required = true)
-    private String date;
-    @XmlElement(required = true)
-    private String information;
-
+    @XmlElement
+    private List<XmlAdaptedReport> reports = new ArrayList<>();
     @XmlElement
     private List<XmlAdaptedAppt> appts = new ArrayList<>();
     @XmlElement
@@ -75,12 +63,15 @@ public class XmlAdaptedPerson {
     /**
      * Constructs an {@code XmlAdaptedPerson} with the given person details.
      */
-    public XmlAdaptedPerson(String name, String phone, String email, String address, List<XmlAdaptedAppt> appts,
-                            List<XmlAdaptedTag> tagged) {
+    public XmlAdaptedPerson(String name, String phone, String email, String address, List<XmlAdaptedReport> reports,
+                            List<XmlAdaptedAppt> appts, List<XmlAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        if (reports != null) {
+            this.reports = new ArrayList<>(reports);
+        }
         if (appts != null) {
             this.appts = new ArrayList<>(appts);
         }
@@ -100,17 +91,10 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
-
-        // Med History
         medHistDate = source.getMedHistory().getMedHistDate().value;
         allergy = source.getMedHistory().getAllergy().value;
         prevCountry = source.getMedHistory().getPrevCountry().value;
-
-        // Medical Report
-        title = source.getMedicalReport().getTitle().toString();
-        date = source.getMedicalReport().getDate().toString();
-        information = source.getMedicalReport().getInformation().toString();
-
+        reports = source.getMedicalReports().stream().map(XmlAdaptedReport::new).collect(Collectors.toList());
         appts = source.getAppts().stream().map(XmlAdaptedAppt::new).collect(Collectors.toList());
         tagged = source.getTags().stream().map(XmlAdaptedTag::new).collect(Collectors.toList());
     }
@@ -169,24 +153,11 @@ public class XmlAdaptedPerson {
          * MEDICAL REPORT SUBFIELDS
          * ==================================================
          */
-
-        if (title == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
+        final List<MedicalReport> personMedicalReports = new ArrayList<>();
+        for (XmlAdaptedReport report : reports) {
+            personMedicalReports.add(report.toModelType());
         }
-        final Title modelTitle = new Title(title);
-
-        if (date == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName()));
-        }
-        final Date modelDate = new Date(date);
-
-        if (information == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Information.class.getSimpleName()));
-        }
-        final Information modelInformation = new Information(information);
-
-        final MedicalReport modelReport = new MedicalReport(modelTitle, modelDate, modelInformation);
+        final Set<MedicalReport> modelReports = new HashSet<>(personMedicalReports);
 
         /**
          * ==================================================
@@ -231,7 +202,8 @@ public class XmlAdaptedPerson {
             personTags.add(tag.toModelType());
         }
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports,
                           modelMedHistory, modelAppts, modelNric, modelTags);
     }
 
@@ -251,13 +223,11 @@ public class XmlAdaptedPerson {
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(address, otherPerson.address)
                 // Medical History
-                && Objects.equals(date, otherPerson.date)
+                && Objects.equals(medHistDate, otherPerson.medHistDate)
                 && Objects.equals(allergy, otherPerson.allergy)
                 && Objects.equals(prevCountry, otherPerson.prevCountry)
                 // Medical Report
-                && Objects.equals(title, otherPerson.title)
-                && Objects.equals(date, otherPerson.date)
-                && Objects.equals(information, otherPerson.information)
+                && reports.equals(otherPerson.reports)
                 // Appt
                 && appts.equals(otherPerson.appts)
                 // Tags

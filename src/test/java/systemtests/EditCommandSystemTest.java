@@ -39,6 +39,8 @@ import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.COY;
 import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
+import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
+import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE2;
 
 import org.junit.Test;
 
@@ -116,16 +118,14 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         editedPerson = new PersonBuilder(personToEdit).withTags().build();
         assertCommandSuccess(command, index, editedPerson);
 
-        /* Case: edit a person with appts -> edited but appts still retained */
-        // Note: CommandSystemTest takes data from TypicalPersons, 2nd person in TypicalPersons is BENSON with
-        // APPT_EXAMPLE1 and APPT_EXAMPLE2
+        /* Case: edit a person with reports and appts -> edited but reports and appts still retained */
+        // Note: CommandSystemTest takes data from TypicalPersons, 2nd person in TypicalPersons is BENSON
         index = INDEX_SECOND_PERSON;
         command = EditCommand.COMMAND_WORD + "  " + index.getOneBased() + "  " + NAME_DESC_COY + "  "
                 + PHONE_DESC_COY + " " + EMAIL_DESC_COY + "  " + ADDRESS_DESC_COY + " " + TAG_DESC_FRIEND;
-        editedPerson = new PersonBuilder(COY).withTags(VALID_TAG_FRIEND).withAppts(APPT_EXAMPLE1, APPT_EXAMPLE2)
-                .build();
+        editedPerson = new PersonBuilder(COY).withTags(VALID_TAG_FRIEND)
+                .withMedicalReports(REPORT_EXAMPLE1, REPORT_EXAMPLE2).withAppts(APPT_EXAMPLE1, APPT_EXAMPLE2).build();
         assertCommandSuccess(command, index, editedPerson);
-
 
         /* ------------------ Performing edit operation while a filtered list is being shown ------------------------ */
 

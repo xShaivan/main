@@ -79,10 +79,13 @@ public class CommandTestUtil {
     //Medical Report
     public static final String VALID_TITLE1 = "Asthma";
     public static final String VALID_TITLE2 = "Depression";
+    public static final String VALID_TITLE3 = " Flu";
     public static final String VALID_DATE1 = "01/01/2018";
     public static final String VALID_DATE2 = "02/02/2018";
-    public static final String VALID_INFO1 = "Prescribed XXX medicine, next appointment on 02022018.";
-    public static final String VALID_INFO2 = "Prescribed XXX medicine, next appointment on 03032018.";
+    public static final String VALID_DATE3 = "03/03/2018";
+    public static final String VALID_INFO1 = "Prescribed XXX medicine, next appointment on 02/02/2018.";
+    public static final String VALID_INFO2 = "Prescribed XXX medicine, next appointment on 03/03/2018.";
+    public static final String VALID_INFO3 = "Prescribed XXX medicine, next appointment on 04/04/2018.";
 
     // Appt
     public static final String VALID_START_APPT1 = "01/01/2018 14:00";

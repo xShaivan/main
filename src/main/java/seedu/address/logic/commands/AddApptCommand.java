@@ -74,7 +74,7 @@ public class AddApptCommand extends Command {
         }
         newAppts.add(appt);
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getMedicalReport(), personToEdit.getMedHistory(), newAppts,
+                personToEdit.getAddress(), personToEdit.getMedicalReports(), personToEdit.getMedHistory(), newAppts,
                 personToEdit.getNric(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
