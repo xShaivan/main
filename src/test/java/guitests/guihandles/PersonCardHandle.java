@@ -117,12 +117,12 @@ public class PersonCardHandle extends NodeHandle<Node> {
                         .collect(Collectors.toList())))
                 && ImmutableMultiset.copyOf(getMedHistory())
                 .equals(ImmutableMultiset.copyOf(person.getMedHistory().stream()
-                        .map(medHistory -> medHistory.toString()).collect(Collectors.toList())));
+                        .map(medHistory -> medHistory.toString()).collect(Collectors.toList())))
                 && ImmutableMultiset.copyOf(getAppts()).equals(ImmutableMultiset.copyOf(person.getAppts().stream()
                 .map(appt -> appt.toString())
                 .collect(Collectors.toList())))
                 && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(person.getTags().stream()
                         .map(tag -> tag.tagName)
-                        .collect(Collectors.toList())))
+                        .collect(Collectors.toList())));
     }
 }
