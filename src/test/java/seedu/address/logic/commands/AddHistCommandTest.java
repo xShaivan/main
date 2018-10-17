@@ -1,12 +1,15 @@
 package seedu.address.logic.commands;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.Test;
@@ -14,129 +17,111 @@ import org.junit.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.AddInfoCommand.AddInfoPersonDescriptor;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
-import seedu.address.testutil.AddInfoPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 
-public class AddInfoCommandTest {
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for AddHistCommand.
+ */
+
+public class AddHistCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void executeAllFieldsSpecifiedUnfilteredListSuccess() {
-        Person editedPerson = new PersonBuilder().build();
-        AddInfoPersonDescriptor descriptor = new AddInfoPersonDescriptorBuilder(editedPerson).build();
-        AddInfoCommand addInfoCommand = new AddInfoCommand(INDEX_FIRST_PERSON, descriptor);
-
-
-        String expectedMessage = String.format(AddInfoCommand.MESSAGE_ADD_INFO_SUCCESS, editedPerson);
-
+    public void executeaddRemarkUnfilteredListsuccess() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withMedHistories(MEDHISTORY1).build();
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY1);
+        String expectedMessage = String.format(AddHistCommand.MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.updatePerson(model.getFilteredPersonList().get(0), editedPerson);
+        expectedModel.updatePerson(firstPerson, editedPerson);
         expectedModel.commitAddressBook();
-
-        assertCommandSuccess(addInfoCommand, model, commandHistory, expectedMessage, expectedModel);
+        assertCommandSuccess(addHistCommand, model, commandHistory, expectedMessage, expectedModel);
     }
-
     @Test
-    public void execute_filteredList_success() {
+    public void executefilteredListsuccess() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
-
-        Person personInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(personInFilteredList).withNric(VALID_NRIC_BOB).build();
-        AddInfoCommand addInfoCommand = new AddInfoCommand(INDEX_FIRST_PERSON,
-                new AddInfoPersonDescriptorBuilder().withNric(VALID_NRIC_BOB).build());
-
-        String expectedMessage = String.format(AddInfoCommand.MESSAGE_ADD_INFO_SUCCESS, editedPerson);
-
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
+                .withMedHistories(MEDHISTORY1).build();
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY2);
+        String expectedMessage = String.format(AddHistCommand.MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.updatePerson(model.getFilteredPersonList().get(0), editedPerson);
+        expectedModel.updatePerson(firstPerson, editedPerson);
         expectedModel.commitAddressBook();
-
-        assertCommandSuccess(addInfoCommand, model, commandHistory, expectedMessage, expectedModel);
+        assertCommandSuccess(addHistCommand, model, commandHistory, expectedMessage, expectedModel);
     }
 
     @Test
-    public void execute_invalidPersonIndexUnfilteredList_failure() {
+    public void executeinvalidPersonIndexUnfilteredListfailure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        AddInfoPersonDescriptor descriptor = new AddInfoPersonDescriptorBuilder().withNric(VALID_NRIC_BOB).build();
-        AddInfoCommand addInfoCommand = new AddInfoCommand(outOfBoundIndex, descriptor);
-
-        assertCommandFailure(addInfoCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, MEDHISTORY2);
+        assertCommandFailure(addHistCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
-
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * but smaller than size of Health Book
      */
     @Test
-    public void execute_invalidPersonIndexFilteredList_failure() {
+    public void executeinvalidPersonIndexFilteredListfailure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
-
-        AddInfoCommand addInfoCommand = new AddInfoCommand(outOfBoundIndex,
-                new AddInfoPersonDescriptorBuilder().withNric(VALID_NRIC_BOB).build());
-
-        assertCommandFailure(addInfoCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, MEDHISTORY2);
+        assertCommandFailure(addHistCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
-
-    /*
     @Test
-    public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
+    public void executeUndoRedovalidIndexUnfilteredListsuccess() throws Exception {
         Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person modifiedPerson = new PersonBuilder(personToModify).withNric(NRIC_STUB).build();
-        AddInfoCommand addInfoCommand = new AddInfoCommand(INDEX_FIRST_PERSON, new Nric(NRIC_STUB));
+        Person modifiedPerson = new PersonBuilder(personToModify).withMedHistories(MEDHISTORY1).build();
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY1);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.updatePerson(personToModify, modifiedPerson);
         expectedModel.commitAddressBook();
-
-        // nric -> first person nric changed
-        addInfoCommand.execute(model, commandHistory);
-
+        // addhist -> first patient's medical history changed
+        addHistCommand.execute(model, commandHistory);
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
         expectedModel.undoAddressBook();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
-
         // redo -> same first person modified again
         expectedModel.redoAddressBook();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
-
     @Test
-    public void executeUndoRedo_invalidIndexUnfilteredList_failure() {
+    public void executeUndoRedoinvalidIndexUnfilteredListfailure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        AddInfoCommand addInfoCommand = new AddInfoCommand(outOfBoundIndex, new Nric(""));
-
+        AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, EMPTY_MEDHISTORY);
         // execution failed -> address book state not added into model
-        assertCommandFailure(addInfoCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-
+        assertCommandFailure(addHistCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         // single address book state in model -> undoCommand and redoCommand fail
         assertCommandFailure(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_FAILURE);
         assertCommandFailure(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_FAILURE);
     }
-
+    /**
+     * 1. Modifies {@code Person#addhist} from a filtered list.
+     * 2. Undo the modification.
+     * 3. The unfiltered list should be shown now. Verify that the index of the previously modified person in the
+     * unfiltered list is different from the index at the filtered list.
+     * 4. Redo the modification. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
+     */
     @Test
-    public void executeUndoRedo_validIndexFilteredList_samePersonDeleted() throws Exception {
-        AddInfoCommand addInfoCommand = new AddInfoCommand(INDEX_FIRST_PERSON, new Nric(NRIC_STUB));
+    public void executeUndoRedovalidIndexFilteredListsamePersonDeleted() throws Exception {
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY2);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-
         showPersonAtIndex(model, INDEX_SECOND_PERSON);
         Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person modifiedPerson = new PersonBuilder(personToModify).withNric(NRIC_STUB).build();
+        Person modifiedPerson = new PersonBuilder(personToModify).withMedHistories(MEDHISTORY1).build();
         expectedModel.updatePerson(personToModify, modifiedPerson);
         expectedModel.commitAddressBook();
-
         // remark -> modifies second person in unfiltered person list / first person in filtered person list
-        addInfoCommand.execute(model, commandHistory);
-
+        addHistCommand.execute(model, commandHistory);
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
         expectedModel.undoAddressBook();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
@@ -144,30 +129,26 @@ public class AddInfoCommandTest {
         // redo -> modifies same second person in unfiltered person list
         expectedModel.redoAddressBook();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
+
     }
 
     @Test
     public void equals() {
-        final AddInfoCommand standardCommand = new AddInfoCommand(INDEX_FIRST_PERSON, new Nric(VALID_NRIC_AMY));
-
-        // same value -> returns true
-        AddInfoCommand commandWithSameValues = new AddInfoCommand(INDEX_FIRST_PERSON, new Nric(VALID_NRIC_AMY));
+        final AddHistCommand standardCommand = new AddHistCommand(INDEX_FIRST_PERSON,
+                MEDHISTORY1);
+        // same values -> returns true
+        AddHistCommand commandWithSameValues = new AddHistCommand(INDEX_FIRST_PERSON,
+                MEDHISTORY1);
         assertTrue(standardCommand.equals(commandWithSameValues));
-
         // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
-
         // null -> returns false
-        assertFalse(standardCommand.equals(null));
-
+        assertFalse(standardCommand == null);
         // different types -> returns false
         assertFalse(standardCommand.equals(new ClearCommand()));
-
         // different index -> returns false
-        assertFalse(standardCommand.equals(new AddInfoCommand(INDEX_SECOND_PERSON, new Nric(VALID_NRIC_AMY))));
-
-        // different NRIC -> returns false
-        assertFalse(standardCommand.equals(new AddInfoCommand(INDEX_FIRST_PERSON, new Nric(VALID_NRIC_BOB))));
+        assertFalse(standardCommand.equals(new AddHistCommand(INDEX_SECOND_PERSON, MEDHISTORY1)));
+        // different remark -> returns false
+        assertFalse(standardCommand.equals(new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY2)));
     }
-    */
 }
