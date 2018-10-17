@@ -7,8 +7,9 @@
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
+        <dateOfBirth>01-01-1970</dateOfBirth>
         <title></title>
-        <reportDate></reportDate>
+        <date></date>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -26,8 +27,9 @@
         <email>johnd@example.com</email>
         <address>311, Clementi Ave 2, #02-25</address>
         <nric></nric>
+        <dateOfBirth>01-01-1970</dateOfBirth>
         <title></title>
-        <reportDate></reportDate>
+        <date></date>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -46,8 +48,9 @@
         <email>heinz@example.com</email>
         <address>wall street</address>
         <nric></nric>
+        <dateOfBirth>01-01-1970</dateOfBirth>
         <title></title>
-        <reportDate></reportDate>
+        <date></date>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -64,8 +67,9 @@
         <email>cornelia@example.com</email>
         <address>10th street</address>
         <nric></nric>
+        <dateOfBirth>01-01-1970</dateOfBirth>
         <title></title>
-        <reportDate></reportDate>
+        <date></date>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -83,8 +87,9 @@
         <email>werner@example.com</email>
         <address>michegan ave</address>
         <nric></nric>
+        <dateOfBirth>01-01-1970</dateOfBirth>
         <title></title>
-        <reportDate></reportDate>
+        <date></date>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -101,8 +106,9 @@
         <email>lydia@example.com</email>
         <address>little tokyo</address>
         <nric></nric>
+        <dateOfBirth>01-01-1970</dateOfBirth>
         <title></title>
-        <reportDate></reportDate>
+        <date></date>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>
@@ -119,8 +125,9 @@
         <email>anna@example.com</email>
         <address>4th street</address>
         <nric>S5185093I</nric>
+        <dateOfBirth>01-01-1970</dateOfBirth>
         <title></title>
-        <reportDate></reportDate>
+        <date></date>
         <information></information>
         <medHistDate></medHistDate>
         <allergy></allergy>

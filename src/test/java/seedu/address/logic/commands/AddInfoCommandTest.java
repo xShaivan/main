@@ -22,14 +22,11 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.AddInfoPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddInfoCommandTest {
-
-    private static final String NRIC_STUB = "S8010517G";
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();

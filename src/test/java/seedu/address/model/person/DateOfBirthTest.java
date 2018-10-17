@@ -13,7 +13,7 @@ public class DateOfBirthTest {
 
     @Test
     public void constructorNullThrowsNullPointerException() {
-        Assert.assertThrows(DateTimeParseException.class, () -> new DateOfBirth(null));
+        Assert.assertThrows(NullPointerException.class, () -> new DateOfBirth(null));
     }
 
     @Test

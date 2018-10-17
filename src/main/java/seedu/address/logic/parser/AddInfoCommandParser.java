@@ -41,6 +41,10 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
             addInfoPersonDescriptor.setDateOfBirth(ParserUtil.parseDateOfBirth(argMultiMap.getValue(PREFIX_ADD_INFO_DOB).get()));
         }
 
+        if (!addInfoPersonDescriptor.isAnyFieldEdited()) {
+            throw new ParseException(AddInfoCommand.MESSAGE_NOT_EDITED);
+        }
+
         return new AddInfoCommand(index, addInfoPersonDescriptor);
     }
 }
