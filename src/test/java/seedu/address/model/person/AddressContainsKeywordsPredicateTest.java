@@ -17,8 +17,8 @@ public class AddressContainsKeywordsPredicateTest {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
         // List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        AddressContainsKeywordsPredicate firstPredicate
-                = new AddressContainsKeywordsPredicate(firstPredicateKeywordList);
+        AddressContainsKeywordsPredicate firstPredicate =
+                new AddressContainsKeywordsPredicate(firstPredicateKeywordList);
         // AddressContainsKeywordsPredicate secondPredicate
         // = new AddressContainsKeywordsPredicate(secondPredicateKeywordList);
 
@@ -26,8 +26,8 @@ public class AddressContainsKeywordsPredicateTest {
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        AddressContainsKeywordsPredicate firstPredicateCopy
-                = new AddressContainsKeywordsPredicate(firstPredicateKeywordList);
+        AddressContainsKeywordsPredicate firstPredicateCopy =
+                new AddressContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -43,11 +43,11 @@ public class AddressContainsKeywordsPredicateTest {
     @Test
     public void testAddressContainsKeywordsreturnsTrue() {
         // One keyword
-        AddressContainsKeywordsPredicate predicate
-                = new AddressContainsKeywordsPredicate(Collections.singletonList("Bishan"));
+        AddressContainsKeywordsPredicate predicate =
+                new AddressContainsKeywordsPredicate(Collections.singletonList("Bishan"));
         assertTrue(predicate.test(new PersonBuilder().withAddress("Bishan Rd").build()));
 
-    /*
+        /*
     // Multiple keywords
     predicate = new AddressContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
     assertTrue(predicate.test(new PersonBuilder().withAddress("Alice Bob").build()));
@@ -59,7 +59,7 @@ public class AddressContainsKeywordsPredicateTest {
     // Mixed-case keywords
     predicate = new AddressContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
     assertTrue(predicate.test(new PersonBuilder().withAddress("Alice Bob").build()));
-    */
+        */
 
         //Mixed-case keyword
         predicate = new AddressContainsKeywordsPredicate(Arrays.asList("BiShAn"));
@@ -69,8 +69,8 @@ public class AddressContainsKeywordsPredicateTest {
     @Test
     public void testAddressDoesNotContainKeywordsreturnsFalse() {
         // Zero keywords
-        AddressContainsKeywordsPredicate predicate
-                = new AddressContainsKeywordsPredicate(Collections.emptyList());
+        AddressContainsKeywordsPredicate predicate =
+                new AddressContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withAddress("Bishan Rd").build()));
 
         // Non-matching keyword

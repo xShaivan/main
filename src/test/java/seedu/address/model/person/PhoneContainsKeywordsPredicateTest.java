@@ -26,8 +26,8 @@ public class PhoneContainsKeywordsPredicateTest {
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        PhoneContainsKeywordsPredicate firstPredicateCopy
-                = new PhoneContainsKeywordsPredicate(firstPredicateKeywordList);
+        PhoneContainsKeywordsPredicate firstPredicateCopy =
+                new PhoneContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -43,8 +43,8 @@ public class PhoneContainsKeywordsPredicateTest {
     @Test
     public void testPhoneContainsKeywordsreturnsTrue() {
         // One keyword
-        PhoneContainsKeywordsPredicate predicate
-                = new PhoneContainsKeywordsPredicate(Collections.singletonList("91234567"));
+        PhoneContainsKeywordsPredicate predicate =
+                new PhoneContainsKeywordsPredicate(Collections.singletonList("91234567"));
         assertTrue(predicate.test(new PersonBuilder().withPhone("91234567").build()));
         /*
         // Multiple keywords

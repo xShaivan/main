@@ -18,16 +18,17 @@ public class EmailContainsKeywordsPredicateTest {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
         // List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        EmailContainsKeywordsPredicate firstPredicate
-                = new EmailContainsKeywordsPredicate(firstPredicateKeywordList);
-        // EmailContainsKeywordsPredicate secondPredicate = new EmailContainsKeywordsPredicate(secondPredicateKeywordList);
+        EmailContainsKeywordsPredicate firstPredicate =
+                new EmailContainsKeywordsPredicate(firstPredicateKeywordList);
+        // EmailContainsKeywordsPredicate secondPredicate =
+        // new EmailContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        EmailContainsKeywordsPredicate firstPredicateCopy
-                = new EmailContainsKeywordsPredicate(firstPredicateKeywordList);
+        EmailContainsKeywordsPredicate firstPredicateCopy =
+                new EmailContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -43,8 +44,8 @@ public class EmailContainsKeywordsPredicateTest {
     @Test
     public void testEmailContainsKeywordsxreturnsTrue() {
         // One keyword
-        EmailContainsKeywordsPredicate predicate
-                = new EmailContainsKeywordsPredicate(Collections.singletonList("alice@email.com"));
+        EmailContainsKeywordsPredicate predicate =
+                new EmailContainsKeywordsPredicate(Collections.singletonList("alice@email.com"));
         assertTrue(predicate.test(new PersonBuilder().withEmail("alice@email.com").build()));
 
         /*
