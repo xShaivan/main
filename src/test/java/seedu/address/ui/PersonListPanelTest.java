@@ -100,10 +100,6 @@ public class PersonListPanelTest extends GuiUnitTest {
             builder.append("<email>a@aa</email>\n");
             builder.append("<address>a</address>\n");
             builder.append("<nric></nric>\n");
-            // MedHistory
-            builder.append("<medHistDate></medHistDate>\n");
-            builder.append("<allergy></allergy>\n");
-            builder.append("<prevCountry></prevCountry>\n");
             // Medical Report
             builder.append("<title></title>\n");
             builder.append("<date></date>\n");

@@ -50,8 +50,7 @@ public class AddHistCommandTest {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
                 .withMedHistories(MEDHISTORY1).build();
-        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON,
-                MEDHISTORY1);
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY2);
         String expectedMessage = String.format(AddHistCommand.MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.updatePerson(firstPerson, editedPerson);
@@ -62,7 +61,7 @@ public class AddHistCommandTest {
     @Test
     public void executeinvalidPersonIndexUnfilteredListfailure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, MEDHISTORY1);
+        AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, MEDHISTORY2);
         assertCommandFailure(addHistCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
     /**
@@ -75,7 +74,7 @@ public class AddHistCommandTest {
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
-        AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, MEDHISTORY1);
+        AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, MEDHISTORY2);
         assertCommandFailure(addHistCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
     @Test

@@ -141,7 +141,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, report, medhistory, appt, nric, tags);
+        return new Person(name, phone, email, address, report, medHistories, appt, nric, tags);
     }
 
 }

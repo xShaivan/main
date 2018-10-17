@@ -41,9 +41,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label medicalreport;
     @FXML
-    private Flowpane medHistories;
-    @FXML
     private Label appt;
+    @FXML
+    private FlowPane medHistories;
     @FXML
     private FlowPane tags;
 
