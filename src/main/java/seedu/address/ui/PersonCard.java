@@ -40,6 +40,7 @@ public class PersonCard extends UiPart<Region> {
     private Label nric;
     @FXML
     private Label dateOfBirth;
+    @FXML
     private FlowPane reports;
     @FXML
     private FlowPane appts;
