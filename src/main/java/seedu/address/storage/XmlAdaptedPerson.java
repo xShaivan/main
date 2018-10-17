@@ -26,10 +26,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptDateTime;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
 
 /**
  * JAXB-friendly version of the Person.
@@ -48,16 +44,14 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String nric;
-    @XmlElement(required = true)
-    private String report;
+
+    // Med History
     @XmlElement(required = true)
     private String medHistDate;
     @XmlElement(required = true)
     private String allergy;
     @XmlElement(required = true)
     private String prevCountry;
-    @XmlElement(required = true)
-    private String medhistory;
 
     // Medical Report
     @XmlElement(required = true)
@@ -67,19 +61,8 @@ public class XmlAdaptedPerson {
     @XmlElement(required = true)
     private String information;
 
-    // Appt
-    @XmlElement(required = true)
-    private String apptStart;
-    @XmlElement(required = true)
-    private String apptEnd;
-    @XmlElement(required = true)
-    private String apptVenue;
-    @XmlElement(required = true)
-    private String apptInfo;
-    @XmlElement(required = true)
-    private String apptDrName;
-
-
+    @XmlElement
+    private List<XmlAdaptedAppt> appts = new ArrayList<>();
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
 
@@ -92,11 +75,15 @@ public class XmlAdaptedPerson {
     /**
      * Constructs an {@code XmlAdaptedPerson} with the given person details.
      */
-    public XmlAdaptedPerson(String name, String phone, String email, String address, List<XmlAdaptedTag> tagged) {
+    public XmlAdaptedPerson(String name, String phone, String email, String address, List<XmlAdaptedAppt> appts,
+                            List<XmlAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        if (appts != null) {
+            this.appts = new ArrayList<>(appts);
+        }
         if (tagged != null) {
             this.tagged = new ArrayList<>(tagged);
         }
@@ -113,23 +100,19 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nric = source.getNric().value;
+
+        // Med History
         medHistDate = source.getMedHistory().getMedHistDate().value;
         allergy = source.getMedHistory().getAllergy().value;
         prevCountry = source.getMedHistory().getPrevCountry().value;
+
         // Medical Report
         title = source.getMedicalReport().getTitle().toString();
         date = source.getMedicalReport().getDate().toString();
         information = source.getMedicalReport().getInformation().toString();
 
-        // Appt
-        apptStart = source.getAppt().getStart().toString();
-        apptEnd = source.getAppt().getEnd().toString();
-        apptVenue = source.getAppt().getVenue().toString();
-        apptInfo = source.getAppt().getInfo().toString();
-        apptDrName = source.getAppt().getDrName().toString();
-        tagged = source.getTags().stream()
-                .map(XmlAdaptedTag::new)
-                .collect(Collectors.toList());
+        appts = source.getAppts().stream().map(XmlAdaptedAppt::new).collect(Collectors.toList());
+        tagged = source.getTags().stream().map(XmlAdaptedTag::new).collect(Collectors.toList());
     }
 
     /**
@@ -138,11 +121,6 @@ public class XmlAdaptedPerson {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person
      */
     public Person toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
-        for (XmlAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
-        }
-
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -234,49 +212,27 @@ public class XmlAdaptedPerson {
         }
         final PrevCountry modelPrevCountry = new PrevCountry(prevCountry);
 
+        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
+
         /**
          * ==================================================
          * APPT SUBFIELDS
          * ==================================================
          */
 
-        if (apptStart == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ApptDateTime.class.getSimpleName()));
+        final List<Appt> personAppts = new ArrayList<>();
+        for (XmlAdaptedAppt appt : appts) {
+            personAppts.add(appt.toModelType());
         }
-        final ApptDateTime modelApptStart = new ApptDateTime(apptStart);
+        final Set<Appt> modelAppts = new HashSet<>(personAppts);
 
-        if (apptEnd == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ApptDateTime.class.getSimpleName()));
+        final List<Tag> personTags = new ArrayList<>();
+        for (XmlAdaptedTag tag : tagged) {
+            personTags.add(tag.toModelType());
         }
-        final ApptDateTime modelApptEnd = new ApptDateTime(apptEnd);
-
-        if (apptVenue == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ApptVenue.class.getSimpleName()));
-        }
-        final ApptVenue modelApptVenue = new ApptVenue(apptVenue);
-
-        if (apptInfo == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ApptInfo.class.getSimpleName()));
-        }
-        final ApptInfo modelApptInfo = new ApptInfo(apptInfo);
-
-        if (apptDrName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ApptDrName.class.getSimpleName()));
-        }
-        final ApptDrName modelApptDrName = new ApptDrName(apptDrName);
-
-        final Appt modelAppt = new Appt(modelApptStart, modelApptEnd, modelApptVenue, modelApptInfo, modelApptDrName);
-
-        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
-
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReport,
-                          modelMedHistory, modelAppt, modelNric, modelTags);
+                          modelMedHistory, modelAppts, modelNric, modelTags);
     }
 
     @Override
@@ -303,11 +259,7 @@ public class XmlAdaptedPerson {
                 && Objects.equals(date, otherPerson.date)
                 && Objects.equals(information, otherPerson.information)
                 // Appt
-                && Objects.equals(apptStart, otherPerson.apptStart)
-                && Objects.equals(apptEnd, otherPerson.apptEnd)
-                && Objects.equals(apptVenue, otherPerson.apptVenue)
-                && Objects.equals(apptInfo, otherPerson.apptInfo)
-                && Objects.equals(apptDrName, otherPerson.apptDrName)
+                && appts.equals(otherPerson.appts)
                 // Tags
                 && tagged.equals(otherPerson.tagged);
     }

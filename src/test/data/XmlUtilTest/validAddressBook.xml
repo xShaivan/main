@@ -12,11 +12,6 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Ruth Mueller</name>
@@ -30,11 +25,6 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Heinz Kurz</name>
@@ -48,11 +38,6 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Cornelia Meier</name>
@@ -66,11 +51,6 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Werner Meyer</name>
@@ -84,11 +64,6 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Lydia Kunz</name>
@@ -102,11 +77,6 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Anna Best</name>
@@ -120,11 +90,6 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Stefan Meier</name>
@@ -138,11 +103,6 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Martin Mueller</name>
@@ -156,10 +116,5 @@
         <medHistDate isPrivate="false"></medHistDate>
         <allergy isPrivate="false"></allergy>
         <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
 </addressbook>

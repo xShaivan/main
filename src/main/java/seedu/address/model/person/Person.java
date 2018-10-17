@@ -26,7 +26,7 @@ public class Person {
     // Data fields
     private final Address address;
     private final MedHistory medhistory;
-    private final Appt appt;
+    private final Set<Appt> appts = new HashSet<>();
     private final Set<Tag> tags = new HashSet<>();
     private final MedicalReport report;
 
@@ -37,7 +37,7 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, MedicalReport report,
-                  MedHistory medhistory, Appt appt, Nric nric, Set<Tag> tags) {
+                  MedHistory medhistory, Set<Appt> appts, Nric nric, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -46,7 +46,7 @@ public class Person {
         this.nric = nric;
         this.report = report;
         this.medhistory = medhistory;
-        this.appt = appt;
+        this.appts.addAll(appts);
         this.tags.addAll(tags);
     }
 
@@ -78,8 +78,8 @@ public class Person {
         return nric;
     }
 
-    public Appt getAppt() {
-        return appt;
+    public Set<Appt> getAppts() {
+        return Collections.unmodifiableSet(appts);
     }
 
     /**
