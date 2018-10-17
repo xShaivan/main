@@ -16,6 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
@@ -47,13 +48,13 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Set<MedicalReport> reports = new HashSet<>(); // add command does not allow adding reports straight away
         Set<MedHistory> medHistories = new HashSet<>();
         Set<Appt> appts = new HashSet<>(); // add command does not allow adding appts straight away
         Nric nric = new Nric("");
-        Set<MedicalReport> reports = new HashSet<>(); // add command does not allow adding reports straight away
+        DateOfBirth dateOfBirth = new DateOfBirth("01-01-1970");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-
-        Person person = new Person(name, phone, email, address, reports, medHistories, appts, nric, tagList);
+        Person person = new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, tagList);
 
         return new AddCommand(person);
     }

@@ -19,6 +19,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.testutil.AddInfoPersonDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -61,6 +62,9 @@ public class CommandTestUtil {
 
     public static final String VALID_NRIC_AMY = "S9799909J";
     public static final String VALID_NRIC_BOB = "S9880095F";
+
+    public static final String VALID_DATE_OF_BIRTH_AMY = "10-02-1986";
+    public static final String VALID_DATE_OF_BIRTH_BOB = "01-05-2005";
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -107,6 +111,9 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
+    public static final AddInfoCommand.AddInfoPersonDescriptor ADDINFO_DESC_AMY;
+    public static final AddInfoCommand.AddInfoPersonDescriptor ADDINFO_DESC_BOB;
+
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
@@ -117,6 +124,13 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+    }
+
+    static {
+        ADDINFO_DESC_AMY = new AddInfoPersonDescriptorBuilder().withNric(VALID_NRIC_AMY)
+                .withDateOfBirth(VALID_DATE_OF_BIRTH_AMY).build();
+        ADDINFO_DESC_BOB = new AddInfoPersonDescriptorBuilder().withNric(VALID_NRIC_BOB)
+                .withDateOfBirth(VALID_DATE_OF_BIRTH_BOB).build();
     }
 
     /**

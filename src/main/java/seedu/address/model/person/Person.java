@@ -32,18 +32,20 @@ public class Person {
 
     // Additional information fields
     private final Nric nric;
+    private final DateOfBirth dateOfBirth;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<MedicalReport> reports,
-                   Set<MedHistory> medHistories, Set<Appt> appts, Nric nric, Set<Tag> tags) {
+                   Set<MedHistory> medHistories, Set<Appt> appts, Nric nric, DateOfBirth dateOfBirth, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.nric = nric;
+        this.dateOfBirth = dateOfBirth;
         this.reports.addAll(reports);
         this.medHistories.addAll(medHistories);
         this.appts.addAll(appts);
@@ -78,6 +80,10 @@ public class Person {
         return nric;
     }
 
+    public DateOfBirth getDateOfBirth() {
+        return dateOfBirth;
+    }
+    
     public Set<Appt> getAppts() {
         return Collections.unmodifiableSet(appts);
     }

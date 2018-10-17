@@ -10,13 +10,13 @@ import java.util.Objects;
 public class MedicalReport {
 
     private final Title title;
-    private final ReportDate date;
+    private final ReportDate reportDate;
     private final Information information;
 
-    public MedicalReport(Title title, ReportDate date, Information information) {
-        requireAllNonNull(title, date, information);
+    public MedicalReport(Title title, ReportDate reportDate, Information information) {
+        requireAllNonNull(title, reportDate, information);
         this.title = title;
-        this.date = date;
+        this.reportDate = reportDate;
         this.information = information;
     }
 
@@ -24,8 +24,8 @@ public class MedicalReport {
         return title;
     }
 
-    public ReportDate getDate() {
-        return date;
+    public ReportDate getReportDate() {
+        return reportDate;
     }
 
     public Information getInformation() {
@@ -34,7 +34,7 @@ public class MedicalReport {
 
     @Override
     public String toString() {
-        return title.toString() + " " + date.toString() + " " + information.toString() + " ";
+        return title.toString() + " " + reportDate.toString() + " " + information.toString() + " ";
     }
 
     @Override
@@ -47,13 +47,13 @@ public class MedicalReport {
         }
         MedicalReport otherMedicalReport = (MedicalReport) other;
         return otherMedicalReport.getTitle().equals(getTitle())
-                && otherMedicalReport.getDate().equals(getDate())
+                && otherMedicalReport.getReportDate().equals(getReportDate())
                 && otherMedicalReport.getInformation().equals(getInformation());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, date, information);
+        return Objects.hash(title, reportDate, information);
     }
 }

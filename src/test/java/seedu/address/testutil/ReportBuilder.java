@@ -18,12 +18,12 @@ public class ReportBuilder {
     public static final String DEFAULT_INFO = VALID_INFO1;
 
     private Title title;
-    private ReportDate date;
+    private ReportDate reportDate;
     private Information information;
 
     public ReportBuilder() {
         title = new Title(DEFAULT_TITLE);
-        date = new ReportDate(DEFAULT_DATE);
+        reportDate = new ReportDate(DEFAULT_DATE);
         information = new Information(DEFAULT_INFO);
     }
     /**
@@ -31,7 +31,7 @@ public class ReportBuilder {
      */
     public ReportBuilder(MedicalReport reportToCopy) {
         title = reportToCopy.getTitle();
-        date = reportToCopy.getDate();
+        reportDate = reportToCopy.getReportDate();
         information = reportToCopy.getInformation();
     }
     /**
@@ -45,7 +45,7 @@ public class ReportBuilder {
      * Sets the {@code ReportDate} of the {@code MedicalReport} that we are building.
      */
     public ReportBuilder withDate(String date) {
-        this.date = new ReportDate(date);
+        this.reportDate = new ReportDate(date);
         return this;
     }
     /**
@@ -57,6 +57,6 @@ public class ReportBuilder {
     }
 
     public MedicalReport build() {
-        return new MedicalReport(title, date, information);
+        return new MedicalReport(title, reportDate, information);
     }
 }
