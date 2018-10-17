@@ -83,7 +83,7 @@ public class Person {
     public DateOfBirth getDateOfBirth() {
         return dateOfBirth;
     }
-    
+
     public Set<Appt> getAppts() {
         return Collections.unmodifiableSet(appts);
     }

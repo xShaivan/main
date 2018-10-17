@@ -157,7 +157,7 @@ public class XmlAdaptedPerson {
          * MEDICAL REPORT SUBFIELDS
          * ==================================================
          */
- 
+
         final List<MedicalReport> personMedicalReports = new ArrayList<>();
         for (XmlAdaptedReport report : reports) {
             personMedicalReports.add(report.toModelType());
