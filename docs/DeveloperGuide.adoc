@@ -333,6 +333,22 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+// tag::addinfo
+=== Additional Information
+== Current Implementation
+The `addinfo` command is facilitated by the `AddInfoPersonDescriptor` class. Essentially, it is in-charged of changing the `Nric`, `DateOfBirth` attributes in a `Person` class.
+
+The command requires user to input an `index` based on the result of the `list` command. Upon getting the `index` input, the `AddInfoCommand` selects the `Person` based on the index from the `model`.
+
+This is followed by copying the existing attributes of the `Person` selected into an `editPerson` so that existing attributes like `Names` and `Phone` will not be edited.
+
+The command then checks for the arguments after the `index`. If an appropriate argument (eg. `\n`) has been found, it will tokenize the string following the argument. The tokenized string will then be parsed into the function in the `ParserUtil` class which checks for the validity of the string.
+If the string is valid, the object that is to be edited will be returned. Otherwise, an exception will be raised.
+
+Once the objects that are to be edited (eg. `NRIC`, `DateOfBirth`) have been returned, they will be processed by the `AddPersonInfoDescriptor` class which changes the respective values of the objects that are to be edited.
+The `Person` object that is returned will be used to replace the `Person` that was to be edited.
+// end::addinfo
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
