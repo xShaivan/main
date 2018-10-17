@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 import seedu.address.model.person.TagContainsKeywordsPredicate;
+
 import seedu.address.testutil.PersonBuilder;
 
 public class TagContainsKeywordsPredicateTest {
@@ -73,7 +74,8 @@ public class TagContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new PersonBuilder().withTags("friends").build()));
 
         // Keywords match name, phone, email and address, but does not match Tag
-        predicate = new TagContainsKeywordsPredicate(Arrays.asList("Alice", "12345", "alice@email.com", "Main", "Street"));
+        predicate = new TagContainsKeywordsPredicate(Arrays.asList("Alice", "12345", "alice@email.com", "Main",
+                "Street"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").withTags("friends").build()));
     }

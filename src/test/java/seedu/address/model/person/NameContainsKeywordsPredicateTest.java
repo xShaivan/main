@@ -19,7 +19,8 @@ public class NameContainsKeywordsPredicateTest {
         // List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
         NameContainsKeywordsPredicate firstPredicate = new NameContainsKeywordsPredicate(firstPredicateKeywordList);
-        // NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate(secondPredicateKeywordList);
+        // NameContainsKeywordsPredicate secondPredicate
+        // = new NameContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));

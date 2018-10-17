@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
+
 import seedu.address.testutil.PersonBuilder;
 
 public class AddressContainsKeywordsPredicateTest {
@@ -16,14 +17,17 @@ public class AddressContainsKeywordsPredicateTest {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
         // List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        AddressContainsKeywordsPredicate firstPredicate = new AddressContainsKeywordsPredicate(firstPredicateKeywordList);
-        // AddressContainsKeywordsPredicate secondPredicate = new AddressContainsKeywordsPredicate(secondPredicateKeywordList);
+        AddressContainsKeywordsPredicate firstPredicate
+                = new AddressContainsKeywordsPredicate(firstPredicateKeywordList);
+        // AddressContainsKeywordsPredicate secondPredicate
+        // = new AddressContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        AddressContainsKeywordsPredicate firstPredicateCopy = new AddressContainsKeywordsPredicate(firstPredicateKeywordList);
+        AddressContainsKeywordsPredicate firstPredicateCopy
+                = new AddressContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -39,7 +43,8 @@ public class AddressContainsKeywordsPredicateTest {
     @Test
     public void testAddressContainsKeywordsreturnsTrue() {
         // One keyword
-        AddressContainsKeywordsPredicate predicate = new AddressContainsKeywordsPredicate(Collections.singletonList("Bishan"));
+        AddressContainsKeywordsPredicate predicate
+                = new AddressContainsKeywordsPredicate(Collections.singletonList("Bishan"));
         assertTrue(predicate.test(new PersonBuilder().withAddress("Bishan Rd").build()));
 
     /*
@@ -64,7 +69,8 @@ public class AddressContainsKeywordsPredicateTest {
     @Test
     public void testAddressDoesNotContainKeywordsreturnsFalse() {
         // Zero keywords
-        AddressContainsKeywordsPredicate predicate = new AddressContainsKeywordsPredicate(Collections.emptyList());
+        AddressContainsKeywordsPredicate predicate
+                = new AddressContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withAddress("Bishan Rd").build()));
 
         // Non-matching keyword
