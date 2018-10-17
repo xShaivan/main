@@ -57,7 +57,7 @@ public class AddHistCommand extends Command {
         Set<MedHistory> fullMedHistories = personToEdit.getMedHistory();
         Set<MedHistory> newMedHistories = new HashSet<>();
         // for loop overwrites all existing history with itself
-        for(MedHistory medHistory : fullMedHistories) {
+        for (MedHistory medHistory : fullMedHistories) {
             newMedHistories.add(medHistory);
         }
         // adds the new history from command

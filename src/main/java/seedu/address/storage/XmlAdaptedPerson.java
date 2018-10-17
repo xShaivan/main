@@ -10,10 +10,7 @@ import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.medhistory.Allergy;
-import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
-import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Date;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
@@ -93,7 +90,7 @@ public class XmlAdaptedPerson {
         if (tagged != null) {
             this.tagged = new ArrayList<>(tagged);
         }
-        if(medHistories !=null) {
+        if (medHistories != null) {
             this.medHistories = new ArrayList<>(medHistories);
         }
     }

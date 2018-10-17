@@ -79,7 +79,7 @@ public class SampleDataUtil {
 
     public static Set<MedHistory> getMedHistorySet(MedHistory... medHistories) {
         Set<MedHistory> medHistorySet = new HashSet<>();
-        for(MedHistory medHistory : medHistories) {
+        for (MedHistory medHistory : medHistories) {
             medHistorySet.add(medHistory);
         }
         return medHistorySet;
