@@ -333,10 +333,6 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-STARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTART
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 // tag::addappt[]
 === AddAppointment feature
 ==== Current Implementation
@@ -362,15 +358,7 @@ Step 4. The `addappt` command will call `Model#updatePerson()` to update the per
 
 The following sequence diagram shows how the addappt operation works:
 
-image::UndoRedoSequenceDiagram.png[width="800"]
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-image::UndoRedoActivityDiagram.png[width="650"]
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-ENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDEND
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+image::AddApptSequenceDiagram.png[width="800"]
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
