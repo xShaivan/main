@@ -35,6 +35,8 @@ import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE2;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
 import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.COY;
@@ -94,6 +96,10 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, index, BOB);
 
         /* Case: edit a person with new values same as another person's values but with different name -> edited */
+        // INDEX_SECOND_PERSON referring to BENSON in TypicalPersons.java has 2 MedicalReports, 2 MedHistories
+        // and 2 Appts added to him.
+        // Hence, all instances of BENSON here requires .withMedHistories(MEDHISTORY1, MEDHISTORY2) in the
+        // PersonBuilder to change expected result to match actual result
         assertTrue(getModel().getAddressBook().getPersonList().contains(BOB));
         index = INDEX_THIRD_PERSON;
         assertNotEquals(getModel().getFilteredPersonList().get(index.getZeroBased()), BOB);
@@ -105,6 +111,10 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         /* Case: edit a person with new values same as another person's values but with different phone and email
          * -> edited
          */
+        // INDEX_SECOND_PERSON referring to BENSON in TypicalPersons.java had
+        // .withMedHistories(MEDHISTORY1, MEDHISTORY2) added to him.
+        // Hence, all instances of BENSON here requires .withMedHistories(MEDHISTORY1, MEDHISTORY2) in the
+        // PersonBuilder to change expected result to match actual result
         index = INDEX_THIRD_PERSON;
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_BOB + TAG_DESC_FRIEND + TAG_DESC_HUSBAND;
@@ -118,13 +128,15 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         editedPerson = new PersonBuilder(personToEdit).withTags().build();
         assertCommandSuccess(command, index, editedPerson);
 
-        /* Case: edit a person with reports and appts -> edited but reports and appts still retained */
+        /* Case: edit a person with reports, medical histories, and appts
+        -> edited but reports and appts still retained */
         // Note: CommandSystemTest takes data from TypicalPersons, 2nd person in TypicalPersons is BENSON
         index = INDEX_SECOND_PERSON;
         command = EditCommand.COMMAND_WORD + "  " + index.getOneBased() + "  " + NAME_DESC_COY + "  "
                 + PHONE_DESC_COY + " " + EMAIL_DESC_COY + "  " + ADDRESS_DESC_COY + " " + TAG_DESC_FRIEND;
         editedPerson = new PersonBuilder(COY).withTags(VALID_TAG_FRIEND)
-                .withMedicalReports(REPORT_EXAMPLE1, REPORT_EXAMPLE2).withAppts(APPT_EXAMPLE1, APPT_EXAMPLE2).build();
+                .withMedicalReports(REPORT_EXAMPLE1, REPORT_EXAMPLE2).withMedHistories(MEDHISTORY1, MEDHISTORY2)
+                .withAppts(APPT_EXAMPLE1, APPT_EXAMPLE2).build();
         assertCommandSuccess(command, index, editedPerson);
 
         /* ------------------ Performing edit operation while a filtered list is being shown ------------------------ */

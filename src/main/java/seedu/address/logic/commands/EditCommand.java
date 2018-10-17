@@ -105,7 +105,7 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
 
         Set<MedicalReport> updatedReports = personToEdit.getMedicalReports(); // edit command disallow editing reports
-        MedHistory updatedMedHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
+        Set<MedHistory> updatedMedHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
         Set<Appt> updatedAppts = personToEdit.getAppts(); // edit command does not allow editing appts
         Nric updatedNric = personToEdit.getNric();
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());

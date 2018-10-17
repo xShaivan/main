@@ -1,7 +1,5 @@
 package seedu.address.testutil;
 
-import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,7 +25,6 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
-    public static final MedHistory DEFAULT_MEDHISTORY = EMPTY_MEDHISTORY;
 
     private Name name;
     private Phone phone;
@@ -35,7 +32,7 @@ public class PersonBuilder {
     private Address address;
     private Nric nric;
     private Set<MedicalReport> reports;
-    private MedHistory medhistory;
+    private Set<MedHistory> medHistories;
     private Set<Appt> appts;
     private Set<Tag> tags;
 
@@ -45,8 +42,8 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         nric = new Nric(DEFAULT_NRIC);
-        medhistory = DEFAULT_MEDHISTORY;
         reports = new HashSet<>();
+        medHistories = new HashSet<>();
         appts = new HashSet<>();
         tags = new HashSet<>();
     }
@@ -61,7 +58,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         nric = personToCopy.getNric();
         reports = personToCopy.getMedicalReports();
-        medhistory = personToCopy.getMedHistory();
+        medHistories = personToCopy.getMedHistory();
         appts = personToCopy.getAppts();
         tags = new HashSet<>(personToCopy.getTags());
     }
@@ -125,8 +122,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code MedHistory} of the {@code Person} that we are building
      */
-    public PersonBuilder withMedHistory(MedHistory medhistory) {
-        this.medhistory = medhistory;
+    public PersonBuilder withMedHistories(MedHistory... medHistories) {
+        this.medHistories = SampleDataUtil.getMedHistorySet(medHistories);
         return this;
     }
 
@@ -139,6 +136,6 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, reports, medhistory, appts, nric, tags);
+        return new Person(name, phone, email, address, reports, medHistories, appts, nric, tags);
     }
 }
