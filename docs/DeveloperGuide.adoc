@@ -333,6 +333,45 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+STARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTARTSTART
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// tag::addappt[]
+=== AddAppointment feature
+==== Current Implementation
+
+The addappt mechanism is facilitated by `VersionedAddressBook`.
+Additionally, it implements the following operations:
+
+* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
+* `VersionedAddressBook#updatePerson()` -- Updates the specified person with the new data.
+* indicateAddressBookChanged() -- Raises an event to indicate the AddressBook in the model has changed
+
+These operations are exposed in the `Model` interface as `Model#updatePerson()`, `Model#updateFilteredPersonList()` and `Model#commitAddressBook()` respectively.
+
+Given below is an example usage scenario and how the addappt mechanism behaves at each step.
+
+Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+
+Step 2. The user executes `addappt 1 s/16/09/2018 1500 e/16/09/2018 1530 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` command to add an appointment to the 1st person in the list that the address book is currently showing. The `addappt` command obtains the data of the person that the user is trying to change based on the index that the user has input.
+
+Step 3. The `addappt` command will obtain the set of appts that the person previously had, copy it to a new set of appts, and add the appt which the user wants to add into the new set. 
+
+Step 4. The `addappt` command will call `Model#updatePerson()` to update the person with this new set of appts. The `addappt` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user. Lastly, the `addappt` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
+
+The following sequence diagram shows how the addappt operation works:
+
+image::UndoRedoSequenceDiagram.png[width="800"]
+
+The following activity diagram summarizes what happens when a user executes a new command:
+
+image::UndoRedoActivityDiagram.png[width="650"]
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDENDEND
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
