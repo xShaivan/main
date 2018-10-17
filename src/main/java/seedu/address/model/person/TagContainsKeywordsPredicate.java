@@ -20,11 +20,8 @@ public class TagContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         List<Tag> tags = new ArrayList<>(person.getTags());
-        for(int i =0; i < tags.size(); i++) {
-            return (keywords.stream()
-                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tags.get(i).tagName, keyword)));
-        }
-        return false;
+        return keywords.stream()
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tags.get(0).tagName, keyword));
     }
 
     @Override
@@ -33,4 +30,5 @@ public class TagContainsKeywordsPredicate implements Predicate<Person> {
                 || (other instanceof TagContainsKeywordsPredicate // instanceof handles nulls
                 && keywords.equals(((TagContainsKeywordsPredicate) other).keywords)); // state check
     }
+
 }

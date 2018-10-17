@@ -37,7 +37,7 @@ public class AddressContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_AddressContainsKeywords_returnsTrue() {
+    public void testAddressContainsKeywordsreturnsTrue() {
         // One keyword
         AddressContainsKeywordsPredicate predicate = new AddressContainsKeywordsPredicate(Collections.singletonList("Bishan"));
         assertTrue(predicate.test(new PersonBuilder().withAddress("Bishan Rd").build()));
@@ -62,7 +62,7 @@ public class AddressContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_AddressDoesNotContainKeywords_returnsFalse() {
+    public void testAddressDoesNotContainKeywordsreturnsFalse() {
         // Zero keywords
         AddressContainsKeywordsPredicate predicate = new AddressContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withAddress("Bishan Rd").build()));

@@ -38,7 +38,7 @@ public class TagContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_TagContainsKeywords_returnsTrue() {
+    public void testTagContainsKeywordsreturnsTrue() {
         // One keyword
         TagContainsKeywordsPredicate predicate = new TagContainsKeywordsPredicate(Collections.singletonList("friends"));
         assertTrue(predicate.test(new PersonBuilder().withTags("friends").build()));
@@ -63,7 +63,7 @@ public class TagContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_TagDoesNotContainKeywords_returnsFalse() {
+    public void testTagDoesNotContainKeywordsreturnsFalse() {
         // Zero keywords
         TagContainsKeywordsPredicate predicate = new TagContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withTags("friends").build()));

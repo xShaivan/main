@@ -39,7 +39,7 @@ public class PhoneContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_PhoneContainsKeywords_returnsTrue() {
+    public void testPhoneContainsKeywordsreturnsTrue() {
         // One keyword
         PhoneContainsKeywordsPredicate predicate = new PhoneContainsKeywordsPredicate(Collections.singletonList("91234567"));
         assertTrue(predicate.test(new PersonBuilder().withPhone("91234567 98765432").build()));
@@ -59,7 +59,7 @@ public class PhoneContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_phoneDoesNotContainKeywords_returnsFalse() {
+    public void testphoneDoesNotContainKeywordsreturnsFalse() {
         // Zero keywords
         PhoneContainsKeywordsPredicate predicate = new PhoneContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withPhone("91234567").build()));
