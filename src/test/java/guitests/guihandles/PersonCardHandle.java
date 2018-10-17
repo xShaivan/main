@@ -90,11 +90,11 @@ public class PersonCardHandle extends NodeHandle<Node> {
     public List<String> getMedicalReports() {
         return medicalReportLabels.stream().map(Label::getText).collect(Collectors.toList());
     }
-  
+
     public List<String> getMedHistory() {
         return medHistoryLabel.stream().map(Label::getText).collect(Collectors.toList());
     }
-  
+
     public List<String> getAppts() {
         return apptLabels.stream().map(Label::getText).collect(Collectors.toList());
     }
