@@ -3,10 +3,8 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 /**
  * Represents ReportDate of Birth in Health Book

@@ -12,9 +12,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddMedicalReportCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Title;
 
 /**

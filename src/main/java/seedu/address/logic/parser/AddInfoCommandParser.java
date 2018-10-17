@@ -10,7 +10,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddInfoCommand;
 import seedu.address.logic.commands.AddInfoCommand.AddInfoPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Nric;
 
 /**
  * Parses input arguments and creates a new {@code AddInfoCommand} object
@@ -38,7 +37,8 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
             addInfoPersonDescriptor.setNric(ParserUtil.parseNric(argMultiMap.getValue(PREFIX_ADD_INFO_NRIC).get()));
         }
         if (argMultiMap.getValue(PREFIX_ADD_INFO_DOB).isPresent()) {
-            addInfoPersonDescriptor.setDateOfBirth(ParserUtil.parseDateOfBirth(argMultiMap.getValue(PREFIX_ADD_INFO_DOB).get()));
+            addInfoPersonDescriptor.setDateOfBirth(ParserUtil.parseDateOfBirth(
+                    argMultiMap.getValue(PREFIX_ADD_INFO_DOB).get()));
         }
 
         if (!addInfoPersonDescriptor.isAnyFieldEdited()) {

@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -79,6 +78,10 @@ public class AddInfoCommand extends Command {
         return new CommandResult(String.format(MESSAGE_ADD_INFO_SUCCESS, editedPerson));
     }
 
+    /**
+     * Creates and returns a {@code Person} with the details of {@code personToEdit}
+     * edited with {@code editPersonDescriptor}.
+     */
     private static Person createEditedPerson(Person personToEdit, AddInfoPersonDescriptor addInfoPersonDescriptor) {
         assert personToEdit != null;
 
@@ -116,6 +119,10 @@ public class AddInfoCommand extends Command {
                 && addInfoPersonDescriptor.equals(e.addInfoPersonDescriptor);
     }
 
+    /**
+     * Stores the details to add additional info to the person. Each non-empty field value will replace the
+     * corresponding field value of the person
+     */
     public static class AddInfoPersonDescriptor {
         private Nric nric;
         private DateOfBirth dateOfBirth;

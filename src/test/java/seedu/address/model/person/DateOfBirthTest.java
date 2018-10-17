@@ -29,8 +29,8 @@ public class DateOfBirthTest {
         Assert.assertThrows(NullPointerException.class, () -> DateOfBirth.isValidDate(null));
 
         // invalid date
-        assertFalse(DateOfBirth.isValidDate(""));   // empty string
-        assertFalse(DateOfBirth.isValidDate(" "));  // space only
+        assertFalse(DateOfBirth.isValidDate("")); // empty string
+        assertFalse(DateOfBirth.isValidDate(" ")); // space only
         assertFalse(DateOfBirth.isValidDate("01/01/1970")); // wrong format
 
         // valid date

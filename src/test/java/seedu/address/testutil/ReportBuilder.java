@@ -1,8 +1,8 @@
 package seedu.address.testutil;
 
-import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Title;
 
 /**

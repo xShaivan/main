@@ -1,8 +1,6 @@
 package seedu.address.storage;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -16,9 +14,9 @@ import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
-import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfBirth;
@@ -195,7 +193,8 @@ public class XmlAdaptedPerson {
         final Nric modelNric = new Nric(nric);
 
         if (dateOfBirth == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DateOfBirth.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    DateOfBirth.class.getSimpleName()));
         }
         final DateOfBirth modelDateOfBirth = new DateOfBirth(dateOfBirth);
 
@@ -211,7 +210,8 @@ public class XmlAdaptedPerson {
         final Title modelTitle = new Title(title);
 
         if (date == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ReportDate.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ReportDate.class.getSimpleName()));
         }
         final ReportDate modelReportDate = new ReportDate(date);
 
