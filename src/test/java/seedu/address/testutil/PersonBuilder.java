@@ -1,8 +1,5 @@
 package seedu.address.testutil;
 
-import static seedu.address.testutil.TypicalAppts.EMPTY_APPT;
-import static seedu.address.testutil.TypicalReports.EMPTY_MEDICAL_REPORT;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,17 +25,15 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
-    public static final MedicalReport DEFAULT_MEDICAL_REPORT = EMPTY_MEDICAL_REPORT;
-    public static final Appt DEFAULT_APPT = EMPTY_APPT;
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
     private Nric nric;
-    private MedicalReport report;
+    private Set<MedicalReport> reports;
     private Set<MedHistory> medHistories;
-    private Appt appt;
+    private Set<Appt> appts;
     private Set<Tag> tags;
 
     public PersonBuilder() {
@@ -47,9 +42,9 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         nric = new Nric(DEFAULT_NRIC);
+        reports = new HashSet<>();
         medHistories = new HashSet<>();
-        report = DEFAULT_MEDICAL_REPORT;
-        appt = DEFAULT_APPT;
+        appts = new HashSet<>();
         tags = new HashSet<>();
     }
 
@@ -62,9 +57,9 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         nric = personToCopy.getNric();
-        report = personToCopy.getMedicalReport();
+        reports = personToCopy.getMedicalReports();
         medHistories = personToCopy.getMedHistory();
-        appt = personToCopy.getAppt();
+        appts = personToCopy.getAppts();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -119,8 +114,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code MedicalReport} of the {@code Person} that we are building.
      */
-    public PersonBuilder withMedicalReport(MedicalReport report) {
-        this.report = report;
+    public PersonBuilder withMedicalReports(MedicalReport ... reports) {
+        this.reports = SampleDataUtil.getReportSet(reports);
         return this;
     }
 
@@ -135,13 +130,12 @@ public class PersonBuilder {
     /**
      * Sets the {@code Appt} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAppt(Appt appt) {
-        this.appt = appt;
+    public PersonBuilder withAppts(Appt... appts) {
+        this.appts = SampleDataUtil.getApptSet(appts);
         return this;
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, report, medHistories, appt, nric, tags);
+        return new Person(name, phone, email, address, reports, medHistories, appts, nric, tags);
     }
-
 }
