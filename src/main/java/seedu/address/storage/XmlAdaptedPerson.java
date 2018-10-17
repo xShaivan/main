@@ -71,6 +71,7 @@ public class XmlAdaptedPerson {
         this.address = address;
         if (reports != null) {
             this.reports = new ArrayList<>(reports);
+        }
         if (appts != null) {
             this.appts = new ArrayList<>(appts);
         }
@@ -201,7 +202,7 @@ public class XmlAdaptedPerson {
             personTags.add(tag.toModelType());
         }
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        
+
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports,
                           modelMedHistory, modelAppts, modelNric, modelTags);
     }
