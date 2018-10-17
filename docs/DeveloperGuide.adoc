@@ -349,6 +349,80 @@ Once the objects that are to be edited (eg. `NRIC`, `DateOfBirth`) have been ret
 The `Person` object that is returned will be used to replace the `Person` that was to be edited.
 // end::addinfo
 
+// tag:: medicalhistory[]
+=== Medical History features
+==== Current Implementation
+
+The `addhist` command first takes in the index of the patient followed by the prefixes of information to be stored in the medical history.
+The user input will go through `AddHistCommandParser.java` and `AddressBookParser.java` to ensure user input conforms to the expected format.
+It is then returned as an AddHistCommand object for execution.
+In `AddHistCommand.java`, the `execute`method will run.
+The list of patients is retrieved from `model.getFilteredPersonList()` and stored under `lastShownList`.
+Using the `index` specified in the command, the patient at that index will be the `personToEdit` for its medical history.
+The method `model.updatePerson()` and `model.updateFilteredPersonList()` will update the contents of the patient's medical history.
+Execution ends when `CommandResult(generateSuccessMessage(editedPerson))` generates a success message after medical history has been added.
+
+// end:: medicalhistory[]
+
+// tag::addappt[]
+=== AddAppointment feature
+==== Current Implementation
+
+The addappt mechanism is facilitated by `VersionedAddressBook`.
+
+Additionally, it implements the following operations:
+
+* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
+* `VersionedAddressBook#updatePerson()` -- Updates the specified person with the new data.
+* indicateAddressBookChanged() -- Raises an event to indicate the AddressBook in the model has changed
+
+These operations are exposed in the `Model` interface as `Model#updatePerson()`, `Model#updateFilteredPersonList()` and `Model#commitAddressBook()` respectively.
+
+Given below is an example usage scenario and how the addappt mechanism behaves at each step.
+
+Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+
+Step 2. The user executes `addappt 1 s/16/09/2018 1500 e/16/09/2018 1530 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` command to add an appointment to the 1st person in the list that the address book is currently showing. The `addappt` command obtains the data of the person that the user is trying to change based on the index that the user has input.
+
+Step 3. The `addappt` command will obtain the set of appts that the person previously had, copy it to a new set of appts, and add the appt which the user wants to add into the new set.
+
+Step 4. The `addappt` command will call `Model#updatePerson()` to update the person with this new set of appts. The `addappt` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user. Lastly, the `addappt` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
+
+The following sequence diagram shows how the addappt operation works:
+
+image::AddApptSequenceDiagram.png[width="800"]
+//end:: addappt[]
+
+// tag::addreport[]
+=== AddMedicalReport feature
+==== Current Implementation
+
+The addreport mechanism is facilitated by `VersionedAddressBook`.
+
+Additionally, it implements the following operations:
+
+* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
+* `VersionedAddressBook#updatePerson()` -- Updates the specified person with the new data.
+* indicateAddressBookChanged() -- Raises an event to indicate the AddressBook in the model has changed.
+
+These operations are exposed in the `Model` interface as `Model#updatePerson()`, `Model#updateFilteredPersonList()` and `Model#commitAddressBook()` respectively.
+
+Given below is an example usage scenario and how the addreport mechanism behaves at each step.
+
+Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+
+Step 2. The user executes `addreport 1 t/Asthma d/01/01/2018 i/Prescribed XXX medicine, next appointment on 02/02/2018` command to add a medical report to the 1st person in the list that the address book is currently showing. The `addreport` command obtains the data of the person that the user is trying to change based on the index that the user has input.
+
+Step 3. The `addreport` command will obtain the set of reports that the person previously had, copy it to a new set of reports, and add the report which the user wants to add into the new set.
+
+Step 4. The `addreport` command will call `Model#updatePerson()` to update the person with this new set of reports. The `addreport` command will call `Model#updateFilteredPersonList()` to update the list that the user is shown.
+
+Step 5. The `addreport` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
+
+The following sequence diagram shows how the addreport operation works:
+image::AddMedicalReportSequenceDiagram.png[width="800"]
+//end:: addreport[]
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
