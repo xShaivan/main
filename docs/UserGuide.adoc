@@ -157,6 +157,21 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+=== Adding patient's medical history: `addhist`
+
+Adds the medical history of a patient. +
+Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED`
+
+****
+* Adds an entry in the medical history of the patient for the patient at the specified INDEX.
+* The index refers to the index number shown in the displayed person list.
+****
+
+Examples:
+
+* `addhist 1 hsd/ 10/10/2010 hsa/ Alcohol hsc/ Kuwait`
+Adds a medical history entry for the 1st person in the list on 10/10/2010 with an alcohol allergy and Kuwait as previous country visited.
+
 === Adding an appointment into patient's timetable: `addappt`
 
 Adds an appointment into the specified patient's timetable. +
