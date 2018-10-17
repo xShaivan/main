@@ -1,8 +1,8 @@
 package seedu.address.commons.util;
 
 import static org.junit.Assert.assertEquals;
-import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE1;
+import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE1;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
