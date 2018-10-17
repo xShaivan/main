@@ -333,6 +333,21 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+// tag:: medicalhistory[]
+=== Medical History features
+==== Current Implementation
+
+The `addhist` command first takes in the index of the patient followed by the prefixes of information to be stored in the medical history.
+The user input will go through `AddHistCommandParser.java` and `AddressBookParser.java` to ensure user input conforms to the expected format.
+It is then returned as an AddHistCommand object for execution.
+In `AddHistCommand.java`, the `execute`method will run.
+The list of patients is retrieved from `model.getFilteredPersonList()` and stored under `lastShownList`.
+Using the `index` specified in the command, the patient at that index will be the `personToEdit` for its medical history.
+The method `model.updatePerson()` and `model.updateFilteredPersonList()` will update the contents of the patient's medical history.
+Execution ends when `CommandResult(generateSuccessMessage(editedPerson))` generates a success message after medical history has been added.
+
+// end:: medicalhistory[]
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
