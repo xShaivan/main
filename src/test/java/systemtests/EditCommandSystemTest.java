@@ -27,6 +27,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
 import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
@@ -83,21 +85,31 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, index, BOB);
 
         /* Case: edit a person with new values same as another person's values but with different name -> edited */
+        // INDEX_SECOND_PERSON referring to BENSON in TypicalPersons.java had
+        // .withMedHistories(MEDHISTORY1, MEDHISTORY2) added to him.
+        // Hence, all instances of BENSON here requires .withMedHistories(MEDHISTORY1, MEDHISTORY2) in the
+        // PersonBuilder to change expected result to match actual result
         assertTrue(getModel().getAddressBook().getPersonList().contains(BOB));
         index = INDEX_SECOND_PERSON;
         assertNotEquals(getModel().getFilteredPersonList().get(index.getZeroBased()), BOB);
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_AMY + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB + TAG_DESC_FRIEND + TAG_DESC_HUSBAND;
-        editedPerson = new PersonBuilder(BOB).withName(VALID_NAME_AMY).build();
+        editedPerson = new PersonBuilder(BOB).withName(VALID_NAME_AMY)
+                .withMedHistories(MEDHISTORY1, MEDHISTORY2).build();
         assertCommandSuccess(command, index, editedPerson);
 
         /* Case: edit a person with new values same as another person's values but with different phone and email
          * -> edited
          */
+        // INDEX_SECOND_PERSON referring to BENSON in TypicalPersons.java had
+        // .withMedHistories(MEDHISTORY1, MEDHISTORY2) added to him.
+        // Hence, all instances of BENSON here requires .withMedHistories(MEDHISTORY1, MEDHISTORY2) in the
+        // PersonBuilder to change expected result to match actual result
         index = INDEX_SECOND_PERSON;
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_BOB + TAG_DESC_FRIEND + TAG_DESC_HUSBAND;
-        editedPerson = new PersonBuilder(BOB).withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).build();
+        editedPerson = new PersonBuilder(BOB).withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY)
+                .build();
         assertCommandSuccess(command, index, editedPerson);
 
         /* Case: clear tags -> cleared */
