@@ -121,6 +121,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     public ObservableList<Person> sortedPersonList(ObservableList<Person> personList) {
+        //get sorted list
         ObservableList<Person> sortedList = FXCollections.observableArrayList();
         sortedList.addAll(personList);
         sortedList.sort(Comparator.comparing(person -> person.getName().fullName));
