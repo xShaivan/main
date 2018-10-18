@@ -43,10 +43,10 @@ public class AddMedicalReportCommandParser implements Parser<AddMedicalReportCom
         }
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-        ReportDate reportDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
+        ReportDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         Information information = ParserUtil.parseInformation(argMultimap.getValue(PREFIX_INFORMATION).get());
 
-        return new AddMedicalReportCommand(index, new MedicalReport(title, reportDate, information));
+        return new AddMedicalReportCommand(index, new MedicalReport(title, date, information));
     }
 
     /**
