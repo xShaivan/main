@@ -1,17 +1,21 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.MedHistory;
+import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.person.Person;
 
 /**
@@ -25,20 +29,22 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
             + "by their index number."
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_HISTORY + "Diabetes.";
+            + PREFIX_HISTORY_DATE + " 24/08/1993 "
+            + PREFIX_HISTORY_ALLERGY + " Alcohol "
+            + PREFIX_HISTORY_COUNTRY + " Kuwait ";
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
-    private final MedHistory med;
+    private final MedHistory medHistory;
     /**
      * @param index of the patient in the filtered patient list to add medical history
-     * @param med of the person to be updated to
+     * @param medHistory of the person to be updated to
      */
-    public AddHistCommand(Index index, MedHistory med) {
-        requireAllNonNull(index, med);
+    public AddHistCommand(Index index, MedHistory medHistory) {
+        requireAllNonNull(index, medHistory);
         this.index = index;
-        this.med = med;
+        this.medHistory = medHistory;
     }
 
     @Override
@@ -48,9 +54,17 @@ public class AddHistCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
         Person personToEdit = lastShownList.get(index.getZeroBased());
+        Set<MedHistory> fullMedHistories = personToEdit.getMedHistory();
+        Set<MedHistory> newMedHistories = new HashSet<>();
+        // for loop overwrites all existing history with itself
+        for (MedHistory medHistory : fullMedHistories) {
+            newMedHistories.add(medHistory);
+        }
+        // adds the new history from command
+        newMedHistories.add(medHistory);
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getMedicalReport(), med, personToEdit.getAppt(),
-                personToEdit.getNric(), personToEdit.getTags());
+                personToEdit.getAddress(), personToEdit.getMedicalReports(), newMedHistories, personToEdit.getAppts(),
+                personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getTags());
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
@@ -62,8 +76,7 @@ public class AddHistCommand extends Command {
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = !med.value.isEmpty() ? MESSAGE_ADD_MEDHISTORY_SUCCESS : MESSAGE_DELETE_MEDHISTORY_SUCCESS;
-        return String.format(message, personToEdit);
+        return String.format(MESSAGE_ADD_MEDHISTORY_SUCCESS, personToEdit);
     }
 
     @Override
@@ -79,6 +92,6 @@ public class AddHistCommand extends Command {
         // state check
         AddHistCommand e = (AddHistCommand) other;
         return index.equals(e.index)
-                && med.equals(e.med);
+                && medHistory.equals(e.medHistory);
     }
 }

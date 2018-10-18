@@ -6,15 +6,7 @@
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">10-10-2010</dateOfBirth>
     </persons>
     <persons>
         <name>Ruth Mueller</name>
@@ -22,15 +14,7 @@
         <email isPrivate="false">ruth@example.com</email>
         <address isPrivate="false">81th street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">01-01-1996</dateOfBirth>
     </persons>
     <persons>
         <name>Heinz Kurz</name>
@@ -38,15 +22,7 @@
         <email isPrivate="false">heinz@example.com</email>
         <address isPrivate="false">wall street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">25-06-2001</dateOfBirth>
     </persons>
     <persons>
         <name>Cornelia Meier</name>
@@ -54,15 +30,7 @@
         <email isPrivate="false">cornelia@example.com</email>
         <address isPrivate="false">10th street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">17-03-1986</dateOfBirth>
     </persons>
     <persons>
         <name>Werner Meyer</name>
@@ -70,15 +38,7 @@
         <email isPrivate="false">werner@example.com</email>
         <address isPrivate="false">michegan ave</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">04-01-2006</dateOfBirth>
     </persons>
     <persons>
         <name>Lydia Kunz</name>
@@ -86,15 +46,7 @@
         <email isPrivate="false">lydia@example.com</email>
         <address isPrivate="false">little tokyo</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">06-03-2016</dateOfBirth>
     </persons>
     <persons>
         <name>Anna Best</name>
@@ -102,15 +54,7 @@
         <email isPrivate="false">anna@example.com</email>
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">27-12-2003</dateOfBirth>
     </persons>
     <persons>
         <name>Stefan Meier</name>
@@ -118,15 +62,7 @@
         <email isPrivate="false">stefan@example.com</email>
         <address isPrivate="false">little india</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">19-09-2010</dateOfBirth>
     </persons>
     <persons>
         <name>Martin Mueller</name>
@@ -134,14 +70,6 @@
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">chicago ave</address>
         <nric isPrivate="false"></nric>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medhistory isPrivate="false"></medhistory>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
+        <dateOfBirth isPrivate="false">17-04-1963</dateOfBirth>
     </persons>
 </addressbook>
