@@ -346,6 +346,8 @@ Using the `index` specified in the command, the patient at that index will be th
 The method `model.updatePerson()` and `model.updateFilteredPersonList()` will update the contents of the patient's medical history.
 Execution ends when `CommandResult(generateSuccessMessage(editedPerson))` generates a success message after medical history has been added.
 
+
+
 // end:: medicalhistory[]
 
 // tag::dataencryption[]
