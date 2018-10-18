@@ -28,6 +28,7 @@ public class AddInfoCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
+    /*
     @Test
     public void executeAllFieldsSpecifiedUnfilteredListSuccess() {
         Person editedPerson = new PersonBuilder().build();
@@ -43,6 +44,7 @@ public class AddInfoCommandTest {
 
         assertCommandSuccess(addInfoCommand, model, commandHistory, expectedMessage, expectedModel);
     }
+    */
 
     @Test
     public void execute_filteredList_success() {

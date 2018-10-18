@@ -176,8 +176,6 @@ public class XmlAdaptedPerson {
 
         final Set<MedHistory> modelMedHistory = new HashSet<>(personMedHistories);
 
-        final MedHistory modelMedHistory = new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
-
         /**
          * ==================================================
          * APPT SUBFIELDS

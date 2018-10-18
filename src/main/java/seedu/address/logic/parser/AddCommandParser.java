@@ -55,7 +55,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         DateOfBirth dateOfBirth = new DateOfBirth("01-01-1970");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, tagList);
+        Person person = new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth,
+                tagList);
 
         return new AddCommand(person);
     }
