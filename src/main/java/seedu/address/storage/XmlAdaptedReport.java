@@ -46,7 +46,7 @@ public class XmlAdaptedReport {
      */
     public XmlAdaptedReport(MedicalReport source) {
         title = source.getTitle().toString();
-        date = source.getReportDate().toString();
+        date = source.getDate().toString();
         information = source.getInformation().toString();
     }
 

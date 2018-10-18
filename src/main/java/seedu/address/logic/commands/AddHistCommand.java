@@ -68,7 +68,7 @@ public class AddHistCommand extends Command {
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
-        return new CommandResult(generateSuccessMessage(personToEdit));
+        return new CommandResult(generateSuccessMessage(editedPerson));
     }
 
     /**

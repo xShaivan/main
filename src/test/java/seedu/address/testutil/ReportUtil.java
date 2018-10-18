@@ -26,7 +26,7 @@ public class ReportUtil {
     public static String getMedicalReportDetails(MedicalReport report) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_TITLE + report.getTitle().fullTitle + " ");
-        sb.append(PREFIX_DATE + report.getReportDate().fullDate + " ");
+        sb.append(PREFIX_DATE + report.getDate().fullDate + " ");
         sb.append(PREFIX_INFORMATION + report.getInformation().fullInformation + " ");
         return sb.toString();
     }

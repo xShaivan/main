@@ -214,6 +214,8 @@ public class XmlAdaptedPerson {
                 && Objects.equals(phone, otherPerson.phone)
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(address, otherPerson.address)
+                && Objects.equals(nric, otherPerson.nric)
+                && Objects.equals(dateOfBirth, otherPerson.dateOfBirth)
                 && medHistories.equals(otherPerson.medHistories)
                 && reports.equals(otherPerson.reports)
                 && appts.equals(otherPerson.appts)
