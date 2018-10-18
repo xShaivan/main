@@ -1,5 +1,9 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE1;
+
 import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.ReportDate;
@@ -9,17 +13,17 @@ import seedu.address.model.medicalreport.Title;
  * A utility class to help with building Report objects.
  */
 public class ReportBuilder {
-    public static final String DEFAULT_TITLE = "Asthma";
-    public static final String DEFAULT_DATE = "01/01/2018";
-    public static final String DEFAULT_INFO = "Prescribed XXX medicine, next appointment on 02022018";
+    public static final String DEFAULT_TITLE = VALID_TITLE1;
+    public static final String DEFAULT_DATE = VALID_DATE1;
+    public static final String DEFAULT_INFO = VALID_INFO1;
 
     private Title title;
-    private ReportDate reportDate;
+    private ReportDate date;
     private Information information;
 
     public ReportBuilder() {
         title = new Title(DEFAULT_TITLE);
-        reportDate = new ReportDate(DEFAULT_DATE);
+        date = new ReportDate(DEFAULT_DATE);
         information = new Information(DEFAULT_INFO);
     }
     /**
@@ -27,7 +31,7 @@ public class ReportBuilder {
      */
     public ReportBuilder(MedicalReport reportToCopy) {
         title = reportToCopy.getTitle();
-        reportDate = reportToCopy.getReportDate();
+        date = reportToCopy.getDate();
         information = reportToCopy.getInformation();
     }
     /**
@@ -41,7 +45,7 @@ public class ReportBuilder {
      * Sets the {@code ReportDate} of the {@code MedicalReport} that we are building.
      */
     public ReportBuilder withDate(String date) {
-        this.reportDate = new ReportDate(date);
+        this.date = new ReportDate(date);
         return this;
     }
     /**
@@ -53,6 +57,6 @@ public class ReportBuilder {
     }
 
     public MedicalReport build() {
-        return new MedicalReport(title, reportDate, information);
+        return new MedicalReport(title, date, information);
     }
 }

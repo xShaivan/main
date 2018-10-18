@@ -7,17 +7,6 @@
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">10-10-2010</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Ruth Mueller</name>
@@ -26,17 +15,6 @@
         <address isPrivate="false">81th street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">01-01-1996</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Heinz Kurz</name>
@@ -45,17 +23,6 @@
         <address isPrivate="false">wall street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">25-06-2001</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Cornelia Meier</name>
@@ -64,17 +31,6 @@
         <address isPrivate="false">10th street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">17-03-1986</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Werner Meyer</name>
@@ -83,17 +39,6 @@
         <address isPrivate="false">michegan ave</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">04-01-2006</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Lydia Kunz</name>
@@ -102,17 +47,6 @@
         <address isPrivate="false">little tokyo</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">06-03-2016</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Anna Best</name>
@@ -121,17 +55,6 @@
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">27-12-2003</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Stefan Meier</name>
@@ -140,17 +63,6 @@
         <address isPrivate="false">little india</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">19-09-2010</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
     <persons>
         <name>Martin Mueller</name>
@@ -159,16 +71,5 @@
         <address isPrivate="false">chicago ave</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">17-04-1963</dateOfBirth>
-        <title isPrivate="false"></title>
-        <date isPrivate="false"></date>
-        <information isPrivate="false"></information>
-        <medHistDate isPrivate="false"></medHistDate>
-        <allergy isPrivate="false"></allergy>
-        <prevCountry isPrivate="false"></prevCountry>
-        <apptStart isPrivate="false"></apptStart>
-        <apptEnd isPrivate="false"></apptEnd>
-        <apptVenue isPrivate="false"></apptVenue>
-        <apptInfo isPrivate="false"></apptInfo>
-        <apptDrName isPrivate="false"></apptDrName>
     </persons>
 </addressbook>
