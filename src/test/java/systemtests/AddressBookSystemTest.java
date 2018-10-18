@@ -39,8 +39,6 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.parser.CliSyntax;
-import seedu.address.logic.parser.Prefix;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.testutil.TypicalPersons;
@@ -154,8 +152,8 @@ public abstract class AddressBookSystemTest {
      */
     protected void showPersonsWithName(String keyword) {
         executeCommand(FindCommand.COMMAND_WORD + " " + PREFIX_NAME + " " + keyword);
-        assertTrue(getModel().getFilteredPersonList().size() <
-                getModel().getAddressBook().getPersonList().size());
+        assertTrue(getModel().getFilteredPersonList().size()
+                < getModel().getAddressBook().getPersonList().size());
     }
 
     /**
