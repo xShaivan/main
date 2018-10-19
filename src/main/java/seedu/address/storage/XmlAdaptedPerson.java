@@ -154,7 +154,7 @@ public class XmlAdaptedPerson {
 
         /**
          * ==================================================
-         * MEDICAL REPORT SUBFIELDS
+         * SUBFIELDS IN LIST FORMAT
          * ==================================================
          */
 
@@ -164,24 +164,11 @@ public class XmlAdaptedPerson {
         }
         final Set<MedicalReport> modelReports = new HashSet<>(personMedicalReports);
 
-        /**
-         * ==================================================
-         * MED HISTORY SUBFIELDS
-         * ==================================================
-         */
-
         final List<MedHistory> personMedHistories = new ArrayList<>();
         for (XmlAdaptedMedHistory medHistory : medHistories) {
             personMedHistories.add(medHistory.toModelType());
         }
-
         final Set<MedHistory> modelMedHistory = new HashSet<>(personMedHistories);
-
-        /**
-         * ==================================================
-         * APPT SUBFIELDS
-         * ==================================================
-         */
 
         final List<Appt> personAppts = new ArrayList<>();
         for (XmlAdaptedAppt appt : appts) {
