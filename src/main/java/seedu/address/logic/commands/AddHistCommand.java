@@ -63,12 +63,12 @@ public class AddHistCommand extends Command {
         // adds the new history from command
         newMedHistories.add(medHistory);
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getMedicalReport(), newMedHistories, personToEdit.getAppt(),
-                personToEdit.getNric(), personToEdit.getTags());
+                personToEdit.getAddress(), personToEdit.getMedicalReports(), newMedHistories, personToEdit.getAppts(),
+                personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getTags());
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
-        return new CommandResult(generateSuccessMessage(personToEdit));
+        return new CommandResult(generateSuccessMessage(editedPerson));
     }
 
     /**
