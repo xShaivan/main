@@ -87,4 +87,15 @@ public class MedHistory {
                 && getAllergy().equals(e.getAllergy())
                 && getPrevCountry().equals(e.getPrevCountry());
     }
+
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(medHistDate, allergy, prevCountry);
+    }
+
+    @Override
+    public String toString() {
+        return medHistDate.toString() + " \n" + allergy.toString() + " \n" + prevCountry.toString();
+    }
 }
