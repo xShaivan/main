@@ -52,16 +52,16 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
-    private final MedHistoryDescriptor medHistoryDescriptor;
+    private final MedHistory medHistory;
     //private final MedHistory medHistory;
     /**
      * @param index of the patient in the filtered patient list to add medical history
      * @param medHistory of the person to be updated to
      */
-    public AddHistCommand(Index index, MedHistoryDescriptor medHistoryDescriptor) {
-        requireAllNonNull(index, medHistoryDescriptor);
+    public AddHistCommand(Index index, MedHistory medHistory) {
+        requireAllNonNull(index, medHistory);
         this.index = index;
-        this.medHistoryDescriptor = new MedHistoryDescriptor(medHistoryDescriptor);
+        this.medHistory = new MedHistory(medHistory);
     }
 
     @Override
@@ -78,8 +78,8 @@ public class AddHistCommand extends Command {
             newMedHistories.add(medHistory);
         }
         // adds the new history from command
-        newMedHistories.add(medHistoryDescriptor);
-        Person editedPerson = createEditedPerson(personToEdit, medHistoryDescriptor);
+        newMedHistories.add(medHistory);
+        Person editedPerson = createEditedPerson(personToEdit, medHistory);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson));
@@ -89,7 +89,7 @@ public class AddHistCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, MedHistoryDescriptor medHistoryDescriptor) {
+    private static Person createEditedPerson(Person personToEdit, MedHistory medHistory) {
         assert personToEdit != null;
 
         Name name = personToEdit.getName();
@@ -98,13 +98,13 @@ public class AddHistCommand extends Command {
         Address address = personToEdit.getAddress();
         Set<Appt> appts = personToEdit.getAppts();
         Set<MedicalReport> medicalReports = personToEdit.getMedicalReports();
-        Set<MedHistory> medHistory = personToEdit.getMedHistory();
+        Set<MedHistory> medHistories = personToEdit.getMedHistory();
         Set<Tag> tags = personToEdit.getTags();
 
         Nric nric = personToEdit.getNric();
         DateOfBirth dateOfBirth = personToEdit.getDateOfBirth();
 
-        return new Person(name, phone, email, address, medicalReports, medHistory, appts,
+        return new Person(name, phone, email, address, medicalReports, medHistories, appts,
                 nric, dateOfBirth, tags);
     }
 
@@ -121,86 +121,6 @@ public class AddHistCommand extends Command {
         // state check
         AddHistCommand e = (AddHistCommand) other;
         return index.equals(e.index)
-                && medHistoryDescriptor.equals(e.medHistoryDescriptor);
-    }
-
-    /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
-     */
-    public static class MedHistoryDescriptor {
-        private MedHistDate medHistDate;
-        private Allergy allergy;
-        private PrevCountry prevCountry;
-
-        public MedHistoryDescriptor() {}
-
-        /*public MedHistoryDescriptor(MedHistDate medHistDate, Allergy allergy, PrevCountry prevCountry) {
-            requireAllNonNull(medHistDate, allergy, prevCountry);
-            this.medHistDate = medHistDate;
-            this.allergy = allergy;
-            this.prevCountry = prevCountry;
-        }*/
-
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public MedHistoryDescriptor(MedHistoryDescriptor toCopy) {
-            setMedHistDate(toCopy.medHistDate);
-            setAllergy(toCopy.allergy);
-            setPrevCountry(toCopy.prevCountry);
-        }
-
-        /**
-         * Returns true if at least one field is edited.
-         */
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(medHistDate, allergy, prevCountry);
-        }
-
-        public void setMedHistDate(MedHistDate medHistDate) {
-            this.medHistDate = medHistDate;
-        }
-
-        public Optional<MedHistDate> getMedHistDate() {
-            return Optional.ofNullable(medHistDate);
-        }
-
-        public void setAllergy(Allergy allergy) {
-            this.allergy = allergy;
-        }
-
-        public Optional<Allergy> getAllergy() {
-            return Optional.ofNullable(allergy);
-        }
-
-        public void setPrevCountry(PrevCountry prevCountry) {
-            this.prevCountry = prevCountry;
-        }
-
-        public Optional<PrevCountry> getPrevCountry() {
-            return Optional.ofNullable(prevCountry);
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            // short circuit if same object
-            if (other == this) {
-                return true;
-            }
-
-            // instanceof handles nulls
-            if (!(other instanceof MedHistoryDescriptor)) {
-                return false;
-            }
-
-            // state check
-            MedHistoryDescriptor e = (MedHistoryDescriptor) other;
-
-            return getMedHistDate().equals(e.getMedHistDate())
-                    && getAllergy().equals(e.getAllergy())
-                    && getPrevCountry().equals(e.getPrevCountry());
-        }
+                && medHistory.equals(e.medHistory);
     }
 }
