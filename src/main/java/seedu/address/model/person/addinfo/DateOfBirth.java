@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
 
@@ -23,6 +23,7 @@ public class DateOfBirth {
      * @param value a valid date
      * @throws ParseException if date format is invalid
      */
+    //TODO: (DateOfBirth) to be an Optional type to support null values
     public DateOfBirth(String value) {
         requireNonNull(value);
         this.value = LocalDate.parse(value, dateTimeFormatter);

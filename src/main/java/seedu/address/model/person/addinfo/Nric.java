@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
 
@@ -47,5 +47,4 @@ public class Nric {
     public int hashCode() {
         return value.hashCode();
     }
-
 }

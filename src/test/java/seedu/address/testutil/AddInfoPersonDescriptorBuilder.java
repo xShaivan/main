@@ -1,8 +1,8 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.AddInfoCommand.AddInfoPersonDescriptor;
-import seedu.address.model.person.DateOfBirth;
-import seedu.address.model.person.Nric;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.Person;
 
 /**

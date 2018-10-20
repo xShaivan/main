@@ -9,6 +9,8 @@ import java.util.Set;
 
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 
@@ -33,6 +35,9 @@ public class Person {
     // Additional information fields
     private final Nric nric;
     private final DateOfBirth dateOfBirth;
+    //private final Height height;
+    //private final Weight weight;
+    //private final Gender gender;
 
     /**
      * Every field must be present and not null.
