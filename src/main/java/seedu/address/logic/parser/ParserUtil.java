@@ -21,8 +21,10 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
@@ -146,6 +148,28 @@ public class ParserUtil {
         }
 
         return new DateOfBirth(trimmedDateOfBirth);
+    }
+
+    public static Height parseHeight(String height) throws ParseException {
+        requireNonNull(height);
+        String trimmedHeight = height.trim();
+
+        if (!Height.isValidHeight(trimmedHeight)) {
+            throw new ParseException(Height.MESSAGE_HEIGHT_CONSTRAINTS);
+        }
+
+        return new Height(trimmedHeight);
+    }
+
+    public static Weight parseWeight(String weight) throws ParseException {
+        requireNonNull(weight);
+        String trimmedWeight = weight.trim();
+
+        if (!Weight.isValidWeight(trimmedWeight)) {
+            throw new ParseException(Weight.MESSAGE_WEIGHT_CONSTRAINTS);
+        }
+
+        return new Weight(trimmedWeight);
     }
 
     /**

@@ -3,7 +3,7 @@ package seedu.address.model.person.addinfo;
 import static java.util.Objects.requireNonNull;
 
 public class Weight {
-    public static final String WEIGHT_VALIDATION_REGEX = "[\\d]";
+    public static final String WEIGHT_VALIDATION_REGEX = "[\\d]+";
     public static final String MESSAGE_WEIGHT_CONSTRAINTS = "Weight should be numeric input only.";
 
     public final String value;

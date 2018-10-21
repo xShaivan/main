@@ -13,9 +13,11 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 
@@ -26,31 +28,34 @@ public class SampleDataUtil {
 
     public static final Nric EMPTY_NRIC = new Nric("");
     public static final DateOfBirth EMPTY_DATE_OF_BIRTH = new DateOfBirth("01-01-1970");
+    public static final Height EMPTY_HEIGHT = new Height("");
+    public static final Weight EMPTY_WEIGHT = new Weight("");
 
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, getTagSet("friends")),
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, new Height("42"), EMPTY_WEIGHT,
+                    getTagSet("friends")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
                     getTagSet("colleagues", "friends")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
                     getTagSet("neighbours")),
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
                 new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
                     getTagSet("family")),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                 new Address("Blk 47 Tampines Street 20, #17-35"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
                     getTagSet("classmates")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
                     getTagSet("colleagues"))
         };
     }
