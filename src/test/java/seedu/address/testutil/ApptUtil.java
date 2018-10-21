@@ -27,8 +27,8 @@ public class ApptUtil {
      */
     public static String getApptDetails(Appt appt) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_APPT_START + appt.getStart().value + " ");
-        sb.append(PREFIX_APPT_END + appt.getEnd().value + " ");
+        sb.append(PREFIX_APPT_START + appt.getStart().toString() + " ");
+        sb.append(PREFIX_APPT_END + appt.getEnd().toString() + " ");
         sb.append(PREFIX_APPT_VENUE + appt.getVenue().value + " ");
         sb.append(PREFIX_APPT_INFO + appt.getInfo().value + " ");
         sb.append(PREFIX_APPT_DRNAME + appt.getDrName().value + " ");

@@ -2,6 +2,9 @@ package seedu.address.model.timetable;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
+import seedu.address.model.util.DateTimeUtil;
+
 /**
  * Represents an appt date and time in an appt in the address book.
  * Guarantees: immutable; is always valid
@@ -10,16 +13,16 @@ public class ApptDateTime {
     public static final String MESSAGE_NAME_CONSTRAINTS = "The full ReportDate and Time should be of the format: "
             + "DD/MM/YYYY HH:MM.";
 
-    public final String value;
+    public final LocalDateTime value;
 
     public ApptDateTime(String apptDateTime) {
         requireNonNull(apptDateTime);
-        value = apptDateTime;
+        value = DateTimeUtil.parseDateTime(apptDateTime);
     }
 
     @Override
     public String toString() {
-        return value;
+        return DateTimeUtil.format(value);
     }
 
     @Override

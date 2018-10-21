@@ -36,8 +36,8 @@ public class AddApptCommand extends Command {
             + PREFIX_APPT_INFO + "[INFO] "
             + PREFIX_APPT_DRNAME + "[DOCTOR'S NAME]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_APPT_START + "16/09/2018 1500 "
-            + PREFIX_APPT_END + "16/09/2018 1530 "
+            + PREFIX_APPT_START + "16-09-2018 15:00 "
+            + PREFIX_APPT_END + "16-09-2018 15:30 "
             + PREFIX_APPT_VENUE + "Consultation Room 12 "
             + PREFIX_APPT_INFO + "Diabetes Checkup "
             + PREFIX_APPT_DRNAME + "Dr Tan";

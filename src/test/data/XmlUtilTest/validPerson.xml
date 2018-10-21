@@ -16,8 +16,8 @@
         <prevCountry>USA</prevCountry>
     </medHistories>
     <appts>
-        <apptStart>01/01/2018 14:00</apptStart>
-        <apptEnd>01/01/2018 15:00</apptEnd>
+        <apptStart>01-01-2018 14:00</apptStart>
+        <apptEnd>01-01-2018 15:00</apptEnd>
         <apptVenue>Consultation Room 1</apptVenue>
         <apptInfo>Diabetes Checkup</apptInfo>
         <apptDrName>Dr Tan</apptDrName>
