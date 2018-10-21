@@ -3,6 +3,7 @@ package seedu.address.model.util;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Helper functions for LocalDate and LocalDateTime conversion to and from String
@@ -35,15 +36,23 @@ public class DateTimeUtil {
 
     /**
      * convert String to LocalDate
+     *
+     * @param dateString String to be converted
+     * @return parsed local-date, not null
+     * @throws DateTimeParseException if String cannot be parsed
      */
-    public static LocalDate parseDate(String dateString) {
+    public static LocalDate parseDate(String dateString) throws DateTimeParseException {
         return LocalDate.parse(dateString, DATE_FORMATTER);
     }
 
     /**
      * convert String to LocalDateTime
+     *
+     * @param dateTimeString String to be converted
+     * @return parsed local-date-time, not null
+     * @throws DateTimeParseException if String cannot be parsed
      */
-    public static LocalDateTime parseDateTime(String dateTimeString) {
+    public static LocalDateTime parseDateTime(String dateTimeString) throws DateTimeParseException {
         return LocalDateTime.parse(dateTimeString, DATETIME_FORMATTER);
     }
 }
