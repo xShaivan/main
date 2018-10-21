@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import seedu.address.model.util.DateTimeUtil;
+
 /**
  * Represents ReportDate of Birth in Health Book
  */
@@ -16,8 +18,6 @@ public class DateOfBirth {
 
     public final LocalDate value;
 
-    private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
     /**
      * Constructs a {@code DateOfBirth}
      * @param value a valid date
@@ -26,7 +26,7 @@ public class DateOfBirth {
     //TODO: (DateOfBirth) to be an Optional type to support null values
     public DateOfBirth(String value) {
         requireNonNull(value);
-        this.value = LocalDate.parse(value, dateTimeFormatter);
+        this.value = DateTimeUtil.parseDate(value);
     }
 
     public static boolean isValidDate(String test) {
@@ -35,7 +35,7 @@ public class DateOfBirth {
 
     @Override
     public String toString() {
-        return value.format(dateTimeFormatter);
+        return DateTimeUtil.format(value);
     }
 
     @Override

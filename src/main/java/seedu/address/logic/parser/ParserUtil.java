@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,6 +31,7 @@ import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
+import seedu.address.model.util.DateTimeUtil;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -141,9 +143,8 @@ public class ParserUtil {
         }
 
         try {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            LocalDate.parse(dateOfBirth, dateTimeFormatter);
-        } catch (Exception e) {
+            DateTimeUtil.parseDate(dateOfBirth);
+        } catch (DateTimeParseException e) {
             throw new ParseException(DateOfBirth.DATE_OF_BIRTH_VALUE_EXCEEDED);
         }
 
