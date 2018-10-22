@@ -203,6 +203,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     void showPersonDetails(Person person) {
+        browserPanel.clearFlowPanes();
         browserPanel.setPerson(person);
     }
 }

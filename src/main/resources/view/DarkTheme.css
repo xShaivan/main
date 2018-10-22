@@ -311,6 +311,11 @@
     -fx-border-width: 0;
 }
 
+.info-panel-name-label {
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+}
+
 #commandTypeLabel {
     -fx-font-size: 11px;
     -fx-text-fill: #F70D1A;

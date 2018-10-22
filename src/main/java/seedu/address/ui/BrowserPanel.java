@@ -10,6 +10,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 import javafx.scene.web.WebView;
 import seedu.address.MainApp;
@@ -43,6 +44,15 @@ public class BrowserPanel extends UiPart<Region> {
     @FXML
     private Label nameLabel4;
 
+    @FXML
+    private Label nricLabel;
+    @FXML
+    private FlowPane medHistoriesFlowPane;
+    @FXML
+    private FlowPane apptsFlowPane;
+    @FXML
+    private FlowPane medReportsFlowPane;
+
     public BrowserPanel() {
         super(FXML);
     }
@@ -51,13 +61,26 @@ public class BrowserPanel extends UiPart<Region> {
         this.person = person;
 
         initialiseNameLabels(person.getName().toString());
+        fillAnchorPanes(person);
     }
 
-    public void initialiseNameLabels(String name) {
-        nameLabel1.setText("Additional Info for " + name + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a");
-        nameLabel2.setText("Medical History for " + name + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a");
-        nameLabel3.setText("Appt Timetable for " + name + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a");
-        nameLabel4.setText("Medical Reports for " + name + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a" + "\n" + "a");
+    private void initialiseNameLabels(String name) {
+        nameLabel1.setText("Additional Info for " + name);
+        nameLabel2.setText("Medical History for " + name);
+        nameLabel3.setText("Appt Timetable for " + name);
+        nameLabel4.setText("Medical Reports for " + name);
     }
 
+    private void fillAnchorPanes(Person person) {
+        nricLabel.setText(person.getNric().value);
+        person.getMedHistory().forEach(medHistory -> medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
+        person.getMedicalReports().forEach(report -> medReportsFlowPane.getChildren().add(new Label(report.toString())));
+        person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new Label(appt.toString())));
+    }
+
+    public void clearFlowPanes() {
+        medHistoriesFlowPane.getChildren().clear();
+        medReportsFlowPane.getChildren().clear();
+        apptsFlowPane.getChildren().clear();
+    }
 }
