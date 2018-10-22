@@ -61,7 +61,10 @@ public class BrowserPanel extends UiPart<Region> {
         this.person = person;
 
         initialiseNameLabels(person.getName().toString());
-        fillAnchorPanes(person);
+        fillAdditionalInfoPane(person);
+        fillMedHistoriesPane(person);
+        fillApptsPane(person);
+        fillMedReportsPane(person);
     }
 
     private void initialiseNameLabels(String name) {
@@ -71,11 +74,20 @@ public class BrowserPanel extends UiPart<Region> {
         nameLabel4.setText("Medical Reports for " + name);
     }
 
-    private void fillAnchorPanes(Person person) {
+    private void fillAdditionalInfoPane(Person person) {
         nricLabel.setText(person.getNric().value);
+    }
+
+    private void fillMedHistoriesPane(Person person) {
         person.getMedHistory().forEach(medHistory -> medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
-        person.getMedicalReports().forEach(report -> medReportsFlowPane.getChildren().add(new Label(report.toString())));
+    }
+
+    private void fillApptsPane(Person person) {
         person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new Label(appt.toString())));
+    }
+
+    private void fillMedReportsPane(Person person) {
+        person.getMedicalReports().forEach(report -> medReportsFlowPane.getChildren().add(new Label(report.toString())));
     }
 
     public void clearFlowPanes() {
