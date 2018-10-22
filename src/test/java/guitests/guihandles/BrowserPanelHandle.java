@@ -22,6 +22,7 @@ public class BrowserPanelHandle extends NodeHandle<Node> {
     public BrowserPanelHandle(Node browserPanelNode) {
         super(browserPanelNode);
 
+        /*
         WebView webView = getChildNode(BROWSER_ID);
         WebEngine engine = webView.getEngine();
         new GuiRobot().interact(() -> engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
@@ -31,34 +32,35 @@ public class BrowserPanelHandle extends NodeHandle<Node> {
                 isWebViewLoaded = true;
             }
         }));
+        */
     }
 
     /**
      * Returns the {@code URL} of the currently loaded page.
      */
-    public URL getLoadedUrl() {
-        return WebViewUtil.getLoadedUrl(getChildNode(BROWSER_ID));
-    }
+    //public URL getLoadedUrl() {
+    //    return WebViewUtil.getLoadedUrl(getChildNode(BROWSER_ID));
+    //}
 
     /**
      * Remembers the {@code URL} of the currently loaded page.
      */
-    public void rememberUrl() {
-        lastRememberedUrl = getLoadedUrl();
-    }
+    //public void rememberUrl() {
+    //    lastRememberedUrl = getLoadedUrl();
+    //}
 
     /**
      * Returns true if the current {@code URL} is different from the value remembered by the most recent
      * {@code rememberUrl()} call.
      */
-    public boolean isUrlChanged() {
-        return !lastRememberedUrl.equals(getLoadedUrl());
-    }
+    //public boolean isUrlChanged() {
+    //    return !lastRememberedUrl.equals(getLoadedUrl());
+    //}
 
     /**
      * Returns true if the browser is done loading a page, or if this browser has yet to load any page.
      */
-    public boolean isLoaded() {
-        return isWebViewLoaded;
-    }
+    //public boolean isLoaded() {
+    //    return isWebViewLoaded;
+    //}
 }
