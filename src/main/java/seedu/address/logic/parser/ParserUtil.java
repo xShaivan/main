@@ -239,7 +239,6 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code date} is invalid.
      * ParseException is omitted for now.
-
      */
     public static ReportDate parseDate(String date) {
         requireNonNull(date);
@@ -266,10 +265,15 @@ public class ParserUtil {
     /**
      * Parses a {@code String apptDateTime} into an {@code ApptDateTime}.
      * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code apptDateTime} is invalid.
      */
-    public static ApptDateTime parseApptTime(String apptDateTime) {
+    public static ApptDateTime parseApptTime(String apptDateTime) throws ParseException {
         requireNonNull(apptDateTime);
         String trimmedApptDateTime = apptDateTime.trim();
+        if (!ApptDateTime.isValidDateTime(trimmedApptDateTime)) {
+            throw new ParseException(ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
+        }
         return new ApptDateTime(trimmedApptDateTime);
     }
 

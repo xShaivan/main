@@ -10,14 +10,20 @@ import seedu.address.model.util.DateTimeUtil;
  * Guarantees: immutable; is always valid
  */
 public class ApptDateTime {
-    public static final String MESSAGE_NAME_CONSTRAINTS = "The full ReportDate and Time should be of the format: "
-            + "DD/MM/YYYY HH:MM.";
+    public static final String MESSAGE_NAME_CONSTRAINTS =
+            "The start and end Appt Date and Time should be of the format: " + "DD-MM-YYYY HH:MM";
+    public static final String APPT_DATETIME_VALIDATION_REGEX =
+            "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
 
     public final LocalDateTime value;
 
     public ApptDateTime(String apptDateTime) {
         requireNonNull(apptDateTime);
         value = DateTimeUtil.parseDateTime(apptDateTime);
+    }
+
+    public static boolean isValidDateTime(String test) {
+        return test.matches(APPT_DATETIME_VALIDATION_REGEX);
     }
 
     @Override
