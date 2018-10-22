@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
@@ -8,10 +9,22 @@
    <children>
       <SplitPane dividerPositions="0.25, 0.5, 0.75" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
         <items>
-          <AnchorPane fx:id="additionalInfo" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-          <AnchorPane fx:id="medHistory" minHeight="0.0" minWidth="0.0" prefHeight="166.0" prefWidth="317.0" />
-          <AnchorPane fx:id="appts" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-          <AnchorPane fx:id="medReports" minHeight="0.0" minWidth="0.0" prefHeight="155.0" prefWidth="317.0" />
+          <AnchorPane fx:id="additionalInfo" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label fx:id="nameLabel1" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></AnchorPane>
+          <AnchorPane fx:id="medHistory" minHeight="0.0" minWidth="0.0" prefHeight="166.0" prefWidth="317.0">
+               <children>
+                  <Label fx:id="nameLabel2" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></AnchorPane>
+          <AnchorPane fx:id="appts" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label fx:id="nameLabel3" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></AnchorPane>
+          <AnchorPane fx:id="medReports" minHeight="0.0" minWidth="0.0" prefHeight="155.0" prefWidth="317.0">
+               <children>
+                  <Label fx:id="nameLabel4" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>
