@@ -2,6 +2,9 @@ package seedu.address.model.medicalreport;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import seedu.address.model.util.DateTimeUtil;
+
 /**
  * Represents a Medical Report's date in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
@@ -9,15 +12,11 @@ import static java.util.Objects.requireNonNull;
 public class ReportDate {
 
     public static final String MESSAGE_DATE_CONSTRAINTS =
-            "The full ReportDate should be of the format: DD/MM/YYYY";
+            "The full ReportDate should be of the format: DD-MM-YYYY";
+    public static final String REPORT_DATE_VALIDATION_REGEX =
+            "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
 
-    /*
-     * The first character of the date must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String DATE_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-
-    public final String fullDate;
+    public final LocalDate fullDate;
 
     /**
      * Constructs a {@code ReportDate}.
@@ -26,20 +25,20 @@ public class ReportDate {
      */
     public ReportDate(String date) {
         requireNonNull(date);
-        fullDate = date;
+        fullDate = DateTimeUtil.parseDate(date);
     }
 
     /**
      * Returns true if a given string is a valid date.
      */
     public static boolean isValidDate(String test) {
-        return test.matches(DATE_VALIDATION_REGEX);
+        return test.matches(REPORT_DATE_VALIDATION_REGEX);
     }
 
 
     @Override
     public String toString() {
-        return fullDate;
+        return DateTimeUtil.format(fullDate);
     }
 
     @Override
@@ -52,9 +51,5 @@ public class ReportDate {
     @Override
     public int hashCode() {
         return fullDate.hashCode();
-    }
-
-    public boolean isFull() {
-        return true;
     }
 }

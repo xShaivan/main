@@ -33,8 +33,8 @@ public class AddMedicalReportCommand extends Command {
             + PREFIX_INFORMATION + "[INFORMATION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Asthma "
-            + PREFIX_DATE + "01/01/2018 "
-            + PREFIX_INFORMATION + "prescribed XXX medicine, next appointment on 02/02/2018. ";
+            + PREFIX_DATE + "01-01-2018 "
+            + PREFIX_INFORMATION + "prescribed XXX medicine, next appointment on 02-02-2018. ";
 
     public static final String MESSAGE_ADD_REPORT_SUCCESS = "Added medical report to Person: %1$s";
 

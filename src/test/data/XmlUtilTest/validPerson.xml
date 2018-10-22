@@ -7,8 +7,8 @@
     <tagged>friends</tagged>
     <reports>
         <title>Asthma</title>
-        <date>01/01/2018</date>
-        <information>Prescribed XXX medicine, next appointment on 02/02/2018.</information>
+        <date>01-01-2018</date>
+        <information>Prescribed XXX medicine, next appointment on 02-02-2018.</information>
     </reports>
     <appts>
         <apptStart>01/01/2018 14:00</apptStart>
