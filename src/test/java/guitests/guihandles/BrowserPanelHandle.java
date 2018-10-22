@@ -5,6 +5,7 @@ import java.net.URL;
 import guitests.GuiRobot;
 import javafx.concurrent.Worker;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
@@ -15,9 +16,9 @@ public class BrowserPanelHandle extends NodeHandle<Node> {
 
     public static final String BROWSER_ID = "#browser";
 
-    private boolean isWebViewLoaded = true;
+    //private boolean isWebViewLoaded = true;
 
-    private URL lastRememberedUrl;
+    //private URL lastRememberedUrl;
 
     public BrowserPanelHandle(Node browserPanelNode) {
         super(browserPanelNode);
@@ -33,6 +34,8 @@ public class BrowserPanelHandle extends NodeHandle<Node> {
             }
         }));
         */
+
+        ScrollPane scrollPane = getChildNode(BROWSER_ID);
     }
 
     /**
