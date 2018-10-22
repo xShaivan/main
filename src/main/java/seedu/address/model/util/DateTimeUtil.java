@@ -52,7 +52,7 @@ public class DateTimeUtil {
      * @return parsed local-date-time, not null
      * @throws DateTimeParseException if String cannot be parsed
      */
-        public static LocalDateTime parseDateTime(String dateTimeString) throws DateTimeParseException {
+    public static LocalDateTime parseDateTime(String dateTimeString) throws DateTimeParseException {
         return LocalDateTime.parse(dateTimeString, DATETIME_FORMATTER);
     }
 }
