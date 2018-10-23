@@ -3,6 +3,7 @@ package seedu.address.model.timetable;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
+
 import seedu.address.model.util.DateTimeUtil;
 
 /**

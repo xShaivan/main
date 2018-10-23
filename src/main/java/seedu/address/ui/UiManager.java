@@ -18,7 +18,6 @@ import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Person;
 
 /**
  * The manager of the UI component.

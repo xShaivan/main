@@ -1,21 +1,11 @@
 package seedu.address.ui;
 
-import java.net.URL;
-import java.util.logging.Logger;
-
-import com.google.common.eventbus.Subscribe;
-
-import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
-import javafx.scene.web.WebView;
-import seedu.address.MainApp;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+
 import seedu.address.model.person.Person;
 
 /**
@@ -79,7 +69,8 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     private void fillMedHistoriesPane(Person person) {
-        person.getMedHistory().forEach(medHistory -> medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
+        person.getMedHistory().forEach(medHistory ->
+                medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
     }
 
     private void fillApptsPane(Person person) {
@@ -87,7 +78,8 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     private void fillMedReportsPane(Person person) {
-        person.getMedicalReports().forEach(report -> medReportsFlowPane.getChildren().add(new Label(report.toString())));
+        person.getMedicalReports().forEach(report ->
+                medReportsFlowPane.getChildren().add(new Label(report.toString())));
     }
 
     public void clearFlowPanes() {
