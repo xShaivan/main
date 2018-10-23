@@ -48,7 +48,7 @@ public class XmlAdaptedPerson {
     @XmlElement(required = true)
     private String height;
     @XmlElement(required = true)
-    private  String weight;
+    private String weight;
 
     @XmlElement
     private List<XmlAdaptedReport> reports = new ArrayList<>();
@@ -165,7 +165,7 @@ public class XmlAdaptedPerson {
         final DateOfBirth modelDateOfBirth = new DateOfBirth(dateOfBirth);
 
         if (height == null) {
-            throw  new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Height.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Height.class.getSimpleName()));
         }
         final Height modelHeight = new Height(height);
 

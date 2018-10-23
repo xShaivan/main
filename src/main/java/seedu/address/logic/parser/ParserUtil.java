@@ -2,8 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
@@ -22,9 +20,9 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
-import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.ApptDateTime;
@@ -157,6 +155,12 @@ public class ParserUtil {
         return new DateOfBirth(trimmedDateOfBirth);
     }
 
+    /**
+     * Parses a {@code String height} into a {@code Height}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code height} is invalid
+     */
     public static Height parseHeight(String height) throws ParseException {
         requireNonNull(height);
         String trimmedHeight = height.trim();
@@ -168,6 +172,12 @@ public class ParserUtil {
         return new Height(trimmedHeight);
     }
 
+    /**
+     * Parses a {@code String weight} into a {@code Weight}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code weight} is invalid
+     */
     public static Weight parseWeight(String weight) throws ParseException {
         requireNonNull(weight);
         String trimmedWeight = weight.trim();

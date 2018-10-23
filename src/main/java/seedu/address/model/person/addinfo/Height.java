@@ -2,6 +2,9 @@ package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents a person's height in Health Book
+ */
 public class Height {
     public static final String HEIGHT_VALIDATION_REGEX = "[\\d]+";
     public static final String MESSAGE_HEIGHT_CONSTRAINTS = "Height should be numeric input only.";

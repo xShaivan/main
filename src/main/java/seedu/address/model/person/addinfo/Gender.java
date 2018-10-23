@@ -2,6 +2,9 @@ package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents a person's gender in Health Book.
+ */
 public class Gender {
     public static final String GENDER_VALIDATION_REGEX = "[MF]";
     public static final String MESSAGE_GENDER_CONSTRAINTS = "Gender input can only be either M or F.";

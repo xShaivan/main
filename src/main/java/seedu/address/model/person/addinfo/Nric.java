@@ -15,6 +15,9 @@ public class Nric {
 
     public final String value;
 
+    private static final int CHECK_SUM_ADDITIONAL_DIGIT = 4;
+    private static final int CHECK_SUM_MODULO_DIGIT = 11;
+
     /**
      * Constructs an {@code Nric}.
      *
@@ -36,8 +39,6 @@ public class Nric {
      * Returns if a given string is a correct NRIC.
      */
     public static boolean isCorrectNric(String test) {
-        final int CHECK_SUM_ADDITIONAL_DIGIT = 4;
-        final int CHECK_SUM_MODULO_DIGIT = 11;
         final int[] weight = {2, 7, 6, 5, 4, 3, 2};
 
         char[] input = test.toCharArray();
