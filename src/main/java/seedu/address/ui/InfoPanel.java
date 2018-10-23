@@ -10,15 +10,14 @@ import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
 
 /**
- * The Browser Panel of the App.
+ * The Info Panel of the App.
  */
-public class BrowserPanel extends UiPart<Region> {
-
-    private static final String FXML = "BrowserPanel.fxml";
+public class InfoPanel extends UiPart<Region> {
+    private static final String FXML = "InfoPanel.fxml";
     private Person person;
 
     @FXML
-    private ScrollPane browser;
+    private ScrollPane infoScrollPane;
     @FXML
     private AnchorPane additionalInfo;
     @FXML
@@ -46,7 +45,7 @@ public class BrowserPanel extends UiPart<Region> {
     @FXML
     private FlowPane medReportsFlowPane;
 
-    public BrowserPanel() {
+    public InfoPanel() {
         super(FXML);
     }
 

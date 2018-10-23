@@ -1,6 +1,6 @@
 package seedu.address.ui;
 
-public class BrowserPanelTest extends GuiUnitTest {
+public class InfoPanelTest extends GuiUnitTest {
     /*
     private PersonPanelSelectionChangedEvent selectionChangedEventStub;
 

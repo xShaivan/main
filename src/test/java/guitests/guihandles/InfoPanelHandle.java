@@ -4,18 +4,16 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
 /**
- * A handler for the {@code BrowserPanel} of the UI.
+ * A handler for the {@code InfoPanel} of the UI.
  */
-public class BrowserPanelHandle extends NodeHandle<Node> {
-
-    public static final String BROWSER_ID = "#browser";
-
+public class InfoPanelHandle extends NodeHandle<Node> {
+    public static final String INFO_PANEL_ID = "#infoPanel";
     //private boolean isWebViewLoaded = true;
-
     //private URL lastRememberedUrl;
 
-    public BrowserPanelHandle(Node browserPanelNode) {
-        super(browserPanelNode);
+    public InfoPanelHandle(Node infoPanelNode) {
+        super(infoPanelNode);
+        ScrollPane scrollPane = getChildNode(INFO_PANEL_ID);
 
         /*
         WebView webView = getChildNode(BROWSER_ID);
@@ -28,8 +26,6 @@ public class BrowserPanelHandle extends NodeHandle<Node> {
             }
         }));
         */
-
-        ScrollPane scrollPane = getChildNode(BROWSER_ID);
     }
 
     /**
