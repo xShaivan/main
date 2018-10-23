@@ -3,6 +3,7 @@ package seedu.address.model.medicalreport;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
+
 import seedu.address.model.util.DateTimeUtil;
 
 /**
