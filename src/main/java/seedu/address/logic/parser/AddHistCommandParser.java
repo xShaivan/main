@@ -9,8 +9,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddHistCommand;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medhistory.PrevCountry;
 
 
 /**
@@ -41,14 +44,20 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
         if (argMultimap.getValue(PREFIX_HISTORY_DATE).isPresent()) {
             medHistory.setMedHistDate(ParserUtil
                     .parseMedHistDate(argMultimap.getValue(PREFIX_HISTORY_DATE).get()));
+        } else {
+            medHistory.setMedHistDate(new MedHistDate(""));
         }
         if (argMultimap.getValue(PREFIX_HISTORY_ALLERGY).isPresent()) {
             medHistory.setAllergy(ParserUtil
                     .parseAllergy(argMultimap.getValue(PREFIX_HISTORY_ALLERGY).get()));
+        } else {
+            medHistory.setAllergy(new Allergy(""));
         }
         if (argMultimap.getValue(PREFIX_HISTORY_COUNTRY).isPresent()) {
             medHistory.setPrevCountry(ParserUtil
                     .parsePrevCountry(argMultimap.getValue(PREFIX_HISTORY_COUNTRY).get()));
+        } else {
+            medHistory.setPrevCountry(new PrevCountry(""));
         }
         if (!medHistory.isAnyFieldEdited()) {
             throw new ParseException(AddHistCommand.MESSAGE_NOT_EDITED);
