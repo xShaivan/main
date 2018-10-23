@@ -7,11 +7,11 @@ import java.util.Arrays;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.AddressContainsKeywordsPredicate;
-import seedu.address.model.person.AllergyContainsKeywordsPredicate;
-import seedu.address.model.person.BloodTypeContainsKeywordsPredicate;
-import seedu.address.model.person.CountryContainsKeywordsPredicate;
+//import seedu.address.model.person.AllergyContainsKeywordsPredicate;
+//import seedu.address.model.person.BloodTypeContainsKeywordsPredicate;
+//import seedu.address.model.person.CountryContainsKeywordsPredicate;
 import seedu.address.model.person.EmailContainsKeywordsPredicate;
-import seedu.address.model.person.InfoContainsKeywordsPredicate;
+//import seedu.address.model.person.InfoContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.NricContainsKeywordsPredicate;
 import seedu.address.model.person.PhoneContainsKeywordsPredicate;
@@ -67,8 +67,9 @@ public class FindCommandParser implements Parser<FindCommand> {
         case "ic/":
             //create NricContainsKeywordsPredicate
             return new FindCommand(new NricContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
-    /*
+
         //Medical Prefixes
+        /*
         case "i/":
             //create InfoContainsKeywordsPredicate
             return new FindCommand(new InfoContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
@@ -84,7 +85,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         case "hsa/":
             //create AllergyContainsKeywordsPredicate
             return new FindCommand(new AllergyContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
-    */
+        */
         default:
             throw new ParseException(MESSAGE_INVALID_COMMAND_FORMAT);
         }
