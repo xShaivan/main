@@ -2,6 +2,9 @@ package seedu.address.model.timetable;
 
 import java.util.Comparator;
 
+/**
+ * A comparator class to compare Appts according to start date and end date
+ */
 public class ApptComparator implements Comparator<Appt> {
 
     @Override
