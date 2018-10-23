@@ -53,7 +53,6 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
     private final MedHistory medHistory;
-    //private final MedHistory medHistory;
     /**
      * @param index of the patient in the filtered patient list to add medical history
      * @param medHistory of the person to be updated to
