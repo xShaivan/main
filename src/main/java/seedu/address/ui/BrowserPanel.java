@@ -57,6 +57,9 @@ public class BrowserPanel extends UiPart<Region> {
         fillMedReportsPane(person);
     }
 
+    /**
+     * Initialises the name labels in all anchor panes
+     */
     private void initialiseNameLabels(String name) {
         nameLabel1.setText("Additional Info for " + name);
         nameLabel2.setText("Medical History for " + name);
@@ -82,6 +85,9 @@ public class BrowserPanel extends UiPart<Region> {
                 medReportsFlowPane.getChildren().add(new Label(report.toString())));
     }
 
+    /**
+     * Empties flowpanes in all anchorpanes
+     */
     public void clearFlowPanes() {
         medHistoriesFlowPane.getChildren().clear();
         medReportsFlowPane.getChildren().clear();
