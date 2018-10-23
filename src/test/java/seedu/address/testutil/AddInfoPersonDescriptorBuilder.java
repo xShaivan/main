@@ -1,9 +1,9 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.AddInfoCommand.AddInfoPersonDescriptor;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Nric;
-import seedu.address.model.person.Person;
 
 /**
  * A unity class to help with building AddInfoPersonDescriptor objects.
