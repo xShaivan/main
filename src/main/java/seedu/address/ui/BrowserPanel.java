@@ -50,37 +50,37 @@ public class BrowserPanel extends UiPart<Region> {
     public void setPerson(Person person) {
         this.person = person;
 
-        initialiseNameLabels(person.getName().toString());
-        fillAdditionalInfoPane(person);
-        fillMedHistoriesPane(person);
-        fillApptsPane(person);
-        fillMedReportsPane(person);
+        initialiseNameLabels();
+        fillAdditionalInfoPane();
+        fillMedHistoriesPane();
+        fillApptsPane();
+        fillMedReportsPane();
     }
 
     /**
      * Initialises the name labels in all anchor panes
      */
-    private void initialiseNameLabels(String name) {
-        nameLabel1.setText("Additional Info for " + name);
-        nameLabel2.setText("Medical History for " + name);
-        nameLabel3.setText("Appt Timetable for " + name);
-        nameLabel4.setText("Medical Reports for " + name);
+    private void initialiseNameLabels() {
+        nameLabel1.setText("Additional Info for " + person.getName());
+        nameLabel2.setText("Medical History for " + person.getName());
+        nameLabel3.setText("Appt Timetable for " + person.getName());
+        nameLabel4.setText("Medical Reports for " + person.getName());
     }
 
-    private void fillAdditionalInfoPane(Person person) {
+    private void fillAdditionalInfoPane() {
         nricLabel.setText(person.getNric().value);
     }
 
-    private void fillMedHistoriesPane(Person person) {
+    private void fillMedHistoriesPane() {
         person.getMedHistory().forEach(medHistory ->
                 medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
     }
 
-    private void fillApptsPane(Person person) {
+    private void fillApptsPane() {
         person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new Label(appt.toString())));
     }
 
-    private void fillMedReportsPane(Person person) {
+    private void fillMedReportsPane() {
         person.getMedicalReports().forEach(report ->
                 medReportsFlowPane.getChildren().add(new Label(report.toString())));
     }
