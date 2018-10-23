@@ -174,6 +174,9 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Returns a {@code Person} that have been built
+     */
     public Person build() {
         return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height, weight,
                 tags);
