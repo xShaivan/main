@@ -6,17 +6,17 @@ import static java.util.Objects.requireNonNull;
  * Represents a person's NRIC in Health Book.
  */
 public class Nric {
-    public static final String NRIC_VALIDATION_REGEX = "[ST]" + "[\\d]{7}" + "[A-Z]";
     public static final String MESSAGE_NRIC_CONSTRAINTS = "NRICs should adhere to the following constraints:\n"
             + "1. It should begin with either S or T;\n"
             + "2. The next 7 characters should be digits between 0 - 9, and;\n"
             + "3. It should end of with any alphabet.";
     public static final String MESSAGE_NRIC_INVALID = "The input NRIC is not correct. Please check again.";
 
-    public final String value;
-
+    private static final String NRIC_VALIDATION_REGEX = "[ST]" + "[\\d]{7}" + "[A-Z]";
     private static final int CHECK_SUM_ADDITIONAL_DIGIT = 4;
     private static final int CHECK_SUM_MODULO_DIGIT = 11;
+
+    public final String value;
 
     /**
      * Constructs an {@code Nric}.
