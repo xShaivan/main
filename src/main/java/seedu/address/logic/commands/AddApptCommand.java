@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_VENUE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -44,6 +45,7 @@ public class AddApptCommand extends Command {
             + PREFIX_APPT_DRNAME + "Dr Tan";
 
     public static final String MESSAGE_ADD_APPT_SUCCESS = "Added appt to Person: %1$s";
+    public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt";
     public static final String MESSAGE_DELETE_APPT_SUCCESS = "Removed appt from Person: %1$s";
 
     private final Index index;
@@ -69,6 +71,13 @@ public class AddApptCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<Appt> oldAppts = personToEdit.getAppts();
+
+        for (Appt oldAppt : oldAppts) {
+            if (hasApptClash(oldAppt, appt)) {
+                throw new CommandException(MESSAGE_APPT_CLASH);
+            }
+        }
+
         Set<Appt> newAppts = new TreeSet<>(new ApptComparator());
         for (Appt appt : oldAppts) {
             newAppts.add(appt);
@@ -91,6 +100,25 @@ public class AddApptCommand extends Command {
      */
     private String generateSuccessMessage(Person personToEdit) {
         return String.format(MESSAGE_ADD_APPT_SUCCESS, personToEdit);
+    }
+
+    private boolean hasApptClash(Appt appt1, Appt appt2) {
+        LocalDateTime start1 = appt1.getStart().value;
+        LocalDateTime end1 = appt1.getEnd().value;
+        LocalDateTime start2 = appt2.getStart().value;
+        LocalDateTime end2 = appt2.getEnd().value;
+
+        // if appt1 is from 1600-1700, appt2 cannot start between 1600-1759, and cannot end between 1601-1800
+        // if appt2 is from 1600-1700, appt1 cannot start between 1600-1759, and cannot end between 1601-1800
+        if (((start1.isEqual(start2) || start1.isAfter(start2)) && start1.isBefore(end2)) ||
+                ((start2.isEqual(start1) || start2.isAfter(start1)) && start2.isBefore(end1)) ||
+                (end1.isAfter(start2) && (end1.isBefore(end2) || end1.isEqual(end2))) ||
+                (end2.isAfter(start1) && (end2.isBefore(end1) || end2.isEqual(end1)))) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
