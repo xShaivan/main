@@ -306,14 +306,13 @@
     -fx-padding: 8 1 8 1;
 }
 
+.infoPanelNameLabel {
+    -fx-font-size: 20px;
+}
+
 #cardPane {
     -fx-background-color: transparent;
     -fx-border-width: 0;
-}
-
-.info-panel-name-label {
-    -fx-font-size: 20px;
-    -fx-text-fill: black;
 }
 
 #commandTypeLabel {

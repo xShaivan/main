@@ -23,7 +23,7 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private AnchorPane medHistory;
     @FXML
-    private AnchorPane appts;
+    private AnchorPane medAppts;
     @FXML
     private AnchorPane medReports;
 
@@ -70,19 +70,23 @@ public class InfoPanel extends UiPart<Region> {
     }
 
     private void fillAdditionalInfoPane() {
+        additionalInfo.setStyle("-fx-background-color: #FCFCFC");
         nricLabel.setText(person.getNric().value);
     }
 
     private void fillMedHistoriesPane() {
+        medHistory.setStyle("-fx-background-color: #ECECEC");
         person.getMedHistory().forEach(medHistory ->
                 medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
     }
 
     private void fillApptsPane() {
+        medAppts.setStyle("-fx-background-color: #DCDCDC");
         person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new Label(appt.toString())));
     }
 
     private void fillMedReportsPane() {
+        medReports.setStyle("-fx-background-color: #CCCCCC");
         person.getMedicalReports().forEach(report ->
                 medReportsFlowPane.getChildren().add(new Label(report.toString())));
     }
