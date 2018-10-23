@@ -79,7 +79,7 @@ public class AddHistCommand extends Command {
         }
         // adds the new history from command
         newMedHistories.add(medHistory);
-        Person editedPerson = createEditedPerson(personToEdit, medHistory);
+        Person editedPerson = createEditedPerson(personToEdit, newMedHistories);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson));
@@ -89,7 +89,7 @@ public class AddHistCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, MedHistory medHistory) {
+    private static Person createEditedPerson(Person personToEdit, Set <MedHistory> newMedHistories) {
         assert personToEdit != null;
 
         Name name = personToEdit.getName();
@@ -98,7 +98,7 @@ public class AddHistCommand extends Command {
         Address address = personToEdit.getAddress();
         Set<Appt> appts = personToEdit.getAppts();
         Set<MedicalReport> medicalReports = personToEdit.getMedicalReports();
-        Set<MedHistory> medHistories = personToEdit.getMedHistory();
+        Set<MedHistory> medHistories = newMedHistories;
         Set<Tag> tags = personToEdit.getTags();
 
         Nric nric = personToEdit.getNric();
