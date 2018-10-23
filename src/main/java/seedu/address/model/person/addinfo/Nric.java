@@ -11,6 +11,7 @@ public class Nric {
             + "1. It should begin with either S or T;\n"
             + "2. The next 7 characters should be digits between 0 - 9, and;\n"
             + "3. It should end of with any alphabet.";
+    public static final String MESSAGE_NRIC_INVALID = "The input NRIC is not correct. Please check again.";
 
     public final String value;
 
@@ -29,6 +30,53 @@ public class Nric {
      */
     public static boolean isValidNric(String test) {
         return test.matches(NRIC_VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns if a given string is a correct NRIC.
+     */
+    public static boolean isCorrectNric(String test) {
+        final int CHECK_SUM_ADDITIONAL_DIGIT = 4;
+        final int CHECK_SUM_MODULO_DIGIT = 11;
+        final int[] weight = {2, 7, 6, 5, 4, 3, 2};
+
+        char[] input = test.toCharArray();
+        int sum = 0;
+
+        for (int i = 0; i < weight.length; i++) {
+            sum += weight[i] * Character.getNumericValue(input[i + 1]);
+        }
+
+        if (input[0] == 'T') {
+            sum += CHECK_SUM_ADDITIONAL_DIGIT;
+        }
+
+        switch (sum % CHECK_SUM_MODULO_DIGIT) {
+        case 10:
+            return (input[input.length - 1] == 'A');
+        case 9:
+            return (input[input.length - 1] == 'B');
+        case 8:
+            return (input[input.length - 1] == 'C');
+        case 7:
+            return (input[input.length - 1] == 'D');
+        case 6:
+            return (input[input.length - 1] == 'E');
+        case 5:
+            return (input[input.length - 1] == 'F');
+        case 4:
+            return (input[input.length - 1] == 'G');
+        case 3:
+            return (input[input.length - 1] == 'H');
+        case 2:
+            return (input[input.length - 1] == 'I');
+        case 1:
+            return (input[input.length - 1] == 'Z');
+        case 0:
+            return (input[input.length - 1] == 'J');
+        default:
+            return false;
+        }
     }
 
     @Override
