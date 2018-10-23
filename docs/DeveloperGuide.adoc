@@ -943,6 +943,12 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |doctor |find a patient by name |locate details of patients without having to go through the entire list
 
+|`* * *` |doctor |filter out patients by certain personal details |saves time in contacting patients with desired personal details
+
+|`* * *` |doctor |filter out patients by certain medical details |saves time in administering patients with desired medical details
+
+|`* * *` |doctor |sort patients by patient details by lexicographical order |goes through the patient list which is listed systematic manner to facilitate administration
+
 |`* * *` |doctor |have a platform to view my patients' past medical history |compare with their current symptoms to predict future health risks
 
 |`* * *` |doctor |know my patient’s drug allergy if he/she has any |prescribe the drugs without causing other medical conditions
@@ -1397,7 +1403,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Sort patients list: `sortlist`
+=== Use case: Sort patients list: `sort`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1410,7 +1416,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User chooses to sort by a category that does not exist (for example: the letter does not exist or refer to any category ie “z”, “3” or “-”).
+* 1a. User chooses to sort by a category which the prefix of the category does not exist (for example: the prefix does not exist or correspond to any category ie “z/”).
 +
 [none]
 ** 1a1. System shows an error message that the category does not exist.
