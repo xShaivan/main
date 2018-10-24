@@ -25,9 +25,12 @@ public class MedHistoryUtil {
      */
     public static String getMedHistoryDetails(MedHistory medHistory) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_HISTORY_DATE + medHistory.getMedHistDate().value + " ");
-        sb.append(PREFIX_HISTORY_ALLERGY + medHistory.getAllergy().value + " ");
-        sb.append(PREFIX_HISTORY_COUNTRY + medHistory.getPrevCountry().value + " ");
+        medHistory.getMedHistDate().ifPresent(
+                medHistDate -> sb.append(PREFIX_HISTORY_DATE).append(medHistDate.value).append(" "));
+        medHistory.getAllergy().ifPresent(
+                allergy -> sb.append(PREFIX_HISTORY_ALLERGY).append(allergy.value).append(" "));
+        medHistory.getPrevCountry().ifPresent(
+                prevCountry -> sb.append(PREFIX_HISTORY_COUNTRY).append(prevCountry.value).append(" "));
         return sb.toString();
     }
 }
