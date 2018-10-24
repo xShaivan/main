@@ -335,7 +335,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 
 // tag::addinfo
 === Additional Information
-== Current Implementation
+==== Current Implementation
 The `addinfo` command is facilitated by the `AddInfoPersonDescriptor` class. Essentially, it is in-charged of changing the `Nric`, `DateOfBirth` attributes in a `Person` class.
 
 The command requires user to input an `index` based on the result of the `list` command. Upon getting the `index` input, the `AddInfoCommand` selects the `Person` based on the index from the `model`.

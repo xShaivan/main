@@ -241,15 +241,16 @@ Deletes the 2nd appointment in the displayed appointment list.
 Add the following additional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
 gender, occupation, marital status, family member. +
 Note: age field will be auto-calculated once DOB is populated +
-Format: `addinfo INDEX [i/NRIC] [d/DOB]`
+Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT]`
 
 .Constraints for `[i/NRIC]`:
 * Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
+* NRIC input must be valid with accordance to ICA's NRIC checksum
 
 .Constraints for `[d/DOB]`:
 * Must be in the format `dd-MM-YYYY`
 
-Work In Progress: `[h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
+Work In Progress: `[g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
 Examples:
 
