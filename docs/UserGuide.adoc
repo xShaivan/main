@@ -66,7 +66,8 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
    f. Occupation.
    g. Marital Status
    h. Family Members
-3. Medical report/diagnosis can only be added or after patient entries have been created. Additional information need not be completed to attach medical report/diagnosis to a patient. All fields in medical report are mandatory and cannot be omitted during the creation process.
+3. Medical report/diagnosis can only be added after patient entries have been created. Additional information need not be completed to attach medical report/diagnosis to a patient. All fields in medical report are mandatory and cannot be omitted during the creation process.
+4. Appointments can only be added after patient entries have been created. Additional information need not be completed to add an appointment for a patient. All fields for an appointment are mandatory and cannot be omitted during the creation process.
 
 ====
 
@@ -175,7 +176,7 @@ Adds a medical history entry for the 1st person in the list on 10/10/2010 with a
 === Adding an appointment into patient's timetable: `addappt`
 
 Adds an appointment into the specified patient's timetable. +
-Format: `addappt INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFORMATION d/DOCTOR_NAME`
+Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
 
 ****
 * Adds an appointment for the patient at the specified INDEX.
@@ -184,57 +185,58 @@ Format: `addappt INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFO
 
 Examples:
 
-* `addappt 2 d/12092018 s/1300 e/1400 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
-Adds an appointment for the 2nd person in the list on 12/09/2018 from 1300-1400 at Consultation Room 12 for a diabetes checkup by Dr Tan
+* `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+Adds an appointment for the 2nd person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 
+12 for a diabetes checkup by Dr Tan.
 
-=== Viewing a patient's appointments timetable: `viewappts`
+=== Viewing a patient's appointments timetable: `viewappt`
 
-Shows a list of all appointments in the specified patient's timetable. +
-Format: `viewappts INDEX`
+Shows details of a specified appointment for the specified patient. +
+Format: `viewappt INDEX s/START`
 
 ****
-* Views all appointments of the patient at the specified index.
+* Views an appointment with the specified start time for the patient at the specified index.
 * The index refers to the index number shown in the displayed person list.
 ****
 
 Examples:
 
-* `viewappts 2` +
-Views all appointments of the 2nd person in the list.
+* `viewappts 2 s/16-09-2018 15:00` +
+Views the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
 
 === Editing an appointment in a patient's timetable: `editappt`
 
-Edits a specified appointment in the patient's timetable. +
-Format: `editappt INDEX [d/DATE] [s/START_TIME] [e/END_TIME]
+Edits a specified appointment in the specified patient's timetable. +
+Format: `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME]
 [v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]`
 
 ****
-* Edits a patient’s appointment at the specified index.
-* The index refers to the index number shown in the displayed appointment list.
+* Edits an appointment with the specified start time for the patient at the specified index.
+* The index refers to the index number shown in the displayed person list.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 ****
 
 Examples:
 
-* `editappt 2 s/1400 e/1500 v/Consultation Room 13` +
-Edits the 2nd appointment in the list to have start time of 1400, end time of 1500,
-and venue of Consultation Room 13.
+* `editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
+Edits the appointment that starts on 16-09-2018 at 15:00, to now run from 16-09-2018 14:00-14:30 instead
+and be at Consultation Room 13 for the 2nd person in the list.
 
 === Deleting an appointment in a patient’s timetable: `deleteappt`
 
-Deletes a specified appointment in the patient’s timetable. +
-Format: `deleteappt INDEX`
+Deletes a specified appointment in the specified patient’s timetable. +
+Format: `deleteappt INDEX s/START`
 
 ****
-* Deletes a patient’s appointment at the specified index.
-* The index refers to the index number shown in the displayed appointment list.
+* Deletes an appointment with the specified start time for the patient at the specified index.
+* The index refers to the index number shown in the displayed person list.
 ****
 
 Examples:
 
-* `deleteappt 2` +
-Deletes the 2nd appointment in the displayed appointment list.
+* `deleteappt 2 s/16-09-2018 15:00` +
+Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
 
 === Adding additional information of patient: `addinfo`
 
