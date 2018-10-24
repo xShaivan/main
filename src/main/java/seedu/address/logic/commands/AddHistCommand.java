@@ -6,22 +6,16 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.medhistory.Allergy;
-import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
-import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfBirth;
