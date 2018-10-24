@@ -103,14 +103,14 @@ public class PersonCardHandle extends NodeHandle<Node> {
                 .map(Label::getText)
                 .collect(Collectors.toList());
     }
-
+    //@@author chewkahmeng
     public List<String> getMedicalReports() {
         return medicalReportLabels
                 .stream()
                 .map(Label::getText)
                 .collect(Collectors.toList());
     }
-
+    //@@author
     public List<String> getTags() {
         return tagLabels
                 .stream()

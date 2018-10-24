@@ -18,6 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Person;
 
+//@@author chewkahmeng
 /**
  * Adds a medical report to a person.
  */

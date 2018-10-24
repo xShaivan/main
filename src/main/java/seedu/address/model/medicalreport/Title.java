@@ -2,6 +2,7 @@ package seedu.address.model.medicalreport;
 
 import static java.util.Objects.requireNonNull;
 
+//@@author chewkahmeng
 /**
  * Represents a Medical Report's title in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidTitle(String)}
