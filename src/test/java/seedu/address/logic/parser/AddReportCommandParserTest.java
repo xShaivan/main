@@ -17,6 +17,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddMedicalReportCommand;
 import seedu.address.testutil.ReportBuilder;
 
+//@@author chewkahmeng
 public class AddReportCommandParserTest {
 
     private AddMedicalReportCommandParser parser = new AddMedicalReportCommandParser();

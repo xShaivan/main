@@ -216,7 +216,7 @@ public class ParserUtil {
 
         return new PrevCountry(trimmedPrevCountry);
     }
-
+    //@@author chewkahmeng
     /**
      * ==================================================
      * PARSER FOR MEDICAL REPORT SUBFIELDS
@@ -238,12 +238,14 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code date} is invalid.
-     * ParseException is omitted for now.
      */
-    public static ReportDate parseDate(String date) {
+    public static ReportDate parseDate(String date) throws ParseException {
         requireNonNull(date);
-        String trimmedDate = date.trim();
-        return new ReportDate(trimmedDate);
+        String trimmedReportDate = date.trim();
+        if (!ReportDate.isValidDate(trimmedReportDate)) {
+            throw new ParseException(ReportDate.MESSAGE_DATE_CONSTRAINTS);
+        }
+        return new ReportDate(trimmedReportDate);
     }
 
     /**
