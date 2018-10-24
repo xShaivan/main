@@ -102,18 +102,22 @@ public class AddApptCommand extends Command {
         return String.format(MESSAGE_ADD_APPT_SUCCESS, personToEdit);
     }
 
+    /**
+     * Checks if appt1 and appt2 have timings which clash
+     */
     private boolean hasApptClash(Appt appt1, Appt appt2) {
         LocalDateTime start1 = appt1.getStart().value;
         LocalDateTime end1 = appt1.getEnd().value;
         LocalDateTime start2 = appt2.getStart().value;
         LocalDateTime end2 = appt2.getEnd().value;
 
+        // Example:
         // if appt1 is from 1600-1700, appt2 cannot start between 1600-1759, and cannot end between 1601-1800
         // if appt2 is from 1600-1700, appt1 cannot start between 1600-1759, and cannot end between 1601-1800
-        if (((start1.isEqual(start2) || start1.isAfter(start2)) && start1.isBefore(end2)) ||
-                ((start2.isEqual(start1) || start2.isAfter(start1)) && start2.isBefore(end1)) ||
-                (end1.isAfter(start2) && (end1.isBefore(end2) || end1.isEqual(end2))) ||
-                (end2.isAfter(start1) && (end2.isBefore(end1) || end2.isEqual(end1)))) {
+        if (((start1.isEqual(start2) || start1.isAfter(start2)) && start1.isBefore(end2))
+                || ((start2.isEqual(start1) || start2.isAfter(start1)) && start2.isBefore(end1))
+                || (end1.isAfter(start2) && (end1.isBefore(end2) || end1.isEqual(end2)))
+                || (end2.isAfter(start1) && (end2.isBefore(end1) || end2.isEqual(end1)))) {
             return true;
         }
         else {
