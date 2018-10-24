@@ -192,12 +192,14 @@ public class XmlAdaptedPerson {
         }
         final Set<MedHistory> modelMedHistory = new HashSet<>(personMedHistories);
 
+        //@@author brandonccm1996
         final List<Appt> personAppts = new ArrayList<>();
         for (XmlAdaptedAppt appt : appts) {
             personAppts.add(appt.toModelType());
         }
         final Set<Appt> modelAppts = new HashSet<>(personAppts);
 
+        //@@author
         final List<Tag> personTags = new ArrayList<>();
         for (XmlAdaptedTag tag : tagged) {
             personTags.add(tag.toModelType());

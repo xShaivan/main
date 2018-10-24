@@ -87,9 +87,11 @@ public class PersonCardHandle extends NodeHandle<Node> {
         return nricLabel.getText();
     }
 
+    //@@author chewkahmeng
     public List<String> getMedicalReports() {
         return medicalReportLabels.stream().map(Label::getText).collect(Collectors.toList());
     }
+    //@@author
 
     public List<String> getMedHistory() {
         return medHistoryLabel.stream().map(Label::getText).collect(Collectors.toList());

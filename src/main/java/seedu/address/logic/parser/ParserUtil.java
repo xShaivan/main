@@ -257,7 +257,7 @@ public class ParserUtil {
 
         return new PrevCountry(trimmedPrevCountry);
     }
-
+    //@@author chewkahmeng
     /**
      * ==================================================
      * PARSER FOR MEDICAL REPORT SUBFIELDS
@@ -279,13 +279,14 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code date} is invalid.
-     * ParseException is omitted for now.
-
      */
-    public static ReportDate parseDate(String date) {
+    public static ReportDate parseDate(String date) throws ParseException {
         requireNonNull(date);
-        String trimmedDate = date.trim();
-        return new ReportDate(trimmedDate);
+        String trimmedReportDate = date.trim();
+        if (!ReportDate.isValidDate(trimmedReportDate)) {
+            throw new ParseException(ReportDate.MESSAGE_DATE_CONSTRAINTS);
+        }
+        return new ReportDate(trimmedReportDate);
     }
 
     /**
@@ -298,6 +299,7 @@ public class ParserUtil {
         return new Information(trimmedInformation);
     }
 
+    //@@author brandonccm1996
     /**
      * ==================================================
      * PARSER FOR APPT SUBFIELDS
@@ -307,10 +309,15 @@ public class ParserUtil {
     /**
      * Parses a {@code String apptDateTime} into an {@code ApptDateTime}.
      * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code apptDateTime} is invalid.
      */
-    public static ApptDateTime parseApptTime(String apptDateTime) {
+    public static ApptDateTime parseApptTime(String apptDateTime) throws ParseException {
         requireNonNull(apptDateTime);
         String trimmedApptDateTime = apptDateTime.trim();
+        if (!ApptDateTime.isValidDateTime(trimmedApptDateTime)) {
+            throw new ParseException(ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
+        }
         return new ApptDateTime(trimmedApptDateTime);
     }
 

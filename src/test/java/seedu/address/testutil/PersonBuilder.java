@@ -166,6 +166,7 @@ public class PersonBuilder {
         return this;
     }
 
+    //@@author brandonccm1996
     /**
      * Sets the {@code Appt} of the {@code Person} that we are building.
      */
@@ -173,7 +174,7 @@ public class PersonBuilder {
         this.appts = SampleDataUtil.getApptSet(appts);
         return this;
     }
-
+    //@@author
     /**
      * Returns a {@code Person} that have been built
      */
