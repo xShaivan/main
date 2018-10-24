@@ -1172,7 +1172,7 @@ Use case ends.
 * 1d. User enters an appointment with the end time before or equal to the start time.
 +
 [none]
-** 1c1. System shows an error message that the end time for an appointment needs to be after the start time.
+** 1d1. System shows an error message that the end time for an appointment needs to be after the start time.
 +
 Use case ends.
 
