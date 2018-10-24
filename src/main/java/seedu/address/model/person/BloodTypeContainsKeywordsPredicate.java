@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
+import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistory;
 
 /**
@@ -18,8 +19,10 @@ public class BloodTypeContainsKeywordsPredicate implements Predicate<MedHistory>
 
     @Override
     public boolean test(MedHistory medHistory) {
+        Allergy allergy = medHistory.getAllergy().orElse(new Allergy(""));
+
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.getAllergy().value, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(allergy.value, keyword));
         // BloodType not properly implemented yet, sticking to allergy first
     }
 

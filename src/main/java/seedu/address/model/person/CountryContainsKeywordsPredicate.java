@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.PrevCountry;
 
 /**
  * Tests that a {@code Person}'s {@code Last Visited Country} matches any of the keyword given.
@@ -18,8 +19,9 @@ public class CountryContainsKeywordsPredicate implements Predicate<MedHistory> {
 
     @Override
     public boolean test(MedHistory medHistory) {
+        PrevCountry prevCountry = medHistory.getPrevCountry().orElse(new PrevCountry(""));
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.getPrevCountry().value, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(prevCountry.value, keyword));
     }
 
 

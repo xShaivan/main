@@ -74,6 +74,7 @@ public class Nric {
         case 1:
             return (input[input.length - 1] == 'Z');
         case 0:
+
             return (input[input.length - 1] == 'J');
         default:
             return false;
