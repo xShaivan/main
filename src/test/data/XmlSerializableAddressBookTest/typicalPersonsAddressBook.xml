@@ -8,6 +8,8 @@
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>
@@ -28,6 +30,8 @@
         <address>311, Clementi Ave 2, #02-25</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>
@@ -49,6 +53,8 @@
         <address>wall street</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>
@@ -68,6 +74,8 @@
         <address>10th street</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>
@@ -88,6 +96,8 @@
         <address>michegan ave</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>
@@ -107,6 +117,8 @@
         <address>little tokyo</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>
@@ -126,6 +138,8 @@
         <address>4th street</address>
         <nric>S5185093I</nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>
