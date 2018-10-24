@@ -216,6 +216,7 @@ public class ParserUtil {
 
         return new PrevCountry(trimmedPrevCountry);
     }
+
     //@@author chewkahmeng
     /**
      * ==================================================

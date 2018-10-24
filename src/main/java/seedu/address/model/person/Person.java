@@ -69,10 +69,12 @@ public class Person {
     public Address getAddress() {
         return address;
     }
+
     //@@author chewkahmeng
     public Set<MedicalReport> getMedicalReports() {
         return Collections.unmodifiableSet(reports);
     }
+
     //@@author
     public Set<MedHistory> getMedHistory() {
         return Collections.unmodifiableSet(medHistories);
