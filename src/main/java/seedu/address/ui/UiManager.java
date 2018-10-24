@@ -119,6 +119,7 @@ public class UiManager extends ComponentManager implements Ui {
                 event.exception);
     }
 
+    //@@author brandonccm1996
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));

@@ -202,6 +202,7 @@ public class MainWindow extends UiPart<Stage> {
         handleHelp();
     }
 
+    //@@author brandonccm1996
     void showPersonDetails(Person person) {
         infoPanel.clearFlowPanes();
         infoPanel.setPerson(person);

@@ -256,6 +256,7 @@ public class ParserUtil {
         return new Information(trimmedInformation);
     }
 
+    //@@author brandonccm1996
     /**
      * ==================================================
      * PARSER FOR APPT SUBFIELDS
