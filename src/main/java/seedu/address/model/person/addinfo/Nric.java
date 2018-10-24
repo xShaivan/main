@@ -13,8 +13,8 @@ public class Nric {
     public static final String MESSAGE_NRIC_INVALID = "The input NRIC is not correct. Please check again.";
 
     private static final String NRIC_VALIDATION_REGEX = "[ST]" + "[\\d]{7}" + "[A-Z]";
-    private static final int CHECK_SUM_ADDITIONAL_DIGIT = 4;
-    private static final int CHECK_SUM_MODULO_DIGIT = 11;
+    private static final int CHECKSUM_ADDITIONAL_DIGIT = 4;
+    private static final int CHECKSUM_MODULO_DIGIT = 11;
 
     public final String value;
 
@@ -49,10 +49,10 @@ public class Nric {
         }
 
         if (input[0] == 'T') {
-            sum += CHECK_SUM_ADDITIONAL_DIGIT;
+            sum += CHECKSUM_ADDITIONAL_DIGIT;
         }
 
-        switch (sum % CHECK_SUM_MODULO_DIGIT) {
+        switch (sum % CHECKSUM_MODULO_DIGIT) {
         case 10:
             return (input[input.length - 1] == 'A');
         case 9:
