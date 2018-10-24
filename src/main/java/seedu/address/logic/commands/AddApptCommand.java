@@ -47,6 +47,7 @@ public class AddApptCommand extends Command {
 
     public static final String MESSAGE_ADD_APPT_SUCCESS = "Added appt to Person: %1$s";
     public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt";
+    public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time";
     public static final String MESSAGE_DELETE_APPT_SUCCESS = "Removed appt from Person: %1$s";
 
     private final Index index;
@@ -72,6 +73,10 @@ public class AddApptCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<Appt> oldAppts = personToEdit.getAppts();
+
+        if (hasInvalidTiming(appt)) {
+            throw new CommandException(MESSAGE_INVALID_TIME);
+        }
 
         for (Appt oldAppt : oldAppts) {
             if (hasApptClash(oldAppt, appt)) {
@@ -101,6 +106,21 @@ public class AddApptCommand extends Command {
      */
     private String generateSuccessMessage(Person personToEdit) {
         return String.format(MESSAGE_ADD_APPT_SUCCESS, personToEdit);
+    }
+
+    /**
+     * Checks if an appt has end time before or equal to start time
+     */
+    private boolean hasInvalidTiming(Appt appt) {
+        LocalDateTime start = appt.getStart().value;
+        LocalDateTime end = appt.getEnd().value;
+
+        if (!end.isAfter(start)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
