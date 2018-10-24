@@ -63,7 +63,7 @@ public class PersonCard extends UiPart<Region> {
         email.setText(person.getEmail().value);
 
         // TODO: Split the static text from dynamic text in UI
-        nric.setText("NRIC: " + person.getNric().value);
+        nric.setText(person.getNric().value);
         dateOfBirth.setText("Date Of Birth: " + person.getDateOfBirth().toString());
         height.setText("Height: " + person.getHeight().value);
         weight.setText("Weight: " + person.getWeight().value);

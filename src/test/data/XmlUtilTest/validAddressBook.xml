@@ -7,6 +7,8 @@
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">10-10-2010</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
     <persons>
         <name>Ruth Mueller</name>
@@ -15,6 +17,8 @@
         <address isPrivate="false">81th street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">01-01-1996</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
     <persons>
         <name>Heinz Kurz</name>
@@ -23,6 +27,8 @@
         <address isPrivate="false">wall street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">25-06-2001</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
     <persons>
         <name>Cornelia Meier</name>
@@ -31,6 +37,8 @@
         <address isPrivate="false">10th street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">17-03-1986</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
     <persons>
         <name>Werner Meyer</name>
@@ -39,6 +47,8 @@
         <address isPrivate="false">michegan ave</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">04-01-2006</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
     <persons>
         <name>Lydia Kunz</name>
@@ -47,6 +57,8 @@
         <address isPrivate="false">little tokyo</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">06-03-2016</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
     <persons>
         <name>Anna Best</name>
@@ -55,6 +67,8 @@
         <address isPrivate="false">4th street</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">27-12-2003</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
     <persons>
         <name>Stefan Meier</name>
@@ -63,6 +77,8 @@
         <address isPrivate="false">little india</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">19-09-2010</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
     <persons>
         <name>Martin Mueller</name>
@@ -71,5 +87,7 @@
         <address isPrivate="false">chicago ave</address>
         <nric isPrivate="false"></nric>
         <dateOfBirth isPrivate="false">17-04-1963</dateOfBirth>
+        <height isPrivate="false"></height>
+        <weight isPrivate="false"></weight>
     </persons>
 </addressbook>
