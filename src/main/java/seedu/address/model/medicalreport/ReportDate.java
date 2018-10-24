@@ -16,7 +16,7 @@ public class ReportDate {
     public static final String MESSAGE_DATE_CONSTRAINTS =
             "The full ReportDate should be of the format: DD-MM-YYYY";
     public static final String REPORT_DATE_VALIDATION_REGEX =
-            "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
+            "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
 
     public final LocalDate fullDate;
 

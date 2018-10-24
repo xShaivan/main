@@ -237,9 +237,12 @@ public class ParserUtil {
      * Parses a {@code String date} into an {@code ReportDate}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static ReportDate parseDate(String date) {
+    public static ReportDate parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedReportDate = date.trim();
+        if (!ReportDate.isValidDate(trimmedReportDate)) {
+            throw new ParseException(ReportDate.MESSAGE_DATE_CONSTRAINTS);
+        }
         return new ReportDate(trimmedReportDate);
     }
 
