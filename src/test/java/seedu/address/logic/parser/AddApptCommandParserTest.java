@@ -21,6 +21,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddApptCommand;
 import seedu.address.testutil.ApptBuilder;
 
+//@@author brandonccm1996
 public class AddApptCommandParserTest {
     private AddApptCommandParser parser = new AddApptCommandParser();
 

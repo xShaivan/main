@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import seedu.address.logic.commands.AddApptCommand;
 import seedu.address.model.timetable.Appt;
 
+//@@author brandonccm1996
 /**
  * A utility class for Appt.
  */

@@ -4,6 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
+//@@author brandonccm1996
 /**
  * Represents a Person's remark in the address book.
  * Guarantees: immutable; is always valid

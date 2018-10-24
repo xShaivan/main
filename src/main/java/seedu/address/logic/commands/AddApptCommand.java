@@ -22,6 +22,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.timetable.Appt;
 import seedu.address.model.timetable.ApptComparator;
 
+//@@author brandonccm1996
 /**
  * Adds an appointment to a person's timetable.
  */

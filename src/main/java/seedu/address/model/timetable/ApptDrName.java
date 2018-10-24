@@ -2,6 +2,7 @@ package seedu.address.model.timetable;
 
 import static java.util.Objects.requireNonNull;
 
+//@@author brandonccm1996
 /**
  * Represents a doctor (taking an appt) in an appt in the address book.
  * Guarantees: immutable; is always valid

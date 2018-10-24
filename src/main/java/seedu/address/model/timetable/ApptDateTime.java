@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 import seedu.address.model.util.DateTimeUtil;
 
+//@@author brandonccm1996
 /**
  * Represents an appt date and time in an appt in the address book.
  * Guarantees: immutable; is always valid
