@@ -1208,7 +1208,7 @@ Use case ends.
 * 1c. User requests to view an appointment that does not exist for the specified patient.
 +
 [none]
-** 1c1. System shows message that the patient does not have an appointment with the start date and time that the user is requesting.
+** 1c1. System shows message that the patient does not have an appointment with the start date and time that the user is requesting to view.
 +
 Use case ends.
 
@@ -1248,6 +1248,22 @@ Use case ends.
 +
 Use case ends.
 
+[none]
+* 1d. User requests to edit an appointment that does not exist for the specified patient.
++
+[none]
+** 1d1. System shows message that the patient does not have an appointment with the start date and time that the user is requesting to edit.
++
+Use case ends.
+
+[none]
+* 1e. User edits an appointment to have the end time before or equal to the start time.
++
+[none]
+** 1e1. System shows an error message that the end time for an appointment needs to be after the start time.
++
+Use case ends.
+
 === Use case: Deleting an appointment in a patient’s timetable: `deleteappt`
 Assume that user has already requested the System to view appointments for a patient.
 
@@ -1273,6 +1289,14 @@ Use case ends.
 +
 [none]
 ** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User requests to delete an appointment that does not exist for the specified patient.
++
+[none]
+** 1c1. System shows message that the patient does not have an appointment with the start date and time that the user is requesting to delete.
 +
 Use case ends.
 
