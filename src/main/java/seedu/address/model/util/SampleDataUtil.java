@@ -7,12 +7,10 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.medhistory.Allergy;
-import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
-import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nric;
@@ -27,29 +25,33 @@ import seedu.address.model.timetable.Appt;
 public class SampleDataUtil {
 
     public static final Nric EMPTY_NRIC = new Nric("");
-    public static final MedHistory EMPTY_MEDHISTORY = new MedHistory(new MedHistDate(""),
-            new Allergy(""), new PrevCountry(""));;
+    public static final DateOfBirth EMPTY_DATE_OF_BIRTH = new DateOfBirth("01-01-1970");
 
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"), getReportSet(),
-                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("friends")),
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, getTagSet("friends")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), getReportSet(),
-                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("colleagues", "friends")),
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getTagSet("colleagues", "friends")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), getReportSet(),
-                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("neighbours")),
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getTagSet("neighbours")),
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
                 new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), getReportSet(),
-                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("family")),
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getTagSet("family")),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                 new Address("Blk 47 Tampines Street 20, #17-35"), getReportSet(),
-                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("classmates")),
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getTagSet("classmates")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"), getReportSet(),
-                       EMPTY_MEDHISTORY, getApptSet(), EMPTY_NRIC, getTagSet("colleagues"))
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH,
+                    getTagSet("colleagues"))
         };
     }
 
@@ -71,7 +73,18 @@ public class SampleDataUtil {
     }
 
     /**
-     * Returns an report set containing the list of reports given.
+     * Returns a medical history set containing the list of medical histories.
+     */
+    public static Set<MedHistory> getMedHistorySet(MedHistory... medHistories) {
+        Set<MedHistory> medHistorySet = new HashSet<>();
+        for (MedHistory medHistory : medHistories) {
+            medHistorySet.add(medHistory);
+        }
+        return medHistorySet;
+    }
+
+    /**
+     * Returns a report set containing the list of reports given.
      */
     // TODO: (MedicalReport) MIGHT CONVERT TO USE STREAM IN FUTURE
     public static Set<MedicalReport> getReportSet(MedicalReport ... reports) {
