@@ -6,11 +6,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptComparator;
 
 /**
  * Represents a Person in the address book.
@@ -26,7 +28,7 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<MedHistory> medHistories = new HashSet<>();
-    private final Set<Appt> appts = new HashSet<>();
+    private final Set<Appt> appts = new TreeSet<>(new ApptComparator());
     private final Set<Tag> tags = new HashSet<>();
     private final Set<MedicalReport> reports = new HashSet<>();
 
@@ -84,10 +86,12 @@ public class Person {
         return dateOfBirth;
     }
 
+    //@@author brandonccm1996
     public Set<Appt> getAppts() {
         return Collections.unmodifiableSet(appts);
     }
 
+    //@@author
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.

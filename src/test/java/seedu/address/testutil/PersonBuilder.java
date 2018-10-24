@@ -140,6 +140,7 @@ public class PersonBuilder {
         return this;
     }
 
+    //@@author brandonccm1996
     /**
      * Sets the {@code Appt} of the {@code Person} that we are building.
      */
@@ -148,6 +149,7 @@ public class PersonBuilder {
         return this;
     }
 
+    //@@author
     public Person build() {
         return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, tags);
     }
