@@ -118,9 +118,7 @@ public class AddApptCommand extends Command {
         if (!end.isAfter(start)) {
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
 
     /**
@@ -141,9 +139,7 @@ public class AddApptCommand extends Command {
                 || (end2.isAfter(start1) && (end2.isBefore(end1) || end2.isEqual(end1)))) {
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
 
     @Override
