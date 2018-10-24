@@ -255,8 +255,8 @@ Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `addreport 3 t/Asthma d/01/01/2018 i/Prescribed XXX medicine, next appointment on 02/02/2018.` +
-Adds a new medical report for patient at index 3 titled Asthma, dated 01/01/2018 with the report's information.
+* `addreport 3 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+Adds a new medical report for patient at index 3 titled Asthma, dated 01-01-2018 with the report's information.
 
 === Editing of Medical Report: `editreport`
 
@@ -270,7 +270,7 @@ Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [i/INFORMATION
 
 Examples:
 
-* `editreport 3 1 t/Depression d/02/02/2018 i/Prescribed XXX medicine, next appointment on 03/03/2018.` +
+* `editreport 3 1 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
 Edits title, date and information of existing medical report at index 1 for patient at index 3.
 
 === List of Medical Report: `listreport`
@@ -281,7 +281,7 @@ Format: `listreport INDEX`
 Examples:
 
 * `listreport 1` +
-List all medical reports/diagnosis that are attached to patient at index 1.
+List all medical reports that are attached to patient at index 1.
 
 === Sort patients list: `sortlist`
 

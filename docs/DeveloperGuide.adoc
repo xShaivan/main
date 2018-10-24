@@ -909,7 +909,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |doctor |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |doctor |add, edit, and delete patients and their medical informaton |keep track of my patients and not prescribe them the wrong medication
+|`* * *` |doctor |add, edit, and delete patients and their medical information |keep track of my patients and not prescribe them the wrong medication
 
 |`* * *` |doctor |find a patient by name |locate details of patients without having to go through the entire list
 
@@ -924,6 +924,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |doctor |import/export files to other computers |send patients’ data to other hospitals if the patient transfers there
 
 |`* * *` |doctor |see all my patient’s appointments if there is any |remind my patients to come for appointments days in advance
+
+|`* * *` |doctor |add a list of medical reports for every patient |refer to them in the future
+
+|`* * *` |doctor |edit a patient's medical report |rectify any mistakes made in the medical report
 
 |`* *` |doctor |have an inventory list |keep track and replenish stocks
 
