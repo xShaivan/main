@@ -1148,7 +1148,7 @@ Use case ends.
 * 1a. User uses the wrong format to add appointment.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of adding appointment.
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of adding appointment.
 +
 Use case ends.
 
@@ -1192,7 +1192,7 @@ Use case ends.
 * 1a. User uses the wrong format to view appointments.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of viewing appointments.
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of viewing appointments.
 +
 Use case ends.
 
@@ -1208,7 +1208,7 @@ Use case ends.
 * 1c. User requests to view an appointment that does not exist for the specified patient.
 +
 [none]
-** 1c1. System shows message that the patient does not have an appointment with the start date and time that the user is requesting to view.
+** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to view.
 +
 Use case ends.
 
@@ -1228,7 +1228,7 @@ Use case ends.
 * 1a. User uses the wrong format to edit appointment.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing appointment.
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of editing appointment.
 +
 Use case ends.
 
@@ -1252,7 +1252,7 @@ Use case ends.
 * 1d. User requests to edit an appointment that does not exist for the specified patient.
 +
 [none]
-** 1d1. System shows message that the patient does not have an appointment with the start date and time that the user is requesting to edit.
+** 1d1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to edit.
 +
 Use case ends.
 
@@ -1280,7 +1280,7 @@ Use case ends.
 * 1a. User uses the wrong format to delete appointment.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of deleting appointment.
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of deleting appointment.
 +
 Use case ends.
 
@@ -1296,7 +1296,7 @@ Use case ends.
 * 1c. User requests to delete an appointment that does not exist for the specified patient.
 +
 [none]
-** 1c1. System shows message that the patient does not have an appointment with the start date and time that the user is requesting to delete.
+** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to delete.
 +
 Use case ends.
 
