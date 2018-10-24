@@ -30,9 +30,9 @@ public class MedHistoryBuilder {
      * Initializes the ReportBuilder with the data of {@code medHistoryToCopy}.
      */
     public MedHistoryBuilder(MedHistory medHistoryToCopy) {
-        medHistDate = medHistoryToCopy.getMedHistDate();
-        allergy = medHistoryToCopy.getAllergy();
-        prevCountry = medHistoryToCopy.getPrevCountry();
+        medHistDate = medHistoryToCopy.getMedHistDate().orElse(new MedHistDate(""));
+        allergy = medHistoryToCopy.getAllergy().orElse(new Allergy(""));
+        prevCountry = medHistoryToCopy.getPrevCountry().orElse(new PrevCountry(""));
     }
     /**
      * Sets the {@code MedHistDate} of the {@code MedHistory} that we are building.
