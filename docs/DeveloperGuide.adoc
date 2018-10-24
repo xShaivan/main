@@ -1213,7 +1213,7 @@ Use case ends.
 Use case ends.
 
 === Use case: Editing an appointment in a patient’s timetable: `editappt`
-Assume that user has already requested the System to view appointments for a patient.
+Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
@@ -1265,7 +1265,7 @@ Use case ends.
 Use case ends.
 
 === Use case: Deleting an appointment in a patient’s timetable: `deleteappt`
-Assume that user has already requested the System to view appointments for a patient.
+Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
