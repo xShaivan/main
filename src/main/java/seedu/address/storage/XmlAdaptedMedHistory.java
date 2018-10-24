@@ -47,9 +47,14 @@ public class XmlAdaptedMedHistory {
      */
 
     public XmlAdaptedMedHistory(MedHistory source) {
-        medHistDate = source.getMedHistDate().toString();
-        allergy = source.getAllergy().toString();
-        prevCountry = source.getPrevCountry().toString();
+        MedHistDate medHistDate = source.getMedHistDate().orElse(new MedHistDate(""));
+        this.medHistDate = medHistDate.toString();
+
+        Allergy allergy = source.getAllergy().orElse(new Allergy(""));
+        this.allergy = allergy.toString();
+
+        PrevCountry prevCountry = source.getPrevCountry().orElse(new PrevCountry(""));
+        this.prevCountry = prevCountry.toString();
     }
 
     /**

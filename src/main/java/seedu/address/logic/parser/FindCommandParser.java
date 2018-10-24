@@ -7,8 +7,13 @@ import java.util.Arrays;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.AddressContainsKeywordsPredicate;
+//import seedu.address.model.person.AllergyContainsKeywordsPredicate;
+//import seedu.address.model.person.BloodTypeContainsKeywordsPredicate;
+//import seedu.address.model.person.CountryContainsKeywordsPredicate;
 import seedu.address.model.person.EmailContainsKeywordsPredicate;
+//import seedu.address.model.person.InfoContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.NricContainsKeywordsPredicate;
 import seedu.address.model.person.PhoneContainsKeywordsPredicate;
 import seedu.address.model.person.TagContainsKeywordsPredicate;
 
@@ -34,8 +39,13 @@ public class FindCommandParser implements Parser<FindCommand> {
         String[] nameKeywords = trimmedArgs.split("\\s+");
 
         switch(nameKeywords[0]) {
-
+        //Personal prefixes
         case "n/":
+            //create NameContainsKeywordsPredicate
+            /*
+            String keywords = nameKeywords[1] + nameKeywords[2];
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+            */
             return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
 
         case "p/":
@@ -54,6 +64,28 @@ public class FindCommandParser implements Parser<FindCommand> {
             //create TagContainsKeywordsPredicate
             return new FindCommand(new TagContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
 
+        case "ic/":
+            //create NricContainsKeywordsPredicate
+            return new FindCommand(new NricContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        //Medical Prefixes
+        /*
+        case "i/":
+            //create InfoContainsKeywordsPredicate
+            return new FindCommand(new InfoContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        case "hsb/":
+            //create BloodTypeContainsKeywordsPredicate
+            return new FindCommand(new BloodTypeContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        case "hsc/":
+            //create CountryContainsKeywordsPredicate
+            return new FindCommand(new CountryContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+
+        case "hsa/":
+            //create AllergyContainsKeywordsPredicate
+            return new FindCommand(new AllergyContainsKeywordsPredicate(Arrays.asList(nameKeywords[1])));
+        */
         default:
             throw new ParseException(MESSAGE_INVALID_COMMAND_FORMAT);
         }

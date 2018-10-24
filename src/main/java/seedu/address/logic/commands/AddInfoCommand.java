@@ -16,12 +16,14 @@ import seedu.address.model.Model;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 
@@ -41,7 +43,6 @@ public class AddInfoCommand extends Command {
 
     public static final String MESSAGE_NOT_EDITED = "At least one field to add additional information must be provided";
     public static final String MESSAGE_ADD_INFO_SUCCESS = "Added additional info to Person: %1$s";
-    public static final String MESSAGE_DELETE_INFO_SUCCESS = "Removed additional info to person: %1$s";
 
     private final Index index;
     private final AddInfoPersonDescriptor addInfoPersonDescriptor;
@@ -96,9 +97,11 @@ public class AddInfoCommand extends Command {
 
         Nric updatedNric = addInfoPersonDescriptor.getNric().orElse(personToEdit.getNric());
         DateOfBirth updatedDateOfBirth = addInfoPersonDescriptor.getDateOfBirth().orElse(personToEdit.getDateOfBirth());
+        Height updatedHeight = addInfoPersonDescriptor.getHeight().orElse(personToEdit.getHeight());
+        Weight updatedWeight = addInfoPersonDescriptor.getWeight().orElse(personToEdit.getWeight());
 
         return new Person(name, phone, email, address, medicalReports, medHistory, appts,
-                updatedNric, updatedDateOfBirth, tags);
+                updatedNric, updatedDateOfBirth, updatedHeight, updatedWeight, tags);
     }
 
     @Override
@@ -126,16 +129,20 @@ public class AddInfoCommand extends Command {
     public static class AddInfoPersonDescriptor {
         private Nric nric;
         private DateOfBirth dateOfBirth;
+        private Height height;
+        private Weight weight;
 
         public AddInfoPersonDescriptor() {}
 
         public AddInfoPersonDescriptor(AddInfoPersonDescriptor toCopy) {
             setNric(toCopy.nric);
             setDateOfBirth(toCopy.dateOfBirth);
+            setHeight(toCopy.height);
+            setWeight(toCopy.weight);
         }
 
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(nric, dateOfBirth);
+            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight);
         }
 
         public void setNric(Nric nric) {
@@ -152,6 +159,22 @@ public class AddInfoCommand extends Command {
 
         public Optional<DateOfBirth> getDateOfBirth() {
             return Optional.ofNullable(dateOfBirth);
+        }
+
+        public void setHeight(Height height) {
+            this.height = height;
+        }
+
+        public Optional<Height> getHeight() {
+            return Optional.ofNullable(height);
+        }
+
+        public void setWeight(Weight weight) {
+            this.weight = weight;
+        }
+
+        public Optional<Weight> getWeight() {
+            return Optional.ofNullable(weight);
         }
 
         @Override
