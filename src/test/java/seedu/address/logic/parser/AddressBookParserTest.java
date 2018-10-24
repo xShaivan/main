@@ -177,6 +177,7 @@ public class AddressBookParserTest {
     }
     */
 
+    //@@author brandonccm1996
     // Tests for appt timetable commands
     @Test
     public void parseCommand_addAppt() throws Exception {
