@@ -281,30 +281,45 @@ public class ParserUtil {
     /**
      * Parses a {@code String apptVenue} into an {@code ApptVenue}.
      * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code apptVenue} is invalid.
      */
-    public static ApptVenue parseApptVenue(String apptVenue) {
+    public static ApptVenue parseApptVenue(String apptVenue) throws ParseException {
         requireNonNull(apptVenue);
         String trimmedApptVenue = apptVenue.trim();
+        if (!ApptVenue.isValidVenue(apptVenue)) {
+            throw new ParseException(ApptVenue.MESSAGE_NAME_CONSTRAINTS);
+        }
         return new ApptVenue(trimmedApptVenue);
     }
 
     /**
      * Parses a {@code String apptInfo} into an {@code ApptInfo}.
      * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code apptInfo} is invalid.
      */
-    public static ApptInfo parseApptInfo(String apptInfo) {
+    public static ApptInfo parseApptInfo(String apptInfo) throws ParseException {
         requireNonNull(apptInfo);
         String trimmedApptInfo = apptInfo.trim();
+        if (!ApptInfo.isValidApptInfo(apptInfo)) {
+            throw new ParseException(ApptInfo.MESSAGE_NAME_CONSTRAINTS);
+        }
         return new ApptInfo(trimmedApptInfo);
     }
 
     /**
      * Parses a {@code String apptDrName} into an {@code ApptDrName}.
      * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code apptDrName} is invalid.
      */
-    public static ApptDrName parseApptDrName(String apptDrName) {
+    public static ApptDrName parseApptDrName(String apptDrName) throws ParseException {
         requireNonNull(apptDrName);
         String trimmedApptDrName = apptDrName.trim();
+        if (!ApptDrName.isValidDrName(apptDrName)) {
+            throw new ParseException(ApptDrName.MESSAGE_NAME_CONSTRAINTS);
+        }
         return new ApptDrName(trimmedApptDrName);
     }
 }
