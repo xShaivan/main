@@ -30,7 +30,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
-    public static final String DEFAULT_DOB = "10-01-2010";
+    public static final String DEFAULT_DOB = "01-01-1970";
     public static final String DEFAULT_HEIGHT = "172";
     public static final String DEFAULT_WEIGHT = "56";
 

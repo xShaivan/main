@@ -10,17 +10,6 @@
         <dateOfBirth>01-01-1970</dateOfBirth>
         <height></height>
         <weight></weight>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
         <tagged>friends</tagged>
     </persons>
 
@@ -34,17 +23,6 @@
         <dateOfBirth>01-01-1970</dateOfBirth>
         <height></height>
         <weight></weight>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
     </persons>
 
 </addressbook>
