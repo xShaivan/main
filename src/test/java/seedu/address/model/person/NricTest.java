@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import seedu.address.model.person.addinfo.Nric;
+
 public class NricTest {
 
     @Test

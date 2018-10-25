@@ -16,7 +16,18 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Weight;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.timetable.Appt;
 
 /**
  * Adds/Edits medical history of a patient in the Health Book.
@@ -34,6 +45,7 @@ public class AddHistCommand extends Command {
             + PREFIX_HISTORY_COUNTRY + " Kuwait ";
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
     private final MedHistory medHistory;
@@ -44,7 +56,7 @@ public class AddHistCommand extends Command {
     public AddHistCommand(Index index, MedHistory medHistory) {
         requireAllNonNull(index, medHistory);
         this.index = index;
-        this.medHistory = medHistory;
+        this.medHistory = new MedHistory(medHistory);
     }
 
     @Override
@@ -62,21 +74,36 @@ public class AddHistCommand extends Command {
         }
         // adds the new history from command
         newMedHistories.add(medHistory);
-        Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getMedicalReports(), newMedHistories, personToEdit.getAppts(),
-                personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getTags());
+        Person editedPerson = createEditedPerson(personToEdit, newMedHistories);
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
-        return new CommandResult(generateSuccessMessage(editedPerson));
+        return new CommandResult(String.format(MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson));
     }
 
     /**
-     * Generates a command execution success message based on whether the medical history is added to or removed from
-     * {@code personToEdit}.
+     * Creates and returns a {@code Person} with the details of {@code personToEdit}
+     * edited with {@code editPersonDescriptor}.
      */
-    private String generateSuccessMessage(Person personToEdit) {
-        return String.format(MESSAGE_ADD_MEDHISTORY_SUCCESS, personToEdit);
+    private static Person createEditedPerson(Person personToEdit, Set <MedHistory> newMedHistories) {
+        assert personToEdit != null;
+
+        Name name = personToEdit.getName();
+        Phone phone = personToEdit.getPhone();
+        Email email = personToEdit.getEmail();
+        Address address = personToEdit.getAddress();
+        Set<Appt> appts = personToEdit.getAppts();
+        Set<MedicalReport> medicalReports = personToEdit.getMedicalReports();
+        Set<MedHistory> medHistories = newMedHistories;
+        Set<Tag> tags = personToEdit.getTags();
+
+        Nric nric = personToEdit.getNric();
+        DateOfBirth dateOfBirth = personToEdit.getDateOfBirth();
+        Height height = personToEdit.getHeight();
+        Weight weight = personToEdit.getWeight();
+
+        return new Person(name, phone, email, address, medicalReports, medHistories, appts,
+                nric, dateOfBirth, height, weight, tags);
     }
 
     @Override

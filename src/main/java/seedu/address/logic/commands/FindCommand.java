@@ -19,10 +19,12 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose PREFIX contain any "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose prefix contain any "
             + "of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: PREFIX KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " n/ " + " alice" + " or " + "p/ " + "91234567.";
+            + "Parameters: PREFIX/ KEYWORD [MORE_KEYWORDS]...\n"
+            + "Example: " + COMMAND_WORD + " n/ " + "aliCe Bernard" + "\t" + COMMAND_WORD + " p/ " + "91234567\n"
+            + "Personal prefixes:\t n/ (Name)\t p/ (Phone)\t e/ (Email)\t\t\t a/ (Address)\t\t t/ (tag)\t ic/ (NRIC)\n"
+            + "Medical prefixes:\t i/ (MedInfo)\t hsa/ (Allergy)\t hsb/ (BloodType)\t hsc/ (LastCountry)";
 
     private final Predicate<Person> predicate;
 
