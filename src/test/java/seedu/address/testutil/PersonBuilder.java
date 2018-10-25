@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import java.util.TreeSet;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
@@ -14,6 +15,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptComparator;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -48,7 +50,7 @@ public class PersonBuilder {
         nric = new Nric(DEFAULT_NRIC);
         reports = new HashSet<>();
         medHistories = new HashSet<>();
-        appts = new HashSet<>();
+        appts = new TreeSet<>(new ApptComparator());
         tags = new HashSet<>();
     }
 
