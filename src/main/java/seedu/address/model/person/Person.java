@@ -153,6 +153,11 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
+                && otherPerson.getNric().equals(getNric())
+                && otherPerson.getDateOfBirth().equals(getDateOfBirth())
+                && otherPerson.getMedHistory().equals(getMedHistory())
+                && otherPerson.getAppts().equals(getAppts())
+                && otherPerson.getMedicalReports().equals(getMedicalReports())
                 && otherPerson.getTags().equals(getTags());
     }
 
