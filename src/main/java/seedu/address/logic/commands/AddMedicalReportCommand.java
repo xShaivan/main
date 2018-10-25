@@ -6,9 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -16,6 +16,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.ReportComparator;
 import seedu.address.model.person.Person;
 
 //@@author chewkahmeng
@@ -64,7 +65,7 @@ public class AddMedicalReportCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<MedicalReport> oldReports = personToEdit.getMedicalReports();
-        Set<MedicalReport> newReports = new HashSet<>();
+        Set<MedicalReport> newReports = new TreeSet<>(new ReportComparator());
         for (MedicalReport report : oldReports) {
             newReports.add(report);
         }

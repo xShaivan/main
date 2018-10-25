@@ -10,6 +10,7 @@ import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.ReportComparator;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 import seedu.address.model.timetable.ApptComparator;
@@ -30,7 +31,7 @@ public class Person {
     private final Set<MedHistory> medHistories = new HashSet<>();
     private final Set<Appt> appts = new TreeSet<>(new ApptComparator());
     private final Set<Tag> tags = new HashSet<>();
-    private final Set<MedicalReport> reports = new HashSet<>();
+    private final Set<MedicalReport> reports = new TreeSet<>(new ReportComparator());
 
     // Additional information fields
     private final Nric nric;
