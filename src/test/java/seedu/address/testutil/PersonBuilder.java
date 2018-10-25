@@ -2,8 +2,8 @@ package seedu.address.testutil;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import java.util.TreeSet;
+
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;

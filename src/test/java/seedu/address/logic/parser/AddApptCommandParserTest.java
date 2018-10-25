@@ -24,7 +24,6 @@ import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddApptCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
@@ -34,19 +33,18 @@ import seedu.address.testutil.ApptBuilder;
 //@@author brandonccm1996
 public class AddApptCommandParserTest {
 
-    private AddApptCommandParser parser = new AddApptCommandParser();
-    Index targetIndex = INDEX_FIRST_PERSON;
-
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddApptCommand.MESSAGE_USAGE);
+    private AddApptCommandParser parser = new AddApptCommandParser();
+    private Index targetIndex = INDEX_FIRST_PERSON;
 
     @Test
     public void parse_indexSpecifiedWithAllCompulsoryFields_success() {
         // have appt
         AddApptCommand expectedCommand = new AddApptCommand(INDEX_FIRST_PERSON, new ApptBuilder().build());
-        assertParseSuccess(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX +
-                VALID_DRNAME_APPT_WPREFIX, expectedCommand);
+        assertParseSuccess(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, expectedCommand);
     }
 
     @Test
@@ -55,74 +53,74 @@ public class AddApptCommandParserTest {
         assertParseFailure(parser, AddApptCommand.COMMAND_WORD, MESSAGE_INVALID_FORMAT);
 
         // missing index
-        assertParseFailure(parser, VALID_START_APPT_WPREFIX + VALID_END_APPT_WPREFIX +
-                VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX + VALID_DRNAME_APPT_WPREFIX,
+        assertParseFailure(parser, VALID_START_APPT_WPREFIX + VALID_END_APPT_WPREFIX
+                        + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX + VALID_DRNAME_APPT_WPREFIX,
                 MESSAGE_INVALID_FORMAT);
 
         // missing appt start prefix
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT1 + VALID_END_APPT_WPREFIX +
-                VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX + VALID_DRNAME_APPT_WPREFIX,
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT1 + VALID_END_APPT_WPREFIX
+                        + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX + VALID_DRNAME_APPT_WPREFIX,
                 MESSAGE_INVALID_FORMAT);
 
         // missing appt end prefix
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX + VALID_END_APPT1 +
-                VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX + VALID_DRNAME_APPT_WPREFIX,
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX + VALID_END_APPT1
+                        + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX + VALID_DRNAME_APPT_WPREFIX,
                 MESSAGE_INVALID_FORMAT);
 
         // missing appt venue prefix
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT1 + VALID_INFO_APPT_WPREFIX + VALID_DRNAME_APPT_WPREFIX,
-                MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
+                        + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT1 + VALID_INFO_APPT_WPREFIX
+                        + VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
 
         // missing appt info prefix
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT1 + VALID_DRNAME_APPT_WPREFIX,
-                MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
+                        + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT1
+                        + VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
 
         // missing appt dr name prefix
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX +
-                VALID_DRNAME_APPT1, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
+                        + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                        + VALID_DRNAME_APPT1, MESSAGE_INVALID_FORMAT);
     }
 
     @Test
     public void parse_invalidValue_failure() {
         // invalid appt start
-        assertParseFailure(parser, targetIndex.getOneBased() + INVALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX +
-                VALID_DRNAME_APPT_WPREFIX, ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
+        assertParseFailure(parser, targetIndex.getOneBased() + INVALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
 
         // invalid appt end
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX +
-                INVALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX +
-                VALID_DRNAME_APPT_WPREFIX, ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
+                + INVALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
 
         // invalid appt venue
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + INVALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX +
-                VALID_DRNAME_APPT_WPREFIX, ApptVenue.MESSAGE_NAME_CONSTRAINTS);
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + INVALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, ApptVenue.MESSAGE_NAME_CONSTRAINTS);
 
         // invalid appt info
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + INVALID_INFO_APPT_WPREFIX +
-                VALID_DRNAME_APPT_WPREFIX, ApptInfo.MESSAGE_NAME_CONSTRAINTS);
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + INVALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, ApptInfo.MESSAGE_NAME_CONSTRAINTS);
 
         // invalid appt dr name
-        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX +
-                INVALID_DRNAME_APPT_WPREFIX, ApptDrName.MESSAGE_NAME_CONSTRAINTS);
+        assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + INVALID_DRNAME_APPT_WPREFIX, ApptDrName.MESSAGE_NAME_CONSTRAINTS);
     }
 
     @Test
     public void parse_invalidIndex_failure() {
         // negative index
-        assertParseFailure(parser, "-2" + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX +
-                VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-2" + VALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + VALID_START_APPT_WPREFIX +
-                VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX +
-                VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + VALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
     }
 }
