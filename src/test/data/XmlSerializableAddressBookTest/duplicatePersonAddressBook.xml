@@ -8,6 +8,8 @@
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>
@@ -30,6 +32,8 @@
         <address>4th street</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
+        <height></height>
+        <weight></weight>
         <title></title>
         <date></date>
         <information></information>

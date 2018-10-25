@@ -101,6 +101,8 @@ public class PersonListPanelTest extends GuiUnitTest {
             builder.append("<address>a</address>\n");
             builder.append("<nric></nric>\n");
             builder.append("<dateOfBirth>01-01-1970</dateOfBirth>\n");
+            builder.append("<height></height>\n");
+            builder.append("<weight></weight>\n");
             builder.append("</persons>\n");
         }
         builder.append("</addressbook>\n");

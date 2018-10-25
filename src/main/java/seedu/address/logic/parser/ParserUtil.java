@@ -2,8 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,16 +17,19 @@ import seedu.address.model.medicalreport.Information;
 import seedu.address.model.medicalreport.ReportDate;
 import seedu.address.model.medicalreport.Title;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Nric;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
+import seedu.address.model.util.DateTimeUtil;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -119,9 +121,15 @@ public class ParserUtil {
     public static Nric parseNric(String nric) throws ParseException {
         requireNonNull(nric);
         String trimmedNric = nric.trim();
+
         if (!Nric.isValidNric(trimmedNric)) {
             throw new ParseException(Nric.MESSAGE_NRIC_CONSTRAINTS);
         }
+
+        if (!Nric.isCorrectNric(trimmedNric)) {
+            throw new ParseException(Nric.MESSAGE_NRIC_INVALID);
+        }
+
         return new Nric(trimmedNric);
     }
 
@@ -139,13 +147,46 @@ public class ParserUtil {
         }
 
         try {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            LocalDate.parse(dateOfBirth, dateTimeFormatter);
-        } catch (Exception e) {
+            DateTimeUtil.parseDate(dateOfBirth);
+        } catch (DateTimeParseException e) {
             throw new ParseException(DateOfBirth.DATE_OF_BIRTH_VALUE_EXCEEDED);
         }
 
         return new DateOfBirth(trimmedDateOfBirth);
+    }
+
+    /**
+     * Parses a {@code String height} into a {@code Height}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code height} is invalid
+     */
+    public static Height parseHeight(String height) throws ParseException {
+        requireNonNull(height);
+        String trimmedHeight = height.trim();
+
+        if (!Height.isValidHeight(trimmedHeight)) {
+            throw new ParseException(Height.MESSAGE_HEIGHT_CONSTRAINTS);
+        }
+
+        return new Height(trimmedHeight);
+    }
+
+    /**
+     * Parses a {@code String weight} into a {@code Weight}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code weight} is invalid
+     */
+    public static Weight parseWeight(String weight) throws ParseException {
+        requireNonNull(weight);
+        String trimmedWeight = weight.trim();
+
+        if (!Weight.isValidWeight(trimmedWeight)) {
+            throw new ParseException(Weight.MESSAGE_WEIGHT_CONSTRAINTS);
+        }
+
+        return new Weight(trimmedWeight);
     }
 
     /**
@@ -217,6 +258,7 @@ public class ParserUtil {
         return new PrevCountry(trimmedPrevCountry);
     }
 
+    //@@author chewkahmeng
     /**
      * ==================================================
      * PARSER FOR MEDICAL REPORT SUBFIELDS
@@ -238,12 +280,14 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code date} is invalid.
-     * ParseException is omitted for now.
      */
-    public static ReportDate parseDate(String date) {
+    public static ReportDate parseDate(String date) throws ParseException {
         requireNonNull(date);
-        String trimmedDate = date.trim();
-        return new ReportDate(trimmedDate);
+        String trimmedReportDate = date.trim();
+        if (!ReportDate.isValidDate(trimmedReportDate)) {
+            throw new ParseException(ReportDate.MESSAGE_DATE_CONSTRAINTS);
+        }
+        return new ReportDate(trimmedReportDate);
     }
 
     /**
