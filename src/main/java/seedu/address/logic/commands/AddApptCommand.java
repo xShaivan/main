@@ -46,8 +46,8 @@ public class AddApptCommand extends Command {
             + PREFIX_APPT_DRNAME + "Dr Tan";
 
     public static final String MESSAGE_ADD_APPT_SUCCESS = "Added appt to Person: %1$s";
-    public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt";
-    public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time";
+    public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt.";
+    public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time.";
     public static final String MESSAGE_DELETE_APPT_SUCCESS = "Removed appt from Person: %1$s";
 
     private final Index index;

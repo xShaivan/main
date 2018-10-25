@@ -2,6 +2,7 @@ package seedu.address.testutil;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
@@ -16,6 +17,7 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptComparator;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -28,7 +30,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
-    public static final String DEFAULT_DOB = "10-01-2010";
+    public static final String DEFAULT_DOB = "01-01-1970";
     public static final String DEFAULT_HEIGHT = "172";
     public static final String DEFAULT_WEIGHT = "56";
 
@@ -56,7 +58,7 @@ public class PersonBuilder {
         weight = new Weight(DEFAULT_WEIGHT);
         reports = new HashSet<>();
         medHistories = new HashSet<>();
-        appts = new HashSet<>();
+        appts = new TreeSet<>(new ApptComparator());
         tags = new HashSet<>();
     }
 
