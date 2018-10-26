@@ -6,9 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -16,6 +16,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfBirth;
@@ -65,7 +66,7 @@ public class AddHistCommand extends Command {
         }
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<MedHistory> fullMedHistories = personToEdit.getMedHistory();
-        Set<MedHistory> newMedHistories = new HashSet<>();
+        Set<MedHistory> newMedHistories = new TreeSet<>(new MedHistoryComparator());
         // for loop overwrites all existing history with itself
         for (MedHistory medHistory : fullMedHistories) {
             newMedHistories.add(medHistory);

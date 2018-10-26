@@ -6,8 +6,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -25,7 +27,7 @@ public class Person {
 
     // Data fields
     private final Address address;
-    private final Set<MedHistory> medHistories = new HashSet<>();
+    private final Set<MedHistory> medHistories = new TreeSet<>(new MedHistoryComparator());
     private final Set<Appt> appts = new HashSet<>();
     private final Set<Tag> tags = new HashSet<>();
     private final Set<MedicalReport> reports = new HashSet<>();
