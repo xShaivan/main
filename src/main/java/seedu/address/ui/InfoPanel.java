@@ -99,4 +99,17 @@ public class InfoPanel extends UiPart<Region> {
         medReportsFlowPane.getChildren().clear();
         apptsFlowPane.getChildren().clear();
     }
+
+    public void showEmptyMessage() {
+        additionalInfo.setStyle("-fx-background-color: #FFFFFF");
+        medHistory.setStyle("-fx-background-color: #FFFFFF");
+        medAppts.setStyle("-fx-background-color: #FFFFFF");
+        medReports.setStyle("-fx-background-color: #FFFFFF");
+        nameLabel1.setText("You have not selected any person.\n" +
+                "Please select a person to show more details\nfor him/her on this panel.");
+        nameLabel2.setText("");
+        nameLabel3.setText("");
+        nameLabel4.setText("");
+        nricLabel.setText("");
+    }
 }
