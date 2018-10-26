@@ -35,11 +35,13 @@
             <medHistDate>10/10/2010</medHistDate>
             <allergy>Pollen</allergy>
             <prevCountry>USA</prevCountry>
+            <dischargeStatus>Discharged to home</dischargeStatus>
         </medHistories>
         <medHistories>
             <medHistDate>20/20/2020</medHistDate>
             <allergy>Alcohol</allergy>
             <prevCountry>Russia</prevCountry>
+            <dischargeStatus>Discharged to home</dischargeStatus>
         </medHistories>
         <appts>
             <apptStart>01-01-2018 14:00</apptStart>
@@ -117,6 +119,7 @@
             <medHistDate>10/10/2010</medHistDate>
             <allergy>Pollen</allergy>
             <prevCountry>USA</prevCountry>
+            <dischargeStatus>Discharged to home</dischargeStatus>
         </medHistories>
         <appts>
             <apptStart>01-01-2018 14:00</apptStart>
