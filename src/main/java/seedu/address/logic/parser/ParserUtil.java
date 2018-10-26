@@ -11,6 +11,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.DischargeStatus;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Information;
@@ -231,10 +232,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
+     * Parses a {@code String medHistDate} into an {@code MedHistDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code prevCountry} is invalid.
+     * @throws ParseException if the given {@code medHistDate} is invalid.
      * ParseException is omitted for now.
      */
     public static MedHistDate parseMedHistDate(String medHistDate) {
@@ -256,6 +257,20 @@ public class ParserUtil {
         String trimmedPrevCountry = prevCountry.trim();
 
         return new PrevCountry(trimmedPrevCountry);
+    }
+
+    /**
+     * Parses a {@code String dischargeStatus} into an {@code DischargeStatus}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dischargeStatus} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static DischargeStatus parseDischargeStatus(String dischargeStatus) {
+        requireNonNull(dischargeStatus);
+        String trimmedDischargeStatus = dischargeStatus.trim();
+
+        return new DischargeStatus(trimmedDischargeStatus);
     }
 
     //@@author chewkahmeng

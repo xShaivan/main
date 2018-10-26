@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import seedu.address.logic.commands.AddHistCommand;
@@ -31,6 +32,9 @@ public class MedHistoryUtil {
                 .ifPresent(allergy -> sb.append(PREFIX_HISTORY_ALLERGY).append(allergy.value).append(" "));
         medHistory.getPrevCountry()
                 .ifPresent(prevCountry -> sb.append(PREFIX_HISTORY_COUNTRY).append(prevCountry.value).append(" "));
+        medHistory.getDischargeStatus()
+                .ifPresent(dischargeStatus -> sb.append(PREFIX_HISTORY_DISCHARGE_STATUS)
+                        .append(dischargeStatus.value).append(" "));
         return sb.toString();
     }
 }

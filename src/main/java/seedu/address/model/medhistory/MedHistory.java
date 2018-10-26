@@ -17,14 +17,17 @@ public class MedHistory {
     private MedHistDate medHistDate;
     private Allergy allergy;
     private PrevCountry prevCountry;
+    private DischargeStatus dischargeStatus;
 
     public MedHistory() {}
 
-    public MedHistory(MedHistDate medHistDate, Allergy allergy, PrevCountry prevCountry) {
-        requireAllNonNull(medHistDate, allergy, prevCountry);
+    public MedHistory(MedHistDate medHistDate, Allergy allergy,
+                      PrevCountry prevCountry, DischargeStatus dischargeStatus) {
+        requireAllNonNull(medHistDate, allergy, prevCountry, dischargeStatus);
         this.medHistDate = medHistDate;
         this.allergy = allergy;
         this.prevCountry = prevCountry;
+        this.dischargeStatus = dischargeStatus;
     }
 
     /**
@@ -35,13 +38,14 @@ public class MedHistory {
         setMedHistDate(toCopy.medHistDate);
         setAllergy(toCopy.allergy);
         setPrevCountry(toCopy.prevCountry);
+        setDischargeStatus(toCopy.dischargeStatus);
     }
 
     /**
      * Returns true if at least one field is edited.
      */
     public boolean isAnyFieldEdited() {
-        return CollectionUtil.isAnyNonNull(medHistDate, allergy, prevCountry);
+        return CollectionUtil.isAnyNonNull(medHistDate, allergy, prevCountry, dischargeStatus);
     }
 
     public void setMedHistDate(MedHistDate medHistDate) {
@@ -62,6 +66,14 @@ public class MedHistory {
 
     public void setPrevCountry(PrevCountry prevCountry) {
         this.prevCountry = prevCountry;
+    }
+
+    public Optional<DischargeStatus> getDischargeStatus() {
+        return Optional.ofNullable(dischargeStatus);
+    }
+
+    public void setDischargeStatus(DischargeStatus dischargeStatus) {
+        this.dischargeStatus = dischargeStatus;
     }
 
     public Optional<PrevCountry> getPrevCountry() {
@@ -85,17 +97,19 @@ public class MedHistory {
 
         return getMedHistDate().equals(e.getMedHistDate())
                 && getAllergy().equals(e.getAllergy())
-                && getPrevCountry().equals(e.getPrevCountry());
+                && getPrevCountry().equals(e.getPrevCountry())
+                && getDischargeStatus().equals(getDischargeStatus());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(medHistDate, allergy, prevCountry);
+        return Objects.hash(medHistDate, allergy, prevCountry, dischargeStatus);
     }
 
     @Override
     public String toString() {
-        return medHistDate.toString() + " \n" + allergy.toString() + " \n" + prevCountry.toString();
+        return medHistDate.toString() + " \n" + allergy.toString()
+                + " \n" + prevCountry.toString() + " \n" + dischargeStatus.toString();
     }
 }

@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.DischargeStatus;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
@@ -24,6 +25,8 @@ public class XmlAdaptedMedHistory {
     private String allergy;
     @XmlElement
     private String prevCountry;
+    @XmlElement
+    private String dischargeStatus;
 
     /**
      * Constructs an XmlAdaptedMedHistory.
@@ -34,10 +37,11 @@ public class XmlAdaptedMedHistory {
     /**
      * Constructs an {@code XmlAdaptedMedHistory} with the given medical history details.
      */
-    public XmlAdaptedMedHistory(String medHistDate, String allergy, String prevCountry) {
+    public XmlAdaptedMedHistory(String medHistDate, String allergy, String prevCountry, String dischargeStatus) {
         this.medHistDate = medHistDate;
         this.allergy = allergy;
         this.prevCountry = prevCountry;
+        this.dischargeStatus = dischargeStatus;
     }
 
     /**
@@ -55,6 +59,9 @@ public class XmlAdaptedMedHistory {
 
         PrevCountry prevCountry = source.getPrevCountry().orElse(new PrevCountry(""));
         this.prevCountry = prevCountry.toString();
+
+        DischargeStatus dischargeStatus = source.getDischargeStatus().orElse(new DischargeStatus(""));
+        this.dischargeStatus = dischargeStatus.toString();
     }
 
     /**
@@ -78,8 +85,13 @@ public class XmlAdaptedMedHistory {
                     PrevCountry.class.getSimpleName()));
         }
         final PrevCountry modelPrevCountry = new PrevCountry(prevCountry);
+        if (dischargeStatus == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    DischargeStatus.class.getSimpleName()));
+        }
+        final DischargeStatus modelDischargeStatus = new DischargeStatus(dischargeStatus);
 
-        return new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
+        return new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry, modelDischargeStatus);
     }
 
     @Override
@@ -95,7 +107,8 @@ public class XmlAdaptedMedHistory {
         XmlAdaptedMedHistory otherMedHistory = (XmlAdaptedMedHistory) other;
         return Objects.equals(medHistDate, otherMedHistory.medHistDate)
                 && Objects.equals(allergy, otherMedHistory.allergy)
-                && Objects.equals(prevCountry, otherMedHistory.prevCountry);
+                && Objects.equals(prevCountry, otherMedHistory.prevCountry)
+                && Objects.equals(dischargeStatus, otherMedHistory.dischargeStatus);
     }
 
 }

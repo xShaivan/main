@@ -4,6 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -43,7 +44,8 @@ public class AddHistCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_HISTORY_DATE + " 24/08/1993 "
             + PREFIX_HISTORY_ALLERGY + " Alcohol "
-            + PREFIX_HISTORY_COUNTRY + " Kuwait ";
+            + PREFIX_HISTORY_COUNTRY + " Kuwait "
+            + PREFIX_HISTORY_DISCHARGE_STATUS + " Discharged to home.";
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

@@ -4,9 +4,11 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_ALLERGY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -28,7 +30,8 @@ public class AddHistCommandParserTest {
         assertParseSuccess(parser, targetIndex.getOneBased()
                 + " " + PREFIX_HISTORY_DATE + VALID_HISTORY_DATE
                 + " " + PREFIX_HISTORY_ALLERGY + VALID_HISTORY_ALLERGY
-                + " " + PREFIX_HISTORY_COUNTRY + VALID_HISTORY_COUNTRY, expectedCommand);
+                + " " + PREFIX_HISTORY_COUNTRY + VALID_HISTORY_COUNTRY
+                + " " + PREFIX_HISTORY_DISCHARGE_STATUS + VALID_HISTORY_DISCHARGE_STATUS, expectedCommand);
     }
     @Test
     public void parsemissingCompulsoryFieldfailure() {
@@ -38,6 +41,7 @@ public class AddHistCommandParserTest {
         // no index
         assertParseFailure(parser, PREFIX_HISTORY_DATE + VALID_HISTORY_DATE
                 + " " + PREFIX_HISTORY_ALLERGY + VALID_HISTORY_ALLERGY
-                + " " + PREFIX_HISTORY_COUNTRY + VALID_HISTORY_COUNTRY, expectedMessage);
+                + " " + PREFIX_HISTORY_COUNTRY + VALID_HISTORY_COUNTRY
+                + " " + PREFIX_HISTORY_DISCHARGE_STATUS + VALID_HISTORY_DISCHARGE_STATUS, expectedMessage);
     }
 }

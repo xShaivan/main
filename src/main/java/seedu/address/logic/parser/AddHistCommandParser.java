@@ -5,12 +5,14 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddHistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.DischargeStatus;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
@@ -30,7 +32,7 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
     public AddHistCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_HISTORY_DATE, PREFIX_HISTORY_ALLERGY,
-                PREFIX_HISTORY_COUNTRY);
+                PREFIX_HISTORY_COUNTRY, PREFIX_HISTORY_DISCHARGE_STATUS);
 
         Index index;
 
@@ -58,6 +60,12 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
                     .parsePrevCountry(argMultimap.getValue(PREFIX_HISTORY_COUNTRY).get()));
         } else {
             medHistory.setPrevCountry(new PrevCountry(""));
+        }
+        if (argMultimap.getValue(PREFIX_HISTORY_DISCHARGE_STATUS).isPresent()) {
+            medHistory.setDischargeStatus(ParserUtil
+                    .parseDischargeStatus(argMultimap.getValue(PREFIX_HISTORY_DISCHARGE_STATUS).get()));
+        } else {
+            medHistory.setDischargeStatus(new DischargeStatus(""));
         }
         if (!medHistory.isAnyFieldEdited()) {
             throw new ParseException(AddHistCommand.MESSAGE_NOT_EDITED);
