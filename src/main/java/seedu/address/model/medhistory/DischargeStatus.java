@@ -2,10 +2,14 @@ package seedu.address.model.medhistory;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents the discharge status of medical history.
+ * Guarantees: immutable; is valid as declared in {@link #isValidDischargeStatus(String)}
+ */
 public class DischargeStatus {
 
     public static final String MESSAGE_DISCHARGE_STATUS_CONSTRAINTS =
-            "Allergy must not be left blank.";
+            "Discharge status must not be left blank.";
 
     public static final String DISCHARGE_STATUS_VALIDATION_REGEX = "[^\\s].*";
 
