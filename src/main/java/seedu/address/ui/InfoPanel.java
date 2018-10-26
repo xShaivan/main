@@ -100,13 +100,16 @@ public class InfoPanel extends UiPart<Region> {
         apptsFlowPane.getChildren().clear();
     }
 
+    /**
+     * Shows a message when there is no person card selected to tell the user to select a person
+     */
     public void showEmptyMessage() {
         additionalInfo.setStyle("-fx-background-color: #FFFFFF");
         medHistory.setStyle("-fx-background-color: #FFFFFF");
         medAppts.setStyle("-fx-background-color: #FFFFFF");
         medReports.setStyle("-fx-background-color: #FFFFFF");
-        nameLabel1.setText("You have not selected any person.\n" +
-                "Please select a person to show more details\nfor him/her on this panel.");
+        nameLabel1.setText("You have not selected any person.\n"
+                + "Please select a person to show more details\nfor him/her on this panel.");
         nameLabel2.setText("");
         nameLabel3.setText("");
         nameLabel4.setText("");
