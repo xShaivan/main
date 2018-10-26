@@ -7,6 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalMedHistory.EMPTY_MEDHISTORY;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
@@ -50,7 +51,7 @@ public class AddHistCommandTest {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
                 .withMedHistories(MEDHISTORY1).build();
-        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY2);
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY1);
         String expectedMessage = String.format(AddHistCommand.MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.updatePerson(firstPerson, editedPerson);
@@ -113,9 +114,9 @@ public class AddHistCommandTest {
      */
     @Test
     public void executeUndoRedovalidIndexFilteredListsamePersonDeleted() throws Exception {
-        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY2);
+        AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY1);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        showPersonAtIndex(model, INDEX_SECOND_PERSON);
+        showPersonAtIndex(model, INDEX_THIRD_PERSON);
         Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person modifiedPerson = new PersonBuilder(personToModify).withMedHistories(MEDHISTORY1).build();
         expectedModel.updatePerson(personToModify, modifiedPerson);

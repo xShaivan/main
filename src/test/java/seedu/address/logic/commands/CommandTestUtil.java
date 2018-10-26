@@ -3,6 +3,11 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DRNAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_END;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_START;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_VENUE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -83,7 +88,7 @@ public class CommandTestUtil {
     //Medical Report
     public static final String VALID_TITLE1 = "Asthma";
     public static final String VALID_TITLE2 = "Depression";
-    public static final String VALID_TITLE3 = " Flu";
+    public static final String VALID_TITLE3 = "Flu";
     public static final String VALID_DATE1 = "01-01-2018";
     public static final String VALID_DATE2 = "02-02-2018";
     public static final String VALID_DATE3 = "03-03-2018";
@@ -107,6 +112,23 @@ public class CommandTestUtil {
     public static final String VALID_DRNAME_APPT1 = "Dr Tan";
     public static final String VALID_DRNAME_APPT2 = "Dr Lim";
     public static final String VALID_DRNAME_APPT3 = "Dr Chan";
+
+    public static final String VALID_START_APPT_WPREFIX = " " + PREFIX_APPT_START + VALID_START_APPT1;
+    public static final String VALID_END_APPT_WPREFIX = " " + PREFIX_APPT_END + VALID_END_APPT1;
+    public static final String VALID_VENUE_APPT_WPREFIX = " " + PREFIX_APPT_VENUE + VALID_VENUE_APPT1;
+    public static final String VALID_INFO_APPT_WPREFIX = " " + PREFIX_APPT_INFO + VALID_INFO_APPT1;
+    public static final String VALID_DRNAME_APPT_WPREFIX = " " + PREFIX_APPT_DRNAME + VALID_DRNAME_APPT1;
+
+    // date not in dd-MM-yy format
+    public static final String INVALID_START_APPT_WPREFIX = " " + PREFIX_APPT_START + "01/01/2018 14:00";
+    // missing time
+    public static final String INVALID_END_APPT_WPREFIX = " " + PREFIX_APPT_END + "02-02-2018";
+    // empty string not allowed for appt venues
+    public static final String INVALID_VENUE_APPT_WPREFIX = " " + PREFIX_APPT_VENUE + " ";
+    // empty string not allowed for appt info
+    public static final String INVALID_INFO_APPT_WPREFIX = " " + PREFIX_APPT_INFO + " ";
+    // '!' not allowed for appt dr name
+    public static final String INVALID_DRNAME_APPT_WPREFIX = " " + PREFIX_APPT_DRNAME + "Dr Tan!";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
