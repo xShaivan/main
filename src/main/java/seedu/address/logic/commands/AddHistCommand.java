@@ -19,12 +19,14 @@ import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 
@@ -98,9 +100,11 @@ public class AddHistCommand extends Command {
 
         Nric nric = personToEdit.getNric();
         DateOfBirth dateOfBirth = personToEdit.getDateOfBirth();
+        Height height = personToEdit.getHeight();
+        Weight weight = personToEdit.getWeight();
 
         return new Person(name, phone, email, address, medicalReports, medHistories, appts,
-                nric, dateOfBirth, tags);
+                nric, dateOfBirth, height, weight, tags);
     }
 
     @Override
