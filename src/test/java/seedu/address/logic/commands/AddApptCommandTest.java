@@ -30,7 +30,6 @@ public class AddApptCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
-    // First person (Alice) has no appts at start of function, has APPT_EXAMPLE1 at end of function
     @Test
     public void executeAddApptUnfilteredListSuccess() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
@@ -66,17 +65,15 @@ public class AddApptCommandTest {
     }
     */
 
-    // First person (Alice) has APPT_EXAMPLE1 at start of function, has APPT_EXAMPLE1 and APPT_EXAMPLE2 at end of
-    // function
     @Test
     public void executeFilteredListSuccess() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
-                .withAppts(APPT_EXAMPLE1, APPT_EXAMPLE2).build();
+                .withAppts(APPT_EXAMPLE1).build();
 
-        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE2);
+        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE1);
 
         String expectedMessage = String.format(AddApptCommand.MESSAGE_ADD_APPT_SUCCESS, editedPerson);
 
@@ -111,7 +108,6 @@ public class AddApptCommandTest {
         assertCommandFailure(addApptCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
-    // Third person (Carl) has no appts at start of function, has APPT_EXAMPLE1 at end of function
     @Test
     public void executeUndoRedoValidIndexUnfilteredListSuccess() throws Exception {
         Person personToModify = model.getFilteredPersonList().get(INDEX_THIRD_PERSON.getZeroBased());
@@ -128,7 +124,7 @@ public class AddApptCommandTest {
         expectedModel.undoAddressBook();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
-        // redo -> same first person modified again
+        // redo -> same third person modified again
         expectedModel.redoAddressBook();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -153,16 +149,14 @@ public class AddApptCommandTest {
      * unfiltered list is different from the index at the filtered list.
      * 4. Redo the modification. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
      */
-    // Third person (Carl) has APPT_EXAMPLE1 at start of function, has APPT_EXAMPLE1 and APPT_EXAMPLE2 at end of
-    // function
     @Test
     public void executeUndoRedoValidIndexFilteredListSamePersonDeleted() throws Exception {
-        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE2);
+        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE1);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
         showPersonAtIndex(model, INDEX_THIRD_PERSON);
         Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person modifiedPerson = new PersonBuilder(personToModify).withAppts(APPT_EXAMPLE1, APPT_EXAMPLE2).build();
+        Person modifiedPerson = new PersonBuilder(personToModify).withAppts(APPT_EXAMPLE1).build();
         expectedModel.updatePerson(personToModify, modifiedPerson);
         expectedModel.commitAddressBook();
 
