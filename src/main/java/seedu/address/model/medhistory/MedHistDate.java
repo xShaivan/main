@@ -9,7 +9,7 @@ import seedu.address.model.util.DateTimeUtil;
 
 /**
  * Represents the date of medical history.
- * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidMedHistDate(String)}
  */
 
 public class MedHistDate {
@@ -31,6 +31,10 @@ public class MedHistDate {
         // isValidDate will is found in test file.
         //checkArgument(isValidDate(date), MESSAGE_DATE_CONSTRAINTS);
         value = DateTimeUtil.parseDate(medHistDate);
+    }
+
+    public static boolean isValidMedHistDate(String test) {
+        return test.matches(MEDHISTDATE_VALIDATION_REGEX);
     }
 
     @Override

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_ALLERGY2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE2;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DISCHARGE_STATUS2;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
 
