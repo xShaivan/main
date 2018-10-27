@@ -2,59 +2,56 @@ package seedu.address.model.medicalreport;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+
+import seedu.address.model.util.DateTimeUtil;
+
+//@@author chewkahmeng
 /**
  * Represents a Medical Report's date in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
  */
-public class Date {
+public class ReportDate {
 
     public static final String MESSAGE_DATE_CONSTRAINTS =
-            "The full Date should be of the format: DD/MM/YYYY";
+            "The full ReportDate should be of the format: DD-MM-YYYY";
+    public static final String REPORT_DATE_VALIDATION_REGEX =
+            "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
 
-    /*
-     * The first character of the date must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String DATE_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-
-    public final String fullDate;
+    public final LocalDate fullDate;
 
     /**
-     * Constructs a {@code Date}.
+     * Constructs a {@code ReportDate}.
      *
      * @param date A valid date.
      */
-    public Date(String date) {
+    public ReportDate(String date) {
         requireNonNull(date);
-        fullDate = date;
+        fullDate = DateTimeUtil.parseDate(date);
     }
 
     /**
      * Returns true if a given string is a valid date.
      */
     public static boolean isValidDate(String test) {
-        return test.matches(DATE_VALIDATION_REGEX);
+        return test.matches(REPORT_DATE_VALIDATION_REGEX);
     }
 
 
     @Override
     public String toString() {
-        return fullDate;
+        return DateTimeUtil.format(fullDate);
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Date // instanceof handles nulls
-                && fullDate.equals(((Date) other).fullDate)); // state check
+                || (other instanceof ReportDate // instanceof handles nulls
+                && fullDate.equals(((ReportDate) other).fullDate)); // state check
     }
 
     @Override
     public int hashCode() {
         return fullDate.hashCode();
-    }
-
-    public boolean isFull() {
-        return true;
     }
 }

@@ -6,11 +6,17 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptComparator;
 
 /**
  * Represents a Person in the address book.
@@ -25,28 +31,36 @@ public class Person {
 
     // Data fields
     private final Address address;
-    private final MedHistory medhistory;
-    private final Appt appt;
+    private final Set<MedHistory> medHistories = new HashSet<>();
+    private final Set<Appt> appts = new TreeSet<>(new ApptComparator());
     private final Set<Tag> tags = new HashSet<>();
-    private final MedicalReport report;
+    private final Set<MedicalReport> reports = new HashSet<>();
 
     // Additional information fields
     private final Nric nric;
+    private final DateOfBirth dateOfBirth;
+    private final Height height;
+    private final Weight weight;
+    //private final Gender gender;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, MedicalReport report,
-                  MedHistory medhistory, Appt appt, Nric nric, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<MedicalReport> reports,
+                  Set<MedHistory> medHistories, Set<Appt> appts, Nric nric, DateOfBirth dateOfBirth, Height height,
+                  Weight weight, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.nric = nric;
-        this.report = report;
-        this.medhistory = medhistory;
-        this.appt = appt;
+        this.dateOfBirth = dateOfBirth;
+        this.height = height;
+        this.weight = weight;
+        this.reports.addAll(reports);
+        this.medHistories.addAll(medHistories);
+        this.appts.addAll(appts);
         this.tags.addAll(tags);
     }
 
@@ -66,22 +80,38 @@ public class Person {
         return address;
     }
 
-    public MedicalReport getMedicalReport() {
-        return report;
+    //@@author chewkahmeng
+    public Set<MedicalReport> getMedicalReports() {
+        return Collections.unmodifiableSet(reports);
     }
 
-    public MedHistory getMedHistory() {
-        return medhistory;
+    //@@author
+    public Set<MedHistory> getMedHistory() {
+        return Collections.unmodifiableSet(medHistories);
     }
 
     public Nric getNric() {
         return nric;
     }
 
-    public Appt getAppt() {
-        return appt;
+    public DateOfBirth getDateOfBirth() {
+        return dateOfBirth;
     }
 
+    public Height getHeight() {
+        return height;
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
+
+    //@@author brandonccm1996
+    public Set<Appt> getAppts() {
+        return Collections.unmodifiableSet(appts);
+    }
+
+    //@@author
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -123,6 +153,13 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
+                //&& otherPerson.getNric().equals(getNric())
+                //&& otherPerson.getDateOfBirth().equals(getDateOfBirth())
+                //&& otherPerson.getHeight().equals(getHeight())
+                //&& otherPerson.getWeight().equals(getWeight())
+                && otherPerson.getMedHistory().equals(getMedHistory())
+                && otherPerson.getAppts().equals(getAppts())
+                && otherPerson.getMedicalReports().equals(getMedicalReports())
                 && otherPerson.getTags().equals(getTags());
     }
 

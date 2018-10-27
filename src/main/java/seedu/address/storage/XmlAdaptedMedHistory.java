@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import java.util.Objects;
 
-import javax.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.medhistory.Allergy;
@@ -18,11 +18,11 @@ import seedu.address.model.medhistory.PrevCountry;
 public class XmlAdaptedMedHistory {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "MedHistory's %s field is missing!";
 
-    @XmlValue
+    @XmlElement
     private String medHistDate;
-    @XmlValue
+    @XmlElement
     private String allergy;
-    @XmlValue
+    @XmlElement
     private String prevCountry;
 
     /**
@@ -47,9 +47,14 @@ public class XmlAdaptedMedHistory {
      */
 
     public XmlAdaptedMedHistory(MedHistory source) {
-        medHistDate = source.getMedHistDate().toString();
-        allergy = source.getAllergy().toString();
-        prevCountry = source.getPrevCountry().toString();
+        MedHistDate medHistDate = source.getMedHistDate().orElse(new MedHistDate(""));
+        this.medHistDate = medHistDate.toString();
+
+        Allergy allergy = source.getAllergy().orElse(new Allergy(""));
+        this.allergy = allergy.toString();
+
+        PrevCountry prevCountry = source.getPrevCountry().orElse(new PrevCountry(""));
+        this.prevCountry = prevCountry.toString();
     }
 
     /**
@@ -60,17 +65,17 @@ public class XmlAdaptedMedHistory {
     public MedHistory toModelType() throws IllegalValueException {
         if (medHistDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
+                    MedHistDate.class.getSimpleName()));
         }
         final MedHistDate modelMedHistDate = new MedHistDate(medHistDate);
         if (allergy == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
+                    Allergy.class.getSimpleName()));
         }
         final Allergy modelAllergy = new Allergy(allergy);
         if (prevCountry == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
+                    PrevCountry.class.getSimpleName()));
         }
         final PrevCountry modelPrevCountry = new PrevCountry(prevCountry);
 

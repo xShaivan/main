@@ -4,16 +4,17 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
+//@@author chewkahmeng
 /**
  * Represents a Person's medical report in the health book.
  */
 public class MedicalReport {
 
     private final Title title;
-    private final Date date;
+    private final ReportDate date;
     private final Information information;
 
-    public MedicalReport(Title title, Date date, Information information) {
+    public MedicalReport(Title title, ReportDate date, Information information) {
         requireAllNonNull(title, date, information);
         this.title = title;
         this.date = date;
@@ -24,7 +25,7 @@ public class MedicalReport {
         return title;
     }
 
-    public Date getDate() {
+    public ReportDate getDate() {
         return date;
     }
 

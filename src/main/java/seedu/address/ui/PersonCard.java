@@ -39,11 +39,17 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label nric;
     @FXML
-    private Label medicalreport;
+    private Label dateOfBirth;
     @FXML
-    private Label medhistory;
+    private Label height;
     @FXML
-    private Label appt;
+    private Label weight;
+    @FXML
+    private FlowPane reports;
+    @FXML
+    private FlowPane appts;
+    @FXML
+    private FlowPane medHistories;
     @FXML
     private FlowPane tags;
 
@@ -55,10 +61,15 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+
+        // TODO: Split the static text from dynamic text in UI
         nric.setText(person.getNric().value);
-        medhistory.setText(person.getMedHistory().toString());
-        medicalreport.setText(person.getMedicalReport().toString());
-        appt.setText(person.getAppt().toString());
+        dateOfBirth.setText("Date Of Birth: " + person.getDateOfBirth().toString());
+        height.setText("Height: " + person.getHeight().value);
+        weight.setText("Weight: " + person.getWeight().value);
+        person.getMedHistory().forEach(medHistory -> medHistories.getChildren().add(new Label(medHistory.toString())));
+        person.getMedicalReports().forEach(report -> reports.getChildren().add(new Label(report.toString())));
+        person.getAppts().forEach(appt -> appts.getChildren().add(new Label(appt.toString())));
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 

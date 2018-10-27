@@ -2,19 +2,25 @@ package seedu.address.model.timetable;
 
 import static java.util.Objects.requireNonNull;
 
+//@@author brandonccm1996
 /**
  * Represents an appt venue in an appt in the address book.
  * Guarantees: immutable; is always valid
  */
 public class ApptVenue {
     public static final String MESSAGE_NAME_CONSTRAINTS =
-            "Venues should only contain alphanumeric characters and spaces, and it should not be blank.";
+            "Appt venues can take any values, and it should not be blank.";
 
+    public static final String VENUE_VALIDATION_REGEX = "[^\\s].*";
     public final String value;
 
     public ApptVenue(String apptVenue) {
         requireNonNull(apptVenue);
         value = apptVenue;
+    }
+
+    public static boolean isValidVenue(String test) {
+        return test.matches(VENUE_VALIDATION_REGEX);
     }
 
     @Override
