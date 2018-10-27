@@ -417,7 +417,7 @@ Step 4. The `addappt` command will call `Model#updatePerson()` to update the per
 The following sequence diagram shows how the addappt operation works:
 
 image::AddApptSequenceDiagram.png[width="800"]
-//end:: addappt[]
+// end::addappt[]
 
 // tag::addreport[]
 === AddMedicalReport feature
@@ -1310,7 +1310,7 @@ Use case ends.
 ** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to delete.
 +
 Use case ends.
-//end:: apptusecases[]
+// end::apptusecases[]
 
 === Use case: Adding optional information of patient: `addinfo`
 Assume that user has already requested the System to display a list of patients.
