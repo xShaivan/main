@@ -29,7 +29,7 @@ Health Book is an address book application that is catered for healthcare profes
 *** Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
 *** In charge of checking and merging all team pull requests
 ** Enhancements to existing features:
-*** Converted a Java FX browser window into a Java FX Scroll Pane with multiple Anchor Panes to show a patient's details (Pull requests https://github.com/CS2113-AY1819S1-T12-2/main/pull/88[88])
+*** Converted a Java FX browser window into a Java FX Scroll Pane with multiple Anchor Panes to show a patient's details (Pull request https://github.com/CS2113-AY1819S1-T12-2/main/pull/88[#88])
 ** Community:
 *** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
 
@@ -39,13 +39,9 @@ Health Book is an address book application that is catered for healthcare profes
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuide.adoc#adding-an-appointment-into-patient-s-timetable-code-addappt-code
+include::../UserGuide.adoc[tag=undoredo]
 
-include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuide.adoc#viewing-a-patient-s-appointments-timetable-code-viewappt-code
-
-include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuide.adoc#editing-an-appointment-in-a-patient-s-timetable-code-editappt-code
-
-include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuide.adoc#deleting-an-appointment-in-a-patient-s-timetable-code-deleteappt-code
+include::../UserGuide.adoc[tag=dataencryption]
 
 == Contributions to the Developer Guide
 
@@ -53,12 +49,6 @@ include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuid
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#addappointment-feature
+include::../DeveloperGuide.adoc[tag=undoredo]
 
-include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#use-case-adding-an-appointment-into-patient-s-timetable-code-addappt-code
-
-include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#use-case-viewing-a-patient-s-appointments-code-viewappt-code
-
-https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#use-case-editing-an-appointment-in-a-patient-s-timetable-code-editappt-code
-
-https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#use-case-deleting-an-appointment-in-a-patient-s-timetable-code-deleteappt-code
+include::../DeveloperGuide.adoc[tag=dataencryption]
