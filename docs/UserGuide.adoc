@@ -238,7 +238,7 @@ Examples:
 
 * `deleteappt 2 s/16-09-2018 15:00` +
 Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
-//end:: apptcommands[]
+// end::apptcommands[]
 
 === Adding additional information of patient: `addinfo`
 
