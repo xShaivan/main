@@ -1,4 +1,4 @@
-= AddressBook Level 4 - Developer Guide
+= Health Book - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -335,7 +335,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 
 // tag::addinfo
 === Additional Information
-== Current Implementation
+==== Current Implementation
 The `addinfo` command is facilitated by the `AddInfoPersonDescriptor` class. Essentially, it is in-charged of changing the `Nric`, `DateOfBirth` attributes in a `Person` class.
 
 The command requires user to input an `index` based on the result of the `list` command. Upon getting the `index` input, the `AddInfoCommand` selects the `Person` based on the index from the `model`.
@@ -966,9 +966,15 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |doctor |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |doctor |add, edit, and delete patients and their medical informaton |keep track of my patients and not prescribe them the wrong medication
+|`* * *` |doctor |add, edit, and delete patients and their medical information |keep track of my patients and not prescribe them the wrong medication
 
 |`* * *` |doctor |find a patient by name |locate details of patients without having to go through the entire list
+
+|`* * *` |doctor |filter out patients by certain personal details |saves time in contacting patients with desired personal details
+
+|`* * *` |doctor |filter out patients by certain medical details |saves time in administering patients with desired medical details
+
+|`* * *` |doctor |sort patients by patient details by lexicographical order |goes through the patient list which is listed systematic manner to facilitate administration
 
 |`* * *` |doctor |have a platform to view my patients' past medical history |compare with their current symptoms to predict future health risks
 
@@ -981,6 +987,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |doctor |import/export files to other computers |send patients’ data to other hospitals if the patient transfers there
 
 |`* * *` |doctor |see all my patient’s appointments if there is any |remind my patients to come for appointments days in advance
+
+|`* * *` |doctor |add a list of medical reports and view certain medical reports for every patient |refer to them in the future
+
+|`* * *` |doctor |edit a patient's medical report |rectify any mistakes made in the medical report
 
 |`* *` |doctor |have an inventory list |keep track and replenish stocks
 
@@ -1148,7 +1158,7 @@ Use case ends.
 * 1a. User uses the wrong format to add appointment.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of adding appointment.
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of adding appointment.
 +
 Use case ends.
 
@@ -1168,13 +1178,21 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Viewing a patient’s appointments: `viewappts`
+[none]
+* 1d. User enters an appointment with the end time before or equal to the start time.
++
+[none]
+** 1d1. System shows an error message that the end time for an appointment needs to be after the start time.
++
+Use case ends.
+
+=== Use case: Viewing a patient’s appointments: `viewappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
-1.  User requests to view all appointments in the patient’s timetable.
-2.  System displays all appointments in the patient’s timetable.
+1.  User requests to view an appointment in the patient’s timetable.
+2.  System displays the details of the specified appointment in the patient’s timetable.
 +
 Use case ends.
 
@@ -1184,7 +1202,7 @@ Use case ends.
 * 1a. User uses the wrong format to view appointments.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of viewing appointments.
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of viewing appointments.
 +
 Use case ends.
 
@@ -1197,15 +1215,15 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1c. User requests to view all appointments of a patient who does not have any appointment.
+* 1c. User requests to view an appointment that does not exist for the specified patient.
 +
 [none]
-** 1c1. System shows message that the patient does not have any appointments.
+** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to view.
 +
 Use case ends.
 
 === Use case: Editing an appointment in a patient’s timetable: `editappt`
-Assume that user has already requested the System to view appointments for a patient.
+Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
@@ -1220,7 +1238,7 @@ Use case ends.
 * 1a. User uses the wrong format to edit appointment.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing appointment.
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of editing appointment.
 +
 Use case ends.
 
@@ -1240,8 +1258,24 @@ Use case ends.
 +
 Use case ends.
 
+[none]
+* 1d. User requests to edit an appointment that does not exist for the specified patient.
++
+[none]
+** 1d1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to edit.
++
+Use case ends.
+
+[none]
+* 1e. User edits an appointment to have the end time before or equal to the start time.
++
+[none]
+** 1e1. System shows an error message that the end time for an appointment needs to be after the start time.
++
+Use case ends.
+
 === Use case: Deleting an appointment in a patient’s timetable: `deleteappt`
-Assume that user has already requested the System to view appointments for a patient.
+Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
@@ -1256,7 +1290,7 @@ Use case ends.
 * 1a. User uses the wrong format to delete appointment.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of deleting appointment.
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of deleting appointment.
 +
 Use case ends.
 
@@ -1265,6 +1299,14 @@ Use case ends.
 +
 [none]
 ** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User requests to delete an appointment that does not exist for the specified patient.
++
+[none]
+** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to delete.
 +
 Use case ends.
 
@@ -1388,43 +1430,43 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: List of Medical Report: `listreport`
+=== Use case: List of Medical Report: `viewreport`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
-1.  User requests to view all medical reports for a patient.
-2.  System displays all medical reports for the patient.
+1.  User requests to view the medical report for a patient on a certain date.
+2.  System displays the medical report for the patient.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to list medical reports.
+* 1a. User uses the wrong format to view medical reports.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of listing medical reports.
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of viewing medical reports.
 +
 Use case ends.
 
 [none]
-* 1b. User provides an invalid index for the list.
+* 1b. User provides an invalid index or date for the list.
 +
 [none]
-** 1b1. System shows an error message that the index is invalid.
+** 1b1. System shows an error message that the index or date is invalid.
 +
 Use case ends.
 
 [none]
-* 1c. User requests to view all medical reports for a patient who does not have any medical report.
+* 1c. User requests to view the medical report for a patient who does not has any medical reports.
 +
 [none]
-** 1c1. System shows message that the patient does not have any medical report.
+** 1c1. System shows message that the patient does not have any medical reports.
 +
 Use case ends.
 
-=== Use case: Sort patients list: `sortlist`
+=== Use case: Sort patients list: `sort`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1437,7 +1479,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User chooses to sort by a category that does not exist (for example: the letter does not exist or refer to any category ie “z”, “3” or “-”).
+* 1a. User chooses to sort by a category which the prefix of the category does not exist (for example: the prefix does not exist or correspond to any category ie “z/”).
 +
 [none]
 ** 1a1. System shows an error message that the category does not exist.

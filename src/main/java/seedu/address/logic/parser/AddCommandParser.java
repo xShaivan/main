@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
@@ -16,14 +17,17 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptComparator;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -48,15 +52,18 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Set<MedicalReport> reports = new HashSet<>(); // add command does not allow adding reports straight away
-        Set<MedHistory> medHistories = new HashSet<>();
-        Set<Appt> appts = new HashSet<>(); // add command does not allow adding appts straight away
-        Nric nric = new Nric("");
-        DateOfBirth dateOfBirth = new DateOfBirth("01-01-1970");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth,
-                tagList);
+        Set<MedicalReport> reports = new HashSet<>(); // add command does not allow adding reports straight away
+        Set<MedHistory> medHistories = new HashSet<>();
+        Set<Appt> appts = new TreeSet<>(new ApptComparator()); // add command does not allow adding appts straight away
+        Nric nric = new Nric("");
+        DateOfBirth dateOfBirth = new DateOfBirth("01-01-1970");
+        Height height = new Height("");
+        Weight weight = new Weight("");
+
+        Person person = new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height,
+                weight, tagList);
 
         return new AddCommand(person);
     }

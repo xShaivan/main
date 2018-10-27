@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1">
+    <children>
+        <ScrollPane fx:id="infoPanel" fitToWidth="true">
+            <content>
+                <VBox>
+                    <children>
+                        <AnchorPane fx:id="additionalInfo">
+                            <children>
+                                <Label fx:id="nameLabel1" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                <Label fx:id="nricLabel" layoutX="20.0" layoutY="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="medHistory">
+                            <children>
+                                <Label fx:id="nameLabel2" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                <FlowPane fx:id="medHistoriesFlowPane" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="medAppts">
+                            <children>
+                                <Label fx:id="nameLabel3" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                <FlowPane fx:id="apptsFlowPane" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="medReports">
+                            <children>
+                                <Label fx:id="nameLabel4" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                <FlowPane fx:id="medReportsFlowPane" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</StackPane>
