@@ -173,6 +173,7 @@ Examples:
 * `addhist 1 hsd/ 10/10/2010 hsa/ Alcohol hsc/ Kuwait`
 Adds a medical history entry for the 1st person in the list on 10/10/2010 with an alcohol allergy and Kuwait as previous country visited.
 
+// tag::apptcommands[]
 === Adding an appointment into patient's timetable: `addappt`
 
 Adds an appointment into the specified patient's timetable. +
@@ -201,7 +202,7 @@ Format: `viewappt INDEX s/START`
 
 Examples:
 
-* `viewappts 2 s/16-09-2018 15:00` +
+* `viewappt 2 s/16-09-2018 15:00` +
 Views the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
 
 === Editing an appointment in a patient's timetable: `editappt`
@@ -237,6 +238,7 @@ Examples:
 
 * `deleteappt 2 s/16-09-2018 15:00` +
 Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
+//end:: apptcommands[]
 
 === Adding additional information of patient: `addinfo`
 
@@ -350,14 +352,14 @@ e.g. `find age/ 18 19` +
 e.g. `find n/ Betsy Tim`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
-* *Add Timetable* : `add timetable INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFORMATION dn/DOCTOR_NAME` +
-e.g. `add timetable 2 d/12092018 s/1300 e/1400 v/Consultation Room 12 i/Diabetes Checkup dn/Dr Tan`
-* *View Timetable* : `view timetable INDEX` +
-e.g. `view timetable 2`
-* *Edit Timetable* : `edit timetable INDEX [d/DATE] [s/START_TIME] [e/END_TIME] [v/VENUE] [i/APPOINTMENT_INFORMATION] [dn/DOCTOR_NAME]` +
-e.g.`edit timetable 2 s/1400 e/1500 v/Consultation Room 13`
-* *Delete Timetable* : `delete timetable INDEX` +
-e.g. `delete timetable 2`
+* *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
+e.g. `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+* *View Appt* : `viewappt INDEX s/START` +
+e.g. `viewappt 2 s/16-09-2018 15:00`
+* *Edit Appt* : `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME] [v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]` +
+e.g.`editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13`
+* *Delete Appt* : `deleteappt INDEX s/START` +
+e.g. `deleteappt 2 s/16-09-2018 15:00`
 * *Add Information* : `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
 e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Edit Information* : `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
