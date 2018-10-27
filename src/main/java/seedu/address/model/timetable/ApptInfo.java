@@ -10,13 +10,18 @@ import static java.util.Objects.requireNonNull;
 public class ApptInfo {
 
     public static final String MESSAGE_NAME_CONSTRAINTS =
-            "Appt information should only contain alphanumeric characters and spaces, and it should not be blank.";
+            "Appt info can take any values, and it should not be blank.";
 
+    public static final String APPTINFO_VALIDATION_REGEX = "[^\\s].*";
     public final String value;
 
     public ApptInfo(String apptInfo) {
         requireNonNull(apptInfo);
         value = apptInfo;
+    }
+
+    public static boolean isValidApptInfo(String test) {
+        return test.matches(APPTINFO_VALIDATION_REGEX);
     }
 
     @Override

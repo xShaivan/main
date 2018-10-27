@@ -263,7 +263,7 @@ patient in index 3 as family member.
 
 === Adding of Medical Report: `addreport`
 
-Add medical diagnosis/report to the patient. +
+Adds medical report to the patient. +
 Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
@@ -273,28 +273,23 @@ Adds a new medical report for patient at index 3 titled Asthma, dated 01-01-2018
 
 === Editing of Medical Report: `editreport`
 
-Edit existing medical diagnosis/report of the patient. +
-Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [i/INFORMATION]`
-
-****
-* `INDEX_PATIENT` refers to the index shown in the displayed person list
-* `INDEX_REPORT` refers to the index shown in the displayed report list
-****
+Edits existing medical report of the patient. +
+Format: `editreport INDEX d/DATE [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `editreport 3 1 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
-Edits title, date and information of existing medical report at index 1 for patient at index 3.
+* `editreport 3 d/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
+Edits title, date and information of existing medical report dated 01-01-2018 for patient at index 3.
 
-=== List of Medical Report: `listreport`
+=== Viewing of Medical Report: `viewreport`
 
-List all medical diagnosis/reports of a patient +
-Format: `listreport INDEX`
+Views the medical report of the patient on a certain date. +
+Format: `viewreport INDEX d/DATE`
 
 Examples:
 
-* `listreport 1` +
-List all medical reports that are attached to patient at index 1.
+* `viewreport 1 d/01-01-2018` +
+View medical report dated 01-01-2018 for patient at index 1.
 
 === Sort patients list: `sort`
 

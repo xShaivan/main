@@ -31,7 +31,6 @@ public class AddReportCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
-    // First person (Alice) has no reports at start of function, has REPORT_EXAMPLE1 at end of function
     @Test
     public void executeAddReportUnfilteredListSuccess() {
 
@@ -50,17 +49,15 @@ public class AddReportCommandTest {
         assertCommandSuccess(addMedicalReportCommand, model, commandHistory, expectedMessage, expectedModel);
     }
 
-    // First person (Alice) has REPORT_EXAMPLE1 at start of function, has REPORT_EXAMPLE1 and REPORT_EXAMPLE2 at end of
-    // function
     @Test
     public void executeFilteredListSuccess() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
-                .withMedicalReports(REPORT_EXAMPLE1, REPORT_EXAMPLE2).build();
+                .withMedicalReports(REPORT_EXAMPLE1).build();
         AddMedicalReportCommand addMedicalReportCommand =
-                new AddMedicalReportCommand(INDEX_FIRST_PERSON, REPORT_EXAMPLE2);
+                new AddMedicalReportCommand(INDEX_FIRST_PERSON, REPORT_EXAMPLE1);
 
         String expectedMessage = String.format(AddMedicalReportCommand.MESSAGE_ADD_REPORT_SUCCESS, editedPerson);
 
@@ -96,7 +93,6 @@ public class AddReportCommandTest {
                 Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
-    // Third person (Carl) has no reports at start of function, has REPORT_EXAMPLE1 at end of function
     @Test
     public void executeUndoRedoValidIndexUnfilteredListSuccess() throws Exception {
         Person personToModify = model.getFilteredPersonList().get(INDEX_THIRD_PERSON.getZeroBased());
@@ -114,7 +110,7 @@ public class AddReportCommandTest {
         expectedModel.undoAddressBook();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
-        // redo -> same first person modified again
+        // redo -> same third person modified again
         expectedModel.redoAddressBook();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -140,17 +136,15 @@ public class AddReportCommandTest {
      * unfiltered list is different from the index at the filtered list.
      * 4. Redo the modification. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
      */
-    // Third person (Carl) has REPORT_EXAMPLE1 at start of function, has REPORT_EXAMPLE1 and REPORT_EXAMPLE2 at end of
-    // function
     @Test
     public void executeUndoRedoValidIndexFilteredListSamePersonDeleted() throws Exception {
         AddMedicalReportCommand addMedicalReportCommand =
-                new AddMedicalReportCommand(INDEX_FIRST_PERSON, REPORT_EXAMPLE2);
+                new AddMedicalReportCommand(INDEX_FIRST_PERSON, REPORT_EXAMPLE1);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         showPersonAtIndex(model, INDEX_THIRD_PERSON);
         Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person modifiedPerson =
-                new PersonBuilder(personToModify).withMedicalReports(REPORT_EXAMPLE1, REPORT_EXAMPLE2).build();
+                new PersonBuilder(personToModify).withMedicalReports(REPORT_EXAMPLE1).build();
         expectedModel.updatePerson(personToModify, modifiedPerson);
         expectedModel.commitAddressBook();
 
