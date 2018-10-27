@@ -8,17 +8,8 @@
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
+        <height>172</height>
+        <weight>56</weight>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -28,17 +19,42 @@
         <address>311, Clementi Ave 2, #02-25</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
+        <height>172</height>
+        <weight>56</weight>
+        <reports>
+            <title>Asthma</title>
+            <date>01-01-2018</date>
+            <information>Prescribed XXX medicine, next appointment on 02-02-2018.</information>
+        </reports>
+        <reports>
+            <title>Depression</title>
+            <date>02-02-2018</date>
+            <information>Prescribed XXX medicine, next appointment on 03-03-2018.</information>
+        </reports>
+        <medHistories>
+            <medHistDate>10/10/2010</medHistDate>
+            <allergy>Pollen</allergy>
+            <prevCountry>USA</prevCountry>
+        </medHistories>
+        <medHistories>
+            <medHistDate>20/20/2020</medHistDate>
+            <allergy>Alcohol</allergy>
+            <prevCountry>Russia</prevCountry>
+        </medHistories>
+        <appts>
+            <apptStart>01-01-2018 14:00</apptStart>
+            <apptEnd>01-01-2018 15:00</apptEnd>
+            <apptVenue>Consultation Room 1</apptVenue>
+            <apptInfo>Diabetes Checkup</apptInfo>
+            <apptDrName>Dr Tan</apptDrName>
+        </appts>
+        <appts>
+            <apptStart>02-02-2018 15:00</apptStart>
+            <apptEnd>02-02-2018 16:00</apptEnd>
+            <apptVenue>Consultation Room 2</apptVenue>
+            <apptInfo>Asthma Checkup</apptInfo>
+            <apptDrName>Dr Chan</apptDrName>
+        </appts>
         <tagged>owesMoney</tagged>
         <tagged>friends</tagged>
     </persons>
@@ -49,17 +65,8 @@
         <address>wall street</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
+        <height>172</height>
+        <weight>56</weight>
     </persons>
     <persons>
         <name>Daniel Meier</name>
@@ -68,17 +75,8 @@
         <address>10th street</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
+        <height>172</height>
+        <weight>56</weight>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -88,17 +86,8 @@
         <address>michegan ave</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
+        <height>172</height>
+        <weight>56</weight>
     </persons>
     <persons>
         <name>Fiona Kunz</name>
@@ -107,17 +96,8 @@
         <address>little tokyo</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
+        <height>172</height>
+        <weight>56</weight>
     </persons>
     <persons>
         <name>George Best</name>
@@ -126,16 +106,24 @@
         <address>4th street</address>
         <nric>S5185093I</nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo>Eye Checkup</apptInfo>
-        <apptDrName></apptDrName>
+        <height>172</height>
+        <weight>56</weight>
+        <reports>
+            <title>Asthma</title>
+            <date>01-01-2018</date>
+            <information>Prescribed XXX medicine, next appointment on 02-02-2018.</information>
+        </reports>
+        <medHistories>
+            <medHistDate>10/10/2010</medHistDate>
+            <allergy>Pollen</allergy>
+            <prevCountry>USA</prevCountry>
+        </medHistories>
+        <appts>
+            <apptStart>01-01-2018 14:00</apptStart>
+            <apptEnd>01-01-2018 15:00</apptEnd>
+            <apptVenue>Consultation Room 1</apptVenue>
+            <apptInfo>Diabetes Checkup</apptInfo>
+            <apptDrName>Dr Tan</apptDrName>
+        </appts>
     </persons>
 </addressbook>

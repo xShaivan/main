@@ -3,18 +3,22 @@ package seedu.address.model.medhistory;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
+import java.util.Optional;
+
+import seedu.address.commons.util.CollectionUtil;
 
 /**
  * Model of medical history of a patient.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 
-public class MedHistory {
 
-    // Data fields
-    private final MedHistDate medHistDate;
-    private final Allergy allergy;
-    private final PrevCountry prevCountry;
+public class MedHistory {
+    private MedHistDate medHistDate;
+    private Allergy allergy;
+    private PrevCountry prevCountry;
+
+    public MedHistory() {}
 
     public MedHistory(MedHistDate medHistDate, Allergy allergy, PrevCountry prevCountry) {
         requireAllNonNull(medHistDate, allergy, prevCountry);
@@ -23,30 +27,65 @@ public class MedHistory {
         this.prevCountry = prevCountry;
     }
 
-    public MedHistDate getMedHistDate() {
-        return medHistDate;
+    /**
+     * Copy constructor.
+     * A defensive copy of {@code tags} is used internally.
+     */
+    public MedHistory(MedHistory toCopy) {
+        setMedHistDate(toCopy.medHistDate);
+        setAllergy(toCopy.allergy);
+        setPrevCountry(toCopy.prevCountry);
     }
-    public Allergy getAllergy() {
-        return allergy;
+
+    /**
+     * Returns true if at least one field is edited.
+     */
+    public boolean isAnyFieldEdited() {
+        return CollectionUtil.isAnyNonNull(medHistDate, allergy, prevCountry);
     }
-    public PrevCountry getPrevCountry() {
-        return prevCountry;
+
+    public void setMedHistDate(MedHistDate medHistDate) {
+        this.medHistDate = medHistDate;
+    }
+
+    public Optional<MedHistDate> getMedHistDate() {
+        return Optional.ofNullable(medHistDate);
+    }
+
+    public void setAllergy(Allergy allergy) {
+        this.allergy = allergy;
+    }
+
+    public Optional<Allergy> getAllergy() {
+        return Optional.ofNullable(allergy);
+    }
+
+    public void setPrevCountry(PrevCountry prevCountry) {
+        this.prevCountry = prevCountry;
+    }
+
+    public Optional<PrevCountry> getPrevCountry() {
+        return Optional.ofNullable(prevCountry);
     }
 
     @Override
     public boolean equals(Object other) {
+        // short circuit if same object
         if (other == this) {
             return true;
         }
 
+        // instanceof handles nulls
         if (!(other instanceof MedHistory)) {
             return false;
         }
 
-        MedHistory otherPerson = (MedHistory) other;
-        return otherPerson.getMedHistDate().equals(getMedHistDate())
-                && otherPerson.getAllergy().equals(getAllergy())
-                && otherPerson.getPrevCountry().equals(getPrevCountry());
+        // state check
+        MedHistory e = (MedHistory) other;
+
+        return getMedHistDate().equals(e.getMedHistDate())
+                && getAllergy().equals(e.getAllergy())
+                && getPrevCountry().equals(e.getPrevCountry());
     }
 
     @Override

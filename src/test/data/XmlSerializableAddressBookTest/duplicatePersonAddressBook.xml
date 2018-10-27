@@ -8,17 +8,8 @@
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
+        <height></height>
+        <weight></weight>
         <tagged>friends</tagged>
     </persons>
 
@@ -30,17 +21,8 @@
         <address>4th street</address>
         <nric></nric>
         <dateOfBirth>01-01-1970</dateOfBirth>
-        <title></title>
-        <date></date>
-        <information></information>
-        <medHistDate></medHistDate>
-        <allergy></allergy>
-        <prevCountry></prevCountry>
-        <apptStart></apptStart>
-        <apptEnd></apptEnd>
-        <apptVenue></apptVenue>
-        <apptInfo></apptInfo>
-        <apptDrName></apptDrName>
+        <height></height>
+        <weight></weight>
     </persons>
 
 </addressbook>

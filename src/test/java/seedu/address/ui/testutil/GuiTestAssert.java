@@ -41,10 +41,10 @@ public class GuiTestAssert {
                 .collect(Collectors.toList()), actualCard.getMedicalReports());
         assertEquals(expectedPerson.getMedHistory().stream().map(medHistory -> medHistory.toString())
                 .collect(Collectors.toList()), actualCard.getMedHistory());
-        assertEquals(expectedPerson.getAppts().stream().map(appt -> appt.toString()).collect(Collectors.toList()),
-                actualCard.getAppts());
-        assertEquals(expectedPerson.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
-                actualCard.getTags());
+        assertEquals(expectedPerson.getAppts().stream().map(appt -> appt.toString())
+                .collect(Collectors.toList()), actualCard.getAppts());
+        assertEquals(expectedPerson.getTags().stream().map(tag -> tag.tagName)
+                .collect(Collectors.toList()), actualCard.getTags());
     }
 
     /**

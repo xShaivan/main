@@ -12,6 +12,7 @@ import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
 
+//@@author brandonccm1996
 /**
  * A utility class to help with building Appt objects.
  */

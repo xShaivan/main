@@ -13,6 +13,7 @@ import org.junit.Test;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.testutil.ReportBuilder;
 
+//@@author chewkahmeng
 public class AddMedicalReportTest {
     @Test
     public void equals() {

@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import seedu.address.testutil.ApptBuilder;
 
+//@@author brandonccm1996
 public class ApptTest {
 
     @Test

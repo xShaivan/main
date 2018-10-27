@@ -117,7 +117,7 @@ Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing t
 === Finding patients by categories: `find`
 
 Finds patients by categories such as their name, age and marital status. +
-Format: `find category/KEYWORD UNDER CATEGORY`
+Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
@@ -129,13 +129,13 @@ Format: `find category/KEYWORD UNDER CATEGORY`
 
 Examples:
 
-* `find n/John` +
+* `find n/ John` +
 Returns `john` and `John Doe`
-* `find n/Betsy Tim John` +
+* `find n/ BeTsY Tim John` +
 Returns any patient having names `Betsy`, `Tim`, or `John`
-* `find ms/married`
+* `find ms/ married`
 Returns any patient who is married.
-* `find age/18`
+* `find age/ 18`
 Returns any patient who is 18 years old.
 
 === Deleting a patient : `delete`
@@ -154,7 +154,7 @@ Examples:
 * `list` +
 `delete 2` +
 Deletes the 2nd person in the address book.
-* `find n/Betsy` +
+* `find n/ Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
@@ -243,15 +243,16 @@ Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in
 Add the following additional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
 gender, occupation, marital status, family member. +
 Note: age field will be auto-calculated once DOB is populated +
-Format: `addinfo INDEX [i/NRIC] [d/DOB]`
+Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT]`
 
 .Constraints for `[i/NRIC]`:
 * Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
+* NRIC input must be valid with accordance to ICA's NRIC checksum
 
 .Constraints for `[d/DOB]`:
 * Must be in the format `dd-MM-YYYY`
 
-Work In Progress: `[h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
+Work In Progress: `[g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
 Examples:
 
@@ -262,51 +263,46 @@ patient in index 3 as family member.
 
 === Adding of Medical Report: `addreport`
 
-Add medical diagnosis/report to the patient. +
+Adds medical report to the patient. +
 Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `addreport 3 t/Asthma d/01/01/2018 i/Prescribed XXX medicine, next appointment on 02/02/2018.` +
-Adds a new medical report for patient at index 3 titled Asthma, dated 01/01/2018 with the report's information.
+* `addreport 3 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+Adds a new medical report for patient at index 3 titled Asthma, dated 01-01-2018 with the report's information.
 
 === Editing of Medical Report: `editreport`
 
-Edit existing medical diagnosis/report of the patient. +
-Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [i/INFORMATION]`
-
-****
-* `INDEX_PATIENT` refers to the index shown in the displayed person list
-* `INDEX_REPORT` refers to the index shown in the displayed report list
-****
+Edits existing medical report of the patient. +
+Format: `editreport INDEX d/DATE [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `editreport 3 1 t/Depression d/02/02/2018 i/Prescribed XXX medicine, next appointment on 03/03/2018.` +
-Edits title, date and information of existing medical report at index 1 for patient at index 3.
+* `editreport 3 d/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
+Edits title, date and information of existing medical report dated 01-01-2018 for patient at index 3.
 
-=== List of Medical Report: `listreport`
+=== Viewing of Medical Report: `viewreport`
 
-List all medical diagnosis/reports of a patient +
-Format: `listreport INDEX`
+Views the medical report of the patient on a certain date. +
+Format: `viewreport INDEX d/DATE`
 
 Examples:
 
-* `listreport 1` +
-List all medical reports/diagnosis that are attached to patient at index 1.
+* `viewreport 1 d/01-01-2018` +
+View medical report dated 01-01-2018 for patient at index 1.
 
-=== Sort patients list: `sortlist`
+=== Sort patients list: `sort`
 
-Sort the list of patients according to a specific category. +
-Format: `sortlist CATEGORY ORDER_INDEX`
+Sort the list of patients according to a specific prefix category. +
+Format: `sort PREFIX/ ORDER_INDEX`
 
-`CATEGORY` refers to certain types of important patient information such as name, blood type,
-allergy etc. and each of these information will be defined by their first letter. (ie n for name)
+`PREFIX/` refers to certain categories of patient information such as name, blood type,
+allergy etc. and each of these categories will be defined by a corresponding prefix. (ie n/ for name)
 `ORDER_INDEX` can be 1 or 2 where 1 means in alphabetical and 2 means in reverse order.
 
 Example:
 
-* `sortlist n 2` +
+* `sort n/ 2` +
 Sort the patient list by their names in reverse order (Z → A).
 
 === View patient’s information: `view`
@@ -348,10 +344,10 @@ e.g. `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #0
 * *List* : `list`
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]` +
 e.g. `edit 1 p/91234567 e/johndoe@example.com`
-* *Find* : `find category/KEYWORD UNDER CATEGORY` +
-e.g. `find ms/married` +
-e.g. `find age/18` +
-e.g. `find n/Betsy Tim John`
+* *Find* : `find PREFIX/ KEYWORD [MORE_KEYWORDS]` +
+e.g. `find ms/ married` +
+e.g. `find age/ 18 19` +
+e.g. `find n/ Betsy Tim`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
 * *Add Timetable* : `add timetable INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFORMATION dn/DOCTOR_NAME` +
@@ -372,8 +368,8 @@ e.g. `addreport 3 t/ASTHMA d/01012018 mr/Patient diagnosed with asthma and presc
 e.g. `editreport 3 1 t/DEPRESSION d/02012018 mr/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
 * *List Medical Report* : `listreport INDEX` +
 e.g. `listreport 1`
-* *Sort* : `sortlist CATEGORY ORDER_INDEX` +
-e.g. `sortlist n 2`
+* *Sort* : `sort PREFIX/ ORDER_INDEX` +
+e.g. `sort n/ 2`
 * *View* : `view INDEX` +
 e.g. view 1
 * *Import Document* : `import DIRECTORY_NAME/FILE_NAME` +
