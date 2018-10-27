@@ -238,7 +238,7 @@ public class ParserUtil {
      * @throws ParseException if the given {@code medHistDate} is invalid.
      * ParseException is omitted for now.
      */
-    public static MedHistDate parseMedHistDate(String medHistDate) throws ParseException{
+    public static MedHistDate parseMedHistDate(String medHistDate) throws ParseException {
         requireNonNull(medHistDate);
         String trimmedMedHistDate = medHistDate.trim();
         if (!MedHistDate.isValidMedHistDate(trimmedMedHistDate)) {
