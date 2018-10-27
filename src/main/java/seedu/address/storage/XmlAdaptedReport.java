@@ -52,7 +52,7 @@ public class XmlAdaptedReport {
     }
 
     /**
-     * Converts this jaxb-friendly adapted appt object into the model's Report object.
+     * Converts this jaxb-friendly adapted report object into the model's Report object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted report
      */
