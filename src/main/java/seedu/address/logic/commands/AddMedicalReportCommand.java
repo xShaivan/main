@@ -95,6 +95,9 @@ public class AddMedicalReportCommand extends Command {
         return String.format(MESSAGE_ADD_REPORT_SUCCESS, personToEdit);
     }
 
+    /**
+     * Checks if report1 and report2 are duplicates of one another
+     */
     private boolean hasDuplicateReport(MedicalReport report1, MedicalReport report2) {
         String title1 = report1.getTitle().fullTitle;
         String title2 = report2.getTitle().fullTitle;
@@ -103,10 +106,7 @@ public class AddMedicalReportCommand extends Command {
         LocalDate date1 = report1.getDate().fullDate;
         LocalDate date2 = report2.getDate().fullDate;
 
-        if ((title1.equals(title2)) && (info1.equals(info2)) && (date1.equals(date2))) {
-            return true;
-        }
-        return false;
+        return ((title1.equals(title2)) && (info1.equals(info2)) && (date1.equals(date2)));
     }
 
     @Override
