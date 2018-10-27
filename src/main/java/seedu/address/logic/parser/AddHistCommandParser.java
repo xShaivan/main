@@ -13,7 +13,6 @@ import seedu.address.logic.commands.AddHistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.DischargeStatus;
-import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
 
