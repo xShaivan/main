@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -39,6 +40,7 @@ public class AddMedicalReportCommand extends Command {
             + PREFIX_INFORMATION + "prescribed XXX medicine, next appointment on 02-02-2018. ";
 
     public static final String MESSAGE_ADD_REPORT_SUCCESS = "Added medical report to Person: %1$s";
+    public static final String MESSAGE_DUPLICATE_REPORT = "Unable to add duplicate medical report.";
 
     private final Index index;
     private final MedicalReport report;
@@ -65,6 +67,13 @@ public class AddMedicalReportCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<MedicalReport> oldReports = personToEdit.getMedicalReports();
+
+        for (MedicalReport oldreports : oldReports) {
+            if (hasDuplicateReport(oldreports, report)) {
+                throw new CommandException(MESSAGE_DUPLICATE_REPORT);
+            }
+        }
+
         Set<MedicalReport> newReports = new TreeSet<>(new ReportComparator());
         for (MedicalReport report : oldReports) {
             newReports.add(report);
@@ -84,6 +93,20 @@ public class AddMedicalReportCommand extends Command {
 
     private String generateSuccessMessage(Person personToEdit) {
         return String.format(MESSAGE_ADD_REPORT_SUCCESS, personToEdit);
+    }
+
+    private boolean hasDuplicateReport(MedicalReport report1, MedicalReport report2) {
+        String title1 = report1.getTitle().fullTitle;
+        String title2 = report2.getTitle().fullTitle;
+        String info1 = report1.getInformation().fullInformation;
+        String info2 = report2.getInformation().fullInformation;
+        LocalDate date1 = report1.getDate().fullDate;
+        LocalDate date2 = report2.getDate().fullDate;
+
+        if ((title1.equals(title2)) && (info1.equals(info2)) && (date1.equals(date2))) {
+            return true;
+        }
+        return false;
     }
 
     @Override
