@@ -79,7 +79,7 @@ public class CommandTestUtil {
 
     // MedHistory
     public static final String VALID_HISTORY_DATE = "10-10-2010";
-    public static final String VALID_HISTORY_DATE2 = "20-20-2010";
+    public static final String VALID_HISTORY_DATE2 = "20-10-2010";
     public static final String VALID_HISTORY_ALLERGY = "Pollen";
     public static final String VALID_HISTORY_ALLERGY2 = "Alcohol";
     public static final String VALID_HISTORY_COUNTRY = "USA";
