@@ -9,50 +9,43 @@
 
 == Overview
 
-Health Book is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Health Book is an address book application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. Command Line Interface is utilized mainly for the input, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI. It is written in Java.
 
 == Summary of contributions
 
-* *Major enhancement*: added *the ability to undo/redo previous commands*
-** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
+* *Major enhancement*: added *the ability to add, view, edit and delete appointments in a patient's timetable*
+** What it does: allows the user to manage appointments for a patient.
+** Justification: This feature improves the product significantly because the user can track his patients' appointments easily and make sure that there are no scheduling clashes, and can also remind his patients in advance that they have appointments.
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
 
 * *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+* *Code contributed*: [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddApptCommand.java[AddApptCommand]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddApptCommandParser.java[AddApptCommandParser]]   [https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/timetable[Appt model classes]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedAppt.java[XmlAdaptedAppt]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddApptCommandTest.java[AddApptCommandTest]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddApptCommandParserTest.java[AddApptCommandParserTest]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/timetable/ApptTest.java[ApptTest]]
 
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+*** Role of Dev Lead: In charge of deciding overall features of Health Book application
+*** Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
+*** In charge of checking and merging all team pull requests
 ** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
-** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Converted a Java FX browser window into a Java FX Scroll Pane with multiple Anchor Panes to show a patient's details (Pull requests https://github.com/CS2113-AY1819S1-T12-2/main/pull/88[88])
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
 *** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
-
-_{you can add/remove categories in the list above}_
 
 == Contributions to the User Guide
-
 
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=undoredo]
+include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuide.adoc#adding-an-appointment-into-patient-s-timetable-code-addappt-code
 
-include::../UserGuide.adoc[tag=dataencryption]
+include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuide.adoc#viewing-a-patient-s-appointments-timetable-code-viewappt-code
+
+include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuide.adoc#editing-an-appointment-in-a-patient-s-timetable-code-editappt-code
+
+include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/UserGuide.adoc#deleting-an-appointment-in-a-patient-s-timetable-code-deleteappt-code
 
 == Contributions to the Developer Guide
 
@@ -60,13 +53,12 @@ include::../UserGuide.adoc[tag=dataencryption]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#addappointment-feature
 
-include::../DeveloperGuide.adoc[tag=dataencryption]
+include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#use-case-adding-an-appointment-into-patient-s-timetable-code-addappt-code
 
+include::https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#use-case-viewing-a-patient-s-appointments-code-viewappt-code
 
-== PROJECT: PowerPointLabs
+https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#use-case-editing-an-appointment-in-a-patient-s-timetable-code-editappt-code
 
----
-
-_{Optionally, you may include other projects in your portfolio.}_
+https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/docs/DeveloperGuide.adoc#use-case-deleting-an-appointment-in-a-patient-s-timetable-code-deleteappt-code
