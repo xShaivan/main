@@ -26,8 +26,7 @@ public class MedHistoryUtil {
      */
     public static String getMedHistoryDetails(MedHistory medHistory) {
         StringBuilder sb = new StringBuilder();
-        medHistory.getMedHistDate()
-                .ifPresent(medHistDate -> sb.append(PREFIX_HISTORY_DATE).append(medHistDate.value).append(" "));
+        sb.append(PREFIX_HISTORY_DATE + medHistory.getMedHistDate().toString() + " ");
         medHistory.getAllergy()
                 .ifPresent(allergy -> sb.append(PREFIX_HISTORY_ALLERGY).append(allergy.value).append(" "));
         medHistory.getPrevCountry()

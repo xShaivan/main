@@ -46,8 +46,6 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
         if (argMultimap.getValue(PREFIX_HISTORY_DATE).isPresent()) {
             medHistory.setMedHistDate(ParserUtil
                     .parseMedHistDate(argMultimap.getValue(PREFIX_HISTORY_DATE).get()));
-        } else {
-            medHistory.setMedHistDate(new MedHistDate(""));
         }
         if (argMultimap.getValue(PREFIX_HISTORY_ALLERGY).isPresent()) {
             medHistory.setAllergy(ParserUtil

@@ -3,6 +3,10 @@ package seedu.address.model.medhistory;
 import static java.util.Objects.requireNonNull;
 //import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalDate;
+
+import seedu.address.model.util.DateTimeUtil;
+
 /**
  * Represents the date of medical history.
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
@@ -11,11 +15,11 @@ import static java.util.Objects.requireNonNull;
 public class MedHistDate {
 
     public static final String MESSAGE_MEDHISTDATE_CONSTRAINTS =
-            "ReportDate needs to be in day/month/year (dd/mm/yyyy) format.";
+            "ReportDate needs to be in day-month-year (dd-mm-yyyy) format.";
 
-    public static final String MEDHISTDATE_VALIDATION_REGEX = "[^\\s].*";
+    public static final String MEDHISTDATE_VALIDATION_REGEX = "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
 
-    public final String value;
+    public final LocalDate value;
 
     /**
      * Constructs an {@code MedHistDate}.
@@ -26,12 +30,12 @@ public class MedHistDate {
         requireNonNull(medHistDate);
         // isValidDate will is found in test file.
         //checkArgument(isValidDate(date), MESSAGE_DATE_CONSTRAINTS);
-        value = medHistDate;
+        value = DateTimeUtil.parseDate(medHistDate);
     }
 
     @Override
     public String toString() {
-        return value;
+        return DateTimeUtil.format(value);
     }
 
     @Override

@@ -51,7 +51,7 @@ public class XmlAdaptedMedHistory {
      */
 
     public XmlAdaptedMedHistory(MedHistory source) {
-        MedHistDate medHistDate = source.getMedHistDate().orElse(new MedHistDate(""));
+        MedHistDate medHistDate = source.getMedHistDate();
         this.medHistDate = medHistDate.toString();
 
         Allergy allergy = source.getAllergy().orElse(new Allergy(""));

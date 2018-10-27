@@ -42,7 +42,7 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
             + "by their index number."
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_HISTORY_DATE + " 24/08/1993 "
+            + PREFIX_HISTORY_DATE + " 24-08-1993 "
             + PREFIX_HISTORY_ALLERGY + " Alcohol "
             + PREFIX_HISTORY_COUNTRY + " Kuwait "
             + PREFIX_HISTORY_DISCHARGE_STATUS + " Discharged to home.";

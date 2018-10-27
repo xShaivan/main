@@ -52,8 +52,8 @@ public class MedHistory {
         this.medHistDate = medHistDate;
     }
 
-    public Optional<MedHistDate> getMedHistDate() {
-        return Optional.ofNullable(medHistDate);
+    public MedHistDate getMedHistDate() {
+        return medHistDate;
     }
 
     public void setAllergy(Allergy allergy) {

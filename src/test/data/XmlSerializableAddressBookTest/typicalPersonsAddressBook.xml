@@ -32,16 +32,16 @@
             <information>Prescribed XXX medicine, next appointment on 03-03-2018.</information>
         </reports>
         <medHistories>
-            <medHistDate>10/10/2010</medHistDate>
+            <medHistDate>10-10-2010</medHistDate>
             <allergy>Pollen</allergy>
             <prevCountry>USA</prevCountry>
             <dischargeStatus>Discharged to home</dischargeStatus>
         </medHistories>
         <medHistories>
-            <medHistDate>20/20/2020</medHistDate>
+            <medHistDate>20-20-2010</medHistDate>
             <allergy>Alcohol</allergy>
             <prevCountry>Russia</prevCountry>
-            <dischargeStatus>Discharged to home</dischargeStatus>
+            <dischargeStatus>Admitted as an inpatient to this hospital</dischargeStatus>
         </medHistories>
         <appts>
             <apptStart>01-01-2018 14:00</apptStart>
@@ -116,7 +116,7 @@
             <information>Prescribed XXX medicine, next appointment on 02-02-2018.</information>
         </reports>
         <medHistories>
-            <medHistDate>10/10/2010</medHistDate>
+            <medHistDate>10-10-2010</medHistDate>
             <allergy>Pollen</allergy>
             <prevCountry>USA</prevCountry>
             <dischargeStatus>Discharged to home</dischargeStatus>
