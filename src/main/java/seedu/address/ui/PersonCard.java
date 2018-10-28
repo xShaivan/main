@@ -64,9 +64,9 @@ public class PersonCard extends UiPart<Region> {
 
         // TODO: Split the static text from dynamic text in UI
         nric.setText(person.getNric().value);
-        dateOfBirth.setText("Date Of Birth: " + person.getDateOfBirth().toString());
-        height.setText("Height: " + person.getHeight().value);
-        weight.setText("Weight: " + person.getWeight().value);
+        dateOfBirth.setText(person.getDateOfBirth().toString());
+        height.setText(person.getHeight().value);
+        weight.setText(person.getWeight().value);
         person.getMedHistory().forEach(medHistory -> medHistories.getChildren().add(new Label(medHistory.toString())));
         person.getMedicalReports().forEach(report -> reports.getChildren().add(new Label(report.toString())));
         person.getAppts().forEach(appt -> appts.getChildren().add(new Label(appt.toString())));

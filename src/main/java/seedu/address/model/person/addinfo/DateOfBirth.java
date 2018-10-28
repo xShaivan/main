@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import seedu.address.model.util.DateTimeUtil;
 
@@ -15,7 +16,7 @@ public class DateOfBirth {
     public static final String DATE_OF_BIRTH_VALUE_EXCEEDED = "Date values have exceeded. Please check again.";
     public static final String DATE_OF_BIRTH_VALIDATION_REGEX = "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
 
-    public final LocalDate value;
+    public final Optional<LocalDate> value;
 
     /**
      * Constructs a {@code DateOfBirth}
@@ -25,7 +26,7 @@ public class DateOfBirth {
     //TODO: (DateOfBirth) to be an Optional type to support null values
     public DateOfBirth(String value) {
         requireNonNull(value);
-        this.value = DateTimeUtil.parseDate(value);
+        this.value = (value.isEmpty()) ? Optional.empty() : Optional.of(DateTimeUtil.parseDate(value));
     }
 
     public static boolean isValidDate(String test) {
@@ -34,7 +35,7 @@ public class DateOfBirth {
 
     @Override
     public String toString() {
-        return DateTimeUtil.format(value);
+        return value.isPresent() ? DateTimeUtil.format(value.get()) : "";
     }
 
     @Override

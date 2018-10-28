@@ -27,7 +27,7 @@ import seedu.address.model.timetable.Appt;
 public class SampleDataUtil {
 
     public static final Nric EMPTY_NRIC = new Nric("");
-    public static final DateOfBirth EMPTY_DATE_OF_BIRTH = new DateOfBirth("01-01-1970");
+    public static final DateOfBirth EMPTY_DATE_OF_BIRTH = new DateOfBirth("");
     public static final Height EMPTY_HEIGHT = new Height("");
     public static final Weight EMPTY_WEIGHT = new Weight("");
 
