@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -71,6 +72,7 @@ public class EditApptCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         List<Person> lastShownList = model.getFilteredPersonList();
         Appt editedAppt = null;
+        boolean apptFound = false;
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -90,10 +92,12 @@ public class EditApptCommand extends Command {
                     throw new CommandException(MESSAGE_INVALID_TIME);
                 }
                 apptsCopy.remove(appt);
+                apptFound = true;
             }
-            else {
-                throw new CommandException(MESSAGE_APPT_NOT_FOUND);
-            }
+        }
+
+        if (!apptFound) {
+            throw new CommandException(MESSAGE_APPT_NOT_FOUND);
         }
 
         for (Appt appt : apptsCopy) {
