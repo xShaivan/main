@@ -20,18 +20,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.medhistory.MedHistory;
-import seedu.address.model.medicalreport.MedicalReport;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.addinfo.DateOfBirth;
-import seedu.address.model.person.addinfo.Height;
-import seedu.address.model.person.addinfo.Nric;
-import seedu.address.model.person.addinfo.Weight;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 import seedu.address.model.timetable.ApptComparator;
 import seedu.address.model.timetable.ApptDateTime;
@@ -48,7 +37,7 @@ public class EditApptCommand extends Command {
             " and the start time provided. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_APPT_ORIGINAL_START + "ORIGINAL START\n"
+            + PREFIX_APPT_ORIGINAL_START + "ORIGINAL START"
             + "[" + PREFIX_APPT_START + "START] "
             + "[" + PREFIX_APPT_END + "END] "
             + "[" + PREFIX_APPT_VENUE + "VENUE] "
@@ -64,6 +53,7 @@ public class EditApptCommand extends Command {
     public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt.";
     public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time.";
     public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to edit cannot be found.";
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     private final Index index;
     private final ApptDateTime originalApptStart;

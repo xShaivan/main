@@ -47,8 +47,8 @@ public class AddApptCommandParser implements Parser<AddApptCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddApptCommand.MESSAGE_USAGE), ive);
         }
 
-        ApptDateTime start = ParserUtil.parseApptTime(argMultimap.getValue(PREFIX_APPT_START).get());
-        ApptDateTime end = ParserUtil.parseApptTime(argMultimap.getValue(PREFIX_APPT_END).get());
+        ApptDateTime start = ParserUtil.parseApptDateTime(argMultimap.getValue(PREFIX_APPT_START).get());
+        ApptDateTime end = ParserUtil.parseApptDateTime(argMultimap.getValue(PREFIX_APPT_END).get());
         ApptVenue venue = ParserUtil.parseApptVenue(argMultimap.getValue(PREFIX_APPT_VENUE).get());
         ApptInfo info = ParserUtil.parseApptInfo(argMultimap.getValue(PREFIX_APPT_INFO).get());
         ApptDrName drName = ParserUtil.parseApptDrName(argMultimap.getValue(PREFIX_APPT_DRNAME).get());

@@ -313,7 +313,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code apptDateTime} is invalid.
      */
-    public static ApptDateTime parseApptTime(String apptDateTime) throws ParseException {
+    public static ApptDateTime parseApptDateTime(String apptDateTime) throws ParseException {
         requireNonNull(apptDateTime);
         String trimmedApptDateTime = apptDateTime.trim();
         if (!ApptDateTime.isValidDateTime(trimmedApptDateTime)) {

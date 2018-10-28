@@ -35,7 +35,7 @@ public class DeleteApptCommandParser implements Parser<DeleteApptCommand> {
                     ive);
         }
 
-        ApptDateTime start = ParserUtil.parseApptTime(argMultimap.getValue(PREFIX_APPT_START).get());
+        ApptDateTime start = ParserUtil.parseApptDateTime(argMultimap.getValue(PREFIX_APPT_START).get());
         return new DeleteApptCommand(index, start);
     }
 
