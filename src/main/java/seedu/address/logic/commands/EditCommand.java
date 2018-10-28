@@ -113,12 +113,12 @@ public class EditCommand extends Command {
         Height height = personToEdit.getHeight();
         Weight weight = personToEdit.getWeight();
 
-        Set<MedicalReport> updatedReports = personToEdit.getMedicalReports(); // edit command disallow editing reports
-        Set<MedHistory> updatedMedHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
-        Set<Appt> updatedAppts = personToEdit.getAppts(); // edit command does not allow editing appts
+        Set<MedicalReport> reports = personToEdit.getMedicalReports(); // edit command disallow editing reports
+        Set<MedHistory> medHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
+        Set<Appt> appts = personToEdit.getAppts(); // edit command does not allow editing appts
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedReports,
-                          updatedMedHistory, updatedAppts, nric, dateOfBirth, height, weight, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, reports,
+                          medHistory, appts, nric, dateOfBirth, height, weight, updatedTags);
     }
 
     @Override

@@ -39,5 +39,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_APPT_VENUE = new Prefix("v/");
     public static final Prefix PREFIX_APPT_INFO = new Prefix("i/");
     public static final Prefix PREFIX_APPT_DRNAME = new Prefix("d/");
+    public static final Prefix PREFIX_APPT_ORIGINAL_START = new Prefix("os/");
 
 }
