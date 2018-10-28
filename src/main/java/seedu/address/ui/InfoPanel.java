@@ -82,7 +82,7 @@ public class InfoPanel extends UiPart<Region> {
 
     private void fillApptsPane() {
         medAppts.setStyle("-fx-background-color: #DCDCDC");
-        person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new Label(appt.toString())));
+        person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new ApptCard(appt)));
     }
 
     private void fillMedReportsPane() {
