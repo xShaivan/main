@@ -13,7 +13,8 @@ public class DischargeStatus {
 
     public static final String DISCHARGE_STATUS_VALIDATION_REGEX = "[^\\s].*";
 
-    public final String value;
+    public String value;
+    public DischargeStatusEnum dischargeStatusEnum;
 
     /**
      * Constructs an {@code DischargeStatus}.
@@ -23,6 +24,27 @@ public class DischargeStatus {
     public DischargeStatus(String dischargeStatus) {
         requireNonNull(dischargeStatus);
         value = dischargeStatus;
+    }
+
+    public DischargeStatus(DischargeStatusEnum dischargeStatusEnum) {
+        requireNonNull(dischargeStatusEnum);
+        this.dischargeStatusEnum = dischargeStatusEnum;
+    }
+
+    public void DischargeStatusSwitch() {
+        switch (dischargeStatusEnum) {
+            case discharged:
+                value = "Discharged to home";
+                break;
+            case admitted:
+                value = "Admitted as an inpatient to this hospital";
+                break;
+            case expired:
+                value = "Patient has expired.";
+                break;
+                default:
+                    value = "";
+        }
     }
 
     @Override
