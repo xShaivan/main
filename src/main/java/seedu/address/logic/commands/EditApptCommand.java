@@ -28,6 +28,7 @@ import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
 
+//@@author brandonccm1996
 public class EditApptCommand extends Command {
 
     public static final String COMMAND_WORD = "editappt";
