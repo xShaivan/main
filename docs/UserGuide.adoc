@@ -261,6 +261,7 @@ For patient in index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male and associate
 patient in index 3 as family member.
 
+// tag::reportcommands[]
 === Adding of Medical Report: `addreport`
 
 Adds medical report to the patient. +
@@ -290,6 +291,7 @@ Examples:
 
 * `viewreport 1 d/01-01-2018` +
 View medical report dated 01-01-2018 for patient at index 1.
+// end::reportcommands[]
 
 === Sort patients list: `sort`
 

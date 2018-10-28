@@ -448,7 +448,7 @@ Step 5. The `addreport` command will call `Model#commitAddressBook()` to update 
 The following sequence diagram shows how the addreport operation works:
 
 image::AddMedicalReportSequenceDiagram.png[width="800"]
-//end:: addreport[]
+// end::addreport[]
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
@@ -1374,6 +1374,7 @@ Use case ends.
 +
 Use case ends.
 
+// tag::reportusecases[]
 === Use case: Adding of Medical Report: `addreport`
 Assume that user has already requested the System to display a list of patients.
 
@@ -1465,6 +1466,7 @@ Use case ends.
 ** 1c1. System shows message that the patient does not have any medical reports.
 +
 Use case ends.
+// end::reportusecases[]
 
 === Use case: Sort patients list: `sort`
 Assume that user has already requested the System to display a list of patients.
