@@ -160,7 +160,7 @@ Deletes the 1st person in the results of the `find` command.
 === Adding patient's medical history: `addhist`
 
 Adds the medical history of a patient. +
-Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED`
+Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS`
 
 ****
 * Adds an entry in the medical history of the patient for the patient at the specified INDEX.
@@ -169,8 +169,9 @@ Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY
 
 Examples:
 
-* `addhist 1 hsd/ 10/10/2010 hsa/ Alcohol hsc/ Kuwait`
+* `addhist 1 hsd/ 10/10/2010 hsa/ Alcohol hsc/ Kuwait hsds/Discharged to home`
 Adds a medical history entry for the 1st person in the list on 10/10/2010 with an alcohol allergy and Kuwait as previous country visited.
+The patient is discharged and allowed to return home.
 
 === Adding an appointment into patient's timetable: `addappt`
 

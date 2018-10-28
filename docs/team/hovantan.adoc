@@ -1,0 +1,46 @@
+= Hovan Tan - Project Portfolio
+:site-section: AboutUs
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: HealthBook
+
+---
+
+== Overview
+
+HealthBook is an address book application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. Command Line Interface is utilized mainly for the input, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
+
+== Summary of contributions
+
+* *Major enhancement*: added *the ability to add medical history entries for a patient.*
+** What it does: allows the user to key in major medical changes and events of a patient on a certain date.
+** Justification: This feature helps medical professionals by using past diseases, family history and many other variables to predict future health trends and provide medical advice.
+** Highlights: Apart from the date being compulsory, all other variables are optional in case they do not need to be updated.
+** Credits: Optional code syntax was adopted from EditCommand.
+
+* *Code contributed:*
+** [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddHistCommand.java[Add Medical History Command]]
+** [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddHistCommandParser.java[Add Medical History Command Parser]]
+** [https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/medhistory[Medical History class and variables]]
+
+* *Other contributions*:
+
+** Project Management:
+*** Managed weekly deadlines and handled distribution of workload throughout the project timeline.
+
+== Contributions to the User Guide
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=addhist]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=addhist]

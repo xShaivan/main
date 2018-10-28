@@ -359,7 +359,7 @@ Given below is an example usage scenario and how the addhist mechanism behaves a
 
 Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
 
-Step 2. The user executes `addhist 1 hsd/ 10/10/2010 hsa/Alcohol hsc/ Kuwait` command to add an entry of medical history to the 1st person in the list that the address book is currently showing. The `addhist` command obtains the data of the person that the user is trying to change based on the index that the user has input.
+Step 2. The user executes `addhist 1 hsd/ 10/10/2010 hsa/Alcohol hsc/ Kuwait hsds/Discharged to home` command to add an entry of medical history to the 1st person in the list that the address book is currently showing. The `addhist` command obtains the data of the person that the user is trying to change based on the index that the user has input.
 
 Step 3. The `addhist` command will obtain the set of entries in the medical history that the person previously had, copy it to a new set of medical history entries, and add the medical history which the user wants to add into the new set.
 
