@@ -18,7 +18,7 @@ public class DateOfBirth {
 
     public final Optional<LocalDate> value;
 
-    private final String EMPTY_STRING = "";
+    private final String emptyString = "";
 
     /**
      * Constructs a {@code DateOfBirth}
@@ -37,7 +37,7 @@ public class DateOfBirth {
 
     @Override
     public String toString() {
-        return value.isPresent() ? DateTimeUtil.format(value.get()) : EMPTY_STRING;
+        return value.isPresent() ? DateTimeUtil.format(value.get()) : emptyString;
     }
 
     @Override
