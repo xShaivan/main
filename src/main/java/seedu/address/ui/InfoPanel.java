@@ -84,6 +84,9 @@ public class InfoPanel extends UiPart<Region> {
         nameLabel4.setText("Medical Reports for " + person.getName());
     }
 
+    /**
+     * Initialize Additional Information labels
+     */
     private void fillAdditionalInfoPane() {
         additionalInfo.setStyle("-fx-background-color: #FCFCFC");
         fullNameLabel.setText(person.getName().fullName);
@@ -96,17 +99,26 @@ public class InfoPanel extends UiPart<Region> {
 
     }
 
+    /**
+     * Initialize Medical History Flow Pane
+     */
     private void fillMedHistoriesPane() {
         medHistory.setStyle("-fx-background-color: #ECECEC");
         person.getMedHistory().forEach(medHistory ->
                 medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
     }
 
+    /**
+     * Initialize Medical Appointment Flow Pane
+     */
     private void fillApptsPane() {
         medAppts.setStyle("-fx-background-color: #DCDCDC");
         person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new Label(appt.toString())));
     }
 
+    /**
+     * Initialize Medical Report Flow Pane
+     */
     private void fillMedReportsPane() {
         medReports.setStyle("-fx-background-color: #CCCCCC");
         person.getMedicalReports().forEach(report ->
