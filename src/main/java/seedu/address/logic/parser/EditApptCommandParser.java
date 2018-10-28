@@ -17,6 +17,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.timetable.ApptDateTime;
 
 //@@author brandonccm1996
+/**
+ * Parses input arguments and creates a new EditApptCommand object
+ */
 public class EditApptCommandParser implements Parser<EditApptCommand> {
 
     /**

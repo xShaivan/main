@@ -30,13 +30,16 @@ import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
 
 //@@author brandonccm1996
+/**
+ * Edits the details of an existing appt for a person in the address book
+ */
 public class EditApptCommand extends Command {
 
     public static final String COMMAND_WORD = "editappt";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD +
-            ": Edits the appt identified by the index number used in the displayed person list" +
-            " and the start time provided. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Edits the appt identified by the index number used in the displayed person list"
+            + " and the start time provided. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_APPT_ORIGINAL_START + "ORIGINAL START"
