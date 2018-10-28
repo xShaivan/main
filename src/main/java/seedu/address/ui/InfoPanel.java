@@ -36,8 +36,23 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private Label nameLabel4;
 
+    // Additional Info Pane
+    @FXML
+    private Label fullNameLabel;
+    @FXML
+    private Label dateOfBirthLabel;
+    @FXML
+    private Label addressLabel;
+    @FXML
+    private Label phoneLabel;
     @FXML
     private Label nricLabel;
+    @FXML
+    private Label weightLabel;
+    @FXML
+    private Label heightLabel;
+
+
     @FXML
     private FlowPane medHistoriesFlowPane;
     @FXML
@@ -71,7 +86,14 @@ public class InfoPanel extends UiPart<Region> {
 
     private void fillAdditionalInfoPane() {
         additionalInfo.setStyle("-fx-background-color: #FCFCFC");
+        fullNameLabel.setText(person.getName().fullName);
         nricLabel.setText(person.getNric().value);
+        dateOfBirthLabel.setText(person.getDateOfBirth().toString());
+        addressLabel.setText(person.getAddress().value);
+        phoneLabel.setText(person.getPhone().value);
+        heightLabel.setText(person.getHeight().value);
+        weightLabel.setText(person.getWeight().value);
+
     }
 
     private void fillMedHistoriesPane() {

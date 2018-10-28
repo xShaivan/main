@@ -3,11 +3,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ScrollPane fx:id="infoPanel" fitToWidth="true">
             <content>
@@ -15,10 +19,77 @@
                     <children>
                         <AnchorPane fx:id="additionalInfo">
                             <children>
-                                <Label fx:id="nameLabel1" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                <Label fx:id="nricLabel" layoutX="20.0" layoutY="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                                <Label fx:id="nameLabel1" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
                             </children>
                         </AnchorPane>
+                  <AnchorPane>
+                     <children>
+                        <GridPane prefHeight="90.0" prefWidth="410.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Full Name:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Age" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="NRIC:" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Address:" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Phone:" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="fullNameLabel" text="fullName" GridPane.columnIndex="1" />
+                              <Label text="age" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="addressLabel" text="address" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="nricLabel" text="nric" GridPane.columnIndex="3" />
+                              <Label fx:id="dateOfBirthLabel" text="dateOfBirth" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Label fx:id="phoneLabel" text="phone" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Label text="Height:" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="heightLabel" text="height" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Weight:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="weightLabel" text="weight" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
                         <AnchorPane fx:id="medHistory">
                             <children>
                                 <Label fx:id="nameLabel2" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
