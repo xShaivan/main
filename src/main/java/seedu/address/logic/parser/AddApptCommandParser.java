@@ -7,8 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_VENUE;
-
-import java.util.stream.Stream;
+import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -53,13 +52,5 @@ public class AddApptCommandParser implements Parser<AddApptCommand> {
         ApptInfo info = ParserUtil.parseApptInfo(argMultimap.getValue(PREFIX_APPT_INFO).get());
         ApptDrName drName = ParserUtil.parseApptDrName(argMultimap.getValue(PREFIX_APPT_DRNAME).get());
         return new AddApptCommand(index, new Appt(start, end, venue, info, drName));
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

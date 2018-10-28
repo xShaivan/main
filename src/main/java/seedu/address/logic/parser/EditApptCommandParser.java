@@ -8,13 +8,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_ORIGINAL_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_VENUE;
+import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
-import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddApptCommand;
 import seedu.address.logic.commands.EditApptCommand;
 import seedu.address.logic.commands.EditApptCommand.EditApptDescriptor;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.timetable.ApptDateTime;
 
@@ -66,13 +64,5 @@ public class EditApptCommandParser implements Parser<EditApptCommand> {
         }
 
         return new EditApptCommand(index, originalStart, editApptDescriptor);
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
