@@ -225,6 +225,7 @@ Examples:
 Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
 // end::apptcommands[]
 
+// tag::addinfocommands[]
 === Adding additional information of patient: `addinfo`
 
 Add the following additional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
@@ -247,6 +248,7 @@ Examples:
 For patient in index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male and associate
 patient in index 3 as family member.
+// end::addinfocommands[]
 
 // tag::reportcommands[]
 === Adding of Medical Report: `addreport`
