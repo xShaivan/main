@@ -1,0 +1,63 @@
+= Cheng Xianhao - Project Portfolio
+:site-section: AboutUs
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: Health Book
+
+---
+
+== Overview
+
+Health Book is a desktop address book application targeted at health care professionals who seek to retrieve their patients' personal details and health-related information all in one place.
+The application provides both a Command Line Interface (CLI) for input of data and a Graphical User Interface (GUI) for displaying of output (patient's personal details and health-related information).
+The application is fully written in Java, allowing cross-platform compatibility.
+
+== Summary of contributions
+
+* *Major enhancement*: Added *the ability to add/edit additional information*
+** What it does: Allows users to selectively add or edit additional information of patients that are not required for the creation of a patient profile in Health Book.
+** Justification: Based on the team's interview with health care professionals, the team understood that some of the information that health care professionals are interested in about their patients include blood type, occupation, height and weight which might not be available upon the creation of the patient's profile. Giving the user the ability to add or edit such information after the creation of patient profile provides user with more flexibility on managing such information.
+** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+
+* *Minor enhancement*: Presented the additional information in a table view format in the main window.
+
+* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+
+* *Other contributions*:
+
+** Project management:
+*** Managed the use of issue tracker and kanban board.
+*** Managed the use of Continuous Integration tools.
+** Enhancements to existing features:
+*** Managed the presentation of basic information (Pull requests https://github.com[#33], https://github.com[#34])
+** Documentation:
+*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+** Tools:
+*** Integrated AppVeyor and Coverall.
+
+
+== Contributions to the User Guide
+
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=addinfocommands]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=addinfo]
+
+
+== PROJECT: PowerPointLabs
+
+---
+
+_{Optionally, you may include other projects in your portfolio.}_
