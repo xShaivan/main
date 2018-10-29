@@ -3,7 +3,7 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORIGINAL_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -29,7 +29,7 @@ public class EditMedicalReportCommandParser implements Parser<EditMedicalReportC
     public EditMedicalReportCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
-                PREFIX_ORIGINAL_DATE, PREFIX_TITLE, PREFIX_DATE, PREFIX_INFORMATION);
+                PREFIX_ORIGINAL_DATE, PREFIX_TITLE, PREFIX_DATE, PREFIX_INFO);
         if (!arePrefixesPresent(argMultimap, PREFIX_ORIGINAL_DATE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditMedicalReportCommand.MESSAGE_USAGE));
@@ -41,18 +41,17 @@ public class EditMedicalReportCommandParser implements Parser<EditMedicalReportC
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditMedicalReportCommand.MESSAGE_USAGE), pe);
         }
-        ReportDate reportDate = ParserUtil.parseDate
-                (argMultimap.getValue(PREFIX_ORIGINAL_DATE).get());
+        ReportDate reportDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_ORIGINAL_DATE).get());
         EditReportDescriptor editReportDescriptor = new EditReportDescriptor();
+
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
             editReportDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
             editReportDescriptor.setReportDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
         }
-        if (argMultimap.getValue(PREFIX_INFORMATION).isPresent()) {
-            editReportDescriptor.setInformation
-                    (ParserUtil.parseInformation(argMultimap.getValue(PREFIX_INFORMATION).get()));
+        if (argMultimap.getValue(PREFIX_INFO).isPresent()) {
+            editReportDescriptor.setInformation(ParserUtil.parseInformation(argMultimap.getValue(PREFIX_INFO).get()));
         }
         if (!editReportDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditMedicalReportCommand.MESSAGE_REPORT_NOT_EDITED);

@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -33,11 +33,11 @@ public class AddMedicalReportCommand extends Command {
             + "Parameters: [INDEX] (must be a positive integer) "
             + PREFIX_TITLE + "[TITLE] "
             + PREFIX_DATE + "[DATE] "
-            + PREFIX_INFORMATION + "[INFORMATION]\n"
+            + PREFIX_INFO + "[INFORMATION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Asthma "
             + PREFIX_DATE + "01-01-2018 "
-            + PREFIX_INFORMATION + "prescribed XXX medicine, next appointment on 02-02-2018. ";
+            + PREFIX_INFO + "prescribed XXX medicine, next appointment on 02-02-2018. ";
 
     public static final String MESSAGE_ADD_REPORT_SUCCESS = "Added medical report to Person: %1$s";
     public static final String MESSAGE_DUPLICATE_REPORT = "Unable to add duplicate medical report.";
