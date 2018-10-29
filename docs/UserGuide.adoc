@@ -190,21 +190,6 @@ Examples:
 Adds an appointment for the 2nd person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
 for a diabetes checkup by Dr Tan.
 
-=== Viewing a patient's appointments timetable: `viewappt`
-
-Shows details of a specified appointment for the specified patient. +
-Format: `viewappt INDEX s/START`
-
-****
-* Views an appointment with the specified start time for the patient at the specified index.
-* The index refers to the index number shown in the displayed person list.
-****
-
-Examples:
-
-* `viewappt 2 s/16-09-2018 15:00` +
-Views the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
-
 === Editing an appointment in a patient's timetable: `editappt`
 
 Edits a specified appointment in the specified patient's timetable. +
@@ -356,8 +341,6 @@ e.g. `find n/ Betsy Tim`
 e.g. `delete 2`
 * *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
 e.g. `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
-* *View Appt* : `viewappt INDEX s/START` +
-e.g. `viewappt 2 s/16-09-2018 15:00`
 * *Edit Appt* : `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME] [v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]` +
 e.g.`editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13`
 * *Delete Appt* : `deleteappt INDEX s/START` +
