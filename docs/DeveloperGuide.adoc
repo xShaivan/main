@@ -1332,7 +1332,8 @@ Use case ends.
 Use case ends.
 // end::apptusecases[]
 
-=== Use case: Adding optional information of patient: `addinfo`
+// tag::addinfousecase[]
+=== Use case: Adding additional information of patient: `addinfo`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1360,7 +1361,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing optional information of patient: `editinfo`
+=== Use case: Editing additional information of patient: `editinfo`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1395,6 +1396,7 @@ Use case ends.
 ** 1c1. System shows an error message that the information does not exist. System will ignore the edit request for that field and process the valid edit requests for other fields
 +
 Use case ends.
+// end::addinfousecase[]
 
 // tag::reportusecases[]
 === Use case: Adding of Medical Report: `addreport`
