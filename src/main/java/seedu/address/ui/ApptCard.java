@@ -1,18 +1,18 @@
 package seedu.address.ui;
 
 import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 
 import javafx.scene.layout.StackPane;
 import seedu.address.model.timetable.Appt;
 
 //@@author brandonccm1996
+/**
+ * An UI component that displays information of a {@code Appt}.
+ */
 public class ApptCard extends StackPane {
     private final Appt appt;
 
