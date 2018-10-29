@@ -2,6 +2,9 @@ package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Values for gender
+ */
 enum GenderEnum {
     M("Male"), F("Female");
 
