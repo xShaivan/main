@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -9,7 +10,7 @@ import seedu.address.model.medhistory.MedHistory;
 /**
  * Tests that a {@code Person}'s {@code Last Visited Country} matches any of the keyword given.
  */
-public class CountryContainsKeywordsPredicate implements Predicate<MedHistory> {
+public class CountryContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
     public CountryContainsKeywordsPredicate(List<String> keywords) {
@@ -17,10 +18,11 @@ public class CountryContainsKeywordsPredicate implements Predicate<MedHistory> {
     }
 
     @Override
-    public boolean test(MedHistory medHistory) {
+    public boolean test(Person person) {
+        List<MedHistory> medHistory = new ArrayList<>(person.getMedHistory());
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.getPrevCountry().value, keyword));
-    }
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.get(0).getPrevCountry().value, keyword));
+        }
 
 
     @Override

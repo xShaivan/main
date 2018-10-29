@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -10,7 +11,7 @@ import seedu.address.model.medicalreport.MedicalReport;
  * Tests that a {@code Person}'s {@code Medical Report Information} matches any of the keyword given.
  */
 
-public class InfoContainsKeywordsPredicate implements Predicate<MedicalReport> {
+public class InfoContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
     public InfoContainsKeywordsPredicate(List<String> keywords) {
@@ -18,9 +19,10 @@ public class InfoContainsKeywordsPredicate implements Predicate<MedicalReport> {
     }
 
     @Override
-    public boolean test(MedicalReport medicalreport) {
+    public boolean test(Person person) {
+        List<MedicalReport> medicalReports = new ArrayList<>(person.getMedicalReports());
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medicalreport.getInformation().fullInformation,
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medicalReports.get(0).getInformation().fullInformation,
                         keyword));
     }
 
