@@ -22,8 +22,8 @@ public class InfoContainsKeywordsPredicate implements Predicate<Person> {
     public boolean test(Person person) {
         List<MedicalReport> medicalReports = new ArrayList<>(person.getMedicalReports());
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medicalReports.get(0).getInformation().fullInformation,
-                        keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medicalReports.get(0).getInformation().
+                                fullInformation, keyword));
     }
 
 
