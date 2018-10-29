@@ -55,9 +55,5 @@ include::../UserGuide.adoc[tag=addinfocommands]
 
 include::../DeveloperGuide.adoc[tag=addinfo]
 
+include::../DeveloperGuide.adoc[tag=addinfousecase]
 
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_
