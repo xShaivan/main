@@ -11,6 +11,7 @@ import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
 
+//@@author brandonccm1996
 /**
  * JAXB-friendly version of the Appt.
  */

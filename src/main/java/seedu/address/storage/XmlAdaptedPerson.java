@@ -13,12 +13,14 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 
@@ -36,18 +38,24 @@ public class XmlAdaptedPerson {
     private String email;
     @XmlElement(required = true)
     private String address;
+    @XmlElement
+    private List<XmlAdaptedTag> tagged = new ArrayList<>();
+
     @XmlElement(required = true)
     private String nric;
     @XmlElement(required = true)
     private String dateOfBirth;
+    @XmlElement(required = true)
+    private String height;
+    @XmlElement(required = true)
+    private String weight;
+
     @XmlElement
     private List<XmlAdaptedReport> reports = new ArrayList<>();
     @XmlElement
     private List<XmlAdaptedMedHistory> medHistories = new ArrayList<>();
     @XmlElement
     private List<XmlAdaptedAppt> appts = new ArrayList<>();
-    @XmlElement
-    private List<XmlAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs an XmlAdaptedPerson.
@@ -89,12 +97,16 @@ public class XmlAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        tagged = source.getTags().stream().map(XmlAdaptedTag::new).collect(Collectors.toList());
+
         nric = source.getNric().value;
         dateOfBirth = source.getDateOfBirth().toString();
+        height = source.getHeight().value;
+        weight = source.getWeight().value;
+
         reports = source.getMedicalReports().stream().map(XmlAdaptedReport::new).collect(Collectors.toList());
         medHistories = source.getMedHistory().stream().map(XmlAdaptedMedHistory::new).collect(Collectors.toList());
         appts = source.getAppts().stream().map(XmlAdaptedAppt::new).collect(Collectors.toList());
-        tagged = source.getTags().stream().map(XmlAdaptedTag::new).collect(Collectors.toList());
     }
 
     /**
@@ -152,9 +164,19 @@ public class XmlAdaptedPerson {
         }
         final DateOfBirth modelDateOfBirth = new DateOfBirth(dateOfBirth);
 
+        if (height == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Height.class.getSimpleName()));
+        }
+        final Height modelHeight = new Height(height);
+
+        if (weight == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Weight.class.getSimpleName()));
+        }
+        final Weight modelWeight = new Weight(weight);
+
         /**
          * ==================================================
-         * MEDICAL REPORT SUBFIELDS
+         * SUBFIELDS IN LIST FORMAT
          * ==================================================
          */
 
@@ -164,31 +186,20 @@ public class XmlAdaptedPerson {
         }
         final Set<MedicalReport> modelReports = new HashSet<>(personMedicalReports);
 
-        /**
-         * ==================================================
-         * MED HISTORY SUBFIELDS
-         * ==================================================
-         */
-
         final List<MedHistory> personMedHistories = new ArrayList<>();
         for (XmlAdaptedMedHistory medHistory : medHistories) {
             personMedHistories.add(medHistory.toModelType());
         }
-
         final Set<MedHistory> modelMedHistory = new HashSet<>(personMedHistories);
 
-        /**
-         * ==================================================
-         * APPT SUBFIELDS
-         * ==================================================
-         */
-
+        //@@author brandonccm1996
         final List<Appt> personAppts = new ArrayList<>();
         for (XmlAdaptedAppt appt : appts) {
             personAppts.add(appt.toModelType());
         }
         final Set<Appt> modelAppts = new HashSet<>(personAppts);
 
+        //@@author
         final List<Tag> personTags = new ArrayList<>();
         for (XmlAdaptedTag tag : tagged) {
             personTags.add(tag.toModelType());
@@ -196,7 +207,8 @@ public class XmlAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports,
-                          modelMedHistory, modelAppts, modelNric, modelDateOfBirth, modelTags);
+                modelMedHistory, modelAppts, modelNric, modelDateOfBirth, modelHeight, modelWeight,
+                modelTags);
     }
 
     @Override
@@ -214,6 +226,8 @@ public class XmlAdaptedPerson {
                 && Objects.equals(phone, otherPerson.phone)
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(address, otherPerson.address)
+                && Objects.equals(nric, otherPerson.nric)
+                && Objects.equals(dateOfBirth, otherPerson.dateOfBirth)
                 && medHistories.equals(otherPerson.medHistories)
                 && reports.equals(otherPerson.reports)
                 && appts.equals(otherPerson.appts)
