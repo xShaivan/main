@@ -12,6 +12,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import seedu.address.model.timetable.Appt;
 
+//@@author brandonccm1996
 public class ApptCard extends StackPane {
     private final Appt appt;
 
