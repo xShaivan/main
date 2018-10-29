@@ -2,18 +2,22 @@ package seedu.address.testutil;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptComparator;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -26,7 +30,9 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
-    public static final String DEFAULT_DOB = "10-01-2010";
+    public static final String DEFAULT_DOB = "01-01-1970";
+    public static final String DEFAULT_HEIGHT = "172";
+    public static final String DEFAULT_WEIGHT = "56";
 
     private Name name;
     private Phone phone;
@@ -34,6 +40,8 @@ public class PersonBuilder {
     private Address address;
     private Nric nric;
     private DateOfBirth dateOfBirth;
+    private Height height;
+    private Weight weight;
     private Set<MedicalReport> reports;
     private Set<MedHistory> medHistories;
     private Set<Appt> appts;
@@ -44,11 +52,13 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        dateOfBirth = new DateOfBirth(DEFAULT_DOB);
         nric = new Nric(DEFAULT_NRIC);
+        dateOfBirth = new DateOfBirth(DEFAULT_DOB);
+        height = new Height(DEFAULT_HEIGHT);
+        weight = new Weight(DEFAULT_WEIGHT);
         reports = new HashSet<>();
         medHistories = new HashSet<>();
-        appts = new HashSet<>();
+        appts = new TreeSet<>(new ApptComparator());
         tags = new HashSet<>();
     }
 
@@ -60,8 +70,10 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
-        dateOfBirth = personToCopy.getDateOfBirth();
         nric = personToCopy.getNric();
+        dateOfBirth = personToCopy.getDateOfBirth();
+        height = personToCopy.getHeight();
+        weight = personToCopy.getWeight();
         reports = personToCopy.getMedicalReports();
         medHistories = personToCopy.getMedHistory();
         appts = personToCopy.getAppts();
@@ -125,6 +137,22 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code weight} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withHeight(String height) {
+        this.height = new Height(height);
+        return this;
+    }
+
+    /**
+     * Sets the {@code weight} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withWeight(String weight) {
+        this.weight = new Weight(weight);
+        return this;
+    }
+
+    /**
      * Sets the {@code MedicalReport} of the {@code Person} that we are building.
      */
     public PersonBuilder withMedicalReports(MedicalReport ... reports) {
@@ -140,6 +168,7 @@ public class PersonBuilder {
         return this;
     }
 
+    //@@author brandonccm1996
     /**
      * Sets the {@code Appt} of the {@code Person} that we are building.
      */
@@ -147,8 +176,12 @@ public class PersonBuilder {
         this.appts = SampleDataUtil.getApptSet(appts);
         return this;
     }
-
+    //@@author
+    /**
+     * Returns a {@code Person} that have been built
+     */
     public Person build() {
-        return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, tags);
+        return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height, weight,
+                tags);
     }
 }
