@@ -2,6 +2,19 @@ package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
 
+enum GenderEnum {
+    M("Male"), F("Female");
+
+    private String gender;
+
+    GenderEnum(String gender) {
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+}
 /**
  * Represents a person's gender in Health Book.
  */
@@ -13,8 +26,7 @@ public class Gender {
 
     public Gender(String gender) {
         requireNonNull(gender);
-        gender.toUpperCase();
-        value = gender;
+        value = GenderEnum.valueOf(gender.toUpperCase()).getGender();
     }
 
     public static boolean isValidGender(String test) {

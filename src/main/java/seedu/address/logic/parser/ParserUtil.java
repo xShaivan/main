@@ -21,6 +21,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Weight;
@@ -187,6 +188,17 @@ public class ParserUtil {
         }
 
         return new Weight(trimmedWeight);
+    }
+
+    public static Gender parseGender(String gender) throws ParseException {
+        requireNonNull(gender);
+        String trimmedGender = gender.trim();
+
+        if (!Gender.isValidGender(trimmedGender)) {
+            throw new ParseException(Gender.MESSAGE_GENDER_CONSTRAINTS);
+        }
+
+        return new Gender(trimmedGender);
     }
 
     /**

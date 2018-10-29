@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_DOB;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_HEIGHT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_WEIGHT;
@@ -26,7 +27,7 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
     public AddInfoCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(args, PREFIX_ADD_INFO_NRIC, PREFIX_ADD_INFO_DOB,
-                PREFIX_ADD_INFO_HEIGHT, PREFIX_ADD_INFO_WEIGHT);
+                PREFIX_ADD_INFO_HEIGHT, PREFIX_ADD_INFO_WEIGHT, PREFIX_ADD_INFO_GENDER);
 
         Index index;
         try {
@@ -51,6 +52,11 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
             addInfoPersonDescriptor.setWeight(ParserUtil.parseWeight(
                     argMultiMap.getValue(PREFIX_ADD_INFO_WEIGHT).get()));
         }
+        if (argMultiMap.getValue(PREFIX_ADD_INFO_GENDER).isPresent()) {
+            addInfoPersonDescriptor.setGender(ParserUtil.parseGender(
+                    argMultiMap.getValue(PREFIX_ADD_INFO_GENDER).get()));
+        }
+
 
         if (!addInfoPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(AddInfoCommand.MESSAGE_NOT_EDITED);

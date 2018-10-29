@@ -40,6 +40,8 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private Label fullNameLabel;
     @FXML
+    private Label emailLabel;
+    @FXML
     private Label dateOfBirthLabel;
     @FXML
     private Label addressLabel;
@@ -51,6 +53,8 @@ public class InfoPanel extends UiPart<Region> {
     private Label weightLabel;
     @FXML
     private Label heightLabel;
+    @FXML
+    private Label genderLabel;
 
 
     @FXML
@@ -90,13 +94,14 @@ public class InfoPanel extends UiPart<Region> {
     private void fillAdditionalInfoPane() {
         additionalInfo.setStyle("-fx-background-color: #FCFCFC");
         fullNameLabel.setText(person.getName().fullName);
+        emailLabel.setText(person.getEmail().value);
         nricLabel.setText(person.getNric().value);
         dateOfBirthLabel.setText(person.getDateOfBirth().toString());
         addressLabel.setText(person.getAddress().value);
         phoneLabel.setText(person.getPhone().value);
         heightLabel.setText(person.getHeight().value);
         weightLabel.setText(person.getWeight().value);
-
+        genderLabel.setText(person.getGender().value);
     }
 
     /**

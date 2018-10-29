@@ -21,6 +21,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Weight;
@@ -99,9 +100,10 @@ public class AddInfoCommand extends Command {
         DateOfBirth updatedDateOfBirth = addInfoPersonDescriptor.getDateOfBirth().orElse(personToEdit.getDateOfBirth());
         Height updatedHeight = addInfoPersonDescriptor.getHeight().orElse(personToEdit.getHeight());
         Weight updatedWeight = addInfoPersonDescriptor.getWeight().orElse(personToEdit.getWeight());
+        Gender updatedGender = addInfoPersonDescriptor.getGender().orElse(personToEdit.getGender());
 
         return new Person(name, phone, email, address, medicalReports, medHistory, appts,
-                updatedNric, updatedDateOfBirth, updatedHeight, updatedWeight, tags);
+                updatedNric, updatedDateOfBirth, updatedHeight, updatedWeight, updatedGender, tags);
     }
 
     @Override
@@ -131,6 +133,7 @@ public class AddInfoCommand extends Command {
         private DateOfBirth dateOfBirth;
         private Height height;
         private Weight weight;
+        private Gender gender;
 
         public AddInfoPersonDescriptor() {}
 
@@ -139,6 +142,7 @@ public class AddInfoCommand extends Command {
             setDateOfBirth(toCopy.dateOfBirth);
             setHeight(toCopy.height);
             setWeight(toCopy.weight);
+            setGender(toCopy.gender);
         }
 
         public boolean isAnyFieldEdited() {
@@ -175,6 +179,14 @@ public class AddInfoCommand extends Command {
 
         public Optional<Weight> getWeight() {
             return Optional.ofNullable(weight);
+        }
+
+        public void setGender(Gender gender) {
+            this.gender = gender;
+        }
+
+        public Optional<Gender> getGender() {
+            return Optional.ofNullable(gender);
         }
 
         @Override

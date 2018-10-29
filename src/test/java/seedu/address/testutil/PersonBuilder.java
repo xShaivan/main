@@ -12,6 +12,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Weight;
@@ -33,6 +34,7 @@ public class PersonBuilder {
     public static final String DEFAULT_DOB = "01-01-1970";
     public static final String DEFAULT_HEIGHT = "172";
     public static final String DEFAULT_WEIGHT = "56";
+    public static final String DEFAULT_GENDER = "M";
 
     private Name name;
     private Phone phone;
@@ -42,6 +44,7 @@ public class PersonBuilder {
     private DateOfBirth dateOfBirth;
     private Height height;
     private Weight weight;
+    private Gender gender;
     private Set<MedicalReport> reports;
     private Set<MedHistory> medHistories;
     private Set<Appt> appts;
@@ -56,6 +59,7 @@ public class PersonBuilder {
         dateOfBirth = new DateOfBirth(DEFAULT_DOB);
         height = new Height(DEFAULT_HEIGHT);
         weight = new Weight(DEFAULT_WEIGHT);
+        gender = new Gender(DEFAULT_GENDER);
         reports = new HashSet<>();
         medHistories = new HashSet<>();
         appts = new TreeSet<>(new ApptComparator());
@@ -182,6 +186,6 @@ public class PersonBuilder {
      */
     public Person build() {
         return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height, weight,
-                tags);
+                gender, tags);
     }
 }

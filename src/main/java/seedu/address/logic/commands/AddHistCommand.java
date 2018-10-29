@@ -23,6 +23,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Weight;
@@ -101,9 +102,10 @@ public class AddHistCommand extends Command {
         DateOfBirth dateOfBirth = personToEdit.getDateOfBirth();
         Height height = personToEdit.getHeight();
         Weight weight = personToEdit.getWeight();
+        Gender gender = personToEdit.getGender();
 
         return new Person(name, phone, email, address, medicalReports, medHistories, appts,
-                nric, dateOfBirth, height, weight, tags);
+                nric, dateOfBirth, height, weight, gender, tags);
     }
 
     @Override

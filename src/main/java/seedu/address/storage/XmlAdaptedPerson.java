@@ -18,6 +18,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Weight;
@@ -49,6 +50,8 @@ public class XmlAdaptedPerson {
     private String height;
     @XmlElement(required = true)
     private String weight;
+    @XmlElement(required = true)
+    private String gender;
 
     @XmlElement
     private List<XmlAdaptedReport> reports = new ArrayList<>();
@@ -103,6 +106,7 @@ public class XmlAdaptedPerson {
         dateOfBirth = source.getDateOfBirth().toString();
         height = source.getHeight().value;
         weight = source.getWeight().value;
+        gender = source.getGender().value;
 
         reports = source.getMedicalReports().stream().map(XmlAdaptedReport::new).collect(Collectors.toList());
         medHistories = source.getMedHistory().stream().map(XmlAdaptedMedHistory::new).collect(Collectors.toList());
@@ -174,6 +178,11 @@ public class XmlAdaptedPerson {
         }
         final Weight modelWeight = new Weight(weight);
 
+        if (gender == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Gender.class.getSimpleName()));
+        }
+        final Gender modelGender = new Gender(gender);
+
         /**
          * ==================================================
          * SUBFIELDS IN LIST FORMAT
@@ -206,9 +215,8 @@ public class XmlAdaptedPerson {
         }
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports,
-                modelMedHistory, modelAppts, modelNric, modelDateOfBirth, modelHeight, modelWeight,
-                modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports, modelMedHistory, modelAppts,
+                modelNric, modelDateOfBirth, modelHeight, modelWeight, modelGender, modelTags);
     }
 
     @Override

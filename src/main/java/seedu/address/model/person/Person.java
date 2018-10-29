@@ -11,6 +11,7 @@ import java.util.TreeSet;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Weight;
@@ -41,6 +42,7 @@ public class Person {
     private final DateOfBirth dateOfBirth;
     private final Height height;
     private final Weight weight;
+    private final Gender gender;
     //private final Gender gender;
 
     /**
@@ -48,7 +50,7 @@ public class Person {
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<MedicalReport> reports,
                   Set<MedHistory> medHistories, Set<Appt> appts, Nric nric, DateOfBirth dateOfBirth, Height height,
-                  Weight weight, Set<Tag> tags) {
+                  Weight weight, Gender gender, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -58,6 +60,7 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
         this.height = height;
         this.weight = weight;
+        this.gender = gender;
         this.reports.addAll(reports);
         this.medHistories.addAll(medHistories);
         this.appts.addAll(appts);
@@ -104,6 +107,10 @@ public class Person {
 
     public Weight getWeight() {
         return weight;
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     //@@author brandonccm1996
