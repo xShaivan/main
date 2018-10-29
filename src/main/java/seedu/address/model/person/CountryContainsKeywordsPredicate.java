@@ -21,7 +21,8 @@ public class CountryContainsKeywordsPredicate implements Predicate<Person> {
     public boolean test(Person person) {
         List<MedHistory> medHistory = new ArrayList<>(person.getMedHistory());
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.get(0).getPrevCountry().value, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.get(0).getPrevCountry().toString(),
+                        keyword));
         }
 
 

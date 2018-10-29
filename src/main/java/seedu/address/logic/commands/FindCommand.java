@@ -12,8 +12,8 @@ import seedu.address.model.person.Person;
 /**
  * Finds and lists all persons in address book whose prefix contains any of the argument keyword.
  * Keyword matching is case insensitive.
- * v1.2 find by 1 keyword for name, phone, email, address, tag
- * v1.3 will find by different categories with 1 keyword each
+ * v1.2 find by 1 keyword for name, phone, email, address, tag with 1 keyword only
+ * v1.3 will find by different newly implemented categories with multiple keywords each
  */
 public class FindCommand extends Command {
 
