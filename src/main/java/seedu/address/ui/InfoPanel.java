@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 
+import javafx.scene.layout.VBox;
 import seedu.address.model.person.Person;
 
 /**
@@ -41,7 +42,7 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private FlowPane medHistoriesFlowPane;
     @FXML
-    private FlowPane apptsFlowPane;
+    private VBox apptsVBox;
     @FXML
     private FlowPane medReportsFlowPane;
 
@@ -82,7 +83,7 @@ public class InfoPanel extends UiPart<Region> {
 
     private void fillApptsPane() {
         medAppts.setStyle("-fx-background-color: #DCDCDC");
-        person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new ApptCard(appt)));
+        person.getAppts().forEach(appt -> apptsVBox.getChildren().add(new ApptCard(appt)));
     }
 
     private void fillMedReportsPane() {
@@ -97,7 +98,7 @@ public class InfoPanel extends UiPart<Region> {
     public void clearFlowPanes() {
         medHistoriesFlowPane.getChildren().clear();
         medReportsFlowPane.getChildren().clear();
-        apptsFlowPane.getChildren().clear();
+        apptsVBox.getChildren().clear();
     }
 
     /**

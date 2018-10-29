@@ -5,23 +5,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 
+import javafx.scene.layout.StackPane;
 import seedu.address.model.timetable.Appt;
 
-public class ApptCard extends AnchorPane {
+public class ApptCard extends StackPane {
     private final Appt appt;
 
     @FXML
-    private Label apptStart;
-    @FXML
-    private Label apptEnd;
-    @FXML
-    private Label apptVenue;
+    private Label apptDetails;
     @FXML
     private Label apptInfo;
-    @FXML
-    private Label apptDrName;
 
     public ApptCard(Appt appt) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
@@ -36,10 +33,8 @@ public class ApptCard extends AnchorPane {
         }
 
         this.appt = appt;
-        apptStart.setText(appt.getStart().toString());
-        apptEnd.setText(appt.getEnd().toString());
-        apptVenue.setText(appt.getVenue().toString());
+        apptDetails.setText(appt.getStart().toString() + " TO " + appt.getEnd().toString()
+                + " @ " + appt.getVenue().toString() + " by " + appt.getDrName().toString());
         apptInfo.setText(appt.getInfo().toString());
-        apptDrName.setText(appt.getDrName().toString());
     }
 }
