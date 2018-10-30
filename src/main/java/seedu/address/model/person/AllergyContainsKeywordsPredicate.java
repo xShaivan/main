@@ -1,6 +1,5 @@
 package seedu.address.model.person;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -17,14 +16,26 @@ public class AllergyContainsKeywordsPredicate implements Predicate<Person> {
         this.keywords = keywords;
     }
 
-    @Override
-    public boolean test(Person person) {
-        List<MedHistory> medHistory = new ArrayList<>(person.getMedHistory());
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.get(0).getAllergy().toString(),
-                        keyword));
+    /**
+     * Tests that a {@code Person}'s {@code BloodType} matches any of the keyword given.
+     */
+    public boolean testAllergy(Person person) {
+        //List<MedHistory> medHistory = new ArrayList<>(person.getMedHistory());
+
+        for (MedHistory medHistory: person.getMedHistory()) {
+            if (keywords.stream()
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.getAllergy().toString(),
+                            keyword))) {
+                return true;
+            }
+        }
+        return false;
     }
 
+    @Override
+    public boolean test (Person person) {
+        return testAllergy(person);
+    }
 
     @Override
     public boolean equals(Object other) {
