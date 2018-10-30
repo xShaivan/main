@@ -235,23 +235,23 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseAllergy_null_throwsNullPointerException() {
+    public void parseAllergynullthrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseAllergy((String) null));
     }
 
     @Test
-    public void parseAllergy_invalidValue_throwsParseException() {
+    public void parseAllergyinvalidValuethrowsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseAllergy(INVALID_ALLERGY));
     }
 
     @Test
-    public void parseAllergy_validValueWithoutWhitespace_returnsAllergy() throws Exception {
+    public void parseAllergyvalidValueWithoutWhitespacereturnsAllergy() throws Exception {
         Allergy expectedAllergy = new Allergy(VALID_ALLERGY);
         assertEquals(expectedAllergy, ParserUtil.parseAllergy(VALID_ALLERGY));
     }
 
     @Test
-    public void parseAllergy_validValueWithWhitespace_returnsTrimmedAllergy() throws Exception {
+    public void parseAllergyvalidValueWithWhitespacereturnsTrimmedAllergy() throws Exception {
         String allergyWithWhitespace = WHITESPACE + VALID_ALLERGY + WHITESPACE;
         Allergy expectedAllergy = new Allergy(VALID_ALLERGY);
         assertEquals(expectedAllergy, ParserUtil.parseAllergy(allergyWithWhitespace));
