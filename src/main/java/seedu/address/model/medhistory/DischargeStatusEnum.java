@@ -1,6 +1,6 @@
 package seedu.address.model.medhistory;
 
-enum DischargeStatusEnum {
+public enum DischargeStatusEnum {
     d("discharged"), a("admitted"), e("expired");
 
     private String code;

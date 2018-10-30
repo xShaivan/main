@@ -12,6 +12,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.DischargeStatus;
+import seedu.address.model.medhistory.DischargeStatusEnum;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Information;
@@ -272,8 +273,17 @@ public class ParserUtil {
     public static DischargeStatus parseDischargeStatus(String dischargeStatus) {
         requireNonNull(dischargeStatus);
         String trimmedDischargeStatus = dischargeStatus.trim();
+        String expandedDischargeStatus = "";
+        for (DischargeStatusEnum code: DischargeStatusEnum.values()) {
+            if(trimmedDischargeStatus.equals(code.name())) {
+                expandedDischargeStatus = code.getCode();
+                break;
+            } else {
+                expandedDischargeStatus = "invalid discharge status";
+            }
+        }
 
-        return new DischargeStatus(trimmedDischargeStatus);
+        return new DischargeStatus(expandedDischargeStatus);
     }
 
     //@@author chewkahmeng

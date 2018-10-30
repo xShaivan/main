@@ -23,34 +23,7 @@ public class DischargeStatus {
      */
     public DischargeStatus(String dischargeStatus) {
         requireNonNull(dischargeStatus);
-        for (DischargeStatusEnum code: DischargeStatusEnum.values()) {
-            if(dischargeStatus == code.name()) {
-                value = code.getCode();
-            } else {
-                value = "invalid discharge status";
-            }
-        }
-    }
-
-    public DischargeStatus(DischargeStatusEnum dischargeStatusEnum) {
-        requireNonNull(dischargeStatusEnum);
-        this.dischargeStatusEnum = dischargeStatusEnum;
-    }
-
-    public void DischargeStatusSwitch() {
-        switch (dischargeStatusEnum) {
-            case d:
-                value = "Discharged to home";
-                break;
-            case a:
-                value = "Admitted as an inpatient to this hospital";
-                break;
-            case e:
-                value = "Patient has expired.";
-                break;
-                default:
-                    value = "";
-        }
+        value = dischargeStatus;
     }
 
     @Override
