@@ -275,7 +275,7 @@ public class ParserUtil {
         String trimmedDischargeStatus = dischargeStatus.trim();
         String expandedDischargeStatus = "";
         for (DischargeStatusEnum code: DischargeStatusEnum.values()) {
-            if(trimmedDischargeStatus.equals(code.name())) {
+            if (trimmedDischargeStatus.equals(code.name())) {
                 expandedDischargeStatus = code.getCode();
                 break;
             } else {

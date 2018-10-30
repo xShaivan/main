@@ -13,8 +13,7 @@ public class DischargeStatus {
 
     public static final String DISCHARGE_STATUS_VALIDATION_REGEX = "[^\\s].*";
 
-    public String value;
-    public DischargeStatusEnum dischargeStatusEnum;
+    public final String value;
 
     /**
      * Constructs an {@code DischargeStatus}.

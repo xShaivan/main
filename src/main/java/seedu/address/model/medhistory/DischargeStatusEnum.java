@@ -1,5 +1,9 @@
 package seedu.address.model.medhistory;
 
+/**
+ * DischargeStatusEnum stores the key-value pair of
+ * discharge status codes and the string they are associated with.
+ */
 public enum DischargeStatusEnum {
     d("discharged"), a("admitted"), e("expired");
 
