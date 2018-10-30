@@ -17,11 +17,19 @@ public class TagContainsKeywordsPredicate implements Predicate<Person> {
         this.keywords = keywords;
     }
 
+    public boolean testTags(Person person) {
+        // List<Tag> tags = new ArrayList<>(person.getTags());
+
+        for(Tag tags: person.getTags())
+            if(keywords.stream()
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tags.tagName, keyword)))
+                return true;
+        return false;
+    }
+
     @Override
-    public boolean test(Person person) {
-        List<Tag> tags = new ArrayList<>(person.getTags());
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tags.get(0).tagName, keyword));
+    public boolean test (Person person) {
+        return testTags(person);
     }
 
     @Override

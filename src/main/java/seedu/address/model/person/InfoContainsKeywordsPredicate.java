@@ -18,14 +18,21 @@ public class InfoContainsKeywordsPredicate implements Predicate<Person> {
         this.keywords = keywords;
     }
 
-    @Override
-    public boolean test(Person person) {
-        List<MedicalReport> medicalReports = new ArrayList<>(person.getMedicalReports());
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medicalReports.get(0).getInformation()
-                        .fullInformation, keyword));
+    public boolean testInfo(Person person) {
+        //List<MedicalReport> medicalReports = new ArrayList<>(person.getMedicalReports());
+
+        for(MedicalReport medicalReports: person.getMedicalReports())
+            if(keywords.stream()
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medicalReports.getInformation()
+                            .fullInformation, keyword)))
+                return true;
+        return false;
     }
 
+    @Override
+    public boolean test (Person person) {
+        return testInfo(person);
+    }
 
     @Override
     public boolean equals(Object other) {
