@@ -1,6 +1,6 @@
 package seedu.address.model.person;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -20,10 +20,12 @@ public class TagContainsKeywordsPredicate implements Predicate<Person> {
     public boolean testTags(Person person) {
         // List<Tag> tags = new ArrayList<>(person.getTags());
 
-        for(Tag tags: person.getTags())
-            if(keywords.stream()
-                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tags.tagName, keyword)))
+        for(Tag tags: person.getTags()) {
+            if (keywords.stream()
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tags.tagName, keyword))) {
                 return true;
+            }
+        }
         return false;
     }
 
