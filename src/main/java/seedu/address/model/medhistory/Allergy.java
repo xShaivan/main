@@ -1,7 +1,7 @@
 package seedu.address.model.medhistory;
 
 import static java.util.Objects.requireNonNull;
-//import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents the allergy of medical history.
@@ -13,7 +13,7 @@ public class Allergy {
     public static final String MESSAGE_ALLERGY_CONSTRAINTS =
             "Allergy must not be left blank.";
 
-    public static final String ALLERGY_VALIDATION_REGEX = "[^\\s].*";
+    public static final String ALLERGY_VALIDATION_REGEX = "[\\p{Alnum}]*";
 
     public final String value;
 
@@ -24,9 +24,12 @@ public class Allergy {
      */
     public Allergy(String allergy) {
         requireNonNull(allergy);
-        // isValidAllergy will is found in test file.
-        //checkArgument(isValidAllergy(allergy), MESSAGE_ALLERGY_CONSTRAINTS);
+        checkArgument(isValidAllergy(allergy), MESSAGE_ALLERGY_CONSTRAINTS);
         value = allergy;
+    }
+
+    public static boolean isValidAllergy(String test) {
+        return test.matches(ALLERGY_VALIDATION_REGEX);
     }
 
     @Override

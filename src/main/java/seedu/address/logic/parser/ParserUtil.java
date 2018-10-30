@@ -223,11 +223,13 @@ public class ParserUtil {
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code allergy} is invalid.
-     * ParseException is omitted for now.
      */
-    public static Allergy parseAllergy(String allergy) {
+    public static Allergy parseAllergy(String allergy) throws ParseException{
         requireNonNull(allergy);
         String trimmedAllergy = allergy.trim();
+        if (!Allergy.isValidAllergy(trimmedAllergy)) {
+            throw new ParseException(Allergy.MESSAGE_ALLERGY_CONSTRAINTS);
+        }
 
         return new Allergy(trimmedAllergy);
     }
