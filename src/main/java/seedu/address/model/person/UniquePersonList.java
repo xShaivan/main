@@ -9,7 +9,6 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.logic.commands.SortCommand;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -122,7 +121,7 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Returns the sorted list as an unmodifiable {@code ObservableList}.
+     * Functions with comparators to sort by categories
      */
     public static Comparator<Person> comparebyName() {
         return (Comparator.comparing(person -> person.getName().fullName));
@@ -140,6 +139,9 @@ public class UniquePersonList implements Iterable<Person> {
         return (Comparator.comparing(person -> person.getNric().value));
     }
 
+    /**
+     * Returns the sorted internalList with respective category.
+     */
     public void sortPersons(String prefix, int order) {
 
         switch (prefix) {

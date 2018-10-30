@@ -42,6 +42,5 @@ public class SortCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof SortCommand // instanceof handles nulls
                 && prefix.equals(((SortCommand) other).prefix));
-                //&& order.equals(((SortCommand) other).order)); // state check
     }
 }

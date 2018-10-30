@@ -27,7 +27,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         String[] nameKeywords = trimmedArgs.split("\\s+");
         String prefix = nameKeywords[0];
 
-        if(prefix.isEmpty() || (nameKeywords[1]).isEmpty()) {
+        if (prefix.isEmpty() || (nameKeywords[1]).isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
