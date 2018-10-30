@@ -281,16 +281,6 @@ Examples:
 
 * `editreport 3 od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
 Edits title, date and information of existing medical report dated 01-01-2018 for patient at index 3.
-
-=== Viewing of Medical Report: `viewreport`
-
-Views the medical report of the patient on a certain date. +
-Format: `viewreport INDEX d/DATE`
-
-Examples:
-
-* `viewreport 1 d/01-01-2018` +
-View medical report dated 01-01-2018 for patient at index 1.
 // end::reportcommands[]
 
 === Sort patients list: `sort`
@@ -364,12 +354,10 @@ e.g. `delete timetable 2`
 e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Edit Information* : `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
 e.g. `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
-* *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [mr/MEDICAL_REPORT]` +
-e.g. `addreport 3 t/ASTHMA d/01012018 mr/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
-* *Edit Medical Report* : `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [mr/MEDICAL_REPORT]` +
-e.g. `editreport 3 1 t/DEPRESSION d/02012018 mr/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
-* *List Medical Report* : `listreport INDEX` +
-e.g. `listreport 1`
+* *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
+e.g. `addreport 3 t/Asthma d/01-01-2018 i/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
+* *Edit Medical Report* : `editreport INDEX od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
+e.g. `editreport 3 od/01-01-2018 t/Depression d/02-01-2018 i/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
 * *View* : `view INDEX` +

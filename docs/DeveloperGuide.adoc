@@ -988,7 +988,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |doctor |see all my patient’s appointments if there is any |remind my patients to come for appointments days in advance
 
-|`* * *` |doctor |add a list of medical reports and view certain medical reports for every patient |refer to them in the future
+|`* * *` |doctor |add a list of medical reports for every patient |refer to them in the future for medicine prescription
 
 |`* * *` |doctor |edit a patient's medical report |rectify any mistakes made in the medical report
 
@@ -1428,42 +1428,6 @@ Use case ends.
 +
 [none]
 ** 1b1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-=== Use case: List of Medical Report: `viewreport`
-Assume that user has already requested the System to display a list of patients.
-
-*MSS*
-
-1.  User requests to view the medical report for a patient on a certain date.
-2.  System displays the medical report for the patient.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to view medical reports.
-+
-[none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of viewing medical reports.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an invalid index or date for the list.
-+
-[none]
-** 1b1. System shows an error message that the index or date is invalid.
-+
-Use case ends.
-
-[none]
-* 1c. User requests to view the medical report for a patient who does not has any medical reports.
-+
-[none]
-** 1c1. System shows message that the patient does not have any medical reports.
 +
 Use case ends.
 // end::reportusecases[]
