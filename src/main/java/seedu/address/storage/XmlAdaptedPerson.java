@@ -17,6 +17,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
@@ -52,6 +53,8 @@ public class XmlAdaptedPerson {
     private String weight;
     @XmlElement(required = true)
     private String gender;
+    @XmlElement(required = true)
+    private String bloodType;
 
     @XmlElement
     private List<XmlAdaptedReport> reports = new ArrayList<>();
@@ -107,6 +110,7 @@ public class XmlAdaptedPerson {
         height = source.getHeight().value;
         weight = source.getWeight().value;
         gender = source.getGender().toString();
+        bloodType = source.getBloodType().value;
 
         reports = source.getMedicalReports().stream().map(XmlAdaptedReport::new).collect(Collectors.toList());
         medHistories = source.getMedHistory().stream().map(XmlAdaptedMedHistory::new).collect(Collectors.toList());
@@ -183,6 +187,12 @@ public class XmlAdaptedPerson {
         }
         final Gender modelGender = new Gender(gender);
 
+        if (bloodType == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, BloodType.class
+            .getSimpleName()));
+        }
+        final BloodType modelBloodType = new BloodType(bloodType);
+
         /**
          * ==================================================
          * SUBFIELDS IN LIST FORMAT
@@ -216,7 +226,7 @@ public class XmlAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports, modelMedHistory, modelAppts,
-                modelNric, modelDateOfBirth, modelHeight, modelWeight, modelGender, modelTags);
+                modelNric, modelDateOfBirth, modelHeight, modelWeight, modelGender, modelBloodType, modelTags);
     }
 
     @Override

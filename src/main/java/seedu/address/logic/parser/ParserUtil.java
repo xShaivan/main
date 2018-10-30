@@ -20,6 +20,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
@@ -205,6 +206,20 @@ public class ParserUtil {
         }
 
         return new Gender(trimmedGender);
+    }
+
+    public static BloodType parseBloodType(String bloodType) throws ParseException {
+        requireNonNull(bloodType);
+        String trimmedBloodType = bloodType.trim();
+
+        if (!BloodType.isValidBloodType(trimmedBloodType)) {
+            throw new ParseException(BloodType.MESSAGE_BLOODTYPE_CONSTRAINTS);
+        }
+        if (BloodType.isIncorrectBloodType(trimmedBloodType)) {
+            throw new ParseException(BloodType.MESSAGE_BLOODTYPE_CONSTRAINTS);
+        }
+
+        return new BloodType(trimmedBloodType);
     }
 
     /**

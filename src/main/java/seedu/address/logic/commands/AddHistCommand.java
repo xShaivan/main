@@ -22,6 +22,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
@@ -103,9 +104,10 @@ public class AddHistCommand extends Command {
         Height height = personToEdit.getHeight();
         Weight weight = personToEdit.getWeight();
         Gender gender = personToEdit.getGender();
+        BloodType bloodType = personToEdit.getBloodType();
 
-        return new Person(name, phone, email, address, medicalReports, medHistories, appts,
-                nric, dateOfBirth, height, weight, gender, tags);
+        return new Person(name, phone, email, address, medicalReports, medHistories, appts, nric, dateOfBirth, height,
+                weight, gender, bloodType, tags);
     }
 
     @Override

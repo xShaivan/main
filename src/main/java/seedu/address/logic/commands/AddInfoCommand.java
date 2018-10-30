@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -20,6 +22,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
@@ -77,6 +80,7 @@ public class AddInfoCommand extends Command {
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(index));
         return new CommandResult(String.format(MESSAGE_ADD_INFO_SUCCESS, editedPerson));
     }
 
@@ -101,9 +105,10 @@ public class AddInfoCommand extends Command {
         Height updatedHeight = addInfoPersonDescriptor.getHeight().orElse(personToEdit.getHeight());
         Weight updatedWeight = addInfoPersonDescriptor.getWeight().orElse(personToEdit.getWeight());
         Gender updatedGender = addInfoPersonDescriptor.getGender().orElse(personToEdit.getGender());
+        BloodType updatedBloodType = addInfoPersonDescriptor.getBloodType().orElse(personToEdit.getBloodType());
 
-        return new Person(name, phone, email, address, medicalReports, medHistory, appts,
-                updatedNric, updatedDateOfBirth, updatedHeight, updatedWeight, updatedGender, tags);
+        return new Person(name, phone, email, address, medicalReports, medHistory, appts, updatedNric,
+                updatedDateOfBirth, updatedHeight, updatedWeight, updatedGender, updatedBloodType, tags);
     }
 
     @Override
@@ -134,6 +139,7 @@ public class AddInfoCommand extends Command {
         private Height height;
         private Weight weight;
         private Gender gender;
+        private BloodType bloodType;
 
         public AddInfoPersonDescriptor() {}
 
@@ -143,10 +149,11 @@ public class AddInfoCommand extends Command {
             setHeight(toCopy.height);
             setWeight(toCopy.weight);
             setGender(toCopy.gender);
+            setBloodType(toCopy.bloodType);
         }
 
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight, gender);
+            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight, gender, bloodType);
         }
 
         public void setNric(Nric nric) {
@@ -187,6 +194,14 @@ public class AddInfoCommand extends Command {
 
         public Optional<Gender> getGender() {
             return Optional.ofNullable(gender);
+        }
+
+        public void setBloodType(BloodType bloodType) {
+            this.bloodType = bloodType;
+        }
+
+        public Optional<BloodType> getBloodType() {
+            return Optional.ofNullable(bloodType);
         }
 
         @Override
