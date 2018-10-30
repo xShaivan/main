@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
@@ -15,16 +14,34 @@ import seedu.address.model.Model;
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " all persons by PREFIX by preferred order "
-            + "and display as a list with index numbers.\n"
-            + "Parameters:  PREFIX INDEX (1 for alphabetical, 2 for reverse order) \n"
-            + "Example: " + COMMAND_WORD + " n/ " + "1";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons by specified prefix in either "
+            + "lexicographical or reverse order and display as a list with index numbers.\n"
+            + "Parameters:  PREFIX/ ORDER_INDEX \n"
+            + "Example: " + COMMAND_WORD + " n/ 1 \t" + COMMAND_WORD + " e/ 2\n"
+            + "Available prefixes:\t n/ (Name)\t p/ (Phone)\t e/ (Email)\t\t ic/ (Nric)\n"
+            + "Order Indexes:\t\t 1 (Alphabetical)\t\t 2 (Reverse)";
+
+    private final String prefix;
+    private final int order;
+
+    public SortCommand(String prefix, int order) {
+        this.prefix = prefix;
+        this.order = order;
+    }
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
-        model.updateSortedPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateSortedPersonList(prefix, order);
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_SORTED, model.getSortedPersonList().size()));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof SortCommand // instanceof handles nulls
+                && prefix.equals(((SortCommand) other).prefix));
+                //&& order.equals(((SortCommand) other).order)); // state check
     }
 }

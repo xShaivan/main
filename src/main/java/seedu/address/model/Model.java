@@ -69,7 +69,7 @@ public interface Model {
      * Updates the sorted person list {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateSortedPersonList(Predicate<Person> predicate);
+    void updateSortedPersonList(String prefix, int order);
 
     /**
      * Returns true if the model has previous address book states to restore.

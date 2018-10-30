@@ -130,10 +130,11 @@ public class ModelManager extends ComponentManager implements Model {
 
         return FXCollections.unmodifiableObservableList(sortedList);
     }
+
     @Override
-    public void updateSortedPersonList(Predicate<Person> predicate) {
-        requireNonNull(predicate);
-        sortedPersons.setPredicate(predicate);
+    public void updateSortedPersonList(String prefix, int order) {
+        requireAllNonNull(prefix, order);
+        versionedAddressBook.sortPersons(prefix, order);
     }
 
 

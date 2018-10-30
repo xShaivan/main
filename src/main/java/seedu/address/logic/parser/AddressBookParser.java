@@ -66,7 +66,7 @@ public class AddressBookParser {
             return new SelectCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
-            return new SortCommand();
+            return new SortCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
@@ -94,6 +94,7 @@ public class AddressBookParser {
 
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
+
 
         case AddApptCommand.COMMAND_WORD:
             return new AddApptCommandParser().parse(arguments);

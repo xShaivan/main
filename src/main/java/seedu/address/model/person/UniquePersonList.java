@@ -3,11 +3,13 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -122,6 +124,66 @@ public class UniquePersonList implements Iterable<Person> {
     /**
      * Returns the sorted list as an unmodifiable {@code ObservableList}.
      */
+    public static Comparator<Person> comparebyName() {
+        return (Comparator.comparing(person -> person.getName().fullName));
+    }
+
+    public static Comparator<Person> comparebyPhone() {
+        return (Comparator.comparing(person -> person.getPhone().value));
+    }
+
+    public static Comparator<Person> comparebyEmail() {
+        return (Comparator.comparing(person -> person.getEmail().value));
+    }
+
+    public static Comparator<Person> comparebyNric() {
+        return (Comparator.comparing(person -> person.getNric().value));
+    }
+
+    public void sortPersons(String prefix, int order) {
+
+        switch (prefix) {
+        //Sort by Name
+        case "n/":
+            if (order == 1) {
+                internalList.sort(comparebyName());
+            } else {
+                internalList.sort(comparebyName().reversed());
+            }
+            break;
+
+        //Sort by Phone
+        case "p/":
+            if (order == 1) {
+                internalList.sort(comparebyPhone());
+            } else {
+                internalList.sort(comparebyPhone().reversed());
+            }
+            break;
+
+        // Sort by Email
+        case "e/":
+            if (order == 1) {
+                internalList.sort(comparebyEmail());
+            } else {
+                internalList.sort(comparebyEmail().reversed());
+            }
+            break;
+
+        // Sort by Nric
+        case "ic/":
+            if (order == 1) {
+                internalList.sort(comparebyNric());
+            } else {
+                internalList.sort(comparebyNric().reversed());
+            }
+            break;
+
+        default:
+            break;
+        }
+
+    }
 
     /*public ObservableList<Person> sortedPersonList() {
         ObservableList<Person> sortedInternalList = internalList;
@@ -130,6 +192,7 @@ public class UniquePersonList implements Iterable<Person> {
         return FXCollections.unmodifiableObservableList(sortedInternalList);
     }
 */
+
     /**
      * Returns true if {@code persons} contains only unique persons.
      */
