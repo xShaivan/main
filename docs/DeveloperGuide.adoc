@@ -470,6 +470,33 @@ The following sequence diagram shows how the addreport operation works:
 image::AddMedicalReportSequenceDiagram.png[width="800"]
 // end::addreport[]
 
+// tag::find[]
+=== Find feature
+==== Current Implementation
+
+The find mechanism is facilitated by `VersionedAddressBook`.
+
+Additionally, it implements the following operations:
+
+* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
+
+This operation is exposed in the `Model` interface as `Model#updatePerson()`.
+
+Given below is an example usage scenario and how the find mechanism behaves at each step.
+
+Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+
+Step 2. The user executes `find hsa/ alcohol nut` command to to filter patients who are allergic to alcohol and nut from the list that the address book is currently showing. The `find` command obtains the detail of the person that the user is trying to find based on the keywords that the user has input.
+
+Step 4. The `find` command will obtain the keywords of the patients and go into the specified patient detail predicate to find patients with such keywords in their details.
+
+Step 5. The `find` command will call `Model#updateFilteredPersonList()` to update the list that the user is shown.
+
+The following sequence diagram shows how the find operation works:
+[Make diagram]
+
+//end:: find[]
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 

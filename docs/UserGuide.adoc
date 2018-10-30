@@ -116,14 +116,15 @@ Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing t
 
 === Finding patients by categories: `find`
 
-Finds patients by categories such as their name, age and marital status. +
+Finds patients by their personal (name, phone, email, address, tags and NRIC) and medical (medical Information, blood type, last country of visit and allergy) details.
 Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
 
 ****
-* The search is case insensitive. e.g `hans` will match `Hans`
+* The search is case insensitive. e.g. `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
+* Only the specified detail is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
+* Only above-mentioned details can be filtered e.g. Date of birth is not applicable.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
 
@@ -133,10 +134,10 @@ Examples:
 Returns `john` and `John Doe`
 * `find n/ BeTsY Tim John` +
 Returns any patient having names `Betsy`, `Tim`, or `John`
-* `find ms/ married`
-Returns any patient who is married.
-* `find age/ 18`
-Returns any patient who is 18 years old.
+* `find hsa/ alcohol`
+Returns any patient who is allergic to alcohol.
+* `find i/ high cholesterol`
+Returns any patient whose first medical report information contains high cholesterol.
 
 === Deleting a patient : `delete`
 
@@ -336,9 +337,10 @@ e.g. `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #0
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]` +
 e.g. `edit 1 p/91234567 e/johndoe@example.com`
 * *Find* : `find PREFIX/ KEYWORD [MORE_KEYWORDS]` +
-e.g. `find ms/ married` +
-e.g. `find age/ 18 19` +
-e.g. `find n/ Betsy Tim`
+e.g. `find n/ john` +
+e.g. `find n/ BeTsY Tim John` +
+e.g. `find hsa/ alcohol` +
+e.g. `find i/ high cholesterol`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
 * *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
