@@ -224,7 +224,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code allergy} is invalid.
      */
-    public static Allergy parseAllergy(String allergy) throws ParseException{
+    public static Allergy parseAllergy(String allergy) throws ParseException {
         requireNonNull(allergy);
         String trimmedAllergy = allergy.trim();
         if (!Allergy.isValidAllergy(trimmedAllergy)) {
