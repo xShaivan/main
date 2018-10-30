@@ -16,6 +16,9 @@ public class InfoContainsKeywordsPredicate implements Predicate<Person> {
         this.keywords = keywords;
     }
 
+    /**
+     * Tests that a {@code Person}'s {@code Medical Report Information} matches any of the keyword given.
+     */
     public boolean testInfo(Person person) {
         //List<MedicalReport> medicalReports = new ArrayList<>(person.getMedicalReports());
 

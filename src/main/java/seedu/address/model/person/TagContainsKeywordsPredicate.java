@@ -16,10 +16,13 @@ public class TagContainsKeywordsPredicate implements Predicate<Person> {
         this.keywords = keywords;
     }
 
+    /**
+     * Tests that a {@code Person}'s {@code Tag} matches any of the keyword given.
+     */
     public boolean testTags(Person person) {
         // List<Tag> tags = new ArrayList<>(person.getTags());
 
-        for (Tag tags: person.getTags()){
+        for (Tag tags: person.getTags()) {
             if (keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tags.tagName, keyword))) {
                 return true;
