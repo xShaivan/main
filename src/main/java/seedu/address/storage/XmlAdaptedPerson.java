@@ -106,7 +106,7 @@ public class XmlAdaptedPerson {
         dateOfBirth = source.getDateOfBirth().toString();
         height = source.getHeight().value;
         weight = source.getWeight().value;
-        gender = source.getGender().value;
+        gender = source.getGender().toString();
 
         reports = source.getMedicalReports().stream().map(XmlAdaptedReport::new).collect(Collectors.toList());
         medHistories = source.getMedHistory().stream().map(XmlAdaptedMedHistory::new).collect(Collectors.toList());

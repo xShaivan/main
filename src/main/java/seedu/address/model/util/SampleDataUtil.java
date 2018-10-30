@@ -31,7 +31,7 @@ public class SampleDataUtil {
     public static final DateOfBirth EMPTY_DATE_OF_BIRTH = new DateOfBirth("");
     public static final Height EMPTY_HEIGHT = new Height("");
     public static final Weight EMPTY_WEIGHT = new Weight("");
-    public static final Gender EMPTY_GENDER = new Gender("M");
+    public static final Gender EMPTY_GENDER = new Gender("");
 
     public static Person[] getSamplePersons() {
         return new Person[] {

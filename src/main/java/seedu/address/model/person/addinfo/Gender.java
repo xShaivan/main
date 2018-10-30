@@ -2,11 +2,13 @@ package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
+
 /**
  * Values for gender
  */
 enum GenderEnum {
-    M("Male"), F("Female");
+    Male("Male"), Female("Female");
 
     private String gender;
 
@@ -25,11 +27,25 @@ public class Gender {
     public static final String GENDER_VALIDATION_REGEX = "[MF]";
     public static final String MESSAGE_GENDER_CONSTRAINTS = "Gender input can only be either M or F.";
 
-    public final String value;
+    public final Optional<GenderEnum> value;
+
+    private final String emptyString = "";
 
     public Gender(String gender) {
         requireNonNull(gender);
-        value = GenderEnum.valueOf(gender.toUpperCase()).getGender();
+
+        switch (gender) {
+        case "M":
+        case "Male":
+            this.value = Optional.of(GenderEnum.Male);
+            break;
+        case "F":
+        case "Female":
+            this.value = Optional.of(GenderEnum.Female);
+            break;
+        default:
+            this.value = Optional.empty();
+        }
     }
 
     public static boolean isValidGender(String test) {
@@ -38,7 +54,11 @@ public class Gender {
 
     @Override
     public String toString() {
-        return value;
+        if (value.isPresent()) {
+            return value.get().getGender();
+        } else {
+            return emptyString;
+        }
     }
 
     @Override

@@ -146,7 +146,7 @@ public class AddInfoCommand extends Command {
         }
 
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight);
+            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight, gender);
         }
 
         public void setNric(Nric nric) {

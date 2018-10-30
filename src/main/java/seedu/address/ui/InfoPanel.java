@@ -101,7 +101,7 @@ public class InfoPanel extends UiPart<Region> {
         phoneLabel.setText(person.getPhone().value);
         heightLabel.setText(person.getHeight().value);
         weightLabel.setText(person.getWeight().value);
-        genderLabel.setText(person.getGender().value);
+        genderLabel.setText(person.getGender().toString());
     }
 
     /**
