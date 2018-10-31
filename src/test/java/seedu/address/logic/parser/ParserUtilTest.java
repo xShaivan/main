@@ -15,6 +15,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -30,6 +32,8 @@ public class ParserUtilTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_NRIC = "S3719668B";
+    private static final String INVALID_ALLERGY = "$r1ce";
+    private static final String INVALID_MEDHISTDATE = "10/10/2010";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
@@ -38,6 +42,8 @@ public class ParserUtilTest {
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
     private static final String VALID_NRIC = "S3719668A";
+    private static final String VALID_ALLERGY = "rice";
+    private static final String VALID_MEDHISTDATE = "10-10-2010";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -229,5 +235,52 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    //@@author xShaivan
+    @Test
+    public void parseAllergynullthrowsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseAllergy((String) null));
+    }
+
+    @Test
+    public void parseAllergyinvalidValuethrowsParseException() {
+        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseAllergy(INVALID_ALLERGY));
+    }
+
+    @Test
+    public void parseAllergyvalidValueWithoutWhitespacereturnsAllergy() throws Exception {
+        Allergy expectedAllergy = new Allergy(VALID_ALLERGY);
+        assertEquals(expectedAllergy, ParserUtil.parseAllergy(VALID_ALLERGY));
+    }
+
+    @Test
+    public void parseAllergyvalidValueWithWhitespacereturnsTrimmedAllergy() throws Exception {
+        String allergyWithWhitespace = WHITESPACE + VALID_ALLERGY + WHITESPACE;
+        Allergy expectedAllergy = new Allergy(VALID_ALLERGY);
+        assertEquals(expectedAllergy, ParserUtil.parseAllergy(allergyWithWhitespace));
+    }
+
+    @Test
+    public void parseMedHistDatenullthrowsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseMedHistDate((String) null));
+    }
+
+    @Test
+    public void parseMedHistDateinvalidValuethrowsParseException() {
+        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseMedHistDate(INVALID_MEDHISTDATE));
+    }
+
+    @Test
+    public void parseMedHistDatevalidValueWithoutWhitespacereturnsMedHistDate() throws Exception {
+        MedHistDate expectedMedHistDate = new MedHistDate(VALID_MEDHISTDATE);
+        assertEquals(expectedMedHistDate, ParserUtil.parseMedHistDate(VALID_MEDHISTDATE));
+    }
+
+    @Test
+    public void parseMedHistDatevalidValueWithWhitespacereturnsTrimmedMedHistDate() throws Exception {
+        String medHistDateWithWhitespace = WHITESPACE + VALID_MEDHISTDATE + WHITESPACE;
+        MedHistDate expectedMedHistDate = new MedHistDate(VALID_MEDHISTDATE);
+        assertEquals(expectedMedHistDate, ParserUtil.parseMedHistDate(medHistDateWithWhitespace));
     }
 }

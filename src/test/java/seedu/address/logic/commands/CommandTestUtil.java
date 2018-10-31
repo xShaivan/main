@@ -78,12 +78,15 @@ public class CommandTestUtil {
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     // MedHistory
-    public static final String VALID_HISTORY_DATE = "10/10/2010";
-    public static final String VALID_HISTORY_DATE2 = "20/20/2020";
+    public static final String VALID_HISTORY_DATE = "10-10-2010";
+    public static final String VALID_HISTORY_DATE2 = "20-10-2010";
     public static final String VALID_HISTORY_ALLERGY = "Pollen";
     public static final String VALID_HISTORY_ALLERGY2 = "Alcohol";
     public static final String VALID_HISTORY_COUNTRY = "USA";
     public static final String VALID_HISTORY_COUNTRY2 = "Russia";
+    public static final String VALID_HISTORY_DISCHARGE_STATUS = "Discharged to home";
+    public static final String VALID_HISTORY_DISCHARGE_STATUS2 = "Admitted as an inpatient to this hospital";
+    //public static final String VALID_HISTORY_DISCHARGE_STATUS3 = "Patient has expired.";
 
     //Medical Report
     public static final String VALID_TITLE1 = "Asthma";

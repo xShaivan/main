@@ -8,13 +8,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.ReportComparator;
 import seedu.address.model.person.Address;
@@ -53,10 +53,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Set<MedicalReport> reports = new TreeSet<>(new ReportComparator()); // add command does not allow adding reports
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Set<MedHistory> medHistories = new HashSet<>();
+
+        Set<MedicalReport> reports = new TreeSet<>(new ReportComparator()); // add command does not allow adding reports
         Set<Appt> appts = new TreeSet<>(new ApptComparator()); // add command does not allow adding appts straight away
+        Set<MedHistory> medHistories = new TreeSet<>(new MedHistoryComparator());
         Nric nric = new Nric("");
         DateOfBirth dateOfBirth = new DateOfBirth("01-01-1970");
         Height height = new Height("");

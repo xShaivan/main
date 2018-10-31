@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.medicalreport.ReportComparator;
 import seedu.address.model.person.addinfo.DateOfBirth;
@@ -32,7 +33,7 @@ public class Person {
 
     // Data fields
     private final Address address;
-    private final Set<MedHistory> medHistories = new HashSet<>();
+    private final Set<MedHistory> medHistories = new TreeSet<>(new MedHistoryComparator());
     private final Set<Appt> appts = new TreeSet<>(new ApptComparator());
     private final Set<Tag> tags = new HashSet<>();
     private final Set<MedicalReport> reports = new TreeSet<>(new ReportComparator());
@@ -86,11 +87,12 @@ public class Person {
         return Collections.unmodifiableSet(reports);
     }
 
-    //@@author
+    //@@author xShaivan
     public Set<MedHistory> getMedHistory() {
         return Collections.unmodifiableSet(medHistories);
     }
 
+    //@@author
     public Nric getNric() {
         return nric;
     }

@@ -4,11 +4,12 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -16,6 +17,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -29,6 +31,7 @@ import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 
+//@@author xShaivan
 /**
  * Adds/Edits medical history of a patient in the Health Book.
  */
@@ -40,9 +43,10 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
             + "by their index number."
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_HISTORY_DATE + " 24/08/1993 "
-            + PREFIX_HISTORY_ALLERGY + " Alcohol "
-            + PREFIX_HISTORY_COUNTRY + " Kuwait ";
+            + PREFIX_HISTORY_DATE + "24-08-1993 "
+            + PREFIX_HISTORY_ALLERGY + "Alcohol "
+            + PREFIX_HISTORY_COUNTRY + "Kuwait "
+            + PREFIX_HISTORY_DISCHARGE_STATUS + "d";
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -67,7 +71,7 @@ public class AddHistCommand extends Command {
         }
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<MedHistory> fullMedHistories = personToEdit.getMedHistory();
-        Set<MedHistory> newMedHistories = new HashSet<>();
+        Set<MedHistory> newMedHistories = new TreeSet<>(new MedHistoryComparator());
         // for loop overwrites all existing history with itself
         for (MedHistory medHistory : fullMedHistories) {
             newMedHistories.add(medHistory);
@@ -83,7 +87,7 @@ public class AddHistCommand extends Command {
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * edited with {@code medHistories}.
      */
     private static Person createEditedPerson(Person personToEdit, Set <MedHistory> newMedHistories) {
         assert personToEdit != null;

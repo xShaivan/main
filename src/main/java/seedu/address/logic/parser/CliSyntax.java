@@ -23,6 +23,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_HISTORY_DATE = new Prefix("hsd/");
     public static final Prefix PREFIX_HISTORY_COUNTRY = new Prefix("hsc/");
     public static final Prefix PREFIX_HISTORY_ALLERGY = new Prefix("hsa/");
+    public static final Prefix PREFIX_HISTORY_DISCHARGE_STATUS = new Prefix("hsds/");
 
     /* Prefix definitions for Additional Information */
     public static final Prefix PREFIX_ADD_INFO_NRIC = new Prefix("i/");

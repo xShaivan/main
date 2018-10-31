@@ -12,6 +12,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.DischargeStatus;
+import seedu.address.model.medhistory.DischargeStatusEnum;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Information;
@@ -217,30 +219,41 @@ public class ParserUtil {
         return tagSet;
     }
 
+    //@@author xShaivan
+    /**
+     * ==================================================
+     * PARSER FOR MEDICAL HISTORY SUBFIELDS
+     * ==================================================
+     */
     /**
      * Parses a {@code String allergy} into an {@code Allergy}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code allergy} is invalid.
-     * ParseException is omitted for now.
      */
-    public static Allergy parseAllergy(String allergy) {
+    public static Allergy parseAllergy(String allergy) throws ParseException {
         requireNonNull(allergy);
         String trimmedAllergy = allergy.trim();
+        if (!Allergy.isValidAllergy(trimmedAllergy)) {
+            throw new ParseException(Allergy.MESSAGE_ALLERGY_CONSTRAINTS);
+        }
 
         return new Allergy(trimmedAllergy);
     }
 
     /**
-     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
+     * Parses a {@code String medHistDate} into an {@code MedHistDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code prevCountry} is invalid.
+     * @throws ParseException if the given {@code medHistDate} is invalid.
      * ParseException is omitted for now.
      */
-    public static MedHistDate parseMedHistDate(String medHistDate) {
+    public static MedHistDate parseMedHistDate(String medHistDate) throws ParseException {
         requireNonNull(medHistDate);
         String trimmedMedHistDate = medHistDate.trim();
+        if (!MedHistDate.isValidMedHistDate(trimmedMedHistDate)) {
+            throw new ParseException(MedHistDate.MESSAGE_MEDHISTDATE_CONSTRAINTS);
+        }
 
         return new MedHistDate(trimmedMedHistDate);
     }
@@ -257,6 +270,29 @@ public class ParserUtil {
         String trimmedPrevCountry = prevCountry.trim();
 
         return new PrevCountry(trimmedPrevCountry);
+    }
+
+    /**
+     * Parses a {@code String dischargeStatus} into an {@code DischargeStatus}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dischargeStatus} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static DischargeStatus parseDischargeStatus(String dischargeStatus) {
+        requireNonNull(dischargeStatus);
+        String trimmedDischargeStatus = dischargeStatus.trim();
+        String expandedDischargeStatus = "";
+        for (DischargeStatusEnum code: DischargeStatusEnum.values()) {
+            if (trimmedDischargeStatus.equals(code.name())) {
+                expandedDischargeStatus = code.getCode();
+                break;
+            } else {
+                expandedDischargeStatus = "invalid discharge status";
+            }
+        }
+
+        return new DischargeStatus(expandedDischargeStatus);
     }
 
     //@@author chewkahmeng
