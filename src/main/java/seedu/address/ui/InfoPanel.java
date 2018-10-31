@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 
+import javafx.scene.layout.VBox;
 import seedu.address.model.person.Person;
 
 /**
@@ -64,7 +65,7 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private FlowPane medHistoriesFlowPane;
     @FXML
-    private FlowPane apptsFlowPane;
+    private VBox apptsVBox;
     @FXML
     private FlowPane medReportsFlowPane;
 
@@ -124,7 +125,7 @@ public class InfoPanel extends UiPart<Region> {
      */
     private void fillApptsPane() {
         medAppts.setStyle("-fx-background-color: #DCDCDC");
-        person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new Label(appt.toString())));
+        person.getAppts().forEach(appt -> apptsVBox.getChildren().add(new ApptCard(appt)));
     }
 
     /**
@@ -142,6 +143,22 @@ public class InfoPanel extends UiPart<Region> {
     public void clearFlowPanes() {
         medHistoriesFlowPane.getChildren().clear();
         medReportsFlowPane.getChildren().clear();
-        apptsFlowPane.getChildren().clear();
+        apptsVBox.getChildren().clear();
+    }
+
+    /**
+     * Shows a message when there is no person card selected to tell the user to select a person
+     */
+    public void showEmptyMessage() {
+        additionalInfo.setStyle("-fx-background-color: #FFFFFF");
+        medHistory.setStyle("-fx-background-color: #FFFFFF");
+        medAppts.setStyle("-fx-background-color: #FFFFFF");
+        medReports.setStyle("-fx-background-color: #FFFFFF");
+        nameLabel1.setText("You have not selected any person.\n"
+                + "Please select a person to show more details\nfor him/her on this panel.");
+        nameLabel2.setText("");
+        nameLabel3.setText("");
+        nameLabel4.setText("");
+        nricLabel.setText("");
     }
 }
