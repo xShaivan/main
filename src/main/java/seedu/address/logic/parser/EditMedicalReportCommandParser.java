@@ -8,8 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ORIGINAL_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
-import java.util.stream.Stream;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditMedicalReportCommand;
 import seedu.address.logic.commands.EditMedicalReportCommand.EditReportDescriptor;
