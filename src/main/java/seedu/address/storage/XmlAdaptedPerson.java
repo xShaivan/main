@@ -210,12 +210,14 @@ public class XmlAdaptedPerson {
          * ==================================================
          */
 
+        //@@author chewkahmeng
         final List<MedicalReport> personMedicalReports = new ArrayList<>();
         for (XmlAdaptedReport report : reports) {
             personMedicalReports.add(report.toModelType());
         }
         final Set<MedicalReport> modelReports = new HashSet<>(personMedicalReports);
 
+        //@@author xShaivan
         final List<MedHistory> personMedHistories = new ArrayList<>();
         for (XmlAdaptedMedHistory medHistory : medHistories) {
             personMedHistories.add(medHistory.toModelType());

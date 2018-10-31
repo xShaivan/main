@@ -2,13 +2,14 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.HashSet;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -16,6 +17,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.ReportComparator;
 import seedu.address.model.person.Person;
 
 //@@author chewkahmeng
@@ -31,13 +33,16 @@ public class AddMedicalReportCommand extends Command {
             + "Parameters: [INDEX] (must be a positive integer) "
             + PREFIX_TITLE + "[TITLE] "
             + PREFIX_DATE + "[DATE] "
-            + PREFIX_INFORMATION + "[INFORMATION]\n"
+            + PREFIX_INFO + "[INFORMATION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Asthma "
             + PREFIX_DATE + "01-01-2018 "
-            + PREFIX_INFORMATION + "prescribed XXX medicine, next appointment on 02-02-2018. ";
+            + PREFIX_INFO + "prescribed XXX medicine, next appointment on 02-02-2018. ";
 
     public static final String MESSAGE_ADD_REPORT_SUCCESS = "Added medical report to Person: %1$s";
+    public static final String MESSAGE_DUPLICATE_REPORT = "Unable to add duplicate medical report.";
+    public static final String MESSAGE_DATE_CLASH = "Unable to add medical report of same date,"
+            + " please use editreport command to add more details into existing medical report.";
 
     private final Index index;
     private final MedicalReport report;
@@ -64,7 +69,20 @@ public class AddMedicalReportCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<MedicalReport> oldReports = personToEdit.getMedicalReports();
-        Set<MedicalReport> newReports = new HashSet<>();
+
+        for (MedicalReport oldreports : oldReports) {
+            if (hasDuplicateReport(oldreports, report)) {
+                throw new CommandException(MESSAGE_DUPLICATE_REPORT);
+            }
+        }
+
+        for (MedicalReport oldreports : oldReports) {
+            if (hasDateClash(oldreports, report)) {
+                throw new CommandException(MESSAGE_DATE_CLASH);
+            }
+        }
+
+        Set<MedicalReport> newReports = new TreeSet<>(new ReportComparator());
         for (MedicalReport report : oldReports) {
             newReports.add(report);
         }
@@ -84,6 +102,30 @@ public class AddMedicalReportCommand extends Command {
 
     private String generateSuccessMessage(Person personToEdit) {
         return String.format(MESSAGE_ADD_REPORT_SUCCESS, personToEdit);
+    }
+
+    /**
+     * Checks if report1 and report2 are duplicates of one another
+     */
+    private boolean hasDuplicateReport(MedicalReport report1, MedicalReport report2) {
+        String title1 = report1.getTitle().fullTitle;
+        String title2 = report2.getTitle().fullTitle;
+        String info1 = report1.getInformation().fullInformation;
+        String info2 = report2.getInformation().fullInformation;
+        LocalDate date1 = report1.getDate().fullDate;
+        LocalDate date2 = report2.getDate().fullDate;
+
+        return ((title1.equals(title2)) && (info1.equals(info2)) && (date1.equals(date2)));
+    }
+
+    /**
+     * Checks if date1 and date2 clash with one another
+     */
+    private boolean hasDateClash(MedicalReport report1, MedicalReport report2) {
+        LocalDate date1 = report1.getDate().fullDate;
+        LocalDate date2 = report2.getDate().fullDate;
+
+        return (date1.equals(date2));
     }
 
     @Override

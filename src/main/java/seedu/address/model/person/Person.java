@@ -9,7 +9,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.ReportComparator;
 import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
@@ -34,10 +36,10 @@ public class Person {
 
     // Data fields
     private final Address address;
-    private final Set<MedHistory> medHistories = new HashSet<>();
+    private final Set<MedHistory> medHistories = new TreeSet<>(new MedHistoryComparator());
     private final Set<Appt> appts = new TreeSet<>(new ApptComparator());
     private final Set<Tag> tags = new HashSet<>();
-    private final Set<MedicalReport> reports = new HashSet<>();
+    private final Set<MedicalReport> reports = new TreeSet<>(new ReportComparator());
 
     // Additional information fields
     private final Nric nric;
@@ -93,7 +95,7 @@ public class Person {
         return Collections.unmodifiableSet(reports);
     }
 
-    //@@author
+    //@@author xShaivan
     public Set<MedHistory> getMedHistory() {
         return Collections.unmodifiableSet(medHistories);
     }
@@ -181,7 +183,6 @@ public class Person {
                 && otherPerson.getBloodType().equals(getBloodType())
                 && otherPerson.getOccupation().equals(getOccupation())
                 && otherPerson.getMedHistory().equals(getMedHistory())
-
                 && otherPerson.getAppts().equals(getAppts())
                 && otherPerson.getMedicalReports().equals(getMedicalReports())
                 && otherPerson.getTags().equals(getTags());

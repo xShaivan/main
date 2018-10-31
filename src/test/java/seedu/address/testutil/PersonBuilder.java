@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -69,7 +70,7 @@ public class PersonBuilder {
         bloodType = new BloodType(DEFAULT_BLOODTYPE);
         occupation = new Occupation(DEFAULT_OCCUPATION);
         reports = new HashSet<>();
-        medHistories = new HashSet<>();
+        medHistories = new TreeSet<>(new MedHistoryComparator());
         appts = new TreeSet<>(new ApptComparator());
         tags = new HashSet<>();
     }
