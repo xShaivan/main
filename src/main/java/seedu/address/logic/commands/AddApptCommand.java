@@ -91,7 +91,8 @@ public class AddApptCommand extends Command {
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getMedicalReports(), personToEdit.getMedHistory(), newAppts,
                 personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getHeight(),
-                personToEdit.getWeight(), personToEdit.getTags());
+                personToEdit.getWeight(), personToEdit.getGender(), personToEdit.getBloodType(),
+                personToEdit.getOccupation(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

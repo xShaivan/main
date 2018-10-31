@@ -37,8 +37,31 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private Label nameLabel4;
 
+    // Additional Info Pane
+    @FXML
+    private Label fullNameLabel;
+    @FXML
+    private Label emailLabel;
+    @FXML
+    private Label dateOfBirthLabel;
+    @FXML
+    private Label addressLabel;
+    @FXML
+    private Label phoneLabel;
     @FXML
     private Label nricLabel;
+    @FXML
+    private Label weightLabel;
+    @FXML
+    private Label heightLabel;
+    @FXML
+    private Label genderLabel;
+    @FXML
+    private Label bloodTypeLabel;
+    @FXML
+    private Label occupationLabel;
+
+
     @FXML
     private FlowPane medHistoriesFlowPane;
     @FXML
@@ -70,22 +93,44 @@ public class InfoPanel extends UiPart<Region> {
         nameLabel4.setText("Medical Reports for " + person.getName());
     }
 
+    /**
+     * Initialize Additional Information labels
+     */
     private void fillAdditionalInfoPane() {
         additionalInfo.setStyle("-fx-background-color: #FCFCFC");
+        fullNameLabel.setText(person.getName().fullName);
+        emailLabel.setText(person.getEmail().value);
         nricLabel.setText(person.getNric().value);
+        dateOfBirthLabel.setText(person.getDateOfBirth().toString());
+        addressLabel.setText(person.getAddress().value);
+        phoneLabel.setText(person.getPhone().value);
+        heightLabel.setText(person.getHeight().value);
+        weightLabel.setText(person.getWeight().value);
+        genderLabel.setText(person.getGender().toString());
+        bloodTypeLabel.setText(person.getBloodType().value);
+        occupationLabel.setText(person.getOccupation().value);
     }
 
+    /**
+     * Initialize Medical History Flow Pane
+     */
     private void fillMedHistoriesPane() {
         medHistory.setStyle("-fx-background-color: #ECECEC");
         person.getMedHistory().forEach(medHistory ->
                 medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
     }
 
+    /**
+     * Initialize Medical Appointment Flow Pane
+     */
     private void fillApptsPane() {
         medAppts.setStyle("-fx-background-color: #DCDCDC");
         person.getAppts().forEach(appt -> apptsVBox.getChildren().add(new ApptCard(appt)));
     }
 
+    /**
+     * Initialize Medical Report Flow Pane
+     */
     private void fillMedReportsPane() {
         medReports.setStyle("-fx-background-color: #CCCCCC");
         person.getMedicalReports().forEach(report ->

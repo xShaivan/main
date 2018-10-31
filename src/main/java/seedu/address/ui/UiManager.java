@@ -125,8 +125,7 @@ public class UiManager extends ComponentManager implements Ui {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         if (event.getNewSelection() != null) {
             mainWindow.showPersonDetailsOnInfoPanel(event.getNewSelection());
-        }
-        else {
+        } else {
             mainWindow.showInfoPanelEmptyMessage();
         }
     }

@@ -22,9 +22,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -59,12 +62,15 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Appt> appts = new TreeSet<>(new ApptComparator()); // add command does not allow adding appts straight away
         Set<MedHistory> medHistories = new TreeSet<>(new MedHistoryComparator());
         Nric nric = new Nric("");
-        DateOfBirth dateOfBirth = new DateOfBirth("01-01-1970");
+        DateOfBirth dateOfBirth = new DateOfBirth("");
         Height height = new Height("");
         Weight weight = new Weight("");
+        Gender gender = new Gender("");
+        BloodType bloodType = new BloodType("");
+        Occupation occupation = new Occupation("");
 
         Person person = new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height,
-                weight, tagList);
+                weight, gender, bloodType, occupation, tagList);
 
         return new AddCommand(person);
     }
