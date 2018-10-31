@@ -43,10 +43,10 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
             + "by their index number."
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_HISTORY_DATE + " 24-08-1993 "
-            + PREFIX_HISTORY_ALLERGY + " Alcohol "
-            + PREFIX_HISTORY_COUNTRY + " Kuwait "
-            + PREFIX_HISTORY_DISCHARGE_STATUS + " d";
+            + PREFIX_HISTORY_DATE + "24-08-1993 "
+            + PREFIX_HISTORY_ALLERGY + "Alcohol "
+            + PREFIX_HISTORY_COUNTRY + "Kuwait "
+            + PREFIX_HISTORY_DISCHARGE_STATUS + "d";
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
