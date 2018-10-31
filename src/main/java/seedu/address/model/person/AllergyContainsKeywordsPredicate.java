@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.medhistory.MedHistory;
 
+//@@author chokxy
 /**
  * Tests that a {@code Person}'s {@code BloodType} matches any of the keyword given.
  */

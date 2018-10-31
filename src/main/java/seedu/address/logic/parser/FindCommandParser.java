@@ -19,7 +19,7 @@ import seedu.address.model.person.TagContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
- * Switch cases for static attributes
+ * Switch cases for most attributes
  */
 public class FindCommandParser implements Parser<FindCommand> {
 
@@ -35,7 +35,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-
+        //@@author chokxy
         String[] nameKeywords = trimmedArgs.split("\\s+");
 
         switch(nameKeywords[0]) {

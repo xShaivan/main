@@ -3,6 +3,7 @@ package seedu.address.model.person.addinfo;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+//@@author chokxy
 /**
  * Represents a Person's Blood Type in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidType(String)}

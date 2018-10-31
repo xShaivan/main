@@ -120,6 +120,7 @@ public class UniquePersonList implements Iterable<Person> {
         return internalList.hashCode();
     }
 
+    //@@author chokxy
     /**
      * Functions with comparators to sort by categories
      */
@@ -194,6 +195,7 @@ public class UniquePersonList implements Iterable<Person> {
         return FXCollections.unmodifiableObservableList(sortedInternalList);
     }
 */
+    //@@author
 
     /**
      * Returns true if {@code persons} contains only unique persons.

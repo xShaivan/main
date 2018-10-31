@@ -6,6 +6,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 
+//@@author chokxy
 /**
  * Sorts and lists all persons in address book by their name.
  * (Currently can only sort by PREFIX name and ORDER 1)

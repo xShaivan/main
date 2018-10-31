@@ -19,6 +19,7 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
+    //@@author chokxy
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose prefix contain any "
             + "of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: PREFIX/ KEYWORD [MORE_KEYWORDS]...\n"
@@ -31,8 +32,7 @@ public class FindCommand extends Command {
     public FindCommand(Predicate<Person> predicate) {
         this.predicate = predicate;
     }
-
-
+    
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);

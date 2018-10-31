@@ -110,7 +110,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     //=========== Sorted Person List Accessors =============================================================
-
+    //@@author chokxy
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
      * {@code versionedAddressBook}
@@ -136,7 +136,7 @@ public class ModelManager extends ComponentManager implements Model {
         requireAllNonNull(prefix, order);
         versionedAddressBook.sortPersons(prefix, order);
     }
-
+    //@@author
 
     //=========== Undo/Redo =================================================================================
 

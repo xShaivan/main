@@ -62,6 +62,7 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    //@@author chokxy
     /** Returns an unmodifiable view of the sorted person list */
     ObservableList<Person> getSortedPersonList();
 
@@ -70,6 +71,7 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateSortedPersonList(String prefix, int order);
+    //@@author
 
     /**
      * Returns true if the model has previous address book states to restore.
