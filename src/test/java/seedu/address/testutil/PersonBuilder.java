@@ -162,11 +162,17 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code gender} of the {@code Person} that we are building.
+     */
     public PersonBuilder withGender(String gender) {
         this.gender = new Gender(gender);
         return this;
     }
 
+    /**
+     * Sets the {@code bloodType} of the {@code Person} that we are building.
+     */
     public PersonBuilder withBloodType(String bloodType) {
         this.bloodType = new BloodType(bloodType);
         return this;

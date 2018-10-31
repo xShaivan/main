@@ -7,7 +7,6 @@ import java.time.format.DateTimeParseException;
 
 import org.junit.Test;
 
-import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.testutil.Assert;
 
 public class DateOfBirthTest {
