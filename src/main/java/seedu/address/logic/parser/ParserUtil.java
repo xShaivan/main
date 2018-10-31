@@ -270,9 +270,12 @@ public class ParserUtil {
      * Parses a {@code String title} into an {@code Title}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static Title parseTitle(String title) {
+    public static Title parseTitle(String title) throws ParseException {
         requireNonNull(title);
         String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new ParseException(Title.MESSAGE_TITLE_CONSTRAINTS);
+        }
         return new Title(trimmedTitle);
     }
 
@@ -295,9 +298,12 @@ public class ParserUtil {
      * Parses a {@code String information} into an {@code Information}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static Information parseInformation(String information) {
+    public static Information parseInformation(String information) throws ParseException {
         requireNonNull(information);
         String trimmedInformation = information.trim();
+        if (!Information.isValidInformation(trimmedInformation)) {
+            throw new ParseException(Information.MESSAGE_INFORMATION_CONSTRAINTS);
+        }
         return new Information(trimmedInformation);
     }
 
