@@ -2,6 +2,7 @@ package seedu.address.model.medicalreport;
 
 import java.util.Comparator;
 
+//@@author chewkahmeng
 /**
  * A comparator class to compare medical reports according to date and title
  */

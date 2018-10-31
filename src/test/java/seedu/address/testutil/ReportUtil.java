@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import seedu.address.logic.commands.AddMedicalReportCommand;
 import seedu.address.model.medicalreport.MedicalReport;
 
+//@@author chewkahmeng
 /**
  * A utility class for MedicalReport.
  */
