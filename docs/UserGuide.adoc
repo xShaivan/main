@@ -126,6 +126,8 @@ Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Only above-mentioned details can be filtered e.g. Date of birth is not applicable.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Personal prefixes: n/ (Name) p/ (Phone) e/ (Email) a/ (Address) t/ (tag) ic/ (NRIC)
+* Medical prefixes: i/ (MedInfo) hsa/ (Allergy) hsb/ (BloodType) hsc/ (LastCountry)
 ****
 
 Examples:
@@ -134,10 +136,10 @@ Examples:
 Returns `john` and `John Doe`
 * `find n/ BeTsY Tim John` +
 Returns any patient having names `Betsy`, `Tim`, or `John`
-* `find hsa/ alcohol`
-Returns any patient who is allergic to alcohol.
-* `find i/ high cholesterol`
-Returns any patient whose first medical report information contains high cholesterol.
+* `find ic/ S9876543T`
+Returns any patient whose NRIC is S9876543T.
+* `find t/ friend`
+Returns any patient who is tagged friend.
 
 === Deleting a patient : `delete`
 
@@ -298,12 +300,12 @@ Edits title, date and information of existing medical report dated 01-01-2018 fo
 
 === Sort patients list: `sort`
 
-Sort the list of patients according to a specific prefix category. +
+Sort the list of patients according to a specific prefix category in ascending or descending order. +
 Format: `sort PREFIX/ ORDER_INDEX`
 
-`PREFIX/` refers to certain categories of patient information such as name, blood type,
-allergy etc. and each of these categories will be defined by a corresponding prefix. (ie n/ for name)
+`PREFIX/` refers to certain pertinent categories of patient information and each of these categories will be defined by a corresponding prefix.
 `ORDER_INDEX` can be 1 or 2 where 1 means in alphabetical and 2 means in reverse order.
+Available prefixes: `n/` (Name) `p/` (Phone) `e/` (Email) `ic/` (Nric)
 
 Example:
 
@@ -352,8 +354,8 @@ e.g. `edit 1 p/91234567 e/johndoe@example.com`
 * *Find* : `find PREFIX/ KEYWORD [MORE_KEYWORDS]` +
 e.g. `find n/ john` +
 e.g. `find n/ BeTsY Tim John` +
-e.g. `find hsa/ alcohol` +
-e.g. `find i/ high cholesterol`
+e.g. `find ic/ S9876543T` +
+e.g. `find t/ friend`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
 * *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
