@@ -208,6 +208,12 @@ public class ParserUtil {
         return new Gender(trimmedGender);
     }
 
+    /**
+     * Parses a {@code String bloodType} into a {@code BloodType}
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code gender} is invalid.
+     */
     public static BloodType parseBloodType(String bloodType) throws ParseException {
         requireNonNull(bloodType);
         String trimmedBloodType = bloodType.trim();

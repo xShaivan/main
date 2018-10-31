@@ -1,7 +1,6 @@
 package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Arrays;
 
@@ -13,9 +12,10 @@ public class BloodType {
     public static final String MESSAGE_BLOODTYPE_CONSTRAINTS =
             "Blood type should be A, B, O or AB followed by - or +";
     public static final String TYPE_VALIDATION_REGEX = "[ABO]*" + "[-+]";
-    public final String value;
 
     private static final String[] incorrectBloodType = {"AO", "BO", "AB"};
+
+    public final String value;
 
     /**
      * Constructs a {@code BloodType}.

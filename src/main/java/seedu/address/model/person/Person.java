@@ -170,7 +170,7 @@ public class Person {
                 && otherPerson.getDateOfBirth().equals(getDateOfBirth())
                 && otherPerson.getHeight().equals(getHeight())
                 && otherPerson.getWeight().equals(getWeight())
-                //&& otherPerson.getGender().equals(getGender())
+                && otherPerson.getGender().equals(getGender())
                 && otherPerson.getBloodType().equals(getBloodType())
                 && otherPerson.getMedHistory().equals(getMedHistory())
                 && otherPerson.getAppts().equals(getAppts())
