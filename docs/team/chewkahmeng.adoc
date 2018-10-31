@@ -1,0 +1,49 @@
+= Chew Kah Meng - Project Portfolio
+:site-section: AboutUs
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: Health Book
+
+---
+
+== Overview
+
+Health Book is an application for healthcare professionals to retrieve their patients’ personal information and health-related information efficiently and systematically. The user interacts with it using a Command Line Interface (CLI) to input commands, while a Graphical User Interface (GUI) is used to display the patients’ information. It is written in Java and has about 10kLoC.
+
+== Summary of contributions
+
+* *Major enhancement*: added *the ability to add a list of medical reports for patients and allowed the user to view a certain medical report of a patient.*
+** What it does: allows the user to add a list of medical reports to a patient and access any medical report from the list.
+** Justification: This feature makes it easier for the user to add medical reports and the user can find a medical report much faster from a large inventory of medical reports.
+** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+
+* *Minor enhancement*: added the ability to edit a medical report.
+** What it does: allows the user to edit a patient’s medical report.
+** Justification: This feature allows healthcare professionals to rectify their mistakes after they write a medical report.
+
+* *Code contributed*: [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddMedicalReportCommand.java[AddMedicalReportCommand]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddMedicalReportCommandParser.java[AddMedicalReportCommandParser]][https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/medicalreport[MedicalReport Classes]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedReport.java[XmlAdaptedReport]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddReportCommandTest.java[AddReportCommandTest]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddReportCommandParserTest.java[AddReportCommandParserTest]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/person/AddMedicalReportTest.java[MedicalReportTest]]
+
+* *Other contributions*:
+
+** Project management:
+*** Role of Quality Assurance Lead: In charge of making sure that all our tests have a test coverage of at least 90% and our application runs smoothly by passing all the tests.
+*** Managed releases `v1.1` - `v1.3` (3 releases) on GitHub.
+
+== Contributions to the User Guide
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=reportcommands]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=addreport]
+
+include::../DeveloperGuide.adoc[tag=reportusecases]

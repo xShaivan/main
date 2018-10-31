@@ -66,7 +66,8 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
    f. Occupation.
    g. Marital Status
    h. Family Members
-3. Medical report/diagnosis can only be added or after patient entries have been created. Additional information need not be completed to attach medical report/diagnosis to a patient. All fields in medical report are mandatory and cannot be omitted during the creation process.
+3. Medical report/diagnosis can only be added after patient entries have been created. Additional information need not be completed to attach medical report/diagnosis to a patient. All fields in medical report are mandatory and cannot be omitted during the creation process.
+4. Appointments can only be added after patient entries have been created. Additional information need not be completed to add an appointment for a patient. All fields for an appointment are mandatory and cannot be omitted during the creation process.
 
 ====
 
@@ -115,27 +116,28 @@ Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing t
 
 === Finding patients by categories: `find`
 
-Finds patients by categories such as their name, age and marital status. +
-Format: `find category/KEYWORD UNDER CATEGORY`
+Finds patients by their personal (name, phone, email, address, tags and NRIC) and medical (medical Information, blood type, last country of visit and allergy) details.
+Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
 
 ****
-* The search is case insensitive. e.g `hans` will match `Hans`
+* The search is case insensitive. e.g. `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
+* Only the specified detail is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
+* Only above-mentioned details can be filtered e.g. Date of birth is not applicable.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
 
 Examples:
 
-* `find n/John` +
+* `find n/ John` +
 Returns `john` and `John Doe`
-* `find n/Betsy Tim John` +
+* `find n/ BeTsY Tim John` +
 Returns any patient having names `Betsy`, `Tim`, or `John`
-* `find ms/married`
-Returns any patient who is married.
-* `find age/18`
-Returns any patient who is 18 years old.
+* `find hsa/ alcohol`
+Returns any patient who is allergic to alcohol.
+* `find i/ high cholesterol`
+Returns any patient whose first medical report information contains high cholesterol.
 
 === Deleting a patient : `delete`
 
@@ -153,7 +155,7 @@ Examples:
 * `list` +
 `delete 2` +
 Deletes the 2nd person in the address book.
-* `find n/Betsy` +
+* `find n/ Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
@@ -175,10 +177,11 @@ Adds a medical history entry for the 1st person in the list on 10/10/2010 with a
 The patient is discharged and allowed to return home.
 // end::addhist[]
 
+// tag::apptcommands[]
 === Adding an appointment into patient's timetable: `addappt`
 
 Adds an appointment into the specified patient's timetable. +
-Format: `addappt INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFORMATION dn/DOCTOR_NAME`
+Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
 
 ****
 * Adds an appointment for the patient at the specified INDEX.
@@ -187,132 +190,104 @@ Format: `addappt INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFO
 
 Examples:
 
-* `addappt 2 d/12092018 s/1300 e/1400 v/Consultation Room 12 i/Diabetes Checkup dn/Dr Tan` +
-Adds an appointment for the 2nd person in the list on 12/09/2018 from 1300-1400 at Consultation Room 12 for a diabetes checkup by Dr Tan
-
-=== Viewing a patient's appointments timetable: `viewappts`
-
-Shows a list of all appointments in the specified patient's timetable. +
-Format: `viewappts INDEX`
-
-****
-* Views all appointments of the patient at the specified index.
-* The index refers to the index number shown in the displayed person list.
-****
-
-Examples:
-
-* `viewappts 2` +
-Views all appointments of the 2nd person in the list.
+* `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+Adds an appointment for the 2nd person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
+for a diabetes checkup by Dr Tan.
 
 === Editing an appointment in a patient's timetable: `editappt`
 
-Edits a specified appointment in the patient's timetable. +
-Format: `editappt INDEX [d/DATE] [s/START_TIME] [e/END_TIME]
-[v/VENUE] [i/APPOINTMENT_INFORMATION] [dn/DOCTOR_NAME]`
+Edits a specified appointment in the specified patient's timetable. +
+Format: `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME]
+[v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]`
 
 ****
-* Edits a patient’s appointment at the specified index.
-* The index refers to the index number shown in the displayed appointment list.
+* Edits an appointment with the specified start time for the patient at the specified index.
+* The index refers to the index number shown in the displayed person list.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 ****
 
 Examples:
 
-* `editappt 2 s/1400 e/1500 v/Consultation Room 13` +
-Edits the 2nd appointment in the list to have start time of 1400, end time of 1500,
-and venue of Consultation Room 13.
+* `editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
+Edits the appointment that starts on 16-09-2018 at 15:00, to now run from 16-09-2018 14:00-14:30 instead
+and be at Consultation Room 13 for the 2nd person in the list.
 
 === Deleting an appointment in a patient’s timetable: `deleteappt`
 
-Deletes a specified appointment in the patient’s timetable. +
-Format: `deleteappt INDEX`
+Deletes a specified appointment in the specified patient’s timetable. +
+Format: `deleteappt INDEX s/START`
 
 ****
-* Deletes a patient’s appointment at the specified index.
-* The index refers to the index number shown in the displayed appointment list.
+* Deletes an appointment with the specified start time for the patient at the specified index.
+* The index refers to the index number shown in the displayed person list.
 ****
 
 Examples:
 
-* `deleteappt 2` +
-Deletes the 2nd appointment in the displayed appointment list.
+* `deleteappt 2 s/16-09-2018 15:00` +
+Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
+// end::apptcommands[]
 
-=== Adding optional information of patient: `addinfo`
+// tag::addinfocommands[]
+=== Adding additional information of patient: `addinfo`
 
-Add the following optional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
+Add the following additional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
 gender, occupation, marital status, family member. +
 Note: age field will be auto-calculated once DOB is populated +
-Format: `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
+Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT]`
+
+.Constraints for `[i/NRIC]`:
+* Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
+* NRIC input must be valid with accordance to ICA's NRIC checksum
+
+.Constraints for `[d/DOB]`:
+* Must be in the format `dd-MM-YYYY`
+
+Work In Progress: `[g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
 Examples:
 
-* `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3` +
+* `addinfo 2 n/S9123456A d/01-01-1990` +
 For patient in index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male and associate
 patient in index 3 as family member.
+// end::addinfocommands[]
 
-===  Editing optional information of patient: `editinfo`
-
-Edit the following optional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
-gender, occupation, marital status, family member. +
-Format: `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
-
-Examples:
-
-* `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3` +
-For patient in index 2, edit NRIC field with S91234567A, date of birth field with
-01-01-1990, height field with 154, gender field with Male and remove patient in
-index 3 as family member.
-
+// tag::reportcommands[]
 === Adding of Medical Report: `addreport`
 
-Add medical diagnosis/report to the patient. +
+Adds medical report to the patient. +
 Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `addreport 3 t/Asthma d/01/01/2018 i/Prescribed XXX medicine, next appointment on 02/02/2018.` +
-Adds a new medical report for patient at index 3 titled Asthma, dated 01/01/2018 with the report's information.
+* `addreport 3 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+Adds a new medical report for patient at index 3 titled Asthma, dated 01-01-2018 with the report's information.
 
 === Editing of Medical Report: `editreport`
 
-Edit existing medical diagnosis/report of the patient. +
-Format: `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [i/INFORMATION]`
-
-****
-* `INDEX_PATIENT` refers to the index shown in the displayed person list
-* `INDEX_REPORT` refers to the index shown in the displayed report list
-****
+Edits existing medical report of the patient. +
+Format: `editreport INDEX od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `editreport 3 1 t/Depression d/02/02/2018 i/Prescribed XXX medicine, next appointment on 03/03/2018.` +
-Edits title, date and information of existing medical report at index 1 for patient at index 3.
+* `editreport 3 od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
+Edits title, date and information of existing medical report dated 01-01-2018 for patient at index 3.
+// end::reportcommands[]
 
-=== List of Medical Report: `listreport`
+=== Sort patients list: `sort`
 
-List all medical diagnosis/reports of a patient +
-Format: `listreport INDEX`
+Sort the list of patients according to a specific prefix category. +
+Format: `sort PREFIX/ ORDER_INDEX`
 
-Examples:
-
-* `listreport 1` +
-List all medical reports/diagnosis that are attached to patient at index 1.
-
-=== Sort patients list: `sortlist`
-
-Sort the list of patients according to a specific category. +
-Format: `sortlist CATEGORY ORDER_INDEX`
-
-`CATEGORY` refers to certain types of important patient information such as name, blood type,
-allergy etc. and each of these information will be defined by their first letter. (ie n for name)
+`PREFIX/` refers to certain categories of patient information such as name, blood type,
+allergy etc. and each of these categories will be defined by a corresponding prefix. (ie n/ for name)
 `ORDER_INDEX` can be 1 or 2 where 1 means in alphabetical and 2 means in reverse order.
 
 Example:
 
-* `sortlist n 2` +
+* `sort n/ 2` +
 Sort the patient list by their names in reverse order (Z → A).
 
 === View patient’s information: `view`
@@ -354,32 +329,29 @@ e.g. `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #0
 * *List* : `list`
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]` +
 e.g. `edit 1 p/91234567 e/johndoe@example.com`
-* *Find* : `find category/KEYWORD UNDER CATEGORY` +
-e.g. `find ms/married` +
-e.g. `find age/18` +
-e.g. `find n/Betsy Tim John`
+* *Find* : `find PREFIX/ KEYWORD [MORE_KEYWORDS]` +
+e.g. `find n/ john` +
+e.g. `find n/ BeTsY Tim John` +
+e.g. `find hsa/ alcohol` +
+e.g. `find i/ high cholesterol`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
-* *Add Timetable* : `add timetable INDEX d/DATE s/START_TIME e/END_TIME v/VENUE i/APPOINTMENT_INFORMATION dn/DOCTOR_NAME` +
-e.g. `add timetable 2 d/12092018 s/1300 e/1400 v/Consultation Room 12 i/Diabetes Checkup dn/Dr Tan`
-* *View Timetable* : `view timetable INDEX` +
-e.g. `view timetable 2`
-* *Edit Timetable* : `edit timetable INDEX [d/DATE] [s/START_TIME] [e/END_TIME] [v/VENUE] [i/APPOINTMENT_INFORMATION] [dn/DOCTOR_NAME]` +
-e.g.`edit timetable 2 s/1400 e/1500 v/Consultation Room 13`
-* *Delete Timetable* : `delete timetable INDEX` +
-e.g. `delete timetable 2`
+* *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
+e.g. `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+* *Edit Appt* : `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME] [v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]` +
+e.g.`editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13`
+* *Delete Appt* : `deleteappt INDEX s/START` +
+e.g. `deleteappt 2 s/16-09-2018 15:00`
 * *Add Information* : `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
 e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Edit Information* : `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
 e.g. `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
-* *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [mr/MEDICAL_REPORT]` +
-e.g. `addreport 3 t/ASTHMA d/01012018 mr/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
-* *Edit Medical Report* : `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [mr/MEDICAL_REPORT]` +
-e.g. `editreport 3 1 t/DEPRESSION d/02012018 mr/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
-* *List Medical Report* : `listreport INDEX` +
-e.g. `listreport 1`
-* *Sort* : `sortlist CATEGORY ORDER_INDEX` +
-e.g. `sortlist n 2`
+* *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
+e.g. `addreport 3 t/Asthma d/01-01-2018 i/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
+* *Edit Medical Report* : `editreport INDEX od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
+e.g. `editreport 3 od/01-01-2018 t/Depression d/02-01-2018 i/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
+* *Sort* : `sort PREFIX/ ORDER_INDEX` +
+e.g. `sort n/ 2`
 * *View* : `view INDEX` +
 e.g. view 1
 * *Import Document* : `import DIRECTORY_NAME/FILE_NAME` +
