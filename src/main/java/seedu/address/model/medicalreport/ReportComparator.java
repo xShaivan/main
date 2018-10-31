@@ -12,8 +12,7 @@ public class ReportComparator implements Comparator<MedicalReport> {
     public int compare(MedicalReport o1, MedicalReport o2) {
         if (!o1.getDate().fullDate.equals(o2.getDate().fullDate)) {
             return o1.getDate().fullDate.compareTo(o2.getDate().fullDate);
-        }
-        else {
+        } else {
             return o1.getTitle().fullTitle.compareTo(o2.getTitle().fullTitle);
         }
     }

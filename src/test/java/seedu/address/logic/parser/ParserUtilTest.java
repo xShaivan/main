@@ -280,7 +280,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseBloodTypeValidValueReturnBloodType() throws Exception{
+    public void parseBloodTypeValidValueReturnBloodType() throws Exception {
         BloodType expectedBloodType = new BloodType(VALID_BLOODTYPE);
         assertEquals(expectedBloodType, ParserUtil.parseBloodType(VALID_BLOODTYPE));
     }
