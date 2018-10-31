@@ -118,6 +118,7 @@ public class ParserUtil {
         return new Email(trimmedEmail);
     }
 
+    //@@author xhxh96
     /**
      * Parses a {@code String nric} into an {@code Nric}.
      * Leading and trailing whitespaces will be trimmed.
@@ -250,6 +251,7 @@ public class ParserUtil {
 
         return new Occupation(trimmedOccupation);
     }
+    //@@author
 
     /**
      * Parses a {@code String tag} into a {@code Tag}.

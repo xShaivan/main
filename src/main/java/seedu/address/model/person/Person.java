@@ -100,6 +100,7 @@ public class Person {
         return Collections.unmodifiableSet(medHistories);
     }
 
+    //@@author xhxh96
     public Nric getNric() {
         return nric;
     }
