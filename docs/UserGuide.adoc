@@ -197,8 +197,7 @@ for a diabetes checkup by Dr Tan.
 === Editing an appointment in a patient's timetable: `editappt`
 
 Edits a specified appointment in the specified patient's timetable. +
-Format: `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME]
-[v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]`
+Format: `editappt INDEX os/ORIGINAL_START [s/START] [e/END] [v/VENUE] [i/INFO] [d/DOCTOR_NAME]`
 
 ****
 * Edits an appointment with the specified start time for the patient at the specified index.
