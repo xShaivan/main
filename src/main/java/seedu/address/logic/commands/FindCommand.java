@@ -32,7 +32,6 @@ public class FindCommand extends Command {
     public FindCommand(Predicate<Person> predicate) {
         this.predicate = predicate;
     }
-    
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
