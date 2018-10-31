@@ -333,23 +333,43 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
-// tag::addinfo
+// tag::addinfo[]
 === Additional Information
 ==== Current Implementation
-The `addinfo` command is facilitated by the `AddInfoPersonDescriptor` class. Essentially, it is in-charged of changing the `Nric`, `DateOfBirth` attributes in a `Person` class.
+The `addinfo` command is facilitated by the `LogicManager` which calls upon `AddressBookParser` for the execution of commands. It extends the `AddressBookParser` with the `addinfo` command.
 
-The command requires user to input an `index` based on the result of the `list` command. Upon getting the `index` input, the `AddInfoCommand` selects the `Person` based on the index from the `model`.
+The command takes in an `index` which represents the `Person` in the list displayed in the `PersonCardList` view. This is followed by a pre-defined list of arguments that user can input to tell the program which attribute of the person will be added/edited using the `AddInfoCommandParser` (For eg. the argument `g/` tells the command that the `Gender` attribute of the `Person` at `index` will be edited).
 
-This is followed by copying the existing attributes of the `Person` selected into an `editPerson` so that existing attributes like `Names` and `Phone` will not be edited.
+The command then looks for the `String` after the arguments which represents the data to be added. This data will be checked for validity using the `ParserUtil` class. If the data is valid, the respective class will be initialized (For eg. the commmand `g/M` is valid as it stands for changing the `Gender` of `Person` to `Male`. Since the data `M` is valid, the `Gender` class will be initialized). If the data is not valid however, an `ParseException` will be thrown warning users that the input data is not valid.
 
-The command then checks for the arguments after the `index`. If an appropriate argument (eg. `\n`) has been found, it will tokenize the string following the argument. The tokenized string will then be parsed into the function in the `ParserUtil` class which checks for the validity of the string.
-If the string is valid, the object that is to be edited will be returned. Otherwise, an exception will be raised.
+Upon handling all the arguments, an `addInfoPersonDescriptor` object will be created. This is essentially a facade object that contains all the attributes of the `Person` to be edited, with its updated attributes. There will then be a mapping of the `addInfoPersonDescriptor` to a new `Person` object facilitated by the method `AddInfoCommand#createEditedPerson`.
 
-Once the objects that are to be edited (eg. `NRIC`, `DateOfBirth`) have been returned, they will be processed by the `AddPersonInfoDescriptor` class which changes the respective values of the objects that are to be edited.
-The `Person` object that is returned will be used to replace the `Person` that was to be edited.
-// end::addinfo
+Finally, the `Model#updatePerson` copies attribute of the new `Person` object created above to the `Person` to be edited.
 
-// tag:: medicalhistory[]
+Given below is an example usage scenario and how the `addinfo` command works at each step.
+
+TODO: Add in class diagrams for each step.
+
+Step 1. User executes `addinfo 5 ic/S1234567Z g/M d/01-01-1970` to modify the `Nric`, `Gender`, and `DateOfBirth` attributes of the 5th person in the `PersonCardList` view.
+
+[NOTE]
+If any of the arguments contain invalid data, the program will not process any data. For instance, `addinfo 1 i/S1234567Z d/20-20-19872 g/M` will not change the `Nric` attribute of the `Person` at index 1 as the date of birth argument contains erroneous date.
+
+Step 2. The `AddressBookParser` makes a call to `AddInfoCommandParser` together with the `String` input.
+
+Step 3. The `AddInfoCommandParser` then looks out for the pre-determined set of arguments in the `String` input. If any of the arguments are found, a call will be made to the `ParserUtil` class which extracts the data meant for the particular argument.
+
+Step 4. The `ParserUtil` class then checks for the validity of the data being parsed. If the data is valid, the class for that data will be initialized and added into an `AddInfoPersonDescriptor` object. If the data is not valid, a `ParseException` will be thrown, which will be handled by the `UIManager` requesting user the correct the data.
+
+Step 5. A `Person` object will be retrieved from the `lastShownList` at the appropriate index. The retrieved `Person` object will then retrieve the updated information from the `AddInfoPersonDescriptor` object created previously.
+
+Step 6. The `Person` will now have an updated additional information.
+
+The following activity diagram summarizes what happens when an user executes a new command:
+<diagram here>
+// end::addinfo[]
+
+// tag::addhist[]
 === Medical History features
 ==== Current Implementation
 
@@ -375,7 +395,7 @@ Given below is an example usage scenario and how the addhist mechanism behaves a
 
 Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
 
-Step 2. The user executes `addhist 1 hsd/ 10/10/2010 hsa/Alcohol hsc/ Kuwait` command to add an entry of medical history to the 1st person in the list that the address book is currently showing. The `addhist` command obtains the data of the person that the user is trying to change based on the index that the user has input.
+Step 2. The user executes `addhist 1 hsd/ 10/10/2010 hsa/Alcohol hsc/ Kuwait hsds/Discharged to home` command to add an entry of medical history to the 1st person in the list that the address book is currently showing. The `addhist` command obtains the data of the person that the user is trying to change based on the index that the user has input.
 
 Step 3. The `addhist` command will obtain the set of entries in the medical history that the person previously had, copy it to a new set of medical history entries, and add the medical history which the user wants to add into the new set.
 
@@ -388,7 +408,7 @@ The following diagram shows how the `addhist` command works:
 
 image::AddHistSequenceDiagram.png[width="800"]
 
-// end:: medicalhistory[]
+// end::addhist[]
 
 // tag::addappt[]
 === AddAppointment feature
@@ -417,7 +437,7 @@ Step 4. The `addappt` command will call `Model#updatePerson()` to update the per
 The following sequence diagram shows how the addappt operation works:
 
 image::AddApptSequenceDiagram.png[width="800"]
-//end:: addappt[]
+// end::addappt[]
 
 // tag::addreport[]
 === AddMedicalReport feature
@@ -448,7 +468,34 @@ Step 5. The `addreport` command will call `Model#commitAddressBook()` to update 
 The following sequence diagram shows how the addreport operation works:
 
 image::AddMedicalReportSequenceDiagram.png[width="800"]
-//end:: addreport[]
+// end::addreport[]
+
+// tag::find[]
+=== Find feature
+==== Current Implementation
+
+The find mechanism is facilitated by `VersionedAddressBook`.
+
+Additionally, it implements the following operations:
+
+* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
+
+This operation is exposed in the `Model` interface as `Model#updatePerson()`.
+
+Given below is an example usage scenario and how the find mechanism behaves at each step.
+
+Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+
+Step 2. The user executes `find hsa/ alcohol nut` command to to filter patients who are allergic to alcohol and nut from the list that the address book is currently showing. The `find` command obtains the detail of the person that the user is trying to find based on the keywords that the user has input.
+
+Step 4. The `find` command will obtain the keywords of the patients and go into the specified patient detail predicate to find patients with such keywords in their details.
+
+Step 5. The `find` command will call `Model#updateFilteredPersonList()` to update the list that the user is shown.
+
+The following sequence diagram shows how the find operation works:
+[Make diagram]
+
+//end:: find[]
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
@@ -988,7 +1035,9 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |doctor |see all my patient’s appointments if there is any |remind my patients to come for appointments days in advance
 
-|`* * *` |doctor |add a list of medical reports for every patient |refer to them in the future
+|`* * *` |doctor |add a list of medical reports for every patient |refer to them in the future for medicine prescription
+
+|`* * *` |doctor |manage my patient's appointments and add, edit or delete appointments |track their appointments and ensure there are no scheduling clashes
 
 |`* * *` |doctor |edit a patient's medical report |rectify any mistakes made in the medical report
 
@@ -1142,6 +1191,7 @@ Use case ends.
 +
 Use case ends.
 
+// tag::apptusecases[]
 === Use case: Adding an appointment into patient’s timetable: `addappt`
 Assume that user has already requested the System to display a list of patients.
 
@@ -1183,42 +1233,6 @@ Use case ends.
 +
 [none]
 ** 1d1. System shows an error message that the end time for an appointment needs to be after the start time.
-+
-Use case ends.
-
-=== Use case: Viewing a patient’s appointments: `viewappt`
-Assume that user has already requested the System to display a list of patients.
-
-*MSS*
-
-1.  User requests to view an appointment in the patient’s timetable.
-2.  System displays the details of the specified appointment in the patient’s timetable.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to view appointments.
-+
-[none]
-** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of viewing appointments.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an invalid index for the list.
-+
-[none]
-** 1b1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1c. User requests to view an appointment that does not exist for the specified patient.
-+
-[none]
-** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to view.
 +
 Use case ends.
 
@@ -1309,8 +1323,10 @@ Use case ends.
 ** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to delete.
 +
 Use case ends.
+// end::apptusecases[]
 
-=== Use case: Adding optional information of patient: `addinfo`
+// tag::addinfousecase[]
+=== Use case: Adding additional information of patient: `addinfo`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1338,7 +1354,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing optional information of patient: `editinfo`
+=== Use case: Editing additional information of patient: `editinfo`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1373,7 +1389,9 @@ Use case ends.
 ** 1c1. System shows an error message that the information does not exist. System will ignore the edit request for that field and process the valid edit requests for other fields
 +
 Use case ends.
+// end::addinfousecase[]
 
+// tag::reportusecases[]
 === Use case: Adding of Medical Report: `addreport`
 Assume that user has already requested the System to display a list of patients.
 
@@ -1429,42 +1447,7 @@ Use case ends.
 ** 1b1. System shows an error message that the index is invalid.
 +
 Use case ends.
-
-=== Use case: List of Medical Report: `listreport`
-Assume that user has already requested the System to display a list of patients.
-
-*MSS*
-
-1.  User requests to view all medical reports for a patient.
-2.  System displays all medical reports for the patient.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to list medical reports.
-+
-[none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of listing medical reports.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an invalid index for the list.
-+
-[none]
-** 1b1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1c. User requests to view all medical reports for a patient who does not have any medical report.
-+
-[none]
-** 1c1. System shows message that the patient does not have any medical report.
-+
-Use case ends.
+// end::reportusecases[]
 
 === Use case: Sort patients list: `sort`
 Assume that user has already requested the System to display a list of patients.

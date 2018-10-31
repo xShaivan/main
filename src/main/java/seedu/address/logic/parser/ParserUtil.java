@@ -6,11 +6,14 @@ import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.DischargeStatus;
+import seedu.address.model.medhistory.DischargeStatusEnum;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.medicalreport.Information;
@@ -20,9 +23,12 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.ApptDateTime;
@@ -112,6 +118,7 @@ public class ParserUtil {
         return new Email(trimmedEmail);
     }
 
+    //@@author xhxh96
     /**
      * Parses a {@code String nric} into an {@code Nric}.
      * Leading and trailing whitespaces will be trimmed.
@@ -142,6 +149,7 @@ public class ParserUtil {
     public static DateOfBirth parseDateOfBirth(String dateOfBirth) throws ParseException {
         requireNonNull(dateOfBirth);
         String trimmedDateOfBirth = dateOfBirth.trim();
+
         if (!DateOfBirth.isValidDate(trimmedDateOfBirth)) {
             throw new ParseException(DateOfBirth.DATE_OF_BIRTH_CONSTRAINTS);
         }
@@ -176,7 +184,7 @@ public class ParserUtil {
      * Parses a {@code String weight} into a {@code Weight}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if given {@code weight} is invalid
+     * @throws ParseException if given {@code weight} is invalid.
      */
     public static Weight parseWeight(String weight) throws ParseException {
         requireNonNull(weight);
@@ -188,6 +196,62 @@ public class ParserUtil {
 
         return new Weight(trimmedWeight);
     }
+
+    /**
+     * Parses a {@code String gender} into a {@code Gender}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code gender} is invalid.
+     */
+    public static Gender parseGender(String gender) throws ParseException {
+        requireNonNull(gender);
+        String trimmedGender = gender.trim();
+
+        if (!Gender.isValidGender(trimmedGender)) {
+            throw new ParseException(Gender.MESSAGE_GENDER_CONSTRAINTS);
+        }
+
+        return new Gender(trimmedGender);
+    }
+
+    /**
+     * Parses a {@code String bloodType} into a {@code BloodType}
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code bloodType} is invalid.
+     */
+    public static BloodType parseBloodType(String bloodType) throws ParseException {
+        requireNonNull(bloodType);
+        String trimmedBloodType = bloodType.trim();
+
+        if (!BloodType.isValidBloodType(trimmedBloodType)) {
+            throw new ParseException(BloodType.MESSAGE_BLOODTYPE_CONSTRAINTS);
+        }
+        if (BloodType.isIncorrectBloodType(trimmedBloodType)) {
+            throw new ParseException(BloodType.MESSAGE_BLOODTYPE_CONSTRAINTS);
+        }
+
+        return new BloodType(trimmedBloodType);
+    }
+
+    /**
+     *
+     * Parses a {@code String occupation} into a {@code Occupation}
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code occupation} is invalid.
+     */
+    public static Occupation parseOccupation(String occupation) throws ParseException {
+        requireNonNull(occupation);
+        String trimmedOccupation = occupation.trim();
+
+        if (!Occupation.isValidOccupation(trimmedOccupation)) {
+            throw new ParseException(Occupation.MESSAGE_OCCUPATION_CONSTRAINTS);
+        }
+
+        return new Occupation(trimmedOccupation);
+    }
+    //@@author
 
     /**
      * Parses a {@code String tag} into a {@code Tag}.
@@ -216,30 +280,41 @@ public class ParserUtil {
         return tagSet;
     }
 
+    //@@author xShaivan
+    /**
+     * ==================================================
+     * PARSER FOR MEDICAL HISTORY SUBFIELDS
+     * ==================================================
+     */
     /**
      * Parses a {@code String allergy} into an {@code Allergy}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code allergy} is invalid.
-     * ParseException is omitted for now.
      */
-    public static Allergy parseAllergy(String allergy) {
+    public static Allergy parseAllergy(String allergy) throws ParseException {
         requireNonNull(allergy);
         String trimmedAllergy = allergy.trim();
+        if (!Allergy.isValidAllergy(trimmedAllergy)) {
+            throw new ParseException(Allergy.MESSAGE_ALLERGY_CONSTRAINTS);
+        }
 
         return new Allergy(trimmedAllergy);
     }
 
     /**
-     * Parses a {@code String prevCountry} into an {@code PrevCountry}.
+     * Parses a {@code String medHistDate} into an {@code MedHistDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code prevCountry} is invalid.
+     * @throws ParseException if the given {@code medHistDate} is invalid.
      * ParseException is omitted for now.
      */
-    public static MedHistDate parseMedHistDate(String medHistDate) {
+    public static MedHistDate parseMedHistDate(String medHistDate) throws ParseException {
         requireNonNull(medHistDate);
         String trimmedMedHistDate = medHistDate.trim();
+        if (!MedHistDate.isValidMedHistDate(trimmedMedHistDate)) {
+            throw new ParseException(MedHistDate.MESSAGE_MEDHISTDATE_CONSTRAINTS);
+        }
 
         return new MedHistDate(trimmedMedHistDate);
     }
@@ -256,6 +331,29 @@ public class ParserUtil {
         String trimmedPrevCountry = prevCountry.trim();
 
         return new PrevCountry(trimmedPrevCountry);
+    }
+
+    /**
+     * Parses a {@code String dischargeStatus} into an {@code DischargeStatus}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dischargeStatus} is invalid.
+     * ParseException is omitted for now.
+     */
+    public static DischargeStatus parseDischargeStatus(String dischargeStatus) {
+        requireNonNull(dischargeStatus);
+        String trimmedDischargeStatus = dischargeStatus.trim();
+        String expandedDischargeStatus = "";
+        for (DischargeStatusEnum code: DischargeStatusEnum.values()) {
+            if (trimmedDischargeStatus.equals(code.name())) {
+                expandedDischargeStatus = code.getCode();
+                break;
+            } else {
+                expandedDischargeStatus = "invalid discharge status";
+            }
+        }
+
+        return new DischargeStatus(expandedDischargeStatus);
     }
 
     //@@author chewkahmeng
@@ -319,7 +417,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code apptDateTime} is invalid.
      */
-    public static ApptDateTime parseApptTime(String apptDateTime) throws ParseException {
+    public static ApptDateTime parseApptDateTime(String apptDateTime) throws ParseException {
         requireNonNull(apptDateTime);
         String trimmedApptDateTime = apptDateTime.trim();
         if (!ApptDateTime.isValidDateTime(trimmedApptDateTime)) {
@@ -371,5 +469,13 @@ public class ParserUtil {
             throw new ParseException(ApptDrName.MESSAGE_NAME_CONSTRAINTS);
         }
         return new ApptDrName(trimmedApptDrName);
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    public static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

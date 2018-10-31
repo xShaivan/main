@@ -3,6 +3,7 @@ package seedu.address.model.medhistory;
 import static java.util.Objects.requireNonNull;
 //import static seedu.address.commons.util.AppUtil.checkArgument;
 
+//@@author xShaivan
 /**
  * Represents the previous country visited of medical history.
  * Guarantees: immutable; is valid as declared in {@link #isValidprevCountry(String)}

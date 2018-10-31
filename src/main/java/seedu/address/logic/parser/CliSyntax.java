@@ -23,6 +23,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_HISTORY_DATE = new Prefix("hsd/");
     public static final Prefix PREFIX_HISTORY_COUNTRY = new Prefix("hsc/");
     public static final Prefix PREFIX_HISTORY_ALLERGY = new Prefix("hsa/");
+    public static final Prefix PREFIX_HISTORY_DISCHARGE_STATUS = new Prefix("hsds/");
 
     /* Prefix definitions for Additional Information */
     public static final Prefix PREFIX_ADD_INFO_NRIC = new Prefix("i/");
@@ -30,7 +31,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADD_INFO_HEIGHT = new Prefix("h/");
     public static final Prefix PREFIX_ADD_INFO_WEIGHT = new Prefix("w/");
     public static final Prefix PREFIX_ADD_INFO_GENDER = new Prefix("g/");
-    public static final Prefix PREFIX_ADD_INFO_OCCUPATION = new Prefix("/o");
+    public static final Prefix PREFIX_ADD_INFO_BLOODTYPE = new Prefix("b/");
+    public static final Prefix PREFIX_ADD_INFO_OCCUPATION = new Prefix("o/");
     public static final Prefix PREFIX_ADD_INFO_MARITAL = new Prefix("/m");
     public static final Prefix PREFIX_ADD_INFO_FAMILY = new Prefix("/f");
 
@@ -40,5 +42,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_APPT_VENUE = new Prefix("v/");
     public static final Prefix PREFIX_APPT_INFO = new Prefix("i/");
     public static final Prefix PREFIX_APPT_DRNAME = new Prefix("d/");
+    public static final Prefix PREFIX_APPT_ORIGINAL_START = new Prefix("os/");
 
 }

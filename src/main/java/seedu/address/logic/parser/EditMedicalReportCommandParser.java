@@ -6,8 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORIGINAL_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
-
-import java.util.stream.Stream;
+import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditMedicalReportCommand;
@@ -57,12 +56,5 @@ public class EditMedicalReportCommandParser implements Parser<EditMedicalReportC
             throw new ParseException(EditMedicalReportCommand.MESSAGE_REPORT_NOT_EDITED);
         }
         return new EditMedicalReportCommand(index, reportDate, editReportDescriptor);
-    }
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

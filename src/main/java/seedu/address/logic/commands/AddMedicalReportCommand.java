@@ -30,10 +30,10 @@ public class AddMedicalReportCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person's medical report by the index number"
             + " used in the list.\n"
-            + "Parameters: [INDEX] (must be a positive integer) "
-            + PREFIX_TITLE + "[TITLE] "
-            + PREFIX_DATE + "[DATE] "
-            + PREFIX_INFO + "[INFORMATION]\n"
+            + "Parameters: INDEX (must be a positive integer) "
+            + PREFIX_TITLE + "TITLE "
+            + PREFIX_DATE + "DATE "
+            + PREFIX_INFO + "INFORMATION\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Asthma "
             + PREFIX_DATE + "01-01-2018 "
@@ -90,7 +90,8 @@ public class AddMedicalReportCommand extends Command {
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), newReports, personToEdit.getMedHistory(), personToEdit.getAppts(),
                 personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getHeight(),
-                personToEdit.getWeight(), personToEdit.getTags());
+                personToEdit.getWeight(), personToEdit.getGender(), personToEdit.getBloodType(),
+                personToEdit.getOccupation(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
