@@ -44,6 +44,7 @@ public class Gender {
             break;
         default:
             this.value = Optional.empty();
+            break;
         }
     }
 
