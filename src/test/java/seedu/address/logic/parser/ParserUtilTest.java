@@ -183,6 +183,7 @@ public class ParserUtilTest {
         assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
     }
 
+    //@@author xhxh96
     @Test
     public void parseNric_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseNric((String) null));
@@ -296,6 +297,7 @@ public class ParserUtilTest {
         assertEquals(expectedOccupation, ParserUtil.parseOccupation(VALID_OCCUPATION));
     }
 
+    //@@author
     @Test
     public void parseTag_null_throwsNullPointerException() throws Exception {
         thrown.expect(NullPointerException.class);

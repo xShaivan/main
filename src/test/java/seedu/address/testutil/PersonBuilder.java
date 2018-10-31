@@ -136,6 +136,7 @@ public class PersonBuilder {
         return this;
     }
 
+    //@@author xhxh96
     /**
      * Sets the {@code NRIC} of the {@code Person} that we are building.
      */
@@ -192,6 +193,7 @@ public class PersonBuilder {
         return this;
     }
 
+    //@@author
     /**
      * Sets the {@code MedicalReport} of the {@code Person} that we are building.
      */
