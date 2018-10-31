@@ -16,8 +16,6 @@ public class GenderTest {
 
         assertFalse(gender.equals(new Gender("M")));
 
-        assertFalse(gender.equals(null));
-
         assertTrue(defaultGender.equals(new Gender("")));
     }
 }
