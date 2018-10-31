@@ -310,6 +310,17 @@
     -fx-font-size: 20px;
 }
 
+.medAppts {
+    -fx-padding: 5;
+    -fx-margin: 5;
+}
+
+.apptCard {
+    -fx-padding: 5;
+    -fx-background-color: #CEFFFE;
+    -fx-effect: dropshadow(gaussian, gray, 2, 2, 0, 0);
+}
+
 #cardPane {
     -fx-background-color: transparent;
     -fx-border-width: 0;

@@ -6,6 +6,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
@@ -305,9 +306,12 @@ public class ParserUtil {
      * Parses a {@code String title} into an {@code Title}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static Title parseTitle(String title) {
+    public static Title parseTitle(String title) throws ParseException {
         requireNonNull(title);
         String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new ParseException(Title.MESSAGE_TITLE_CONSTRAINTS);
+        }
         return new Title(trimmedTitle);
     }
 
@@ -330,9 +334,12 @@ public class ParserUtil {
      * Parses a {@code String information} into an {@code Information}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static Information parseInformation(String information) {
+    public static Information parseInformation(String information) throws ParseException {
         requireNonNull(information);
         String trimmedInformation = information.trim();
+        if (!Information.isValidInformation(trimmedInformation)) {
+            throw new ParseException(Information.MESSAGE_INFORMATION_CONSTRAINTS);
+        }
         return new Information(trimmedInformation);
     }
 
@@ -349,7 +356,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code apptDateTime} is invalid.
      */
-    public static ApptDateTime parseApptTime(String apptDateTime) throws ParseException {
+    public static ApptDateTime parseApptDateTime(String apptDateTime) throws ParseException {
         requireNonNull(apptDateTime);
         String trimmedApptDateTime = apptDateTime.trim();
         if (!ApptDateTime.isValidDateTime(trimmedApptDateTime)) {
@@ -401,5 +408,13 @@ public class ParserUtil {
             throw new ParseException(ApptDrName.MESSAGE_NAME_CONSTRAINTS);
         }
         return new ApptDrName(trimmedApptDrName);
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    public static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
