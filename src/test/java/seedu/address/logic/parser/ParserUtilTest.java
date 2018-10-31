@@ -237,6 +237,7 @@ public class ParserUtilTest {
         assertEquals(expectedTagSet, actualTagSet);
     }
 
+    //@@author xShaivan
     @Test
     public void parseAllergynullthrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseAllergy((String) null));

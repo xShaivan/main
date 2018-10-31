@@ -7,12 +7,11 @@ import java.util.Optional;
 
 import seedu.address.commons.util.CollectionUtil;
 
+//@@author xShaivan
 /**
  * Model of medical history of a patient.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-
-
 public class MedHistory {
     private MedHistDate medHistDate;
     private Allergy allergy;

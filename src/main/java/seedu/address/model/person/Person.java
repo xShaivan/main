@@ -86,11 +86,12 @@ public class Person {
         return Collections.unmodifiableSet(reports);
     }
 
-    //@@author
+    //@@author xShaivan
     public Set<MedHistory> getMedHistory() {
         return Collections.unmodifiableSet(medHistories);
     }
 
+    //@@author
     public Nric getNric() {
         return nric;
     }

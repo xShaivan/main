@@ -186,6 +186,7 @@ public class XmlAdaptedPerson {
         }
         final Set<MedicalReport> modelReports = new HashSet<>(personMedicalReports);
 
+        //@@author xShaivan
         final List<MedHistory> personMedHistories = new ArrayList<>();
         for (XmlAdaptedMedHistory medHistory : medHistories) {
             personMedHistories.add(medHistory.toModelType());

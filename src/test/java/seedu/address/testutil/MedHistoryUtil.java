@@ -9,8 +9,9 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import seedu.address.logic.commands.AddHistCommand;
 import seedu.address.model.medhistory.MedHistory;
 
+//@@author xShaivan
 /**
- * A utility class for MedicalReport.
+ * A utility class for Medical History.
  */
 public class MedHistoryUtil {
     /**
@@ -22,7 +23,7 @@ public class MedHistoryUtil {
     }
 
     /**
-     * Returns the part of command string for the given {@code appt}'s details.
+     * Returns the part of command string for the given {@code medHistory}'s details.
      */
     public static String getMedHistoryDetails(MedHistory medHistory) {
         StringBuilder sb = new StringBuilder();

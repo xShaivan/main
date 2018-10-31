@@ -2,6 +2,7 @@ package seedu.address.model.medhistory;
 
 import static java.util.Objects.requireNonNull;
 
+//@@author xShaivan
 /**
  * Represents the discharge status of medical history.
  * Guarantees: immutable; is valid as declared in {@link #isValidDischargeStatus(String)}

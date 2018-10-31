@@ -2,6 +2,7 @@ package seedu.address.model.medhistory;
 
 import java.util.Comparator;
 
+//@@author xShaivan
 /**
  * Comparator for TreeSet to sort MedHistory entries by date.
  * If dates are similar, sort by allergy.

@@ -31,6 +31,7 @@ import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
 
+//@@author xShaivan
 /**
  * Adds/Edits medical history of a patient in the Health Book.
  */
@@ -86,7 +87,7 @@ public class AddHistCommand extends Command {
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * edited with {@code medHistories}.
      */
     private static Person createEditedPerson(Person personToEdit, Set <MedHistory> newMedHistories) {
         assert personToEdit != null;

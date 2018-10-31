@@ -218,6 +218,12 @@ public class ParserUtil {
         return tagSet;
     }
 
+    //@@author xShaivan
+    /**
+     * ==================================================
+     * PARSER FOR MEDICAL HISTORY SUBFIELDS
+     * ==================================================
+     */
     /**
      * Parses a {@code String allergy} into an {@code Allergy}.
      * Leading and trailing whitespaces will be trimmed.
