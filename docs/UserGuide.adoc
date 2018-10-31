@@ -191,7 +191,7 @@ Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
 Examples:
 
 * `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
-Adds an appointment for the 2nd person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
+Adds an appointment for the 1st person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
 for a diabetes checkup by Dr Tan.
 
 === Editing an appointment in a patient's timetable: `editappt`
