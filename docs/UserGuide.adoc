@@ -172,8 +172,8 @@ Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY
 
 Examples:
 
-* `addhist 1 hsd/ 10/10/2010 hsa/ Alcohol hsc/ Kuwait hsds/Discharged to home`
-Adds a medical history entry for the 1st person in the list on 10/10/2010 with an alcohol allergy and Kuwait as previous country visited.
+* `addhist 1 hsd/10-10-2010 hsa/Alcohol hsc/Kuwait hsds/d`
+Adds a medical history entry for the 1st person in the list on 10-10-2010 with an alcohol allergy and Kuwait as previous country visited.
 The patient is discharged and allowed to return home.
 // end::addhist[]
 
