@@ -246,7 +246,7 @@ Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in
 Add the following additional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
 gender, occupation, marital status, family member. +
 Note: age field will be auto-calculated once DOB is populated +
-Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT]`
+Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION]`
 
 .Constraints for `[i/NRIC]`:
 * Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
@@ -255,7 +255,28 @@ Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT]`
 .Constraints for `[d/DOB]`:
 * Must be in the format `dd-MM-YYYY`
 
-Work In Progress: `[g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
+.Constraints for `[h/HEIGHT]
+* Must be a numerical input.
+* Input all `height` data in centimeters.
+* Decimals is not supported as of this release.
+
+.Constraints for `[w/WEIGHT]
+* Must be a numerical input.
+* Input all `weight` data in kilograms.
+* Decimals is not supported as of this release.
+
+.Constraints for `[g/BLOOD TYPE]`
+* Input must either be `A+`, `A-`, `AB+`, `AB-`, `B+`, `B-`, `O+` or `O-`.
+* Excluding the +/- from the input will not be accepted.
+
+.Constraints for `[g/GENDER]`
+* Input must either be `M` (for Male) or `F` (for Female).
+* Alternative input `Male` and `Female` are acceptable also.
+
+.Constraints for `[o/OCCUPATION]`
+* Must not contain any numerics and special characters including whitespaces (Eg. Nurse and Doctor or Wood-Logger are not accepted input).
+
+Work In Progress: `[m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
 Examples:
 
