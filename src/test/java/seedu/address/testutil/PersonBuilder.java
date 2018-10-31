@@ -183,6 +183,9 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code occupation} of the {@code Person} that we are building.
+     */
     public PersonBuilder withOccupation(String occupation) {
         this.occupation = new Occupation(occupation);
         return this;

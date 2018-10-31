@@ -6,8 +6,8 @@ import static java.util.Objects.requireNonNull;
  * Represents a person's occupation in Health Book.
  */
 public class Occupation {
-    public static final String MESSAGE_OCCUPATION_CONSTRAINTS = "Occupation should not contain invalid characters" +
-            " and whitespaces.";
+    public static final String MESSAGE_OCCUPATION_CONSTRAINTS = "Occupation should not contain invalid characters"
+            + " and whitespaces.";
 
     private static final String OCCUPATION_VALIDATION_REGEX = "[a-zA-Z]+";
 

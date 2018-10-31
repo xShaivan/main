@@ -214,7 +214,7 @@ public class ParserUtil {
      * Parses a {@code String bloodType} into a {@code BloodType}
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if given {@code gender} is invalid.
+     * @throws ParseException if given {@code bloodType} is invalid.
      */
     public static BloodType parseBloodType(String bloodType) throws ParseException {
         requireNonNull(bloodType);
@@ -230,6 +230,13 @@ public class ParserUtil {
         return new BloodType(trimmedBloodType);
     }
 
+    /**
+     *
+     * Parses a {@code String occupation} into a {@code Occupation}
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code occupation} is invalid.
+     */
     public static Occupation parseOccupation(String occupation) throws ParseException {
         requireNonNull(occupation);
         String trimmedOccupation = occupation.trim();
