@@ -45,7 +45,6 @@ public class Person {
     private final Weight weight;
     private final Gender gender;
     private final BloodType bloodType;
-    //private final Gender gender;
 
     /**
      * Every field must be present and not null.
@@ -167,10 +166,12 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                //&& otherPerson.getNric().equals(getNric())
-                //&& otherPerson.getDateOfBirth().equals(getDateOfBirth())
-                //&& otherPerson.getHeight().equals(getHeight())
-                //&& otherPerson.getWeight().equals(getWeight())
+                && otherPerson.getNric().equals(getNric())
+                && otherPerson.getDateOfBirth().equals(getDateOfBirth())
+                && otherPerson.getHeight().equals(getHeight())
+                && otherPerson.getWeight().equals(getWeight())
+                //&& otherPerson.getGender().equals(getGender())
+                && otherPerson.getBloodType().equals(getBloodType())
                 && otherPerson.getMedHistory().equals(getMedHistory())
                 && otherPerson.getAppts().equals(getAppts())
                 && otherPerson.getMedicalReports().equals(getMedicalReports())

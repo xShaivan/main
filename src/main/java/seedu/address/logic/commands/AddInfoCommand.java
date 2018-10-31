@@ -80,7 +80,7 @@ public class AddInfoCommand extends Command {
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
-        EventsCenter.getInstance().post(new JumpToListRequestEvent(index));
+
         return new CommandResult(String.format(MESSAGE_ADD_INFO_SUCCESS, editedPerson));
     }
 

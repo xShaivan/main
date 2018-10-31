@@ -7,9 +7,11 @@
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
         <nric></nric>
-        <dateOfBirth>01-01-1970</dateOfBirth>
-        <height>172</height>
-        <weight>56</weight>
+        <dateOfBirth></dateOfBirth>
+        <height></height>
+        <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -18,9 +20,11 @@
         <email>johnd@example.com</email>
         <address>311, Clementi Ave 2, #02-25</address>
         <nric></nric>
-        <dateOfBirth>01-01-1970</dateOfBirth>
-        <height>172</height>
-        <weight>56</weight>
+        <dateOfBirth></dateOfBirth>
+        <height></height>
+        <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
         <reports>
             <title>Asthma</title>
             <date>01-01-2018</date>
@@ -64,9 +68,11 @@
         <email>heinz@example.com</email>
         <address>wall street</address>
         <nric></nric>
-        <dateOfBirth>01-01-1970</dateOfBirth>
-        <height>172</height>
-        <weight>56</weight>
+        <dateOfBirth></dateOfBirth>
+        <height></height>
+        <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
     </persons>
     <persons>
         <name>Daniel Meier</name>
@@ -74,9 +80,11 @@
         <email>cornelia@example.com</email>
         <address>10th street</address>
         <nric></nric>
-        <dateOfBirth>01-01-1970</dateOfBirth>
-        <height>172</height>
-        <weight>56</weight>
+        <dateOfBirth></dateOfBirth>
+        <height></height>
+        <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -85,9 +93,11 @@
         <email>werner@example.com</email>
         <address>michegan ave</address>
         <nric></nric>
-        <dateOfBirth>01-01-1970</dateOfBirth>
-        <height>172</height>
-        <weight>56</weight>
+        <dateOfBirth></dateOfBirth>
+        <height></height>
+        <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
     </persons>
     <persons>
         <name>Fiona Kunz</name>
@@ -95,9 +105,11 @@
         <email>lydia@example.com</email>
         <address>little tokyo</address>
         <nric></nric>
-        <dateOfBirth>01-01-1970</dateOfBirth>
-        <height>172</height>
-        <weight>56</weight>
+        <dateOfBirth></dateOfBirth>
+        <height></height>
+        <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
     </persons>
     <persons>
         <name>George Best</name>
@@ -105,9 +117,11 @@
         <email>anna@example.com</email>
         <address>4th street</address>
         <nric>S5185093I</nric>
-        <dateOfBirth>01-01-1970</dateOfBirth>
-        <height>172</height>
-        <weight>56</weight>
+        <dateOfBirth></dateOfBirth>
+        <height></height>
+        <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
         <reports>
             <title>Asthma</title>
             <date>01-01-2018</date>

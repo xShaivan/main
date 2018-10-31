@@ -33,7 +33,6 @@ public class Gender {
 
     public Gender(String gender) {
         requireNonNull(gender);
-
         switch (gender) {
         case "M":
         case "Male":
@@ -64,7 +63,8 @@ public class Gender {
     @Override
     public boolean equals(Object other) {
         return other == this
-                || (other instanceof Gender && value.equals(((Gender) other).value));
+                || (other instanceof Gender
+                && value.equals(((Gender) other).value));
     }
 
     @Override

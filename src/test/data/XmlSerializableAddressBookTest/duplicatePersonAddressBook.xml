@@ -10,6 +10,8 @@
         <dateOfBirth>01-01-1970</dateOfBirth>
         <height></height>
         <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
         <tagged>friends</tagged>
     </persons>
 
@@ -23,6 +25,8 @@
         <dateOfBirth>01-01-1970</dateOfBirth>
         <height></height>
         <weight></weight>
+        <gender></gender>
+        <bloodType></bloodType>
     </persons>
 
 </addressbook>

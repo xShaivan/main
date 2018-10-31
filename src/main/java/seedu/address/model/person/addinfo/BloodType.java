@@ -44,6 +44,14 @@ public class BloodType {
     }
 
     @Override
+    public boolean equals(Object other) {
+        return other == this
+                || (other instanceof BloodType
+                && value.equals(((BloodType) other).value));
+
+    }
+
+    @Override
     public int hashCode() {
         return value.hashCode();
     }

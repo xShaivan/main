@@ -11,6 +11,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
@@ -31,10 +32,11 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NRIC = "";
-    public static final String DEFAULT_DOB = "01-01-1970";
-    public static final String DEFAULT_HEIGHT = "172";
-    public static final String DEFAULT_WEIGHT = "56";
-    public static final String DEFAULT_GENDER = "M";
+    public static final String DEFAULT_DOB = "";
+    public static final String DEFAULT_HEIGHT = "";
+    public static final String DEFAULT_WEIGHT = "";
+    public static final String DEFAULT_GENDER = "";
+    public static final String DEFAULT_BLOODTYPE = "";
 
     private Name name;
     private Phone phone;
@@ -45,6 +47,7 @@ public class PersonBuilder {
     private Height height;
     private Weight weight;
     private Gender gender;
+    private BloodType bloodType;
     private Set<MedicalReport> reports;
     private Set<MedHistory> medHistories;
     private Set<Appt> appts;
@@ -60,6 +63,7 @@ public class PersonBuilder {
         height = new Height(DEFAULT_HEIGHT);
         weight = new Weight(DEFAULT_WEIGHT);
         gender = new Gender(DEFAULT_GENDER);
+        bloodType = new BloodType(DEFAULT_BLOODTYPE);
         reports = new HashSet<>();
         medHistories = new HashSet<>();
         appts = new TreeSet<>(new ApptComparator());
@@ -78,6 +82,8 @@ public class PersonBuilder {
         dateOfBirth = personToCopy.getDateOfBirth();
         height = personToCopy.getHeight();
         weight = personToCopy.getWeight();
+        gender = personToCopy.getGender();
+        bloodType = personToCopy.getBloodType();
         reports = personToCopy.getMedicalReports();
         medHistories = personToCopy.getMedHistory();
         appts = personToCopy.getAppts();
@@ -156,6 +162,16 @@ public class PersonBuilder {
         return this;
     }
 
+    public PersonBuilder withGender(String gender) {
+        this.gender = new Gender(gender);
+        return this;
+    }
+
+    public PersonBuilder withBloodType(String bloodType) {
+        this.bloodType = new BloodType(bloodType);
+        return this;
+    }
+
     /**
      * Sets the {@code MedicalReport} of the {@code Person} that we are building.
      */
@@ -186,6 +202,6 @@ public class PersonBuilder {
      */
     public Person build() {
         return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height, weight,
-                gender, tags);
+                gender, bloodType, tags);
     }
 }

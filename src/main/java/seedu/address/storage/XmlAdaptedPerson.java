@@ -43,17 +43,17 @@ public class XmlAdaptedPerson {
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
 
-    @XmlElement(required = true)
+    @XmlElement
     private String nric;
-    @XmlElement(required = true)
+    @XmlElement
     private String dateOfBirth;
-    @XmlElement(required = true)
+    @XmlElement
     private String height;
-    @XmlElement(required = true)
+    @XmlElement
     private String weight;
-    @XmlElement(required = true)
+    @XmlElement
     private String gender;
-    @XmlElement(required = true)
+    @XmlElement
     private String bloodType;
 
     @XmlElement
