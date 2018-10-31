@@ -41,77 +41,77 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Full Name:">
+                              <Label fx:id="fullNameTag">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Age" GridPane.rowIndex="4">
+                              <Label fx:id="ageTag" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="NRIC:" GridPane.rowIndex="3">
+                              <Label fx:id="nricTag" GridPane.rowIndex="3">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                              <Label fx:id="dateOfBirthTag" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Address:" GridPane.columnIndex="2">
+                              <Label fx:id="addressTag" GridPane.columnIndex="2">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text="Phone:" GridPane.rowIndex="1">
+                              <Label fx:id="phoneTag" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="fullNameLabel" text="fullName" GridPane.columnIndex="1" />
-                              <Label text="age" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Label fx:id="addressLabel" text="address" GridPane.columnIndex="3" />
-                              <Label fx:id="nricLabel" text="nric" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label fx:id="dateOfBirthLabel" text="dateOfBirth" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                              <Label fx:id="phoneLabel" text="phone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label text="Height:" GridPane.rowIndex="5">
+                              <Label fx:id="fullNameLabel" GridPane.columnIndex="1" />
+                              <Label fx:id="ageLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="addressLabel" GridPane.columnIndex="3" />
+                              <Label fx:id="nricLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="dateOfBirthLabel" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <Label fx:id="phoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="heightTag" GridPane.rowIndex="5">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="heightLabel" text="height" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <Label text="Weight:" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                              <Label fx:id="heightLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label fx:id="weightTag" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="weightLabel" text="weight" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                              <Label text="Gender:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                              <Label fx:id="weightLabel" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <Label fx:id="genderTag" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="genderLabel" text="gender" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                              <Label text="Email:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label fx:id="genderLabel" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <Label fx:id="emailTag" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="emailLabel" text="email" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Label text="Blood Type:" GridPane.rowIndex="6">
+                              <Label fx:id="emailLabel" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Label fx:id="bloodTypeTag" GridPane.rowIndex="6">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font></Label>
-                              <Label fx:id="bloodTypeLabel" text="bloodType" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                              <Label text="Occupation:" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                              <Label fx:id="bloodTypeLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label fx:id="occupationTag" GridPane.columnIndex="2" GridPane.rowIndex="6">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="occupationLabel" text="occupation" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                              <Label fx:id="occupationLabel" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                            </children>
                         </GridPane>
                      </children>

@@ -61,6 +61,28 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private Label occupationLabel;
 
+    @FXML
+    private Label fullNameTag;
+    @FXML
+    private Label nricTag;
+    @FXML
+    private Label dateOfBirthTag;
+    @FXML
+    private Label addressTag;
+    @FXML
+    private Label phoneTag;
+    @FXML
+    private Label heightTag;
+    @FXML
+    private Label weightTag;
+    @FXML
+    private Label genderTag;
+    @FXML
+    private Label emailTag;
+    @FXML
+    private Label bloodTypeTag;
+    @FXML
+    private Label occupationTag;
 
     @FXML
     private FlowPane medHistoriesFlowPane;
@@ -98,6 +120,19 @@ public class InfoPanel extends UiPart<Region> {
      */
     private void fillAdditionalInfoPane() {
         additionalInfo.setStyle("-fx-background-color: #FCFCFC");
+
+        fullNameTag.setText("Full Name:");
+        nricTag.setText("NRIC:");
+        dateOfBirthTag.setText("Date of Birth:");
+        addressTag.setText("Address:");
+        phoneTag.setText("Phone:");
+        heightTag.setText("Height:");
+        weightTag.setText("Weight:");
+        genderTag.setText("Gender:");
+        emailTag.setText("Email:");
+        bloodTypeTag.setText("Blood Type:");
+        occupationTag.setText("Occupation:");
+
         fullNameLabel.setText(person.getName().fullName);
         emailLabel.setText(person.getEmail().value);
         nricLabel.setText(person.getNric().value);
@@ -159,6 +194,29 @@ public class InfoPanel extends UiPart<Region> {
         nameLabel2.setText("");
         nameLabel3.setText("");
         nameLabel4.setText("");
+
+        fullNameTag.setText("");
+        nricTag.setText("");
+        dateOfBirthTag.setText("");
+        addressTag.setText("");
+        phoneTag.setText("");
+        heightTag.setText("");
+        weightTag.setText("");
+        genderTag.setText("");
+        emailTag.setText("");
+        bloodTypeTag.setText("");
+        occupationTag.setText("");
+
+        fullNameLabel.setText("");
+        emailLabel.setText("");
         nricLabel.setText("");
+        dateOfBirthLabel.setText("");
+        addressLabel.setText("");
+        phoneLabel.setText("");
+        heightLabel.setText("");
+        weightLabel.setText("");
+        genderLabel.setText("");
+        bloodTypeLabel.setText("");
+        occupationLabel.setText("");
     }
 }
