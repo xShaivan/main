@@ -122,6 +122,7 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         infoPanel = new InfoPanel();
         infoPanelPlaceholder.getChildren().add(infoPanel.getRoot());
+        infoPanel.showEmptyMessage();
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -203,8 +204,13 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     //@@author brandonccm1996
-    void showPersonDetails(Person person) {
+    void showPersonDetailsOnInfoPanel(Person person) {
         infoPanel.clearFlowPanes();
         infoPanel.setPerson(person);
+    }
+
+    void showInfoPanelEmptyMessage() {
+        infoPanel.clearFlowPanes();
+        infoPanel.showEmptyMessage();
     }
 }
