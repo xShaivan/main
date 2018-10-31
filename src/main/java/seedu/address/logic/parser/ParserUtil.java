@@ -25,6 +25,7 @@ import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.ApptDateTime;
@@ -226,6 +227,17 @@ public class ParserUtil {
         }
 
         return new BloodType(trimmedBloodType);
+    }
+
+    public static Occupation parseOccupation(String occupation) throws ParseException {
+        requireNonNull(occupation);
+        String trimmedOccupation = occupation.trim();
+
+        if (!Occupation.isValidOccupation(trimmedOccupation)) {
+            throw new ParseException(Occupation.MESSAGE_OCCUPATION_CONSTRAINTS);
+        }
+
+        return new Occupation(trimmedOccupation);
     }
 
     /**

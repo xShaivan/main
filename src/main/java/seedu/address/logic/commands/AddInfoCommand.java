@@ -1,6 +1,13 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_BLOODTYPE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_DOB;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_GENDER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_HEIGHT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_OCCUPATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_WEIGHT;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -25,6 +32,7 @@ import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -41,7 +49,16 @@ public class AddInfoCommand extends Command {
             + "by the index number used in the last person listing. "
             + "Existing information will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "Example: " + COMMAND_WORD + " 1 ";
+            + "[" + PREFIX_ADD_INFO_NRIC + "NRIC] "
+            + "[" + PREFIX_ADD_INFO_DOB + "DATE OF BIRTH IN DD-MM-YYYY] "
+            + "[" + PREFIX_ADD_INFO_HEIGHT + "HEIGHT IN CM] "
+            + "[" + PREFIX_ADD_INFO_WEIGHT + "WEIGHT IN KG] "
+            + "[" + PREFIX_ADD_INFO_GENDER + "GENDER] "
+            + "[" + PREFIX_ADD_INFO_BLOODTYPE + "BLOOD TYPE] "
+            + "[" + PREFIX_ADD_INFO_OCCUPATION + "OCCUPATION]...\n"
+            + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_ADD_INFO_DOB + "01-01-1970 "
+            + PREFIX_ADD_INFO_HEIGHT + "182";
 
     public static final String MESSAGE_NOT_EDITED = "At least one field to add additional information must be provided";
     public static final String MESSAGE_ADD_INFO_SUCCESS = "Added additional info to Person: %1$s";
@@ -104,9 +121,11 @@ public class AddInfoCommand extends Command {
         Weight updatedWeight = addInfoPersonDescriptor.getWeight().orElse(personToEdit.getWeight());
         Gender updatedGender = addInfoPersonDescriptor.getGender().orElse(personToEdit.getGender());
         BloodType updatedBloodType = addInfoPersonDescriptor.getBloodType().orElse(personToEdit.getBloodType());
+        Occupation updatedOccupation = addInfoPersonDescriptor.getOccupation().orElse(personToEdit.getOccupation());
 
         return new Person(name, phone, email, address, medicalReports, medHistory, appts, updatedNric,
-                updatedDateOfBirth, updatedHeight, updatedWeight, updatedGender, updatedBloodType, tags);
+                updatedDateOfBirth, updatedHeight, updatedWeight, updatedGender, updatedBloodType, updatedOccupation,
+                tags);
     }
 
     @Override
@@ -138,6 +157,7 @@ public class AddInfoCommand extends Command {
         private Weight weight;
         private Gender gender;
         private BloodType bloodType;
+        private Occupation occupation;
 
         public AddInfoPersonDescriptor() {}
 
@@ -148,10 +168,11 @@ public class AddInfoCommand extends Command {
             setWeight(toCopy.weight);
             setGender(toCopy.gender);
             setBloodType(toCopy.bloodType);
+            setOccupation(toCopy.occupation);
         }
 
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight, gender, bloodType);
+            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight, gender, bloodType, occupation);
         }
 
         public void setNric(Nric nric) {
@@ -202,6 +223,14 @@ public class AddInfoCommand extends Command {
             return Optional.ofNullable(bloodType);
         }
 
+        public void setOccupation(Occupation occupation) {
+            this.occupation = occupation;
+        }
+
+        public Optional<Occupation> getOccupation() {
+            return Optional.ofNullable(occupation);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -214,6 +243,7 @@ public class AddInfoCommand extends Command {
 
             AddInfoPersonDescriptor e = (AddInfoPersonDescriptor) other;
 
+            //TODO: Update equality
             return getNric().equals(e.getNric())
                     && getDateOfBirth().equals(e.getDateOfBirth());
         }

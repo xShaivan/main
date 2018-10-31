@@ -15,6 +15,7 @@ import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -45,13 +46,14 @@ public class Person {
     private final Weight weight;
     private final Gender gender;
     private final BloodType bloodType;
+    private final Occupation occupation;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<MedicalReport> reports,
                   Set<MedHistory> medHistories, Set<Appt> appts, Nric nric, DateOfBirth dateOfBirth, Height height,
-                  Weight weight, Gender gender, BloodType bloodType, Set<Tag> tags) {
+                  Weight weight, Gender gender, BloodType bloodType, Occupation occupation, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -63,6 +65,7 @@ public class Person {
         this.weight = weight;
         this.gender = gender;
         this.bloodType = bloodType;
+        this.occupation = occupation;
         this.reports.addAll(reports);
         this.medHistories.addAll(medHistories);
         this.appts.addAll(appts);
@@ -119,6 +122,10 @@ public class Person {
         return bloodType;
     }
 
+    public Occupation getOccupation() {
+        return occupation;
+    }
+
     //@@author brandonccm1996
     public Set<Appt> getAppts() {
         return Collections.unmodifiableSet(appts);
@@ -172,7 +179,9 @@ public class Person {
                 && otherPerson.getWeight().equals(getWeight())
                 && otherPerson.getGender().equals(getGender())
                 && otherPerson.getBloodType().equals(getBloodType())
+                && otherPerson.getOccupation().equals(getOccupation())
                 && otherPerson.getMedHistory().equals(getMedHistory())
+
                 && otherPerson.getAppts().equals(getAppts())
                 && otherPerson.getMedicalReports().equals(getMedicalReports())
                 && otherPerson.getTags().equals(getTags());

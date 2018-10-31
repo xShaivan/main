@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ScrollPane fx:id="infoPanel" fitToWidth="true">
             <content>
@@ -101,8 +101,17 @@
                                  </font>
                               </Label>
                               <Label fx:id="emailLabel" text="email" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Label text="Blood Type:" GridPane.rowIndex="6" />
+                              <Label text="Blood Type:" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
                               <Label fx:id="bloodTypeLabel" text="bloodType" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label text="Occupation:" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="occupationLabel" text="occupation" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                            </children>
                         </GridPane>
                      </children>

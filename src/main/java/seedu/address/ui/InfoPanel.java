@@ -57,6 +57,8 @@ public class InfoPanel extends UiPart<Region> {
     private Label genderLabel;
     @FXML
     private Label bloodTypeLabel;
+    @FXML
+    private Label occupationLabel;
 
 
     @FXML
@@ -105,6 +107,7 @@ public class InfoPanel extends UiPart<Region> {
         weightLabel.setText(person.getWeight().value);
         genderLabel.setText(person.getGender().toString());
         bloodTypeLabel.setText(person.getBloodType().value);
+        occupationLabel.setText(person.getOccupation().value);
     }
 
     /**

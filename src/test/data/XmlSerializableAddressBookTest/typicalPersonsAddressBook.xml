@@ -12,6 +12,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -25,6 +26,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
         <reports>
             <title>Asthma</title>
             <date>01-01-2018</date>
@@ -73,6 +75,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
     </persons>
     <persons>
         <name>Daniel Meier</name>
@@ -85,6 +88,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
         <tagged>friends</tagged>
     </persons>
     <persons>
@@ -98,6 +102,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
     </persons>
     <persons>
         <name>Fiona Kunz</name>
@@ -110,6 +115,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
     </persons>
     <persons>
         <name>George Best</name>
@@ -122,6 +128,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
         <reports>
             <title>Asthma</title>
             <date>01-01-2018</date>

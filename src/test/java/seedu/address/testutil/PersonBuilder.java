@@ -16,6 +16,7 @@ import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -37,6 +38,7 @@ public class PersonBuilder {
     public static final String DEFAULT_WEIGHT = "";
     public static final String DEFAULT_GENDER = "";
     public static final String DEFAULT_BLOODTYPE = "";
+    public static final String DEFAULT_OCCUPATION = "";
 
     private Name name;
     private Phone phone;
@@ -48,6 +50,7 @@ public class PersonBuilder {
     private Weight weight;
     private Gender gender;
     private BloodType bloodType;
+    private Occupation occupation;
     private Set<MedicalReport> reports;
     private Set<MedHistory> medHistories;
     private Set<Appt> appts;
@@ -64,6 +67,7 @@ public class PersonBuilder {
         weight = new Weight(DEFAULT_WEIGHT);
         gender = new Gender(DEFAULT_GENDER);
         bloodType = new BloodType(DEFAULT_BLOODTYPE);
+        occupation = new Occupation(DEFAULT_OCCUPATION);
         reports = new HashSet<>();
         medHistories = new HashSet<>();
         appts = new TreeSet<>(new ApptComparator());
@@ -84,6 +88,7 @@ public class PersonBuilder {
         weight = personToCopy.getWeight();
         gender = personToCopy.getGender();
         bloodType = personToCopy.getBloodType();
+        occupation = personToCopy.getOccupation();
         reports = personToCopy.getMedicalReports();
         medHistories = personToCopy.getMedHistory();
         appts = personToCopy.getAppts();
@@ -178,6 +183,11 @@ public class PersonBuilder {
         return this;
     }
 
+    public PersonBuilder withOccupation(String occupation) {
+        this.occupation = new Occupation(occupation);
+        return this;
+    }
+
     /**
      * Sets the {@code MedicalReport} of the {@code Person} that we are building.
      */
@@ -208,6 +218,6 @@ public class PersonBuilder {
      */
     public Person build() {
         return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height, weight,
-                gender, bloodType, tags);
+                gender, bloodType, occupation, tags);
     }
 }

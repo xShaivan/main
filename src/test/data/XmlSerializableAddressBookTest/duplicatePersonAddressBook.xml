@@ -12,6 +12,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
         <tagged>friends</tagged>
     </persons>
 
@@ -27,6 +28,7 @@
         <weight></weight>
         <gender></gender>
         <bloodType></bloodType>
+        <occupation></occupation>
     </persons>
 
 </addressbook>

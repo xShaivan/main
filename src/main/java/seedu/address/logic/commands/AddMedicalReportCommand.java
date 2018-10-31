@@ -73,7 +73,7 @@ public class AddMedicalReportCommand extends Command {
                 personToEdit.getAddress(), newReports, personToEdit.getMedHistory(), personToEdit.getAppts(),
                 personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getHeight(),
                 personToEdit.getWeight(), personToEdit.getGender(), personToEdit.getBloodType(),
-                personToEdit.getTags());
+                personToEdit.getOccupation(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

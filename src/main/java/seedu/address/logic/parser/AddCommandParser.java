@@ -26,6 +26,7 @@ import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -65,9 +66,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Weight weight = new Weight("");
         Gender gender = new Gender("");
         BloodType bloodType = new BloodType("");
+        Occupation occupation = new Occupation("");
 
         Person person = new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height,
-                weight, gender, bloodType, tagList);
+                weight, gender, bloodType, occupation, tagList);
 
         return new AddCommand(person);
     }
