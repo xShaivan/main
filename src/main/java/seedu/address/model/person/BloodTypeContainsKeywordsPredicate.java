@@ -19,7 +19,7 @@ public class BloodTypeContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getNric().value, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getBloodType().value, keyword));
     }
 
     @Override
