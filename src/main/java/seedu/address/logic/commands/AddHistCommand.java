@@ -7,10 +7,14 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
@@ -41,6 +45,8 @@ import seedu.address.model.timetable.Appt;
 
 public class AddHistCommand extends Command {
 
+    private static final Logger logger = LogsCenter.getLogger(AddHistCommand.class);
+
     public static final String COMMAND_WORD = "addhist";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
@@ -57,6 +63,8 @@ public class AddHistCommand extends Command {
             "There is already a similar medical history entry for this patient.";
     public static final String MESSAGE_DUPLICATE_MEDHISTDATE =
             "Medical History entries must have a unique date.";
+    public static final String MESSAGE_INVALID_MEDHISTDATE =
+            "Medical History date entries must be today or before the current day.";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
     private final MedHistory medHistory;
@@ -90,6 +98,10 @@ public class AddHistCommand extends Command {
             if (isDuplicateMedHistDate(fullmedHistory, medHistory)) {
                 throw new CommandException(MESSAGE_DUPLICATE_MEDHISTDATE);
             }
+        }
+
+        if (isInvalidMedHistDate(medHistory)) {
+            throw new CommandException(MESSAGE_INVALID_MEDHISTDATE);
         }
 
         // for loop overwrites all existing history with itself
@@ -130,6 +142,21 @@ public class AddHistCommand extends Command {
         String medHistDate2 = medHistory2.getMedHistDate().toString();
 
         return (medHistDate1.equals(medHistDate2));
+    }
+
+    /**
+     * This method checks if input has a duplicate medical history date.
+     */
+    private boolean isInvalidMedHistDate(MedHistory medHistory) {
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        LocalDate inputDate = LocalDate.parse(medHistory.getMedHistDate().toString(), formatter);
+
+        logger.info(inputDate.toString());
+        logger.info(localDate.toString());
+
+        return (inputDate.isAfter(localDate));
     }
 
     /**
