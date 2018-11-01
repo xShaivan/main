@@ -11,16 +11,16 @@ import org.junit.Test;
 
 import seedu.address.testutil.PersonBuilder;
 
+//@@author chokxy
 public class PhoneContainsKeywordsPredicateTest {
 
     @Test
     public void equals() {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
-        //List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
+        List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
         PhoneContainsKeywordsPredicate firstPredicate = new PhoneContainsKeywordsPredicate(firstPredicateKeywordList);
-        //PhoneContainsKeywordsPredicate secondPredicate
-        // = new PhoneContainsKeywordsPredicate(secondPredicateKeywordList);
+        PhoneContainsKeywordsPredicate secondPredicate = new PhoneContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
@@ -37,7 +37,7 @@ public class PhoneContainsKeywordsPredicateTest {
         assertFalse(firstPredicate.equals(null));
 
         // different person -> returns false
-        //assertFalse(firstPredicate.equals(secondPredicate));
+        assertFalse(firstPredicate.equals(secondPredicate));
     }
 
     @Test
@@ -46,19 +46,15 @@ public class PhoneContainsKeywordsPredicateTest {
         PhoneContainsKeywordsPredicate predicate =
                 new PhoneContainsKeywordsPredicate(Collections.singletonList("91234567"));
         assertTrue(predicate.test(new PersonBuilder().withPhone("91234567").build()));
-        /*
+
         // Multiple keywords
         predicate = new PhoneContainsKeywordsPredicate(Arrays.asList("91234567", "98765432"));
-        assertTrue(predicate.test(new PersonBuilder().withPhone("91234567 98765432").build()));
+        assertTrue(predicate.test(new PersonBuilder().withPhone("91234567").build()));
+        assertTrue(predicate.test(new PersonBuilder().withPhone("98765432").build()));
 
         // Only one matching keyword
         predicate = new PhoneContainsKeywordsPredicate(Arrays.asList("98765432", "87654321"));
-        assertTrue(predicate.test(new PersonBuilder().withPhone("98765432 87654321").build()));
-
-        // Mixed-case keywords
-        predicate = new PhoneContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
-        assertTrue(predicate.test(new PersonBuilder().withPhone("Alice Bob").build()));
-        */
+        assertTrue(predicate.test(new PersonBuilder().withPhone("98765432").build()));
     }
 
     @Test
@@ -73,7 +69,7 @@ public class PhoneContainsKeywordsPredicateTest {
 
         // Keywords match name, email and address, but does not match phone
         predicate = new PhoneContainsKeywordsPredicate(Arrays.asList("Alice", "alice@email.com", "Main", "Street"));
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("91234567")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
 }

@@ -14,7 +14,7 @@ public class BloodType {
             "Blood type should be A, B, O or AB followed by - or +";
     public static final String TYPE_VALIDATION_REGEX = "[ABO]*" + "[-+]";
 
-    private static final String[] incorrectBloodType = {"AO", "BO", "AB"};
+    private static final String[] incorrectBloodType = {"AO", "BO", "BA", "OA", "OB"};
 
     public final String value;
 

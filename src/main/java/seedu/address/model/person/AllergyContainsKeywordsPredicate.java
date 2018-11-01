@@ -25,7 +25,7 @@ public class AllergyContainsKeywordsPredicate implements Predicate<Person> {
 
         for (MedHistory medHistory: person.getMedHistory()) {
             if (keywords.stream()
-                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.getAllergy().toString(),
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.getAllergy().get().toString(),
                             keyword))) {
                 return true;
             }
