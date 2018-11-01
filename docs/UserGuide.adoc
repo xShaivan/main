@@ -116,15 +116,18 @@ Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing t
 
 === Finding patients by categories: `find`
 
-Finds patients by categories such as their name, age and marital status. +
+Finds patients by their personal (name, phone, email, address, tags and NRIC) and medical (medical Information, blood type, last country of visit and allergy) details.
 Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
 
 ****
-* The search is case insensitive. e.g `hans` will match `Hans`
+* The search is case insensitive. e.g. `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
+* Only the specified detail is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
+* Only above-mentioned details can be filtered e.g. Date of birth is not applicable.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Personal prefixes: n/ (Name) p/ (Phone) e/ (Email) a/ (Address) t/ (tag) ic/ (NRIC)
+* Medical prefixes: i/ (MedInfo) hsa/ (Allergy) hsb/ (BloodType) hsc/ (LastCountry)
 ****
 
 Examples:
@@ -133,10 +136,10 @@ Examples:
 Returns `john` and `John Doe`
 * `find n/ BeTsY Tim John` +
 Returns any patient having names `Betsy`, `Tim`, or `John`
-* `find ms/ married`
-Returns any patient who is married.
-* `find age/ 18`
-Returns any patient who is 18 years old.
+* `find ic/ S9876543T`
+Returns any patient whose NRIC is S9876543T.
+* `find t/ friend`
+Returns any patient who is tagged friend.
 
 === Deleting a patient : `delete`
 
@@ -158,10 +161,11 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+// tag::addhist[]
 === Adding patient's medical history: `addhist`
 
 Adds the medical history of a patient. +
-Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED`
+Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS`
 
 ****
 * Adds an entry in the medical history of the patient for the patient at the specified INDEX.
@@ -170,8 +174,10 @@ Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY
 
 Examples:
 
-* `addhist 1 hsd/ 10/10/2010 hsa/ Alcohol hsc/ Kuwait`
-Adds a medical history entry for the 1st person in the list on 10/10/2010 with an alcohol allergy and Kuwait as previous country visited.
+* `addhist 1 hsd/10-10-2010 hsa/Alcohol hsc/Kuwait hsds/d`
+Adds a medical history entry for the 1st person in the list on 10-10-2010 with an alcohol allergy and Kuwait as previous country visited.
+The patient is discharged and allowed to return home.
+// end::addhist[]
 
 // tag::apptcommands[]
 === Adding an appointment into patient's timetable: `addappt`
@@ -187,29 +193,13 @@ Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
 Examples:
 
 * `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
-Adds an appointment for the 2nd person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
+Adds an appointment for the 1st person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
 for a diabetes checkup by Dr Tan.
-
-=== Viewing a patient's appointments timetable: `viewappt`
-
-Shows details of a specified appointment for the specified patient. +
-Format: `viewappt INDEX s/START`
-
-****
-* Views an appointment with the specified start time for the patient at the specified index.
-* The index refers to the index number shown in the displayed person list.
-****
-
-Examples:
-
-* `viewappt 2 s/16-09-2018 15:00` +
-Views the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
 
 === Editing an appointment in a patient's timetable: `editappt`
 
 Edits a specified appointment in the specified patient's timetable. +
-Format: `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME]
-[v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]`
+Format: `editappt INDEX os/ORIGINAL_START [s/START] [e/END] [v/VENUE] [i/INFO] [d/DOCTOR_NAME]`
 
 ****
 * Edits an appointment with the specified start time for the patient at the specified index.
@@ -240,12 +230,13 @@ Examples:
 Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
 // end::apptcommands[]
 
+// tag::addinfocommands[]
 === Adding additional information of patient: `addinfo`
 
 Add the following additional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
 gender, occupation, marital status, family member. +
 Note: age field will be auto-calculated once DOB is populated +
-Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT]`
+Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION]`
 
 .Constraints for `[i/NRIC]`:
 * Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
@@ -254,7 +245,28 @@ Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT]`
 .Constraints for `[d/DOB]`:
 * Must be in the format `dd-MM-YYYY`
 
-Work In Progress: `[g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
+.Constraints for `[h/HEIGHT]
+* Must be a numerical input.
+* Input all `height` data in centimeters.
+* Decimals is not supported as of this release.
+
+.Constraints for `[w/WEIGHT]
+* Must be a numerical input.
+* Input all `weight` data in kilograms.
+* Decimals is not supported as of this release.
+
+.Constraints for `[g/BLOOD TYPE]`
+* Input must either be `A+`, `A-`, `AB+`, `AB-`, `B+`, `B-`, `O+` or `O-`.
+* Excluding the +/- from the input will not be accepted.
+
+.Constraints for `[g/GENDER]`
+* Input must either be `M` (for Male) or `F` (for Female).
+* Alternative input `Male` and `Female` are acceptable also.
+
+.Constraints for `[o/OCCUPATION]`
+* Must not contain any numerics and special characters including whitespaces (Eg. Nurse and Doctor or Wood-Logger are not accepted input).
+
+Work In Progress: `[m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
 Examples:
 
@@ -262,6 +274,7 @@ Examples:
 For patient in index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male and associate
 patient in index 3 as family member.
+// end::addinfocommands[]
 
 // tag::reportcommands[]
 === Adding of Medical Report: `addreport`
@@ -277,32 +290,22 @@ Adds a new medical report for patient at index 3 titled Asthma, dated 01-01-2018
 === Editing of Medical Report: `editreport`
 
 Edits existing medical report of the patient. +
-Format: `editreport INDEX d/DATE [t/TITLE] [d/DATE] [i/INFORMATION]`
+Format: `editreport INDEX od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `editreport 3 d/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
+* `editreport 3 od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
 Edits title, date and information of existing medical report dated 01-01-2018 for patient at index 3.
-
-=== Viewing of Medical Report: `viewreport`
-
-Views the medical report of the patient on a certain date. +
-Format: `viewreport INDEX d/DATE`
-
-Examples:
-
-* `viewreport 1 d/01-01-2018` +
-View medical report dated 01-01-2018 for patient at index 1.
 // end::reportcommands[]
 
 === Sort patients list: `sort`
 
-Sort the list of patients according to a specific prefix category. +
+Sort the list of patients according to a specific prefix category in ascending or descending order. +
 Format: `sort PREFIX/ ORDER_INDEX`
 
-`PREFIX/` refers to certain categories of patient information such as name, blood type,
-allergy etc. and each of these categories will be defined by a corresponding prefix. (ie n/ for name)
+`PREFIX/` refers to certain pertinent categories of patient information and each of these categories will be defined by a corresponding prefix.
 `ORDER_INDEX` can be 1 or 2 where 1 means in alphabetical and 2 means in reverse order.
+Available prefixes: `n/` (Name) `p/` (Phone) `e/` (Email) `ic/` (Nric)
 
 Example:
 
@@ -349,15 +352,14 @@ e.g. `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #0
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]` +
 e.g. `edit 1 p/91234567 e/johndoe@example.com`
 * *Find* : `find PREFIX/ KEYWORD [MORE_KEYWORDS]` +
-e.g. `find ms/ married` +
-e.g. `find age/ 18 19` +
-e.g. `find n/ Betsy Tim`
+e.g. `find n/ john` +
+e.g. `find n/ BeTsY Tim John` +
+e.g. `find ic/ S9876543T` +
+e.g. `find t/ friend`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
 * *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
 e.g. `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
-* *View Appt* : `viewappt INDEX s/START` +
-e.g. `viewappt 2 s/16-09-2018 15:00`
 * *Edit Appt* : `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME] [v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]` +
 e.g.`editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13`
 * *Delete Appt* : `deleteappt INDEX s/START` +
@@ -366,12 +368,10 @@ e.g. `deleteappt 2 s/16-09-2018 15:00`
 e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Edit Information* : `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
 e.g. `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
-* *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [mr/MEDICAL_REPORT]` +
-e.g. `addreport 3 t/ASTHMA d/01012018 mr/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
-* *Edit Medical Report* : `editreport INDEX_PATIENT INDEX_REPORT [t/TITLE] [d/DATE] [mr/MEDICAL_REPORT]` +
-e.g. `editreport 3 1 t/DEPRESSION d/02012018 mr/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
-* *List Medical Report* : `listreport INDEX` +
-e.g. `listreport 1`
+* *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
+e.g. `addreport 3 t/Asthma d/01-01-2018 i/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
+* *Edit Medical Report* : `editreport INDEX od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
+e.g. `editreport 3 od/01-01-2018 t/Depression d/02-01-2018 i/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
 * *View* : `view INDEX` +

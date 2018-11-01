@@ -1,14 +1,16 @@
 package seedu.address.model.util;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.model.medicalreport.ReportComparator;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -23,6 +25,7 @@ import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptComparator;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -87,7 +90,7 @@ public class SampleDataUtil {
      * Returns a medical history set containing the list of medical histories.
      */
     public static Set<MedHistory> getMedHistorySet(MedHistory... medHistories) {
-        Set<MedHistory> medHistorySet = new HashSet<>();
+        Set<MedHistory> medHistorySet = new TreeSet<>(new MedHistoryComparator());
         for (MedHistory medHistory : medHistories) {
             medHistorySet.add(medHistory);
         }
@@ -99,7 +102,7 @@ public class SampleDataUtil {
      */
     // TODO: (MedicalReport) MIGHT CONVERT TO USE STREAM IN FUTURE
     public static Set<MedicalReport> getReportSet(MedicalReport ... reports) {
-        Set<MedicalReport> reportSet = new HashSet<>();
+        Set<MedicalReport> reportSet = new TreeSet<>(new ReportComparator());
         for (MedicalReport report : reports) {
             reportSet.add(report);
         }
@@ -112,7 +115,7 @@ public class SampleDataUtil {
      */
     // TODO: (Appt) MIGHT CONVERT TO USE STREAM IN FUTURE
     public static Set<Appt> getApptSet(Appt... appts) {
-        Set<Appt> apptSet = new HashSet<>();
+        Set<Appt> apptSet = new TreeSet<>(new ApptComparator());
         for (Appt appt : appts) {
             apptSet.add(appt);
         }
