@@ -123,6 +123,10 @@ public class UiManager extends ComponentManager implements Ui {
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        mainWindow.showPersonDetails(event.getNewSelection());
+        if (event.getNewSelection() != null) {
+            mainWindow.showPersonDetailsOnInfoPanel(event.getNewSelection());
+        } else {
+            mainWindow.showInfoPanelEmptyMessage();
+        }
     }
 }

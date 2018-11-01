@@ -8,14 +8,9 @@ import static java.util.Objects.requireNonNull;
  */
 public class Information {
     public static final String MESSAGE_INFORMATION_CONSTRAINTS =
-            "Information in medical report should only contain alphanumeric characters and spaces,"
-            + " and it should not be blank";
+            "Information in medical report can take any values, and it should not be blank";
 
-    /*
-     * The first character of the information must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String INFORMATION_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String INFORMATION_VALIDATION_REGEX = "[^\\s+].*";
 
     public final String fullInformation;
 
@@ -30,7 +25,7 @@ public class Information {
     }
 
     /**
-     * Returns true if a given string is a valid date.
+     * Returns true if a given string contains valid information.
      */
     public static boolean isValidInformation(String test) {
         return test.matches(INFORMATION_VALIDATION_REGEX);

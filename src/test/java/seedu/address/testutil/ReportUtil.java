@@ -1,13 +1,14 @@
 package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import seedu.address.logic.commands.AddMedicalReportCommand;
 import seedu.address.model.medicalreport.MedicalReport;
 
+//@@author chewkahmeng
 /**
  * A utility class for MedicalReport.
  */
@@ -27,7 +28,7 @@ public class ReportUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_TITLE + report.getTitle().fullTitle + " ");
         sb.append(PREFIX_DATE + report.getDate().toString() + " ");
-        sb.append(PREFIX_INFORMATION + report.getInformation().fullInformation + " ");
+        sb.append(PREFIX_INFO + report.getInformation().fullInformation + " ");
         return sb.toString();
     }
 }

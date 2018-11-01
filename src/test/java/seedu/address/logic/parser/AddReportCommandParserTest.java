@@ -5,7 +5,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE1;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -31,7 +31,7 @@ public class AddReportCommandParserTest {
         assertParseSuccess(parser, targetIndex.getOneBased()
                 + " " + PREFIX_TITLE + VALID_TITLE1
                 + " " + PREFIX_DATE + VALID_DATE1
-                + " " + PREFIX_INFORMATION + VALID_INFO1, expectedCommand);
+                + " " + PREFIX_INFO + VALID_INFO1, expectedCommand);
     }
 
     @Test
@@ -44,6 +44,6 @@ public class AddReportCommandParserTest {
         // missing index
         assertParseFailure(parser, PREFIX_TITLE + VALID_TITLE1
                 + " " + PREFIX_DATE + VALID_DATE1
-                + " " + PREFIX_INFORMATION + VALID_INFO1, expectedMessage);
+                + " " + PREFIX_INFO + VALID_INFO1, expectedMessage);
     }
 }
