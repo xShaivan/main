@@ -13,7 +13,7 @@ import seedu.address.model.medicalreport.MedicalReport;
 /**
  * An UI component that displays information of a {@code Medical Report}.
  */
-public class ReportCard extends StackPane{
+public class ReportCard extends StackPane {
     private final MedicalReport report;
 
     @FXML

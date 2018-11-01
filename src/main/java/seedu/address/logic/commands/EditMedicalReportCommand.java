@@ -63,7 +63,8 @@ public class EditMedicalReportCommand extends Command {
     private final ReportDate reportDate;
     private final EditReportDescriptor editReportDescriptor;
 
-    public EditMedicalReportCommand(Index index, Title title, ReportDate reportDate, EditReportDescriptor editReportDescriptor) {
+    public EditMedicalReportCommand
+            (Index index, Title title, ReportDate reportDate, EditReportDescriptor editReportDescriptor) {
         requireAllNonNull(index, editReportDescriptor);
         this.index = index;
         this.title = title;
