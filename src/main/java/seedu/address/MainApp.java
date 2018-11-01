@@ -5,6 +5,11 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+import javax.crypto.SecretKey;
+
+import org.apache.xml.security.encryption.XMLCipher;
+import org.w3c.dom.Document;
+
 import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Application;
@@ -17,7 +22,9 @@ import seedu.address.commons.core.Version;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.ConfigUtil;
+import seedu.address.commons.util.SecretKeyUtil;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.XmlUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
@@ -43,6 +50,8 @@ public class MainApp extends Application {
     public static final Version VERSION = new Version(1, 3, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
+
+    private SecretKey secretKey;
 
     protected Ui ui;
     protected Logic logic;
@@ -85,6 +94,12 @@ public class MainApp extends Application {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         try {
+            secretKey = SecretKeyUtil.readSecretKey(userPrefs.getSecretKeyPath());
+            Document document = XmlUtil.getFile(userPrefs.getAddressBookFilePath().toString());
+            Document encryptedFile = XmlUtil.encryptDocument(document, secretKey, XMLCipher.AES_128);
+            Document decryptedFile = XmlUtil.decryptDocument(encryptedFile, secretKey, XMLCipher.AES_128);
+            XmlUtil.saveFile(decryptedFile, userPrefs.getDecryptedFilePath().toString());
+
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
@@ -95,6 +110,9 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            initialData = new AddressBook();
+        } catch (Exception e) {
+            logger.warning("Problem with opening the encryption file or decrypting the file.");
             initialData = new AddressBook();
         }
 
@@ -189,9 +207,18 @@ public class MainApp extends Application {
         ui.stop();
         try {
             storage.saveUserPrefs(userPrefs);
+
+            secretKey = SecretKeyUtil.getSecretKey("AES");
+            SecretKeyUtil.saveSecretKey(secretKey, userPrefs.getSecretKeyPath().toString());
+            Document document = XmlUtil.getFile(userPrefs.getAddressBookFilePath().toString());
+            Document encryptedFile = XmlUtil.encryptDocument(document, secretKey, XMLCipher.AES_128);
+            XmlUtil.saveFile(encryptedFile, userPrefs.getEncryptedFilePath().toString());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
+        } catch (Exception e) {
+            logger.severe("Failed to get XML file for encryption");
         }
+
         Platform.exit();
         System.exit(0);
     }

@@ -1,10 +1,14 @@
 package seedu.address.commons.util;
 
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 
 /**
@@ -37,5 +41,28 @@ public class SecretKeyUtil {
         String encodeToString = Base64.getEncoder().encodeToString(encoded);
 
         return encodeToString;
+    }
+
+    public static void saveSecretKey(SecretKey secretKey, String fileName) {
+        byte[] keyByte = secretKey.getEncoded();
+
+        try (FileOutputStream out = new FileOutputStream(fileName)) {
+            out.write(keyByte);
+        } catch (Exception e) {
+            System.out.println("Unable to store key file.");
+        }
+    }
+
+    public static SecretKey readSecretKey(Path fileName) {
+        SecretKey secretKey;
+
+        try {
+            byte[] keyByte = Files.readAllBytes(fileName);
+            secretKey = new SecretKeySpec(keyByte, "AES");
+        } catch (Exception e) {
+            System.out.println("Unable to use stored key file.");
+            secretKey = getSecretKey("AES");
+        }
+        return secretKey;
     }
 }
