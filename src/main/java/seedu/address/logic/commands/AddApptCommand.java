@@ -33,11 +33,11 @@ public class AddApptCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to a patient's timetable, the"
             + " patient will be identified by the index number used in the last person listing.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_APPT_START + "[START] "
-            + PREFIX_APPT_END + "[END] "
-            + PREFIX_APPT_VENUE + "[VENUE] "
-            + PREFIX_APPT_INFO + "[INFO] "
-            + PREFIX_APPT_DRNAME + "[DOCTOR'S NAME]\n"
+            + PREFIX_APPT_START + "START "
+            + PREFIX_APPT_END + "END "
+            + PREFIX_APPT_VENUE + "VENUE "
+            + PREFIX_APPT_INFO + "INFO "
+            + PREFIX_APPT_DRNAME + "DOCTOR'S NAME\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_APPT_START + "16-09-2018 15:00 "
             + PREFIX_APPT_END + "16-09-2018 15:30 "
@@ -48,7 +48,6 @@ public class AddApptCommand extends Command {
     public static final String MESSAGE_ADD_APPT_SUCCESS = "Added appt to Person: %1$s";
     public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt.";
     public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time.";
-    public static final String MESSAGE_DELETE_APPT_SUCCESS = "Removed appt from Person: %1$s";
 
     private final Index index;
     private final Appt appt;
@@ -92,7 +91,8 @@ public class AddApptCommand extends Command {
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getMedicalReports(), personToEdit.getMedHistory(), newAppts,
                 personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getHeight(),
-                personToEdit.getWeight(), personToEdit.getTags());
+                personToEdit.getWeight(), personToEdit.getGender(), personToEdit.getBloodType(),
+                personToEdit.getOccupation(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
