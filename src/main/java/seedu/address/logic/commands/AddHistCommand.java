@@ -12,9 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.logging.Logger;
 
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
@@ -44,8 +42,6 @@ import seedu.address.model.timetable.Appt;
  */
 
 public class AddHistCommand extends Command {
-
-    private static final Logger logger = LogsCenter.getLogger(AddHistCommand.class);
 
     public static final String COMMAND_WORD = "addhist";
 
@@ -152,9 +148,6 @@ public class AddHistCommand extends Command {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         LocalDate inputDate = LocalDate.parse(medHistory.getMedHistDate().toString(), formatter);
-
-        logger.info(inputDate.toString());
-        logger.info(localDate.toString());
 
         return (inputDate.isAfter(localDate));
     }
