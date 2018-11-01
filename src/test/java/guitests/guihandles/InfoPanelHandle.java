@@ -1,27 +1,21 @@
 package guitests.guihandles;
 
-import java.net.URL;
-
-import guitests.GuiRobot;
-import javafx.concurrent.Worker;
 import javafx.scene.Node;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
+import javafx.scene.control.ScrollPane;
 
 /**
- * A handler for the {@code BrowserPanel} of the UI.
+ * A handler for the {@code InfoPanel} of the UI.
  */
-public class BrowserPanelHandle extends NodeHandle<Node> {
+public class InfoPanelHandle extends NodeHandle<Node> {
+    public static final String INFO_PANEL_ID = "#infoPanel";
+    //private boolean isWebViewLoaded = true;
+    //private URL lastRememberedUrl;
 
-    public static final String BROWSER_ID = "#browser";
+    public InfoPanelHandle(Node infoPanelNode) {
+        super(infoPanelNode);
+        ScrollPane scrollPane = getChildNode(INFO_PANEL_ID);
 
-    private boolean isWebViewLoaded = true;
-
-    private URL lastRememberedUrl;
-
-    public BrowserPanelHandle(Node browserPanelNode) {
-        super(browserPanelNode);
-
+        /*
         WebView webView = getChildNode(BROWSER_ID);
         WebEngine engine = webView.getEngine();
         new GuiRobot().interact(() -> engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
@@ -31,34 +25,35 @@ public class BrowserPanelHandle extends NodeHandle<Node> {
                 isWebViewLoaded = true;
             }
         }));
+        */
     }
 
     /**
      * Returns the {@code URL} of the currently loaded page.
      */
-    public URL getLoadedUrl() {
-        return WebViewUtil.getLoadedUrl(getChildNode(BROWSER_ID));
-    }
+    //public URL getLoadedUrl() {
+    //    return WebViewUtil.getLoadedUrl(getChildNode(BROWSER_ID));
+    //}
 
     /**
      * Remembers the {@code URL} of the currently loaded page.
      */
-    public void rememberUrl() {
-        lastRememberedUrl = getLoadedUrl();
-    }
+    //public void rememberUrl() {
+    //    lastRememberedUrl = getLoadedUrl();
+    //}
 
     /**
      * Returns true if the current {@code URL} is different from the value remembered by the most recent
      * {@code rememberUrl()} call.
      */
-    public boolean isUrlChanged() {
-        return !lastRememberedUrl.equals(getLoadedUrl());
-    }
+    //public boolean isUrlChanged() {
+    //    return !lastRememberedUrl.equals(getLoadedUrl());
+    //}
 
     /**
      * Returns true if the browser is done loading a page, or if this browser has yet to load any page.
      */
-    public boolean isLoaded() {
-        return isWebViewLoaded;
-    }
+    //public boolean isLoaded() {
+    //    return isWebViewLoaded;
+    //}
 }

@@ -5,19 +5,18 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_ALLERGY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_COUNTRY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
-
-import java.util.stream.Stream;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddHistCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
-import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.DischargeStatus;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
 
-
+//@@author xShaivan
 /**
  * Parses input arguments and create a {@code AddHistCommand} object
  */
@@ -32,12 +31,7 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
     public AddHistCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_HISTORY_DATE, PREFIX_HISTORY_ALLERGY,
-                PREFIX_HISTORY_COUNTRY);
-
-        if (!arePrefixesPresent(argMultimap, PREFIX_HISTORY_DATE, PREFIX_HISTORY_ALLERGY,
-                PREFIX_HISTORY_COUNTRY)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE));
-        }
+                PREFIX_HISTORY_COUNTRY, PREFIX_HISTORY_DISCHARGE_STATUS);
 
         Index index;
 
@@ -47,17 +41,33 @@ public class AddHistCommandParser implements Parser<AddHistCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE), ive);
         }
 
-        Allergy allergy = ParserUtil.parseAllergy(argMultimap.getValue(PREFIX_HISTORY_ALLERGY).get());
-        PrevCountry prevCountry = ParserUtil.parsePrevCountry(argMultimap.getValue(PREFIX_HISTORY_COUNTRY).get());
-        MedHistDate medHistDate = ParserUtil.parseMedHistDate(argMultimap.getValue(PREFIX_HISTORY_DATE).get());
-        return new AddHistCommand(index, new MedHistory (medHistDate, allergy, prevCountry));
-    }
+        MedHistory medHistory = new MedHistory();
+        if (argMultimap.getValue(PREFIX_HISTORY_DATE).isPresent()) {
+            medHistory.setMedHistDate(ParserUtil
+                    .parseMedHistDate(argMultimap.getValue(PREFIX_HISTORY_DATE).get()));
+        }
+        if (argMultimap.getValue(PREFIX_HISTORY_ALLERGY).isPresent()) {
+            medHistory.setAllergy(ParserUtil
+                    .parseAllergy(argMultimap.getValue(PREFIX_HISTORY_ALLERGY).get()));
+        } else {
+            medHistory.setAllergy(new Allergy(""));
+        }
+        if (argMultimap.getValue(PREFIX_HISTORY_COUNTRY).isPresent()) {
+            medHistory.setPrevCountry(ParserUtil
+                    .parsePrevCountry(argMultimap.getValue(PREFIX_HISTORY_COUNTRY).get()));
+        } else {
+            medHistory.setPrevCountry(new PrevCountry(""));
+        }
+        if (argMultimap.getValue(PREFIX_HISTORY_DISCHARGE_STATUS).isPresent()) {
+            medHistory.setDischargeStatus(ParserUtil
+                    .parseDischargeStatus(argMultimap.getValue(PREFIX_HISTORY_DISCHARGE_STATUS).get()));
+        } else {
+            medHistory.setDischargeStatus(new DischargeStatus(""));
+        }
+        if (!medHistory.isAnyFieldEdited()) {
+            throw new ParseException(AddHistCommand.MESSAGE_NOT_EDITED);
+        }
 
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+        return new AddHistCommand(index, medHistory);
     }
 }

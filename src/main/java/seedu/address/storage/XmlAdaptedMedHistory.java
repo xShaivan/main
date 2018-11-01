@@ -2,15 +2,16 @@ package seedu.address.storage;
 
 import java.util.Objects;
 
-import javax.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.medhistory.Allergy;
+import seedu.address.model.medhistory.DischargeStatus;
 import seedu.address.model.medhistory.MedHistDate;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.PrevCountry;
 
-
+//@@author xShaivan
 /**
  * JAXB-friendly version of the Medical History.
  */
@@ -18,12 +19,14 @@ import seedu.address.model.medhistory.PrevCountry;
 public class XmlAdaptedMedHistory {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "MedHistory's %s field is missing!";
 
-    @XmlValue
+    @XmlElement
     private String medHistDate;
-    @XmlValue
+    @XmlElement
     private String allergy;
-    @XmlValue
+    @XmlElement
     private String prevCountry;
+    @XmlElement
+    private String dischargeStatus;
 
     /**
      * Constructs an XmlAdaptedMedHistory.
@@ -34,10 +37,11 @@ public class XmlAdaptedMedHistory {
     /**
      * Constructs an {@code XmlAdaptedMedHistory} with the given medical history details.
      */
-    public XmlAdaptedMedHistory(String medHistDate, String allergy, String prevCountry) {
+    public XmlAdaptedMedHistory(String medHistDate, String allergy, String prevCountry, String dischargeStatus) {
         this.medHistDate = medHistDate;
         this.allergy = allergy;
         this.prevCountry = prevCountry;
+        this.dischargeStatus = dischargeStatus;
     }
 
     /**
@@ -47,9 +51,17 @@ public class XmlAdaptedMedHistory {
      */
 
     public XmlAdaptedMedHistory(MedHistory source) {
-        medHistDate = source.getMedHistDate().toString();
-        allergy = source.getAllergy().toString();
-        prevCountry = source.getPrevCountry().toString();
+        MedHistDate medHistDate = source.getMedHistDate();
+        this.medHistDate = medHistDate.toString();
+
+        Allergy allergy = source.getAllergy().orElse(new Allergy(""));
+        this.allergy = allergy.toString();
+
+        PrevCountry prevCountry = source.getPrevCountry().orElse(new PrevCountry(""));
+        this.prevCountry = prevCountry.toString();
+
+        DischargeStatus dischargeStatus = source.getDischargeStatus().orElse(new DischargeStatus(""));
+        this.dischargeStatus = dischargeStatus.toString();
     }
 
     /**
@@ -60,21 +72,26 @@ public class XmlAdaptedMedHistory {
     public MedHistory toModelType() throws IllegalValueException {
         if (medHistDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
+                    MedHistDate.class.getSimpleName()));
         }
         final MedHistDate modelMedHistDate = new MedHistDate(medHistDate);
         if (allergy == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
+                    Allergy.class.getSimpleName()));
         }
         final Allergy modelAllergy = new Allergy(allergy);
         if (prevCountry == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    MedHistory.class.getSimpleName()));
+                    PrevCountry.class.getSimpleName()));
         }
         final PrevCountry modelPrevCountry = new PrevCountry(prevCountry);
+        if (dischargeStatus == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    DischargeStatus.class.getSimpleName()));
+        }
+        final DischargeStatus modelDischargeStatus = new DischargeStatus(dischargeStatus);
 
-        return new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry);
+        return new MedHistory(modelMedHistDate, modelAllergy, modelPrevCountry, modelDischargeStatus);
     }
 
     @Override
@@ -90,7 +107,8 @@ public class XmlAdaptedMedHistory {
         XmlAdaptedMedHistory otherMedHistory = (XmlAdaptedMedHistory) other;
         return Objects.equals(medHistDate, otherMedHistory.medHistDate)
                 && Objects.equals(allergy, otherMedHistory.allergy)
-                && Objects.equals(prevCountry, otherMedHistory.prevCountry);
+                && Objects.equals(prevCountry, otherMedHistory.prevCountry)
+                && Objects.equals(dischargeStatus, otherMedHistory.dischargeStatus);
     }
 
 }
