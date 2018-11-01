@@ -6,6 +6,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DISCHARGE_STATUS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DISCHARGE_STATUS2;
 
 import seedu.address.model.medhistory.MedHistory;
 /**
@@ -13,9 +15,9 @@ import seedu.address.model.medhistory.MedHistory;
  */
 public class TypicalMedHistory {
     public static final MedHistory MEDHISTORY1 = new MedHistoryBuilder().withMedHistDate(VALID_HISTORY_DATE)
-            .withAllergy(VALID_HISTORY_ALLERGY).withPrevCountry(VALID_HISTORY_COUNTRY).build();
+            .withAllergy(VALID_HISTORY_ALLERGY).withPrevCountry(VALID_HISTORY_COUNTRY)
+            .withDischargeStatus(VALID_HISTORY_DISCHARGE_STATUS).build();
     public static final MedHistory MEDHISTORY2 = new MedHistoryBuilder().withMedHistDate(VALID_HISTORY_DATE2)
-            .withAllergy(VALID_HISTORY_ALLERGY2).withPrevCountry(VALID_HISTORY_COUNTRY2).build();
-    public static final MedHistory EMPTY_MEDHISTORY = new MedHistoryBuilder().withMedHistDate("").withAllergy("")
-            .withPrevCountry("").build();
+            .withAllergy(VALID_HISTORY_ALLERGY2).withPrevCountry(VALID_HISTORY_COUNTRY2)
+            .withDischargeStatus(VALID_HISTORY_DISCHARGE_STATUS2).build();
 }

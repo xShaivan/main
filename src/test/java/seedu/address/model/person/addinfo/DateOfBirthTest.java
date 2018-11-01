@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.person.addinfo;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,7 +7,6 @@ import java.time.format.DateTimeParseException;
 
 import org.junit.Test;
 
-import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.testutil.Assert;
 
 public class DateOfBirthTest {
