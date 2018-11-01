@@ -3,12 +3,14 @@
     background-color: #383838; /* Used in the default.html file */
 }
 
+/*
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: #555555;
     -fx-opacity: 0.9;
 }
+*/
 
 .label-bright {
     -fx-font-size: 11pt;
@@ -308,6 +310,17 @@
 
 .infoPanelNameLabel {
     -fx-font-size: 20px;
+}
+
+.medAppts {
+    -fx-padding: 5;
+    -fx-margin: 5;
+}
+
+.apptCard {
+    -fx-padding: 5;
+    -fx-background-color: #CEFFFE;
+    -fx-effect: dropshadow(gaussian, gray, 2, 2, 0, 0);
 }
 
 #cardPane {

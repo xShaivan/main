@@ -10,9 +10,9 @@ import java.time.format.DateTimeParseException;
  */
 public class DateTimeUtil {
     private static final String DATE_PATTERN = "dd-MM-yyyy";
-    private static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
     private static final String DATETIME_PATTERN = "dd-MM-yyyy HH:mm";
-    private static DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern(DATETIME_PATTERN);
+    private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern(DATETIME_PATTERN);
 
     /**
      * convert LocalDate to String

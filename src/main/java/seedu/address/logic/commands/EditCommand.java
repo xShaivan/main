@@ -27,9 +27,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -112,13 +115,16 @@ public class EditCommand extends Command {
         DateOfBirth dateOfBirth = personToEdit.getDateOfBirth();
         Height height = personToEdit.getHeight();
         Weight weight = personToEdit.getWeight();
+        Gender gender = personToEdit.getGender();
+        BloodType bloodType = personToEdit.getBloodType();
+        Occupation occupation = personToEdit.getOccupation();
 
-        Set<MedicalReport> updatedReports = personToEdit.getMedicalReports(); // edit command disallow editing reports
-        Set<MedHistory> updatedMedHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
-        Set<Appt> updatedAppts = personToEdit.getAppts(); // edit command does not allow editing appts
+        Set<MedicalReport> reports = personToEdit.getMedicalReports(); // edit command disallow editing reports
+        Set<MedHistory> medHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
+        Set<Appt> appts = personToEdit.getAppts(); // edit command does not allow editing appts
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedReports,
-                          updatedMedHistory, updatedAppts, nric, dateOfBirth, height, weight, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, reports, medHistory, appts, nric,
+                dateOfBirth, height, weight, gender, bloodType, occupation, updatedTags);
     }
 
     @Override
