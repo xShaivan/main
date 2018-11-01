@@ -18,8 +18,6 @@ Health Book is an address book application that is catered for healthcare profes
 ** Justification: This feature improves the product significantly because the user can track his patients' appointments easily and make sure that there are no scheduling clashes, and can also remind his patients in advance that they have appointments.
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
 
-* *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
-
 * *Code contributed*: [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddApptCommand.java[AddApptCommand]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddApptCommandParser.java[AddApptCommandParser]]   [https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/timetable[Appt model classes]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedAppt.java[XmlAdaptedAppt]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddApptCommandTest.java[AddApptCommandTest]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddApptCommandParserTest.java[AddApptCommandParserTest]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/timetable/ApptTest.java[ApptTest]]
 
 * *Other contributions*:
@@ -39,9 +37,7 @@ Health Book is an address book application that is catered for healthcare profes
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=undoredo]
-
-include::../UserGuide.adoc[tag=dataencryption]
+include::../UserGuide.adoc[tag=apptcommands]
 
 == Contributions to the Developer Guide
 
@@ -49,6 +45,6 @@ include::../UserGuide.adoc[tag=dataencryption]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=addappt]
 
-include::../DeveloperGuide.adoc[tag=dataencryption]
+include::../DeveloperGuide.adoc[tag=apptusecases]

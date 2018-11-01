@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 
+import javafx.scene.layout.VBox;
 import seedu.address.model.person.Person;
 
 /**
@@ -36,12 +37,57 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private Label nameLabel4;
 
+    // Additional Info Pane
+    @FXML
+    private Label fullNameLabel;
+    @FXML
+    private Label emailLabel;
+    @FXML
+    private Label dateOfBirthLabel;
+    @FXML
+    private Label addressLabel;
+    @FXML
+    private Label phoneLabel;
     @FXML
     private Label nricLabel;
     @FXML
+    private Label weightLabel;
+    @FXML
+    private Label heightLabel;
+    @FXML
+    private Label genderLabel;
+    @FXML
+    private Label bloodTypeLabel;
+    @FXML
+    private Label occupationLabel;
+
+    @FXML
+    private Label fullNameTag;
+    @FXML
+    private Label nricTag;
+    @FXML
+    private Label dateOfBirthTag;
+    @FXML
+    private Label addressTag;
+    @FXML
+    private Label phoneTag;
+    @FXML
+    private Label heightTag;
+    @FXML
+    private Label weightTag;
+    @FXML
+    private Label genderTag;
+    @FXML
+    private Label emailTag;
+    @FXML
+    private Label bloodTypeTag;
+    @FXML
+    private Label occupationTag;
+
+    @FXML
     private FlowPane medHistoriesFlowPane;
     @FXML
-    private FlowPane apptsFlowPane;
+    private VBox apptsVBox;
     @FXML
     private FlowPane medReportsFlowPane;
 
@@ -69,22 +115,57 @@ public class InfoPanel extends UiPart<Region> {
         nameLabel4.setText("Medical Reports for " + person.getName());
     }
 
+    /**
+     * Initialize Additional Information labels
+     */
     private void fillAdditionalInfoPane() {
         additionalInfo.setStyle("-fx-background-color: #FCFCFC");
+
+        fullNameTag.setText("Full Name:");
+        nricTag.setText("NRIC:");
+        dateOfBirthTag.setText("Date of Birth:");
+        addressTag.setText("Address:");
+        phoneTag.setText("Phone:");
+        heightTag.setText("Height:");
+        weightTag.setText("Weight:");
+        genderTag.setText("Gender:");
+        emailTag.setText("Email:");
+        bloodTypeTag.setText("Blood Type:");
+        occupationTag.setText("Occupation:");
+
+        fullNameLabel.setText(person.getName().fullName);
+        emailLabel.setText(person.getEmail().value);
         nricLabel.setText(person.getNric().value);
+        dateOfBirthLabel.setText(person.getDateOfBirth().toString());
+        addressLabel.setText(person.getAddress().value);
+        phoneLabel.setText(person.getPhone().value);
+        heightLabel.setText(person.getHeight().value);
+        weightLabel.setText(person.getWeight().value);
+        genderLabel.setText(person.getGender().toString());
+        bloodTypeLabel.setText(person.getBloodType().value);
+        occupationLabel.setText(person.getOccupation().value);
     }
 
+    /**
+     * Initialize Medical History Flow Pane
+     */
     private void fillMedHistoriesPane() {
         medHistory.setStyle("-fx-background-color: #ECECEC");
         person.getMedHistory().forEach(medHistory ->
                 medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
     }
 
+    /**
+     * Initialize Medical Appointment Flow Pane
+     */
     private void fillApptsPane() {
         medAppts.setStyle("-fx-background-color: #DCDCDC");
-        person.getAppts().forEach(appt -> apptsFlowPane.getChildren().add(new Label(appt.toString())));
+        person.getAppts().forEach(appt -> apptsVBox.getChildren().add(new ApptCard(appt)));
     }
 
+    /**
+     * Initialize Medical Report Flow Pane
+     */
     private void fillMedReportsPane() {
         medReports.setStyle("-fx-background-color: #CCCCCC");
         person.getMedicalReports().forEach(report ->
@@ -97,6 +178,45 @@ public class InfoPanel extends UiPart<Region> {
     public void clearFlowPanes() {
         medHistoriesFlowPane.getChildren().clear();
         medReportsFlowPane.getChildren().clear();
-        apptsFlowPane.getChildren().clear();
+        apptsVBox.getChildren().clear();
+    }
+
+    /**
+     * Shows a message when there is no person card selected to tell the user to select a person
+     */
+    public void showEmptyMessage() {
+        additionalInfo.setStyle("-fx-background-color: #FFFFFF");
+        medHistory.setStyle("-fx-background-color: #FFFFFF");
+        medAppts.setStyle("-fx-background-color: #FFFFFF");
+        medReports.setStyle("-fx-background-color: #FFFFFF");
+        nameLabel1.setText("You have not selected any person.\n"
+                + "Please select a person to show more details\nfor him/her on this panel.");
+        nameLabel2.setText("");
+        nameLabel3.setText("");
+        nameLabel4.setText("");
+
+        fullNameTag.setText("");
+        nricTag.setText("");
+        dateOfBirthTag.setText("");
+        addressTag.setText("");
+        phoneTag.setText("");
+        heightTag.setText("");
+        weightTag.setText("");
+        genderTag.setText("");
+        emailTag.setText("");
+        bloodTypeTag.setText("");
+        occupationTag.setText("");
+
+        fullNameLabel.setText("");
+        emailLabel.setText("");
+        nricLabel.setText("");
+        dateOfBirthLabel.setText("");
+        addressLabel.setText("");
+        phoneLabel.setText("");
+        heightLabel.setText("");
+        weightLabel.setText("");
+        genderLabel.setText("");
+        bloodTypeLabel.setText("");
+        occupationLabel.setText("");
     }
 }

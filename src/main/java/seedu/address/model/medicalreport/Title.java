@@ -9,14 +9,9 @@ import static java.util.Objects.requireNonNull;
  */
 public class Title {
 
-    public static final String MESSAGE_TITLE_CONSTRAINTS =
-            "Titles should only contain characters and spaces, and it should not be blank";
+    public static final String MESSAGE_TITLE_CONSTRAINTS = "Titles can take any values, and it should not be blank";
 
-    /*
-     * The first character of the title must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String TITLE_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String TITLE_VALIDATION_REGEX = "[^\\s+].*";
 
     public final String fullTitle;
 

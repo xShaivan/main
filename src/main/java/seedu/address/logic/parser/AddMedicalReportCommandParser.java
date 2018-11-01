@@ -3,10 +3,9 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INFORMATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
-
-import java.util.stream.Stream;
+import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -31,8 +30,8 @@ public class AddMedicalReportCommandParser implements Parser<AddMedicalReportCom
     public AddMedicalReportCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DATE,
-                PREFIX_INFORMATION);
-        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_DATE, PREFIX_INFORMATION)) {
+                PREFIX_INFO);
+        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_DATE, PREFIX_INFO)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND, AddMedicalReportCommand.MESSAGE_USAGE));
         }
 
@@ -45,16 +44,8 @@ public class AddMedicalReportCommandParser implements Parser<AddMedicalReportCom
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         ReportDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
-        Information information = ParserUtil.parseInformation(argMultimap.getValue(PREFIX_INFORMATION).get());
+        Information information = ParserUtil.parseInformation(argMultimap.getValue(PREFIX_INFO).get());
 
         return new AddMedicalReportCommand(index, new MedicalReport(title, date, information));
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-    */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
