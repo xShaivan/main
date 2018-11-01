@@ -53,6 +53,8 @@ public class AddHistCommand extends Command {
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_DUPLICATE_MEDHISTORY =
+            "There is already a similar medical history entry for this patient.";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
     private final MedHistory medHistory;
@@ -75,6 +77,12 @@ public class AddHistCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<MedHistory> fullMedHistories = personToEdit.getMedHistory();
         Set<MedHistory> newMedHistories = new TreeSet<>(new MedHistoryComparator());
+
+        for (MedHistory fullmedHistory : fullMedHistories) {
+            if (isDuplicateMedHistory(fullmedHistory, medHistory)) {
+                throw new CommandException(MESSAGE_DUPLICATE_MEDHISTORY);
+            }
+        }
         // for loop overwrites all existing history with itself
         for (MedHistory medHistory : fullMedHistories) {
             newMedHistories.add(medHistory);
@@ -86,6 +94,23 @@ public class AddHistCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson));
+    }
+
+    /**
+     * This method checks if input has a duplicate for the patient.
+     */
+    private boolean isDuplicateMedHistory(MedHistory medHistory1, MedHistory medHistory2) {
+        String allergy1 = medHistory1.getAllergy().toString();
+        String allergy2 = medHistory2.getAllergy().toString();
+        String medHistDate1 = medHistory1.getMedHistDate().toString();
+        String medHistDate2 = medHistory2.getMedHistDate().toString();
+        String prevCountry1 = medHistory1.getPrevCountry().toString();
+        String prevCountry2 = medHistory2.getPrevCountry().toString();
+        String dischargeStatus1 = medHistory1.getDischargeStatus().toString();
+        String dischargeStatus2 = medHistory2.getDischargeStatus().toString();
+
+        return (allergy1.equals(allergy2) && (medHistDate1.equals(medHistDate2))
+                && (prevCountry1.equals(prevCountry2)) && (dischargeStatus1.equals(dischargeStatus2)));
     }
 
     /**
