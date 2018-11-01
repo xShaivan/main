@@ -24,9 +24,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -43,10 +46,10 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
             + "by their index number."
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_HISTORY_DATE + " 24-08-1993 "
-            + PREFIX_HISTORY_ALLERGY + " Alcohol "
-            + PREFIX_HISTORY_COUNTRY + " Kuwait "
-            + PREFIX_HISTORY_DISCHARGE_STATUS + " d";
+            + PREFIX_HISTORY_DATE + "24-08-1993 "
+            + PREFIX_HISTORY_ALLERGY + "Alcohol "
+            + PREFIX_HISTORY_COUNTRY + "Kuwait "
+            + PREFIX_HISTORY_DISCHARGE_STATUS + "d";
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -105,9 +108,12 @@ public class AddHistCommand extends Command {
         DateOfBirth dateOfBirth = personToEdit.getDateOfBirth();
         Height height = personToEdit.getHeight();
         Weight weight = personToEdit.getWeight();
+        Gender gender = personToEdit.getGender();
+        BloodType bloodType = personToEdit.getBloodType();
+        Occupation occupation = personToEdit.getOccupation();
 
-        return new Person(name, phone, email, address, medicalReports, medHistories, appts,
-                nric, dateOfBirth, height, weight, tags);
+        return new Person(name, phone, email, address, medicalReports, medHistories, appts, nric, dateOfBirth, height,
+                weight, gender, bloodType, occupation, tags);
     }
 
     @Override

@@ -9,6 +9,9 @@
         <dateOfBirth isPrivate="false">10-10-2010</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
     <persons>
         <name>Ruth Mueller</name>
@@ -19,6 +22,9 @@
         <dateOfBirth isPrivate="false">01-01-1996</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
     <persons>
         <name>Heinz Kurz</name>
@@ -29,6 +35,9 @@
         <dateOfBirth isPrivate="false">25-06-2001</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
     <persons>
         <name>Cornelia Meier</name>
@@ -39,6 +48,9 @@
         <dateOfBirth isPrivate="false">17-03-1986</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
     <persons>
         <name>Werner Meyer</name>
@@ -49,6 +61,9 @@
         <dateOfBirth isPrivate="false">04-01-2006</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
     <persons>
         <name>Lydia Kunz</name>
@@ -59,6 +74,9 @@
         <dateOfBirth isPrivate="false">06-03-2016</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
     <persons>
         <name>Anna Best</name>
@@ -69,6 +87,9 @@
         <dateOfBirth isPrivate="false">27-12-2003</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
     <persons>
         <name>Stefan Meier</name>
@@ -79,6 +100,9 @@
         <dateOfBirth isPrivate="false">19-09-2010</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
     <persons>
         <name>Martin Mueller</name>
@@ -89,5 +113,8 @@
         <dateOfBirth isPrivate="false">17-04-1963</dateOfBirth>
         <height isPrivate="false"></height>
         <weight isPrivate="false"></weight>
+        <gender isPrivate="false"></gender>
+        <bloodType isPrivate="false"></bloodType>
+        <occupation isPrivate="false"></occupation>
     </persons>
 </addressbook>
