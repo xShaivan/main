@@ -55,6 +55,8 @@ public class AddHistCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_MEDHISTORY =
             "There is already a similar medical history entry for this patient.";
+    public static final String MESSAGE_DUPLICATE_MEDHISTDATE =
+            "Medical History entries must have a unique date.";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
     private final MedHistory medHistory;
@@ -83,6 +85,13 @@ public class AddHistCommand extends Command {
                 throw new CommandException(MESSAGE_DUPLICATE_MEDHISTORY);
             }
         }
+
+        for (MedHistory fullmedHistory : fullMedHistories) {
+            if (isDuplicateMedHistDate(fullmedHistory, medHistory)) {
+                throw new CommandException(MESSAGE_DUPLICATE_MEDHISTDATE);
+            }
+        }
+
         // for loop overwrites all existing history with itself
         for (MedHistory medHistory : fullMedHistories) {
             newMedHistories.add(medHistory);
@@ -111,6 +120,16 @@ public class AddHistCommand extends Command {
 
         return (allergy1.equals(allergy2) && (medHistDate1.equals(medHistDate2))
                 && (prevCountry1.equals(prevCountry2)) && (dischargeStatus1.equals(dischargeStatus2)));
+    }
+
+    /**
+     * This method checks if input has a duplicate medical history date.
+     */
+    private boolean isDuplicateMedHistDate(MedHistory medHistory1, MedHistory medHistory2) {
+        String medHistDate1 = medHistory1.getMedHistDate().toString();
+        String medHistDate2 = medHistory2.getMedHistDate().toString();
+
+        return (medHistDate1.equals(medHistDate2));
     }
 
     /**
