@@ -4,6 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORIGINAL_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ORIGINAL_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -39,28 +40,33 @@ public class EditMedicalReportCommand extends Command {
             + " and the date provided. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_ORIGINAL_DATE + "DATE "
+            + "[" + PREFIX_ORIGINAL_TITLE + "TITLE] "
+            + "[" + PREFIX_ORIGINAL_DATE + "DATE] "
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_DATE + "DATE] "
-            + "[" + PREFIX_INFO + "INFORMATION]\n"
+            + "[" + PREFIX_INFO + "INFORMATION\n]"
             + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_ORIGINAL_TITLE + "Asthma "
             + PREFIX_ORIGINAL_DATE + "01-01-2018 "
             + PREFIX_TITLE + "Depression "
-            + PREFIX_DATE + "02-02-2018";
+            + PREFIX_DATE + "02-02-2018 "
+            + PREFIX_INFO + "Prescribed AAA medicine, next appointment on 03-03-2018.";
 
     public static final String MESSAGE_EDIT_REPORT_SUCCESS = "Edited report for Person: %1$s";
-    public static final String MESSAGE_DATE_CLASH = "The report you are editing clashes with the date of another report"
-        + ", please add report into existing report of the same date. ";
+    public static final String MESSAGE_TITLE_DATE_CLASH = "Unable to edit medical report"
+            + " as there already exists a medical report of same title and date.";
     public static final String MESSAGE_REPORT_NOT_FOUND = "The report you are trying to edit cannot be found.";
     public static final String MESSAGE_REPORT_NOT_EDITED = "At least one field to edit must be provided.";
 
     private final Index index;
+    private final Title title;
     private final ReportDate reportDate;
     private final EditReportDescriptor editReportDescriptor;
 
-    public EditMedicalReportCommand(Index index, ReportDate reportDate, EditReportDescriptor editReportDescriptor) {
+    public EditMedicalReportCommand(Index index, Title title, ReportDate reportDate, EditReportDescriptor editReportDescriptor) {
         requireAllNonNull(index, editReportDescriptor);
         this.index = index;
+        this.title = title;
         this.reportDate = reportDate;
         this.editReportDescriptor = editReportDescriptor;
     }
@@ -83,7 +89,7 @@ public class EditMedicalReportCommand extends Command {
         for (MedicalReport report : personToEdit.getMedicalReports()) {
             reportCopy.add(report);
 
-            if (report.getDate().equals(reportDate)) {
+            if (report.getDate().equals(reportDate) && report.getTitle().equals(title)) {
                 editedReport = createEditedReport(report, editReportDescriptor);
 
                 reportCopy.remove(report);
@@ -96,8 +102,8 @@ public class EditMedicalReportCommand extends Command {
         }
 
         for (MedicalReport report : reportCopy) {
-            if (hasDateClash(report, editedReport)) {
-                throw new CommandException(MESSAGE_DATE_CLASH);
+            if (hasTitleDateClash(report, editedReport)) {
+                throw new CommandException(MESSAGE_TITLE_DATE_CLASH);
             }
         }
         reportCopy.add(editedReport);
@@ -116,7 +122,7 @@ public class EditMedicalReportCommand extends Command {
     }
 
     /**
-     * Generates a command execution success message when the medical report is added to
+     * Generates a command execution success message when a medical report is added to
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
@@ -139,13 +145,15 @@ public class EditMedicalReportCommand extends Command {
     }
 
     /**
-     * Returns true if report1 and report2 have dates which clash
+     * Returns true if report1 and report2 have same title and date
      */
-    private boolean hasDateClash(MedicalReport report1, MedicalReport report2) {
+    private boolean hasTitleDateClash(MedicalReport report1, MedicalReport report2) {
+        String title1 = report1.getTitle().fullTitle;
+        String title2 = report2.getTitle().fullTitle;
         LocalDate date1 = report1.getDate().fullDate;
         LocalDate date2 = report2.getDate().fullDate;
 
-        return (date1.equals(date2));
+        return ((title1.equals(title2)) && (date1.equals(date2)));
     }
 
     @Override
@@ -167,8 +175,8 @@ public class EditMedicalReportCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the appt with. Each non-empty field value will replace the
-     * corresponding field value of the appt.
+     * Stores the details to edit the report with. Each non-empty field value will replace the
+     * corresponding field value of the report.
      */
     public static class EditReportDescriptor {
         private Title title;
