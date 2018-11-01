@@ -6,7 +6,7 @@ import static java.util.Objects.requireNonNull;
  * Represents a person's Weight in Health Book.
  */
 public class Weight {
-    public static final String WEIGHT_VALIDATION_REGEX = "[\\d]+";
+    public static final String WEIGHT_VALIDATION_REGEX = "^(\\d+.)?\\d+";
     public static final String MESSAGE_WEIGHT_CONSTRAINTS = "Weight should be numeric input only.";
 
     public final String value;
