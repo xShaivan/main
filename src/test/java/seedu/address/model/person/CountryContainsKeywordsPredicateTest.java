@@ -41,37 +41,37 @@ public class CountryContainsKeywordsPredicateTest {
         // different person -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
-    /*
+
     @Test
     public void testCountryContainsKeywordsreturnsTrue() {
 
         // One keyword
         CountryContainsKeywordsPredicate predicate =
                 new CountryContainsKeywordsPredicate(Collections.singletonList("Japan"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withPrevCountry("Japan").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withPrevCountry("Japan").build()).build()));
 
         // Multiple keywords
         predicate = new CountryContainsKeywordsPredicate(Arrays.asList("Japan", "Uganda"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withPrevCountry("Japan Uganda").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withPrevCountry("Japan Uganda").build()).build()));
 
         // Only one matching keyword
         predicate = new CountryContainsKeywordsPredicate(Arrays.asList("USA", "Malaysia"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withPrevCountry("Japan USA").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withPrevCountry("Japan USA").build()).build()));
 
         // Mixed-case keywords
         predicate = new CountryContainsKeywordsPredicate(Arrays.asList("JApaN", "UGAnda"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withPrevCountry("Japan Uganda").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withPrevCountry("Japan Uganda").build()).build()));
 
         //Mixed-case keyword
         predicate = new CountryContainsKeywordsPredicate(Arrays.asList("JApaN"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withPrevCountry("Japan").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withPrevCountry("Japan").build()).build()));
     }
-    */
+
     @Test
     public void testInfoDoesNotContainKeywordsreturnsFalse() {
         // Zero keywords

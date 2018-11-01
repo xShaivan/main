@@ -41,37 +41,41 @@ public class AllergyContainsKeywordsPredicateTest {
         // different person -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
-    /*
+
     @Test
     public void testAllergyContainsKeywordsreturnsTrue() {
 
         // One keyword
         AllergyContainsKeywordsPredicate predicate =
                 new AllergyContainsKeywordsPredicate(Collections.singletonList("Alcohol"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withAllergy("Alcohol").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withAllergy("Alcohol").build()).build()));
 
         // Multiple keywords
         predicate = new AllergyContainsKeywordsPredicate(Arrays.asList("Alcohol", "Nuts"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withAllergy("Alcohol Nuts").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withAllergy("Alcohol").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withAllergy("Nuts").build()).build()));
 
         // Only one matching keyword
         predicate = new AllergyContainsKeywordsPredicate(Arrays.asList("Seafood", "Sinus"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withAllergy("Alcohol Seafood").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withAllergy("Seafood").build()).build()));
 
         // Mixed-case keywords
         predicate = new AllergyContainsKeywordsPredicate(Arrays.asList("AlCoHOL", "NuTs"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withAllergy("Alcohol Nuts").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withAllergy("Alcohol").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withAllergy("Nuts").build()).build()));
 
         //Mixed-case keyword
         predicate = new AllergyContainsKeywordsPredicate(Arrays.asList("AlCoHOL"));
-        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder().
-                withAllergy("Alcohol").build()).build()));
+        assertTrue(predicate.test(new PersonBuilder().withMedHistories(new MedHistoryBuilder()
+                .withAllergy("Alcohol").build()).build()));
     }
-    */
+
     @Test
     public void testInfoDoesNotContainKeywordsreturnsFalse() {
         // Zero keywords

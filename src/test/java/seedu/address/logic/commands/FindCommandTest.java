@@ -41,6 +41,7 @@ public class FindCommandTest {
         FindCommand findSecondCommand = new FindCommand(secondPredicate);
 
         // same object -> returns true
+
         assertTrue(findFirstCommand.equals(findFirstCommand));
 
         // same values -> returns true
