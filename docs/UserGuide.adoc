@@ -288,12 +288,12 @@ Adds a new medical report for patient at index 3 titled Asthma, dated 01-01-2018
 === Editing of Medical Report: `editreport`
 
 Edits existing medical report of the patient. +
-Format: `editreport INDEX od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]`
+Format: `editreport INDEX ot/ORIGINAL TITLE od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]`
 
 Examples:
 
-* `editreport 3 od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
-Edits title, date and information of existing medical report dated 01-01-2018 for patient at index 3.
+* `editreport 3 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
+Edits title, date and information of existing medical report titled Asthma and dated 01-01-2018 for patient at index 3.
 // end::reportcommands[]
 
 === Sort patients list: `sort`
