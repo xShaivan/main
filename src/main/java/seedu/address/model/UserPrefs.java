@@ -14,7 +14,6 @@ public class UserPrefs {
     private GuiSettings guiSettings;
     private Path addressBookFilePath = Paths.get("data" , "addressbook.xml");
     private Path encryptedFilePath = Paths.get("data", "encrypted.xml");
-    private Path decryptedFilePath = Paths.get("data", "decrypted.xml");
     private Path secretKeyPath = Paths.get("data", "key");
 
     public UserPrefs() {
@@ -43,10 +42,6 @@ public class UserPrefs {
 
     public Path getEncryptedFilePath() {
         return encryptedFilePath;
-    }
-
-    public Path getDecryptedFilePath() {
-        return decryptedFilePath;
     }
 
     public Path getSecretKeyPath() {

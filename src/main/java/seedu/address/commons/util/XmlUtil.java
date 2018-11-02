@@ -30,6 +30,8 @@ import org.w3c.dom.Element;
  * Helps with reading from and writing to XML files.
  */
 public class XmlUtil {
+    static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(XmlUtil.class.getName());
+
     static {
         org.apache.xml.security.Init.init();
     }
@@ -85,12 +87,24 @@ public class XmlUtil {
         m.marshal(data, file.toFile());
     }
 
-    public static Document getFile(String xmlFile) throws Exception {
+    public static Document loadDecryptedXmlFile(String xmlFile) throws Exception {
         DocumentBuilderFactory builder = DocumentBuilderFactory.newInstance();
 
         DocumentBuilder documentBuilder = builder.newDocumentBuilder();
 
         Document document = documentBuilder.parse(xmlFile);
+
+        return document;
+    }
+
+    public static Document loadEncryptedXmlFile(String xmlFile) throws Exception {
+        File encryptionFile = new File(xmlFile);
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        documentBuilderFactory.setNamespaceAware(true);
+
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+        Document document = documentBuilder.parse(encryptionFile);
 
         return document;
     }
