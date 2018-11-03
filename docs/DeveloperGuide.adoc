@@ -333,8 +333,9 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
-// tag::addinfo
-=== Additional Information
+
+// tag::addinfo[]
+=== Additional Information features
 ==== Current Implementation
 The `addinfo` command is facilitated by the `LogicManager` which calls upon `AddressBookParser` for the execution of commands. It extends the `AddressBookParser` with the `addinfo` command.
 
@@ -1485,60 +1486,6 @@ Use case ends.
 ** Steps 3a1 and 3a2 are repeated until data entered is correct.
 +
 Use case resumes at step 4.
-
-=== Use case: Import files to other computers: `import`
-
-*MSS*
-
-1.  User chooses to import patient info of a specific patient and specifies the directory and the text file where he wants to import it from.
-2.  System imports patient info from a txt file.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User provides an invalid index for the list.
-+
-[none]
-** 1a1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1b. Directory information or text file name that user inputs is invalid.
-+
-[none]
-** 1b1. System displays a message that the location given is invalid.
-+
-Use case ends.
-
-=== Use case: Export files to other computers: `export`
-
-*MSS*
-
-1.  User chooses to export patient info of a specific patient and specifies the directory and file name which he wants to export to.
-2.  System exports patient into a txt file in the specified directory.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User provides an invalid index for the list.
-+
-[none]
-** 1a1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1b. Directory information or text file name that user inputs is invalid.
-+
-[none]
-** 1b1. System displays a message that the location given is invalid.
-+
-Use case ends.
 
 [appendix]
 == Non Functional Requirements
