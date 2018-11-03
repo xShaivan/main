@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.util.DateTimeUtil.DATE_CONSTRAINTS;
 import static seedu.address.model.util.DateTimeUtil.DATE_TIME_CONSTRAINTS;
+import static seedu.address.model.util.DateTimeUtil.DATE_TIME_VALUE_EXCEEDED;
 import static seedu.address.model.util.DateTimeUtil.DATE_VALUE_EXCEEDED;
 
 import java.time.LocalDate;
@@ -161,7 +162,7 @@ public class ParserUtil {
 
         try {
             LocalDate localDate = DateTimeUtil.parseDate(trimmedDateOfBirth);
-            if (localDate.isBefore(DateTimeUtil.earliestDateAllowed)) {
+            if (localDate.isBefore(DateTimeUtil.getEarliestDateAllowed())) {
                 throw new ParseException(DATE_VALUE_EXCEEDED);
             }
         } catch (DateTimeParseException e) {
@@ -327,7 +328,7 @@ public class ParserUtil {
 
         try {
             LocalDate localDate = DateTimeUtil.parseDate(trimmedMedHistDate);
-            if (localDate.isBefore(DateTimeUtil.earliestDateAllowed)) {
+            if (localDate.isBefore(DateTimeUtil.getEarliestDateAllowed())) {
                 throw new ParseException(DATE_VALUE_EXCEEDED);
             }
         } catch (DateTimeParseException e) {
@@ -410,7 +411,7 @@ public class ParserUtil {
 
         try {
             LocalDate localDate = DateTimeUtil.parseDate(trimmedReportDate);
-            if (localDate.isBefore(DateTimeUtil.earliestDateAllowed)) {
+            if (localDate.isBefore(DateTimeUtil.getEarliestDateAllowed())) {
                 throw new ParseException(DATE_VALUE_EXCEEDED);
             }
         } catch (DateTimeParseException e) {
@@ -456,8 +457,8 @@ public class ParserUtil {
 
         try {
             LocalDateTime localDateTime = DateTimeUtil.parseDateTime(trimmedApptDateTime);
-            if (localDateTime.toLocalDate().isBefore(DateTimeUtil.earliestDateAllowed)) {
-                throw new ParseException(DATE_VALUE_EXCEEDED);
+            if (localDateTime.toLocalDate().isBefore(DateTimeUtil.getEarliestDateAllowed())) {
+                throw new ParseException(DATE_TIME_VALUE_EXCEEDED);
             }
         } catch (DateTimeParseException e) {
             throw new ParseException(DATE_VALUE_EXCEEDED);

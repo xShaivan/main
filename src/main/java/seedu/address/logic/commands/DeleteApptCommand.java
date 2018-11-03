@@ -60,8 +60,7 @@ public class DeleteApptCommand extends Command {
         for (Appt oldAppt : oldAppts) {
             if (!oldAppt.getStart().equals(apptStart)) {
                 newAppts.add(oldAppt);
-            }
-            else {
+            } else {
                 apptFound = true;
             }
         }
