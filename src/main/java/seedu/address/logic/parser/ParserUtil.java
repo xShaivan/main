@@ -1,7 +1,12 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.DateTimeUtil.DATE_CONSTRAINTS;
+import static seedu.address.model.util.DateTimeUtil.DATE_TIME_CONSTRAINTS;
+import static seedu.address.model.util.DateTimeUtil.DATE_VALUE_EXCEEDED;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
@@ -141,23 +146,26 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String nric} into an {@code Nric}.
+     * Parses a {@code String DateOfBirth} into an {@code DateOfBirth}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code nric} is invalid.
+     * @throws ParseException if the given {@code DateOfBirth} is invalid.
      */
     public static DateOfBirth parseDateOfBirth(String dateOfBirth) throws ParseException {
         requireNonNull(dateOfBirth);
         String trimmedDateOfBirth = dateOfBirth.trim();
 
         if (!DateOfBirth.isValidDate(trimmedDateOfBirth)) {
-            throw new ParseException(DateOfBirth.DATE_OF_BIRTH_CONSTRAINTS);
+            throw new ParseException(DATE_CONSTRAINTS);
         }
 
         try {
-            DateTimeUtil.parseDate(dateOfBirth);
+            LocalDate localDate = DateTimeUtil.parseDate(trimmedDateOfBirth);
+            if (localDate.isBefore(DateTimeUtil.earliestDateAllowed)) {
+                throw new ParseException(DATE_VALUE_EXCEEDED);
+            }
         } catch (DateTimeParseException e) {
-            throw new ParseException(DateOfBirth.DATE_OF_BIRTH_VALUE_EXCEEDED);
+            throw new ParseException(DATE_VALUE_EXCEEDED);
         }
 
         return new DateOfBirth(trimmedDateOfBirth);
@@ -312,8 +320,18 @@ public class ParserUtil {
     public static MedHistDate parseMedHistDate(String medHistDate) throws ParseException {
         requireNonNull(medHistDate);
         String trimmedMedHistDate = medHistDate.trim();
+
         if (!MedHistDate.isValidMedHistDate(trimmedMedHistDate)) {
-            throw new ParseException(MedHistDate.MESSAGE_MEDHISTDATE_CONSTRAINTS);
+            throw new ParseException(DATE_CONSTRAINTS);
+        }
+
+        try {
+            LocalDate localDate = DateTimeUtil.parseDate(trimmedMedHistDate);
+            if (localDate.isBefore(DateTimeUtil.earliestDateAllowed)) {
+                throw new ParseException(DATE_VALUE_EXCEEDED);
+            }
+        } catch (DateTimeParseException e) {
+            throw new ParseException(DATE_VALUE_EXCEEDED);
         }
 
         return new MedHistDate(trimmedMedHistDate);
@@ -385,9 +403,20 @@ public class ParserUtil {
     public static ReportDate parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedReportDate = date.trim();
+
         if (!ReportDate.isValidDate(trimmedReportDate)) {
-            throw new ParseException(ReportDate.MESSAGE_DATE_CONSTRAINTS);
+            throw new ParseException(DATE_CONSTRAINTS);
         }
+
+        try {
+            LocalDate localDate = DateTimeUtil.parseDate(trimmedReportDate);
+            if (localDate.isBefore(DateTimeUtil.earliestDateAllowed)) {
+                throw new ParseException(DATE_VALUE_EXCEEDED);
+            }
+        } catch (DateTimeParseException e) {
+            throw new ParseException(DATE_VALUE_EXCEEDED);
+        }
+
         return new ReportDate(trimmedReportDate);
     }
 
@@ -420,8 +449,18 @@ public class ParserUtil {
     public static ApptDateTime parseApptDateTime(String apptDateTime) throws ParseException {
         requireNonNull(apptDateTime);
         String trimmedApptDateTime = apptDateTime.trim();
+
         if (!ApptDateTime.isValidDateTime(trimmedApptDateTime)) {
-            throw new ParseException(ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
+            throw new ParseException(DATE_TIME_CONSTRAINTS);
+        }
+
+        try {
+            LocalDateTime localDateTime = DateTimeUtil.parseDateTime(trimmedApptDateTime);
+            if (localDateTime.toLocalDate().isBefore(DateTimeUtil.earliestDateAllowed)) {
+                throw new ParseException(DATE_VALUE_EXCEEDED);
+            }
+        } catch (DateTimeParseException e) {
+            throw new ParseException(DATE_VALUE_EXCEEDED);
         }
         return new ApptDateTime(trimmedApptDateTime);
     }
