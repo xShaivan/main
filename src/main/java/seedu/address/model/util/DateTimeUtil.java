@@ -4,15 +4,18 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 /**
  * Helper functions for LocalDate and LocalDateTime conversion to and from String
  */
 public class DateTimeUtil {
-    private static final String DATE_PATTERN = "dd-MM-yyyy";
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
-    private static final String DATETIME_PATTERN = "dd-MM-yyyy HH:mm";
-    private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern(DATETIME_PATTERN);
+    private static final String DATE_PATTERN = "dd-MM-uuuu";
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN)
+            .withResolverStyle(ResolverStyle.STRICT);
+    private static final String DATETIME_PATTERN = "dd-MM-uuuu HH:mm";
+    private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern(DATETIME_PATTERN)
+            .withResolverStyle(ResolverStyle.STRICT);;
 
     /**
      * convert LocalDate to String
