@@ -10,7 +10,6 @@ import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.DischargeStatus;
@@ -354,7 +353,7 @@ public class ParserUtil {
                 flag = true;
             }
         }
-        if(!flag) {
+        if (!flag) {
             throw new ParseException(MESSAGE_INVALID_DISCHARGE_STATUS);
         }
 
