@@ -254,6 +254,7 @@ Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOO
 
 .Constraints for `[d/DOB]`:
 * Must be in the format `dd-MM-YYYY`
+* Must not be before epoch time 0 (i.e. dates before 01-01-1970 will not be accepted).
 
 .Constraints for `[h/HEIGHT]
 * Must be a numerical input.
@@ -265,9 +266,9 @@ Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOO
 * Floating point numbers are accepted.
 * Input all `weight` data in kilograms.
 
-.Constraints for `[g/BLOOD TYPE]`
+.Constraints for `[b/BLOOD TYPE]`
 * Input must either be `A+`, `A-`, `AB+`, `AB-`, `B+`, `B-`, `O+` or `O-`.
-* Excluding the `+/-` from the input will not be accepted.
+* Excluding the `+`/`-` from the input will not be accepted.
 
 .Constraints for `[g/GENDER]`
 * Input must either be `M` (for Male) or `F` (for Female).
@@ -279,7 +280,7 @@ Work In Progress: `[m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
 Examples:
 
-* `addinfo 2 n/S9123456A d/01-01-1990 h/154 g/M` +
+* `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M` +
 For patient in index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male.
 // end::addinfocommands[]
