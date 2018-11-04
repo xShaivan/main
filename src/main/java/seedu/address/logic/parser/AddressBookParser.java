@@ -118,8 +118,8 @@ public class AddressBookParser {
         case EditMedicalReportCommand.COMMAND_WORD:
             return new EditMedicalReportCommandParser().parse(arguments);
 
-            case EditHistCommand.COMMAND_WORD:
-                return new EditHistCommandParser().parse(arguments);
+        case EditHistCommand.COMMAND_WORD:
+            return new EditHistCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
