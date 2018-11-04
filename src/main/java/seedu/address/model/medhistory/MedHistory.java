@@ -67,16 +67,16 @@ public class MedHistory {
         this.prevCountry = prevCountry;
     }
 
-    public Optional<DischargeStatus> getDischargeStatus() {
-        return Optional.ofNullable(dischargeStatus);
+    public Optional<PrevCountry> getPrevCountry() {
+        return Optional.ofNullable(prevCountry);
     }
 
     public void setDischargeStatus(DischargeStatus dischargeStatus) {
         this.dischargeStatus = dischargeStatus;
     }
 
-    public Optional<PrevCountry> getPrevCountry() {
-        return Optional.ofNullable(prevCountry);
+    public Optional<DischargeStatus> getDischargeStatus() {
+        return Optional.ofNullable(dischargeStatus);
     }
 
     @Override
