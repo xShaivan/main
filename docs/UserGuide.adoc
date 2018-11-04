@@ -254,7 +254,7 @@ Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOO
 
 .Constraints for `[d/DOB]`:
 * Must be in the format `dd-MM-YYYY`
-* Must not be before epoch time 0 (i.e. dates before 01-01-1970 will not be accepted).
+* Must not be before 01-01-1900.
 
 .Constraints for `[h/HEIGHT]
 * Must be a numerical input.
