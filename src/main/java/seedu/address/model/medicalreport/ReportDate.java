@@ -1,6 +1,7 @@
 package seedu.address.model.medicalreport;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.DateTimeUtil.DATE_VALIDATION_REGEX;
 
 import java.time.LocalDate;
 
@@ -12,11 +13,6 @@ import seedu.address.model.util.DateTimeUtil;
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
  */
 public class ReportDate {
-
-    public static final String MESSAGE_DATE_CONSTRAINTS =
-            "The full ReportDate should be of the format: DD-MM-YYYY";
-    public static final String REPORT_DATE_VALIDATION_REGEX =
-            "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
 
     public final LocalDate fullDate;
 
@@ -34,9 +30,8 @@ public class ReportDate {
      * Returns true if a given string is a valid date.
      */
     public static boolean isValidDate(String test) {
-        return test.matches(REPORT_DATE_VALIDATION_REGEX);
+        return test.matches(DATE_VALIDATION_REGEX);
     }
-
 
     @Override
     public String toString() {
