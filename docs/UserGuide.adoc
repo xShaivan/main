@@ -311,15 +311,22 @@ Example:
 * `sort n/ 2` +
 Sort the patient list by their names in reverse order (Z → A).
 
-=== View patient’s information: `view`
+=== Selecting a patient: `select`
 
-View patient’s general and additional information. +
-Format: `view INDEX`
+Selects the patient identified by the index number used in the displayed person list and displays the selected patient's information. +
+Format: `select INDEX`
+
+****
+* Selects the patient and displays the information for the patient at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
 
 Example:
 
-* `view 1` +
-Display information of patient at index 1
+* `list` +
+`select 2` +
+Selects the 2nd person in the health book.
 
 == FAQ
 
@@ -355,5 +362,5 @@ e.g. `addreport 3 t/Asthma d/01-01-2018 i/Patient diagnosed with asthma and pres
 e.g. `editreport 3 od/01-01-2018 t/Depression d/02-01-2018 i/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
-* *View* : `view INDEX` +
-e.g. view 1
+* *Select* : `select INDEX` +
+e.g. select 1

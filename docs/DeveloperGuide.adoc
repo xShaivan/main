@@ -1477,15 +1477,13 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Viewing information of patients: `view`
+=== Use case: Selecting a patient: `select`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
-1.  User chooses to view information of patient.
-2.  System requests for the details of information.
-3.  User enters the requested details.
-4.  System shows the requested information of patient.
+1.  User selects a patient to view his/her information.
+2.  System shows the information of the specified patient.
 +
 Use case ends.
 
@@ -1498,16 +1496,6 @@ Use case ends.
 ** 1a1. System shows an error message that the index is invalid.
 +
 Use case ends.
-
-[none]
-* 3a. System detects an error in the entered data.
-+
-[none]
-** 3a1. System requests for the correct data.
-** 3a2. User enters new data.
-** Steps 3a1 and 3a2 are repeated until data entered is correct.
-+
-Use case resumes at step 4.
 
 [appendix]
 == Non Functional Requirements
