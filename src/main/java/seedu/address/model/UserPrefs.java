@@ -12,7 +12,7 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs {
 
     private GuiSettings guiSettings;
-    private Path addressBookFilePath = Paths.get("data" , "addressbook.xml");
+    private Path addressBookFilePath = Paths.get("data" , "healthbook.xml");
     private Path encryptedFilePath = Paths.get("data", "encrypted.xml");
     private Path secretKeyPath = Paths.get("data", "key");
 
