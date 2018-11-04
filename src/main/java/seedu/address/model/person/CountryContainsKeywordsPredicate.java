@@ -25,7 +25,7 @@ public class CountryContainsKeywordsPredicate implements Predicate<Person> {
 
         for (MedHistory medHistory: person.getMedHistory()) {
             if (keywords.stream()
-                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.getPrevCountry().toString(),
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(medHistory.getPrevCountry().get().toString(),
                             keyword))) {
                 return true;
             }
