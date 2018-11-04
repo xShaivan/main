@@ -2,13 +2,16 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_DOB;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_HEIGHT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_WEIGHT;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddInfoCommand;
+import seedu.address.logic.commands.AddInfoCommand.AddInfoPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Nric;
 
 /**
  * Parses input arguments and creates a new {@code AddInfoCommand} object
@@ -22,7 +25,8 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
      */
     public AddInfoCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(args, PREFIX_ADD_INFO_NRIC);
+        ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(args, PREFIX_ADD_INFO_NRIC, PREFIX_ADD_INFO_DOB,
+                PREFIX_ADD_INFO_HEIGHT, PREFIX_ADD_INFO_WEIGHT);
 
         Index index;
         try {
@@ -31,8 +35,27 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddInfoCommand.MESSAGE_USAGE), ive);
         }
 
-        Nric nric = ParserUtil.parseNric(argMultiMap.getValue(PREFIX_ADD_INFO_NRIC).get());
+        AddInfoPersonDescriptor addInfoPersonDescriptor = new AddInfoPersonDescriptor();
+        if (argMultiMap.getValue(PREFIX_ADD_INFO_NRIC).isPresent()) {
+            addInfoPersonDescriptor.setNric(ParserUtil.parseNric(argMultiMap.getValue(PREFIX_ADD_INFO_NRIC).get()));
+        }
+        if (argMultiMap.getValue(PREFIX_ADD_INFO_DOB).isPresent()) {
+            addInfoPersonDescriptor.setDateOfBirth(ParserUtil.parseDateOfBirth(
+                    argMultiMap.getValue(PREFIX_ADD_INFO_DOB).get()));
+        }
+        if (argMultiMap.getValue(PREFIX_ADD_INFO_HEIGHT).isPresent()) {
+            addInfoPersonDescriptor.setHeight(ParserUtil.parseHeight(
+                    argMultiMap.getValue(PREFIX_ADD_INFO_HEIGHT).get()));
+        }
+        if (argMultiMap.getValue(PREFIX_ADD_INFO_WEIGHT).isPresent()) {
+            addInfoPersonDescriptor.setWeight(ParserUtil.parseWeight(
+                    argMultiMap.getValue(PREFIX_ADD_INFO_WEIGHT).get()));
+        }
 
-        return new AddInfoCommand(index, new Nric(nric.value));
+        if (!addInfoPersonDescriptor.isAnyFieldEdited()) {
+            throw new ParseException(AddInfoCommand.MESSAGE_NOT_EDITED);
+        }
+
+        return new AddInfoCommand(index, addInfoPersonDescriptor);
     }
 }

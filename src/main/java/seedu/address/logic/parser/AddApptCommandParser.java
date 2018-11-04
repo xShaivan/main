@@ -20,6 +20,7 @@ import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
 
+//@@author brandonccm1996
 /**
  * Parses input arguments and creates a new {@code AddApptCommand} object
  */

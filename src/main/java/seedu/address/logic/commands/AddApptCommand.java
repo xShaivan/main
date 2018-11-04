@@ -8,7 +8,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_VENUE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -17,7 +20,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.timetable.ApptComparator;
 
+//@@author brandonccm1996
 /**
  * Adds an appointment to a person's timetable.
  */
@@ -34,13 +39,15 @@ public class AddApptCommand extends Command {
             + PREFIX_APPT_INFO + "[INFO] "
             + PREFIX_APPT_DRNAME + "[DOCTOR'S NAME]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_APPT_START + "16/09/2018 1500 "
-            + PREFIX_APPT_END + "16/09/2018 1530 "
+            + PREFIX_APPT_START + "16-09-2018 15:00 "
+            + PREFIX_APPT_END + "16-09-2018 15:30 "
             + PREFIX_APPT_VENUE + "Consultation Room 12 "
             + PREFIX_APPT_INFO + "Diabetes Checkup "
             + PREFIX_APPT_DRNAME + "Dr Tan";
 
     public static final String MESSAGE_ADD_APPT_SUCCESS = "Added appt to Person: %1$s";
+    public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt.";
+    public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time.";
     public static final String MESSAGE_DELETE_APPT_SUCCESS = "Removed appt from Person: %1$s";
 
     private final Index index;
@@ -65,9 +72,27 @@ public class AddApptCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
+        Set<Appt> oldAppts = personToEdit.getAppts();
+
+        if (hasInvalidTiming(appt)) {
+            throw new CommandException(MESSAGE_INVALID_TIME);
+        }
+
+        for (Appt oldAppt : oldAppts) {
+            if (hasApptClash(oldAppt, appt)) {
+                throw new CommandException(MESSAGE_APPT_CLASH);
+            }
+        }
+
+        Set<Appt> newAppts = new TreeSet<>(new ApptComparator());
+        for (Appt appt : oldAppts) {
+            newAppts.add(appt);
+        }
+        newAppts.add(appt);
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getMedicalReport(), personToEdit.getMedHistory(), appt,
-                personToEdit.getNric(), personToEdit.getTags());
+                personToEdit.getAddress(), personToEdit.getMedicalReports(), personToEdit.getMedHistory(), newAppts,
+                personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getHeight(),
+                personToEdit.getWeight(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -77,12 +102,45 @@ public class AddApptCommand extends Command {
     }
 
     /**
-     * Generates a command execution success message based on whether the appt is added to or removed from
+     * Generates a command execution success message when the appt is added to
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = !appt.toString().isEmpty() ? MESSAGE_ADD_APPT_SUCCESS : MESSAGE_DELETE_APPT_SUCCESS;
-        return String.format(message, personToEdit);
+        return String.format(MESSAGE_ADD_APPT_SUCCESS, personToEdit);
+    }
+
+    /**
+     * Checks if an appt has end time before or equal to start time
+     */
+    private boolean hasInvalidTiming(Appt appt) {
+        LocalDateTime start = appt.getStart().value;
+        LocalDateTime end = appt.getEnd().value;
+
+        if (!end.isAfter(start)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Checks if appt1 and appt2 have timings which clash
+     */
+    private boolean hasApptClash(Appt appt1, Appt appt2) {
+        LocalDateTime start1 = appt1.getStart().value;
+        LocalDateTime end1 = appt1.getEnd().value;
+        LocalDateTime start2 = appt2.getStart().value;
+        LocalDateTime end2 = appt2.getEnd().value;
+
+        // Example:
+        // if appt1 is from 1600-1700, appt2 cannot start between 1600-1759, and cannot end between 1601-1800
+        // if appt2 is from 1600-1700, appt1 cannot start between 1600-1759, and cannot end between 1601-1800
+        if (((start1.isEqual(start2) || start1.isAfter(start2)) && start1.isBefore(end2))
+                || ((start2.isEqual(start1) || start2.isAfter(start1)) && start2.isBefore(end1))
+                || (end1.isAfter(start2) && (end1.isBefore(end2) || end1.isEqual(end2)))
+                || (end2.isAfter(start1) && (end2.isBefore(end1) || end2.isEqual(end1)))) {
+            return true;
+        }
+        return false;
     }
 
     @Override
