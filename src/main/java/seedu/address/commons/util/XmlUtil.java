@@ -30,8 +30,6 @@ import org.w3c.dom.Element;
  * Helps with reading from and writing to XML files.
  */
 public class XmlUtil {
-    static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(XmlUtil.class.getName());
-
     static {
         org.apache.xml.security.Init.init();
     }

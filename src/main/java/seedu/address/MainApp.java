@@ -124,6 +124,10 @@ public class MainApp extends Application {
         return new ModelManager(initialData, userPrefs);
     }
 
+    /**
+     * Returns a {@code SecretKey} using the AES algorithm
+     * If an existing key exists, the existing key will be used instead.
+     */
     private SecretKey initSecretKey() {
         SecretKey secretKey;
         File savedSecretKey = new File(userPrefs.getSecretKeyPath().toString());
