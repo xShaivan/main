@@ -244,6 +244,7 @@ Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOO
 
 .Constraints for `[d/DOB]`:
 * Must be in the format `dd-MM-YYYY`
+* Must not be before epoch time 0 (i.e. dates before 01-01-1970 will not be accepted).
 
 .Constraints for `[h/HEIGHT]
 * Must be a numerical input.
@@ -255,9 +256,9 @@ Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOO
 * Floating point numbers are accepted.
 * Input all `weight` data in kilograms.
 
-.Constraints for `[g/BLOOD TYPE]`
+.Constraints for `[b/BLOOD TYPE]`
 * Input must either be `A+`, `A-`, `AB+`, `AB-`, `B+`, `B-`, `O+` or `O-`.
-* Excluding the `+/-` from the input will not be accepted.
+* Excluding the `+`/`-` from the input will not be accepted.
 
 .Constraints for `[g/GENDER]`
 * Input must either be `M` (for Male) or `F` (for Female).
@@ -269,7 +270,7 @@ Work In Progress: `[m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
 
 Examples:
 
-* `addinfo 2 n/S9123456A d/01-01-1990 h/154 g/M` +
+* `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M` +
 For patient in index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male.
 // end::addinfocommands[]
@@ -320,24 +321,6 @@ Example:
 * `view 1` +
 Display information of patient at index 1
 
-=== Import files to other computers: `import`
-
-Import patient’s info as a txt file from a specified directory and file name. +
-Format: `import DIRECTORY_NAME/FILE_NAME`
-
-Example:
-
-* `import Desktop/patient1info.txt`
-
-=== Export files to other computers: `export`
-
-Export patient’s info as a txt file to a specified directory and file name. +
-Format: `export INDEX DIRECTORY_NAME/FILE_NAME`
-
-Example:
-
-* `export 1 Desktop/patient1info.txt`
-
 == FAQ
 
 Empty.
@@ -374,7 +357,3 @@ e.g. `editreport 3 od/01-01-2018 t/Depression d/02-01-2018 i/Patient diagnosed w
 e.g. `sort n/ 2`
 * *View* : `view INDEX` +
 e.g. view 1
-* *Import Document* : `import DIRECTORY_NAME/FILE_NAME` +
-e.g. `import Desktop/patient1info.txt`
-* *Export Document* : `export INDEX DIRECTORY_NAME/FILE_NAME` +
-e.g. `export 1 Desktop/patient1info.txt`
