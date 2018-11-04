@@ -58,6 +58,10 @@ public class EditHistCommandParser implements Parser<EditHistCommand> {
             editHistDescriptor.setPrevCountry(
                     ParserUtil.parsePrevCountry(argMultimap.getValue(PREFIX_HISTORY_COUNTRY).get()));
         }
+        if (argMultimap.getValue(PREFIX_HISTORY_DISCHARGE_STATUS).isPresent()) {
+            editHistDescriptor.setDischargeStatus(
+                    ParserUtil.parseDischargeStatus(argMultimap.getValue(PREFIX_HISTORY_DISCHARGE_STATUS).get()));
+        }
         if (!editHistDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditHistCommand.MESSAGE_MEDHISTORY_NOT_EDITED);
         }
