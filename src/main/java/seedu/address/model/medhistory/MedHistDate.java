@@ -1,6 +1,7 @@
 package seedu.address.model.medhistory;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.DateTimeUtil.DATE_VALIDATION_REGEX;
 //import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
@@ -14,12 +15,6 @@ import seedu.address.model.util.DateTimeUtil;
  */
 
 public class MedHistDate {
-
-    public static final String MESSAGE_MEDHISTDATE_CONSTRAINTS =
-            "ReportDate needs to be in day-month-year (dd-mm-yyyy) format.";
-
-    public static final String MEDHISTDATE_VALIDATION_REGEX = "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
-
     public final LocalDate value;
 
     /**
@@ -35,7 +30,7 @@ public class MedHistDate {
     }
 
     public static boolean isValidMedHistDate(String test) {
-        return test.matches(MEDHISTDATE_VALIDATION_REGEX);
+        return test.matches(DATE_VALIDATION_REGEX);
     }
 
     @Override

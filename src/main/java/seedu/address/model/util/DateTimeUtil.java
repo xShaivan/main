@@ -4,15 +4,32 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 /**
  * Helper functions for LocalDate and LocalDateTime conversion to and from String
  */
 public class DateTimeUtil {
-    private static final String DATE_PATTERN = "dd-MM-yyyy";
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
-    private static final String DATETIME_PATTERN = "dd-MM-yyyy HH:mm";
-    private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern(DATETIME_PATTERN);
+    public static final String DATE_CONSTRAINTS = "Dates should be of the format DD-MM-YYYY";
+    public static final String DATE_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.\n"
+            + "Please also check that your date is a valid date.";
+    public static final String DATE_VALIDATION_REGEX = "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
+
+    public static final String DATE_TIME_CONSTRAINTS =
+            "Date and Time should be of the format: " + "DD-MM-YYYY HH:MM";
+    public static final String DATE_TIME_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.\n"
+            + "Please also check that your date is a valid date and that your time is a valid time.";
+    public static final String DATE_TIME_VALIDATION_REGEX =
+            "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
+
+    private static final String DATE_PATTERN = "dd-MM-uuuu";
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN)
+            .withResolverStyle(ResolverStyle.STRICT);
+    private static final String DATETIME_PATTERN = "dd-MM-uuuu HH:mm";
+    private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern(DATETIME_PATTERN)
+            .withResolverStyle(ResolverStyle.STRICT);
+
+    private static LocalDate earliestDateAllowed = parseDate("01-01-1900");
 
     /**
      * convert LocalDate to String
@@ -54,5 +71,9 @@ public class DateTimeUtil {
      */
     public static LocalDateTime parseDateTime(String dateTimeString) throws DateTimeParseException {
         return LocalDateTime.parse(dateTimeString, DATETIME_FORMATTER);
+    }
+
+    public static LocalDate getEarliestDateAllowed() {
+        return earliestDateAllowed;
     }
 }

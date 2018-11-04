@@ -18,13 +18,13 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_APPT1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_APPT_WPREFIX;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.model.util.DateTimeUtil.DATE_TIME_CONSTRAINTS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddApptCommand;
-import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
 import seedu.address.model.timetable.ApptVenue;
@@ -88,12 +88,12 @@ public class AddApptCommandParserTest {
         // invalid appt start
         assertParseFailure(parser, targetIndex.getOneBased() + INVALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
-                + VALID_DRNAME_APPT_WPREFIX, ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
+                + VALID_DRNAME_APPT_WPREFIX, DATE_TIME_CONSTRAINTS);
 
         // invalid appt end
         assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + INVALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
-                + VALID_DRNAME_APPT_WPREFIX, ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
+                + VALID_DRNAME_APPT_WPREFIX, DATE_TIME_CONSTRAINTS);
 
         // invalid appt venue
         assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
