@@ -6,7 +6,7 @@ import static seedu.address.model.util.DateTimeUtil.DATE_TIME_CONSTRAINTS;
 import static seedu.address.model.util.DateTimeUtil.DATE_TIME_VALUE_EXCEEDED;
 import static seedu.address.model.util.DateTimeUtil.DATE_VALUE_EXCEEDED;
 
-import java.time.LocalDate;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
@@ -161,12 +161,9 @@ public class ParserUtil {
         }
 
         try {
-            LocalDate localDate = DateTimeUtil.parseDate(trimmedDateOfBirth);
-            if (localDate.isBefore(DateTimeUtil.getEarliestDateAllowed())) {
-                throw new ParseException(DATE_VALUE_EXCEEDED);
-            }
-        } catch (DateTimeParseException e) {
-            throw new ParseException(DATE_VALUE_EXCEEDED);
+            DateTimeUtil.isCorrectDate(trimmedDateOfBirth);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
         }
 
         return new DateOfBirth(trimmedDateOfBirth);
@@ -327,12 +324,9 @@ public class ParserUtil {
         }
 
         try {
-            LocalDate localDate = DateTimeUtil.parseDate(trimmedMedHistDate);
-            if (localDate.isBefore(DateTimeUtil.getEarliestDateAllowed())) {
-                throw new ParseException(DATE_VALUE_EXCEEDED);
-            }
-        } catch (DateTimeParseException e) {
-            throw new ParseException(DATE_VALUE_EXCEEDED);
+            DateTimeUtil.isCorrectDate(trimmedMedHistDate);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
         }
 
         return new MedHistDate(trimmedMedHistDate);
@@ -410,12 +404,9 @@ public class ParserUtil {
         }
 
         try {
-            LocalDate localDate = DateTimeUtil.parseDate(trimmedReportDate);
-            if (localDate.isBefore(DateTimeUtil.getEarliestDateAllowed())) {
-                throw new ParseException(DATE_VALUE_EXCEEDED);
-            }
-        } catch (DateTimeParseException e) {
-            throw new ParseException(DATE_VALUE_EXCEEDED);
+            DateTimeUtil.isCorrectDate(trimmedReportDate);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
         }
 
         return new ReportDate(trimmedReportDate);
