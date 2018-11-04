@@ -3,11 +3,8 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.util.DateTimeUtil.DATE_CONSTRAINTS;
 import static seedu.address.model.util.DateTimeUtil.DATE_TIME_CONSTRAINTS;
-import static seedu.address.model.util.DateTimeUtil.DATE_TIME_VALUE_EXCEEDED;
-import static seedu.address.model.util.DateTimeUtil.DATE_VALUE_EXCEEDED;
 
 import java.time.DateTimeException;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
@@ -447,13 +444,11 @@ public class ParserUtil {
         }
 
         try {
-            LocalDateTime localDateTime = DateTimeUtil.parseDateTime(trimmedApptDateTime);
-            if (localDateTime.toLocalDate().isBefore(DateTimeUtil.getEarliestDateAllowed())) {
-                throw new ParseException(DATE_TIME_VALUE_EXCEEDED);
-            }
+            DateTimeUtil.isCorrectDateTime(trimmedApptDateTime);
         } catch (DateTimeParseException e) {
-            throw new ParseException(DATE_VALUE_EXCEEDED);
+            throw new ParseException(e.getMessage());
         }
+
         return new ApptDateTime(trimmedApptDateTime);
     }
 
