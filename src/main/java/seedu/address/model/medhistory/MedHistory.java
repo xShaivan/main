@@ -108,7 +108,8 @@ public class MedHistory {
 
     @Override
     public String toString() {
-        return medHistDate.toString() + " \n" + allergy.toString()
-                + " \n" + prevCountry.toString() + " \n" + dischargeStatus.toString();
+        return medHistDate.toString() + " " + dischargeStatus.toString() + "\n"
+                + "Allergy: " + allergy.toString() + "\n"
+                + " Previous Country Visited: " + prevCountry.toString();
     }
 }

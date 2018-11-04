@@ -119,7 +119,7 @@
                         <AnchorPane fx:id="medHistory">
                             <children>
                                 <Label fx:id="nameLabel2" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                <FlowPane fx:id="medHistoriesFlowPane" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                                <VBox fx:id="medHistoryVBox" spacing ="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="10.0"></VBox>
                             </children>
                         </AnchorPane>
                         <AnchorPane fx:id="medAppts">
