@@ -23,7 +23,7 @@ Health Book (or some other name that we will be deciding later) is an address bo
 == Quick Start (to be edited in the future)
 
 .  Ensure you have Java version `9` or later installed in your Computer.
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
+.  Download the latest `healthbook.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
@@ -320,24 +320,6 @@ Example:
 * `view 1` +
 Display information of patient at index 1
 
-=== Import files to other computers: `import`
-
-Import patient’s info as a txt file from a specified directory and file name. +
-Format: `import DIRECTORY_NAME/FILE_NAME`
-
-Example:
-
-* `import Desktop/patient1info.txt`
-
-=== Export files to other computers: `export`
-
-Export patient’s info as a txt file to a specified directory and file name. +
-Format: `export INDEX DIRECTORY_NAME/FILE_NAME`
-
-Example:
-
-* `export 1 Desktop/patient1info.txt`
-
 == FAQ
 
 Empty.
@@ -374,7 +356,3 @@ e.g. `editreport 3 od/01-01-2018 t/Depression d/02-01-2018 i/Patient diagnosed w
 e.g. `sort n/ 2`
 * *View* : `view INDEX` +
 e.g. view 1
-* *Import Document* : `import DIRECTORY_NAME/FILE_NAME` +
-e.g. `import Desktop/patient1info.txt`
-* *Export Document* : `export INDEX DIRECTORY_NAME/FILE_NAME` +
-e.g. `export 1 Desktop/patient1info.txt`
