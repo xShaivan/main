@@ -334,7 +334,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 // end::undoredo[]
 
 // tag::addinfo[]
-=== Additional Information
+=== Additional Information features
 ==== Current Implementation
 The `addinfo` command is facilitated by the `LogicManager` which calls upon `AddressBookParser` for the execution of commands. It extends the `AddressBookParser` with the `addinfo` command.
 
@@ -342,7 +342,7 @@ The command takes in an `index` which represents the `Person` in the list displa
 
 The command then looks for the `String` after the arguments which represents the data to be added. This data will be checked for validity using the `ParserUtil` class. If the data is valid, the respective class will be initialized (For eg. the commmand `g/M` is valid as it stands for changing the `Gender` of `Person` to `Male`. Since the data `M` is valid, the `Gender` class will be initialized). If the data is not valid however, an `ParseException` will be thrown warning users that the input data is not valid.
 
-Upon handling all the arguments, an `addInfoPersonDescriptor` object will be created. This is essentially a facade object that contains all the attributes of the `Person` to be edited, with its updated attributes. There will then be a mapping of the `addInfoPersonDescriptor` to a new `Person` object facilitated by the method `AddInfoCommand#createEditedPerson()`.
+Upon handling all the arguments, an `addInfoPersonDescriptor` object will be created. This is essentially a facade object that contains all the attributes of the `Person` to be edited, with its updated attributes. There will then be a mapping of the `addInfoPersonDescriptor` to a new `Person` object facilitated by the method `AddInfoCommand#createEditedPerson`.
 
 Finally, the `Model#updatePerson` copies attribute of the new `Person` object created above to the `Person` to be edited.
 
@@ -353,7 +353,7 @@ TODO: Add in class diagrams for each step.
 Step 1. User executes `addinfo 5 ic/S1234567Z g/M d/01-01-1970` to modify the `Nric`, `Gender`, and `DateOfBirth` attributes of the 5th person in the `PersonCardList` view.
 
 [NOTE]
-If any of the arguments contain invalid data, the program will only process the information up till the invalid data. For instance, `addinfo 1 ic/S1234567Z d/20-20-19872 g/M` will only change the `Nric` attribute of the `Person` at index 1 as the date of birth argument contains erroneous date.
+If any of the arguments contain invalid data, the program will not process any data. For instance, `addinfo 1 i/S1234567Z d/20-20-19872 g/M` will not change the `Nric` attribute of the `Person` at index 1 as the date of birth argument contains erroneous date.
 
 Step 2. The `AddressBookParser` makes a call to `AddInfoCommandParser` together with the `String` input.
 
@@ -1508,60 +1508,6 @@ Use case ends.
 ** Steps 3a1 and 3a2 are repeated until data entered is correct.
 +
 Use case resumes at step 4.
-
-=== Use case: Import files to other computers: `import`
-
-*MSS*
-
-1.  User chooses to import patient info of a specific patient and specifies the directory and the text file where he wants to import it from.
-2.  System imports patient info from a txt file.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User provides an invalid index for the list.
-+
-[none]
-** 1a1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1b. Directory information or text file name that user inputs is invalid.
-+
-[none]
-** 1b1. System displays a message that the location given is invalid.
-+
-Use case ends.
-
-=== Use case: Export files to other computers: `export`
-
-*MSS*
-
-1.  User chooses to export patient info of a specific patient and specifies the directory and file name which he wants to export to.
-2.  System exports patient into a txt file in the specified directory.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User provides an invalid index for the list.
-+
-[none]
-** 1a1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1b. Directory information or text file name that user inputs is invalid.
-+
-[none]
-** 1b1. System displays a message that the location given is invalid.
-+
-Use case ends.
 
 [appendix]
 == Non Functional Requirements

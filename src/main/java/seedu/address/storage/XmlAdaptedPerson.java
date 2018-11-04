@@ -17,9 +17,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
@@ -41,14 +44,20 @@ public class XmlAdaptedPerson {
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
 
-    @XmlElement(required = true)
+    @XmlElement
     private String nric;
-    @XmlElement(required = true)
+    @XmlElement
     private String dateOfBirth;
-    @XmlElement(required = true)
+    @XmlElement
     private String height;
-    @XmlElement(required = true)
+    @XmlElement
     private String weight;
+    @XmlElement
+    private String gender;
+    @XmlElement
+    private String bloodType;
+    @XmlElement
+    private String occupation;
 
     @XmlElement
     private List<XmlAdaptedReport> reports = new ArrayList<>();
@@ -103,6 +112,9 @@ public class XmlAdaptedPerson {
         dateOfBirth = source.getDateOfBirth().toString();
         height = source.getHeight().value;
         weight = source.getWeight().value;
+        gender = source.getGender().toString();
+        bloodType = source.getBloodType().value;
+        occupation = source.getOccupation().value;
 
         reports = source.getMedicalReports().stream().map(XmlAdaptedReport::new).collect(Collectors.toList());
         medHistories = source.getMedHistory().stream().map(XmlAdaptedMedHistory::new).collect(Collectors.toList());
@@ -174,18 +186,38 @@ public class XmlAdaptedPerson {
         }
         final Weight modelWeight = new Weight(weight);
 
+        if (gender == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Gender.class.getSimpleName()));
+        }
+        final Gender modelGender = new Gender(gender);
+
+        if (bloodType == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, BloodType.class
+            .getSimpleName()));
+        }
+        final BloodType modelBloodType = new BloodType(bloodType);
+
+        if (occupation == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Occupation.class
+                    .getSimpleName()));
+        }
+        final Occupation modelOccupation = new Occupation(occupation);
+
+
         /**
          * ==================================================
          * SUBFIELDS IN LIST FORMAT
          * ==================================================
          */
 
+        //@@author chewkahmeng
         final List<MedicalReport> personMedicalReports = new ArrayList<>();
         for (XmlAdaptedReport report : reports) {
             personMedicalReports.add(report.toModelType());
         }
         final Set<MedicalReport> modelReports = new HashSet<>(personMedicalReports);
 
+        //@@author xShaivan
         final List<MedHistory> personMedHistories = new ArrayList<>();
         for (XmlAdaptedMedHistory medHistory : medHistories) {
             personMedHistories.add(medHistory.toModelType());
@@ -206,8 +238,8 @@ public class XmlAdaptedPerson {
         }
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports,
-                modelMedHistory, modelAppts, modelNric, modelDateOfBirth, modelHeight, modelWeight,
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports, modelMedHistory, modelAppts,
+                modelNric, modelDateOfBirth, modelHeight, modelWeight, modelGender, modelBloodType, modelOccupation,
                 modelTags);
     }
 
@@ -221,6 +253,7 @@ public class XmlAdaptedPerson {
             return false;
         }
 
+        //TODO: Update equality
         XmlAdaptedPerson otherPerson = (XmlAdaptedPerson) other;
         return Objects.equals(name, otherPerson.name)
                 && Objects.equals(phone, otherPerson.phone)

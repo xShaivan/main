@@ -1,17 +1,21 @@
 package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Arrays;
+
+//@@author chokxy
 /**
  * Represents a Person's Blood Type in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidType(String)}
  */
 
 public class BloodType {
-    public static final String BLOODTYPE_CONSTRAINTS =
+    public static final String MESSAGE_BLOODTYPE_CONSTRAINTS =
             "Blood type should be A, B, O or AB followed by - or +";
     public static final String TYPE_VALIDATION_REGEX = "[ABO]*" + "[-+]";
+
+    private static final String[] incorrectBloodType = {"AO", "BO", "BA", "OA", "OB"};
+
     public final String value;
 
     /**
@@ -21,20 +25,31 @@ public class BloodType {
      */
     public BloodType(String type) {
         requireNonNull(type);
-        checkArgument(isValidType(type), BLOODTYPE_CONSTRAINTS);
         value = type;
     }
 
     /**
      * Returns true if a given string is a valid phone number.
      */
-    public static boolean isValidType(String test) {
+    public static boolean isValidBloodType(String test) {
         return test.matches(TYPE_VALIDATION_REGEX);
+    }
+
+    public static boolean isIncorrectBloodType(String test) {
+        return Arrays.stream(incorrectBloodType).parallel().anyMatch(test::contains);
     }
 
     @Override
     public String toString() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this
+                || (other instanceof BloodType
+                && value.equals(((BloodType) other).value));
+
     }
 
     @Override

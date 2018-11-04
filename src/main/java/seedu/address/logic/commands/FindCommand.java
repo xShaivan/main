@@ -12,13 +12,14 @@ import seedu.address.model.person.Person;
 /**
  * Finds and lists all persons in address book whose prefix contains any of the argument keyword.
  * Keyword matching is case insensitive.
- * v1.2 find by 1 keyword for name, phone, email, address, tag
- * v1.3 will find by different categories with 1 keyword each
+ * v1.2 find by 1 keyword for name, phone, email, address, tag with 1 keyword only
+ * v1.3 will find by different newly implemented categories with multiple keywords each
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
+    //@@author chokxy
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose prefix contain any "
             + "of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: PREFIX/ KEYWORD [MORE_KEYWORDS]...\n"
@@ -31,8 +32,6 @@ public class FindCommand extends Command {
     public FindCommand(Predicate<Person> predicate) {
         this.predicate = predicate;
     }
-
-
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
