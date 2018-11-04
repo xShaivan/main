@@ -1,9 +1,6 @@
 package seedu.address.commons.util;
 
-import java.io.File;
 import java.io.FileOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 

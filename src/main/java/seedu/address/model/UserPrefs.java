@@ -13,8 +13,9 @@ public class UserPrefs {
 
     private GuiSettings guiSettings;
     private Path addressBookFilePath = Paths.get("data" , "healthbook.xml");
-    private Path encryptedFilePath = Paths.get("data", "encrypted.xml");
+    private Path encryptedFilePath = Paths.get("data", "healthbook_encrypted.xml");
     private Path secretKeyPath = Paths.get("data", "key");
+    public boolean encryption = false;
 
     public UserPrefs() {
         setGuiSettings(500, 500, 0, 0);
