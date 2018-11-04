@@ -1509,60 +1509,6 @@ Use case ends.
 +
 Use case resumes at step 4.
 
-=== Use case: Import files to other computers: `import`
-
-*MSS*
-
-1.  User chooses to import patient info of a specific patient and specifies the directory and the text file where he wants to import it from.
-2.  System imports patient info from a txt file.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User provides an invalid index for the list.
-+
-[none]
-** 1a1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1b. Directory information or text file name that user inputs is invalid.
-+
-[none]
-** 1b1. System displays a message that the location given is invalid.
-+
-Use case ends.
-
-=== Use case: Export files to other computers: `export`
-
-*MSS*
-
-1.  User chooses to export patient info of a specific patient and specifies the directory and file name which he wants to export to.
-2.  System exports patient into a txt file in the specified directory.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User provides an invalid index for the list.
-+
-[none]
-** 1a1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1b. Directory information or text file name that user inputs is invalid.
-+
-[none]
-** 1b1. System displays a message that the location given is invalid.
-+
-Use case ends.
-
 [appendix]
 == Non Functional Requirements
 
