@@ -231,7 +231,7 @@ public class MainApp extends Application {
         try {
             storage.saveUserPrefs(userPrefs);
 
-            if (userPrefs.encryption) {
+            if (userPrefs.getEncryption()) {
                 decryptedFile = new File(userPrefs.getAddressBookFilePath().toString());
                 if (decryptedFile.exists() && !decryptedFile.isDirectory()) {
                     Document decryptedXmlFile = XmlUtil.loadDecryptedXmlFile(userPrefs.getAddressBookFilePath()
@@ -247,7 +247,7 @@ public class MainApp extends Application {
             logger.severe("Failed to get XML file for encryption");
         }
 
-        if (userPrefs.encryption) {
+        if (userPrefs.getEncryption()) {
             File decryptedXmlfile = new File(userPrefs.getAddressBookFilePath().toString());
             decryptedXmlfile.deleteOnExit();
         } else {

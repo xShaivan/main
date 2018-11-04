@@ -87,6 +87,9 @@ public class XmlUtil {
         m.marshal(data, file.toFile());
     }
 
+    /**
+     * Load a decrypted XML file
+     */
     public static Document loadDecryptedXmlFile(String xmlFile) throws Exception {
         DocumentBuilderFactory builder = DocumentBuilderFactory.newInstance();
 
@@ -97,6 +100,9 @@ public class XmlUtil {
         return document;
     }
 
+    /**
+     * Load an encrypted XML file
+     */
     public static Document loadEncryptedXmlFile(String xmlFile) throws Exception {
         File encryptionFile = new File(xmlFile);
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -109,6 +115,9 @@ public class XmlUtil {
         return document;
     }
 
+    /**
+     * Save a file
+     */
     public static void saveFile(Document document, String fileName) throws Exception {
         File encryptionFile = new File(fileName);
         FileOutputStream fileOutputStream = new FileOutputStream(encryptionFile);
@@ -123,6 +132,9 @@ public class XmlUtil {
         fileOutputStream.close();
     }
 
+    /**
+     * Encrypt a file
+     */
     public static Document encryptDocument(Document document, SecretKey secretKey, String algorithm) throws Exception {
         Element rootElement = document.getDocumentElement();
         XMLCipher xmlCipher = XMLCipher.getInstance(algorithm);
@@ -133,6 +145,9 @@ public class XmlUtil {
         return document;
     }
 
+    /**
+     * Decrypt a file
+     */
     public static Document decryptDocument(Document document, SecretKey secretKey, String algorithm) throws Exception {
         Element encryptedDataElement = (Element) document.getElementsByTagNameNS(EncryptionConstants.EncryptionSpecNS,
                 EncryptionConstants._TAG_ENCRYPTEDDATA).item(0);

@@ -43,12 +43,24 @@ public class SecretKeyUtil {
         return encodeToString;
     }
 
+    /**
+     * Converts a {@code SecretKey} into {@code file}
+     * @param secretKey to be converted
+     * @param fileName used to save the {@code SecretKey}
+     * @throws Exception if the {@code SecretKey} cannot be encoded
+     */
     public static void saveSecretKey(SecretKey secretKey, String fileName) throws Exception {
         byte[] keyByte = secretKey.getEncoded();
         FileOutputStream outputStream = new FileOutputStream(fileName);
         outputStream.write(keyByte);
     }
 
+    /**
+     * Converts a {@code File} into {@code SecretKey}
+     * @param fileName of the file containing the {@code SecretKey}
+     * @return the converted {@code SecretKey}
+     * @throws Exception if the file does not exist
+     */
     public static SecretKey readSecretKey(String fileName) throws Exception {
         SecretKey secretKey = new SecretKeySpec(JavaUtils.getBytesFromFile(fileName), "AES");
         return secretKey;
