@@ -23,8 +23,8 @@ Health Book (or some other name that we will be deciding later) is an address bo
 == Quick Start (to be edited in the future)
 
 .  Ensure you have Java version `9` or later installed in your Computer.
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
+.  Download the latest `healthbook.jar` link:{repoURL}/releases[here].
+.  Copy the file to the folder you want to use as the home folder for your Health Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
 image::Ui.png[width="790"]
@@ -34,7 +34,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
 * *`list`* : lists all contacts
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
+* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Health Book.
 * **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
 
@@ -48,7 +48,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 * Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/asthma`, `t/diabetes t/stroke` etc.
 * Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 *Application Workflow*
@@ -79,15 +79,15 @@ Format: `help`
 === Adding a person: `add`
 
 Create a new patient entry into the health book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
 
 [TIP]
-A person can have any number of tags (including 0)
+A patient can have any number of tags (including 0)
 
 Examples:
 
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567`
+* `add n/Betsy Crowe t/Diabetes e/betsycrowe@example.com a/Newgate Street p/1234567 t/Asthma`
 
 === Listing all patients : `list`
 
@@ -97,7 +97,7 @@ Format: `list`
 === Editing basic information of patient person : `edit`
 
 Edits an existing patient in the health book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
 
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index *must be a positive integer* 1, 2, 3, ...
@@ -138,8 +138,8 @@ Returns `john` and `John Doe`
 Returns any patient having names `Betsy`, `Tim`, or `John`
 * `find ic/ S9876543T`
 Returns any patient whose NRIC is S9876543T.
-* `find t/ friend`
-Returns any patient who is tagged friend.
+* `find t/ asthma`
+Returns any patient who is tagged with asthma.
 
 === Deleting a patient : `delete`
 
@@ -156,7 +156,7 @@ Examples:
 
 * `list` +
 `delete 2` +
-Deletes the 2nd person in the address book.
+Deletes the 2nd person in the Health Book.
 * `find n/ Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
@@ -343,7 +343,7 @@ e.g. `edit 1 p/91234567 e/johndoe@example.com`
 e.g. `find n/ john` +
 e.g. `find n/ BeTsY Tim John` +
 e.g. `find ic/ S9876543T` +
-e.g. `find t/ friend`
+e.g. `find t/ asthma`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
 * *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
