@@ -9,7 +9,7 @@
 
 == Overview
 
-Health Book is an application for healthcare professionals to retrieve their patients’ personal information and health-related information efficiently and systematically. The user interacts with it using a Command Line Interface (CLI) to input commands, while a Graphical User Interface (GUI) is used to display the patients’ information. It is written in Java and has about 10kLoC.
+Health Book is a application written in Java. Its main purpose is to help healthcare professionals retrieve their patients’ personal and health-related information more efficiently. The user uses a Command Line Interface (CLI) to input commands and a Graphical User Interface (GUI) is used to display the patients’ information. My team consisted of a Project Manager, a Development Lead, a Design Lead, a Subject Matter Expert and myself, the Quality Assurance Lead. All of us contributed features to our application and my job was to ensure that our application runs smoothly.
 
 == Summary of contributions
 
@@ -22,7 +22,7 @@ Health Book is an application for healthcare professionals to retrieve their pat
 ** What it does: allows the user to edit a patient’s medical report.
 ** Justification: This feature allows healthcare professionals to rectify their mistakes after they write a medical report.
 
-* *Code contributed*: [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddMedicalReportCommand.java[AddMedicalReportCommand]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddMedicalReportCommandParser.java[AddMedicalReportCommandParser]][https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/medicalreport[MedicalReport Classes]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedReport.java[XmlAdaptedReport]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddReportCommandTest.java[AddReportCommandTest]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddReportCommandParserTest.java[AddReportCommandParserTest]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/person/AddMedicalReportTest.java[MedicalReportTest]]
+* *Code contributed*: [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddMedicalReportCommand.java[AddMedicalReportCommand]](Command for adding medical report)[https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddMedicalReportCommandParser.java[AddMedicalReportCommandParser]](Class to parse addmedicalreport command)[https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/medicalreport[MedicalReport Classes]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedReport.java[XmlAdaptedReport]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddReportCommandTest.java[AddReportCommandTest]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddReportCommandParserTest.java[AddReportCommandParserTest]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/person/AddMedicalReportTest.java[MedicalReportTest]](Tests for respective commands)
 
 * *Other contributions*:
 

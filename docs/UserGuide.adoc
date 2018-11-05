@@ -18,7 +18,7 @@ By: `Team T12-2`      Since: `Aug 2018`      Licence: `MIT`
 
 == Introduction
 
-Health Book (or some other name that we will be deciding later) is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface is utilized mainly for the input*, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
+Health Book is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface is utilized mainly for the input*, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
 
 == Quick Start (to be edited in the future)
 
@@ -358,8 +358,8 @@ e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 e.g. `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
 e.g. `addreport 3 t/Asthma d/01-01-2018 i/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
-* *Edit Medical Report* : `editreport INDEX od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
-e.g. `editreport 3 od/01-01-2018 t/Depression d/02-01-2018 i/Patient diagnosed with depression and prescribed XXX medicine. Next appointment is on 03-02-2018.`
+* *Edit Medical Report* : `editreport INDEX ot/Title od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
+    e.g. `editreport 3 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Patient diagnosed with depression and prescribed AAA medicine. Next appointment is on 03-03-2018.`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
 * *Select* : `select INDEX` +
