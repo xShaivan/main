@@ -11,14 +11,12 @@ import java.time.format.ResolverStyle;
  */
 public class DateTimeUtil {
     public static final String DATE_CONSTRAINTS = "Dates should be of the format DD-MM-YYYY";
-    public static final String DATE_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.\n"
-            + "Please also check that your date is a valid date.";
+    public static final String DATE_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.";
     public static final String DATE_VALIDATION_REGEX = "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
 
     public static final String DATE_TIME_CONSTRAINTS =
             "Date and Time should be of the format: " + "DD-MM-YYYY HH:MM";
-    public static final String DATE_TIME_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.\n"
-            + "Please also check that your date is a valid date and that your time is a valid time.";
+    public static final String DATE_TIME_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.";
     public static final String DATE_TIME_VALIDATION_REGEX =
             "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
 
@@ -75,5 +73,39 @@ public class DateTimeUtil {
 
     public static LocalDate getEarliestDateAllowed() {
         return earliestDateAllowed;
+    }
+
+    /**
+     * Check if the date input has valid values
+     * @param date String to be checked
+     * @throws DateTimeParseException if the values are not valid
+     */
+    public static void isCorrectDate(String date) throws DateTimeParseException {
+        try {
+            LocalDate localDate = DateTimeUtil.parseDate(date);
+            if (localDate.isBefore(DateTimeUtil.getEarliestDateAllowed())) {
+                int index = date.lastIndexOf(date);
+                throw new DateTimeParseException(DATE_VALUE_EXCEEDED, date, index);
+            }
+        } catch (DateTimeParseException e) {
+            throw new DateTimeParseException(e.getMessage(), e.getParsedString(), e.getErrorIndex());
+        }
+    }
+
+    /**
+     * Check if the datetime input has valid values
+     * @param datetime String to be checked
+     * @throws DateTimeParseException if the values are not valid
+     */
+    public static void isCorrectDateTime(String datetime) throws DateTimeParseException {
+        try {
+            LocalDateTime localDateTime = DateTimeUtil.parseDateTime(datetime);
+            if (localDateTime.toLocalDate().isBefore(DateTimeUtil.getEarliestDateAllowed())) {
+                int index = datetime.lastIndexOf(datetime);
+                throw new DateTimeParseException(DATE_VALUE_EXCEEDED, datetime, index);
+            }
+        } catch (DateTimeParseException e) {
+            throw new DateTimeParseException(e.getMessage(), e.getParsedString(), e.getErrorIndex());
+        }
     }
 }
