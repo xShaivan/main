@@ -22,7 +22,7 @@ public class DateOfBirth {
      * @param value a valid date
      * @throws ParseException if date format is invalid
      */
-    //TODO: (DateOfBirth) to be an Optional type to support null values
+
     public DateOfBirth(String value) {
         requireNonNull(value);
         this.value = (value.isEmpty()) ? Optional.empty() : Optional.of(DateTimeUtil.parseDate(value));

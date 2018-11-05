@@ -60,6 +60,8 @@ public class InfoPanel extends UiPart<Region> {
     private Label bloodTypeLabel;
     @FXML
     private Label occupationLabel;
+    @FXML
+    private Label maritalStatusLabel;
 
     @FXML
     private Label fullNameTag;
@@ -144,6 +146,7 @@ public class InfoPanel extends UiPart<Region> {
         genderLabel.setText(person.getGender().toString());
         bloodTypeLabel.setText(person.getBloodType().value);
         occupationLabel.setText(person.getOccupation().value);
+        maritalStatusLabel.setText(person.getMaritalStatus().toString());
     }
 
     /**

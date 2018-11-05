@@ -31,6 +31,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -122,10 +123,13 @@ public class AddInfoCommand extends Command {
         Gender updatedGender = addInfoPersonDescriptor.getGender().orElse(personToEdit.getGender());
         BloodType updatedBloodType = addInfoPersonDescriptor.getBloodType().orElse(personToEdit.getBloodType());
         Occupation updatedOccupation = addInfoPersonDescriptor.getOccupation().orElse(personToEdit.getOccupation());
+        MaritalStatus updatedMaritalStatus = addInfoPersonDescriptor.getMaritalStatus()
+                .orElse(personToEdit.getMaritalStatus());
+
 
         return new Person(name, phone, email, address, medicalReports, medHistory, appts, updatedNric,
                 updatedDateOfBirth, updatedHeight, updatedWeight, updatedGender, updatedBloodType, updatedOccupation,
-                tags);
+                updatedMaritalStatus, tags);
     }
 
     @Override
@@ -158,6 +162,7 @@ public class AddInfoCommand extends Command {
         private Gender gender;
         private BloodType bloodType;
         private Occupation occupation;
+        private MaritalStatus maritalStatus;
 
         public AddInfoPersonDescriptor() {}
 
@@ -169,10 +174,12 @@ public class AddInfoCommand extends Command {
             setGender(toCopy.gender);
             setBloodType(toCopy.bloodType);
             setOccupation(toCopy.occupation);
+            setMaritalStatus(toCopy.maritalStatus);
         }
 
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight, gender, bloodType, occupation);
+            return CollectionUtil.isAnyNonNull(nric, dateOfBirth, height, weight, gender, bloodType, occupation,
+                    maritalStatus);
         }
 
         public void setNric(Nric nric) {
@@ -231,6 +238,14 @@ public class AddInfoCommand extends Command {
             return Optional.ofNullable(occupation);
         }
 
+        public void setMaritalStatus(MaritalStatus maritalStatus) {
+            this.maritalStatus = maritalStatus;
+        }
+
+        public Optional<MaritalStatus> getMaritalStatus() {
+            return Optional.ofNullable(maritalStatus);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -243,9 +258,14 @@ public class AddInfoCommand extends Command {
 
             AddInfoPersonDescriptor e = (AddInfoPersonDescriptor) other;
 
-            //TODO: Update equality
             return getNric().equals(e.getNric())
-                    && getDateOfBirth().equals(e.getDateOfBirth());
+                    && getDateOfBirth().equals(e.getDateOfBirth())
+                    && getHeight().equals(e.getHeight())
+                    && getWeight().equals(e.getWeight())
+                    && getGender().equals(e.getGender())
+                    && getBloodType().equals(e.getBloodType())
+                    && getOccupation().equals(e.getOccupation())
+                    && getMaritalStatus().equals(e.getMaritalStatus());
         }
     }
 }

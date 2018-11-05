@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ScrollPane fx:id="infoPanel" fitToWidth="true">
             <content>
@@ -41,12 +41,12 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label fx:id="fullNameTag">
+                              <Label fx:id="fullNameTag" text="Full Name">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="ageTag" GridPane.rowIndex="4">
+                              <Label text="Marital Status:" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -72,7 +72,7 @@
                                  </font>
                               </Label>
                               <Label fx:id="fullNameLabel" GridPane.columnIndex="1" />
-                              <Label fx:id="ageLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="maritalStatusLabel" text="maritalStatusLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <Label fx:id="addressLabel" GridPane.columnIndex="3" />
                               <Label fx:id="nricLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Label fx:id="dateOfBirthLabel" GridPane.columnIndex="3" GridPane.rowIndex="3" />
