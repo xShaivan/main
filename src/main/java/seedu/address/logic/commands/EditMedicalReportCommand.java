@@ -37,14 +37,14 @@ public class EditMedicalReportCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the medical report identified by the index number used in the displayed person list"
-            + " and the date provided. "
+            + " and the original title and date provided. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_ORIGINAL_TITLE + "TITLE] "
-            + "[" + PREFIX_ORIGINAL_DATE + "DATE] "
+            + PREFIX_ORIGINAL_TITLE + "ORIGINAL TITLE "
+            + PREFIX_ORIGINAL_DATE + "ORIGINAL DATE "
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_DATE + "DATE] "
-            + "[" + PREFIX_INFO + "INFORMATION\n]"
+            + "[" + PREFIX_INFO + "INFORMATION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ORIGINAL_TITLE + "Asthma "
             + PREFIX_ORIGINAL_DATE + "01-01-2018 "
