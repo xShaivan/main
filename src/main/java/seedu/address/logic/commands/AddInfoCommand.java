@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_BLOODTYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_DOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_HEIGHT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_MARITAL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_OCCUPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_WEIGHT;
@@ -56,7 +57,8 @@ public class AddInfoCommand extends Command {
             + "[" + PREFIX_ADD_INFO_WEIGHT + "WEIGHT IN KG] "
             + "[" + PREFIX_ADD_INFO_GENDER + "GENDER] "
             + "[" + PREFIX_ADD_INFO_BLOODTYPE + "BLOOD TYPE] "
-            + "[" + PREFIX_ADD_INFO_OCCUPATION + "OCCUPATION]...\n"
+            + "[" + PREFIX_ADD_INFO_OCCUPATION + "OCCUPATION] "
+            + "[" + PREFIX_ADD_INFO_MARITAL + "MARITAL STATUS]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ADD_INFO_DOB + "01-01-1970 "
             + PREFIX_ADD_INFO_HEIGHT + "182";
