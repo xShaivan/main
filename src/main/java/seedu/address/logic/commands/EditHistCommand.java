@@ -41,7 +41,7 @@ public class EditHistCommand extends Command {
             + "medical history date for the entry to be edited."
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_HISTORY_OLD_DATE + "OLD_DATE "
+            + "[" + PREFIX_HISTORY_OLD_DATE + "OLD_DATE] "
             + "[" + PREFIX_HISTORY_DATE + "DATE] "
             + "[" + PREFIX_HISTORY_ALLERGY + "ALLERGY] "
             + "[" + PREFIX_HISTORY_COUNTRY + "PREVCOUNTRY] "
@@ -58,6 +58,8 @@ public class EditHistCommand extends Command {
             "The medical history entry you are trying to edit does not exist.";
     public static final String MESSAGE_MEDHISTORY_NOT_EDITED =
             "One field must be specified for editing. Please include at least one field to edit.";
+    public static final String MESSAGE_DUPLICATE_MEDHISTDATE =
+            "The new date you have specified is already taken. Please edit that entry instead.";
 
     private final Index index;
     private final MedHistDate medHistDate;
@@ -74,7 +76,7 @@ public class EditHistCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireAllNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
-        MedHistory editedHistory = null;
+        MedHistory editedMedHistory = null;
         boolean medHistoryFound = false;
 
         if (index.getZeroBased() >= lastShownList.size()) {
@@ -87,7 +89,7 @@ public class EditHistCommand extends Command {
         for (MedHistory medHistory : personToEdit.getMedHistory()) {
             medHistoriesCopy.add(medHistory);
             if (medHistory.getMedHistDate().equals(medHistDate)) {
-                editedHistory = createEditedMedHistory(medHistory, editHistDescriptor);
+                editedMedHistory = createEditedMedHistory(medHistory, editHistDescriptor);
                 medHistoriesCopy.remove(medHistory);
                 medHistoryFound = true;
             }
@@ -95,7 +97,14 @@ public class EditHistCommand extends Command {
         if (!medHistoryFound) {
             throw new CommandException(MESSAGE_MEDHISTORY_NOT_FOUND);
         }
-        medHistoriesCopy.add(editedHistory);
+
+        for (MedHistory fullmedHistory : medHistoriesCopy) {
+            if (isDuplicateMedHistDate(fullmedHistory, editedMedHistory)) {
+                throw new CommandException(MESSAGE_DUPLICATE_MEDHISTDATE);
+            }
+        }
+
+        medHistoriesCopy.add(editedMedHistory);
 
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getMedicalReports(), medHistoriesCopy, personToEdit.getAppts(),
@@ -108,6 +117,16 @@ public class EditHistCommand extends Command {
         model.commitAddressBook();
 
         return new CommandResult(generateSuccessMessage(editedPerson));
+    }
+
+    /**
+     * This method checks if input has a duplicate medical history date.
+     */
+    private boolean isDuplicateMedHistDate(MedHistory medHistory1, MedHistory medHistory2) {
+        String medHistDate1 = medHistory1.getMedHistDate().toString();
+        String medHistDate2 = medHistory2.getMedHistDate().toString();
+
+        return (medHistDate1.equals(medHistDate2));
     }
 
     /**
