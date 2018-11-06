@@ -89,7 +89,7 @@ public class InfoPanel extends UiPart<Region> {
     @FXML
     private VBox apptsVBox;
     @FXML
-    private FlowPane medReportsFlowPane;
+    private VBox medReportsVBox;
 
     public InfoPanel() {
         super(FXML);
@@ -169,7 +169,7 @@ public class InfoPanel extends UiPart<Region> {
     private void fillMedReportsPane() {
         medReports.setStyle("-fx-background-color: #CCCCCC");
         person.getMedicalReports().forEach(report ->
-                medReportsFlowPane.getChildren().add(new Label(report.toString())));
+                medReportsVBox.getChildren().add(new ReportCard(report)));
     }
 
     /**
@@ -177,7 +177,7 @@ public class InfoPanel extends UiPart<Region> {
      */
     public void clearFlowPanes() {
         medHistoryVBox.getChildren().clear();
-        medReportsFlowPane.getChildren().clear();
+        medReportsVBox.getChildren().clear();
         apptsVBox.getChildren().clear();
     }
 
