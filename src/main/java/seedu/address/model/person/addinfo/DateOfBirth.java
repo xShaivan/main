@@ -32,6 +32,9 @@ public class DateOfBirth {
         this.age = calculateAge(this.value);
     }
 
+    /**
+     * Calculates the {@code age} based on {@code dateOfBirth}
+     */
     private OptionalInt calculateAge(Optional<LocalDate> dateOfBirth) {
         if (dateOfBirth.isPresent()) {
             return OptionalInt.of(Period.between(dateOfBirth.get(), LocalDate.now()).getYears());
