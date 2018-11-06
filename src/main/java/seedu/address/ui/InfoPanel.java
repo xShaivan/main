@@ -212,6 +212,7 @@ public class InfoPanel extends UiPart<Region> {
         emailTag.setText("");
         bloodTypeTag.setText("");
         occupationTag.setText("");
+        maritalStatusTag.setText("");
 
         fullNameLabel.setText("");
         emailLabel.setText("");
@@ -224,5 +225,6 @@ public class InfoPanel extends UiPart<Region> {
         genderLabel.setText("");
         bloodTypeLabel.setText("");
         occupationLabel.setText("");
+        maritalStatusLabel.setText("");
     }
 }
