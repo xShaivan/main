@@ -1,6 +1,8 @@
 package seedu.address.commons.util;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
@@ -49,7 +51,7 @@ public class SecretKeyUtil {
      * @param fileName used to save the {@code SecretKey}
      * @throws Exception if the {@code SecretKey} cannot be encoded
      */
-    public static void saveSecretKey(SecretKey secretKey, String fileName) throws Exception {
+    public static void saveSecretKey(SecretKey secretKey, String fileName) throws IOException {
         byte[] keyByte = secretKey.getEncoded();
         FileOutputStream outputStream = new FileOutputStream(fileName);
         outputStream.write(keyByte);
@@ -61,7 +63,7 @@ public class SecretKeyUtil {
      * @return the converted {@code SecretKey}
      * @throws Exception if the file does not exist
      */
-    public static SecretKey readSecretKey(String fileName) throws Exception {
+    public static SecretKey readSecretKey(String fileName) throws IOException {
         SecretKey secretKey = new SecretKeySpec(JavaUtils.getBytesFromFile(fileName), "AES");
         return secretKey;
     }

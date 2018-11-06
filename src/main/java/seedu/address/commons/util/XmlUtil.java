@@ -22,9 +22,12 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.xml.security.encryption.XMLCipher;
+import org.apache.xml.security.encryption.XMLEncryptionException;
 import org.apache.xml.security.utils.EncryptionConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import seedu.address.commons.exceptions.EncryptionException;
 
 /**
  * Helps with reading from and writing to XML files.
@@ -88,12 +91,18 @@ public class XmlUtil {
     /**
      * Load a decrypted XML file
      */
-    public static Document loadDecryptedXmlFile(String xmlFile) throws Exception {
+    public static Document loadDecryptedXmlFile(String xmlFile) throws
+            EncryptionException {
+        Document document;
         DocumentBuilderFactory builder = DocumentBuilderFactory.newInstance();
 
-        DocumentBuilder documentBuilder = builder.newDocumentBuilder();
+        try {
+            DocumentBuilder documentBuilder = builder.newDocumentBuilder();
+            document = documentBuilder.parse(xmlFile);
+        } catch (Exception e) {
+            throw new EncryptionException(e);
+        }
 
-        Document document = documentBuilder.parse(xmlFile);
 
         return document;
     }
@@ -101,14 +110,20 @@ public class XmlUtil {
     /**
      * Load an encrypted XML file
      */
-    public static Document loadEncryptedXmlFile(String xmlFile) throws Exception {
+    public static Document loadEncryptedXmlFile(String xmlFile)
+            throws EncryptionException {
         File encryptionFile = new File(xmlFile);
+        Document document;
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         documentBuilderFactory.setNamespaceAware(true);
 
-        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        try {
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            document = documentBuilder.parse(encryptionFile);
+        } catch (Exception e) {
+            throw new EncryptionException(e);
+        }
 
-        Document document = documentBuilder.parse(encryptionFile);
 
         return document;
     }
@@ -116,44 +131,56 @@ public class XmlUtil {
     /**
      * Save a file
      */
-    public static void saveFile(Document document, String fileName) throws Exception {
+    public static void saveFile(Document document, String fileName) throws EncryptionException {
         File encryptionFile = new File(fileName);
-        FileOutputStream fileOutputStream = new FileOutputStream(encryptionFile);
 
-        TransformerFactory factory = TransformerFactory.newInstance();
-        Transformer transformer = factory.newTransformer();
-        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-        DOMSource source = new DOMSource(document);
-        StreamResult result = new StreamResult(fileOutputStream);
-        transformer.transform(source, result);
-
-        fileOutputStream.close();
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(encryptionFile);
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+            DOMSource source = new DOMSource(document);
+            StreamResult result = new StreamResult(fileOutputStream);
+            transformer.transform(source, result);
+            fileOutputStream.close();
+        } catch (Exception e) {
+            throw new EncryptionException(e);
+        }
     }
 
     /**
      * Encrypt a file
      */
-    public static Document encryptDocument(Document document, SecretKey secretKey, String algorithm) throws Exception {
+    public static Document encryptDocument(Document document, SecretKey secretKey, String algorithm)
+            throws EncryptionException {
         Element rootElement = document.getDocumentElement();
-        XMLCipher xmlCipher = XMLCipher.getInstance(algorithm);
 
-        xmlCipher.init(XMLCipher.ENCRYPT_MODE, secretKey);
+        try {
+            XMLCipher xmlCipher = XMLCipher.getInstance(algorithm);
+            xmlCipher.init(XMLCipher.ENCRYPT_MODE, secretKey);
+            xmlCipher.doFinal(document, rootElement, true);
+        } catch (Exception e) {
+            throw new EncryptionException(e);
+        }
 
-        xmlCipher.doFinal(document, rootElement, true);
         return document;
     }
 
     /**
      * Decrypt a file
      */
-    public static Document decryptDocument(Document document, SecretKey secretKey, String algorithm) throws Exception {
+    public static Document decryptDocument(Document document, SecretKey secretKey, String algorithm)
+            throws EncryptionException {
         Element encryptedDataElement = (Element) document.getElementsByTagNameNS(EncryptionConstants.EncryptionSpecNS,
                 EncryptionConstants._TAG_ENCRYPTEDDATA).item(0);
 
-        XMLCipher xmlCipher = XMLCipher.getInstance();
-
-        xmlCipher.init(XMLCipher.DECRYPT_MODE, secretKey);
-        xmlCipher.doFinal(document, encryptedDataElement);
+        try {
+            XMLCipher xmlCipher = XMLCipher.getInstance();
+            xmlCipher.init(XMLCipher.DECRYPT_MODE, secretKey);
+            xmlCipher.doFinal(document, encryptedDataElement);
+        } catch (Exception e) {
+            throw new EncryptionException(e);
+        }
 
         return document;
     }

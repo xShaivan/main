@@ -85,6 +85,8 @@ public class InfoPanel extends UiPart<Region> {
     private Label bloodTypeTag;
     @FXML
     private Label occupationTag;
+    @FXML
+    private Label maritalStatusTag;
 
     @FXML
     private FlowPane medHistoriesFlowPane;
@@ -134,11 +136,12 @@ public class InfoPanel extends UiPart<Region> {
         emailTag.setText("Email:");
         bloodTypeTag.setText("Blood Type:");
         occupationTag.setText("Occupation:");
+        maritalStatusTag.setText("Marital Status:");
 
         fullNameLabel.setText(person.getName().fullName);
         emailLabel.setText(person.getEmail().value);
         nricLabel.setText(person.getNric().value);
-        dateOfBirthLabel.setText(person.getDateOfBirth().toString());
+        dateOfBirthLabel.setText(person.getDateOfBirth().toString() + "\t" + person.getDateOfBirth().ageToString());
         addressLabel.setText(person.getAddress().value);
         phoneLabel.setText(person.getPhone().value);
         heightLabel.setText(person.getHeight().value);

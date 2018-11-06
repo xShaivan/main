@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.crypto.SecretKey;
 
 import org.apache.xml.security.encryption.XMLCipher;
+import org.apache.xml.security.encryption.XMLEncryptionException;
 import org.w3c.dom.Document;
 
 import com.google.common.eventbus.Subscribe;
@@ -22,6 +23,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Version;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.commons.exceptions.EncryptionException;
 import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.SecretKeyUtil;
 import seedu.address.commons.util.StringUtil;
@@ -116,10 +118,12 @@ public class MainApp extends Application {
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
             initialData = new AddressBook();
-        } catch (Exception e) {
-            logger.warning("Problem with opening the encryption file or decrypting the file.");
+        }
+        catch (EncryptionException e) {
+            logger.warning("Problem with opening the encrypted file or decrypting the file.");
             initialData = new AddressBook();
         }
+
 
         return new ModelManager(initialData, userPrefs);
     }
@@ -135,8 +139,9 @@ public class MainApp extends Application {
         if (savedSecretKey.exists() && !savedSecretKey.isDirectory()) {
             try {
                 secretKey = SecretKeyUtil.readSecretKey(userPrefs.getSecretKeyPath().toString());
-            } catch (Exception e) {
-                logger.warning("Problem with opening the existing secret key. Generating a new secret key.");
+            } catch (IOException e) {
+                logger.warning("Problem with opening the existing secret key. Generating a new secret key."
+                        + StringUtil.getDetails(e));
                 secretKey = SecretKeyUtil.getSecretKey("AES");
             }
         } else {
@@ -246,8 +251,12 @@ public class MainApp extends Application {
                 }
             }
         } catch (IOException e) {
-            logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
-        } catch (Exception e) {
+            if (userPrefs.getEncryption()) {
+                logger.severe("Failed to save secret key" + StringUtil.getDetails(e));
+            } else {
+                logger.severe("Failed to save preferences" + StringUtil.getDetails(e));
+            }
+        } catch (EncryptionException e) {
             logger.severe("Failed to get XML file for encryption");
         }
 

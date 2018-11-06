@@ -47,10 +47,13 @@ public class DateOfBirth {
         return test.matches(DATE_VALIDATION_REGEX);
     }
 
+    public String ageToString() {
+        return age.isPresent() ? "(" + Integer.toString(age.getAsInt()) + ")" : emptyString;
+    }
+
     @Override
     public String toString() {
-        return value.isPresent() ? DateTimeUtil.format(value.get()) + " (" + Integer.toString(age.getAsInt()) + ")"
-                : emptyString;
+        return value.isPresent() ? DateTimeUtil.format(value.get()) : emptyString;
     }
 
     @Override
