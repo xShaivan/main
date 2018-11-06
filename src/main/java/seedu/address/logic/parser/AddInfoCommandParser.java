@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_BLOODTYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_DOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_HEIGHT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_MARITAL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_OCCUPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_WEIGHT;
@@ -30,7 +31,7 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(args, PREFIX_ADD_INFO_NRIC, PREFIX_ADD_INFO_DOB,
                 PREFIX_ADD_INFO_HEIGHT, PREFIX_ADD_INFO_WEIGHT, PREFIX_ADD_INFO_GENDER, PREFIX_ADD_INFO_BLOODTYPE,
-                PREFIX_ADD_INFO_OCCUPATION);
+                PREFIX_ADD_INFO_OCCUPATION, PREFIX_ADD_INFO_MARITAL);
 
         Index index;
         try {
@@ -66,6 +67,10 @@ public class AddInfoCommandParser implements Parser<AddInfoCommand> {
         if (argMultiMap.getValue(PREFIX_ADD_INFO_OCCUPATION).isPresent()) {
             addInfoPersonDescriptor.setOccupation(ParserUtil.parseOccupation(
                     argMultiMap.getValue(PREFIX_ADD_INFO_OCCUPATION).get()));
+        }
+        if (argMultiMap.getValue(PREFIX_ADD_INFO_MARITAL).isPresent()) {
+            addInfoPersonDescriptor.setMaritalStatus(ParserUtil.parseMaritalStatus(
+                    argMultiMap.getValue(PREFIX_ADD_INFO_MARITAL).get()));
         }
 
 

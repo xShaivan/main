@@ -17,6 +17,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -41,6 +42,7 @@ public class PersonBuilder {
     public static final String DEFAULT_GENDER = "";
     public static final String DEFAULT_BLOODTYPE = "";
     public static final String DEFAULT_OCCUPATION = "";
+    public static final String DEFAULT_MARITAL_STATUS = "";
 
     private Name name;
     private Phone phone;
@@ -53,6 +55,7 @@ public class PersonBuilder {
     private Gender gender;
     private BloodType bloodType;
     private Occupation occupation;
+    private MaritalStatus maritalStatus;
     private Set<MedicalReport> reports;
     private Set<MedHistory> medHistories;
     private Set<Appt> appts;
@@ -70,6 +73,7 @@ public class PersonBuilder {
         gender = new Gender(DEFAULT_GENDER);
         bloodType = new BloodType(DEFAULT_BLOODTYPE);
         occupation = new Occupation(DEFAULT_OCCUPATION);
+        maritalStatus = new MaritalStatus(DEFAULT_MARITAL_STATUS);
         reports = new TreeSet<>(new ReportComparator());
         medHistories = new TreeSet<>(new MedHistoryComparator());
         appts = new TreeSet<>(new ApptComparator());
@@ -91,6 +95,7 @@ public class PersonBuilder {
         gender = personToCopy.getGender();
         bloodType = personToCopy.getBloodType();
         occupation = personToCopy.getOccupation();
+        maritalStatus = personToCopy.getMaritalStatus();
         reports = personToCopy.getMedicalReports();
         medHistories = personToCopy.getMedHistory();
         appts = personToCopy.getAppts();
@@ -194,6 +199,14 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code maritalStatus} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withMaritalStatus(String maritalStatus) {
+        this.maritalStatus = new MaritalStatus(maritalStatus);
+        return this;
+    }
+
     //@@author
     /**
      * Sets the {@code MedicalReport} of the {@code Person} that we are building.
@@ -225,6 +238,6 @@ public class PersonBuilder {
      */
     public Person build() {
         return new Person(name, phone, email, address, reports, medHistories, appts, nric, dateOfBirth, height, weight,
-                gender, bloodType, occupation, tags);
+                gender, bloodType, occupation, maritalStatus, tags);
     }
 }

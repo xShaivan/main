@@ -30,6 +30,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -255,6 +256,23 @@ public class ParserUtil {
         }
 
         return new Occupation(trimmedOccupation);
+    }
+
+    /**
+     * Parses a {@code String maritalStatus} into a {@code MaritalStatus}
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code maritalStatus} is invalid.
+     */
+    public static MaritalStatus parseMaritalStatus(String maritalStatus) throws ParseException {
+        requireNonNull(maritalStatus);
+        String trimmedMaritalStatus = maritalStatus.trim();
+
+        if (!MaritalStatus.isValidMaritalStatus(trimmedMaritalStatus)) {
+            throw new ParseException(MaritalStatus.MESSAGE_MARITAL_CONSTRAINT);
+        }
+
+        return new MaritalStatus(trimmedMaritalStatus);
     }
     //@@author
 

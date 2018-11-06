@@ -106,6 +106,7 @@ public class PersonListPanelTest extends GuiUnitTest {
             builder.append("<gender></gender>\n");
             builder.append("<bloodType></bloodType>\n");
             builder.append("<occupation></occupation>\n");
+            builder.append("<maritalStatus></maritalStatus>\n");
             builder.append("</persons>\n");
         }
         builder.append("</addressbook>\n");

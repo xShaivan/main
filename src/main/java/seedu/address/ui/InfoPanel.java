@@ -59,6 +59,8 @@ public class InfoPanel extends UiPart<Region> {
     private Label bloodTypeLabel;
     @FXML
     private Label occupationLabel;
+    @FXML
+    private Label maritalStatusLabel;
 
     @FXML
     private Label fullNameTag;
@@ -82,6 +84,8 @@ public class InfoPanel extends UiPart<Region> {
     private Label bloodTypeTag;
     @FXML
     private Label occupationTag;
+    @FXML
+    private Label maritalStatusTag;
 
     @FXML
     private VBox medHistoryVBox;
@@ -131,11 +135,12 @@ public class InfoPanel extends UiPart<Region> {
         emailTag.setText("Email:");
         bloodTypeTag.setText("Blood Type:");
         occupationTag.setText("Occupation:");
+        maritalStatusTag.setText("Marital Status:");
 
         fullNameLabel.setText(person.getName().fullName);
         emailLabel.setText(person.getEmail().value);
         nricLabel.setText(person.getNric().value);
-        dateOfBirthLabel.setText(person.getDateOfBirth().toString());
+        dateOfBirthLabel.setText(person.getDateOfBirth().toString() + "\t" + person.getDateOfBirth().ageToString());
         addressLabel.setText(person.getAddress().value);
         phoneLabel.setText(person.getPhone().value);
         heightLabel.setText(person.getHeight().value);
@@ -143,6 +148,7 @@ public class InfoPanel extends UiPart<Region> {
         genderLabel.setText(person.getGender().toString());
         bloodTypeLabel.setText(person.getBloodType().value);
         occupationLabel.setText(person.getOccupation().value);
+        maritalStatusLabel.setText(person.getMaritalStatus().toString());
     }
 
     /**
@@ -343,6 +349,7 @@ public class InfoPanel extends UiPart<Region> {
         emailTag.setText("");
         bloodTypeTag.setText("");
         occupationTag.setText("");
+        maritalStatusTag.setText("");
 
         fullNameLabel.setText("");
         emailLabel.setText("");
@@ -355,5 +362,6 @@ public class InfoPanel extends UiPart<Region> {
         genderLabel.setText("");
         bloodTypeLabel.setText("");
         occupationLabel.setText("");
+        maritalStatusLabel.setText("");
     }
 }

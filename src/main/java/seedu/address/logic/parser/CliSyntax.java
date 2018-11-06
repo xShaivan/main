@@ -34,7 +34,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADD_INFO_GENDER = new Prefix("g/");
     public static final Prefix PREFIX_ADD_INFO_BLOODTYPE = new Prefix("b/");
     public static final Prefix PREFIX_ADD_INFO_OCCUPATION = new Prefix("o/");
-    public static final Prefix PREFIX_ADD_INFO_MARITAL = new Prefix("/m");
+    public static final Prefix PREFIX_ADD_INFO_MARITAL = new Prefix("m/");
     public static final Prefix PREFIX_ADD_INFO_FAMILY = new Prefix("/f");
 
     /* Prefix definitions for Appt */

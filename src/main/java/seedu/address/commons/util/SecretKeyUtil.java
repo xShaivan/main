@@ -1,10 +1,15 @@
 package seedu.address.commons.util;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.xml.security.utils.JavaUtils;
 
 
 /**
@@ -37,5 +42,28 @@ public class SecretKeyUtil {
         String encodeToString = Base64.getEncoder().encodeToString(encoded);
 
         return encodeToString;
+    }
+
+    /**
+     * Converts a {@code SecretKey} into {@code file}
+     * @param secretKey to be converted
+     * @param fileName used to save the {@code SecretKey}
+     * @throws Exception if the {@code SecretKey} cannot be encoded
+     */
+    public static void saveSecretKey(SecretKey secretKey, String fileName) throws IOException {
+        byte[] keyByte = secretKey.getEncoded();
+        FileOutputStream outputStream = new FileOutputStream(fileName);
+        outputStream.write(keyByte);
+    }
+
+    /**
+     * Converts a {@code File} into {@code SecretKey}
+     * @param fileName of the file containing the {@code SecretKey}
+     * @return the converted {@code SecretKey}
+     * @throws Exception if the file does not exist
+     */
+    public static SecretKey readSecretKey(String fileName) throws IOException {
+        SecretKey secretKey = new SecretKeySpec(JavaUtils.getBytesFromFile(fileName), "AES");
+        return secretKey;
     }
 }
