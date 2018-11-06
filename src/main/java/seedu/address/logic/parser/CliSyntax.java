@@ -17,6 +17,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_TITLE = new Prefix("t/");
     public static final Prefix PREFIX_DATE = new Prefix("d/");
     public static final Prefix PREFIX_ORIGINAL_DATE = new Prefix("od/");
+    public static final Prefix PREFIX_ORIGINAL_TITLE = new Prefix("ot/");
 
     /* Prefix definitions for MedHistory */
     public static final Prefix PREFIX_HISTORY_OLD_DATE = new Prefix("hsod/");
