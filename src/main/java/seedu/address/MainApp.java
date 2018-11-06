@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javax.crypto.SecretKey;
 
 import org.apache.xml.security.encryption.XMLCipher;
-import org.apache.xml.security.encryption.XMLEncryptionException;
 import org.w3c.dom.Document;
 
 import com.google.common.eventbus.Subscribe;
@@ -118,8 +117,7 @@ public class MainApp extends Application {
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
             initialData = new AddressBook();
-        }
-        catch (EncryptionException e) {
+        } catch (EncryptionException e) {
             logger.warning("Problem with opening the encrypted file or decrypting the file.");
             initialData = new AddressBook();
         }
