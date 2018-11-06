@@ -281,20 +281,32 @@ with 01-01-1990, height field with 154, gender field with Male.
 Adds medical report to the patient. +
 Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 
+****
+* Adds a medical report for the patient at the specified index.
+* The index refers to the index number shown in the displayed person list.
+****
+
 Examples:
 
-* `addreport 3 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
-Adds a new medical report for patient at index 3 titled Asthma, dated 01-01-2018 with the report's information.
+* `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+Adds a new medical report for patient at index 1 titled Asthma, dated 01-01-2018 with the report's information.
 
 === Editing of Medical Report: `editreport`
 
 Edits existing medical report of the patient. +
 Format: `editreport INDEX ot/ORIGINAL TITLE od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]`
 
+****
+* Edits a medical report with the specified title and date for the patient at the specified index.
+* The index refers to the index number shown in the displayed person list.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+****
+
 Examples:
 
-* `editreport 3 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
-Edits title, date and information of existing medical report titled Asthma and dated 01-01-2018 for patient at index 3.
+* `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
+Edits title, date and information of existing medical report titled Asthma and dated 01-01-2018 for patient at index 1.
 // end::reportcommands[]
 
 === Sort patients list: `sort`

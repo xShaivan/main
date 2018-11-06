@@ -457,7 +457,7 @@ Given below is an example usage scenario and how the addreport mechanism behaves
 
 Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
 
-Step 2. The user executes `addreport 1 t/Asthma d/01/01/2018 i/Prescribed XXX medicine, next appointment on 02/02/2018` command to add a medical report to the 1st person in the list that the address book is currently showing. The `addreport` command obtains the data of the person that the user is trying to change based on the index that the user has input.
+Step 2. The user executes `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018` command to add a medical report to the person at index 1 in the list that the address book is currently showing. The `addreport` command obtains the data of the person that the user is trying to change based on the index that the user has input.
 
 Step 3. The `addreport` command will obtain the set of reports that the person previously had, copy it to a new set of reports, and add the report which the user wants to add into the new set.
 
@@ -465,9 +465,10 @@ Step 4. The `addreport` command will call `Model#updatePerson()` to update the p
 
 Step 5. The `addreport` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
-The following sequence diagram shows how the addreport operation works:
+Figure 4.5 shows how the addreport operation works:
 
 image::AddMedicalReportSequenceDiagram.png[width="800"]
+Figure 4.5: Sequence Diagram of AddMedicalReport feature
 // end::addreport[]
 
 // tag::find[]
