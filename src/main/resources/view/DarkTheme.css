@@ -312,6 +312,13 @@
     -fx-font-size: 20px;
 }
 
+.MedHistoryCard {
+    -fx-padding: 5;
+    -fx-background-color: #d3ffce;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+}
+
 .medAppts {
     -fx-padding: 5;
     -fx-margin: 5;

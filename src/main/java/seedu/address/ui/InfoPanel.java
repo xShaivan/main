@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 
 import javafx.scene.layout.VBox;
@@ -85,7 +84,7 @@ public class InfoPanel extends UiPart<Region> {
     private Label occupationTag;
 
     @FXML
-    private FlowPane medHistoriesFlowPane;
+    private VBox medHistoryVBox;
     @FXML
     private VBox apptsVBox;
     @FXML
@@ -152,7 +151,7 @@ public class InfoPanel extends UiPart<Region> {
     private void fillMedHistoriesPane() {
         medHistory.setStyle("-fx-background-color: #ECECEC");
         person.getMedHistory().forEach(medHistory ->
-                medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
+                medHistoryVBox.getChildren().add(new MedHistoryCard(medHistory)));
     }
 
     /**
@@ -176,7 +175,7 @@ public class InfoPanel extends UiPart<Region> {
      * Empties flowpanes in all anchorpanes
      */
     public void clearFlowPanes() {
-        medHistoriesFlowPane.getChildren().clear();
+        medHistoryVBox.getChildren().clear();
         medReportsVBox.getChildren().clear();
         apptsVBox.getChildren().clear();
     }

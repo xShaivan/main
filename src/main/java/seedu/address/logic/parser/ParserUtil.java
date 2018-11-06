@@ -46,6 +46,8 @@ import seedu.address.model.util.DateTimeUtil;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DISCHARGE_STATUS =
+            "Invalid Discharge Status. Please use d or a or e.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -350,17 +352,19 @@ public class ParserUtil {
      * @throws ParseException if the given {@code dischargeStatus} is invalid.
      * ParseException is omitted for now.
      */
-    public static DischargeStatus parseDischargeStatus(String dischargeStatus) {
+    public static DischargeStatus parseDischargeStatus(String dischargeStatus) throws ParseException {
         requireNonNull(dischargeStatus);
+        boolean flag = false;
         String trimmedDischargeStatus = dischargeStatus.trim();
         String expandedDischargeStatus = "";
         for (DischargeStatusEnum code: DischargeStatusEnum.values()) {
             if (trimmedDischargeStatus.equals(code.name())) {
                 expandedDischargeStatus = code.getCode();
-                break;
-            } else {
-                expandedDischargeStatus = "invalid discharge status";
+                flag = true;
             }
+        }
+        if (!flag) {
+            throw new ParseException(MESSAGE_INVALID_DISCHARGE_STATUS);
         }
 
         return new DischargeStatus(expandedDischargeStatus);

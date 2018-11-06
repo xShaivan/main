@@ -10,8 +10,8 @@ import java.util.Comparator;
 public class MedHistoryComparator implements Comparator<MedHistory> {
     @Override
     public int compare(MedHistory hist1, MedHistory hist2) {
-        if (!hist1.getMedHistDate().toString().equals(hist2.getMedHistDate().toString())) {
-            return hist1.getMedHistDate().toString().compareTo(hist2.getMedHistDate().toString());
+        if (!hist1.getMedHistDate().value.equals(hist2.getMedHistDate().value)) {
+            return hist1.getMedHistDate().value.compareTo(hist2.getMedHistDate().value);
         } else {
             return hist1.getAllergy().toString().compareTo(hist2.getAllergy().toString());
         }

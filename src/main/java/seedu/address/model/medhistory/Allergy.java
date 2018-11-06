@@ -14,7 +14,7 @@ public class Allergy {
     public static final String MESSAGE_ALLERGY_CONSTRAINTS =
             "Allergy must not be left blank.";
 
-    public static final String ALLERGY_VALIDATION_REGEX = "[\\p{Alnum}]*";
+    public static final String ALLERGY_VALIDATION_REGEX = "[\\p{Alnum}\\p{Space}]*";
 
     public final String value;
 
