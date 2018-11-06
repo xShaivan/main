@@ -16,8 +16,7 @@ public class DateTimeUtil {
 
     public static final String DATE_TIME_CONSTRAINTS =
             "Date and Time should be of the format: " + "DD-MM-YYYY HH:MM";
-    public static final String DATE_TIME_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.\n"
-            + "Please also check that your date is a valid date and that your time is a valid time.";
+    public static final String DATE_TIME_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.";
     public static final String DATE_TIME_VALIDATION_REGEX =
             "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
 
@@ -87,6 +86,23 @@ public class DateTimeUtil {
             if (localDate.isBefore(DateTimeUtil.getEarliestDateAllowed())) {
                 int index = date.lastIndexOf(date);
                 throw new DateTimeParseException(DATE_VALUE_EXCEEDED, date, index);
+            }
+        } catch (DateTimeParseException e) {
+            throw new DateTimeParseException(e.getMessage(), e.getParsedString(), e.getErrorIndex());
+        }
+    }
+
+    /**
+     * Check if the datetime input has valid values
+     * @param datetime String to be checked
+     * @throws DateTimeParseException if the values are not valid
+     */
+    public static void isCorrectDateTime(String datetime) throws DateTimeParseException {
+        try {
+            LocalDateTime localDateTime = DateTimeUtil.parseDateTime(datetime);
+            if (localDateTime.toLocalDate().isBefore(DateTimeUtil.getEarliestDateAllowed())) {
+                int index = datetime.lastIndexOf(datetime);
+                throw new DateTimeParseException(DATE_VALUE_EXCEEDED, datetime, index);
             }
         } catch (DateTimeParseException e) {
             throw new DateTimeParseException(e.getMessage(), e.getParsedString(), e.getErrorIndex());

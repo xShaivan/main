@@ -67,16 +67,16 @@ public class MedHistory {
         this.prevCountry = prevCountry;
     }
 
-    public Optional<DischargeStatus> getDischargeStatus() {
-        return Optional.ofNullable(dischargeStatus);
+    public Optional<PrevCountry> getPrevCountry() {
+        return Optional.ofNullable(prevCountry);
     }
 
     public void setDischargeStatus(DischargeStatus dischargeStatus) {
         this.dischargeStatus = dischargeStatus;
     }
 
-    public Optional<PrevCountry> getPrevCountry() {
-        return Optional.ofNullable(prevCountry);
+    public Optional<DischargeStatus> getDischargeStatus() {
+        return Optional.ofNullable(dischargeStatus);
     }
 
     @Override
@@ -108,7 +108,8 @@ public class MedHistory {
 
     @Override
     public String toString() {
-        return medHistDate.toString() + " \n" + allergy.toString()
-                + " \n" + prevCountry.toString() + " \n" + dischargeStatus.toString();
+        return medHistDate.toString() + " " + dischargeStatus.toString() + "\n"
+                + "Allergy: " + allergy.toString() + "\n"
+                + " Previous Country Visited: " + prevCountry.toString();
     }
 }
