@@ -333,6 +333,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+
 // tag::addinfo[]
 === Additional Information features
 ==== Current Implementation
@@ -345,29 +346,6 @@ The command then looks for the `String` after the arguments which represents the
 Upon handling all the arguments, an `addInfoPersonDescriptor` object will be created. This is essentially a facade object that contains all the attributes of the `Person` to be edited, with its updated attributes. There will then be a mapping of the `addInfoPersonDescriptor` to a new `Person` object facilitated by the method `AddInfoCommand#createEditedPerson`.
 
 Finally, the `Model#updatePerson` copies attribute of the new `Person` object created above to the `Person` to be edited.
-
-Given below is an example usage scenario and how the `addinfo` command works at each step.
-
-TODO: Add in class diagrams for each step.
-
-Step 1. User executes `addinfo 5 ic/S1234567Z g/M d/01-01-1970` to modify the `Nric`, `Gender`, and `DateOfBirth` attributes of the 5th person in the `PersonCardList` view.
-
-[NOTE]
-If any of the arguments contain invalid data, the program will not process any data. For instance, `addinfo 1 i/S1234567Z d/20-20-19872 g/M` will not change the `Nric` attribute of the `Person` at index 1 as the date of birth argument contains erroneous date.
-
-Step 2. The `AddressBookParser` makes a call to `AddInfoCommandParser` together with the `String` input.
-
-Step 3. The `AddInfoCommandParser` then looks out for the pre-determined set of arguments in the `String` input. If any of the arguments are found, a call will be made to the `ParserUtil` class which extracts the data meant for the particular argument.
-
-Step 4. The `ParserUtil` class then checks for the validity of the data being parsed. If the data is valid, the class for that data will be initialized and added into an `AddInfoPersonDescriptor` object. If the data is not valid, a `ParseException` will be thrown, which will be handled by the `UIManager` requesting user the correct the data.
-
-Step 5. A `Person` object will be retrieved from the `lastShownList` at the appropriate index. The retrieved `Person` object will then retrieve the updated information from the `AddInfoPersonDescriptor` object created previously.
-
-Step 6. The `Person` will now have an updated additional information.
-
-The following activity diagram summarizes what happens when an user executes a new command:
-<diagram here>
-// end::addinfo[]
 
 // tag::addhist[]
 === Add Medical History features
@@ -992,7 +970,7 @@ Now we have the `Remark` class, we need to actually use it inside link:{repoURL}
 
 . Add `getRemark()` in link:{repoURL}/src/main/java/seedu/address/model/person/Person.java[`Person`].
 . You may assume that the user will not be able to use the `add` and `edit` commands to modify the remarks field (i.e. the person will be created without a remark).
-. Modify link:{repoURL}/src/main/java/seedu/address/model/util/SampleDataUtil.java/[`SampleDataUtil`] to add remarks for the sample data (delete your `addressBook.xml` so that the application will load the sample data when you launch it.)
+. Modify link:{repoURL}/src/main/java/seedu/address/model/util/SampleDataUtil.java/[`SampleDataUtil`] to add remarks for the sample data (delete your `healthbook.xml` so that the application will load the sample data when you launch it.)
 
 ===== [Step 6] Storage: Add `Remark` field to `XmlAdaptedPerson` class
 We now have `Remark` s for `Person` s, but they will be gone when we exit the application. Let's modify link:{repoURL}/src/main/java/seedu/address/storage/XmlAdaptedPerson.java[`XmlAdaptedPerson`] to include a `Remark` field so that it will be saved.

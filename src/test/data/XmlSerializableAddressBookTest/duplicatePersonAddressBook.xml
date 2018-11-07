@@ -13,6 +13,7 @@
         <gender></gender>
         <bloodType></bloodType>
         <occupation></occupation>
+        <maritalStatus></maritalStatus>
         <tagged>friends</tagged>
     </persons>
 
@@ -29,6 +30,7 @@
         <gender></gender>
         <bloodType></bloodType>
         <occupation></occupation>
+        <maritalStatus></maritalStatus>
     </persons>
 
 </addressbook>
