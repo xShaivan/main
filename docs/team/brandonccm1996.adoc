@@ -29,7 +29,7 @@ Health Book is an address book application that is catered for healthcare profes
 ** Enhancements to existing features:
 *** Converted a Java FX browser window into a Java FX Scroll Pane with multiple Anchor Panes to show a patient's details (Pull request https://github.com/CS2113-AY1819S1-T12-2/main/pull/88[#88])
 ** Community:
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/CS2113-AY1819S1-F09-1/main/issues/106[#106], https://github.com/CS2113-AY1819S1-F09-1/main/issues/108[#108], https://github.com/CS2113-AY1819S1-F09-1/main/issues/112[#112], https://github.com/CS2113-AY1819S1-F09-1/main/issues/116[#116])
 
 == Contributions to the User Guide
 
