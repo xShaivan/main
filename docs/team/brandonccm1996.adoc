@@ -1,9 +1,11 @@
 = Brandon Cheong - Project Portfolio
 :site-section: AboutUs
+:toc:
+:sectnums:
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== PROJECT: Health Book
+= PROJECT: Health Book
 
 ---
 
