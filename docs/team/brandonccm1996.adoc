@@ -1,19 +1,19 @@
 = Brandon Cheong - Project Portfolio
 :site-section: AboutUs
 :toc:
-:sectnums:
+:toc-title:
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-= PROJECT: Health Book
+== PROJECT: Health Book
 
 ---
 
-== Overview
+=== Overview
 
 Health Book is an address book application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. Command Line Interface is utilized mainly for the input, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI. It is written in Java.
 
-== Summary of contributions
+=== Summary of contributions
 
 * *Major enhancement*: added *the ability to add, view, edit and delete appointments in a patient's timetable*
 ** What it does: allows the user to manage appointments for a patient.
@@ -47,7 +47,7 @@ Health Book is an address book application that is catered for healthcare profes
 *** PRs reviewed (with non-trivial review comments): (Pull requests https://github.com/CS2113-AY1819S1-T12-2/main/pull/97[#97], https://github.com/CS2113-AY1819S1-T12-2/main/pull/99[#99], https://github.com/CS2113-AY1819S1-T12-2/main/pull/106[#106])
 *** Reported bugs and suggestions for other teams in the class, while providing technical suggestions for further improvement:  (Issues https://github.com/CS2113-AY1819S1-F09-1/main/issues/106[#106], https://github.com/CS2113-AY1819S1-F09-1/main/issues/108[#108], https://github.com/CS2113-AY1819S1-F09-1/main/issues/112[#112], https://github.com/CS2113-AY1819S1-F09-1/main/issues/116[#116])
 
-== Contributions to the User Guide
+=== Contributions to the User Guide
 
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
@@ -55,7 +55,7 @@ Health Book is an address book application that is catered for healthcare profes
 
 include::../UserGuide.adoc[tag=apptcommands]
 
-== Contributions to the Developer Guide
+=== Contributions to the Developer Guide
 
 |===
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
