@@ -14,7 +14,6 @@ import seedu.address.model.medicalreport.MedicalReport;
  * An UI component that displays information of a {@code Medical Report}.
  */
 public class ReportCard extends StackPane {
-    private final MedicalReport report;
 
     @FXML
     private Label reportDetails;
@@ -33,7 +32,6 @@ public class ReportCard extends StackPane {
             throw new RuntimeException(exception);
         }
 
-        this.report = report;
         reportDetails.setText("Title: " + report.getTitle().toString() + "\n" + "Date: " + report.getDate().toString());
         reportInfo.setText("Information: " + report.getInformation().toString());
     }

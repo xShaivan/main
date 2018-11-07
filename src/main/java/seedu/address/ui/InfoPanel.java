@@ -178,9 +178,9 @@ public class InfoPanel extends UiPart<Region> {
     }
 
     /**
-     * Empties flowpanes in all anchorpanes
+     * Empties vboxes in all anchorpanes
      */
-    public void clearFlowPanes() {
+    public void clearVBoxes() {
         medHistoryVBox.getChildren().clear();
         medReportsVBox.getChildren().clear();
         apptsVBox.getChildren().clear();
