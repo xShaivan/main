@@ -164,12 +164,15 @@ Deletes the 1st person in the results of the `find` command.
 // tag::addhist[]
 === Adding patient's medical history: `addhist`
 
-Adds the medical history of a patient. +
+Adds a medical history entry for a patient. +
 Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS`
 
 ****
 * Adds an entry in the medical history of the patient for the patient at the specified INDEX.
 * The index refers to the index number shown in the displayed person list.
+* Date entries must be after 01-01-1900.
+* Note: Discharge Status  code only accepts *d*, *a*, *e* as inputs to represent discharged, admitted or expired.
+* ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
 Examples:
@@ -178,6 +181,28 @@ Examples:
 Adds a medical history entry for the 1st person in the list on 10-10-2010 with an alcohol allergy and Kuwait as previous country visited.
 The patient is discharged and allowed to return home.
 // end::addhist[]
+
+// tag::edithist[]
+=== Editing patient's medical history: `edithist`
+
+Edits an existing medical history entry of a patient. +
+Format: `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS`
+
+****
+* Edits an existing entry in the medical history of the patient for the patient at the specified INDEX.
+* The index refers to the index number shown in the displayed person list.
+* Date entries must be after 01-01-1900.
+* Note: Discharge Status  code only accepts *d*, *a*, *e* as inputs to represent discharged, admitted or expired.
+* ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
+****
+
+Examples:
+
+* `edithist 1 hsod/10-10-2010 hsd/10-10-2015 hsa/Chocolate hsc/Russia hsds/a`
+Edits a medical history entry for the 1st person in the list with wrong date of 10-10-2010 to the correct date of
+10-10-2015 with a chocolate allergy and Russia as previous country visited.
+The patient has been admitted to a hospital.
+// end::edithist[]
 
 // tag::apptcommands[]
 === Adding an appointment into patient's timetable: `addappt`
