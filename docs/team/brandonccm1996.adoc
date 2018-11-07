@@ -18,18 +18,19 @@ Health Book is an address book application that is catered for healthcare profes
 ** Justification: This feature improves the product significantly because the user can track his patients' appointments easily and make sure that there are no scheduling clashes, and can also remind his patients in advance that they have appointments.
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
 
-* *Code contributed*: [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddApptCommand.java[AddApptCommand]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddApptCommandParser.java[AddApptCommandParser]]   [https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/timetable[Appt model classes]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedAppt.java[XmlAdaptedAppt]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddApptCommandTest.java[AddApptCommandTest]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddApptCommandParserTest.java[AddApptCommandParserTest]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/timetable/ApptTest.java[ApptTest]]
+* *Code contributed*: [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddApptCommand.java[AddApptCommand] for adding an appointment to a patient] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddApptCommandParser.java[AddApptCommandParser] for parsing user input to an AddApptCommand]   [https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/timetable[Appt model classes]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedAppt.java[XmlAdaptedAppt] for mapping of Appt to an XML representation for storage] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddApptCommandTest.java[AddApptCommandTest]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddApptCommandParserTest.java[AddApptCommandParserTest]] [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/timetable/ApptTest.java[ApptTest]]
 
 * *Other contributions*:
 
 ** Project management:
 *** Role of Dev Lead: In charge of deciding overall features of Health Book application
 *** Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
-*** In charge of checking and merging all team pull requests
+*** In charge of checking and merging all team pull requests to ensure conformity to the finalised user stories and codestyle
 ** Enhancements to existing features:
 *** Converted a Java FX browser window into a Java FX Scroll Pane with multiple Anchor Panes to show a patient's details (Pull request https://github.com/CS2113-AY1819S1-T12-2/main/pull/88[#88])
 ** Community:
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/CS2113-AY1819S1-F09-1/main/issues/106[#106], https://github.com/CS2113-AY1819S1-F09-1/main/issues/108[#108], https://github.com/CS2113-AY1819S1-F09-1/main/issues/112[#112], https://github.com/CS2113-AY1819S1-F09-1/main/issues/116[#116])
+*** PRs reviewed (with non-trivial review comments): (Pull requests https://github.com/CS2113-AY1819S1-T12-2/main/pull/97[#97], https://github.com/CS2113-AY1819S1-T12-2/main/pull/99[#99], https://github.com/CS2113-AY1819S1-T12-2/main/pull/106[#106])
+*** Reported bugs and suggestions for other teams in the class, while providing technical suggestions for further improvement:  (Issues https://github.com/CS2113-AY1819S1-F09-1/main/issues/106[#106], https://github.com/CS2113-AY1819S1-F09-1/main/issues/108[#108], https://github.com/CS2113-AY1819S1-F09-1/main/issues/112[#112], https://github.com/CS2113-AY1819S1-F09-1/main/issues/116[#116])
 
 == Contributions to the User Guide
 
