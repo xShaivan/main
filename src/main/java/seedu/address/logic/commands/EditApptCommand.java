@@ -114,7 +114,7 @@ public class EditApptCommand extends Command {
                 personToEdit.getAddress(), personToEdit.getMedicalReports(), personToEdit.getMedHistory(), apptsCopy,
                 personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getHeight(),
                 personToEdit.getWeight(), personToEdit.getGender(), personToEdit.getBloodType(),
-                personToEdit.getOccupation(), personToEdit.getTags());
+                personToEdit.getOccupation(), personToEdit.getMaritalStatus(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

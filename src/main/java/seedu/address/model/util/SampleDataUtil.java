@@ -20,6 +20,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -39,33 +40,40 @@ public class SampleDataUtil {
     public static final Gender EMPTY_GENDER = new Gender("");
     public static final BloodType EMPTY_BLOODTYPE = new BloodType("");
     public static final Occupation EMPTY_OCCUPATION = new Occupation("");
+    public static final MaritalStatus EMPTY_MARITAL_STATUS = new MaritalStatus("");
 
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, new Height("42"), EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, getTagSet("friends")),
+                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, new Height("180"), EMPTY_WEIGHT,
+                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("asthma")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), getReportSet(),
                     getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, getTagSet("colleagues", "friends")),
+                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("asthma", "diabetes")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), getReportSet(),
                     getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, getTagSet("neighbours")),
+                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("cancer")),
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
                 new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), getReportSet(),
                     getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, getTagSet("family")),
+                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("stroke")),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                 new Address("Blk 47 Tampines Street 20, #17-35"), getReportSet(),
                     getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, getTagSet("classmates")),
+                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("diabetes")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"), getReportSet(),
                     getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, getTagSet("colleagues"))
+                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("malaria"))
         };
     }
 

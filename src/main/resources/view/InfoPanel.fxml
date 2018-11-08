@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ScrollPane fx:id="infoPanel" fitToWidth="true">
             <content>
@@ -46,7 +46,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="ageTag" GridPane.rowIndex="4">
+                              <Label fx:id="maritalStatusTag" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -72,7 +72,7 @@
                                  </font>
                               </Label>
                               <Label fx:id="fullNameLabel" GridPane.columnIndex="1" />
-                              <Label fx:id="ageLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="maritalStatusLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <Label fx:id="addressLabel" GridPane.columnIndex="3" />
                               <Label fx:id="nricLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Label fx:id="dateOfBirthLabel" GridPane.columnIndex="3" GridPane.rowIndex="3" />
@@ -82,13 +82,13 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="heightLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label fx:id="heightLabel" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                               <Label fx:id="weightTag" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="weightLabel" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <Label fx:id="weightLabel" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
                               <Label fx:id="genderTag" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
@@ -119,20 +119,21 @@
                         <AnchorPane fx:id="medHistory">
                             <children>
                                 <Label fx:id="nameLabel2" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                <FlowPane fx:id="medHistoriesFlowPane" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                                <VBox fx:id="medHistoryVBox" spacing ="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="10.0"></VBox>
                             </children>
                         </AnchorPane>
                         <AnchorPane fx:id="medAppts">
                             <children>
                                 <Label fx:id="nameLabel3" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                <VBox fx:id="apptsVBox" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="10.0">
+                                <VBox fx:id="apptsVBox" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
                                 </VBox>
                             </children>
                         </AnchorPane>
                         <AnchorPane fx:id="medReports">
                             <children>
                                 <Label fx:id="nameLabel4" layoutX="14.0" layoutY="14.0" styleClass="infoPanelNameLabel" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                <FlowPane fx:id="medReportsFlowPane" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                                <VBox fx:id="medReportsVBox" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
+                                </VBox>
                             </children>
                         </AnchorPane>
                     </children>

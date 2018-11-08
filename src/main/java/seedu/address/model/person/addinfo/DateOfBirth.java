@@ -1,10 +1,13 @@
 package seedu.address.model.person.addinfo;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.DateTimeUtil.DATE_VALIDATION_REGEX;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 import seedu.address.model.util.DateTimeUtil;
 
@@ -12,11 +15,8 @@ import seedu.address.model.util.DateTimeUtil;
  * Represents ReportDate of Birth in Health Book
  */
 public class DateOfBirth {
-    public static final String DATE_OF_BIRTH_CONSTRAINTS = "Date of birth should be of the format dd-MM-yyyy";
-    public static final String DATE_OF_BIRTH_VALUE_EXCEEDED = "Date values have exceeded. Please check again.";
-    public static final String DATE_OF_BIRTH_VALIDATION_REGEX = "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
-
     public final Optional<LocalDate> value;
+    public final OptionalInt age;
 
     private final String emptyString = "";
 
@@ -25,14 +25,30 @@ public class DateOfBirth {
      * @param value a valid date
      * @throws ParseException if date format is invalid
      */
-    //TODO: (DateOfBirth) to be an Optional type to support null values
+
     public DateOfBirth(String value) {
         requireNonNull(value);
         this.value = (value.isEmpty()) ? Optional.empty() : Optional.of(DateTimeUtil.parseDate(value));
+        this.age = calculateAge(this.value);
+    }
+
+    /**
+     * Calculates the {@code age} based on {@code dateOfBirth}
+     */
+    private OptionalInt calculateAge(Optional<LocalDate> dateOfBirth) {
+        if (dateOfBirth.isPresent()) {
+            return OptionalInt.of(Period.between(dateOfBirth.get(), LocalDate.now()).getYears());
+        } else {
+            return OptionalInt.empty();
+        }
     }
 
     public static boolean isValidDate(String test) {
-        return test.matches(DATE_OF_BIRTH_VALIDATION_REGEX);
+        return test.matches(DATE_VALIDATION_REGEX);
+    }
+
+    public String ageToString() {
+        return age.isPresent() ? "(" + Integer.toString(age.getAsInt()) + ")" : emptyString;
     }
 
     @Override

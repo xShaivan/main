@@ -66,6 +66,7 @@ dependencies {
     implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
     implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
     implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
+    compile group: 'org.apache.santuario', name: 'xmlsec', version: '2.1.2'
 
     testImplementation group: 'junit', name: 'junit', version: '4.12'
     testImplementation group: 'org.testfx', name: 'testfx-core', version: testFxVersion, {
@@ -82,7 +83,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveName = 'addressbook.jar'
+    archiveName = 'healthbook.jar'
 
     destinationDir = file("${buildDir}/jar/")
 }

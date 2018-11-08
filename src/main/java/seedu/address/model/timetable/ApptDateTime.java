@@ -1,6 +1,7 @@
 package seedu.address.model.timetable;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.DateTimeUtil.DATE_TIME_VALIDATION_REGEX;
 
 import java.time.LocalDateTime;
 
@@ -12,10 +13,6 @@ import seedu.address.model.util.DateTimeUtil;
  * Guarantees: immutable; is always valid
  */
 public class ApptDateTime {
-    public static final String MESSAGE_NAME_CONSTRAINTS =
-            "The start and end Appt Date and Time should be of the format: " + "DD-MM-YYYY HH:MM";
-    public static final String APPT_DATETIME_VALIDATION_REGEX =
-            "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
 
     public final LocalDateTime value;
 
@@ -25,7 +22,7 @@ public class ApptDateTime {
     }
 
     public static boolean isValidDateTime(String test) {
-        return test.matches(APPT_DATETIME_VALIDATION_REGEX);
+        return test.matches(DATE_TIME_VALIDATION_REGEX);
     }
 
     @Override

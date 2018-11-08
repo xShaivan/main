@@ -17,9 +17,10 @@ public class CliSyntax {
     public static final Prefix PREFIX_TITLE = new Prefix("t/");
     public static final Prefix PREFIX_DATE = new Prefix("d/");
     public static final Prefix PREFIX_ORIGINAL_DATE = new Prefix("od/");
+    public static final Prefix PREFIX_ORIGINAL_TITLE = new Prefix("ot/");
 
     /* Prefix definitions for MedHistory */
-    public static final Prefix PREFIX_HISTORY_BLOODTYPE = new Prefix("hsb/");
+    public static final Prefix PREFIX_HISTORY_OLD_DATE = new Prefix("hsod/");
     public static final Prefix PREFIX_HISTORY_DATE = new Prefix("hsd/");
     public static final Prefix PREFIX_HISTORY_COUNTRY = new Prefix("hsc/");
     public static final Prefix PREFIX_HISTORY_ALLERGY = new Prefix("hsa/");
@@ -33,7 +34,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADD_INFO_GENDER = new Prefix("g/");
     public static final Prefix PREFIX_ADD_INFO_BLOODTYPE = new Prefix("b/");
     public static final Prefix PREFIX_ADD_INFO_OCCUPATION = new Prefix("o/");
-    public static final Prefix PREFIX_ADD_INFO_MARITAL = new Prefix("/m");
+    public static final Prefix PREFIX_ADD_INFO_MARITAL = new Prefix("m/");
     public static final Prefix PREFIX_ADD_INFO_FAMILY = new Prefix("/f");
 
     /* Prefix definitions for Appt */
