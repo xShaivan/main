@@ -30,6 +30,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -46,6 +47,8 @@ import seedu.address.model.util.DateTimeUtil;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DISCHARGE_STATUS =
+            "Invalid Discharge Status. Please use d or a or e.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -254,6 +257,23 @@ public class ParserUtil {
 
         return new Occupation(trimmedOccupation);
     }
+
+    /**
+     * Parses a {@code String maritalStatus} into a {@code MaritalStatus}
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code maritalStatus} is invalid.
+     */
+    public static MaritalStatus parseMaritalStatus(String maritalStatus) throws ParseException {
+        requireNonNull(maritalStatus);
+        String trimmedMaritalStatus = maritalStatus.trim();
+
+        if (!MaritalStatus.isValidMaritalStatus(trimmedMaritalStatus)) {
+            throw new ParseException(MaritalStatus.MESSAGE_MARITAL_CONSTRAINT);
+        }
+
+        return new MaritalStatus(trimmedMaritalStatus);
+    }
     //@@author
 
     /**
@@ -350,17 +370,19 @@ public class ParserUtil {
      * @throws ParseException if the given {@code dischargeStatus} is invalid.
      * ParseException is omitted for now.
      */
-    public static DischargeStatus parseDischargeStatus(String dischargeStatus) {
+    public static DischargeStatus parseDischargeStatus(String dischargeStatus) throws ParseException {
         requireNonNull(dischargeStatus);
+        boolean flag = false;
         String trimmedDischargeStatus = dischargeStatus.trim();
         String expandedDischargeStatus = "";
         for (DischargeStatusEnum code: DischargeStatusEnum.values()) {
             if (trimmedDischargeStatus.equals(code.name())) {
                 expandedDischargeStatus = code.getCode();
-                break;
-            } else {
-                expandedDischargeStatus = "invalid discharge status";
+                flag = true;
             }
+        }
+        if (!flag) {
+            throw new ParseException(MESSAGE_INVALID_DISCHARGE_STATUS);
         }
 
         return new DischargeStatus(expandedDischargeStatus);

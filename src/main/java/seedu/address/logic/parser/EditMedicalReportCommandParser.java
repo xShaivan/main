@@ -5,6 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORIGINAL_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ORIGINAL_TITLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
@@ -13,6 +14,7 @@ import seedu.address.logic.commands.EditMedicalReportCommand;
 import seedu.address.logic.commands.EditMedicalReportCommand.EditReportDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medicalreport.ReportDate;
+import seedu.address.model.medicalreport.Title;
 
 //@@author chewkahmeng
 /**
@@ -27,9 +29,9 @@ public class EditMedicalReportCommandParser implements Parser<EditMedicalReportC
     @Override
     public EditMedicalReportCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_ORIGINAL_TITLE,
                 PREFIX_ORIGINAL_DATE, PREFIX_TITLE, PREFIX_DATE, PREFIX_INFO);
-        if (!arePrefixesPresent(argMultimap, PREFIX_ORIGINAL_DATE)) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_ORIGINAL_TITLE, PREFIX_ORIGINAL_DATE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditMedicalReportCommand.MESSAGE_USAGE));
         }
@@ -40,6 +42,7 @@ public class EditMedicalReportCommandParser implements Parser<EditMedicalReportC
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditMedicalReportCommand.MESSAGE_USAGE), pe);
         }
+        Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_ORIGINAL_TITLE).get());
         ReportDate reportDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_ORIGINAL_DATE).get());
         EditReportDescriptor editReportDescriptor = new EditReportDescriptor();
 
@@ -55,6 +58,6 @@ public class EditMedicalReportCommandParser implements Parser<EditMedicalReportC
         if (!editReportDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditMedicalReportCommand.MESSAGE_REPORT_NOT_EDITED);
         }
-        return new EditMedicalReportCommand(index, reportDate, editReportDescriptor);
+        return new EditMedicalReportCommand(index, title, reportDate, editReportDescriptor);
     }
 }

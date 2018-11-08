@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 
 import javafx.scene.layout.VBox;
@@ -60,6 +59,8 @@ public class InfoPanel extends UiPart<Region> {
     private Label bloodTypeLabel;
     @FXML
     private Label occupationLabel;
+    @FXML
+    private Label maritalStatusLabel;
 
     @FXML
     private Label fullNameTag;
@@ -83,13 +84,15 @@ public class InfoPanel extends UiPart<Region> {
     private Label bloodTypeTag;
     @FXML
     private Label occupationTag;
+    @FXML
+    private Label maritalStatusTag;
 
     @FXML
-    private FlowPane medHistoriesFlowPane;
+    private VBox medHistoryVBox;
     @FXML
     private VBox apptsVBox;
     @FXML
-    private FlowPane medReportsFlowPane;
+    private VBox medReportsVBox;
 
     public InfoPanel() {
         super(FXML);
@@ -132,11 +135,12 @@ public class InfoPanel extends UiPart<Region> {
         emailTag.setText("Email:");
         bloodTypeTag.setText("Blood Type:");
         occupationTag.setText("Occupation:");
+        maritalStatusTag.setText("Marital Status:");
 
         fullNameLabel.setText(person.getName().fullName);
         emailLabel.setText(person.getEmail().value);
         nricLabel.setText(person.getNric().value);
-        dateOfBirthLabel.setText(person.getDateOfBirth().toString());
+        dateOfBirthLabel.setText(person.getDateOfBirth().toString() + "\t" + person.getDateOfBirth().ageToString());
         addressLabel.setText(person.getAddress().value);
         phoneLabel.setText(person.getPhone().value);
         heightLabel.setText(person.getHeight().value);
@@ -144,6 +148,7 @@ public class InfoPanel extends UiPart<Region> {
         genderLabel.setText(person.getGender().toString());
         bloodTypeLabel.setText(person.getBloodType().value);
         occupationLabel.setText(person.getOccupation().value);
+        maritalStatusLabel.setText(person.getMaritalStatus().toString());
     }
 
     /**
@@ -152,7 +157,7 @@ public class InfoPanel extends UiPart<Region> {
     private void fillMedHistoriesPane() {
         medHistory.setStyle("-fx-background-color: #ECECEC");
         person.getMedHistory().forEach(medHistory ->
-                medHistoriesFlowPane.getChildren().add(new Label(medHistory.toString())));
+                medHistoryVBox.getChildren().add(new MedHistoryCard(medHistory)));
     }
 
     /**
@@ -169,15 +174,15 @@ public class InfoPanel extends UiPart<Region> {
     private void fillMedReportsPane() {
         medReports.setStyle("-fx-background-color: #CCCCCC");
         person.getMedicalReports().forEach(report ->
-                medReportsFlowPane.getChildren().add(new Label(report.toString())));
+                medReportsVBox.getChildren().add(new ReportCard(report)));
     }
 
     /**
-     * Empties flowpanes in all anchorpanes
+     * Empties vboxes in all anchorpanes
      */
-    public void clearFlowPanes() {
-        medHistoriesFlowPane.getChildren().clear();
-        medReportsFlowPane.getChildren().clear();
+    public void clearVBoxes() {
+        medHistoryVBox.getChildren().clear();
+        medReportsVBox.getChildren().clear();
         apptsVBox.getChildren().clear();
     }
 
@@ -192,9 +197,11 @@ public class InfoPanel extends UiPart<Region> {
         nameLabel1.setText("You have not selected any person.\n"
                 + "Please select a person to show more details\nfor him/her on this panel.");
         nameLabel2.setText("DATA PROTECTION NOTICE\n"
-                + "This Data Protection Notice (“Notice”) sets out the basis which Health Book (“we”, “us”, “our”)\n"
+                + "This Data Protection Notice (“Notice”) sets out the basis which Health Book"
+                + "(“we”, “us”, “our”)\n"
                 + "may collect, use, disclose or otherwise process personal data of our customers in accordance with\n"
-                + "the Personal Data Protection Act (“PDPA”). This Notice applies to personal data in our possession\n"
+                + "the Personal Data Protection Act (“PDPA”). This Notice applies to personal data in"
+                + "our possession\n"
                 + "or under our control, including personal data in the possession of organisations which we have\n"
                 + "engaged to collect, use, disclose or process personal data for our purposes.\n"
                 + "PERSONAL DATA\n"
@@ -216,7 +223,8 @@ public class InfoPanel extends UiPart<Region> {
                 + "COLLECTION, USE AND DISCLOSURE OF PERSONAL DATA\n"
                 + "4. We do not collect your personal data unless (a) it is provided to us voluntarily by you\n"
                 + "directly or via a third party who has been duly authorised by you to disclose your personal\n"
-                + "data to us (your “authorised representative”) after (i) you (or your authorised representative)\n"
+                + "data to us (your “authorised representative”) after "
+                + "(i) you (or your authorised representative)\n"
                 + "have been notified of the purposes for which the data is collected, and (ii) you (or your\n"
                 + "authorised representative) have provided written consent to the collection and usage of your\n"
                 + "personal data for those purposes, or (b) collection and use of personal data without consent\n"
@@ -344,6 +352,7 @@ public class InfoPanel extends UiPart<Region> {
         emailTag.setText("");
         bloodTypeTag.setText("");
         occupationTag.setText("");
+        maritalStatusTag.setText("");
 
         fullNameLabel.setText("");
         emailLabel.setText("");
@@ -356,5 +365,6 @@ public class InfoPanel extends UiPart<Region> {
         genderLabel.setText("");
         bloodTypeLabel.setText("");
         occupationLabel.setText("");
+        maritalStatusLabel.setText("");
     }
 }

@@ -31,6 +31,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -118,13 +119,14 @@ public class EditCommand extends Command {
         Gender gender = personToEdit.getGender();
         BloodType bloodType = personToEdit.getBloodType();
         Occupation occupation = personToEdit.getOccupation();
+        MaritalStatus maritalStatus = personToEdit.getMaritalStatus();
 
         Set<MedicalReport> reports = personToEdit.getMedicalReports(); // edit command disallow editing reports
         Set<MedHistory> medHistory = personToEdit.getMedHistory(); // edit command does not edit MedHistory now
         Set<Appt> appts = personToEdit.getAppts(); // edit command does not allow editing appts
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, reports, medHistory, appts, nric,
-                dateOfBirth, height, weight, gender, bloodType, occupation, updatedTags);
+                dateOfBirth, height, weight, gender, bloodType, occupation, maritalStatus, updatedTags);
     }
 
     @Override

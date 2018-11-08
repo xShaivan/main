@@ -5,7 +5,9 @@ import static seedu.address.model.util.DateTimeUtil.DATE_VALIDATION_REGEX;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 import seedu.address.model.util.DateTimeUtil;
 
@@ -14,6 +16,7 @@ import seedu.address.model.util.DateTimeUtil;
  */
 public class DateOfBirth {
     public final Optional<LocalDate> value;
+    public final OptionalInt age;
 
     private final String emptyString = "";
 
@@ -22,14 +25,30 @@ public class DateOfBirth {
      * @param value a valid date
      * @throws ParseException if date format is invalid
      */
-    //TODO: (DateOfBirth) to be an Optional type to support null values
+
     public DateOfBirth(String value) {
         requireNonNull(value);
         this.value = (value.isEmpty()) ? Optional.empty() : Optional.of(DateTimeUtil.parseDate(value));
+        this.age = calculateAge(this.value);
+    }
+
+    /**
+     * Calculates the {@code age} based on {@code dateOfBirth}
+     */
+    private OptionalInt calculateAge(Optional<LocalDate> dateOfBirth) {
+        if (dateOfBirth.isPresent()) {
+            return OptionalInt.of(Period.between(dateOfBirth.get(), LocalDate.now()).getYears());
+        } else {
+            return OptionalInt.empty();
+        }
     }
 
     public static boolean isValidDate(String test) {
         return test.matches(DATE_VALIDATION_REGEX);
+    }
+
+    public String ageToString() {
+        return age.isPresent() ? "(" + Integer.toString(age.getAsInt()) + ")" : emptyString;
     }
 
     @Override
