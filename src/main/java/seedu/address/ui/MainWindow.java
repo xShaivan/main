@@ -205,12 +205,12 @@ public class MainWindow extends UiPart<Stage> {
 
     //@@author brandonccm1996
     void showPersonDetailsOnInfoPanel(Person person) {
-        infoPanel.clearFlowPanes();
+        infoPanel.clearVBoxes();
         infoPanel.setPerson(person);
     }
 
     void showInfoPanelEmptyMessage() {
-        infoPanel.clearFlowPanes();
+        infoPanel.clearVBoxes();
         infoPanel.showEmptyMessage();
     }
 }

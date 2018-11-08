@@ -1,8 +1,11 @@
 = Hovan Tan - Project Portfolio
 :site-section: AboutUs
+:toc:
+:sectnums:
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
+[discrete]
 == PROJECT: HealthBook
 
 ---
@@ -37,6 +40,8 @@ HealthBook is an address book application that is catered for healthcare profess
 
 include::../UserGuide.adoc[tag=addhist]
 
+include::../UserGuide.adoc[tag=edithist]
+
 == Contributions to the Developer Guide
 
 |===
@@ -44,3 +49,4 @@ include::../UserGuide.adoc[tag=addhist]
 |===
 
 include::../DeveloperGuide.adoc[tag=addhist]
+include::../DeveloperGuide.adoc[tag=edithist]

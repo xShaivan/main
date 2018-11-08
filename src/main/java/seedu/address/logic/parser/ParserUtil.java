@@ -1,7 +1,10 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.DateTimeUtil.DATE_CONSTRAINTS;
+import static seedu.address.model.util.DateTimeUtil.DATE_TIME_CONSTRAINTS;
 
+import java.time.DateTimeException;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
@@ -27,6 +30,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -43,6 +47,8 @@ import seedu.address.model.util.DateTimeUtil;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DISCHARGE_STATUS =
+            "Invalid Discharge Status. Please use d or a or e.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -141,23 +147,23 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String nric} into an {@code Nric}.
+     * Parses a {@code String DateOfBirth} into an {@code DateOfBirth}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code nric} is invalid.
+     * @throws ParseException if the given {@code DateOfBirth} is invalid.
      */
     public static DateOfBirth parseDateOfBirth(String dateOfBirth) throws ParseException {
         requireNonNull(dateOfBirth);
         String trimmedDateOfBirth = dateOfBirth.trim();
 
         if (!DateOfBirth.isValidDate(trimmedDateOfBirth)) {
-            throw new ParseException(DateOfBirth.DATE_OF_BIRTH_CONSTRAINTS);
+            throw new ParseException(DATE_CONSTRAINTS);
         }
 
         try {
-            DateTimeUtil.parseDate(dateOfBirth);
-        } catch (DateTimeParseException e) {
-            throw new ParseException(DateOfBirth.DATE_OF_BIRTH_VALUE_EXCEEDED);
+            DateTimeUtil.isCorrectDate(trimmedDateOfBirth);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
         }
 
         return new DateOfBirth(trimmedDateOfBirth);
@@ -251,6 +257,23 @@ public class ParserUtil {
 
         return new Occupation(trimmedOccupation);
     }
+
+    /**
+     * Parses a {@code String maritalStatus} into a {@code MaritalStatus}
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if given {@code maritalStatus} is invalid.
+     */
+    public static MaritalStatus parseMaritalStatus(String maritalStatus) throws ParseException {
+        requireNonNull(maritalStatus);
+        String trimmedMaritalStatus = maritalStatus.trim();
+
+        if (!MaritalStatus.isValidMaritalStatus(trimmedMaritalStatus)) {
+            throw new ParseException(MaritalStatus.MESSAGE_MARITAL_CONSTRAINT);
+        }
+
+        return new MaritalStatus(trimmedMaritalStatus);
+    }
     //@@author
 
     /**
@@ -312,8 +335,15 @@ public class ParserUtil {
     public static MedHistDate parseMedHistDate(String medHistDate) throws ParseException {
         requireNonNull(medHistDate);
         String trimmedMedHistDate = medHistDate.trim();
+
         if (!MedHistDate.isValidMedHistDate(trimmedMedHistDate)) {
-            throw new ParseException(MedHistDate.MESSAGE_MEDHISTDATE_CONSTRAINTS);
+            throw new ParseException(DATE_CONSTRAINTS);
+        }
+
+        try {
+            DateTimeUtil.isCorrectDate(trimmedMedHistDate);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
         }
 
         return new MedHistDate(trimmedMedHistDate);
@@ -340,17 +370,19 @@ public class ParserUtil {
      * @throws ParseException if the given {@code dischargeStatus} is invalid.
      * ParseException is omitted for now.
      */
-    public static DischargeStatus parseDischargeStatus(String dischargeStatus) {
+    public static DischargeStatus parseDischargeStatus(String dischargeStatus) throws ParseException {
         requireNonNull(dischargeStatus);
+        boolean flag = false;
         String trimmedDischargeStatus = dischargeStatus.trim();
         String expandedDischargeStatus = "";
         for (DischargeStatusEnum code: DischargeStatusEnum.values()) {
             if (trimmedDischargeStatus.equals(code.name())) {
                 expandedDischargeStatus = code.getCode();
-                break;
-            } else {
-                expandedDischargeStatus = "invalid discharge status";
+                flag = true;
             }
+        }
+        if (!flag) {
+            throw new ParseException(MESSAGE_INVALID_DISCHARGE_STATUS);
         }
 
         return new DischargeStatus(expandedDischargeStatus);
@@ -385,9 +417,17 @@ public class ParserUtil {
     public static ReportDate parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedReportDate = date.trim();
+
         if (!ReportDate.isValidDate(trimmedReportDate)) {
-            throw new ParseException(ReportDate.MESSAGE_DATE_CONSTRAINTS);
+            throw new ParseException(DATE_CONSTRAINTS);
         }
+
+        try {
+            DateTimeUtil.isCorrectDate(trimmedReportDate);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
+        }
+
         return new ReportDate(trimmedReportDate);
     }
 
@@ -420,9 +460,17 @@ public class ParserUtil {
     public static ApptDateTime parseApptDateTime(String apptDateTime) throws ParseException {
         requireNonNull(apptDateTime);
         String trimmedApptDateTime = apptDateTime.trim();
+
         if (!ApptDateTime.isValidDateTime(trimmedApptDateTime)) {
-            throw new ParseException(ApptDateTime.MESSAGE_NAME_CONSTRAINTS);
+            throw new ParseException(DATE_TIME_CONSTRAINTS);
         }
+
+        try {
+            DateTimeUtil.isCorrectDateTime(trimmedApptDateTime);
+        } catch (DateTimeParseException e) {
+            throw new ParseException(e.getMessage());
+        }
+
         return new ApptDateTime(trimmedApptDateTime);
     }
 
