@@ -21,6 +21,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -58,6 +59,8 @@ public class XmlAdaptedPerson {
     private String bloodType;
     @XmlElement
     private String occupation;
+    @XmlElement
+    private String maritalStatus;
 
     @XmlElement
     private List<XmlAdaptedReport> reports = new ArrayList<>();
@@ -115,6 +118,7 @@ public class XmlAdaptedPerson {
         gender = source.getGender().toString();
         bloodType = source.getBloodType().value;
         occupation = source.getOccupation().value;
+        maritalStatus = source.getMaritalStatus().toString();
 
         reports = source.getMedicalReports().stream().map(XmlAdaptedReport::new).collect(Collectors.toList());
         medHistories = source.getMedHistory().stream().map(XmlAdaptedMedHistory::new).collect(Collectors.toList());
@@ -203,6 +207,12 @@ public class XmlAdaptedPerson {
         }
         final Occupation modelOccupation = new Occupation(occupation);
 
+        if (maritalStatus == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, MaritalStatus.class
+                    .getSimpleName()));
+        }
+        final MaritalStatus modelMaritalStatus = new MaritalStatus(maritalStatus);
+
 
         /**
          * ==================================================
@@ -240,7 +250,7 @@ public class XmlAdaptedPerson {
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelReports, modelMedHistory, modelAppts,
                 modelNric, modelDateOfBirth, modelHeight, modelWeight, modelGender, modelBloodType, modelOccupation,
-                modelTags);
+                modelMaritalStatus, modelTags);
     }
 
     @Override
@@ -253,7 +263,6 @@ public class XmlAdaptedPerson {
             return false;
         }
 
-        //TODO: Update equality
         XmlAdaptedPerson otherPerson = (XmlAdaptedPerson) other;
         return Objects.equals(name, otherPerson.name)
                 && Objects.equals(phone, otherPerson.phone)
@@ -261,6 +270,12 @@ public class XmlAdaptedPerson {
                 && Objects.equals(address, otherPerson.address)
                 && Objects.equals(nric, otherPerson.nric)
                 && Objects.equals(dateOfBirth, otherPerson.dateOfBirth)
+                && Objects.equals(weight, otherPerson.weight)
+                && Objects.equals(height, otherPerson.height)
+                && Objects.equals(gender, otherPerson.gender)
+                && Objects.equals(bloodType, otherPerson.bloodType)
+                && Objects.equals(occupation, otherPerson.occupation)
+                && Objects.equals(maritalStatus, otherPerson.maritalStatus)
                 && medHistories.equals(otherPerson.medHistories)
                 && reports.equals(otherPerson.reports)
                 && appts.equals(otherPerson.appts)

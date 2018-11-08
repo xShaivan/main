@@ -16,7 +16,6 @@ import seedu.address.model.medhistory.PrevCountry;
  * An UI component that displays information of a {@code MedHistory}.
  */
 public class MedHistoryCard extends StackPane {
-    private final MedHistory medHistory;
 
     @FXML
     private Label dateDischargeCode;
@@ -35,7 +34,6 @@ public class MedHistoryCard extends StackPane {
             throw new RuntimeException(exception);
         }
 
-        this.medHistory = medHistory;
         dateDischargeCode.setText(medHistory.getMedHistDate().toString() + " "
                 + medHistory.getDischargeStatus().orElse(new DischargeStatus("")).toString() + "\n");
         otherMedHistoryInfo.setText("Allergy: " + medHistory.getAllergy().orElse(new Allergy("")).toString() + "\n"

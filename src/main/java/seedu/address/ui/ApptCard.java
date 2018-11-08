@@ -14,7 +14,6 @@ import seedu.address.model.timetable.Appt;
  * An UI component that displays information of a {@code Appt}.
  */
 public class ApptCard extends StackPane {
-    private final Appt appt;
 
     @FXML
     private Label apptDetails;
@@ -33,7 +32,6 @@ public class ApptCard extends StackPane {
             throw new RuntimeException(exception);
         }
 
-        this.appt = appt;
         apptDetails.setText(appt.getStart().toString() + " TO " + appt.getEnd().toString()
                 + " @ " + appt.getVenue().toString() + " by " + appt.getDrName().toString());
         apptInfo.setText(appt.getInfo().toString());
