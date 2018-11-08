@@ -487,17 +487,45 @@ Step 1. The user launches the application. If it is the first time he/she is lau
 
 Step 2. The user executes `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018` command to add a medical report to the person at index 1 in the list that the address book is currently showing. The `addreport` command obtains the data of the person that the user is trying to change based on the index that the user has input.
 
-Step 3. The `addreport` command will obtain the set of reports that the person previously had, copy it to a new set of reports, and add the report which the user wants to add into the new set.
+Step 3. The `addreport` command will obtain the set of medical reports that the person previously had, copy it to a new set of reports, and add the report which the user wants to add into the new set.
 
 Step 4. The `addreport` command will call `Model#updatePerson()` to update the person with this new set of reports. The `addreport` command will call `Model#updateFilteredPersonList()` to update the list that the user is shown.
 
 Step 5. The `addreport` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
-Figure 4.5 shows how the addreport operation works:
+Figure 4.6.1 shows how the addreport operation works:
 
 image::AddMedicalReportSequenceDiagram.png[width="800"]
-Figure 4.5: Sequence Diagram of AddMedicalReport feature
+Figure 4.6.1: Sequence Diagram of AddMedicalReport feature
 // end::addreport[]
+
+// tag::editreport[]
+=== EditMedicalReport feature
+==== Current Implementation
+The editreport mechanism is facilitated by `VersionedAddressBook`.
+
+Additionally, it implements the following operations:
+
+* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
+* `VersionedAddressBook#updatePerson()` -- Updates the specified person with the new data.
+* indicateAddressBookChanged() -- Raises an event to indicate the AddressBook in the model has changed.
+
+These operations are exposed in the `Model` interface as `Model#updatePerson()`, `Model#updateFilteredPersonList()` and `Model#commitAddressBook()` respectively.
+
+Given below is an example usage scenario and how the `editreport` mechanism behaves at each step.
+
+Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+
+Step 2. The user will find a medical report of a patient to edit.
+
+Step 3. The user executes `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment on 03-03-2018` command to edit the existing medical report of the person at index 1 in the list titled Asthma and dated 01-01-2018. The `editreport` command obtains the data of the person that the user is trying to change based on the index that the user has input.
+
+Step 3. The `editreport` command will obtain the set of medical reports that the person previously had, copy it to a new set of medical reports and make the necessary changes to the medical report chosen.
+
+Step 4. The `editreport` command will call `Model#updatePerson()` to update the person with this new set of medical reports. The `editreport` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user.
+
+Step 5. Lastly, the `editreport` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
+// end::editreport[]
 
 // tag::find[]
 === Find feature
