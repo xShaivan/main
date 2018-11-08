@@ -1,5 +1,8 @@
 = Chew Kah Meng - Project Portfolio
 :site-section: AboutUs
+:toc:
+:toc-title:
+:sectnums:
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
@@ -9,26 +12,37 @@
 
 == Overview
 
-Health Book is an application for healthcare professionals to retrieve their patients’ personal information and health-related information efficiently and systematically. The user interacts with it using a Command Line Interface (CLI) to input commands, while a Graphical User Interface (GUI) is used to display the patients’ information. It is written in Java and has about 10kLoC.
+Health Book is a application written in Java. Its main purpose is to help healthcare professionals retrieve their patients’ personal and health-related information more efficiently. The user uses a Command Line Interface (CLI) to input commands and a Graphical User Interface (GUI) is used to display the patients’ information. My team consisted of a Project Manager, a Development Lead, a Design Lead, a Subject Matter Expert and myself, the Quality Assurance Lead. All of us contributed features to our application and my job was to ensure that our application runs smoothly.
 
 == Summary of contributions
 
 * *Major enhancement*: added *the ability to add a list of medical reports for patients and allowed the user to view a certain medical report of a patient.*
-** What it does: allows the user to add a list of medical reports to a patient and access any medical report from the list.
-** Justification: This feature makes it easier for the user to add medical reports and the user can find a medical report much faster from a large inventory of medical reports.
-** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+** What it does: This feature allows the user to add a list of medical reports to a patient and access any medical report from the list.
+** Justification: This feature makes it easier for the user to add medical reports and the user can view the medical reports of a patient all at once.
 
-* *Minor enhancement*: added the ability to edit a medical report.
-** What it does: allows the user to edit a patient’s medical report.
-** Justification: This feature allows healthcare professionals to rectify their mistakes after they write a medical report.
+* *Minor enhancement*: added *the ability to edit a medical report.*
+** What it does: This feature allows the user to edit a patient’s medical report.
+** Justification: This feature allows healthcare professionals to correct errors in a patient's medical report.
 
-* *Code contributed*: [https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddMedicalReportCommand.java[AddMedicalReportCommand]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddMedicalReportCommandParser.java[AddMedicalReportCommandParser]][https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/medicalreport[MedicalReport Classes]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedReport.java[XmlAdaptedReport]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddReportCommandTest.java[AddReportCommandTest]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddReportCommandParserTest.java[AddReportCommandParserTest]][https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/person/AddMedicalReportTest.java[MedicalReportTest]]
+* *Functional code contributed*:
+** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddMedicalReportCommand.java[AddMedicalReportCommand] (Command to add medical report)
+** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddMedicalReportCommandParser.java[AddMedicalReportCommandParser] (Class to parse addmedicalreport command)
+** https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/medicalreport[MedicalReport Classes]
+** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedReport.java[XmlAdaptedReport] (XML representation of medical report for storage)
+** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/EditMedicalReportCommand.java[EditMedicalReportCommand] (Command to edit medical report)
+** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/EditMedicalReportCommandParser.java[EditMedicalReportCommandParser] (Class to parse editmedicalreport command)
+
+* *Test code contributed*:
+** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddReportCommandTest.java[AddReportCommandTest]
+** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddReportCommandParserTest.java[AddReportCommandParserTest]
+** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/person/AddMedicalReportTest.java[MedicalReportTest]
 
 * *Other contributions*:
 
 ** Project management:
-*** Role of Quality Assurance Lead: In charge of making sure that all our tests have a test coverage of at least 90% and our application runs smoothly by passing all the tests.
-*** Managed releases `v1.1` - `v1.3` (3 releases) on GitHub.
+*** Role of Quality Assurance Lead: In charge of making sure that our application have a test coverage of at least 90% and as few bugs as possible. I am also in charge in checking that our application passes all the test cases so that it can run smoothly.
+** Community:
+*** Reported bugs and suggestions for other teams in the class, while providing technical suggestions for further improvement: (Issues: https://github.com/CS2113-AY1819S1-T16-4/main/issues/203[#203], https://github.com/CS2113-AY1819S1-T16-4/main/issues/210[#208])
 
 == Contributions to the User Guide
 
@@ -45,5 +59,7 @@ include::../UserGuide.adoc[tag=reportcommands]
 |===
 
 include::../DeveloperGuide.adoc[tag=addreport]
+
+include::../DeveloperGuide.adoc[tag=editreport]
 
 include::../DeveloperGuide.adoc[tag=reportusecases]
