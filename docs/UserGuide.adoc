@@ -215,11 +215,18 @@ Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
 * The index refers to the index number shown in the displayed person list.
 ****
 
-Examples:
+Example:
 
 * `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
 Adds an appointment for the 1st person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
 for a diabetes checkup by Dr Tan.
+** Entering the command above will add an appointment for the first patient in the displayed person list. If the first patient did not previously have any appointments, the GUI will look as follows:
+
+image::AddApptUGPic.png[width="600"]
+
+** If the first patient previously had appointments, the new appointment will be added to his schedule and shown on the GUI together with his other appointments in order of start time (from earliest to latest). The GUI will look as follows:
+
+image::AddApptUGPic2.png[width="600"]
 
 === Editing an appointment for a patient: `editappt`
 
@@ -233,7 +240,7 @@ Format: `editappt INDEX os/ORIGINAL_START [s/START] [e/END] [v/VENUE] [i/INFO] [
 * Existing values will be updated to the input values.
 ****
 
-Examples:
+Example:
 
 * `editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
 Edits the appointment that starts on 16-09-2018 at 15:00, to now run from 16-09-2018 14:00-14:30 instead
@@ -249,7 +256,7 @@ Format: `deleteappt INDEX s/START`
 * The index refers to the index number shown in the displayed person list.
 ****
 
-Examples:
+Example:
 
 * `deleteappt 2 s/16-09-2018 15:00` +
 Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
