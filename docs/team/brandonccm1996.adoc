@@ -1,7 +1,7 @@
 = Brandon Cheong - Project Portfolio
 :site-section: AboutUs
 :toc:
-:toc-title:
+:sectnums:
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
