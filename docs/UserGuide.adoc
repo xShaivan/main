@@ -205,9 +205,9 @@ The patient has been admitted to a hospital.
 // end::edithist[]
 
 // tag::apptcommands[]
-=== Adding an appointment into patient's timetable: `addappt`
+=== Adding an appointment for a patient: `addappt`
 
-Adds an appointment into the specified patient's timetable. +
+Adds an appointment into the specified patient's schedule. +
 Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
 
 ****
@@ -221,9 +221,9 @@ Examples:
 Adds an appointment for the 1st person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
 for a diabetes checkup by Dr Tan.
 
-=== Editing an appointment in a patient's timetable: `editappt`
+=== Editing an appointment for a patient: `editappt`
 
-Edits a specified appointment in the specified patient's timetable. +
+Edits a specified appointment in the specified patient's schedule. +
 Format: `editappt INDEX os/ORIGINAL_START [s/START] [e/END] [v/VENUE] [i/INFO] [d/DOCTOR_NAME]`
 
 ****
@@ -239,9 +239,9 @@ Examples:
 Edits the appointment that starts on 16-09-2018 at 15:00, to now run from 16-09-2018 14:00-14:30 instead
 and be at Consultation Room 13 for the 2nd person in the list.
 
-=== Deleting an appointment in a patient’s timetable: `deleteappt`
+=== Deleting an appointment for a patient: `deleteappt`
 
-Deletes a specified appointment in the specified patient’s timetable. +
+Deletes a specified appointment in the specified patient’s schedule. +
 Format: `deleteappt INDEX s/START`
 
 ****
