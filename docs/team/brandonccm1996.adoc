@@ -31,7 +31,7 @@ My team comprised of a Project Manager, Development Lead, Quality Assurance Lead
 * *Other contributions*:
 
 ** Project management:
-*** As a Dev Lead, I was in charge of: 
+*** As a Dev Lead, I was in charge of:
 **** Deciding overall features of Health Book application
 **** Managing releases `v1.1` - `v1.3` (3 releases) on GitHub
 **** Checking, reviewing and merging all team pull requests for code changes and enhancements to ensure conformity to the finalised user stories
