@@ -5,6 +5,7 @@
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
+[discrete]
 == PROJECT: Health Book
 
 ---
