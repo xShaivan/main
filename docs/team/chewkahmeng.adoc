@@ -1,46 +1,41 @@
 = Chew Kah Meng - Project Portfolio
 :site-section: AboutUs
 :toc:
-:toc-title:
 :sectnums:
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
+[discrete]
 == PROJECT: Health Book
-
 ---
 
 == Overview
+a) *Introduction*: This portfolio records my contributions to Health Book. My code contributions shows my technical competence in software engineering and my contributions to the User Guide and Developer Guide highlights my documentation writing skills.
 
-Health Book is a application written in Java. Its main purpose is to help healthcare professionals retrieve their patients’ personal and health-related information more efficiently. The user uses a Command Line Interface (CLI) to input commands and a Graphical User Interface (GUI) is used to display the patients’ information. My team consisted of a Project Manager, a Development Lead, a Design Lead, a Subject Matter Expert and myself, the Quality Assurance Lead. All of us contributed features to our application and my job was to ensure that our application runs smoothly.
+b) *Product Summary*: Health Book is a desktop application written in Java. A Command Line Interface (CLI) is used to input commands and a Graphical User Interface (GUI) is used to display the patients’ information.
 
-== Summary of contributions
+c) *Current Problem*: Healthcare professionals are spending a lot of time and effort to retrieve their patients' information from their medical records.
 
-* *Major enhancement*: added *the ability to add a list of medical reports for patients and allowed the user to view a certain medical report of a patient.*
+d) *Our Solution*: Health Book was developed to help healthcare professionals retrieve their patients’ personal and health-related information more efficiently.
+
+e) *Team Summary*: My team consisted of a Project Manager, a Development Lead, a Design Lead, a Subject Matter Expert and myself, the Quality Assurance Lead. Besides developing Health Book, I was in charge of ensuring that Health Book runs smoothly.
+
+== Summary of Contributions
+
+* *Major enhancement*: added *the ability to add a list of medical reports for patients and allowed the user to view medical reports of a patient.*
 ** What it does: This feature allows the user to add a list of medical reports to a patient and access any medical report from the list.
-** Justification: This feature makes it easier for the user to add medical reports and the user can view the medical reports of a patient all at once.
+** Justification: This feature makes it easier for the user to add medical reports and the user can conveniently access all the medical reports of a patient.
 
 * *Minor enhancement*: added *the ability to edit a medical report.*
 ** What it does: This feature allows the user to edit a patient’s medical report.
-** Justification: This feature allows healthcare professionals to correct errors in a patient's medical report.
+** Justification: This feature allows the user to correct errors in a patient's medical report.
 
-* *Functional code contributed*:
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddMedicalReportCommand.java[AddMedicalReportCommand] (Command to add medical report)
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddMedicalReportCommandParser.java[AddMedicalReportCommandParser] (Class to parse addmedicalreport command)
-** https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/medicalreport[MedicalReport Classes]
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedReport.java[XmlAdaptedReport] (XML representation of medical report for storage)
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/EditMedicalReportCommand.java[EditMedicalReportCommand] (Command to edit medical report)
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/EditMedicalReportCommandParser.java[EditMedicalReportCommandParser] (Class to parse editmedicalreport command)
-
-* *Test code contributed*:
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddReportCommandTest.java[AddReportCommandTest]
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddReportCommandParserTest.java[AddReportCommandParserTest]
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/person/AddMedicalReportTest.java[MedicalReportTest]
+* *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=chewkahmeng[Click Here]]
 
 * *Other contributions*:
 
 ** Project management:
-*** Role of Quality Assurance Lead: In charge of making sure that our application have a test coverage of at least 90% and as few bugs as possible. I am also in charge in checking that our application passes all the test cases so that it can run smoothly.
+*** Role of Quality Assurance Lead: In charge of making sure that our application have a test coverage of at least 90% and as few bugs as possible. I was also in charge in checking that our application passes all the test cases so that it can run smoothly.
 ** Community:
 *** Reported bugs and suggestions for other teams in the class, while providing technical suggestions for further improvement: (Issues: https://github.com/CS2113-AY1819S1-T16-4/main/issues/203[#203], https://github.com/CS2113-AY1819S1-T16-4/main/issues/210[#208])
 
