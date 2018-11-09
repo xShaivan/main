@@ -224,7 +224,7 @@ public class EditApptCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(apptStart, apptEnd, apptVenue, apptVenue, apptDrName);
+            return CollectionUtil.isAnyNonNull(apptStart, apptEnd, apptVenue, apptInfo, apptDrName);
         }
 
         public void setStart(ApptDateTime apptStart) {
