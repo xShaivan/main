@@ -6,15 +6,15 @@ import static java.util.Objects.requireNonNull;
 //@@author xShaivan
 /**
  * Represents the previous country visited of medical history.
- * Guarantees: immutable; is valid as declared in {@link #isValidprevCountry(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidPrevCountry(String)}
  */
 
 public class PrevCountry {
 
     public static final String MESSAGE_PREVCOUNTRY_CONSTRAINTS =
-            "prevCountry must not be left blank.";
+            "Previous Country can only contain alphanumeric characters, whitespaces, commas and periods.";
 
-    public static final String PREVCOUNTRY_VALIDATION_REGEX = "[^\\s].*";
+    public static final String PREVCOUNTRY_VALIDATION_REGEX = "[\\p{Alnum}\\p{Space},.]*";;
 
     public final String value;
 
@@ -28,6 +28,10 @@ public class PrevCountry {
         // isValidprevCountry will is found in test file.
         //checkArgument(isValidprevCountry(prevCountry), MESSAGE_PREVCOUNTRY_CONSTRAINTS);
         value = prevCountry;
+    }
+
+    public static boolean isValidPrevCountry(String test) {
+        return test.matches(PREVCOUNTRY_VALIDATION_REGEX);
     }
 
     @Override

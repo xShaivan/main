@@ -17,6 +17,7 @@ import org.junit.rules.ExpectedException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.MedHistDate;
+import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -45,6 +46,7 @@ public class ParserUtilTest {
     private static final String INVALID_OCCUPATION = "D0Ct0R";
     private static final String INVALID_ALLERGY = "$r1ce";
     private static final String INVALID_MEDHISTDATE = "10/10/2010";
+    private static final String INVALID_PREVCOUNTRY = "Cheena!";
 
     private static final String INCORRECT_DATE_OF_BIRTH = "01-20-1920";
     private static final String INCORRECT_BLOODTYPE = "BO+";
@@ -63,6 +65,7 @@ public class ParserUtilTest {
     private static final String VALID_OCCUPATION = "DOCTOR";
     private static final String VALID_ALLERGY = "rice";
     private static final String VALID_MEDHISTDATE = "10-10-2010";
+    private static final String VALID_PREVCOUNTRY = "China";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -393,5 +396,28 @@ public class ParserUtilTest {
         String medHistDateWithWhitespace = WHITESPACE + VALID_MEDHISTDATE + WHITESPACE;
         MedHistDate expectedMedHistDate = new MedHistDate(VALID_MEDHISTDATE);
         assertEquals(expectedMedHistDate, ParserUtil.parseMedHistDate(medHistDateWithWhitespace));
+    }
+
+    @Test
+    public void parsePrevCountrynullthrowsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parsePrevCountry((String) null));
+    }
+
+    @Test
+    public void parsePrevCountryinvalidValuethrowsParseException() {
+        Assert.assertThrows(ParseException.class, () -> ParserUtil.parsePrevCountry(INVALID_PREVCOUNTRY));
+    }
+
+    @Test
+    public void parsePrevCountryvalidValueWithoutWhitespacereturnsPrevCountry() throws Exception {
+        PrevCountry expectedPrevCountry = new PrevCountry(VALID_PREVCOUNTRY);
+        assertEquals(expectedPrevCountry, ParserUtil.parsePrevCountry(VALID_PREVCOUNTRY));
+    }
+
+    @Test
+    public void parsePrevCountryvalidValueWithWhitespacereturnsTrimmedPrevCountry() throws Exception {
+        String prevCountryWithWhitespace = WHITESPACE + VALID_PREVCOUNTRY + WHITESPACE;
+        PrevCountry expectedPrevCountry = new PrevCountry(VALID_PREVCOUNTRY);
+        assertEquals(expectedPrevCountry, ParserUtil.parsePrevCountry(prevCountryWithWhitespace));
     }
 }

@@ -36,6 +36,7 @@ import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.timetable.Appt;
+import seedu.address.model.util.DateTimeUtil;
 
 //@@author xShaivan
 /**
@@ -102,7 +103,7 @@ public class AddHistCommand extends Command {
             }
         }
 
-        if (isInvalidMedHistDate(medHistory)) {
+        if (DateTimeUtil.isInvalidMedHistDate(medHistory)) {
             throw new CommandException(MESSAGE_INVALID_MEDHISTDATE);
         }
 
@@ -146,17 +147,6 @@ public class AddHistCommand extends Command {
         return (medHistDate1.equals(medHistDate2));
     }
 
-    /**
-     * This method checks if input has a duplicate medical history date.
-     */
-    private boolean isInvalidMedHistDate(MedHistory medHistory) {
-        LocalDate localDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        LocalDate inputDate = LocalDate.parse(medHistory.getMedHistDate().toString(), formatter);
-
-        return (inputDate.isAfter(localDate));
-    }
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
