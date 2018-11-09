@@ -14,7 +14,8 @@
 
 Health Book is an address book application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. A Command Line Interface (CLI) is utilized mainly for the input, while a Graphical User Interface (GUI) is used to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI. It is written in Java.
 
-image::../images/Ui.png[width="600"]
+.Graphical User Interface of Health Book
+image::../images/Ui.png[width="790"]
 
 My team comprised of a Project Manager, Development Lead, Quality Assurance Lead, Design Lead, and Subject Matter Expert for documentation and application workflow. I took up the role of Development Lead for this project.
 
