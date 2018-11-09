@@ -21,20 +21,7 @@ Health Book is an address book application that is catered for healthcare profes
 ** Justification: This feature improves the product significantly because the user can track his patients' appointments easily and make sure that there are no scheduling clashes, and can also remind his patients in advance that they have appointments.
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
 
-* *Functional code contributed*:
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/AddApptCommand.java[AddApptCommand] for adding an appointment to a patient
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/AddApptCommandParser.java[AddApptCommandParser] for parsing user input to an AddApptCommand
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/DeleteApptCommand.java[DeleteApptCommand] for deleting an appointment from a patient
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/DeleteApptCommandParser.java[DeleteApptCommandParser] for parsing user input to a DeleteApptCommand
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/commands/EditApptCommand.java[EditApptCommand] for editing existing appointments for a patient
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/logic/parser/EditApptCommandParser.java[EditApptCommandParser] for parsing user input to an EditApptCommand
-** https://github.com/CS2113-AY1819S1-T12-2/main/tree/master/src/main/java/seedu/address/model/timetable[Appt model classes]
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/storage/XmlAdaptedAppt.java[XmlAdaptedAppt] for mapping of Appt to an XML representation for storage
-
-* *Test code contributed*:
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/commands/AddApptCommandTest.java[AddApptCommandTest]
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/logic/parser/AddApptCommandParserTest.java[AddApptCommandParserTest]
-** https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/test/java/seedu/address/model/timetable/ApptTest.java[ApptTest]
+* *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=brandonccm1996&sort=displayName&since=2018-09-12&until=2018-11-04&timeframe=day&reverse=false&repoSort=true[Code Dashboard]]
 
 * *Other contributions*:
 
