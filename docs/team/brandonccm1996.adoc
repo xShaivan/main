@@ -16,7 +16,7 @@ Health Book is an address book application that is catered for healthcare profes
 
 image::../images/Ui.png[width="600"]
 
-My team comprised of a Project Manager, Development Lead, Quality Assurance Lead, Design Lead, and Subject Matter Expert for documentation and application workflow.
+My team comprised of a Project Manager, Development Lead, Quality Assurance Lead, Design Lead, and Subject Matter Expert for documentation and application workflow. I took up the role of Development Lead for this project.
 
 == Summary of contributions
 
@@ -33,7 +33,7 @@ My team comprised of a Project Manager, Development Lead, Quality Assurance Lead
 ** Project management:
 *** As a Dev Lead, I was in charge of:
 **** Deciding overall features of Health Book application
-**** Managing releases `v1.1` - `v1.3` (3 releases) on GitHub
+**** Managing releases `v1.1` - `v1.4` (3 releases) on GitHub
 **** Checking, reviewing and merging all team pull requests for code changes and enhancements to ensure conformity to the finalised user stories
 ** Enhancements to existing features:
 *** Designed cards for the displaying of patient appointments in the information panel
