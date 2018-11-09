@@ -6,31 +6,37 @@
 :stylesDir: ../stylesheets
 
 [discrete]
-== PROJECT: Health Book
+== Project: Health Book
 
 ---
 
 == Overview
 
-Health Book is an address book application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. Command Line Interface is utilized mainly for the input, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI. It is written in Java.
+Health Book is an address book application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. A Command Line Interface (CLI) is utilized mainly for the input, while a Graphical User Interface (GUI) is used to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI. It is written in Java.
+
+image::../images/Ui.png[width="600"]
+
+My team comprised of a Project Manager, Development Lead, Quality Assurance Lead, Design Lead, and Subject Matter Expert for documentation and application workflow.
 
 == Summary of contributions
 
-* *Major enhancement*: added *the ability to add, view, edit and delete appointments in a patient's timetable*
+* *Major enhancement*: added the ability to *add, view, edit and delete appointments for a patient*
 ** What it does: allows the user to manage appointments for a patient.
 ** Justification: This feature improves the product significantly because the user can track his patients' appointments easily and make sure that there are no scheduling clashes, and can also remind his patients in advance that they have appointments.
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+* *Minor enhancement*: added an *information panel for the displaying of patient information like medical histories and appointments* on the right hand side of the main app
 
 * *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=brandonccm1996&sort=displayName&since=2018-09-12&until=2018-11-04&timeframe=day&reverse=false&repoSort=true[Code Dashboard]]
 
 * *Other contributions*:
 
 ** Project management:
-*** Role of Dev Lead: In charge of deciding overall features of Health Book application
-*** Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
-*** In charge of checking and merging all team pull requests to ensure conformity to the finalised user stories and codestyle
+*** As a Dev Lead, I was in charge of: 
+**** Deciding overall features of Health Book application
+**** Managing releases `v1.1` - `v1.3` (3 releases) on GitHub
+**** Checking, reviewing and merging all team pull requests for code changes and enhancements to ensure conformity to the finalised user stories
 ** Enhancements to existing features:
-*** Converted a Java FX browser window into a Java FX Scroll Pane with multiple Anchor Panes to show a patient's details (Pull request https://github.com/CS2113-AY1819S1-T12-2/main/pull/88[#88])
+*** Designed cards for the displaying of patient appointments in the information panel
 ** Community:
 *** PRs reviewed (with non-trivial review comments): (Pull requests https://github.com/CS2113-AY1819S1-T12-2/main/pull/97[#97], https://github.com/CS2113-AY1819S1-T12-2/main/pull/99[#99], https://github.com/CS2113-AY1819S1-T12-2/main/pull/106[#106])
 *** Reported bugs and suggestions for other teams in the class, while providing technical suggestions for further improvement:  (Issues https://github.com/CS2113-AY1819S1-F09-1/main/issues/106[#106], https://github.com/CS2113-AY1819S1-F09-1/main/issues/108[#108], https://github.com/CS2113-AY1819S1-F09-1/main/issues/112[#112], https://github.com/CS2113-AY1819S1-F09-1/main/issues/116[#116])
