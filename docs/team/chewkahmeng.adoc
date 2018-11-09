@@ -22,20 +22,22 @@ e) *Team Summary*: My team consisted of a Project Manager, a Development Lead, a
 
 == Summary of Contributions
 
-* *Major enhancement*: added *the ability to add a list of medical reports for patients and allowed the user to view medical reports of a patient.*
+* *Major enhancement*: added the ability to *add a list of medical reports for patients so that the user can view all their medical reports.*
 ** What it does: This feature allows the user to add a list of medical reports to a patient and access any medical report from the list.
 ** Justification: This feature makes it easier for the user to add medical reports and the user can conveniently access all the medical reports of a patient.
 
-* *Minor enhancement*: added *the ability to edit a medical report.*
+* *Minor enhancement*: added the ability to *edit a medical report.*
 ** What it does: This feature allows the user to edit a patient’s medical report.
 ** Justification: This feature allows the user to correct errors in a patient's medical report.
 
-* *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=chewkahmeng[Click Here]]
+* *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=chewkahmeng&sort=displayName&since=2018-09-12&until=2018-11-04&timeframe=day&reverse=false&repoSort=true[Code Dashboard]]
 
 * *Other contributions*:
 
 ** Project management:
-*** Role of Quality Assurance Lead: In charge of making sure that our application have a test coverage of at least 90% and as few bugs as possible. I was also in charge in checking that our application passes all the test cases so that it can run smoothly.
+*** As the Quality Assurance Lead, I was in charge of:
+**** Making sure that our application has a test coverage of at least 90%.
+**** Checking that our application has as few bugs as possible and passes all test cases.
 ** Community:
 *** Reported bugs and suggestions for other teams in the class, while providing technical suggestions for further improvement: (Issues: https://github.com/CS2113-AY1819S1-T16-4/main/issues/203[#203], https://github.com/CS2113-AY1819S1-T16-4/main/issues/210[#208])
 
