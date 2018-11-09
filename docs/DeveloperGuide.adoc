@@ -493,10 +493,10 @@ Step 4. The `addreport` command will call `Model#updatePerson()` to update the p
 
 Step 5. The `addreport` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
-Figure 4.6.1 shows how the addreport operation works:
+The following sequence diagram shows how the addreport operation works:
 
+.Sequence Diagram of AddMedicalReport feature
 image::AddMedicalReportSequenceDiagram.png[width="800"]
-Figure 4.6.1: Sequence Diagram of AddMedicalReport feature
 // end::addreport[]
 
 // tag::editreport[]
