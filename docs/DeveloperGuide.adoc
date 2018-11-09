@@ -486,6 +486,7 @@ Step 4. The `addappt` command will call `Model#updatePerson()` to update the per
 
 The following sequence diagram shows how the addappt operation works:
 
+.Sequence diagram for addappt operation
 image::AddApptSequenceDiagram.png[width="800"]
 // end::addappt[]
 
