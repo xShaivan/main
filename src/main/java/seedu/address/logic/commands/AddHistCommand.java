@@ -7,8 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;

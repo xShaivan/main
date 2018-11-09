@@ -14,7 +14,7 @@ public class PrevCountry {
     public static final String MESSAGE_PREVCOUNTRY_CONSTRAINTS =
             "Previous Country can only contain alphanumeric characters, whitespaces, commas and periods.";
 
-    public static final String PREVCOUNTRY_VALIDATION_REGEX = "[\\p{Alnum}\\p{Space},.]*";;
+    public static final String PREVCOUNTRY_VALIDATION_REGEX = "[\\p{Alnum}\\p{Space},.]*";
 
     public final String value;
 
