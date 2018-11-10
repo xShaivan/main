@@ -14,13 +14,13 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
-import seedu.address.model.timetable.ApptDateTime;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
+import seedu.address.model.appt.ApptDateTime;
 
 //@@author brandonccm1996
 /**
- * Deletes an appointment from a person's timetable.
+ * Deletes an appointment from a person's schedule.
  */
 public class DeleteApptCommand extends Command {
     public static final String COMMAND_WORD = "deleteappt";

@@ -11,7 +11,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_START_APPT3;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_APPT2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_APPT3;
 
-import seedu.address.model.timetable.Appt;
+import seedu.address.model.appt.Appt;
 
 //@@author brandonccm1996
 /**

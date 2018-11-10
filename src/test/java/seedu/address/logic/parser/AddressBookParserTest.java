@@ -29,7 +29,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Person;
-import seedu.address.model.timetable.Appt;
+import seedu.address.model.appt.Appt;
 import seedu.address.testutil.ApptBuilder;
 import seedu.address.testutil.ApptUtil;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -178,7 +178,7 @@ public class AddressBookParserTest {
     */
 
     //@@author brandonccm1996
-    // Tests for appt timetable commands
+    // Tests for appt commands
     @Test
     public void parseCommand_addAppt() throws Exception {
         Appt appt = new ApptBuilder().build();

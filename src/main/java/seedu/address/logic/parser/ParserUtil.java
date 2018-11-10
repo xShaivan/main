@@ -35,11 +35,11 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.timetable.ApptDate;
-import seedu.address.model.timetable.ApptDateTime;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
+import seedu.address.model.appt.ApptDate;
+import seedu.address.model.appt.ApptDateTime;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 import seedu.address.model.util.DateTimeUtil;
 
 /**

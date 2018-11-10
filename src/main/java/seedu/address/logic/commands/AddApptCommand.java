@@ -19,18 +19,18 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
 
 //@@author brandonccm1996
 /**
- * Adds an appointment to a person's timetable.
+ * Adds an appointment to a person's schedule.
  */
 public class AddApptCommand extends Command {
 
     public static final String COMMAND_WORD = "addappt";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to a patient's timetable, the"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to a patient's schedule, the"
             + " patient will be identified by the index number used in the last person listing.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_APPT_START + "START "

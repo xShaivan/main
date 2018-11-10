@@ -1,4 +1,4 @@
-package seedu.address.model.timetable;
+package seedu.address.model.appt;
 
 import static java.util.Objects.requireNonNull;
 

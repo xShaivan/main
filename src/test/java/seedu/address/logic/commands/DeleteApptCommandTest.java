@@ -14,7 +14,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.timetable.ApptDateTime;
+import seedu.address.model.appt.ApptDateTime;
 
 //@@author brandonccm1996
 public class DeleteApptCommandTest {

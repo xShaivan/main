@@ -21,8 +21,8 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
 
 /**
  * Represents a Person in the address book.

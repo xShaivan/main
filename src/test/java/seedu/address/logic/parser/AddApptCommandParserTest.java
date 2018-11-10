@@ -25,9 +25,9 @@ import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddApptCommand;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 import seedu.address.testutil.ApptBuilder;
 
 //@@author brandonccm1996

@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
 import seedu.address.logic.commands.ClearApptsCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.timetable.ApptDate;
+import seedu.address.model.appt.ApptDate;
 
 //@@author brandonccm1996
 /**

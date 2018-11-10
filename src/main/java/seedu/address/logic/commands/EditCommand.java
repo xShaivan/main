@@ -36,7 +36,7 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.timetable.Appt;
+import seedu.address.model.appt.Appt;
 
 /**
  * Edits the details of an existing person in the address book.

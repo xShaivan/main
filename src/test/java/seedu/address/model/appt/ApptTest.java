@@ -1,4 +1,4 @@
-package seedu.address.model.timetable;
+package seedu.address.model.appt;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

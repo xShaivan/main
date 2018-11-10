@@ -1,28 +1,28 @@
-package seedu.address.model.timetable;
+package seedu.address.model.appt;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.DateTimeUtil.DATE_TIME_VALIDATION_REGEX;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import seedu.address.model.util.DateTimeUtil;
 
 //@@author brandonccm1996
 /**
- * Represents an appt date in an appt in the address book.
+ * Represents an appt date and time in an appt in the address book.
  * Guarantees: immutable; is always valid
  */
-public class ApptDate {
-    public static final String MESSAGE_NAME_CONSTRAINTS = "The date should be of the format: " + "DD-MM-YYYY";
-    public static final String APPT_DATE_VALIDATION_REGEX = "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}";
+public class ApptDateTime {
 
-    public final LocalDate value;
+    public final LocalDateTime value;
 
-    public ApptDate(String apptDate) {
-        requireNonNull(apptDate);
-        value = DateTimeUtil.parseDate(apptDate);
+    public ApptDateTime(String apptDateTime) {
+        requireNonNull(apptDateTime);
+        value = DateTimeUtil.parseDateTime(apptDateTime);
     }
 
-    public static boolean isValidDate(String test) {
-        return test.matches(APPT_DATE_VALIDATION_REGEX);
+    public static boolean isValidDateTime(String test) {
+        return test.matches(DATE_TIME_VALIDATION_REGEX);
     }
 
     @Override
