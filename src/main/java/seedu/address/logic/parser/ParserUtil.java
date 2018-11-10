@@ -35,6 +35,7 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.timetable.ApptDate;
 import seedu.address.model.timetable.ApptDateTime;
 import seedu.address.model.timetable.ApptDrName;
 import seedu.address.model.timetable.ApptInfo;
@@ -450,6 +451,29 @@ public class ParserUtil {
      * PARSER FOR APPT SUBFIELDS
      * ==================================================
      */
+
+    /**
+     * Parses a {@code String apptDate} into an {@code ApptDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code apptDate} is invalid.
+     */
+    public static ApptDate parseApptDate(String apptDate) throws ParseException {
+        requireNonNull(apptDate);
+        String trimmedApptDate = apptDate.trim();
+
+        if (!ApptDate.isValidDate(trimmedApptDate)) {
+            throw new ParseException(DATE_CONSTRAINTS);
+        }
+
+        try {
+            DateTimeUtil.isCorrectDate(trimmedApptDate);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
+        }
+
+        return new ApptDate(trimmedApptDate);
+    }
 
     /**
      * Parses a {@code String apptDateTime} into an {@code ApptDateTime}.
