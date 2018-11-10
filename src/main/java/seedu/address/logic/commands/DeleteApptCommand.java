@@ -34,6 +34,7 @@ public class DeleteApptCommand extends Command {
             + PREFIX_APPT_START + "16-09-2018 15:00";
 
     public static final String MESSAGE_DELETE_APPT_SUCCESS = "Removed appt from Person: %1$s";
+    public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to delete cannot be found.";
 
     private final Index index;
     private final ApptDateTime apptStart;
@@ -47,6 +48,7 @@ public class DeleteApptCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         List<Person> lastShownList = model.getFilteredPersonList();
+        boolean apptFound = false;
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -58,14 +60,20 @@ public class DeleteApptCommand extends Command {
         for (Appt oldAppt : oldAppts) {
             if (!oldAppt.getStart().equals(apptStart)) {
                 newAppts.add(oldAppt);
+            } else {
+                apptFound = true;
             }
+        }
+
+        if (!apptFound) {
+            throw new CommandException(MESSAGE_APPT_NOT_FOUND);
         }
 
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getMedicalReports(), personToEdit.getMedHistory(), newAppts,
                 personToEdit.getNric(), personToEdit.getDateOfBirth(), personToEdit.getHeight(),
                 personToEdit.getWeight(), personToEdit.getGender(), personToEdit.getBloodType(),
-                personToEdit.getOccupation(), personToEdit.getTags());
+                personToEdit.getOccupation(), personToEdit.getMaritalStatus(), personToEdit.getTags());
 
         model.updatePerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

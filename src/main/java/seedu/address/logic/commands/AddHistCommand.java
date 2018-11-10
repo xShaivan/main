@@ -7,6 +7,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -28,6 +30,7 @@ import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
 import seedu.address.model.person.addinfo.Gender;
 import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
@@ -44,7 +47,12 @@ public class AddHistCommand extends Command {
     public static final String COMMAND_WORD = "addhist";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds/Edits medical history of a patient "
-            + "by their index number."
+            + "by their index number." + "\n"
+            + "Parameters: INDEX (must be a positive integer) "
+            + "[" + PREFIX_HISTORY_DATE + "DATE] "
+            + "[" + PREFIX_HISTORY_ALLERGY + "ALLERGY] "
+            + "[" + PREFIX_HISTORY_COUNTRY + "PREVCOUNTRY] "
+            + "[" + PREFIX_HISTORY_DISCHARGE_STATUS + "DISCHARGE_STATUS]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_HISTORY_DATE + "24-08-1993 "
             + PREFIX_HISTORY_ALLERGY + "Alcohol "
@@ -53,6 +61,12 @@ public class AddHistCommand extends Command {
 
     public static final String MESSAGE_ADD_MEDHISTORY_SUCCESS = "Added medical history to Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_DUPLICATE_MEDHISTORY =
+            "There is already a similar medical history entry for this patient.";
+    public static final String MESSAGE_DUPLICATE_MEDHISTDATE =
+            "Medical History entries must have a unique date.";
+    public static final String MESSAGE_INVALID_MEDHISTDATE =
+            "Medical History date entries must be today or before the current day.";
     public static final String MESSAGE_DELETE_MEDHISTORY_SUCCESS = "Removed medical history from Person: %1$s";
     private final Index index;
     private final MedHistory medHistory;
@@ -75,6 +89,23 @@ public class AddHistCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Set<MedHistory> fullMedHistories = personToEdit.getMedHistory();
         Set<MedHistory> newMedHistories = new TreeSet<>(new MedHistoryComparator());
+
+        for (MedHistory fullmedHistory : fullMedHistories) {
+            if (isDuplicateMedHistory(fullmedHistory, medHistory)) {
+                throw new CommandException(MESSAGE_DUPLICATE_MEDHISTORY);
+            }
+        }
+
+        for (MedHistory fullmedHistory : fullMedHistories) {
+            if (isDuplicateMedHistDate(fullmedHistory, medHistory)) {
+                throw new CommandException(MESSAGE_DUPLICATE_MEDHISTDATE);
+            }
+        }
+
+        if (isInvalidMedHistDate(medHistory)) {
+            throw new CommandException(MESSAGE_INVALID_MEDHISTDATE);
+        }
+
         // for loop overwrites all existing history with itself
         for (MedHistory medHistory : fullMedHistories) {
             newMedHistories.add(medHistory);
@@ -86,6 +117,45 @@ public class AddHistCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_ADD_MEDHISTORY_SUCCESS, editedPerson));
+    }
+
+    /**
+     * This method checks if input has a duplicate for the patient.
+     */
+    private boolean isDuplicateMedHistory(MedHistory medHistory1, MedHistory medHistory2) {
+        String allergy1 = medHistory1.getAllergy().toString();
+        String allergy2 = medHistory2.getAllergy().toString();
+        String medHistDate1 = medHistory1.getMedHistDate().toString();
+        String medHistDate2 = medHistory2.getMedHistDate().toString();
+        String prevCountry1 = medHistory1.getPrevCountry().toString();
+        String prevCountry2 = medHistory2.getPrevCountry().toString();
+        String dischargeStatus1 = medHistory1.getDischargeStatus().toString();
+        String dischargeStatus2 = medHistory2.getDischargeStatus().toString();
+
+        return (allergy1.equals(allergy2) && (medHistDate1.equals(medHistDate2))
+                && (prevCountry1.equals(prevCountry2)) && (dischargeStatus1.equals(dischargeStatus2)));
+    }
+
+    /**
+     * This method checks if input has a duplicate medical history date.
+     */
+    private boolean isDuplicateMedHistDate(MedHistory medHistory1, MedHistory medHistory2) {
+        String medHistDate1 = medHistory1.getMedHistDate().toString();
+        String medHistDate2 = medHistory2.getMedHistDate().toString();
+
+        return (medHistDate1.equals(medHistDate2));
+    }
+
+    /**
+     * This method checks if input has a duplicate medical history date.
+     */
+    private boolean isInvalidMedHistDate(MedHistory medHistory) {
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        LocalDate inputDate = LocalDate.parse(medHistory.getMedHistDate().toString(), formatter);
+
+        return (inputDate.isAfter(localDate));
     }
 
     /**
@@ -111,9 +181,10 @@ public class AddHistCommand extends Command {
         Gender gender = personToEdit.getGender();
         BloodType bloodType = personToEdit.getBloodType();
         Occupation occupation = personToEdit.getOccupation();
+        MaritalStatus maritalStatus = personToEdit.getMaritalStatus();
 
         return new Person(name, phone, email, address, medicalReports, medHistories, appts, nric, dateOfBirth, height,
-                weight, gender, bloodType, occupation, tags);
+                weight, gender, bloodType, occupation, maritalStatus, tags);
     }
 
     @Override
