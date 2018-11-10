@@ -114,21 +114,31 @@ Edits the phone number and email address of the 1st patient to be `91234567` and
 * `edit 2 n/Betsy Crower t/` +
 Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags.
 
-=== Finding patients by categories: `find`
+// tag::findcommand[]
+=== Finding patients by specific category: `find`
 
-Finds patients by their personal (name, phone, email, address, tags and NRIC) and medical (medical Information, blood type, last country of visit and allergy) details.
+Finds patients by their personal (name, phone, email, address, tags and NRIC) or medical (medical Information, blood type, last country of visit and allergy) details.
 Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
+
+TIP: Patients can be found by any number of keywords (except 0)
+IMPORTANT: Don't forget to include the space between `PREFIX/` and `KEYWORD`
 
 ****
 * The search is case insensitive. e.g. `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Only the specified detail is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Only above-mentioned details can be filtered e.g. Date of birth is not applicable.
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-* Personal prefixes: n/ (Name) p/ (Phone) e/ (Email) a/ (Address) t/ (tag) ic/ (NRIC)
-* Medical prefixes: i/ (MedInfo) hsa/ (Allergy) hsb/ (BloodType) hsc/ (LastCountry)
+* Only one category per find is allowed.
+* Only full words will be matched. e.g. `Han` will not match `Hans`
+* Only above-mentioned details can be utilised. e.g. Date of Birth is not applicable.
+* Patients matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
+
+[NOTE]
+====
+.Available Prefixes
+- Personal detail prefixes: n/ (Name) p/ (Phone) e/ (Email) a/ (Address) t/ (tag) ic/ (NRIC)
+- Medical detail prefixes: i/ (MedInfo) hsa/ (Allergy) hsb/ (BloodType) hsc/ (LastCountry)
+====
 
 Examples:
 
@@ -140,6 +150,7 @@ Returns any patient having names `Betsy`, `Tim`, or `John`
 Returns any patient whose NRIC is S9876543T.
 * `find t/ asthma`
 Returns any patient who is tagged with asthma.
+// end::findcommand[]
 
 === Deleting a patient : `delete`
 
@@ -358,19 +369,35 @@ Edits title, date and information of existing medical report titled Asthma and d
 image::EditReport.png[width="790"]
 // end::reportcommands[]
 
-=== Sort patients list: `sort`
+// tag::sortcommand[]
+=== Sorting patients list: `sort`
 
-Sort the list of patients according to a specific prefix category in ascending or descending order. +
+Sorts the list of patients according to a specific prefix category in ascending or descending order. +
 Format: `sort PREFIX/ ORDER_INDEX`
 
-`PREFIX/` refers to certain pertinent categories of patient information and each of these categories will be defined by a corresponding prefix.
-`ORDER_INDEX` can be 1 or 2 where 1 means in alphabetical and 2 means in reverse order.
-Available prefixes: `n/` (Name) `p/` (Phone) `e/` (Email) `ic/` (Nric)
+IMPORTANT: Don't forget to include the space between `PREFIX/` and `ORDER_INDEX`
+
+****
+* Sorts the current patient list. e.g. Sorting a patient list after it is filtered (by find) will only return a sorted filtered list.
+* Only one prefix is allowed per sort command.
+* `PREFIX/` refers to certain pertinent categories of patient information and each of these categories will be defined by a corresponding prefix.
+* `ORDER_INDEX` can be 1 or 2 where 1 means in alphabetical and 2 means in reverse order.
+****
+
+[NOTE]
+====
+.Available Prefixes
+- `n/` (Name)
+- `p/` (Phone)
+- `e/` (Email)
+- `ic/` (Nric)
+====
 
 Example:
 
 * `sort n/ 2` +
 Sort the patient list by their names in reverse order (Z → A).
+// end::sortcommand[]
 
 === Selecting a patient: `select`
 
