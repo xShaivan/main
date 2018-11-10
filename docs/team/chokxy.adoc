@@ -1,5 +1,4 @@
 = Chok Xin Yan - Project Portfolio
-= [.small]#Health Book#
 :site-section: AboutUs
 :toc:
 :toc-title:
