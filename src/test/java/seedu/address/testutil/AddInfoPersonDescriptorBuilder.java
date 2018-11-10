@@ -50,31 +50,49 @@ public class AddInfoPersonDescriptorBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code height} of the {@code AddInfoPersonDescriptor} that we are building.
+     */
     public AddInfoPersonDescriptorBuilder withHeight(String height) {
         descriptor.setHeight(new Height(height));
         return this;
     }
 
+    /**
+     * Sets the {@code weight} of the {@code AddInfoPersonDescriptor} that we are building.
+     */
     public AddInfoPersonDescriptorBuilder withWeight(String weight) {
         descriptor.setWeight(new Weight(weight));
         return this;
     }
 
+    /**
+     * Sets the {@code gender} of the {@code AddInfoPersonDescriptor} that we are building.
+     */
     public AddInfoPersonDescriptorBuilder withGender(String gender) {
         descriptor.setGender(new Gender(gender));
         return this;
     }
 
+    /**
+     * Sets the {@code bloodType} of the {@code AddInfoPersonDescriptor} that we are building.
+     */
     public AddInfoPersonDescriptorBuilder withBloodType(String bloodType) {
         descriptor.setBloodType(new BloodType(bloodType));
         return this;
     }
 
+    /**
+     * Sets the {@code occupation} of the {@code AddInfoPersonDescriptor} that we are building.
+     */
     public AddInfoPersonDescriptorBuilder withOccupation(String occupation) {
         descriptor.setOccupation(new Occupation(occupation));
         return this;
     }
 
+    /**
+     * Sets the {@code maritalStatus} of the {@code AddInfoPersonDescriptor} that we are building.
+     */
     public AddInfoPersonDescriptorBuilder withMaritalStatus(String maritalStatus) {
         descriptor.setMaritalStatus(new MaritalStatus(maritalStatus));
         return this;
