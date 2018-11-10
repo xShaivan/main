@@ -14,6 +14,11 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.appt.ApptDate;
+import seedu.address.model.appt.ApptDateTime;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.DischargeStatus;
 import seedu.address.model.medhistory.DischargeStatusEnum;
@@ -35,11 +40,6 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.appt.ApptDate;
-import seedu.address.model.appt.ApptDateTime;
-import seedu.address.model.appt.ApptDrName;
-import seedu.address.model.appt.ApptInfo;
-import seedu.address.model.appt.ApptVenue;
 import seedu.address.model.util.DateTimeUtil;
 
 /**

@@ -1,5 +1,8 @@
 package seedu.address.ui;
 
+/**
+ * A utility class for placeholder strings to be shown in ui
+ */
 public class PlaceholderUtil {
     public static final String DATA_PROTECTION_NOTICE_TEXT = "DATA PROTECTION NOTICE\n"
             + "This Data Protection Notice (“Notice”) sets out the basis which Health Book"

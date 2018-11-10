@@ -6,14 +6,15 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Set;
 import java.util.TreeSet;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Person;
 import seedu.address.model.appt.Appt;
 import seedu.address.model.appt.ApptComparator;
 import seedu.address.model.appt.ApptDate;
+import seedu.address.model.person.Person;
 
 //@@author brandonccm1996
 /**

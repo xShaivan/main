@@ -21,13 +21,13 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
 import seedu.address.model.appt.Appt;
 import seedu.address.model.appt.ApptComparator;
 import seedu.address.model.appt.ApptDateTime;
 import seedu.address.model.appt.ApptDrName;
 import seedu.address.model.appt.ApptInfo;
 import seedu.address.model.appt.ApptVenue;
+import seedu.address.model.person.Person;
 
 //@@author brandonccm1996
 /**
