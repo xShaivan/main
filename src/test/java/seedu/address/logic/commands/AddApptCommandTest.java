@@ -2,12 +2,14 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.logic.commands.AddApptCommand.MESSAGE_INVALID_TIME;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE1;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE2;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE3;
+import static seedu.address.testutil.TypicalAppts.INVALID_APPT_EXAMPLE1;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
@@ -31,12 +33,10 @@ public class AddApptCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void executeAddApptUnfilteredListSuccess() {
+    public void execute_addApptUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withAppts(APPT_EXAMPLE1).build();
-
         AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE1);
-
         String expectedMessage = String.format(AddApptCommand.MESSAGE_ADD_APPT_SUCCESS, editedPerson);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
@@ -66,15 +66,13 @@ public class AddApptCommandTest {
     */
 
     @Test
-    public void executeFilteredListSuccess() {
+    public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
                 .withAppts(APPT_EXAMPLE1).build();
-
         AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE1);
-
         String expectedMessage = String.format(AddApptCommand.MESSAGE_ADD_APPT_SUCCESS, editedPerson);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
@@ -85,7 +83,7 @@ public class AddApptCommandTest {
     }
 
     @Test
-    public void executeInvalidPersonIndexUnfilteredListFailure() {
+    public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AddApptCommand addApptCommand = new AddApptCommand(outOfBoundIndex, APPT_EXAMPLE2);
 
@@ -97,7 +95,7 @@ public class AddApptCommandTest {
      * but smaller than size of address book
      */
     @Test
-    public void executeInvalidPersonIndexFilteredListFailure() {
+    public void execute_invalidPersonIndexFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
@@ -109,10 +107,11 @@ public class AddApptCommandTest {
     }
 
     @Test
-    public void executeUndoRedoValidIndexUnfilteredListSuccess() throws Exception {
+    public void execute_undoRedoValidIndexUnfilteredList_success() throws Exception {
         Person personToModify = model.getFilteredPersonList().get(INDEX_THIRD_PERSON.getZeroBased());
         Person modifiedPerson = new PersonBuilder(personToModify).withAppts(APPT_EXAMPLE1).build();
         AddApptCommand addApptCommand = new AddApptCommand(INDEX_THIRD_PERSON, APPT_EXAMPLE1);
+
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.updatePerson(personToModify, modifiedPerson);
         expectedModel.commitAddressBook();
@@ -130,7 +129,7 @@ public class AddApptCommandTest {
     }
 
     @Test
-    public void executeUndoRedoInvalidIndexUnfilteredListFailure() {
+    public void execute_undoRedoInvalidIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AddApptCommand addApptCommand = new AddApptCommand(outOfBoundIndex, APPT_EXAMPLE3);
 
@@ -150,7 +149,7 @@ public class AddApptCommandTest {
      * 4. Redo the modification. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
      */
     @Test
-    public void executeUndoRedoValidIndexFilteredListSamePersonDeleted() throws Exception {
+    public void execute_undoRedoValidIndexFilteredListSamePersonDeleted_success() throws Exception {
         AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE1);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
@@ -160,16 +159,22 @@ public class AddApptCommandTest {
         expectedModel.updatePerson(personToModify, modifiedPerson);
         expectedModel.commitAddressBook();
 
-        // appt -> modifies second person in unfiltered person list / first person in filtered person list
+        // appt -> modifies third person in unfiltered person list / first person in filtered person list
         addApptCommand.execute(model, commandHistory);
 
         // undo -> reverts addressbook back to previous state and filtered person list to show all persons
         expectedModel.undoAddressBook();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
-        // redo -> modifies same second person in unfiltered person list
+        // redo -> modifies same third person in unfiltered person list
         expectedModel.redoAddressBook();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_addInvalidApptUnfilteredList_failure() {
+        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, INVALID_APPT_EXAMPLE1);
+        assertCommandFailure(addApptCommand, model, commandHistory, MESSAGE_INVALID_TIME);
     }
 
     @Test

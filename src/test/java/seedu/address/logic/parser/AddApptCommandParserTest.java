@@ -39,7 +39,7 @@ public class AddApptCommandParserTest {
     private Index targetIndex = INDEX_FIRST_PERSON;
 
     @Test
-    public void parseIndexSpecifiedWithAllCompulsoryFieldsSuccess() {
+    public void parse_indexSpecifiedWithAllCompulsoryFields_success() {
         // have appt
         AddApptCommand expectedCommand = new AddApptCommand(INDEX_FIRST_PERSON, new ApptBuilder().build());
         assertParseSuccess(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
@@ -48,7 +48,7 @@ public class AddApptCommandParserTest {
     }
 
     @Test
-    public void parseMissingCompulsoryFieldFailure() {
+    public void parse_missingCompulsoryField_failure() {
         // no parameters
         assertParseFailure(parser, AddApptCommand.COMMAND_WORD, MESSAGE_INVALID_FORMAT);
 
@@ -84,7 +84,7 @@ public class AddApptCommandParserTest {
     }
 
     @Test
-    public void parseInvalidValueFailure() {
+    public void parse_invalidValue_failure() {
         // invalid appt start
         assertParseFailure(parser, targetIndex.getOneBased() + INVALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
@@ -112,7 +112,7 @@ public class AddApptCommandParserTest {
     }
 
     @Test
-    public void parseInvalidIndexFailure() {
+    public void parse_invalidIndex_failure() {
         // negative index
         assertParseFailure(parser, "-2" + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
