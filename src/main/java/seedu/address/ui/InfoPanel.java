@@ -114,7 +114,7 @@ public class InfoPanel extends UiPart<Region> {
     private void initialiseNameLabels() {
         nameLabel1.setText("Additional Info for " + person.getName());
         nameLabel2.setText("Medical History for " + person.getName());
-        nameLabel3.setText("Appt Timetable for " + person.getName());
+        nameLabel3.setText("Appt Schedule for " + person.getName());
         nameLabel4.setText("Medical Reports for " + person.getName());
     }
 
