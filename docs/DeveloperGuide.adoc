@@ -1477,6 +1477,30 @@ Use case ends.
 +
 Use case ends.
 
+[none]
+* 1c. User provides an invalid title or information format in the command.
++
+[none]
+** 1c1. System shows an error message that the title or information format can take any values and must not be blank.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid date format in the command.
++
+[none]
+** 1d1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1e. User tries to add a medical report with the same title and date of an existing medical report.
++
+[none]
+** 1e1. System shows an error message that there already exists a medical report with the same title and date.
++
+Use case ends.
+
 === Use case: Editing of Medical Report: `editreport`
 Assume that user has already requested the System to display a list of medical reports for a patient.
 
@@ -1502,6 +1526,30 @@ Use case ends.
 +
 [none]
 ** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User provides an invalid title or information format in the command.
++
+[none]
+** 1c1. System shows an error message that the title or information format can take any values and must not be blank.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid date format in the command.
++
+[none]
+** 1d1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1e. User tries to edit a medical report to one which has the same title and date of an existing medical report.
++
+[none]
+** 1e1. System shows an error message that there already exists a medical report with the same title and date.
 +
 Use case ends.
 // end::reportusecases[]
