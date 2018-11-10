@@ -484,6 +484,7 @@ Step 4. The `addappt` command will call `Model#updatePerson()` to update the per
 
 The following sequence diagram shows how the addappt operation works:
 
+.Sequence diagram for addappt operation
 image::AddApptSequenceDiagram.png[width="800"]
 // end::addappt[]
 
@@ -1269,13 +1270,13 @@ Use case ends.
 Use case ends.
 
 // tag::apptusecases[]
-=== Use case: Adding an appointment into patient’s timetable: `addappt`
+=== Use case: Adding an appointment for a patient: `addappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
-1.  User requests to add an appointment into patient’s timetable.
-2.  System adds the appointment into patient’s timetable and displays a message that the addition is successful.
+1.  User requests to add an appointment into patient’s schedule.
+2.  System adds the appointment into patient’s schedule and displays a message that the addition is successful.
 +
 Use case ends.
 
@@ -1298,10 +1299,10 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1c. Patient’s timetable already has an appointment which overlaps with the new appointment in terms of timing.
+* 1c. Patient’s schedule already has an appointment which overlaps with the new appointment in terms of timing.
 +
 [none]
-** 1c1. System shows an error message that there is an overlapped appointment, and shows both the appointments which overlap each other.
+** 1c1. System shows an error message that there is a timing clash between the new appointment and another appointment already in the patient's schedule.
 +
 Use case ends.
 
@@ -1313,13 +1314,13 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing an appointment in a patient’s timetable: `editappt`
+=== Use case: Editing an appointment for a patient: `editappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
-1.  User requests to edit an appointment in the patient’s timetable with new details.
-2.  System updates the appointment in the patient’s timetable with the new details and displays a message that edit is successful.
+1.  User requests to edit an appointment in the patient’s schedule with new details.
+2.  System updates the appointment in the patient’s schedule with the new details and displays a message that edit is successful.
 +
 Use case ends.
 
@@ -1342,10 +1343,10 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1c. Patient’s timetable already has an appointment which overlaps with the new appointment in terms of timing.
+* 1c. Patient’s schedule already has an appointment which overlaps with the new appointment in terms of timing.
 +
 [none]
-** 1c1. System shows an error message that there is an overlapped appointment, and shows both the appointments which overlap each other.
+** 1c1. System shows an error message that there is a timing clash between the new appointment and another appointment already in the patient's schedule.
 +
 Use case ends.
 
@@ -1365,13 +1366,13 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Deleting an appointment in a patient’s timetable: `deleteappt`
+=== Use case: Deleting an appointment for a patient: `deleteappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
 
-1.  User requests to delete an appointment in the patient’s timetable.
-2.  System deletes the appointment in the patient’s timetable and displays a message that deletion is successful.
+1.  User requests to delete an appointment in the patient’s schedule.
+2.  System deletes the appointment in the patient’s schedule and displays a message that deletion is successful.
 +
 Use case ends.
 
