@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
@@ -25,8 +27,6 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.appt.Appt;
-import seedu.address.model.appt.ApptComparator;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
