@@ -563,17 +563,17 @@ This operation is exposed in the `Model` interface as `Model#updateFilteredPerso
 Given below is an example usage scenario and how the find mechanism behaves at each step.
 
 Step 1. A doctor launches the application for the first time. If it hs/her first time launching the Health Book, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
-+
+
 [IMPORTANT]
 The list that the doctor will be implementing the `find` command on will the be full patient list and details stored in the database.
 
 Step 2. The doctor executes `find hsa/ alcohol nut` command to to filter patients who are allergic to alcohol and nut recorded in the whole Health Book. The `find` command obtains the detail of the patient and keywords of the user input.
-+
+
 [WARNING]
 If the command format is invalid, an error message will be shown to prompt the user of the correct format.
 
 Step 3. The `find` command parser will translate the input `hsa/` into allergy and find patients with "alcohol" and "nut" predicates in their allergy.
-+
+
 [NOTE]
 There must be more than one keyword and the prefix is case sensitive.
 
@@ -601,12 +601,12 @@ This operation is exposed in the `Model` interface as `Model#updateSortedPersonL
 Given below is an example usage scenario and how the sort mechanism behaves at each step.
 
 Step 1. A doctor launches the application for the first time. If it hs/her first time launching the Health Book, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
-+
+
 [IMPORTANT]
 The list that the doctor will be implementing the sort command on will the be current patient list as shown in the interface.
 
 Step 2. The doctor executes `sort n/ 2` command to generate a sorted and reversed list of patients according to their names. The `sort` command obtains the doctor's prefix and order input
-+
+
 [WARNING]
 If the command format is invalid, an error message will be shown to prompt the user of the correct format.
 
