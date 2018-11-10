@@ -1285,7 +1285,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to add appointment.
+* 1a. User uses the wrong format to add appointment i.e. missing fields or having invalid data for fields
 +
 [none]
 ** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of adding appointment.
@@ -1329,7 +1329,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to edit appointment.
+* 1a. User uses the wrong format to edit appointment i.e. missing all fields or having invalid data for fields
 +
 [none]
 ** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of editing appointment.
@@ -1381,7 +1381,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to delete appointment.
+* 1a. User uses the wrong format to delete appointment i.e. missing fields or having invalid data for fields.
 +
 [none]
 ** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of deleting appointment.
@@ -1415,7 +1415,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to clear appointments.
+* 1a. User uses the wrong format to clear appointments i.e. missing field or having invalid data for field.
 +
 [none]
 ** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of clearing appointments.
