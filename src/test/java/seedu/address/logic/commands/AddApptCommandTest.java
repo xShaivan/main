@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.logic.commands.AddApptCommand.MESSAGE_APPT_CLASH;
 import static seedu.address.logic.commands.AddApptCommand.MESSAGE_INVALID_TIME;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -9,6 +10,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE1;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE2;
 import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE3;
+import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE4;
 import static seedu.address.testutil.TypicalAppts.INVALID_APPT_EXAMPLE1;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
@@ -175,6 +177,19 @@ public class AddApptCommandTest {
     public void execute_addInvalidApptUnfilteredList_failure() {
         AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, INVALID_APPT_EXAMPLE1);
         assertCommandFailure(addApptCommand, model, commandHistory, MESSAGE_INVALID_TIME);
+    }
+
+    @Test
+    public void execute_apptClashUnfilteredList_failure() {
+        Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person modifiedPerson = new PersonBuilder(personToModify).withAppts(APPT_EXAMPLE3).build();
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.updatePerson(personToModify, modifiedPerson);
+        expectedModel.commitAddressBook();
+
+        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE4);
+        assertCommandFailure(addApptCommand, expectedModel, commandHistory, MESSAGE_APPT_CLASH);
     }
 
     @Test
