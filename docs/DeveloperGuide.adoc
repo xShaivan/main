@@ -574,7 +574,9 @@ Step 4. The `find` command will call `Model#updateFilteredPersonList()` to gener
 Step 5. The `find` command will then call `Model#getFilteredPersonList` to show the filtered list in the interface.
 
 The following sequence diagram summarizes the activity when a user (doctor) executes a new `find` command:
-image::SortActivityDiagram.png[width="800"]
+
+.Sequence diagram for Find operation
+image::FindActivityDiagram.png[width="800"]
 
 // end::find[]
 
@@ -603,8 +605,9 @@ Step 4. The patients list will then be sorted by `sortPersons()` in `UniquePerso
 Step 5. The final patient list result generated will be sorted accordingly to the doctor's input.
 
 The following sequence diagram summarizes the activity when a user (doctor) executes a new `sort` command:
-image::SortActivityDiagram.png[width="800"]
 
+.Sequence diagram for Sort operation
+image::SortActivityDiagram.png[width="800"]
 // end::sort[]
 
 
@@ -1734,9 +1737,11 @@ Use case ends.
 // end::medhistoryusecases[]
 
 // tag::sortusecase[]
-=== Use case: Sort patients list: `sort`
+=== Use case: Sorting patients list: `sort`
 Assume that user has already requested the System to display a list of patients.
-NOTE: This list refers to the latest list displayed on the interface before the command execution.
+
+[NOTE]
+This list refers to the latest list displayed on the interface before the command execution.
 
 *MSS*
 
