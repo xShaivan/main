@@ -40,7 +40,6 @@ public class AddApptCommandParserTest {
 
     @Test
     public void parse_indexSpecifiedWithAllCompulsoryFields_success() {
-        // have appt
         AddApptCommand expectedCommand = new AddApptCommand(INDEX_FIRST_PERSON, new ApptBuilder().build());
         assertParseSuccess(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
@@ -50,7 +49,7 @@ public class AddApptCommandParserTest {
     @Test
     public void parse_missingCompulsoryField_failure() {
         // no parameters
-        assertParseFailure(parser, AddApptCommand.COMMAND_WORD, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, " ", MESSAGE_INVALID_FORMAT);
 
         // missing index
         assertParseFailure(parser, VALID_START_APPT_WPREFIX + VALID_END_APPT_WPREFIX
@@ -120,6 +119,11 @@ public class AddApptCommandParserTest {
 
         // zero index
         assertParseFailure(parser, "0" + VALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
+
+        // non-numeric index
+        assertParseFailure(parser, "a" + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
                 + VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
     }

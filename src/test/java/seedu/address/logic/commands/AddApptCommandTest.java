@@ -48,25 +48,6 @@ public class AddApptCommandTest {
         assertCommandSuccess(addApptCommand, model, commandHistory, expectedMessage, expectedModel);
     }
 
-    /* TODO: (Appt) MOVE TO DELETEAPPTCOMMANDTEST ONCE DELETEAPPTCOMMAND IS SETUP
-    @Test
-    public void executeDeleteRemarkUnfilteredListSuccess() {
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withAppt("").build();
-
-        AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON,
-                new Appt(editedPerson.getAppt().toString()));
-
-        String expectedMessage = String.format(AddApptCommand.MESSAGE_DELETE_APPT_SUCCESS, editedPerson);
-
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.updatePerson(firstPerson, editedPerson);
-        expectedModel.commitAddressBook();
-
-        assertCommandSuccess(addApptCommand, model, commandHistory, expectedMessage, expectedModel);
-    }
-    */
-
     @Test
     public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
@@ -144,14 +125,14 @@ public class AddApptCommandTest {
     }
 
     /**
-     * 1. Modifies {@code Person#appt} from a filtered list.
-     * 2. Undo the modification.
+     * 1. Adds an appt to a person from a filtered list.
+     * 2. Undo the addition.
      * 3. The unfiltered list should be shown now. Verify that the index of the previously modified person in the
      * unfiltered list is different from the index at the filtered list.
-     * 4. Redo the modification. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
+     * 4. Redo the addition. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
      */
     @Test
-    public void execute_undoRedoValidIndexFilteredListSamePersonDeleted_success() throws Exception {
+    public void execute_undoRedoValidIndexFilteredListSameApptDeleted_success() throws Exception {
         AddApptCommand addApptCommand = new AddApptCommand(INDEX_FIRST_PERSON, APPT_EXAMPLE1);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
@@ -161,14 +142,14 @@ public class AddApptCommandTest {
         expectedModel.updatePerson(personToModify, modifiedPerson);
         expectedModel.commitAddressBook();
 
-        // appt -> modifies third person in unfiltered person list / first person in filtered person list
+        // appt -> adds appt to third person in unfiltered person list / first person in filtered person list
         addApptCommand.execute(model, commandHistory);
 
-        // undo -> reverts addressbook back to previous state and filtered person list to show all persons
+        // undo -> reverts addressbook back to previous state and unfiltered person list to show all persons
         expectedModel.undoAddressBook();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
-        // redo -> modifies same third person in unfiltered person list
+        // redo -> adds same appt to same third person in unfiltered person list
         expectedModel.redoAddressBook();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
