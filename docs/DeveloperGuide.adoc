@@ -1111,13 +1111,11 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |doctor |have a sorted list of all my patients in terms of their personal particulars/medical information (allergies, blood type, address, last visited country) and past medical history |assess them more quickly and easily, and understand the past medical issues that my patients faced
 
-|`* * *` |doctor |import/export files to other computers |send patients’ data to other hospitals if the patient transfers there
-
 |`* * *` |doctor |see all my patient’s appointments if there is any |remind my patients to come for appointments days in advance
 
-|`* * *` |doctor |add a list of medical reports for every patient |refer to them in the future for medicine prescription
-
 |`* * *` |doctor |manage my patient's appointments and add, edit or delete appointments |track their appointments and ensure there are no scheduling clashes
+
+|`* * *` |doctor |add a list of medical reports for every patient |refer to them in the future for medicine prescription
 
 |`* * *` |doctor |edit a patient's medical report |rectify any mistakes made in the medical report
 
@@ -1134,6 +1132,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |doctor |see the patients' prescriptions given to them by previous doctors they have visited for each entry in their medical history (medical history) |understand how their medical condition is based on medication taken
 
 |`*` |doctor |encrypt all my patients’ info |my patients’ data will be protected from hackers
+
+|`*` |doctor |import/export files to other computers |send patients’ data to other hospitals if the patient transfers there
 |=======================================================================
 
 [appendix]
@@ -1401,6 +1401,32 @@ Use case ends.
 +
 [none]
 ** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to delete.
++
+Use case ends.
+
+=== Use case: Clearing appointments for all patients: `clearappts`
+*MSS*
+
+1.  User requests to delete all appointments that end on or before a specific date for all patients in the health book.
+2.  System deletes the respective appointments for all patients and displays a message that deletion is successful.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to clear appointments.
++
+[none]
+** 1a1. System shows an error message that the format is wrong and gives user an example on the correct format of clearing appointments.
++
+Use case ends.
+
+[none]
+* 1b. User requests to clear appointments that do not exist i.e. there are no appointments that end on or before the specified date.
++
+[none]
+** 1b1. System shows an error message that there are no appointments that end on or before the specified date to be deleted.
 +
 Use case ends.
 // end::apptusecases[]

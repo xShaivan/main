@@ -23,7 +23,7 @@ My team comprised of a Project Manager, Development Lead, Quality Assurance Lead
 
 * *Major enhancement*: added the ability to *add, view, edit and delete appointments for a patient*
 ** What it does: allows the user to manage appointments for a patient.
-** Justification: This feature improves the product significantly because the user can track his patients' appointments easily and make sure that there are no scheduling clashes, and can also remind his patients in advance that they have appointments.
+** Justification: This feature improves the product significantly because the user can schedule and track his patients' appointments easily and make sure that there are no scheduling clashes, and thus can remind his patients in advance that they have appointments.
 ** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
 * *Minor enhancement*: added an *information panel for the displaying of patient information like medical histories and appointments* on the right side of the main app
 

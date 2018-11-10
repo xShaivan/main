@@ -262,6 +262,17 @@ Example:
 
 * `deleteappt 2 s/16-09-2018 15:00` +
 Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
+
+=== Clearing appointments for all patients: `clearappts`
+
+Deletes all appointments that end on or before the specified date for all patients in the health book. +
+Format: `clearappts d/DATE`
+
+Example:
+
+* `clearappts d/16-09-2018` +
+  Clears all appointments that end on 16-09-2018 or earlier for all patients in the health book.
+** An appointment that starts on 16-09-2018 and ends on 17-09-2018 will not be deleted by the above command
 // end::apptcommands[]
 
 // tag::addinfocommands[]
