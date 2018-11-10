@@ -513,10 +513,10 @@ Step 4. The `addreport` command will call `Model#updatePerson()` to update the p
 
 Step 5. The `addreport` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
-Figure 4.6.1 shows how the addreport operation works:
+The following sequence diagram shows how the addreport operation works:
 
+.Sequence Diagram of AddMedicalReport feature
 image::AddMedicalReportSequenceDiagram.png[width="800"]
-Figure 4.6.1: Sequence Diagram of AddMedicalReport feature
 // end::addreport[]
 
 // tag::editreport[]
@@ -1497,6 +1497,30 @@ Use case ends.
 +
 Use case ends.
 
+[none]
+* 1c. User provides an invalid title or information format in the command.
++
+[none]
+** 1c1. System shows an error message that the title or information format can take any values and must not be blank.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid date format in the command.
++
+[none]
+** 1d1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1e. User tries to add a medical report with the same title and date of an existing medical report.
++
+[none]
+** 1e1. System shows an error message that there already exists a medical report with the same title and date.
++
+Use case ends.
+
 === Use case: Editing of Medical Report: `editreport`
 Assume that user has already requested the System to display a list of medical reports for a patient.
 
@@ -1522,6 +1546,30 @@ Use case ends.
 +
 [none]
 ** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User provides an invalid title or information format in the command.
++
+[none]
+** 1c1. System shows an error message that the title or information format can take any values and must not be blank.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid date format in the command.
++
+[none]
+** 1d1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1e. User tries to edit a medical report to one which has the same title and date of an existing medical report.
++
+[none]
+** 1e1. System shows an error message that there already exists a medical report with the same title and date.
 +
 Use case ends.
 // end::reportusecases[]
@@ -1768,6 +1816,49 @@ _{ more test cases ... }_
    Expected: Similar to previous.
 
 _{ more test cases ... }_
+
+=== Adding medical report to a person
+
+. Adding a medical report to a person while all persons are listed.
+
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Test case: `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: Medical report titled Asthma and dated 01-01-2018 with report information is added to person at index 1. Message of medical report being successfully added is shown.
+.. Test case: `addreport 0 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: No medical report is added. Message of invalid command format will be shown.
+.. Other incorrect addreport commands to try: `addreport`, `addreport x` (where x is smaller than or equal to the list size) +
+   Expected: Similar to previous.
+.. Test case: `addreport x (where x is larger than the list size) t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: No medical report is added. Message of invalid person index will be shown.
+.. Test case: `addreport 1 t/ d/01-01-2018 i/prescribed XXX medicine, next appointment on 02-02-2018.`
+   Expected: No medical report is added. Message of invalid title will be shown.
+.. Test case: `addreport 1 t/Asthma d/01012018 i/prescribed XXX medicine, next appointment on 02-02-2018.`
+   Expected: No medical report is added. Message of invalid date will be shown.
+.. Test case: `addreport 1 t/Asthma d/01-01-2018 i/ `
+   Expected: No medical report is added. Message of invalid information will be shown.
+
+=== Editing an existing medical report of a person
+. Editing an existing medical report of a person while all persons are listed.
+
+.. Prerequisites: At least one person in the list must have a medical report added. Two medical reports titled Asthma, dated 01-01-2018 and titled Depression, dated 02-02-2018 with report information have been added to person at index 1.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: Existing medical report titled Asthma and dated 01-01-2018 is edited for person at index 1. Message of medical report being successfully edited is shown.
+.. Test case: `editreport 0 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid command format will be shown.
+.. Other incorrect editreport commands to try: `editreport`, `editreport x` (where x is smaller than or equal to the list size) +
+   Expected: Similar to previous.
+.. Test case: `editreport x (where x is larger than the list size) ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid person index will be shown.
+.. Test case: `editreport 1 ot/ od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid title will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01012018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid date will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/ ` +
+   Expected: No medical report is edited. Message of invalid information will be shown.
+.. Test case: `editreport 1 ot/Flu od/03-03-2018 t/Cough d/03-03-2018 i/Prescribed AAA medicine, next appointment is on 04-04-2018.` +
+   Expected: No medical report is edited. Message of medical report not found will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of unable to edit existing report with the same title and date will be shown.
 
 === Saving data
 

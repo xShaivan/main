@@ -316,10 +316,14 @@ Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 * The index refers to the index number shown in the displayed person list.
 ****
 
-Examples:
+Example:
 
 * `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
 Adds a new medical report for patient at index 1 titled Asthma, dated 01-01-2018 with the report's information.
+** Entering the command above will add a medical report for the patient at index 1 of the displayed person list and the user interface will look as follows:
+
+.Adding a medical report for a patient.
+image::AddReport.png[width="790"]
 
 === Editing of Medical Report: `editreport`
 
@@ -333,10 +337,14 @@ Format: `editreport INDEX ot/ORIGINAL TITLE od/ORIGINAL DATE [t/TITLE] [d/DATE] 
 * Existing values will be updated to the input values.
 ****
 
-Examples:
+Example:
 
 * `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
 Edits title, date and information of existing medical report titled Asthma and dated 01-01-2018 for patient at index 1.
+** Entering the command above will edit the existing medical report shown in the 'addreport' example above and the user interface will look as follows:
+
+.Editing an existing medical report.
+image::EditReport.png[width="790"]
 // end::reportcommands[]
 
 === Sort patients list: `sort`
@@ -403,9 +411,9 @@ e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Edit Information* : `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
 e.g. `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
-e.g. `addreport 3 t/Asthma d/01-01-2018 i/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
+e.g. `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.`
 * *Edit Medical Report* : `editreport INDEX ot/Title od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
-    e.g. `editreport 3 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Patient diagnosed with depression and prescribed AAA medicine. Next appointment is on 03-03-2018.`
+e.g. `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
 * *Select* : `select INDEX` +
