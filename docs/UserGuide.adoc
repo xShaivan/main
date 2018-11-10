@@ -122,7 +122,7 @@ Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
 
 TIP: Patients can be found by any number of keywords (except 0)
 
-[WARNING]
+[NOTE]
 Don't forget to include the space between `PREFIX/` and `KEYWORD`
 
 ****
@@ -377,7 +377,7 @@ image::EditReport.png[width="790"]
 Sorts the list of patients according to a specific prefix category in ascending or descending order. +
 Format: `sort PREFIX/ ORDER_INDEX`
 
-[WARNING]
+[NOTE]
 Don't forget to include the space between `PREFIX/` and `ORDER_INDEX`
 
 ****
