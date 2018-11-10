@@ -24,7 +24,7 @@ e) *Team Summary*: My team consisted of a Project Manager, a Development Lead, a
 
 * *Major enhancement*: added the ability to *add a list of medical reports for patients so that the user can view all their medical reports.*
 ** What it does: This feature allows the user to add a list of medical reports to a patient and access any medical report from the list.
-** Justification: This feature makes it easier for the user to add medical reports and the user can conveniently access all the medical reports of a patient.
+** Justification: This feature makes it easier for the user to add and store medical reports. The user can conveniently access all the medical reports of a patient as compared to the past where a doctor has to spend time and effort to retrieve a patient's medical report from a large inventory.
 
 * *Minor enhancement*: added the ability to *edit a medical report.*
 ** What it does: This feature allows the user to edit a patient’s medical report.

@@ -323,6 +323,7 @@ Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 ****
 * Adds a medical report for the patient at the specified index.
 * The index refers to the index number shown in the displayed person list.
+* Title, Date and Information are compulsory fields which cannot be left blank.
 ****
 
 Example:
@@ -342,13 +343,14 @@ Format: `editreport INDEX ot/ORIGINAL TITLE od/ORIGINAL DATE [t/TITLE] [d/DATE] 
 ****
 * Edits a medical report with the specified title and date for the patient at the specified index.
 * The index refers to the index number shown in the displayed person list.
+* Original Title and Original Date are compulsory fields which cannot be left blank.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 ****
 
 Example:
 
-* `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
+* `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment on 03-03-2018.` +
 Edits title, date and information of existing medical report titled Asthma and dated 01-01-2018 for patient at index 1.
 ** Entering the command above will edit the existing medical report shown in the 'addreport' example above and the user interface will look as follows:
 
