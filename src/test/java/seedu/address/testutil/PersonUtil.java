@@ -2,6 +2,7 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_DOB;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_HEIGHT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -66,8 +67,9 @@ public class PersonUtil {
     public static String getAddInfoPersonDescriptorDetails(AddInfoPersonDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getNric().ifPresent(nric -> sb.append(PREFIX_ADD_INFO_NRIC).append(nric.value).append(" "));
-        descriptor.getDateOfBirth().ifPresent(dateOfBirth -> sb.append(PREFIX_ADD_INFO_DOB).append(dateOfBirth.value)
-                .append(" "));
+        descriptor.getDateOfBirth().ifPresent(dateOfBirth -> sb.append(PREFIX_ADD_INFO_DOB).append(dateOfBirth
+                .toString()).append(" "));
+        descriptor.getHeight().ifPresent(height -> sb.append(PREFIX_ADD_INFO_HEIGHT).append(height.value).append(" "));
 
         return sb.toString();
     }

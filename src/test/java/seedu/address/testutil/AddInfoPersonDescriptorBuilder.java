@@ -2,8 +2,14 @@ package seedu.address.testutil;
 
 import seedu.address.logic.commands.AddInfoCommand.AddInfoPersonDescriptor;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.addinfo.BloodType;
 import seedu.address.model.person.addinfo.DateOfBirth;
+import seedu.address.model.person.addinfo.Gender;
+import seedu.address.model.person.addinfo.Height;
+import seedu.address.model.person.addinfo.MaritalStatus;
 import seedu.address.model.person.addinfo.Nric;
+import seedu.address.model.person.addinfo.Occupation;
+import seedu.address.model.person.addinfo.Weight;
 
 /**
  * A unity class to help with building AddInfoPersonDescriptor objects.
@@ -41,6 +47,36 @@ public class AddInfoPersonDescriptorBuilder {
      */
     public AddInfoPersonDescriptorBuilder withNric(String nric) {
         descriptor.setNric(new Nric(nric));
+        return this;
+    }
+
+    public AddInfoPersonDescriptorBuilder withHeight(String height) {
+        descriptor.setHeight(new Height(height));
+        return this;
+    }
+
+    public AddInfoPersonDescriptorBuilder withWeight(String weight) {
+        descriptor.setWeight(new Weight(weight));
+        return this;
+    }
+
+    public AddInfoPersonDescriptorBuilder withGender(String gender) {
+        descriptor.setGender(new Gender(gender));
+        return this;
+    }
+
+    public AddInfoPersonDescriptorBuilder withBloodType(String bloodType) {
+        descriptor.setBloodType(new BloodType(bloodType));
+        return this;
+    }
+
+    public AddInfoPersonDescriptorBuilder withOccupation(String occupation) {
+        descriptor.setOccupation(new Occupation(occupation));
+        return this;
+    }
+
+    public AddInfoPersonDescriptorBuilder withMaritalStatus(String maritalStatus) {
+        descriptor.setMaritalStatus(new MaritalStatus(maritalStatus));
         return this;
     }
 

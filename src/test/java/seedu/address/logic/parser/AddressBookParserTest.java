@@ -13,6 +13,8 @@ import org.junit.rules.ExpectedException;
 import seedu.address.logic.commands.AddApptCommand;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddHistCommand;
+import seedu.address.logic.commands.AddInfoCommand;
+import seedu.address.logic.commands.AddInfoCommand.AddInfoPersonDescriptor;
 import seedu.address.logic.commands.AddMedicalReportCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
@@ -30,6 +32,7 @@ import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medicalreport.MedicalReport;
 import seedu.address.model.person.Person;
 import seedu.address.model.timetable.Appt;
+import seedu.address.testutil.AddInfoPersonDescriptorBuilder;
 import seedu.address.testutil.ApptBuilder;
 import seedu.address.testutil.ApptUtil;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -165,17 +168,15 @@ public class AddressBookParserTest {
         assertEquals(new AddHistCommand(INDEX_FIRST_PERSON, medhistory), command);
     }
 
-    /*
     @Test
     public void parseCommandAddInfo() throws Exception {
-        Person person = new PersonBuilder().build();
+        Person person = new PersonBuilder().withNric("S3719668A").withDateOfBirth("27-02-1996").build();
         AddInfoPersonDescriptor descriptor = new AddInfoPersonDescriptorBuilder(person).build();
         AddInfoCommand command = (AddInfoCommand) parser.parseCommand(AddInfoCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getAddInfoPersonDescriptorDetails(descriptor));
         assertEquals(new AddInfoCommand(INDEX_FIRST_PERSON, descriptor), command);
 
     }
-    */
 
     //@@author brandonccm1996
     // Tests for appt timetable commands
