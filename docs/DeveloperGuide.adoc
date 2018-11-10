@@ -1403,6 +1403,7 @@ Use case ends.
 ** 1c1. System shows an error message that the patient does not have an appointment with the start date and time that the user is requesting to delete.
 +
 Use case ends.
+// end::apptusecases[]
 
 === Use case: Clearing appointments for all patients: `clearappts`
 *MSS*
@@ -1429,7 +1430,6 @@ Use case ends.
 ** 1b1. System shows an error message that there are no appointments that end on or before the specified date to be deleted.
 +
 Use case ends.
-// end::apptusecases[]
 
 // tag::addinfousecase[]
 === Use case: Adding additional information of patient: `addinfo`
