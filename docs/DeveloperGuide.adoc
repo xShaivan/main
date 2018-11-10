@@ -406,9 +406,8 @@ Step 5. Lastly, the `addhist` command will call `Model#commitAddressBook()` to u
 
 The following diagram shows how the `addhist` command works:
 
+.Sequence Diagram for `addhist` command
 image::AddHistSequenceDiagram.png[width="800"]
-
-Figure 4.3.1: Sequence Diagram for `addhist` command
 
 // end::addhist[]
 
@@ -454,9 +453,8 @@ Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to 
 
 The following diagram shows how the `edithist` command works:
 
+.Sequence Diagram for `edithist` command
 image::EditHistSequenceDiagram.png[width="800"]
-
-Figure 4.4.1: Sequence Diagram for `edithist` command
 
 // end::edithist[]
 
@@ -1500,6 +1498,112 @@ Use case ends.
 Use case ends.
 // end::reportusecases[]
 
+// tag::medhistoryusecases[]
+=== Use case: Adding of Medical History: `addhist`
+Assume that user has already requested the System to display a list of medical reports for a patient.
+
+*MSS*
+
+1.  User requests to add medical history for patient.
+2.  System edits medical history for the patient and displays a message that shows success of medical history added.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to edit medical report.
++
+[none]
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User provides an invalid date format in the command.
++
+[none]
+** 1c1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid discharge status in the command.
++
+[none]
+** 1d1. System shows an error message that the discharge status is invalid.
++
+Use case ends.
+
+=== Use case: Editing of Medical History: `edithist`
+Assume that user has already requested the System to display a list of medical reports for a patient.
+
+*MSS*
+
+1.  User requests to edit existing medical history for patient.
+2.  System edits medical history for the patient and displays a message that shows success of medical history edited.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to edit medical report.
++
+[none]
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User provides an invalid date format in the command.
++
+[none]
+** 1c1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid discharge status in the command.
++
+[none]
+** 1d1. System shows an error message that the discharge status is invalid.
++
+Use case ends.
+
+[none]
+* 1e. User targets a non-existent medical history date in the command.
++
+[none]
+** 1e1. System shows an error message that the specified date does not belong to any existing medical history.
++
+Use case ends.
+
+[none]
+* 1f. User provides a new medical history date that is already present in the command.
++
+[none]
+** 1f1. System shows an error message that the specified new date already exists.
++
+Use case ends.
+// end::medhistoryusecases[]
+
 === Use case: Sort patients list: `sort`
 Assume that user has already requested the System to display a list of patients.
 
@@ -1644,3 +1748,65 @@ _{ more test cases ... }_
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
 
 _{ more test cases ... }_
+
+=== Adding medical history to patient
+
+. Adding medical history to a non-existent patient
+
+.. Prerequisites: List all patients using the `list` command. Any number of patients allowed in the list.
+
+.. Test case: `addhist 9999999 hsd/10-10-2010` +
+Expected: No medical entry added to non-existent patient in the list. Error details shown in status message.
+
+. Adding medical history to existing patient
+
+.. Prerequisites: List all patients using the list command. Any number of patients allowed in the list.
+
+.. Test case: `addhist` +
+Expected: *FAIL* +
+Invalid command format. Error details shown in status message which includes instructions to follow proper format.
+
+.. Test case: `addhist 1 hsd/24/08/1993 hsa/Alcohol hsc/Kuwait hsds/d` +
+Expected: *FAIL* +
+Medical History not added due to wrong date format. Error details shown in status message.
+
+.. Test case: `addhist 1 hsd/24-08-1111 hsa/Alcohol hsc/Kuwait hsds/w` +
+Expected: *FAIL* +
+Medical History only supports dates after year 1900. Error details shown in status message.
+
+.. Test case: `addhist 1 hsd/24-08-2222 hsa/Alcohol hsc/Kuwait hsds/d` +
+Expected: *FAIL* +
+Medical History only supports dates today and before today. This updates with real time. Error details shown in status message.
+
+.. Test case: `addhist 1 hsd/24-08-1993 hsa/Alcohol hsc/Kuwait hsds/w` +
+Expected: *FAIL* +
+Invalid Discharge Status. Error details specifies valid discharge status for users to use.
+
+.. Test case: `addhist 1 hsd/08-11-2018 hsa/Alcohol hsc/Kuwait hsds/d` +
+Expected: *PASS* +
+Medical History entered for first patient on the list with date of 08-11-2018, alcohol allergy, Kuwait as last country visited and is currently discharged.
+
+. Editing medical history to a non-existent patient
+
+.. Prerequisites: List all patients using the `list` command. Any number of patients allowed in the list.
+
+.. Test case: `edithist 9999999 hsod/11-11-2011 hsd/10-10-2010` +
+Expected: *FAIL* +
+No medical entry added to non-existent patient in the list. Error details shown in status message.
+
+. Editing medical history to existing patient
+
+.. Prerequisites: List all patients using the `list` command. Any number of patients allowed in the list.
+
+.. Test case: `edithist 1 hsod/10-10-2010 hsd/20-05-2011 hsa/grass hsc/Canada hsds/e` +
+Expected: *FAIL* +
+If Medical History entry with date 10-10-2010 does not exist, error details will be shown in status message.
+
+.. Test case: `edithist 1 hsod/20-05-2011 hsd/08-11-2018 hsa/grass hsc/Canada hsds/e` +
+Expected: *FAIL* +
+If new date specified of Medical History to be edited already exists, error details will be shown in status message.
+
+.. Test case: `edithist 1 hsod/12-12-2012 hsd/05-05-2015 hsa/grass hsc/Canada hsds/e` +
+Expected: *PASS* +
+If previous Medical History entry exists, and new date specified is not used, the entry chosen will be
+edited with new date 05-05-2015, new allergy of grass and new previous country visited as Canada and the patient has expired.

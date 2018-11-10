@@ -175,6 +175,8 @@ Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+image::addhist.png[width="790"]
+
 Examples:
 
 * `addhist 1 hsd/10-10-2010 hsa/Alcohol hsc/Kuwait hsds/d`
@@ -192,14 +194,17 @@ Format: `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE h
 * Edits an existing entry in the medical history of the patient for the patient at the specified INDEX.
 * The index refers to the index number shown in the displayed person list.
 * Date entries must be after 01-01-1900.
+* OLD_MEDICAL_HISTORY_DATE specified must already exist for the patient for command to work.
 * Note: Discharge Status  code only accepts *d*, *a*, *e* as inputs to represent discharged, admitted or expired.
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+image::edithist.png[width="790"]
+
 Examples:
 
 * `edithist 1 hsod/10-10-2010 hsd/10-10-2015 hsa/Chocolate hsc/Russia hsds/a`
-Edits a medical history entry for the 1st person in the list with wrong date of 10-10-2010 to the correct date of
+Edits a medical history entry for the 1st person in the list with existing date of 10-10-2010 to the correct date of
 10-10-2015 with a chocolate allergy and Russia as previous country visited.
 The patient has been admitted to a hospital.
 // end::edithist[]
@@ -383,6 +388,10 @@ e.g. `find ic/ S9876543T` +
 e.g. `find t/ asthma`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
+* *Add Medical History* : `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS` +
+`addhist 1 hsd/10-10-2010 hsa/Alcohol hsc/Kuwait hsds/d`
+* *Edit Medical History* : `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS` +
+edithist 1 hsod/10-10-2010 hsd/10-10-2015 hsa/Chocolate hsc/Russia hsds/a
 * *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
 e.g. `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 * *Edit Appt* : `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME] [v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]` +
