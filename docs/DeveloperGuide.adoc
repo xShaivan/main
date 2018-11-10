@@ -553,28 +553,61 @@ Step 5. Lastly, the `editreport` command will call `Model#commitAddressBook()` t
 === Find feature
 ==== Current Implementation
 
-The find mechanism is facilitated by `VersionedAddressBook`.
+The find mechanism is facilitated by `ModelManager`. It extends `AddressBook` and finds the `internalList` of patients. Additionally,
+it implements `ModelManager#updateFilteredPersonList()` and `ModelManager#getFilteredPersonList()` operations with the the 2 input parameters (prefix and keyword) before finding the patients
+accordingly.
 
-Additionally, it implements the following operations:
-
-* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
-
-This operation is exposed in the `Model` interface as `Model#updatePerson()`.
+This operation is exposed in the `Model` interface as `Model#updateFilteredPersonList()` and `Model#getFilteredPersonList`.
 
 Given below is an example usage scenario and how the find mechanism behaves at each step.
 
-Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+Step 1. A doctor launches the application for the first time. If it hs/her first time launching the Health Book, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+IMPORTANT: The list that the doctor will be implementing the `find` command on will the be full patient list and details stored in the database.
 
-Step 2. The user executes `find hsa/ alcohol nut` command to to filter patients who are allergic to alcohol and nut from the list that the address book is currently showing. The `find` command obtains the detail of the person that the user is trying to find based on the keywords that the user has input.
+Step 2. The doctor executes `find hsa/ alcohol nut` command to to filter patients who are allergic to alcohol and nut recorded in the whole Health Book. The `find` command obtains the detail of the patient and keywords of the user input.
+WARNING: If the command format is invalid, an error message will be shown to prompt the user of the correct format.
 
-Step 4. The `find` command will obtain the keywords of the patients and go into the specified patient detail predicate to find patients with such keywords in their details.
+Step 3. The `find` command parser will translate the input `hsa/` into allergy and find patients with "alcohol" and "nut" predicates in their allergy.
+NOTE: There must be more than one keyword and the prefix is case sensitive.
 
-Step 5. The `find` command will call `Model#updateFilteredPersonList()` to update the list that the user is shown.
+Step 4. The `find` command will call `Model#updateFilteredPersonList()` to generate a patients list containing patients with "alcohol" and "nut" predicates in their allergy detail.
 
-The following sequence diagram shows how the find operation works:
-[Make diagram]
+Step 5. The `find` command will then call `Model#getFilteredPersonList` to show the filtered list in the interface.
 
-//end:: find[]
+The following sequence diagram summarizes the activity when a user (doctor) executes a new `find` command:
+image::SortActivityDiagram.png[width="800"]
+
+// end::find[]
+
+// tag::sort[]
+=== Sort feature
+==== Current Implementation
+
+The sort mechanism is facilitated by `ModelManager`. It extends `AddressBook` and sorts the `internalList` of patients. Additionally,
+it implements `ModelManager#updateSortedPersonList` operation with the the 2 input parameters (prefix and order) before sorting the patients
+accordingly.
+
+This operation is exposed in the `Model` interface as `Model#updateSortedPersonList()`.
+
+Given below is an example usage scenario and how the sort mechanism behaves at each step.
+
+Step 1. A doctor launches the application for the first time. If it hs/her first time launching the Health Book, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+IMPORTANT: The list that the doctor will be implementing the sort command on will the be current patient list as shown in the interface.
+
+Step 2. The doctor executes `sort n/ 2` command to generate a sorted and reversed list of patients according to their names. The `sort` command obtains the doctor's prefix and order input
+WARNING: If the command format is invalid, an error message will be shown to prompt the user of the correct format.
+
+Step 3. The `sort` command will call `Model#updateSortedPersonList` to update the person list with the doctor's input of prefix and order.
+
+Step 4. The patients list will then be sorted by `sortPersons()` in `UniquePersonList`.
+
+Step 5. The final patient list result generated will be sorted accordingly to the doctor's input.
+
+The following sequence diagram summarizes the activity when a user (doctor) executes a new `sort` command:
+image::SortActivityDiagram.png[width="800"]
+
+// end::sort[]
+
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
@@ -1096,19 +1129,19 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |doctor |find a patient by name |locate details of patients without having to go through the entire list
 
-|`* * *` |doctor |filter out patients by certain personal details |saves time in contacting patients with desired personal details
+|`* * *` |doctor |filter out patients by certain personal details |save time in contacting patients with desired personal details
 
-|`* * *` |doctor |filter out patients by certain medical details |saves time in administering patients with desired medical details
+|`* * *` |doctor |filter out patients by certain medical details |save time in administering patients with desired medical details
 
-|`* * *` |doctor |sort patients by patient details by lexicographical order |goes through the patient list which is listed systematic manner to facilitate administration
+|`* * *` |doctor |sort patients by patient details by lexicographical or reverse order |go through the patient list which is listed in a systematic manner to facilitate administration
+
+|`* * *` |doctor |sort all my patients by their personal particulars |ensure systematic administration and processing of each individual
 
 |`* * *` |doctor |have a platform to view my patients' past medical history |compare with their current symptoms to predict future health risks
 
 |`* * *` |doctor |know my patient’s drug allergy if he/she has any |prescribe the drugs without causing other medical conditions
 
 |`* * *` |doctor |know if there is any follow-up actions for a particular patient, or if the medical case for the patient has closed |know if the patient has been discharged
-
-|`* * *` |doctor |have a sorted list of all my patients in terms of their personal particulars/medical information (allergies, blood type, address, last visited country) and past medical history |assess them more quickly and easily, and understand the past medical issues that my patients faced
 
 |`* * *` |doctor |import/export files to other computers |send patients’ data to other hospitals if the patient transfers there
 
@@ -1215,11 +1248,12 @@ Use case ends.
 +
 Use case ends.
 
+// tag::findusecase[]
 === Use case: Finding patients by categories: `find`
 
 *MSS*
 
-1.  User requests to find a patient in the list by categories. (eg. name, age, blood type, marital status)
+1.  User requests to find a patient in the list by a category. (eg. name, phone, blood type, medical information)
 2.  System shows user a list of patients who are in requested category.
 +
 Use case ends.
@@ -1230,17 +1264,35 @@ Use case ends.
 * 1a. User uses the wrong format to find patient.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of finding a patient.
+** 1a1. System shows error message that format is wrong and shows correct format of finding patients.
 +
 Use case ends.
 
 [none]
-* 1b. User provides an invalid category or keyword.
+* 1b. User provides an category where the prefix to the category is not available i.e. "z/"
 +
 [none]
-** 1b1. System shows an error message that category or keyword is invalid.
+** 1b1. System shows an error message that category is invalid and shows correct format with available prefixes.
 +
 Use case ends.
+
+[none]
+* 1c. User provides keyword that does not correspond to any patient.
++
+[none]
+** 1c1. System shows an error message that such patient does not exist.
++
+Use case ends.
+
+[none]
+* 1d. User did not provide a category or a keyword.
++
+[none]
+** 1d1. System shows an error message that the format is wrong and shows correct format of finding a patient.
++
+Use case ends.
+
+// end::findusecase[]
 
 === Use case: Deleting a patient: `delete`
 Assume that user has already requested the System to display a list of patients.
@@ -1528,33 +1580,45 @@ Use case ends.
 Use case ends.
 // end::reportusecases[]
 
+// tag::sortusecase[]
 === Use case: Sort patients list: `sort`
 Assume that user has already requested the System to display a list of patients.
+NOTE: This list refers to the latest list displayed on the interface before the command execution.
 
 *MSS*
 
 1.  User requests to sort the patients by a category and order.
-2.  System displays a sorted list of the patients and displays a message that the list is successfully sorted.
+2.  System displays a sorted list (by specified order) of the patients and displays a message that the list is successfully sorted.
 +
 Use case ends.
 
 *Extensions*
-
 [none]
-* 1a. User chooses to sort by a category which the prefix of the category does not exist (for example: the prefix does not exist or correspond to any category ie “z/”).
+* 1a. User uses the wrong format to sort patient.
 +
 [none]
-** 1a1. System shows an error message that the category does not exist.
+** 1a1. System shows error message that format is wrong and shows correct format of sorting patients.
++
+Use case ends.
+
+[none]
+* 1b. User chooses to sort by a category which the prefix of the category does not exist (i.e. the prefix does not exist or correspond to any category ie “z/”).
++
+
+[none]
+** 1b1. System shows error message that format is wrong and shows correct format of sorting patients with available prefixes.
+
 +
 Use case ends.
 
 [none]
-* 1b. User inputs an invalid order_index.
+* 1c. User inputs an invalid order index (i.e. values that are not 1 or 2).
 +
 [none]
-** 1b1. System shows an error message that the order index does not exist.
+** 1c1. System shows an error message that the order index does not exist.
 +
 Use case ends.
+// end::sortusecase[]
 
 === Use case: Selecting a patient: `select`
 Assume that user has already requested the System to display a list of patients.
