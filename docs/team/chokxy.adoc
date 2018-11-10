@@ -24,6 +24,7 @@ The purpose of this portfolio is to document my contributions towards the Health
 == Overview
 
 Health Book is an application written in Java catered to healthcare professionals in retrieving patients’ personal information and health-related information all in one place. Command Line Interface (CLI) is utilized mainly for user input, while Graphical User Interface (GUI) is used mainly to display the output. Combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
+The main features of HealthBook and their usages can be found in the user guide https://cs2113-ay1819s1-t12-2.github.io/main/UserGuide.html[Click Here]
 
 .Start up page of Health Book
 image::../images/Ui.png[width="800"]

@@ -403,6 +403,8 @@ Example:
 
 * `sort n/ 2` +
 Sort the patient list by their names in reverse order (Z → A).
+* `sort e/ 1` +
+Sort the patient list by their emails in alphabetical order (Z → A).
 // end::sortcommand[]
 
 === Selecting a patient: `select`
@@ -460,5 +462,6 @@ e.g. `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointm
 e.g. `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
+e.g. `sort e/ 1`
 * *Select* : `select INDEX` +
 e.g. select 1
