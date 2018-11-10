@@ -336,6 +336,10 @@ Example:
 
 * `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
 Edits title, date and information of existing medical report titled Asthma and dated 01-01-2018 for patient at index 1.
+** Entering the command above will edit the existing medical report shown in the 'addreport' example above and the user interface will look as follows:
+
+.Editing an existing medical report.
+image::EditReport.png[width="790"]
 // end::reportcommands[]
 
 === Sort patients list: `sort`
