@@ -186,6 +186,8 @@ Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+image::addhist.png[width="790"]
+
 Examples:
 
 * `addhist 1 hsd/10-10-2010 hsa/Alcohol hsc/Kuwait hsds/d`
@@ -203,22 +205,25 @@ Format: `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE h
 * Edits an existing entry in the medical history of the patient for the patient at the specified INDEX.
 * The index refers to the index number shown in the displayed person list.
 * Date entries must be after 01-01-1900.
+* OLD_MEDICAL_HISTORY_DATE specified must already exist for the patient for command to work.
 * Note: Discharge Status  code only accepts *d*, *a*, *e* as inputs to represent discharged, admitted or expired.
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+image::edithist.png[width="790"]
+
 Examples:
 
 * `edithist 1 hsod/10-10-2010 hsd/10-10-2015 hsa/Chocolate hsc/Russia hsds/a`
-Edits a medical history entry for the 1st person in the list with wrong date of 10-10-2010 to the correct date of
+Edits a medical history entry for the 1st person in the list with existing date of 10-10-2010 to the correct date of
 10-10-2015 with a chocolate allergy and Russia as previous country visited.
 The patient has been admitted to a hospital.
 // end::edithist[]
 
 // tag::apptcommands[]
-=== Adding an appointment into patient's timetable: `addappt`
+=== Adding an appointment for a patient: `addappt`
 
-Adds an appointment into the specified patient's timetable. +
+Adds an appointment into the specified patient's schedule. +
 Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
 
 ****
@@ -226,15 +231,24 @@ Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
 * The index refers to the index number shown in the displayed person list.
 ****
 
-Examples:
+Example:
 
 * `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
 Adds an appointment for the 1st person in the list on 16-09-2018 from 15:00-15:30 at Consultation Room 12
 for a diabetes checkup by Dr Tan.
+** Entering the command above will add an appointment for the first patient in the displayed person list. If the first patient did not previously have any appointments, the GUI will look as follows:
 
-=== Editing an appointment in a patient's timetable: `editappt`
+.GUI after adding an appointment to a patient with no existing appointments
+image::AddApptUGPic.png[width="790"]
 
-Edits a specified appointment in the specified patient's timetable. +
+** If the first patient previously had appointments, the new appointment will be added to his schedule and shown on the GUI together with his other appointments in order of start time (from earliest to latest). The GUI will look as follows:
+
+.GUI after adding an appointment to a patient with existing appointments
+image::AddApptUGPic2.png[width="790"]
+
+=== Editing an appointment for a patient: `editappt`
+
+Edits a specified appointment in the specified patient's schedule. +
 Format: `editappt INDEX os/ORIGINAL_START [s/START] [e/END] [v/VENUE] [i/INFO] [d/DOCTOR_NAME]`
 
 ****
@@ -244,15 +258,15 @@ Format: `editappt INDEX os/ORIGINAL_START [s/START] [e/END] [v/VENUE] [i/INFO] [
 * Existing values will be updated to the input values.
 ****
 
-Examples:
+Example:
 
 * `editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
 Edits the appointment that starts on 16-09-2018 at 15:00, to now run from 16-09-2018 14:00-14:30 instead
 and be at Consultation Room 13 for the 2nd person in the list.
 
-=== Deleting an appointment in a patient’s timetable: `deleteappt`
+=== Deleting an appointment for a patient: `deleteappt`
 
-Deletes a specified appointment in the specified patient’s timetable. +
+Deletes a specified appointment in the specified patient’s schedule. +
 Format: `deleteappt INDEX s/START`
 
 ****
@@ -260,7 +274,7 @@ Format: `deleteappt INDEX s/START`
 * The index refers to the index number shown in the displayed person list.
 ****
 
-Examples:
+Example:
 
 * `deleteappt 2 s/16-09-2018 15:00` +
 Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
@@ -320,12 +334,17 @@ Format: `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]`
 ****
 * Adds a medical report for the patient at the specified index.
 * The index refers to the index number shown in the displayed person list.
+* Title, Date and Information are compulsory fields which cannot be left blank.
 ****
 
-Examples:
+Example:
 
 * `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
 Adds a new medical report for patient at index 1 titled Asthma, dated 01-01-2018 with the report's information.
+** Entering the command above will add a medical report for the patient at index 1 of the displayed person list and the user interface will look as follows:
+
+.Adding a medical report for a patient.
+image::AddReport.png[width="790"]
 
 === Editing of Medical Report: `editreport`
 
@@ -335,14 +354,19 @@ Format: `editreport INDEX ot/ORIGINAL TITLE od/ORIGINAL DATE [t/TITLE] [d/DATE] 
 ****
 * Edits a medical report with the specified title and date for the patient at the specified index.
 * The index refers to the index number shown in the displayed person list.
+* Original Title and Original Date are compulsory fields which cannot be left blank.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 ****
 
-Examples:
+Example:
 
-* `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed XXX medicine, next appointment on 03-03-2018.` +
+* `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment on 03-03-2018.` +
 Edits title, date and information of existing medical report titled Asthma and dated 01-01-2018 for patient at index 1.
+** Entering the command above will edit the existing medical report shown in the 'addreport' example above and the user interface will look as follows:
+
+.Editing an existing medical report.
+image::EditReport.png[width="790"]
 // end::reportcommands[]
 
 // tag::sortcommand[]
@@ -410,6 +434,10 @@ e.g. `find ic/ S9876543T` +
 e.g. `find t/ asthma`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
+* *Add Medical History* : `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS` +
+`addhist 1 hsd/10-10-2010 hsa/Alcohol hsc/Kuwait hsds/d`
+* *Edit Medical History* : `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS` +
+edithist 1 hsod/10-10-2010 hsd/10-10-2015 hsa/Chocolate hsc/Russia hsds/a
 * *Add Appt* : `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME` +
 e.g. `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 * *Edit Appt* : `editappt INDEX os/ORIGINAL_START [d/DATE] [s/START_TIME] [e/END_TIME] [v/VENUE] [i/APPOINTMENT_INFORMATION] [d/DOCTOR_NAME]` +
@@ -421,9 +449,9 @@ e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Edit Information* : `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
 e.g. `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
-e.g. `addreport 3 t/Asthma d/01-01-2018 i/Patient diagnosed with asthma and prescribed XXX medicine. Next appointment on 02-02-2018.`
+e.g. `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.`
 * *Edit Medical Report* : `editreport INDEX ot/Title od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
-    e.g. `editreport 3 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Patient diagnosed with depression and prescribed AAA medicine. Next appointment is on 03-03-2018.`
+e.g. `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
 * *Select* : `select INDEX` +

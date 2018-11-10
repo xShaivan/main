@@ -1128,19 +1128,19 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |doctor |find a patient by name |locate details of patients without having to go through the entire list
 
-|`* * *` |doctor |filter out patients by certain personal details |save time in contacting patients with desired personal details
+|`* * *` |doctor |filter out patients by certain personal details |saves time in contacting patients with desired personal details
 
-|`* * *` |doctor |filter out patients by certain medical details |save time in administering patients with desired medical details
+|`* * *` |doctor |filter out patients by certain medical details |saves time in administering patients with desired medical details
 
-|`* * *` |doctor |sort patients by patient details by lexicographical or reverse order |go through the patient list which is listed in a systematic manner to facilitate administration
-
-|`* * *` |doctor |sort all my patients by their personal particulars |ensure systematic administration and processing of each individual
+|`* * *` |doctor |sort patients by patient details by lexicographical order |goes through the patient list which is listed systematic manner to facilitate administration
 
 |`* * *` |doctor |have a platform to view my patients' past medical history |compare with their current symptoms to predict future health risks
 
 |`* * *` |doctor |know my patient’s drug allergy if he/she has any |prescribe the drugs without causing other medical conditions
 
 |`* * *` |doctor |know if there is any follow-up actions for a particular patient, or if the medical case for the patient has closed |know if the patient has been discharged
+
+|`* * *` |doctor |have a sorted list of all my patients in terms of their personal particulars/medical information (allergies, blood type, address, last visited country) and past medical history |assess them more quickly and easily, and understand the past medical issues that my patients faced
 
 |`* * *` |doctor |import/export files to other computers |send patients’ data to other hospitals if the patient transfers there
 
@@ -1757,10 +1757,8 @@ Use case ends.
 [none]
 * 1b. User chooses to sort by a category which the prefix of the category does not exist (i.e. the prefix does not exist or correspond to any category ie “z/”).
 +
-
 [none]
 ** 1b1. System shows error message that format is wrong and shows correct format of sorting patients with available prefixes.
-
 +
 Use case ends.
 
