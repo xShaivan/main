@@ -2086,7 +2086,7 @@ Add 2 appointments to the first person using the following 2 commands: +
 * `addappt 1 s/16-09-2018 16:00 e/16-09-2018 16:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 .. Test case: `editappt 0 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
    Expected: No appointment is edited. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `editappt`.
-.. Other incorrect `editappt` commands to try: `editappt`, `editappt x` (where x is smaller than the list size), `editappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
+.. Other incorrect `editappt` commands to try: `editappt`, `editappt x` (where x is any integer), `editappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
    Expected: Similar to previous.
 .. Test case: `editappt 1 os/16-09-2018 15:00` +
    Expected: No appointment is updated. An error message is shown telling the user that at least one field to edit must be provided.
@@ -2106,7 +2106,7 @@ Add 2 appointments to the first person using the following 2 commands: +
 Add an appointment to the first patient using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 .. Test case: `deleteappt 0 s/16-09-2018 15:00` +
    Expected: No appointment is deleted. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `deleteappt`.
-.. Other incorrect `deleteappt` commands to try: `deleteappt`, `deleteappt x` (where x is smaller than the list size) +
+.. Other incorrect `deleteappt` commands to try: `deleteappt`, `deleteappt x` (where x is any integer) +
    Expected: Similar to previous.
 .. Test case: `deleteappt 1 s/17-09-2018 15:00` +
    Expected: No appointment is deleted. An error message is shown telling the user that the appointment he/she is trying to delete cannot be found for the patient.
