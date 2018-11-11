@@ -26,7 +26,7 @@ public class SortCommandParser implements Parser<SortCommand> {
      */
     public SortCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty() ||trimmedArgs.length()< 4) {
+        if (trimmedArgs.isEmpty() || trimmedArgs.length() < 4) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
@@ -35,12 +35,28 @@ public class SortCommandParser implements Parser<SortCommand> {
         String prefix = nameKeywords[0];
         int order = Integer.parseInt(nameKeywords[1]);
 
-        if (order != 1 && order != 2)
+        if (order != 1 && order != 2) {
             throw new ParseException(MESSAGE_INVALID_ORDER);
+        }
 
-        if (!(prefix.equals(PREFIX_NAME) || prefix.equals(PREFIX_PHONE) || prefix.equals(PREFIX_EMAIL) || prefix.equals(PREFIX_ADD_INFO_NRIC)))
+        /*
+        if (!(prefix.equals(PREFIX_NAME) || prefix.equals(PREFIX_PHONE) || prefix.equals(PREFIX_EMAIL) ||
+                prefix.equals(PREFIX_ADD_INFO_NRIC))) {
             throw new ParseException(MESSAGE_INVALID_PREFIX);
+        }
+        */
 
-        return new SortCommand(prefix, order);
+        switch (prefix){
+        case "n/":
+                return new SortCommand(prefix, order);
+        case "p/":
+            return new SortCommand(prefix, order);
+        case "e/":
+            return new SortCommand(prefix, order);
+        case "i/":
+            return new SortCommand(prefix, order);
+        default:
+            throw new ParseException(MESSAGE_INVALID_PREFIX);
+        }
     }
 }
