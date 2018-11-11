@@ -44,7 +44,7 @@ public class EditHistCommandParserTest {
     }
 
     @Test
-    public void parse_invalidPreamble_failure() {
+    public void parseInvalidPreambleFailure() {
         // negative index
         assertParseFailure(parser, "-5 " + PREFIX_HISTORY_DATE + VALID_HISTORY_DATE, MESSAGE_INVALID_FORMAT);
 
@@ -59,7 +59,7 @@ public class EditHistCommandParserTest {
     }
 
     @Test
-    public void parse_allFieldsSpecified_success() {
+    public void parseAllFieldsSpecifiedSuccess() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + " " + PREFIX_HISTORY_OLD_DATE + VALID_HISTORY_OLD_DATE
                 + " " + PREFIX_HISTORY_DATE + VALID_HISTORY_DATE
