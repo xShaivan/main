@@ -2060,7 +2060,7 @@ _{ more test cases ... }_
    Expected: An appointment from 16-09-2018 15:00 to 16-09-2018 15:30 at Consultation Room 12 for a Diabetes Checkup by Dr Tan is added to the patient at index 1 in the list. A message that the appointment is successfully added is shown.
 .. Test case: `addappt 0 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: No appointment is added to any patient. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `addappt`.
-.. Other incorrect `addappt` commands to try: `addappt`, `addappt x` (where x is smaller than the list size), `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
+.. Other incorrect `addappt` commands to try: `addappt`, `addappt x` (where x is any integer), `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
    Expected: Similar to previous.
 .. Test case: `addappt x s/16-09-2018 17:00 e/16-09-2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` (where x is larger than the list size) +
    Expected: No appointment is added to any patient. An error message is shown telling the user that the index provided is invalid.
