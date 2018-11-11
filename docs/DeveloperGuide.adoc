@@ -336,7 +336,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 // end::undoredo[]
 
 // tag::addinfo[]
-=== Additional Information features
+=== Additional Information feature
 ==== Current Implementation
 The `addinfo` command is facilitated by the `LogicManager` which calls upon `AddressBookParser` for the execution of commands. It extends the `AddressBookParser` with the `addinfo` command.
 
@@ -624,10 +624,33 @@ image::SortActivityDiagram.png[width="800"]
 
 
 // tag::dataencryption[]
-=== [Proposed] Data Encryption
+=== Data Encryption
+==== Current Implementation
+The encryption library used is http://santuario.apache.org/[Apache Santuario]. Using AES 128-bit symmetric encryption, the encryption mechanism is facilitated by `XmlUtil`, `SecurityKey` and the file `preferences.json`.
 
-_{Explain here how the data encryption feature will be implemented}_
+Upon running the program, `MainApp#initSecretKey` checks if encryption has been enabled using value of key `encryption` in `preferences.json` file. If it is `true`, encryption is enabled and the method then checks if `key` file exist. The method will attempt to read the `key` file using `SecretKeyUtil#ReadSecretKey` and save the key into a `SecretKey` object should there be an existing `key`file.
 
+However, if encryption is not enabled, or should there be an error reading the `key` file, or that the `key` file does not exist, `MainApp#initSecretKey` will then proceed to generate a new `SecretKey` object using `SecretKetUtil#getSecretKey`.
+
+Next, `MainApp#initModelManager` will be executed. This method will also check if encryption has been enabled using `preferences.json` file. If encryption is enabled, it will attempt to look for `healthbook_encrypted.xml` file. If `healthbook_encrypted.xml` file exist, the same method will first load the `.xml` file using `XmlUtil#loadEncryptedXmlFile`, before attempting to decrypt the encrypted `.xml` file using the `key` file with the method `XmlUtil#decryptDocument`. A temporary `healthbook.xml` will be generated to be consumed by the program.
+
+However, if `healthbook_encrypted.xml` does not exist, `MainApp#initModeManager` assumes that user runs the program for the first time, and proceed to load in sample data. If the `healthbook_encrypted.xml` does exist, but could not be decrypted successfully, Health Book will be launched without any patient data. An error pertaining to the failure to decrypt the `.xml` file will also be logged.
+
+Upon exiting the program, `MainApp#stop` checks if the encryption has been enabled. If the encryption has been enabled, it will call `XmlUtil#loadDecryptedXmlFile` which loads the temporary `healthbook.xml` file before encrypting the temporary `healthbook.xml` file with `XmlUtil#encryptDocument` method. It will then proceed to destroy the temporary `healthbook.xml` file and generate a `key` file based on the `SecretKey` that was generated when the application launched.
+
+Given below is an example usage scenario on how `encrypt` works at each step:
+
+Step 1. A doctor launches the application for the the first time (by default encryption is disabled). A `SecretKey` is generated.
+
+Step 2. The doctor added in some new patient data.
+
+Step 3. The doctor executes `encrypt`.
+
+Step 4. The doctor exits the program.
+
+Step 5. Before the application fully exits, the `MainApp#stop` method asserts that encryption has been enabled. A temporary `healthbook.xml` file is generated. The same method will call `XmlUtil#loadDecryptedXmlFile` to load the temporary `healthbook.xml` before calling `XmlUtil#encryptDocument` to encrypt the file data. A `key` file is generated containing the `SecretKey` used for the encryption.
+
+Step 6. `MainApp#stop` then deletes the temporary `healthbook.xml` file before fully exiting the application.
 // end::dataencryption[]
 
 === Logging
@@ -1498,42 +1521,6 @@ Use case ends.
 ** 1b1. System shows an error message that the index is invalid.
 +
 Use case ends.
-
-=== Use case: Editing additional information of patient: `editinfo`
-Assume that user has already requested the System to display a list of patients.
-
-*MSS*
-
-1.  User requests to edit optional information for patient.
-2.  System edits optional information for the patient and displays a message that edit for optional information is successful.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to edit optional information i.e. wrong command or invalid data for the fields.
-+
-[none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of adding optional information. System will ignore invalid commands or data and process only the valid commands and data.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an invalid index for the list.
-+
-[none]
-** 1b1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1c. User requests to edit information that does not exist.
-+
-[none]
-** 1c1. System shows an error message that the information does not exist. System will ignore the edit request for that field and process the valid edit requests for other fields
-+
-Use case ends.
 // end::addinfousecase[]
 
 // tag::reportusecases[]
@@ -1808,6 +1795,32 @@ Use case ends.
 +
 Use case ends.
 
+// tag::dataencryptionusecase[]
+=== Use case: Data Encryption: `encrypt`
+Assume that user has launched the application with the default settings (encryption toggled off).
+
+*MSS*
+
+1.  User requests to toggle on encryption.
+2.  User makes some changes to the patient data.
+3.  User requests to exit the application.
+4.  System encrypts patient data.
+5.  System removes unencrypted patient data.
+6.  System exits.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 4a. System unable to encrypt the data.
++
+[none]
+** 4a1. System logs this anomaly and saves the unencrypted data.
++
+Use case ends.
+// end::dataencryptionusecase[]
+
 [appendix]
 == Non Functional Requirements
 
@@ -1827,7 +1840,7 @@ Use case ends.
 [discrete]
 === Quality requirements
 .  The layout of the system will be simple and understandable by even doctors who are not proficient with computer systems.
-.  Might-have: all information will be encrypted.
+.  Data encryption can be toggled based on user's preference.
 
 [discrete]
 === Notes about project scope
@@ -1844,20 +1857,23 @@ A contact detail that is not meant to be shared with others
 
 [appendix]
 == Product Survey
+The following survey was conducted on students from NUS Yong Loo Lin School of Medicine who are majoring in either Medicine, Nursing or Pharmacy.
 
-*Product Name*
+*Survey on Digital Patient Data System*
 
-Author: ...
+1.  What are some of the issues that you think health care professionals face in day to day operations?
 
-Pros:
+2.  Do you think that an application that is able to digitize patient data would be beneficial to healthcare professionals?
 
-* ...
-* ...
+3.  We are intending to build an app that allows healthcare professionals to manage their patients more efficiently. What do you think of the following features?
+*   Map that indicates patients' home address
+*   Medication history
+*   Medical history
+*   Appointment timetable
 
-Cons:
+4.  What would be your main concern for using such an application?
 
-* ...
-* ...
+5.  What are some important patient information that you would want to be included in such an application?
 
 [appendix]
 == Instructions for Manual Testing
@@ -1896,6 +1912,56 @@ _{ more test cases ... }_
    Expected: Similar to previous.
 
 _{ more test cases ... }_
+
+=== Adding additional information to a person
+
+. Adding a additional information (NRIC, Date of Birth, Height, Weight, Gender, Blood Type, Occupation and Marital Status) are listed.
+
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Test case: `addinfo 2 i/S9696531A d/01-01-1990 h/154 w/75.6 g/M b/A+ o/Teacher m/M` +
+   Expected: Additional information where NRIC is S9696531A, date of birth is 01-01-1990, height of 154 cm, weight of 75.6 kg, gender Male, blood type A+, occupation is Teacher and marital status is married is added to person at index 1. Message of additional info being successfully added is shown.
+
+.. Test case: `addinfo 0 i/S9696531A d/01-01-1990 h/154 w/75.6 g/M b/A+ o/Teacher m/M` +
+   Expected: No additional information is added. Message of invalid command format is shown.
+
+.. Test case: `addinfo 1 nric/S9696531A d/01-01-1996`+
+   Expected: No additional information is added. Message of invalid command format is shown.
+
+.. Test case: `addinfo 1 i/A0123456E` +
+   Expected: No additional information is added. Message of constraint of NRIC is shown.
+
+.. Test case: `addinfo 1 i/S1234567A` +
+   Expected: No additional infomation is added. Message of incorrect NRIC is shown.
+
+.. Test case: `addinfo 1 d/01/01/2010` +
+   Expected: No additional infomation is added. Message of correct date format is shown
+
+.. Test case: `addinfo 1 d/DD-01-2010` where DD is more than the total number of days for that month and less than 1 +
+   Expected: No additional infomation is added. Message of invalid value for day is shown
+
+.. Test case: `addinfo 1 d/01-MM-2010` where MM is more than 12 and less than 1 +
+   Expected: No additional infomation is added. Message of invalid value for month is shown
+
+.. Test case: `addinfo 1 d/01-01-YYYY` where YYYY is less than 1900 +
+   Expected: No additional infomation is added. Message of year should be greater than 1900 is shown.
+
+.. Test case: `addinfo 1 h/x` where x is any non floating or integer input +
+   Expected: No additional infomation is added. Message of height should be numeric input only is shown.
+
+.. Test case: `addinfo 1 w/x` where x is any non floating or integer input +
+   Expected: No additional infomation is added. Message of weight should be numeric input only is shown.
+
+.. Test case: `addinfo 1 g/x` where x is any input other than M or F +
+   Expected: No additional infomation is added. Message of correct gender input is shown.
+
+.. Test case: `addinfo 1 b/x` where x is any input other than the correct blood types +
+   Expected: No additional infomation is added. Message of correct blood type is shown.
+
+.. Test case: `addinfo 1 o/x` where x is a String with whitespace, special characters or numerals +
+   Expected: No additional infomation is added. Message of correct blood type is shown.
+
+.. Test case: `addinfo 1 m/x` where x is any input other than S, M or D +
+   Expected: No additional infomation is added. Message of correct marital status input is shown.
 
 === Adding medical report to a person
 
