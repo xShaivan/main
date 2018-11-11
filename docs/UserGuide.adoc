@@ -68,7 +68,6 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
    e. Gender
    f. Occupation.
    g. Marital Status
-   h. Family Members
 3. Medical report/diagnosis can only be added after patient entries have been created. Additional information need not be completed to attach medical report/diagnosis to a patient. All fields in medical report are mandatory and cannot be omitted during the creation process.
 4. Appointments can only be added after patient entries have been created. Additional information need not be completed to add an appointment for a patient. All fields for an appointment are mandatory and cannot be omitted during the creation process.
 
@@ -424,6 +423,31 @@ Example:
 `select 2` +
 Selects the 2nd person in the health book.
 
+
+// tag::encryption[]
+=== Encrypting Patient Data: `encrypt`
+
+Toggles on and off the encryption feature for the saved data file.
+
+Toggling on the feature will cause the saved data file to be encrypted using AES 128-bit standard. Saved file will be named as `healthbook_encrypted.xml`.
+
+Toggling off the feature will cause the saved data file to be saved in plain-text `.xml` file. Saved file will be named as `healthbook.xml`.
+
+Format: `encrypt`
+
+[WARNING]
+If you have toggled on the encryption, it is important that you keep the `key.file` secure. Losing the `key.file` will cause the permanent loss of the saved data. Also, unauthorized personnel with access to the `key.file` will have access to the saved data.
+
+
+Example:
+
+* `encrypt` +
+Depending on the current setting of encryption, this will toggle on or off the encryption. Refer message box to understand if encryption has been toggled on or off.
+
+
+// end::encryption[]
+
+
 == FAQ
 
 Empty.
@@ -454,8 +478,6 @@ e.g.`editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Cons
 e.g. `deleteappt 2 s/16-09-2018 15:00`
 * *Add Information* : `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
 e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
-* *Edit Information* : `editinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
-e.g. `editinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
 * *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
 e.g. `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.`
 * *Edit Medical Report* : `editreport INDEX ot/Title od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
