@@ -291,7 +291,7 @@ Add/Edit the following additional information: NRIC, Date Of Birth (in DD-MMY-YY
 gender, occupation, and marital status. +
 
 [NOTE]
-`age` field will be auto-calculated once Date Of Birth is populated. +
+`age` field will be auto-calculated once Date Of Birth is populated. It will be displayed on the UI in parenthesis under Date of Birth field.+
 
 Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION] [m/MARITAL_STATUS]`
 
@@ -488,7 +488,7 @@ e.g.`editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Cons
 * *Delete Appt* : `deleteappt INDEX s/START` +
 e.g. `deleteappt 2 s/16-09-2018 15:00`
 * *Add Information* : `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
-e.g. `addinfo 2 n/S9123456A d/01011990 h/154 g/M f/3`
+e.g. `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M``
 * *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
 e.g. `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.`
 * *Edit Medical Report* : `editreport INDEX ot/Title od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +

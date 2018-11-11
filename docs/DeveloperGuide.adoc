@@ -1840,7 +1840,7 @@ Use case ends.
 [discrete]
 === Quality requirements
 .  The layout of the system will be simple and understandable by even doctors who are not proficient with computer systems.
-.  Might-have: all information will be encrypted.
+.  Data encryption can be toggled based on user's preference.
 
 [discrete]
 === Notes about project scope
@@ -1857,20 +1857,23 @@ A contact detail that is not meant to be shared with others
 
 [appendix]
 == Product Survey
+The following survey was conducted on students from NUS Yong Loo Lin School of Medicine who are majoring in either Medicine, Nursing or Pharmacy.
 
-*Product Name*
+*Survey on Digital Patient Data System*
 
-Author: ...
+1.  What are some of the issues that you think health care professionals face in day to day operations?
 
-Pros:
+2.  Do you think that an application that is able to digitize patient data would be beneficial to healthcare professionals?
 
-* ...
-* ...
+3.  We are intending to build an app that allows healthcare professionals to manage their patients more efficiently. What do you think of the following features?
+*   Map that indicates patients' home address
+*   Medication history
+*   Medical history
+*   Appointment timetable
 
-Cons:
+4.  What would be your main concern for using such an application?
 
-* ...
-* ...
+5.  What are some important patient information that you would want to be included in such an application?
 
 [appendix]
 == Instructions for Manual Testing
@@ -1909,6 +1912,56 @@ _{ more test cases ... }_
    Expected: Similar to previous.
 
 _{ more test cases ... }_
+
+=== Adding additional information to a person
+
+. Adding a additional information (NRIC, Date of Birth, Height, Weight, Gender, Blood Type, Occupation and Marital Status) are listed.
+
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Test case: `addinfo 2 i/S9696531A d/01-01-1990 h/154 w/75.6 g/M b/A+ o/Teacher m/M` +
+   Expected: Additional information where NRIC is S9696531A, date of birth is 01-01-1990, height of 154 cm, weight of 75.6 kg, gender Male, blood type A+, occupation is Teacher and marital status is married is added to person at index 1. Message of additional info being successfully added is shown.
+
+.. Test case: `addinfo 0 i/S9696531A d/01-01-1990 h/154 w/75.6 g/M b/A+ o/Teacher m/M` +
+   Expected: No additional information is added. Message of invalid command format is shown.
+
+.. Test case: `addinfo 1 nric/S9696531A d/01-01-1996`+
+   Expected: No additional information is added. Message of invalid command format is shown.
+
+.. Test case: `addinfo 1 i/A0123456E` +
+   Expected: No additional information is added. Message of constraint of NRIC is shown.
+
+.. Test case: `addinfo 1 i/S1234567A` +
+   Expected: No additional infomation is added. Message of incorrect NRIC is shown.
+
+.. Test case: `addinfo 1 d/01/01/2010` +
+   Expected: No additional infomation is added. Message of correct date format is shown
+
+.. Test case: `addinfo 1 d/DD-01-2010` where DD is more than the total number of days for that month and less than 1 +
+   Expected: No additional infomation is added. Message of invalid value for day is shown
+
+.. Test case: `addinfo 1 d/01-MM-2010` where MM is more than 12 and less than 1 +
+   Expected: No additional infomation is added. Message of invalid value for month is shown
+
+.. Test case: `addinfo 1 d/01-01-YYYY` where YYYY is less than 1900 +
+   Expected: No additional infomation is added. Message of year should be greater than 1900 is shown.
+
+.. Test case: `addinfo 1 h/x` where x is any non floating or integer input +
+   Expected: No additional infomation is added. Message of height should be numeric input only is shown.
+
+.. Test case: `addinfo 1 w/x` where x is any non floating or integer input +
+   Expected: No additional infomation is added. Message of weight should be numeric input only is shown.
+
+.. Test case: `addinfo 1 g/x` where x is any input other than M or F +
+   Expected: No additional infomation is added. Message of correct gender input is shown.
+
+.. Test case: `addinfo 1 b/x` where x is any input other than the correct blood types +
+   Expected: No additional infomation is added. Message of correct blood type is shown.
+
+.. Test case: `addinfo 1 o/x` where x is a String with whitespace, special characters or numerals +
+   Expected: No additional infomation is added. Message of correct blood type is shown.
+
+.. Test case: `addinfo 1 m/x` where x is any input other than S, M or D +
+   Expected: No additional infomation is added. Message of correct marital status input is shown.
 
 === Adding medical report to a person
 
