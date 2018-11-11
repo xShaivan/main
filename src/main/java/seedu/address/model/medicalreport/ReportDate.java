@@ -1,6 +1,8 @@
 package seedu.address.model.medicalreport;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.model.util.DateTimeUtil.DATE_CONSTRAINTS;
 import static seedu.address.model.util.DateTimeUtil.DATE_VALIDATION_REGEX;
 
 import java.time.LocalDate;
@@ -23,6 +25,7 @@ public class ReportDate {
      */
     public ReportDate(String date) {
         requireNonNull(date);
+        checkArgument(isValidDate(date), DATE_CONSTRAINTS);
         fullDate = DateTimeUtil.parseDate(date);
     }
 
