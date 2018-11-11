@@ -8,10 +8,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_VENUE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -99,13 +102,26 @@ public class CommandTestUtil {
     public static final String VALID_INFO2 = "Prescribed XXX medicine, next appointment on 03-03-2018.";
     public static final String VALID_INFO3 = "Prescribed XXX medicine, next appointment on 04-04-2018.";
 
+    public static final String VALID_TITLE_WPREFIX = " " + PREFIX_TITLE + VALID_TITLE1;
+    public static final String VALID_DATE_WPREFIX = " " + PREFIX_DATE + VALID_DATE1;
+    public static final String VALID_INFO_WPREFIX = " " + PREFIX_INFO + VALID_INFO1;
+
+    // empty string not allowed for title
+    public static final String INVALID_TITLE_WPREFIX = " " + PREFIX_TITLE + " ";
+    // date not in dd-MM-yy format
+    public static final String INVALID_DATE_WPREFIX = " " + PREFIX_DATE + "01/01/2018";
+    // empty string not allowed for information
+    public static final String INVALID_INFO_WPREFIX = " " + PREFIX_INFO + " ";
+
     // Appt
     public static final String VALID_START_APPT1 = "01-01-2018 14:00";
     public static final String VALID_START_APPT2 = "02-02-2018 15:00";
     public static final String VALID_START_APPT3 = "03-03-2018 16:00";
+    public static final String VALID_START_APPT4 = "03-03-2018 15:30";
     public static final String VALID_END_APPT1 = "01-01-2018 15:00";
     public static final String VALID_END_APPT2 = "02-02-2018 16:00";
     public static final String VALID_END_APPT3 = "03-03-2018 17:00";
+    public static final String VALID_END_APPT4 = "03-03-2018 16:30";
     public static final String VALID_VENUE_APPT1 = "Consultation Room 1";
     public static final String VALID_VENUE_APPT2 = "Consultation Room 2";
     public static final String VALID_VENUE_APPT3 = "Consultation Room 3";
