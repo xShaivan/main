@@ -1709,3 +1709,65 @@ _{ more test cases ... }_
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
 
 _{ more test cases ... }_
+
+=== Adding appointment to a patient
+
+. Adding an appointment to a patient while all patients are listed
+
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Test case: `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+   Expected: An appointment from 16-09-2018 15:00 to 16-09-2018 15:30 at Consultation Room 12 for a Diabetes Checkup by Dr Tan is added to the patient at index 1 in the list. A message that the appointment is successfully added is shown.
+.. Test case: `addappt 0 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+   Expected: No appointment is added to any patient. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `addappt`.
+.. Other incorrect `addappt` commands to try: `addappt`, `addappt x` (where x is smaller than the list size), `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
+   Expected: Similar to previous.
+.. Test case: `addappt x s/16-09-2018 17:00 e/16-09-2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` (where x is larger than the list size) +
+   Expected: No appointment is added to any patient. An error message is shown telling the user that the index provided is invalid.
+.. Test case: `addappt 1 s/16/09/2018 18:00 e/16/09/2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+   Expected: No appointment is added to any patient. An error message is shown telling the user that the date and time must be dd/mm/yyyy hh:mm.
+.. Test case: `addappt 1 s/16-09-2018 18:00 e/16-09-2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+   Expected: No appointment is added to any patient. An error message is shown telling the user that the end date and time of an appointment must be after the start date and time.
+
+. Adding an appointment to a patient with existing appointments
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
+Add an appointment to the first person using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+.. Test case: `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+   Expected: No appointment is added to any patient. An error message is shown telling the user that the appointment he/she is adding clashes with the timing of another appointment for the patient.
+.. Test case: `addappt 1 s/16-09-2018 15:30 e/16-09-2018 16:00 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+   Expected: An appointment from 16-09-2018 15:30 to 16-09-2018 16:00 at Consultation Room 12 for a Diabetes Checkup by Dr Tan is added to the patient at index 1 in the list. A message that the appointment is successfully added is shown.
+
+=== Editing appointment for a patient
+
+. Editing an appointment for a patient while all patients are listed
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
+Add 2 appointments to the first person using the commands +
+`addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` and +
+`addappt 1 s/16-09-2018 16:00 e/16-09-2018 16:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+.. Test case: `editappt 0 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
+   Expected: No appointment is edited. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `editappt`.
+.. Other incorrect `editappt` commands to try: `editappt`, `editappt x` (where x is smaller than the list size), `editappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
+   Expected: Similar to previous.
+.. Test case: `editappt 1 os/16-09-2018 15:00` +
+   Expected: No appointment is updated. An error message is shown telling the user that at least one field to edit must be provided.
+.. Test case: `editappt 1 os/16-09-2018 15:00 e/16-09-2018 14:30 v/Consultation Room 13` +
+   Expected: No appointment is updated. An error message is shown telling the user that the end date and time of an appointment must be after the start date and time.
+.. Test case: `editappt 1 os/16-09-2018 15:00 s/16-09-2018 15:30 e/16-09-2018 16:15 v/Consultation Room 13` +
+   Expected: No appointment is updated. An error message is shown telling the user that the appointment he/she is editing will clash with the timing of another appointment for the patient.
+.. Test case: `editappt 1 os/17-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
+   Expected: No appointment is updated. An error message is shown telling the user that the appointment he/she is trying to edit cannot be found for the patient.
+.. Test case: `editappt 1 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
+   Expected: The appointment originally starting at 16-09-2018 15:00 is now edited to start at 16-09-2018 14:00, end at 16-09-2018 14:30, and be held at Consultation Room 13 instead. A message that the appointment is successfully edited is shown.
+
+=== Deleting appointment for a patient
+
+. Deleting an appointment for a patient while all patients are listed
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
+Add an appointment to the first person using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+.. Test case: `deleteappt 0 s/16-09-2018 15:00` +
+   Expected: No appointment is deleted. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `deleteappt`.
+.. Other incorrect `deleteappt` commands to try: `deleteappt`, `deleteappt x` (where x is smaller than the list size) +
+   Expected: Similar to previous.
+.. Test case: `deleteappt 1 s/17-09-2018 15:00` +
+   Expected: No appointment is deleted. An error message is shown telling the user that the appointment he/she is trying to delete cannot be found for the patient.
+.. Test case: `deleteappt 1 s/16-09-2018 15:00` +
+   Expected: The appointment starting at 16-09-2018 15:00 will be deleted. A message that the appointment is successfully deleted is shown.

@@ -281,7 +281,7 @@ Example:
   Clears all appointments that end on 16-09-2018 or earlier for all patients in the health book.
 
 [NOTE]
-The `clearappts` command will delete appointments based on their end date, not their start date. Thus, the command `clearappts d/16-09-2018` will not delete an appointment that starts on 16-09-2018 and ends on 17-09-2018
+The `clearappts` command will delete appointments based on their end date, not their start date. Thus, the command `clearappts d/16-09-2018` will not delete an appointment that starts on 16-09-2018 and ends on 17-09-2018.
 
 // tag::addinfocommands[]
 === Adding additional information of patient: `addinfo`
