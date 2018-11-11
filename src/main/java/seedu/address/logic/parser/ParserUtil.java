@@ -508,7 +508,7 @@ public class ParserUtil {
         requireNonNull(apptVenue);
         String trimmedApptVenue = apptVenue.trim();
         if (!ApptVenue.isValidVenue(apptVenue)) {
-            throw new ParseException(ApptVenue.MESSAGE_NAME_CONSTRAINTS);
+            throw new ParseException(ApptVenue.MESSAGE_VENUE_CONSTRAINTS);
         }
         return new ApptVenue(trimmedApptVenue);
     }
@@ -523,7 +523,7 @@ public class ParserUtil {
         requireNonNull(apptInfo);
         String trimmedApptInfo = apptInfo.trim();
         if (!ApptInfo.isValidApptInfo(apptInfo)) {
-            throw new ParseException(ApptInfo.MESSAGE_NAME_CONSTRAINTS);
+            throw new ParseException(ApptInfo.MESSAGE_INFO_CONSTRAINTS);
         }
         return new ApptInfo(trimmedApptInfo);
     }
@@ -538,7 +538,7 @@ public class ParserUtil {
         requireNonNull(apptDrName);
         String trimmedApptDrName = apptDrName.trim();
         if (!ApptDrName.isValidDrName(apptDrName)) {
-            throw new ParseException(ApptDrName.MESSAGE_NAME_CONSTRAINTS);
+            throw new ParseException(ApptDrName.MESSAGE_DRNAME_CONSTRAINTS);
         }
         return new ApptDrName(trimmedApptDrName);
     }

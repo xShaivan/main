@@ -97,17 +97,17 @@ public class AddApptCommandParserTest {
         // invalid appt venue
         assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + INVALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
-                + VALID_DRNAME_APPT_WPREFIX, ApptVenue.MESSAGE_NAME_CONSTRAINTS);
+                + VALID_DRNAME_APPT_WPREFIX, ApptVenue.MESSAGE_VENUE_CONSTRAINTS);
 
         // invalid appt info
         assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + INVALID_INFO_APPT_WPREFIX
-                + VALID_DRNAME_APPT_WPREFIX, ApptInfo.MESSAGE_NAME_CONSTRAINTS);
+                + VALID_DRNAME_APPT_WPREFIX, ApptInfo.MESSAGE_INFO_CONSTRAINTS);
 
         // invalid appt dr name
         assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
-                + INVALID_DRNAME_APPT_WPREFIX, ApptDrName.MESSAGE_NAME_CONSTRAINTS);
+                + INVALID_DRNAME_APPT_WPREFIX, ApptDrName.MESSAGE_DRNAME_CONSTRAINTS);
     }
 
     @Test

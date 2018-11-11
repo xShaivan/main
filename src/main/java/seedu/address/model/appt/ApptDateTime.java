@@ -1,6 +1,8 @@
 package seedu.address.model.appt;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.model.util.DateTimeUtil.DATE_TIME_CONSTRAINTS;
 import static seedu.address.model.util.DateTimeUtil.DATE_TIME_VALIDATION_REGEX;
 
 import java.time.LocalDateTime;
@@ -18,6 +20,7 @@ public class ApptDateTime {
 
     public ApptDateTime(String apptDateTime) {
         requireNonNull(apptDateTime);
+        checkArgument(isValidDateTime(apptDateTime), DATE_TIME_CONSTRAINTS);
         value = DateTimeUtil.parseDateTime(apptDateTime);
     }
 
