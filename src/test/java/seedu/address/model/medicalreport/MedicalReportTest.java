@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.medicalreport;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -10,11 +10,17 @@ import static seedu.address.testutil.TypicalReports.REPORT_EXAMPLE2;
 
 import org.junit.Test;
 
-import seedu.address.model.medicalreport.MedicalReport;
+import seedu.address.testutil.Assert;
 import seedu.address.testutil.ReportBuilder;
 
 //@@author chewkahmeng
-public class AddMedicalReportTest {
+public class MedicalReportTest {
+
+    @Test
+    public void constructorNullThrowsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> new MedicalReport(null, null, null));
+    }
+
     @Test
     public void equals() {
         MedicalReport reportExample1 = new ReportBuilder(REPORT_EXAMPLE1).build();
