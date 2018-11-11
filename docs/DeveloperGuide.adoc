@@ -2065,7 +2065,7 @@ _{ more test cases ... }_
 .. Test case: `addappt x s/16-09-2018 17:00 e/16-09-2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` (where x is larger than the list size) +
    Expected: No appointment is added to any patient. An error message is shown telling the user that the index provided is invalid.
 .. Test case: `addappt 1 s/16/09/2018 18:00 e/16/09/2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
-   Expected: No appointment is added to any patient. An error message is shown telling the user that the date and time must be dd/mm/yyyy hh:mm.
+   Expected: No appointment is added to any patient. An error message is shown telling the user that the date and time must be DD-MM-YYYY HH:MM.
 .. Test case: `addappt 1 s/16-09-2018 18:00 e/16-09-2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: No appointment is added to any patient. An error message is shown telling the user that the end date and time of an appointment must be after the start date and time.
 
