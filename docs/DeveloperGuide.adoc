@@ -10,6 +10,8 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
 :warning-caption: :warning:
 endif::[]
 :repoURL: https://github.com/CS2113-AY1819S1-T12-2/main
@@ -334,7 +336,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 // end::undoredo[]
 
 // tag::addinfo[]
-=== Additional Information features
+=== Additional Information feature
 ==== Current Implementation
 The `addinfo` command is facilitated by the `LogicManager` which calls upon `AddressBookParser` for the execution of commands. It extends the `AddressBookParser` with the `addinfo` command.
 
@@ -406,9 +408,8 @@ Step 5. Lastly, the `addhist` command will call `Model#commitAddressBook()` to u
 
 The following diagram shows how the `addhist` command works:
 
+.Sequence Diagram for `addhist` command
 image::AddHistSequenceDiagram.png[width="800"]
-
-Figure 4.3.1: Sequence Diagram for `addhist` command
 
 // end::addhist[]
 
@@ -454,9 +455,8 @@ Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to 
 
 The following diagram shows how the `edithist` command works:
 
+.Sequence Diagram for `edithist` command
 image::EditHistSequenceDiagram.png[width="800"]
-
-Figure 4.4.1: Sequence Diagram for `edithist` command
 
 // end::edithist[]
 
@@ -526,10 +526,10 @@ Step 4. The `addreport` command will call `Model#updatePerson()` to update the p
 
 Step 5. The `addreport` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
-Figure 4.6.1 shows how the addreport operation works:
+The following sequence diagram shows how the addreport operation works:
 
+.Sequence Diagram of AddMedicalReport feature
 image::AddMedicalReportSequenceDiagram.png[width="800"]
-Figure 4.6.1: Sequence Diagram of AddMedicalReport feature
 // end::addreport[]
 
 // tag::editreport[]
@@ -564,34 +564,103 @@ Step 5. Lastly, the `editreport` command will call `Model#commitAddressBook()` t
 === Find feature
 ==== Current Implementation
 
-The find mechanism is facilitated by `VersionedAddressBook`.
+The find mechanism is facilitated by `ModelManager`. It extends `AddressBook` and filters the `internalList` of patients. Additionally,
+it implements `ModelManager#updateFilteredPersonList()` and `ModelManager#getFilteredPersonList()` operations with the the 2 input parameters (prefix and keyword) before finding the patients
+accordingly.
 
-Additionally, it implements the following operations:
-
-* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
-
-This operation is exposed in the `Model` interface as `Model#updatePerson()`.
+This operation is exposed in the `Model` interface as `Model#updateFilteredPersonList()` and `Model#getFilteredPersonList()`.
 
 Given below is an example usage scenario and how the find mechanism behaves at each step.
 
-Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+Step 1. A doctor launches the application for the first time. If it hs/her first time launching the Health Book, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
 
-Step 2. The user executes `find hsa/ alcohol nut` command to to filter patients who are allergic to alcohol and nut from the list that the address book is currently showing. The `find` command obtains the detail of the person that the user is trying to find based on the keywords that the user has input.
+[IMPORTANT]
+The list that the doctor will be implementing the `find` command on will the be full patient list and details stored in the database.
 
-Step 4. The `find` command will obtain the keywords of the patients and go into the specified patient detail predicate to find patients with such keywords in their details.
+Step 2. The doctor executes `find hsa/ alcohol nut` command to to filter patients who are allergic to alcohol and nut recorded in the whole Health Book. The `find` command obtains the detail of the patient and keywords of the user input.
 
-Step 5. The `find` command will call `Model#updateFilteredPersonList()` to update the list that the user is shown.
+[WARNING]
+If the command format is invalid, an error message will be shown to prompt the user of the correct format.
 
-The following sequence diagram shows how the find operation works:
-[Make diagram]
+Step 3. The `find` command parser will translate the input `hsa/` into allergy and find patients with "alcohol" and "nut" predicates in their allergy.
 
-//end:: find[]
+[NOTE]
+There must be more than one keyword and the prefix is case sensitive.
+
+Step 4. The `find` command will call `Model#updateFilteredPersonList()` to generate a patients list containing patients with "alcohol" and "nut" predicates in their allergy detail.
+
+Step 5. The `find` command will then call `Model#getFilteredPersonList()` to show the filtered list in the interface.
+
+The following sequence diagram summarizes the activity when a user (doctor) executes a new `find` command:
+
+.Sequence diagram for Find operation
+image::FindActivityDiagram.png[width="800"]
+
+// end::find[]
+
+// tag::sort[]
+=== Sort feature
+==== Current Implementation
+
+The sort mechanism is facilitated by `ModelManager`. It extends `AddressBook` and sorts the `internalList` of patients. Additionally,
+it implements `ModelManager#updateSortedPersonList` operation with the the 2 input parameters (prefix and order) before sorting the patients
+accordingly.
+
+This operation is exposed in the `Model` interface as `Model#updateSortedPersonList()`.
+
+Given below is an example usage scenario and how the sort mechanism behaves at each step.
+
+Step 1. A doctor launches the application for the first time. If it hs/her first time launching the Health Book, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+
+[IMPORTANT]
+The list that the doctor will be implementing the sort command on will the be current patient list as shown in the interface.
+
+Step 2. The doctor executes `sort n/ 2` command to generate a sorted and reversed list of patients according to their names. The `sort` command obtains the doctor's prefix and order input
+
+[WARNING]
+If the command format is invalid, an error message will be shown to prompt the user of the correct format.
+
+Step 3. The `sort` command will call `Model#updateSortedPersonList()` to update the person list with the doctor's input of prefix and order.
+
+Step 4. The patients list will then be sorted by `sortPersons()` in `UniquePersonList`.
+
+Step 5. The final patient list result generated will be sorted accordingly to the doctor's input.
+
+The following sequence diagram summarizes the activity when a user (doctor) executes a new `sort` command:
+
+.Sequence diagram for Sort operation
+image::SortActivityDiagram.png[width="800"]
+// end::sort[]
+
 
 // tag::dataencryption[]
-=== [Proposed] Data Encryption
+=== Data Encryption
+==== Current Implementation
+The encryption library used is http://santuario.apache.org/[Apache Santuario]. Using AES 128-bit symmetric encryption, the encryption mechanism is facilitated by `XmlUtil`, `SecurityKey` and the file `preferences.json`.
 
-_{Explain here how the data encryption feature will be implemented}_
+Upon running the program, `MainApp#initSecretKey` checks if encryption has been enabled using value of key `encryption` in `preferences.json` file. If it is `true`, encryption is enabled and the method then checks if `key` file exist. The method will attempt to read the `key` file using `SecretKeyUtil#ReadSecretKey` and save the key into a `SecretKey` object should there be an existing `key`file.
 
+However, if encryption is not enabled, or should there be an error reading the `key` file, or that the `key` file does not exist, `MainApp#initSecretKey` will then proceed to generate a new `SecretKey` object using `SecretKetUtil#getSecretKey`.
+
+Next, `MainApp#initModelManager` will be executed. This method will also check if encryption has been enabled using `preferences.json` file. If encryption is enabled, it will attempt to look for `healthbook_encrypted.xml` file. If `healthbook_encrypted.xml` file exist, the same method will first load the `.xml` file using `XmlUtil#loadEncryptedXmlFile`, before attempting to decrypt the encrypted `.xml` file using the `key` file with the method `XmlUtil#decryptDocument`. A temporary `healthbook.xml` will be generated to be consumed by the program.
+
+However, if `healthbook_encrypted.xml` does not exist, `MainApp#initModeManager` assumes that user runs the program for the first time, and proceed to load in sample data. If the `healthbook_encrypted.xml` does exist, but could not be decrypted successfully, Health Book will be launched without any patient data. An error pertaining to the failure to decrypt the `.xml` file will also be logged.
+
+Upon exiting the program, `MainApp#stop` checks if the encryption has been enabled. If the encryption has been enabled, it will call `XmlUtil#loadDecryptedXmlFile` which loads the temporary `healthbook.xml` file before encrypting the temporary `healthbook.xml` file with `XmlUtil#encryptDocument` method. It will then proceed to destroy the temporary `healthbook.xml` file and generate a `key` file based on the `SecretKey` that was generated when the application launched.
+
+Given below is an example usage scenario on how `encrypt` works at each step:
+
+Step 1. A doctor launches the application for the the first time (by default encryption is disabled). A `SecretKey` is generated.
+
+Step 2. The doctor added in some new patient data.
+
+Step 3. The doctor executes `encrypt`.
+
+Step 4. The doctor exits the program.
+
+Step 5. Before the application fully exits, the `MainApp#stop` method asserts that encryption has been enabled. A temporary `healthbook.xml` file is generated. The same method will call `XmlUtil#loadDecryptedXmlFile` to load the temporary `healthbook.xml` before calling `XmlUtil#encryptDocument` to encrypt the file data. A `key` file is generated containing the `SecretKey` used for the encryption.
+
+Step 6. `MainApp#stop` then deletes the temporary `healthbook.xml` file before fully exiting the application.
 // end::dataencryption[]
 
 === Logging
@@ -1226,11 +1295,12 @@ Use case ends.
 +
 Use case ends.
 
+// tag::findusecase[]
 === Use case: Finding patients by categories: `find`
 
 *MSS*
 
-1.  User requests to find a patient in the list by categories. (eg. name, age, blood type, marital status)
+1.  User requests to find a patient in the list by a category. (eg. name, phone, blood type, medical information)
 2.  System shows user a list of patients who are in requested category.
 +
 Use case ends.
@@ -1241,17 +1311,35 @@ Use case ends.
 * 1a. User uses the wrong format to find patient.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of finding a patient.
+** 1a1. System shows error message that format is wrong and shows correct format of finding patients.
 +
 Use case ends.
 
 [none]
-* 1b. User provides an invalid category or keyword.
+* 1b. User provides an category where the prefix to the category is not available i.e. "z/"
 +
 [none]
-** 1b1. System shows an error message that category or keyword is invalid.
+** 1b1. System shows an error message that category is invalid and shows correct format with available prefixes.
 +
 Use case ends.
+
+[none]
+* 1c. User provides keyword that does not correspond to any patient.
++
+[none]
+** 1c1. System shows an error message that such patient does not exist.
++
+Use case ends.
+
+[none]
+* 1d. User did not provide a category or a keyword.
++
+[none]
+** 1d1. System shows an error message that the format is wrong and shows correct format of finding a patient.
++
+Use case ends.
+
+// end::findusecase[]
 
 === Use case: Deleting a patient: `delete`
 Assume that user has already requested the System to display a list of patients.
@@ -1469,42 +1557,6 @@ Use case ends.
 ** 1b1. System shows an error message that the index is invalid.
 +
 Use case ends.
-
-=== Use case: Editing additional information of patient: `editinfo`
-Assume that user has already requested the System to display a list of patients.
-
-*MSS*
-
-1.  User requests to edit optional information for patient.
-2.  System edits optional information for the patient and displays a message that edit for optional information is successful.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to edit optional information i.e. wrong command or invalid data for the fields.
-+
-[none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of adding optional information. System will ignore invalid commands or data and process only the valid commands and data.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an invalid index for the list.
-+
-[none]
-** 1b1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1c. User requests to edit information that does not exist.
-+
-[none]
-** 1c1. System shows an error message that the information does not exist. System will ignore the edit request for that field and process the valid edit requests for other fields
-+
-Use case ends.
 // end::addinfousecase[]
 
 // tag::reportusecases[]
@@ -1536,6 +1588,30 @@ Use case ends.
 +
 Use case ends.
 
+[none]
+* 1c. User provides an invalid title or information format in the command.
++
+[none]
+** 1c1. System shows an error message that the title or information format can take any values and must not be blank.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid date format in the command.
++
+[none]
+** 1d1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1e. User tries to add a medical report with the same title and date of an existing medical report.
++
+[none]
+** 1e1. System shows an error message that there already exists a medical report with the same title and date.
++
+Use case ends.
+
 === Use case: Editing of Medical Report: `editreport`
 Assume that user has already requested the System to display a list of medical reports for a patient.
 
@@ -1563,35 +1639,177 @@ Use case ends.
 ** 1b1. System shows an error message that the index is invalid.
 +
 Use case ends.
+
+[none]
+* 1c. User provides an invalid title or information format in the command.
++
+[none]
+** 1c1. System shows an error message that the title or information format can take any values and must not be blank.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid date format in the command.
++
+[none]
+** 1d1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1e. User tries to edit a medical report to one which has the same title and date of an existing medical report.
++
+[none]
+** 1e1. System shows an error message that there already exists a medical report with the same title and date.
++
+Use case ends.
 // end::reportusecases[]
 
-=== Use case: Sort patients list: `sort`
-Assume that user has already requested the System to display a list of patients.
+// tag::medhistoryusecases[]
+=== Use case: Adding of Medical History: `addhist`
+Assume that user has already requested the System to display a list of medical reports for a patient.
 
 *MSS*
 
-1.  User requests to sort the patients by a category and order.
-2.  System displays a sorted list of the patients and displays a message that the list is successfully sorted.
+1.  User requests to add medical history for patient.
+2.  System edits medical history for the patient and displays a message that shows success of medical history added.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. User chooses to sort by a category which the prefix of the category does not exist (for example: the prefix does not exist or correspond to any category ie “z/”).
+* 1a. User uses the wrong format to edit medical report.
 +
 [none]
-** 1a1. System shows an error message that the category does not exist.
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
 +
 Use case ends.
 
 [none]
-* 1b. User inputs an invalid order_index.
+* 1b. User provides an invalid index for the list.
 +
 [none]
-** 1b1. System shows an error message that the order index does not exist.
+** 1b1. System shows an error message that the index is invalid.
 +
 Use case ends.
+
+[none]
+* 1c. User provides an invalid date format in the command.
++
+[none]
+** 1c1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid discharge status in the command.
++
+[none]
+** 1d1. System shows an error message that the discharge status is invalid.
++
+Use case ends.
+
+=== Use case: Editing of Medical History: `edithist`
+Assume that user has already requested the System to display a list of medical reports for a patient.
+
+*MSS*
+
+1.  User requests to edit existing medical history for patient.
+2.  System edits medical history for the patient and displays a message that shows success of medical history edited.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to edit medical report.
++
+[none]
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User provides an invalid date format in the command.
++
+[none]
+** 1c1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid discharge status in the command.
++
+[none]
+** 1d1. System shows an error message that the discharge status is invalid.
++
+Use case ends.
+
+[none]
+* 1e. User targets a non-existent medical history date in the command.
++
+[none]
+** 1e1. System shows an error message that the specified date does not belong to any existing medical history.
++
+Use case ends.
+
+[none]
+* 1f. User provides a new medical history date that is already present in the command.
++
+[none]
+** 1f1. System shows an error message that the specified new date already exists.
++
+Use case ends.
+// end::medhistoryusecases[]
+
+// tag::sortusecase[]
+=== Use case: Sorting patients list: `sort`
+Assume that user has already requested the System to display a list of patients.
+
+[NOTE]
+This list refers to the latest list displayed on the interface before the command execution.
+
+*MSS*
+
+1.  User requests to sort the patients by a category and order.
+2.  System displays a sorted list (by specified order) of the patients and displays a message that the list is successfully sorted.
++
+Use case ends.
+
+*Extensions*
+[none]
+* 1a. User uses the wrong format to sort patient.
++
+[none]
+** 1a1. System shows error message that format is wrong and shows correct format of sorting patients.
++
+Use case ends.
+
+[none]
+* 1b. User chooses to sort by a category which the prefix of the category does not exist (i.e. the prefix does not exist or correspond to any category ie “z/”).
++
+[none]
+** 1b1. System shows error message that format is wrong and shows correct format of sorting patients with available prefixes.
++
+Use case ends.
+
+[none]
+* 1c. User inputs an invalid order index (i.e. values that are not 1 or 2).
++
+[none]
+** 1c1. System shows an error message that the order index does not exist.
++
+Use case ends.
+// end::sortusecase[]
 
 === Use case: Selecting a patient: `select`
 Assume that user has already requested the System to display a list of patients.
@@ -1613,6 +1831,32 @@ Use case ends.
 +
 Use case ends.
 
+// tag::dataencryptionusecase[]
+=== Use case: Data Encryption: `encrypt`
+Assume that user has launched the application with the default settings (encryption toggled off).
+
+*MSS*
+
+1.  User requests to toggle on encryption.
+2.  User makes some changes to the patient data.
+3.  User requests to exit the application.
+4.  System encrypts patient data.
+5.  System removes unencrypted patient data.
+6.  System exits.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 4a. System unable to encrypt the data.
++
+[none]
+** 4a1. System logs this anomaly and saves the unencrypted data.
++
+Use case ends.
+// end::dataencryptionusecase[]
+
 [appendix]
 == Non Functional Requirements
 
@@ -1632,7 +1876,7 @@ Use case ends.
 [discrete]
 === Quality requirements
 .  The layout of the system will be simple and understandable by even doctors who are not proficient with computer systems.
-.  Might-have: all information will be encrypted.
+.  Data encryption can be toggled based on user's preference.
 
 [discrete]
 === Notes about project scope
@@ -1649,20 +1893,23 @@ A contact detail that is not meant to be shared with others
 
 [appendix]
 == Product Survey
+The following survey was conducted on students from NUS Yong Loo Lin School of Medicine who are majoring in either Medicine, Nursing or Pharmacy.
 
-*Product Name*
+*Survey on Digital Patient Data System*
 
-Author: ...
+1.  What are some of the issues that you think health care professionals face in day to day operations?
 
-Pros:
+2.  Do you think that an application that is able to digitize patient data would be beneficial to healthcare professionals?
 
-* ...
-* ...
+3.  We are intending to build an app that allows healthcare professionals to manage their patients more efficiently. What do you think of the following features?
+*   Map that indicates patients' home address
+*   Medication history
+*   Medical history
+*   Appointment timetable
 
-Cons:
+4.  What would be your main concern for using such an application?
 
-* ...
-* ...
+5.  What are some important patient information that you would want to be included in such an application?
 
 [appendix]
 == Instructions for Manual Testing
@@ -1701,6 +1948,99 @@ _{ more test cases ... }_
    Expected: Similar to previous.
 
 _{ more test cases ... }_
+
+=== Adding additional information to a person
+
+. Adding a additional information (NRIC, Date of Birth, Height, Weight, Gender, Blood Type, Occupation and Marital Status) are listed.
+
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Test case: `addinfo 2 i/S9696531A d/01-01-1990 h/154 w/75.6 g/M b/A+ o/Teacher m/M` +
+   Expected: Additional information where NRIC is S9696531A, date of birth is 01-01-1990, height of 154 cm, weight of 75.6 kg, gender Male, blood type A+, occupation is Teacher and marital status is married is added to person at index 1. Message of additional info being successfully added is shown.
+
+.. Test case: `addinfo 0 i/S9696531A d/01-01-1990 h/154 w/75.6 g/M b/A+ o/Teacher m/M` +
+   Expected: No additional information is added. Message of invalid command format is shown.
+
+.. Test case: `addinfo 1 nric/S9696531A d/01-01-1996`+
+   Expected: No additional information is added. Message of invalid command format is shown.
+
+.. Test case: `addinfo 1 i/A0123456E` +
+   Expected: No additional information is added. Message of constraint of NRIC is shown.
+
+.. Test case: `addinfo 1 i/S1234567A` +
+   Expected: No additional infomation is added. Message of incorrect NRIC is shown.
+
+.. Test case: `addinfo 1 d/01/01/2010` +
+   Expected: No additional infomation is added. Message of correct date format is shown
+
+.. Test case: `addinfo 1 d/DD-01-2010` where DD is more than the total number of days for that month and less than 1 +
+   Expected: No additional infomation is added. Message of invalid value for day is shown
+
+.. Test case: `addinfo 1 d/01-MM-2010` where MM is more than 12 and less than 1 +
+   Expected: No additional infomation is added. Message of invalid value for month is shown
+
+.. Test case: `addinfo 1 d/01-01-YYYY` where YYYY is less than 1900 +
+   Expected: No additional infomation is added. Message of year should be greater than 1900 is shown.
+
+.. Test case: `addinfo 1 h/x` where x is any non floating or integer input +
+   Expected: No additional infomation is added. Message of height should be numeric input only is shown.
+
+.. Test case: `addinfo 1 w/x` where x is any non floating or integer input +
+   Expected: No additional infomation is added. Message of weight should be numeric input only is shown.
+
+.. Test case: `addinfo 1 g/x` where x is any input other than M or F +
+   Expected: No additional infomation is added. Message of correct gender input is shown.
+
+.. Test case: `addinfo 1 b/x` where x is any input other than the correct blood types +
+   Expected: No additional infomation is added. Message of correct blood type is shown.
+
+.. Test case: `addinfo 1 o/x` where x is a String with whitespace, special characters or numerals +
+   Expected: No additional infomation is added. Message of correct blood type is shown.
+
+.. Test case: `addinfo 1 m/x` where x is any input other than S, M or D +
+   Expected: No additional infomation is added. Message of correct marital status input is shown.
+
+=== Adding medical report to a person
+
+. Adding a medical report to a person while all persons are listed.
+
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Test case: `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: Medical report titled Asthma and dated 01-01-2018 with report information is added to person at index 1. Message of medical report being successfully added is shown.
+.. Test case: `addreport 0 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: No medical report is added. Message of invalid command format will be shown.
+.. Other incorrect addreport commands to try: `addreport`, `addreport x` (where x is smaller than or equal to the list size) +
+   Expected: Similar to previous.
+.. Test case: `addreport x (where x is larger than the list size) t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: No medical report is added. Message of invalid person index will be shown.
+.. Test case: `addreport 1 t/ d/01-01-2018 i/prescribed XXX medicine, next appointment on 02-02-2018.`
+   Expected: No medical report is added. Message of invalid title will be shown.
+.. Test case: `addreport 1 t/Asthma d/01012018 i/prescribed XXX medicine, next appointment on 02-02-2018.`
+   Expected: No medical report is added. Message of invalid date will be shown.
+.. Test case: `addreport 1 t/Asthma d/01-01-2018 i/ `
+   Expected: No medical report is added. Message of invalid information will be shown.
+
+=== Editing an existing medical report of a person
+. Editing an existing medical report of a person while all persons are listed.
+
+.. Prerequisites: At least one person in the list must have a medical report added. Two medical reports titled Asthma, dated 01-01-2018 and titled Depression, dated 02-02-2018 with report information have been added to person at index 1.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: Existing medical report titled Asthma and dated 01-01-2018 is edited for person at index 1. Message of medical report being successfully edited is shown.
+.. Test case: `editreport 0 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid command format will be shown.
+.. Other incorrect editreport commands to try: `editreport`, `editreport x` (where x is smaller than or equal to the list size) +
+   Expected: Similar to previous.
+.. Test case: `editreport x (where x is larger than the list size) ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid person index will be shown.
+.. Test case: `editreport 1 ot/ od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid title will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01012018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid date will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/ ` +
+   Expected: No medical report is edited. Message of invalid information will be shown.
+.. Test case: `editreport 1 ot/Flu od/03-03-2018 t/Cough d/03-03-2018 i/Prescribed AAA medicine, next appointment is on 04-04-2018.` +
+   Expected: No medical report is edited. Message of medical report not found will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of unable to edit existing report with the same title and date will be shown.
 
 === Saving data
 
@@ -1789,3 +2129,65 @@ Add 2 appointments each to the first 3 people using the following 6 commands: +
    Expected: The appointments on 16-09-2018 and before are deleted. A message that all appointments ending before or on the specified date have been successfully deleted is shown.
 .. Test case: `clearappts d/16-08-2018` +
    Expected: No appointments are deleted. An error message is shown telling the user that there are no appointments on or before the specified date to be deleted.
+
+=== Adding medical history to patient
+
+. Adding medical history to a non-existent patient
+
+.. Prerequisites: List all patients using the `list` command. Any number of patients allowed in the list.
+
+.. Test case: `addhist 9999999 hsd/10-10-2010` +
+Expected: No medical entry added to non-existent patient in the list. Error details shown in status message.
+
+. Adding medical history to existing patient
+
+.. Prerequisites: List all patients using the list command. Any number of patients allowed in the list.
+
+.. Test case: `addhist` +
+Expected: *FAIL* +
+Invalid command format. Error details shown in status message which includes instructions to follow proper format.
+
+.. Test case: `addhist 1 hsd/24/08/1993 hsa/Alcohol hsc/Kuwait hsds/d` +
+Expected: *FAIL* +
+Medical History not added due to wrong date format. Error details shown in status message.
+
+.. Test case: `addhist 1 hsd/24-08-1111 hsa/Alcohol hsc/Kuwait hsds/w` +
+Expected: *FAIL* +
+Medical History only supports dates after year 1900. Error details shown in status message.
+
+.. Test case: `addhist 1 hsd/24-08-2222 hsa/Alcohol hsc/Kuwait hsds/d` +
+Expected: *FAIL* +
+Medical History only supports dates today and before today. This updates with real time. Error details shown in status message.
+
+.. Test case: `addhist 1 hsd/24-08-1993 hsa/Alcohol hsc/Kuwait hsds/w` +
+Expected: *FAIL* +
+Invalid Discharge Status. Error details specifies valid discharge status for users to use.
+
+.. Test case: `addhist 1 hsd/08-11-2018 hsa/Alcohol hsc/Kuwait hsds/d` +
+Expected: *PASS* +
+Medical History entered for first patient on the list with date of 08-11-2018, alcohol allergy, Kuwait as last country visited and is currently discharged.
+
+. Editing medical history to a non-existent patient
+
+.. Prerequisites: List all patients using the `list` command. Any number of patients allowed in the list.
+
+.. Test case: `edithist 9999999 hsod/11-11-2011 hsd/10-10-2010` +
+Expected: *FAIL* +
+No medical entry added to non-existent patient in the list. Error details shown in status message.
+
+. Editing medical history to existing patient
+
+.. Prerequisites: List all patients using the `list` command. Any number of patients allowed in the list.
+
+.. Test case: `edithist 1 hsod/10-10-2010 hsd/20-05-2011 hsa/grass hsc/Canada hsds/e` +
+Expected: *FAIL* +
+If Medical History entry with date 10-10-2010 does not exist, error details will be shown in status message.
+
+.. Test case: `edithist 1 hsod/20-05-2011 hsd/08-11-2018 hsa/grass hsc/Canada hsds/e` +
+Expected: *FAIL* +
+If new date specified of Medical History to be edited already exists, error details will be shown in status message.
+
+.. Test case: `edithist 1 hsod/12-12-2012 hsd/05-05-2015 hsa/grass hsc/Canada hsds/e` +
+Expected: *PASS* +
+If previous Medical History entry exists, and new date specified is not used, the entry chosen will be
+edited with new date 05-05-2015, new allergy of grass and new previous country visited as Canada and the patient has expired.

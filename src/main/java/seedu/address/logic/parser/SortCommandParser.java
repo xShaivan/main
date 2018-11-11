@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ORDER;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PREFIX;
 
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -20,20 +22,45 @@ public class SortCommandParser implements Parser<SortCommand> {
      */
     public SortCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
+        if (trimmedArgs.isEmpty() || trimmedArgs.length() < 4) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
         String prefix = nameKeywords[0];
+        int order = Integer.parseInt(nameKeywords[1]);
 
-        if (prefix.isEmpty() || (nameKeywords[1]).isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+        if (order != 1 && order != 2) {
+            throw new ParseException(MESSAGE_INVALID_ORDER);
         }
 
-        int order = Integer.parseInt(nameKeywords[1]);
-        return new SortCommand(prefix, order);
+        /*
+        if (!(prefix.equals(PREFIX_NAME) || prefix.equals(PREFIX_PHONE) || prefix.equals(PREFIX_EMAIL) ||
+                prefix.equals(PREFIX_ADD_INFO_NRIC))) {
+            throw new ParseException(MESSAGE_INVALID_PREFIX);
+        }
+        */
+
+        switch (prefix) {
+        case "n/":
+            //name
+            return new SortCommand(prefix, order);
+
+        case "p/":
+            //phone
+            return new SortCommand(prefix, order);
+
+        case "e/":
+            //email
+            return new SortCommand(prefix, order);
+
+        case "ic/":
+            //NRIC
+            return new SortCommand(prefix, order);
+
+        default:
+            throw new ParseException(MESSAGE_INVALID_PREFIX);
+        }
     }
 }
