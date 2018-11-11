@@ -82,13 +82,14 @@ public class CommandTestUtil {
     // MedHistory
     public static final String VALID_HISTORY_DATE = "10-10-2010";
     public static final String VALID_HISTORY_DATE2 = "20-10-2010";
+    public static final String VALID_HISTORY_OLD_DATE = "10-10-1990";
     public static final String VALID_HISTORY_ALLERGY = "Pollen";
     public static final String VALID_HISTORY_ALLERGY2 = "Alcohol";
     public static final String VALID_HISTORY_COUNTRY = "USA";
     public static final String VALID_HISTORY_COUNTRY2 = "Russia";
     public static final String VALID_HISTORY_DISCHARGE_STATUS = "d";
     public static final String VALID_HISTORY_DISCHARGE_STATUS2 = "a";
-    //public static final String VALID_HISTORY_DISCHARGE_STATUS3 = "Patient has expired.";
+    public static final String INVALID_HISTORY_DATE = "10-10-2020";
 
     //Medical Report
     public static final String VALID_TITLE1 = "Asthma";

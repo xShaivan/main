@@ -26,6 +26,7 @@ import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.model.person.Person;
+import seedu.address.model.util.DateTimeUtil;
 
 //@@author xShaivan
 /**
@@ -60,6 +61,8 @@ public class EditHistCommand extends Command {
             "One field must be specified for editing. Please include at least one field to edit.";
     public static final String MESSAGE_DUPLICATE_MEDHISTDATE =
             "The new date you have specified is already taken. Please edit that entry instead.";
+    public static final String MESSAGE_INVALID_MEDHISTDATE =
+            "New Medical History date entries must be today or before the current day.";
 
     private final Index index;
     private final MedHistDate medHistDate;
@@ -102,6 +105,10 @@ public class EditHistCommand extends Command {
             if (isDuplicateMedHistDate(fullmedHistory, editedMedHistory)) {
                 throw new CommandException(MESSAGE_DUPLICATE_MEDHISTDATE);
             }
+        }
+
+        if (DateTimeUtil.isInvalidEditMedHistDate(editHistDescriptor)) {
+            throw new CommandException(MESSAGE_INVALID_MEDHISTDATE);
         }
 
         medHistoriesCopy.add(editedMedHistory);

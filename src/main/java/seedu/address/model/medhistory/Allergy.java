@@ -12,9 +12,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Allergy {
 
     public static final String MESSAGE_ALLERGY_CONSTRAINTS =
-            "Allergy must not be left blank.";
+            "Allergy can only contain alphanumeric characters, whitespaces, commas and periods.";
 
-    public static final String ALLERGY_VALIDATION_REGEX = "[\\p{Alnum}\\p{Space}]*";
+    public static final String ALLERGY_VALIDATION_REGEX = "[\\p{Alnum}\\p{Space},.]*";
 
     public final String value;
 
