@@ -464,25 +464,26 @@ image::EditHistSequenceDiagram.png[width="800"]
 === AddAppointment feature
 ==== Current Implementation
 
-The addappt mechanism is facilitated by `VersionedAddressBook`.
+The addappt mechanism is facilitated by `AddressBook` and `VersionedAddressBook`. It implements the following operations:
 
-Additionally, it implements the following operations:
+* `AddressBook#getFilteredPersonList()` -- Obtains the entire current list of patients that is being displayed to the user
+* `AddressBook#updatePerson()` -- Updates the specified person with the new data.
+* `AddressBook#updateFilteredPersonList()` -- Shows a filtered list of patients.
+* `VersionedAddressBook#commit()` -- Updates the specified patient with the new data.
 
-* `Model#getFilteredPersonList()` -- Obtains the entire current list of persons that is being displayed to the user
-* `VersionedAddressBook#updatePerson()` -- Updates the specified person with the new data.
-* indicateAddressBookChanged() -- Raises an event to indicate the AddressBook in the model has changed
-
-These operations are exposed in the `Model` interface as `Model#updatePerson()`, `Model#updateFilteredPersonList()` and `Model#commitAddressBook()` respectively.
+These operations are exposed in the `Model` interface as `Model#getFilteredPersonList()`, `Model#updatePerson()`, `Model#updateFilteredPersonList()` and `Model#commitAddressBook()` respectively.
 
 Given below is an example usage scenario and how the addappt mechanism behaves at each step.
 
-Step 1. The user launches the application. If it is the first time he/she is launching it, the `VersionedAddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `VersionedAddressBook` will be launched with the data he has previously saved in his previous launch.
+Step 1. The user launches the application. If it is the first time he/she is launching it, the `AddressBook` will be initialized with a sample address book data. If he/she has launched it and has made changes before, the `AddressBook` will be launched with the data he has previously saved in his previous launch.
 
-Step 2. The user executes `addappt 1 s/16/09/2018 1500 e/16/09/2018 1530 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` command to add an appointment to the 1st person in the list that the address book is currently showing. The `addappt` command obtains the data of the person that the user is trying to change based on the index that the user has input.
+Step 2. The user executes `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` command to add an appointment to the 1st patient in the list that the address book is currently showing. The `addappt` command obtains the data of the patient that the user is trying to update by calling `Model#getFilteredPersonList()` and getting the patient's data based on the index the user has provided.
 
-Step 3. The `addappt` command will obtain the set of appointments that the person previously had, copy it to a new set of appointments, and add the appointment which the user wants to add into the new set.
+Step 3. The `addappt` command will first check if there is an invalid appointment given i.e. end date and time before start date and time, and also if there is an appointment timing clash between the appointment to be added and existing appointments for the patient. If there are such cases, a CommandException will be thrown with the appropriate message to be shown in the GUI.
 
-Step 4. The `addappt` command will call `Model#updatePerson()` to update the person with this new set of appointments. The `addappt` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user. Lastly, the `addappt` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
+Step 4. The `addappt` command will obtain the patient's existing set of appointments, copy it to a new set of appointments, and add the appointment which the user wants to add into the new set.
+
+Step 5. The `addappt` command will call `Model#updatePerson()` to update the patient with this new set of appointments. The `addappt` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user to show all patients. Lastly, the `addappt` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
 The following sequence diagram shows how the addappt operation works:
 
