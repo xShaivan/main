@@ -17,6 +17,7 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all persons by specified prefix in either "
             + "lexicographical or reverse order and display as a list with index numbers.\n"
+            + "An empty NRIC field will leave patients at the top of the list while sorting by alphabetical order.\n"
             + "Parameters:  PREFIX/ ORDER_INDEX \n"
             + "Example: " + COMMAND_WORD + " p/ 2 \n"
             + "Available prefixes:\t n/ (Name)\t p/ (Phone)\t e/ (Email)\t\t ic/ (Nric)\n"

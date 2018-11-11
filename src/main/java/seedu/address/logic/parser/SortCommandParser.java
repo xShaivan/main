@@ -3,10 +3,6 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ORDER;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PREFIX;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -46,15 +42,23 @@ public class SortCommandParser implements Parser<SortCommand> {
         }
         */
 
-        switch (prefix){
+        switch (prefix) {
         case "n/":
-                return new SortCommand(prefix, order);
+            //name
+            return new SortCommand(prefix, order);
+
         case "p/":
+            //phone
             return new SortCommand(prefix, order);
+
         case "e/":
+            //email
             return new SortCommand(prefix, order);
-        case "i/":
+
+        case "ic/":
+            //NRIC
             return new SortCommand(prefix, order);
+
         default:
             throw new ParseException(MESSAGE_INVALID_PREFIX);
         }
