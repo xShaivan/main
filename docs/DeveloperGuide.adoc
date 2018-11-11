@@ -1408,10 +1408,10 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1d. User enters an appointment with the end time before or equal to the start time.
+* 1d. User enters an appointment with the end date and time before or equal to the start date and time.
 +
 [none]
-** 1d1. System shows an error message that the end time for an appointment needs to be after the start time.
+** 1d1. System shows an error message that the end date and time for an appointment needs to be after the start date and time.
 +
 Use case ends.
 
@@ -1460,10 +1460,10 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1e. User edits an appointment to have the end time before or equal to the start time.
+* 1e. User edits an appointment to have the end date and time before or equal to the start date and time.
 +
 [none]
-** 1e1. System shows an error message that the end time for an appointment needs to be after the start time.
+** 1e1. System shows an error message that the end date and time for an appointment needs to be after the start date and time.
 +
 Use case ends.
 
