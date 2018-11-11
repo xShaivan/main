@@ -357,9 +357,12 @@ public class ParserUtil {
      * @throws ParseException if the given {@code prevCountry} is invalid.
      * ParseException is omitted for now.
      */
-    public static PrevCountry parsePrevCountry(String prevCountry) {
+    public static PrevCountry parsePrevCountry(String prevCountry) throws ParseException {
         requireNonNull(prevCountry);
         String trimmedPrevCountry = prevCountry.trim();
+        if (!PrevCountry.isValidPrevCountry(trimmedPrevCountry)) {
+            throw new ParseException(PrevCountry.MESSAGE_PREVCOUNTRY_CONSTRAINTS);
+        }
 
         return new PrevCountry(trimmedPrevCountry);
     }

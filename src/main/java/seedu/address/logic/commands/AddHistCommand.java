@@ -7,8 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HISTORY_DISCHARGE_STATUS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -36,6 +34,7 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.util.DateTimeUtil;
 
 //@@author xShaivan
 /**
@@ -102,7 +101,7 @@ public class AddHistCommand extends Command {
             }
         }
 
-        if (isInvalidMedHistDate(medHistory)) {
+        if (DateTimeUtil.isInvalidMedHistDate(medHistory)) {
             throw new CommandException(MESSAGE_INVALID_MEDHISTDATE);
         }
 
@@ -122,7 +121,7 @@ public class AddHistCommand extends Command {
     /**
      * This method checks if input has a duplicate for the patient.
      */
-    private boolean isDuplicateMedHistory(MedHistory medHistory1, MedHistory medHistory2) {
+    public static boolean isDuplicateMedHistory(MedHistory medHistory1, MedHistory medHistory2) {
         String allergy1 = medHistory1.getAllergy().toString();
         String allergy2 = medHistory2.getAllergy().toString();
         String medHistDate1 = medHistory1.getMedHistDate().toString();
@@ -139,24 +138,13 @@ public class AddHistCommand extends Command {
     /**
      * This method checks if input has a duplicate medical history date.
      */
-    private boolean isDuplicateMedHistDate(MedHistory medHistory1, MedHistory medHistory2) {
+    public static boolean isDuplicateMedHistDate(MedHistory medHistory1, MedHistory medHistory2) {
         String medHistDate1 = medHistory1.getMedHistDate().toString();
         String medHistDate2 = medHistory2.getMedHistDate().toString();
 
         return (medHistDate1.equals(medHistDate2));
     }
 
-    /**
-     * This method checks if input has a duplicate medical history date.
-     */
-    private boolean isInvalidMedHistDate(MedHistory medHistory) {
-        LocalDate localDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        LocalDate inputDate = LocalDate.parse(medHistory.getMedHistDate().toString(), formatter);
-
-        return (inputDate.isAfter(localDate));
-    }
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
