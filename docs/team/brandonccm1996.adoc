@@ -14,10 +14,10 @@ This portfolio serves to document my technical and non-technical contributions f
 
 == Overview
 
-Health Book is an application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. A Command Line Interface (CLI) is utilized mainly for the input, while a Graphical User Interface (GUI) is used to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
-
-.GUI of Health Book
+.User interface of Health Book
 image::../images/Ui.png[width="600"]
+
+Health Book is an application that is catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information all in one place. A Command Line Interface (CLI) is utilized mainly for the input, while a Graphical User Interface (GUI) is used to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
 
 Health Book includes a variety of features to make administrative tasks easier for healthcare professionals. These include:
 
@@ -34,7 +34,7 @@ Our team developing Health Book comprised of a Project Manager, Development Lead
 == Summary of contributions
 
 |===
-|_This section documents my main contributions to the Health Book application. This showcases my ability to write functional and test code to enhance an application, and to manage a project and perform in a team setting._
+|_This section documents my main contributions to the Health Book application. This showcases my ability to write functional and test code to enhance an application, manage a project and perform in a team setting._
 |===
 
 * *Major enhancement*: incorporated a feature to *add, view, edit and delete appointments for a patient*

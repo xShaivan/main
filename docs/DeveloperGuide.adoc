@@ -480,14 +480,24 @@ Step 1. The user launches the application. If it is the first time he/she is lau
 
 Step 2. The user executes `addappt 1 s/16/09/2018 1500 e/16/09/2018 1530 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` command to add an appointment to the 1st person in the list that the address book is currently showing. The `addappt` command obtains the data of the person that the user is trying to change based on the index that the user has input.
 
-Step 3. The `addappt` command will obtain the set of appts that the person previously had, copy it to a new set of appts, and add the appt which the user wants to add into the new set.
+Step 3. The `addappt` command will obtain the set of appointments that the person previously had, copy it to a new set of appointments, and add the appointment which the user wants to add into the new set.
 
-Step 4. The `addappt` command will call `Model#updatePerson()` to update the person with this new set of appts. The `addappt` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user. Lastly, the `addappt` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
+Step 4. The `addappt` command will call `Model#updatePerson()` to update the person with this new set of appointments. The `addappt` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user. Lastly, the `addappt` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
 The following sequence diagram shows how the addappt operation works:
 
 .Sequence diagram for addappt operation
 image::AddApptSequenceDiagram.png[width="800"]
+
+==== Design Considerations
+===== Aspect: Data structure to store appointments
+* **Alternative 1 (current choice):** Use a Treeset with a comparator function to store appointments in order of start time
+** Pros: Easy to display through the information panel as appointments can be shown through a JavaFX VBox, which automatically resizes based on how many appointments the specified patient has
+** Cons: The Treeset storing the appointments can be modified easily wherever it is passed, thus violating the observer pattern. Care must be taken not to modify the treeset inappropriately.
+* **Alternative 2:** Use an ObservableList to store appointments
+** Pros: Makes use of the observer pattern to pass an unmodifiable ObservableList to wherever it is needed, thus preventing inappropriate modification.
+** Cons: Must be displayed through a JavaFX ListView, which is difficult to resize based on how many appointments the specified patient has, thus hampering user experience.
+
 // end::addappt[]
 
 // tag::addreport[]
