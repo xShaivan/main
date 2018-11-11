@@ -6,6 +6,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
+import seedu.address.logic.commands.EditHistCommand;
+import seedu.address.model.medhistory.MedHistory;
+
 /**
  * Helper functions for LocalDate and LocalDateTime conversion to and from String
  */
@@ -16,7 +19,6 @@ public class DateTimeUtil {
 
     public static final String DATE_TIME_CONSTRAINTS =
             "Date and Time should be of the format: " + "DD-MM-YYYY HH:MM";
-    public static final String DATE_TIME_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.";
     public static final String DATE_TIME_VALIDATION_REGEX =
             "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
 
@@ -107,5 +109,29 @@ public class DateTimeUtil {
         } catch (DateTimeParseException e) {
             throw new DateTimeParseException(e.getMessage(), e.getParsedString(), e.getErrorIndex());
         }
+    }
+
+    /**
+     * This method checks if input has a duplicate medical history date for addhist command.
+     */
+    public static boolean isInvalidMedHistDate(MedHistory medHistory) {
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        LocalDate inputDate = LocalDate.parse(medHistory.getMedHistDate().toString(), formatter);
+
+        return (inputDate.isAfter(localDate));
+    }
+
+    /**
+     * This method checks if input has a duplicate medical history date for edithist command.
+     */
+    public static boolean isInvalidEditMedHistDate(EditHistCommand.EditHistDescriptor editHistDescriptor) {
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        LocalDate inputDate = LocalDate.parse(editHistDescriptor.getMedHistDate().toString(), formatter);
+
+        return (inputDate.isAfter(localDate));
     }
 }

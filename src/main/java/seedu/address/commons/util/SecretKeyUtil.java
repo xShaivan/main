@@ -3,7 +3,6 @@ package seedu.address.commons.util;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -31,17 +30,6 @@ public class SecretKeyUtil {
             e.printStackTrace();
         }
         return keyGenerator.generateKey();
-    }
-
-    /**
-     * Converts a {@code SecretKey} to a {@code String}
-     */
-    public static String keyToString(SecretKey secretKey) {
-        byte[] encoded = secretKey.getEncoded();
-
-        String encodeToString = Base64.getEncoder().encodeToString(encoded);
-
-        return encodeToString;
     }
 
     /**

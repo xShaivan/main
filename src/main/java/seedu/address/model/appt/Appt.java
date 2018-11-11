@@ -1,4 +1,4 @@
-package seedu.address.model.timetable;
+package seedu.address.model.appt;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 

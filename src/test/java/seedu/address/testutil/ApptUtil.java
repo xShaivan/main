@@ -8,7 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_VENUE;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import seedu.address.logic.commands.AddApptCommand;
-import seedu.address.model.timetable.Appt;
+import seedu.address.model.appt.Appt;
 
 //@@author brandonccm1996
 /**

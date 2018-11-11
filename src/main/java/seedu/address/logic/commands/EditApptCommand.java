@@ -21,13 +21,13 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
+import seedu.address.model.appt.ApptDateTime;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 import seedu.address.model.person.Person;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
-import seedu.address.model.timetable.ApptDateTime;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
 
 //@@author brandonccm1996
 /**
@@ -224,7 +224,7 @@ public class EditApptCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(apptStart, apptEnd, apptVenue, apptVenue, apptDrName);
+            return CollectionUtil.isAnyNonNull(apptStart, apptEnd, apptVenue, apptInfo, apptDrName);
         }
 
         public void setStart(ApptDateTime apptStart) {

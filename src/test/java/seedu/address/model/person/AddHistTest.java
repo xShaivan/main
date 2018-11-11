@@ -3,6 +3,7 @@ package seedu.address.model.person;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_ALLERGY2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_COUNTRY2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HISTORY_DATE2;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
@@ -11,6 +12,7 @@ import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
 import org.junit.Test;
 
 import seedu.address.model.medhistory.MedHistory;
+import seedu.address.model.medhistory.PrevCountry;
 import seedu.address.testutil.MedHistoryBuilder;
 
 //@@author xShaivan
@@ -47,10 +49,7 @@ public class AddHistTest {
         editedMedHistory1 = new MedHistoryBuilder(MEDHISTORY1).withPrevCountry(VALID_HISTORY_COUNTRY2).build();
         assertFalse(MEDHISTORY1.equals(editedMedHistory1));
 
-        // different dischargeStatus -> returns false
-        // currently omitted due to assertion error
-        /*editedMedHistory1 =
-                new MedHistoryBuilder(MEDHISTORY1).withDischargeStatus(VALID_HISTORY_DISCHARGE_STATUS2).build();
-        assertFalse(MEDHISTORY1.equals(editedMedHistory1));*/
+        // matches regex of prevCountry -> returns true
+        assertTrue(VALID_HISTORY_COUNTRY.matches(PrevCountry.PREVCOUNTRY_VALIDATION_REGEX));
     }
 }
