@@ -42,7 +42,7 @@ public class EditApptCommand extends Command {
             + " and the start time provided. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_APPT_ORIGINAL_START + "ORIGINAL START"
+            + PREFIX_APPT_ORIGINAL_START + "ORIGINAL START "
             + "[" + PREFIX_APPT_START + "START] "
             + "[" + PREFIX_APPT_END + "END] "
             + "[" + PREFIX_APPT_VENUE + "VENUE] "
