@@ -11,11 +11,11 @@ import org.junit.Test;
 import seedu.address.testutil.Assert;
 
 public class DateTimeUtilTest {
-    public static final String INCORRECT_DATE = "01-01-1899";
-    public static final String INVALID_DATE = "01/30/1970";
+    private static final String INCORRECT_DATE = "01-01-1899";
+    private static final String INVALID_DATE = "01/30/1970";
 
-    public static final String INCORRECT_DATE_TIME = "01-01-1899 00:00";
-    public static final String INVALID_DATE_TIME = "01-01-1970: 80:20";
+    private static final String INCORRECT_DATE_TIME = "01-01-1899 00:00";
+    private static final String INVALID_DATE_TIME = "01-01-1970: 80:20";
 
 
     @Test
