@@ -25,9 +25,9 @@ import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddApptCommand;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 import seedu.address.testutil.ApptBuilder;
 
 //@@author brandonccm1996
@@ -39,8 +39,7 @@ public class AddApptCommandParserTest {
     private Index targetIndex = INDEX_FIRST_PERSON;
 
     @Test
-    public void parseIndexSpecifiedWithAllCompulsoryFieldsSuccess() {
-        // have appt
+    public void parse_indexSpecifiedWithAllCompulsoryFields_success() {
         AddApptCommand expectedCommand = new AddApptCommand(INDEX_FIRST_PERSON, new ApptBuilder().build());
         assertParseSuccess(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
@@ -48,9 +47,9 @@ public class AddApptCommandParserTest {
     }
 
     @Test
-    public void parseMissingCompulsoryFieldFailure() {
+    public void parse_missingCompulsoryField_failure() {
         // no parameters
-        assertParseFailure(parser, AddApptCommand.COMMAND_WORD, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, " ", MESSAGE_INVALID_FORMAT);
 
         // missing index
         assertParseFailure(parser, VALID_START_APPT_WPREFIX + VALID_END_APPT_WPREFIX
@@ -84,7 +83,7 @@ public class AddApptCommandParserTest {
     }
 
     @Test
-    public void parseInvalidValueFailure() {
+    public void parse_invalidValue_failure() {
         // invalid appt start
         assertParseFailure(parser, targetIndex.getOneBased() + INVALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
@@ -98,21 +97,21 @@ public class AddApptCommandParserTest {
         // invalid appt venue
         assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + INVALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
-                + VALID_DRNAME_APPT_WPREFIX, ApptVenue.MESSAGE_NAME_CONSTRAINTS);
+                + VALID_DRNAME_APPT_WPREFIX, ApptVenue.MESSAGE_VENUE_CONSTRAINTS);
 
         // invalid appt info
         assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + INVALID_INFO_APPT_WPREFIX
-                + VALID_DRNAME_APPT_WPREFIX, ApptInfo.MESSAGE_NAME_CONSTRAINTS);
+                + VALID_DRNAME_APPT_WPREFIX, ApptInfo.MESSAGE_INFO_CONSTRAINTS);
 
         // invalid appt dr name
         assertParseFailure(parser, targetIndex.getOneBased() + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
-                + INVALID_DRNAME_APPT_WPREFIX, ApptDrName.MESSAGE_NAME_CONSTRAINTS);
+                + INVALID_DRNAME_APPT_WPREFIX, ApptDrName.MESSAGE_DRNAME_CONSTRAINTS);
     }
 
     @Test
-    public void parseInvalidIndexFailure() {
+    public void parse_invalidIndex_failure() {
         // negative index
         assertParseFailure(parser, "-2" + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
@@ -120,6 +119,11 @@ public class AddApptCommandParserTest {
 
         // zero index
         assertParseFailure(parser, "0" + VALID_START_APPT_WPREFIX
+                + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
+                + VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
+
+        // non-numeric index
+        assertParseFailure(parser, "a" + VALID_START_APPT_WPREFIX
                 + VALID_END_APPT_WPREFIX + VALID_VENUE_APPT_WPREFIX + VALID_INFO_APPT_WPREFIX
                 + VALID_DRNAME_APPT_WPREFIX, MESSAGE_INVALID_FORMAT);
     }

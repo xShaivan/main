@@ -13,6 +13,8 @@ import java.util.TreeSet;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
@@ -31,8 +33,6 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
 
 /**
  * Parses input arguments and creates a new AddCommand object

@@ -102,9 +102,11 @@ public class CommandTestUtil {
     public static final String VALID_START_APPT1 = "01-01-2018 14:00";
     public static final String VALID_START_APPT2 = "02-02-2018 15:00";
     public static final String VALID_START_APPT3 = "03-03-2018 16:00";
+    public static final String VALID_START_APPT4 = "03-03-2018 15:30";
     public static final String VALID_END_APPT1 = "01-01-2018 15:00";
     public static final String VALID_END_APPT2 = "02-02-2018 16:00";
     public static final String VALID_END_APPT3 = "03-03-2018 17:00";
+    public static final String VALID_END_APPT4 = "03-03-2018 16:30";
     public static final String VALID_VENUE_APPT1 = "Consultation Room 1";
     public static final String VALID_VENUE_APPT2 = "Consultation Room 2";
     public static final String VALID_VENUE_APPT3 = "Consultation Room 3";

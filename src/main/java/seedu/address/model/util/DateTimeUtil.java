@@ -16,7 +16,6 @@ public class DateTimeUtil {
 
     public static final String DATE_TIME_CONSTRAINTS =
             "Date and Time should be of the format: " + "DD-MM-YYYY HH:MM";
-    public static final String DATE_TIME_VALUE_EXCEEDED = "Only dates falling on the year 1900 or later are allowed.";
     public static final String DATE_TIME_VALIDATION_REGEX =
             "[0-9]{2}" + "[-]" + "[0-9]{2}" + "[-]" + "[0-9]{4}" + "[ ]" + "[0-9]{2}" + "[:]" + "[0-9]{2}";
 

@@ -14,6 +14,11 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.appt.ApptDate;
+import seedu.address.model.appt.ApptDateTime;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 import seedu.address.model.medhistory.Allergy;
 import seedu.address.model.medhistory.DischargeStatus;
 import seedu.address.model.medhistory.DischargeStatusEnum;
@@ -35,10 +40,6 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.timetable.ApptDateTime;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
 import seedu.address.model.util.DateTimeUtil;
 
 /**
@@ -452,6 +453,29 @@ public class ParserUtil {
      */
 
     /**
+     * Parses a {@code String apptDate} into an {@code ApptDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code apptDate} is invalid.
+     */
+    public static ApptDate parseApptDate(String apptDate) throws ParseException {
+        requireNonNull(apptDate);
+        String trimmedApptDate = apptDate.trim();
+
+        if (!ApptDate.isValidDate(trimmedApptDate)) {
+            throw new ParseException(DATE_CONSTRAINTS);
+        }
+
+        try {
+            DateTimeUtil.isCorrectDate(trimmedApptDate);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
+        }
+
+        return new ApptDate(trimmedApptDate);
+    }
+
+    /**
      * Parses a {@code String apptDateTime} into an {@code ApptDateTime}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -484,7 +508,7 @@ public class ParserUtil {
         requireNonNull(apptVenue);
         String trimmedApptVenue = apptVenue.trim();
         if (!ApptVenue.isValidVenue(apptVenue)) {
-            throw new ParseException(ApptVenue.MESSAGE_NAME_CONSTRAINTS);
+            throw new ParseException(ApptVenue.MESSAGE_VENUE_CONSTRAINTS);
         }
         return new ApptVenue(trimmedApptVenue);
     }
@@ -499,7 +523,7 @@ public class ParserUtil {
         requireNonNull(apptInfo);
         String trimmedApptInfo = apptInfo.trim();
         if (!ApptInfo.isValidApptInfo(apptInfo)) {
-            throw new ParseException(ApptInfo.MESSAGE_NAME_CONSTRAINTS);
+            throw new ParseException(ApptInfo.MESSAGE_INFO_CONSTRAINTS);
         }
         return new ApptInfo(trimmedApptInfo);
     }
@@ -514,7 +538,7 @@ public class ParserUtil {
         requireNonNull(apptDrName);
         String trimmedApptDrName = apptDrName.trim();
         if (!ApptDrName.isValidDrName(apptDrName)) {
-            throw new ParseException(ApptDrName.MESSAGE_NAME_CONSTRAINTS);
+            throw new ParseException(ApptDrName.MESSAGE_DRNAME_CONSTRAINTS);
         }
         return new ApptDrName(trimmedApptDrName);
     }
