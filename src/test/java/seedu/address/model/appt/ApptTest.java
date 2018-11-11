@@ -1,4 +1,4 @@
-package seedu.address.model.timetable;
+package seedu.address.model.appt;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -13,9 +13,16 @@ import static seedu.address.testutil.TypicalAppts.APPT_EXAMPLE2;
 import org.junit.Test;
 
 import seedu.address.testutil.ApptBuilder;
+import seedu.address.testutil.Assert;
 
 //@@author brandonccm1996
 public class ApptTest {
+
+    @Test
+    public void constructor_null_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () ->
+                new Appt(null, null, null, null, null));
+    }
 
     @Test
     public void equals() {
