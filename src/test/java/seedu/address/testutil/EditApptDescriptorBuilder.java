@@ -1,10 +1,10 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.EditApptCommand.EditApptDescriptor;
-import seedu.address.model.timetable.ApptDateTime;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
+import seedu.address.model.appt.ApptDateTime;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 
 /**
  * A utility class to help with building EditApptDescriptor objects

@@ -22,7 +22,7 @@ import org.junit.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditApptCommand;
 import seedu.address.logic.commands.EditApptCommand.EditApptDescriptor;
-import seedu.address.model.timetable.ApptDateTime;
+import seedu.address.model.appt.ApptDateTime;
 import seedu.address.testutil.EditApptDescriptorBuilder;
 
 public class EditApptCommandParserTest {

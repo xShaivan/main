@@ -34,17 +34,6 @@ public class SecretKeyUtil {
     }
 
     /**
-     * Converts a {@code SecretKey} to a {@code String}
-     */
-    public static String keyToString(SecretKey secretKey) {
-        byte[] encoded = secretKey.getEncoded();
-
-        String encodeToString = Base64.getEncoder().encodeToString(encoded);
-
-        return encodeToString;
-    }
-
-    /**
      * Converts a {@code SecretKey} into {@code file}
      * @param secretKey to be converted
      * @param fileName used to save the {@code SecretKey}
