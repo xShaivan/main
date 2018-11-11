@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY_INVALID_DATE;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -22,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.util.DateTimeUtil;
 import seedu.address.testutil.PersonBuilder;
 
 //@@author xShaivan
@@ -169,5 +171,13 @@ public class AddHistCommandTest {
         assertFalse(AddHistCommand.isDuplicateMedHistDate(MEDHISTORY1, MEDHISTORY2));
         // duplicate Medical History Date -> returns true
         assertTrue(AddHistCommand.isDuplicateMedHistDate(MEDHISTORY1, MEDHISTORY1));
+    }
+
+    @Test
+    public void isInvalidMedHistDate() {
+        // not invalid Medical History Date -> returns false
+        assertFalse(DateTimeUtil.isInvalidMedHistDate(MEDHISTORY1));
+        // invalid Medical History Date -> returns true
+        assertTrue(DateTimeUtil.isInvalidMedHistDate(MEDHISTORY_INVALID_DATE));
     }
 }
