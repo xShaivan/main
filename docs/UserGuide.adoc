@@ -285,13 +285,17 @@ Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in
 // end::apptcommands[]
 
 // tag::addinfocommands[]
-=== Adding additional information of patient: `addinfo`
+=== Adding Additional Information of Patient: `addinfo`
 
-Add the following additional information: NRIC, DOB (in DDMMYYYY format), height (cm), weight (kg),
-gender, occupation, marital status, family member. +
-Note: age field will be auto-calculated once DOB is populated +
-Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION]`
+Add/Edit the following additional information: NRIC, Date Of Birth (in DD-MMY-YYY format), height (cm), weight (kg),
+gender, occupation, and marital status. +
 
+[NOTE]
+`age` field will be auto-calculated once Date Of Birth is populated. +
+
+Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION] [m/MARITAL_STATUS]`
+
+****
 .Constraints for `[i/NRIC]`:
 * Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
 * NRIC input must comply to ICA's NRIC checksum algorithm
@@ -320,14 +324,21 @@ Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOO
 .Constraints for `[o/OCCUPATION]`
 * Must not contain any numeric and special characters including whitespaces (Eg. Nurse and Doctor or Wood-Logger are not accepted input).
 
-Work In Progress: `[m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]`
+.Constraints for `[m/MARITAL_STATUS]`
+* Must be either `M` for Married, `S` for Single or `D` for Divorced.
+****
+
+[NOTE]
+The `addinfo` command not only adds, but also edits the additional information of each patient by overwriting existing information. For instance, if a patient already has the `NRIC` data, running `addinfo [PATIENT_INDEX] i/S9696531A` will overwrite the existing `NRIC` data with `S9696531A`.
 
 Examples:
 
 * `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M` +
-For patient in index 2, populate NRIC field with S91234567A, date of birth field
+For patient at index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male.
 // end::addinfocommands[]
+* `addinfo 1 d/31-12-2001 o/Doctor b/AB+ m/M` +
+For patient at index 1 populate the date of birth field with 31-12-2001, occupation with doctor, blood type with AB+ and marital status as married.
 
 // tag::reportcommands[]
 === Adding of Medical Report: `addreport`
@@ -444,7 +455,7 @@ Example:
 * `encrypt` +
 Depending on the current setting of encryption, this will toggle on or off the encryption. Refer message box to understand if encryption has been toggled on or off.
 
-
+image::encryption.png[width="800"]
 // end::encryption[]
 
 

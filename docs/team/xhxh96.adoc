@@ -50,6 +50,8 @@ The application is fully written in Java, allowing cross-platform compatibility.
 
 include::../UserGuide.adoc[tag=addinfocommands]
 
+include::../UserGuide.adoc[tag=encryption]
+
 == Contributions to the Developer Guide
 
 |===
