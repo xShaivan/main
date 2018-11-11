@@ -1408,10 +1408,10 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1d. User enters an appointment with the end time before or equal to the start time.
+* 1d. User enters an appointment with the end date and time before or equal to the start date and time.
 +
 [none]
-** 1d1. System shows an error message that the end time for an appointment needs to be after the start time.
+** 1d1. System shows an error message that the end date and time for an appointment needs to be after the start date and time.
 +
 Use case ends.
 
@@ -1460,10 +1460,10 @@ Use case ends.
 Use case ends.
 
 [none]
-* 1e. User edits an appointment to have the end time before or equal to the start time.
+* 1e. User edits an appointment to have the end date and time before or equal to the start date and time.
 +
 [none]
-** 1e1. System shows an error message that the end time for an appointment needs to be after the start time.
+** 1e1. System shows an error message that the end date and time for an appointment needs to be after the start date and time.
 +
 Use case ends.
 
@@ -2055,23 +2055,23 @@ _{ more test cases ... }_
 
 . Adding an appointment to a patient while all patients are listed
 
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first patient does not have any appointments.
 .. Test case: `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: An appointment from 16-09-2018 15:00 to 16-09-2018 15:30 at Consultation Room 12 for a Diabetes Checkup by Dr Tan is added to the patient at index 1 in the list. A message that the appointment is successfully added is shown.
 .. Test case: `addappt 0 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: No appointment is added to any patient. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `addappt`.
-.. Other incorrect `addappt` commands to try: `addappt`, `addappt x` (where x is smaller than the list size), `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
+.. Other incorrect `addappt` commands to try: `addappt`, `addappt x` (where x is any integer), `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
    Expected: Similar to previous.
 .. Test case: `addappt x s/16-09-2018 17:00 e/16-09-2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` (where x is larger than the list size) +
    Expected: No appointment is added to any patient. An error message is shown telling the user that the index provided is invalid.
 .. Test case: `addappt 1 s/16/09/2018 18:00 e/16/09/2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
-   Expected: No appointment is added to any patient. An error message is shown telling the user that the date and time must be dd/mm/yyyy hh:mm.
+   Expected: No appointment is added to any patient. An error message is shown telling the user that the date and time must be DD-MM-YYYY HH:MM.
 .. Test case: `addappt 1 s/16-09-2018 18:00 e/16-09-2018 17:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: No appointment is added to any patient. An error message is shown telling the user that the end date and time of an appointment must be after the start date and time.
 
 . Adding an appointment to a patient with existing appointments
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
-Add an appointment to the first person using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+.. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first patient does not have any appointments. +
+Add an appointment to the first patient using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 .. Test case: `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: No appointment is added to any patient. An error message is shown telling the user that the appointment he/she is adding clashes with the timing of another appointment for the patient.
 .. Test case: `addappt 1 s/16-09-2018 15:30 e/16-09-2018 16:00 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
@@ -2080,13 +2080,13 @@ Add an appointment to the first person using the command `addappt 1 s/16-09-2018
 === Editing appointment for a patient
 
 . Editing an appointment for a patient while all patients are listed
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
+.. Prerequisites: List all patients using the `list` command. Multiple persons in the list. Ensure that the first patient does not have any appointments. +
 Add 2 appointments to the first person using the following 2 commands: +
 * `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` and +
 * `addappt 1 s/16-09-2018 16:00 e/16-09-2018 16:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 .. Test case: `editappt 0 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
    Expected: No appointment is edited. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `editappt`.
-.. Other incorrect `editappt` commands to try: `editappt`, `editappt x` (where x is smaller than the list size), `editappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
+.. Other incorrect `editappt` commands to try: `editappt`, `editappt x` (where x is any integer), `editappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
    Expected: Similar to previous.
 .. Test case: `editappt 1 os/16-09-2018 15:00` +
    Expected: No appointment is updated. An error message is shown telling the user that at least one field to edit must be provided.
@@ -2102,11 +2102,11 @@ Add 2 appointments to the first person using the following 2 commands: +
 === Deleting appointment for a patient
 
 . Deleting an appointment for a patient while all patients are listed
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
-Add an appointment to the first person using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+.. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first patient does not have any appointments. +
+Add an appointment to the first patient using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 .. Test case: `deleteappt 0 s/16-09-2018 15:00` +
    Expected: No appointment is deleted. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `deleteappt`.
-.. Other incorrect `deleteappt` commands to try: `deleteappt`, `deleteappt x` (where x is smaller than the list size) +
+.. Other incorrect `deleteappt` commands to try: `deleteappt`, `deleteappt x` (where x is any integer) +
    Expected: Similar to previous.
 .. Test case: `deleteappt 1 s/17-09-2018 15:00` +
    Expected: No appointment is deleted. An error message is shown telling the user that the appointment he/she is trying to delete cannot be found for the patient.
@@ -2116,8 +2116,8 @@ Add an appointment to the first person using the command `addappt 1 s/16-09-2018
 === Clearing appointments for all patients
 
 . Clearing appointments for all patients while all patients are listed
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
-Add 2 appointments each to the first 3 people using the following 6 commands: +
+.. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first 3 patients do not have any appointments. +
+Add 2 appointments each to the first 3 patients using the following 6 commands: +
 * `addappt 1 s/15-09-2018 15:00 e/15-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
 * `addappt 1 s/17-09-2018 15:00 e/17-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
 * `addappt 2 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
