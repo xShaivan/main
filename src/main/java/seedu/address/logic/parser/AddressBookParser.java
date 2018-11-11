@@ -19,6 +19,7 @@ import seedu.address.logic.commands.EditApptCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditHistCommand;
 import seedu.address.logic.commands.EditMedicalReportCommand;
+import seedu.address.logic.commands.EncryptCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -119,6 +120,9 @@ public class AddressBookParser {
 
         case EditHistCommand.COMMAND_WORD:
             return new EditHistCommandParser().parse(arguments);
+
+        case EncryptCommand.COMMAND_WORD:
+            return new EncryptCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
