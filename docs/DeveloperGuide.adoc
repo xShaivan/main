@@ -1740,9 +1740,9 @@ Add an appointment to the first person using the command `addappt 1 s/16-09-2018
 
 . Editing an appointment for a patient while all patients are listed
 .. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
-Add 2 appointments to the first person using the commands +
-`addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` and +
-`addappt 1 s/16-09-2018 16:00 e/16-09-2018 16:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+Add 2 appointments to the first person using the following 2 commands: +
+* `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` and +
+* `addappt 1 s/16-09-2018 16:00 e/16-09-2018 16:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 .. Test case: `editappt 0 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
    Expected: No appointment is edited. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `editappt`.
 .. Other incorrect `editappt` commands to try: `editappt`, `editappt x` (where x is smaller than the list size), `editappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30` +
@@ -1771,3 +1771,21 @@ Add an appointment to the first person using the command `addappt 1 s/16-09-2018
    Expected: No appointment is deleted. An error message is shown telling the user that the appointment he/she is trying to delete cannot be found for the patient.
 .. Test case: `deleteappt 1 s/16-09-2018 15:00` +
    Expected: The appointment starting at 16-09-2018 15:00 will be deleted. A message that the appointment is successfully deleted is shown.
+
+=== Clearing appointments for all patients
+
+. Clearing appointments for all patients while all patients are listed
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
+Add 2 appointments each to the first 3 people using the following 6 commands: +
+* `addappt 1 s/15-09-2018 15:00 e/15-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+* `addappt 1 s/17-09-2018 15:00 e/17-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+* `addappt 2 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+* `addappt 2 s/17-09-2018 15:00 e/17-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+* `addappt 3 s/14-09-2018 15:00 e/14-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
+* `addappt 3 s/17-09-2018 15:00 e/17-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+.. Test case: `clearappts` +
+   Expected: No appointments are deleted. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `clearappts`.
+.. Test case: `clearappts d/16-09-2018` +
+   Expected: The appointments on 16-09-2018 and before are deleted. A message that all appointments ending before or on the specified date have been successfully deleted is shown.
+.. Test case: `clearappts d/16-08-2018` +
+   Expected: No appointments are deleted. An error message is shown telling the user that there are no appointments on or before the specified date to be deleted.
