@@ -121,7 +121,7 @@ public class AddHistCommand extends Command {
     /**
      * This method checks if input has a duplicate for the patient.
      */
-    private boolean isDuplicateMedHistory(MedHistory medHistory1, MedHistory medHistory2) {
+    public static boolean isDuplicateMedHistory(MedHistory medHistory1, MedHistory medHistory2) {
         String allergy1 = medHistory1.getAllergy().toString();
         String allergy2 = medHistory2.getAllergy().toString();
         String medHistDate1 = medHistory1.getMedHistDate().toString();
@@ -138,7 +138,7 @@ public class AddHistCommand extends Command {
     /**
      * This method checks if input has a duplicate medical history date.
      */
-    private boolean isDuplicateMedHistDate(MedHistory medHistory1, MedHistory medHistory2) {
+    public static boolean isDuplicateMedHistDate(MedHistory medHistory1, MedHistory medHistory2) {
         String medHistDate1 = medHistory1.getMedHistDate().toString();
         String medHistDate2 = medHistory2.getMedHistDate().toString();
 

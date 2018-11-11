@@ -359,7 +359,7 @@ public class ParserUtil {
     public static PrevCountry parsePrevCountry(String prevCountry) throws ParseException {
         requireNonNull(prevCountry);
         String trimmedPrevCountry = prevCountry.trim();
-        if (!Allergy.isValidAllergy(trimmedPrevCountry)) {
+        if (!PrevCountry.isValidPrevCountry(trimmedPrevCountry)) {
             throw new ParseException(PrevCountry.MESSAGE_PREVCOUNTRY_CONSTRAINTS);
         }
 

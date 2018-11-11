@@ -85,7 +85,6 @@ public class CommandTestUtil {
     public static final String VALID_HISTORY_COUNTRY2 = "Russia";
     public static final String VALID_HISTORY_DISCHARGE_STATUS = "d";
     public static final String VALID_HISTORY_DISCHARGE_STATUS2 = "a";
-    //public static final String VALID_HISTORY_DISCHARGE_STATUS3 = "Patient has expired.";
 
     //Medical Report
     public static final String VALID_TITLE1 = "Asthma";

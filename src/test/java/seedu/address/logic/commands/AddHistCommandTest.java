@@ -154,4 +154,20 @@ public class AddHistCommandTest {
         // different remark -> returns false
         assertFalse(standardCommand.equals(new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY2)));
     }
+
+    @Test
+    public void isDuplicateMedHistory() {
+        // not duplicate Medical History -> returns false
+        assertFalse(AddHistCommand.isDuplicateMedHistory(MEDHISTORY1, MEDHISTORY2));
+        // duplicate Medical History -> returns true
+        assertTrue(AddHistCommand.isDuplicateMedHistory(MEDHISTORY1, MEDHISTORY1));
+    }
+
+    @Test
+    public void isDuplicateMedHistDate() {
+        // not duplicate Medical History Date -> returns false
+        assertFalse(AddHistCommand.isDuplicateMedHistDate(MEDHISTORY1, MEDHISTORY2));
+        // duplicate Medical History Date -> returns true
+        assertTrue(AddHistCommand.isDuplicateMedHistDate(MEDHISTORY1, MEDHISTORY1));
+    }
 }
