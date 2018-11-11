@@ -2055,7 +2055,7 @@ _{ more test cases ... }_
 
 . Adding an appointment to a patient while all patients are listed
 
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first patient does not have any appointments.
 .. Test case: `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: An appointment from 16-09-2018 15:00 to 16-09-2018 15:30 at Consultation Room 12 for a Diabetes Checkup by Dr Tan is added to the patient at index 1 in the list. A message that the appointment is successfully added is shown.
 .. Test case: `addappt 0 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
@@ -2070,8 +2070,8 @@ _{ more test cases ... }_
    Expected: No appointment is added to any patient. An error message is shown telling the user that the end date and time of an appointment must be after the start date and time.
 
 . Adding an appointment to a patient with existing appointments
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
-Add an appointment to the first person using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+.. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first patient does not have any appointments. +
+Add an appointment to the first patient using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 .. Test case: `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: No appointment is added to any patient. An error message is shown telling the user that the appointment he/she is adding clashes with the timing of another appointment for the patient.
 .. Test case: `addappt 1 s/16-09-2018 15:30 e/16-09-2018 16:00 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
@@ -2080,7 +2080,7 @@ Add an appointment to the first person using the command `addappt 1 s/16-09-2018
 === Editing appointment for a patient
 
 . Editing an appointment for a patient while all patients are listed
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
+.. Prerequisites: List all patients using the `list` command. Multiple persons in the list. Ensure that the first patient does not have any appointments. +
 Add 2 appointments to the first person using the following 2 commands: +
 * `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` and +
 * `addappt 1 s/16-09-2018 16:00 e/16-09-2018 16:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
@@ -2102,8 +2102,8 @@ Add 2 appointments to the first person using the following 2 commands: +
 === Deleting appointment for a patient
 
 . Deleting an appointment for a patient while all patients are listed
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
-Add an appointment to the first person using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
+.. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first patient does not have any appointments. +
+Add an appointment to the first patient using the command `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan`
 .. Test case: `deleteappt 0 s/16-09-2018 15:00` +
    Expected: No appointment is deleted. An error message is shown telling the user that he/she has used the invalid command format, along with the correct command format for `deleteappt`.
 .. Other incorrect `deleteappt` commands to try: `deleteappt`, `deleteappt x` (where x is smaller than the list size) +
@@ -2116,8 +2116,8 @@ Add an appointment to the first person using the command `addappt 1 s/16-09-2018
 === Clearing appointments for all patients
 
 . Clearing appointments for all patients while all patients are listed
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list. +
-Add 2 appointments each to the first 3 people using the following 6 commands: +
+.. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first 3 patients do not have any appointments. +
+Add 2 appointments each to the first 3 patients using the following 6 commands: +
 * `addappt 1 s/15-09-2018 15:00 e/15-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
 * `addappt 1 s/17-09-2018 15:00 e/17-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
 * `addappt 2 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
