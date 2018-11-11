@@ -47,7 +47,7 @@ public class AddReportCommandParserTest {
         assertParseFailure(parser, AddMedicalReportCommand.COMMAND_WORD, expectedMessage);
 
         // missing index
-        assertParseFailure(parser,VALID_TITLE_WPREFIX + VALID_DATE_WPREFIX
+        assertParseFailure(parser, VALID_TITLE_WPREFIX + VALID_DATE_WPREFIX
                 + VALID_INFO_WPREFIX, expectedMessage);
 
         // missing title prefix
