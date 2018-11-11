@@ -24,6 +24,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final VersionedAddressBook versionedAddressBook;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Person> sortedPersons;
+    private final UserPrefs userPrefs;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -37,6 +38,7 @@ public class ModelManager extends ComponentManager implements Model {
         versionedAddressBook = new VersionedAddressBook(addressBook);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         sortedPersons = new FilteredList<>(sortedPersonList(versionedAddressBook.getPersonList()));
+        this.userPrefs = userPrefs;
     }
 
     public ModelManager() {
@@ -52,6 +54,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public ReadOnlyAddressBook getAddressBook() {
         return versionedAddressBook;
+    }
+
+    @Override
+    public UserPrefs getUserPrefs() {
+        return userPrefs;
     }
 
     /** Raises an event to indicate the model has changed */
