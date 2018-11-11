@@ -55,7 +55,8 @@ public class EditApptCommand extends Command {
             + PREFIX_APPT_VENUE + "Consultation Room 13";
 
     public static final String MESSAGE_EDIT_APPT_SUCCESS = "Edited appt for Person: %1$s";
-    public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt.";
+    public static final String MESSAGE_APPT_CLASH = "The appt you are editing will clash with the timing of another "
+            + "appt for the specified patient.";
     public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time.";
     public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to edit cannot be found.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
