@@ -24,14 +24,14 @@ public class ClearApptsCommand extends Command {
     public static final String COMMAND_WORD = "clearappts";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Clears all appts that are before the date provided for all persons in the health book.\n"
+            + ": Clears all appts that end before or on the date provided for all persons in the health book.\n"
             + "Parameters: " + PREFIX_APPT_DATE + "DATE\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_APPT_DATE + "16-09-2018";
 
-    public static final String MESSAGE_CLEAR_OLD_APPTS_SUCCESS = "Any past appointments before or on the specified "
+    public static final String MESSAGE_CLEAR_OLD_APPTS_SUCCESS = "Any appointments ending before or on the specified "
             + "date have been deleted.";
-    public static final String MESSAGE_NO_OLD_APPTS = "There are no appointments before or on the specified date "
-            + "to be deleted.";
+    public static final String MESSAGE_NO_OLD_APPTS = "There are no appointments ending before or on the specified "
+            + "date to be deleted.";
 
     private final ApptDate dateInput;
 
