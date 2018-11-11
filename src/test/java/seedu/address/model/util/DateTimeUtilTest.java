@@ -25,12 +25,13 @@ public class DateTimeUtilTest {
 
     @Test
     public void parseNullLocalDateTimeReturnNull() {
-        assertEquals(DateTimeUtil.format((LocalDateTime) null), null);
+        assertEquals(DateTimeUtil.format((LocalDateTime) null),
+                null);
     }
 
     @Test
     public void parseIncorrectDateThrowsDateTimeParseException() {
-        Assert.assertThrows(DateTimeParseException.class, () -> DateTimeUtil.isCorrectDate(INCORRECT_DATE) );
+        Assert.assertThrows(DateTimeParseException.class, () -> DateTimeUtil.isCorrectDate(INCORRECT_DATE));
     }
 
     @Test
