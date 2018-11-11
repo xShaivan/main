@@ -46,33 +46,48 @@ public class ClearApptsCommand extends Command {
         boolean hasApptsToBeCleared = false;
 
         for (Person personToEdit : addressBook.getPersonList()) {
-            Set<Appt> apptsCopy = new TreeSet<>(new ApptComparator());
             Set<Appt> oldAppts = personToEdit.getAppts();
 
             for (Appt appt : oldAppts) {
-                apptsCopy.add(appt);
                 if (appt.getEnd().value.toLocalDate().compareTo(dateInput.value) <= 0) {
-                    apptsCopy.remove(appt);
                     hasApptsToBeCleared = true;
+                    break;
                 }
             }
 
-            Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(),
-                    personToEdit.getEmail(), personToEdit.getAddress(), personToEdit.getMedicalReports(),
-                    personToEdit.getMedHistory(), apptsCopy, personToEdit.getNric(), personToEdit.getDateOfBirth(),
-                    personToEdit.getHeight(), personToEdit.getWeight(), personToEdit.getGender(),
-                    personToEdit.getBloodType(), personToEdit.getOccupation(), personToEdit.getMaritalStatus(),
-                    personToEdit.getTags());
-
-            model.updatePerson(personToEdit, editedPerson);
+            if (hasApptsToBeCleared) {
+                break;
+            }
         }
 
         if (!hasApptsToBeCleared) {
             throw new CommandException(MESSAGE_NO_OLD_APPTS);
         }
+        else {
+            for (Person personToEdit : addressBook.getPersonList()) {
+                Set<Appt> apptsCopy = new TreeSet<>(new ApptComparator());
+                Set<Appt> oldAppts = personToEdit.getAppts();
 
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        model.commitAddressBook();
-        return new CommandResult(MESSAGE_CLEAR_OLD_APPTS_SUCCESS);
+                for (Appt appt : oldAppts) {
+                    apptsCopy.add(appt);
+                    if (appt.getEnd().value.toLocalDate().compareTo(dateInput.value) <= 0) {
+                        apptsCopy.remove(appt);
+                    }
+                }
+
+                Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(),
+                        personToEdit.getEmail(), personToEdit.getAddress(), personToEdit.getMedicalReports(),
+                        personToEdit.getMedHistory(), apptsCopy, personToEdit.getNric(), personToEdit.getDateOfBirth(),
+                        personToEdit.getHeight(), personToEdit.getWeight(), personToEdit.getGender(),
+                        personToEdit.getBloodType(), personToEdit.getOccupation(), personToEdit.getMaritalStatus(),
+                        personToEdit.getTags());
+
+                model.updatePerson(personToEdit, editedPerson);
+            }
+
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            model.commitAddressBook();
+            return new CommandResult(MESSAGE_CLEAR_OLD_APPTS_SUCCESS);
+        }
     }
 }
