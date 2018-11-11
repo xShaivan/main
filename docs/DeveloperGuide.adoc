@@ -651,8 +651,6 @@ Step 4. The doctor exits the program.
 Step 5. Before the application fully exits, the `MainApp#stop` method asserts that encryption has been enabled. A temporary `healthbook.xml` file is generated. The same method will call `XmlUtil#loadDecryptedXmlFile` to load the temporary `healthbook.xml` before calling `XmlUtil#encryptDocument` to encrypt the file data. A `key` file is generated containing the `SecretKey` used for the encryption.
 
 Step 6. `MainApp#stop` then deletes the temporary `healthbook.xml` file before fully exiting the application.
-
-
 // end::dataencryption[]
 
 === Logging
@@ -1523,42 +1521,6 @@ Use case ends.
 ** 1b1. System shows an error message that the index is invalid.
 +
 Use case ends.
-
-=== Use case: Editing additional information of patient: `editinfo`
-Assume that user has already requested the System to display a list of patients.
-
-*MSS*
-
-1.  User requests to edit optional information for patient.
-2.  System edits optional information for the patient and displays a message that edit for optional information is successful.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to edit optional information i.e. wrong command or invalid data for the fields.
-+
-[none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of adding optional information. System will ignore invalid commands or data and process only the valid commands and data.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an invalid index for the list.
-+
-[none]
-** 1b1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1c. User requests to edit information that does not exist.
-+
-[none]
-** 1c1. System shows an error message that the information does not exist. System will ignore the edit request for that field and process the valid edit requests for other fields
-+
-Use case ends.
 // end::addinfousecase[]
 
 // tag::reportusecases[]
@@ -1832,6 +1794,32 @@ Use case ends.
 ** 1a1. System shows an error message that the index is invalid.
 +
 Use case ends.
+
+// tag::dataencryptionusecase[]
+=== Use case: Data Encryption: `encrypt`
+Assume that user has launched the application with the default settings (encryption toggled off).
+
+*MSS*
+
+1.  User requests to toggle on encryption.
+2.  User makes some changes to the patient data.
+3.  User requests to exit the application.
+4.  System encrypts patient data.
+5.  System removes unencrypted patient data.
+6.  System exits.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 4a. System unable to encrypt the data.
++
+[none]
+** 4a1. System logs this anomaly and saves the unencrypted data.
++
+Use case ends.
+// end::dataencryptionusecase[]
 
 [appendix]
 == Non Functional Requirements

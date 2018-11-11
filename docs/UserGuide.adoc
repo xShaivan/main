@@ -435,7 +435,7 @@ Example:
 Selects the 2nd person in the health book.
 
 
-// tag::encryption[]
+// tag::dataencryption[]
 === Encrypting Patient Data: `encrypt`
 
 Toggles on and off the encryption feature for the saved data file.
@@ -456,7 +456,7 @@ Example:
 Depending on the current setting of encryption, this will toggle on or off the encryption. Refer message box to understand if encryption has been toggled on or off.
 
 image::encryption.png[width="800"]
-// end::encryption[]
+// end::dataencryption[]
 
 
 == FAQ

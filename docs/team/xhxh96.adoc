@@ -50,7 +50,7 @@ The application is fully written in Java, allowing cross-platform compatibility.
 
 include::../UserGuide.adoc[tag=addinfocommands]
 
-include::../UserGuide.adoc[tag=encryption]
+include::../UserGuide.adoc[tag=dataencryption]
 
 == Contributions to the Developer Guide
 
@@ -60,5 +60,9 @@ include::../UserGuide.adoc[tag=encryption]
 
 include::../DeveloperGuide.adoc[tag=addinfo]
 
+include::../DeveloperGUide.adoc[tag=dataencryption]
+
 include::../DeveloperGuide.adoc[tag=addinfousecase]
+
+include::../DeveloperGuide.adoc[tag=dataencryptionusecase]
 
