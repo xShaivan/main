@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PREFIX;
 
 import java.util.Arrays;
 
@@ -83,7 +84,7 @@ public class FindCommandParser implements Parser<FindCommand> {
             return new FindCommand(new AllergyContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
 
         default:
-            throw new ParseException(MESSAGE_INVALID_COMMAND_FORMAT);
+            throw new ParseException(MESSAGE_INVALID_PREFIX);
         }
     }
 
