@@ -464,7 +464,7 @@ Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to 
 // end::edithist[]
 
 // tag::addappt[]
-=== AddAppointment Feature
+=== Add Appointment Feature
 ==== Current Implementation
 
 The addappt mechanism is facilitated by `AddressBook` and `VersionedAddressBook`. It implements the following operations:
@@ -510,7 +510,7 @@ image::AddApptActivityDiagram.png[width="700"]
 // end::addappt[]
 
 // tag::addreport[]
-=== AddMedicalReport Feature
+=== Add Medical Report Feature
 ==== Current Implementation
 
 The addreport mechanism is facilitated by `VersionedAddressBook`.
@@ -542,7 +542,7 @@ image::AddMedicalReportSequenceDiagram.png[width="800"]
 // end::addreport[]
 
 // tag::editreport[]
-=== EditMedicalReport Feature
+=== Edit Medical Report Feature
 ==== Current Implementation
 The editreport mechanism is facilitated by `VersionedAddressBook`.
 
@@ -664,11 +664,6 @@ Upon exiting the program, `MainApp#stop` checks if the encryption has been enabl
 
 When users execute the `encrypt` command, the `AddressBookParser` returns `EncryptCommand` object to the `LogicManager`, which in turn executes the `EncryptCommand#execute` method. This method in turn gets the `UserPref` via `Model#getUserPref` and executes the `toggleEncryption` method, which in turn sets the `encryption` attribute in `UserPref` to either `true` or `false`, thereby enabling or disabling encryption.
 
-The following sequence diagram shows how the encryption works when the application is launched:
-
-.Sequence diagram for Encryption. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/EncryptCommandSD.png[here].
-image::EncryptCommandSD.png[width="400"]
-
 Given below is an example usage scenario on how `encrypt` works at each step:
 
 Step 1. A doctor launches the application for the the first time (by default encryption is disabled). A `SecretKey` is generated.
@@ -682,6 +677,11 @@ Step 4. The doctor exits the program.
 Step 5. Before the application fully exits, the `MainApp#stop` method asserts that encryption has been enabled. A temporary `healthbook.xml` file is generated. The same method will call `XmlUtil#loadDecryptedXmlFile` to load the temporary `healthbook.xml` before calling `XmlUtil#encryptDocument` to encrypt the file data. A `key` file is generated containing the `SecretKey` used for the encryption.
 
 Step 6. `MainApp#stop` then deletes the temporary `healthbook.xml` file before fully exiting the application.
+
+The following sequence diagram shows how the encryption works when the application is launched:
+
+.Sequence diagram for Encryption. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/EncryptCommandSD.png[here].
+image::EncryptCommandSD.png[width="400"]
 
 === Design Considerations
 ==== Aspect: Loading of Saved Data
