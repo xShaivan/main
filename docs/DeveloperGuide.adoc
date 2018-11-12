@@ -2168,6 +2168,8 @@ Invalid Discharge Status. Error details specifies valid discharge status for use
 Expected: *PASS* +
 Medical History entered for first patient on the list with date of 08-11-2018, alcohol allergy, Kuwait as last country visited and is currently discharged.
 
+=== Editing medical history of patient
+
 . Editing medical history to a non-existent patient
 
 .. Prerequisites: List all patients using the `list` command. Any number of patients allowed in the list.
