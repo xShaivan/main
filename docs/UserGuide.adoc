@@ -502,6 +502,12 @@ medical history entries to exist after the medical history entry which contains 
 .Current Implementation which allows medical history entries after patient's expiry
 image::medhistoryV2.png[width="500"]
 
+=== Integration of medical report and medical history
+
+For medical reports and medical history entries that share the same date, users will be able to link their medical reports to their medical history. +
+In the case of multiple health checkups in a single day (e.g. X-ray, Cardiogram), multiple medical reports will be generated.
+The medical history entry of the same date will allow those medical reports to be attached to it.
+
 == Command Summary
 
 * *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS` +
