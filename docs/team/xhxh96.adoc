@@ -1,18 +1,58 @@
 = Cheng Xianhao - Project Portfolio
 :site-section: AboutUs
-:toc:
-:toc-title:
-:sectnums:
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+:toc:
+:sectnums:
 
-== PROJECT: Health Book
-
-== Overview
-
+== Health Book
+=== Overview
 Health Book is a desktop address book application targeted at health care professionals who seek to retrieve their patients' personal details and health-related information all in one place.
-The application provides both a Command Line Interface (CLI) for input of data and a Graphical User Interface (GUI) for displaying of output (patient's personal details and health-related information).
+
+The application provides both a Command Line Interface (CLI) for input of data and a Graphical User Interface (GUI) for displaying of patient's personal details and health-related information.
+
 The application is fully written in Java, allowing cross-platform compatibility.
+
+=== Problem Statement
+Health care professionals deal with hundreds and thousands of patients on a daily basis. Not only do they have to attend to the patients physically, they need to have a clear understanding of each patient's health related issues, in addition to basic bio data.
+
+Currently, most health care professionals rely on paper documents that contains such data for each patients. Not only do they have to perform the menial task of searching through the piles of patient documents, sometimes, they have to look through the entire patient document to get what they need to know about the patient.
+
+Health Book is aimed at solving such administrative woes of health care professionals. By digitizing such data into an application, health care professionals can easily retrieve the patient data that they need, as well as the specific information that they need for each patient.
+
+=== Team Composition:
+[cols="1,2,3", options="header"]
+|============================
+|Name |Feature |Description
+
+|Hovan Tan |Project Manager |Oversee the project deadline and deliverable
+
+|Brandon Cheong |Development Lead |Oversee the overall development of features
+
+|Chew Kah Meng |Quality Assurance Lead |Oversee the overall testing of system
+
+|Chok Xin Yan |Design Lead |Oversee the look and feel of the system
+
+|Cheng Xianhao |Subject Matter Expert |Oversee the requirements of the project
+|============================
+
+=== Features
+[cols="1,2", options="header"]
+|============================
+|Feature|Description
+
+|Manage Patient |Create, edit or delete a patient profile
+|List Patient |Shows the list of all patient profile
+|Select Patient | Select a patient to view its entire profile
+|Add Additional Information| Add or edit additional information such as patient's bio-data
+|Manage Medical History| Create, edit or delete a patient's medical history
+|Manage Medical Appointment| Create, edit or delete a patient's medical appointment
+|Manage Medical Report| Create, edit or delete a patient's medical report
+|Find/Sort | Manipulate how patients are presented with find that filters the patient or sort which arranges the patients based on the parameters used
+|Encryption| Encrypt patient's data so that the saved data is not human-readable.
+
+
+|============================
 
 == Summary of contributions
 
