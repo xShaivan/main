@@ -368,7 +368,7 @@ Step 6. The `Person` will now have an updated additional information.
 The following sequence diagram summarizes what happens when an user executes a new command:
 
 .Sequence Diagram for `addinfo` command. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/AddInfoCommandSD.png[here].
-image::AddInfoCommandSD.png[width="1000"]
+image::AddInfoCommandSD.png[width="600"]
 // end::addinfo[]
 
 // tag::addhist[]
@@ -664,7 +664,7 @@ When users execute the `encrypt` command, the `AddressBookParser` returns `Encry
 The following sequence diagram shows how the encryption works when the application is launched:
 
 .Sequence diagram for Encryption. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/EncryptCommandSD.png[here].
-image::EncryptCommandSD.png[width="800"]
+image::EncryptCommandSD.png[width="600"]
 
 Given below is an example usage scenario on how `encrypt` works at each step:
 
