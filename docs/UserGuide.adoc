@@ -301,9 +301,6 @@ and be at Consultation Room 13 for the 2nd person in the list.
 [NOTE]
 `addappt` and `editappt` commands will display an error message if the user adds in an appointment with the end date and time before the start date and time, or if the patient has multiple appointments that have timing clashes.
 
-[WARNING]
-`addappt` and `editappt` commands will only check if there are appointment timing clashes for a patient. There is currently no check for appointment timing clashes for a venue or for a doctor in charge i.e. if the same venue or same doctor is booked for multiple appointments at the same time. These features will be coming in the v2.0 release of Health Book.
-
 === Deleting an appointment for a patient: `deleteappt`
 
 Deletes a specified appointment in the specified patient’s schedule. +
@@ -495,6 +492,9 @@ medical history entries to exist after the medical history entry which contains 
 
 .Current Implementation which allows medical history entries after patient's expiry
 image::medhistoryV2.png[width="500"]
+
+=== Further checks for appointment timing clashes
+`addappt` and `editappt` commands currently will only check if there are appointment timing clashes for a patient. There is currently no check for appointment timing clashes for a venue or for a doctor in charge i.e. if the same venue or same doctor is booked for multiple appointments at the same time. These features will be coming in the v2.0 release of Health Book.
 
 == Command Summary
 
