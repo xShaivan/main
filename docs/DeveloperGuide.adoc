@@ -414,7 +414,7 @@ image::AddHistSequenceDiagram.png[width="800"]
 // end::addhist[]
 
 // tag::edithist[]
-=== Edit Medical History features
+=== Edit Medical History feature
 ==== Current Implementation
 
 The `edithist` mechanism works almost similarly to the `addhist` mechanism.
@@ -1301,52 +1301,6 @@ Use case ends.
 +
 Use case ends.
 
-// tag::findusecase[]
-=== Use case: Finding patients by categories: `find`
-
-*MSS*
-
-1.  User requests to find a patient in the list by a category. (eg. name, phone, blood type, medical information)
-2.  System shows user a list of patients who are in requested category.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to find patient.
-+
-[none]
-** 1a1. System shows error message that format is wrong and shows correct format of finding patients.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an category where the prefix to the category is not available i.e. "z/"
-+
-[none]
-** 1b1. System shows an error message that category is invalid and shows correct format with available prefixes.
-+
-Use case ends.
-
-[none]
-* 1c. User provides keyword that does not correspond to any patient.
-+
-[none]
-** 1c1. System shows an error message that such patient does not exist.
-+
-Use case ends.
-
-[none]
-* 1d. User did not provide a category or a keyword.
-+
-[none]
-** 1d1. System shows an error message that the format is wrong and shows correct format of finding a patient.
-+
-Use case ends.
-
-// end::findusecase[]
-
 === Use case: Deleting a patient: `delete`
 Assume that user has already requested the System to display a list of patients.
 
@@ -1374,6 +1328,162 @@ Use case ends.
 ** 1b1. System shows an error message that the index is invalid.
 +
 Use case ends.
+
+=== Use case: Selecting a patient: `select`
+Assume that user has already requested the System to display a list of patients.
+
+*MSS*
+
+1.  User selects a patient to view his/her information.
+2.  System shows the information of the specified patient.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User provides an invalid index for the list.
++
+[none]
+** 1a1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+// tag::addinfousecase[]
+=== Use case: Adding additional information of patient: `addinfo`
+Assume that user has already requested the System to display a list of patients.
+
+*MSS*
+
+1.  User requests to add optional information for patient.
+2.  System adds optional information for the patient and displays a message that entry for optional information is successful.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to add optional information i.e. wrong command or invalid data for the fields.
++
+[none]
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of adding optional information. System will ignore invalid commands or data and process only the valid commands and data.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+// end::addinfousecase[]
+
+// tag::medhistoryusecases[]
+=== Use case: Adding of Medical History: `addhist`
+Assume that user has already requested the System to display a list of medical reports for a patient.
+
+*MSS*
+
+1.  User requests to add medical history for patient.
+2.  System edits medical history for the patient and displays a message that shows success of medical history added.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to edit medical report.
++
+[none]
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User provides an invalid date format in the command.
++
+[none]
+** 1c1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid discharge status in the command.
++
+[none]
+** 1d1. System shows an error message that the discharge status is invalid.
++
+Use case ends.
+
+=== Use case: Editing of Medical History: `edithist`
+Assume that user has already requested the System to display a list of medical reports for a patient.
+
+*MSS*
+
+1.  User requests to edit existing medical history for patient.
+2.  System edits medical history for the patient and displays a message that shows success of medical history edited.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User uses the wrong format to edit medical report.
++
+[none]
+** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
++
+Use case ends.
+
+[none]
+* 1b. User provides an invalid index for the list.
++
+[none]
+** 1b1. System shows an error message that the index is invalid.
++
+Use case ends.
+
+[none]
+* 1c. User provides an invalid date format in the command.
++
+[none]
+** 1c1. System shows an error message that the date format must comply with dd-MM-yyyy format.
++
+Use case ends.
+
+[none]
+* 1d. User provides an invalid discharge status in the command.
++
+[none]
+** 1d1. System shows an error message that the discharge status is invalid.
++
+Use case ends.
+
+[none]
+* 1e. User targets a non-existent medical history date in the command.
++
+[none]
+** 1e1. System shows an error message that the specified date does not belong to any existing medical history.
++
+Use case ends.
+
+[none]
+* 1f. User provides a new medical history date that is already present in the command.
++
+[none]
+** 1f1. System shows an error message that the specified new date already exists.
++
+Use case ends.
+// end::medhistoryusecases[]
 
 // tag::apptusecases[]
 === Use case: Adding an appointment for a patient: `addappt`
@@ -1535,36 +1645,6 @@ Use case ends.
 +
 Use case ends.
 
-// tag::addinfousecase[]
-=== Use case: Adding additional information of patient: `addinfo`
-Assume that user has already requested the System to display a list of patients.
-
-*MSS*
-
-1.  User requests to add optional information for patient.
-2.  System adds optional information for the patient and displays a message that entry for optional information is successful.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to add optional information i.e. wrong command or invalid data for the fields.
-+
-[none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of adding optional information. System will ignore invalid commands or data and process only the valid commands and data.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an invalid index for the list.
-+
-[none]
-** 1b1. System shows an error message that the index is invalid.
-+
-Use case ends.
-// end::addinfousecase[]
-
 // tag::reportusecases[]
 === Use case: Adding of Medical Report: `addreport`
 Assume that user has already requested the System to display a list of patients.
@@ -1671,111 +1751,50 @@ Use case ends.
 Use case ends.
 // end::reportusecases[]
 
-// tag::medhistoryusecases[]
-=== Use case: Adding of Medical History: `addhist`
-Assume that user has already requested the System to display a list of medical reports for a patient.
+// tag::findusecase[]
+=== Use case: Finding patients by categories: `find`
 
 *MSS*
 
-1.  User requests to add medical history for patient.
-2.  System edits medical history for the patient and displays a message that shows success of medical history added.
+1.  User requests to find a patient in the list by a category. (eg. name, phone, blood type, medical information)
+2.  System shows user a list of patients who are in requested category.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to edit medical report.
+* 1a. User uses the wrong format to find patient.
 +
 [none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
+** 1a1. System shows error message that format is wrong and shows correct format of finding patients.
 +
 Use case ends.
 
 [none]
-* 1b. User provides an invalid index for the list.
+* 1b. User provides an category where the prefix to the category is not available i.e. "z/"
 +
 [none]
-** 1b1. System shows an error message that the index is invalid.
+** 1b1. System shows an error message that category is invalid and shows correct format with available prefixes.
 +
 Use case ends.
 
 [none]
-* 1c. User provides an invalid date format in the command.
+* 1c. User provides keyword that does not correspond to any patient.
 +
 [none]
-** 1c1. System shows an error message that the date format must comply with dd-MM-yyyy format.
+** 1c1. System shows an error message that such patient does not exist.
 +
 Use case ends.
 
 [none]
-* 1d. User provides an invalid discharge status in the command.
+* 1d. User did not provide a category or a keyword.
 +
 [none]
-** 1d1. System shows an error message that the discharge status is invalid.
+** 1d1. System shows an error message that the format is wrong and shows correct format of finding a patient.
 +
 Use case ends.
-
-=== Use case: Editing of Medical History: `edithist`
-Assume that user has already requested the System to display a list of medical reports for a patient.
-
-*MSS*
-
-1.  User requests to edit existing medical history for patient.
-2.  System edits medical history for the patient and displays a message that shows success of medical history edited.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User uses the wrong format to edit medical report.
-+
-[none]
-** 1a1. System shows error message that format is wrong and gives user an example on the correct format of editing medical report.
-+
-Use case ends.
-
-[none]
-* 1b. User provides an invalid index for the list.
-+
-[none]
-** 1b1. System shows an error message that the index is invalid.
-+
-Use case ends.
-
-[none]
-* 1c. User provides an invalid date format in the command.
-+
-[none]
-** 1c1. System shows an error message that the date format must comply with dd-MM-yyyy format.
-+
-Use case ends.
-
-[none]
-* 1d. User provides an invalid discharge status in the command.
-+
-[none]
-** 1d1. System shows an error message that the discharge status is invalid.
-+
-Use case ends.
-
-[none]
-* 1e. User targets a non-existent medical history date in the command.
-+
-[none]
-** 1e1. System shows an error message that the specified date does not belong to any existing medical history.
-+
-Use case ends.
-
-[none]
-* 1f. User provides a new medical history date that is already present in the command.
-+
-[none]
-** 1f1. System shows an error message that the specified new date already exists.
-+
-Use case ends.
-// end::medhistoryusecases[]
+// end::findusecase[]
 
 // tag::sortusecase[]
 === Use case: Sorting patients list: `sort`
@@ -1816,26 +1835,6 @@ Use case ends.
 +
 Use case ends.
 // end::sortusecase[]
-
-=== Use case: Selecting a patient: `select`
-Assume that user has already requested the System to display a list of patients.
-
-*MSS*
-
-1.  User selects a patient to view his/her information.
-2.  System shows the information of the specified patient.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. User provides an invalid index for the list.
-+
-[none]
-** 1a1. System shows an error message that the index is invalid.
-+
-Use case ends.
 
 // tag::dataencryptionusecase[]
 === Use case: Data Encryption: `encrypt`
@@ -1955,6 +1954,14 @@ _{ more test cases ... }_
 
 _{ more test cases ... }_
 
+=== Saving data
+
+. Dealing with missing/corrupted data files
+
+.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
+
+_{ more test cases ... }_
+
 === Adding additional information to a person
 
 . Adding a additional information (NRIC, Date of Birth, Height, Weight, Gender, Blood Type, Occupation and Marital Status) are listed.
@@ -2004,57 +2011,6 @@ _{ more test cases ... }_
 
 .. Test case: `addinfo 1 m/x` where x is any input other than S, M or D +
    Expected: No additional infomation is added. Message of correct marital status input is shown.
-
-=== Adding medical report to a person
-
-. Adding a medical report to a person while all persons are listed.
-
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-.. Test case: `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
-   Expected: Medical report titled Asthma and dated 01-01-2018 with report information is added to person at index 1. Message of medical report being successfully added is shown.
-.. Test case: `addreport 0 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
-   Expected: No medical report is added. Message of invalid command format will be shown.
-.. Other incorrect addreport commands to try: `addreport`, `addreport x` (where x is smaller than or equal to the list size) +
-   Expected: Similar to previous.
-.. Test case: `addreport x (where x is larger than the list size) t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
-   Expected: No medical report is added. Message of invalid person index will be shown.
-.. Test case: `addreport 1 t/ d/01-01-2018 i/prescribed XXX medicine, next appointment on 02-02-2018.`
-   Expected: No medical report is added. Message of invalid title will be shown.
-.. Test case: `addreport 1 t/Asthma d/01012018 i/prescribed XXX medicine, next appointment on 02-02-2018.`
-   Expected: No medical report is added. Message of invalid date will be shown.
-.. Test case: `addreport 1 t/Asthma d/01-01-2018 i/ `
-   Expected: No medical report is added. Message of invalid information will be shown.
-
-=== Editing an existing medical report of a person
-. Editing an existing medical report of a person while all persons are listed.
-
-.. Prerequisites: At least one person in the list must have a medical report added. Two medical reports titled Asthma, dated 01-01-2018 and titled Depression, dated 02-02-2018 with report information have been added to person at index 1.
-.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
-   Expected: Existing medical report titled Asthma and dated 01-01-2018 is edited for person at index 1. Message of medical report being successfully edited is shown.
-.. Test case: `editreport 0 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
-   Expected: No medical report is edited. Message of invalid command format will be shown.
-.. Other incorrect editreport commands to try: `editreport`, `editreport x` (where x is smaller than or equal to the list size) +
-   Expected: Similar to previous.
-.. Test case: `editreport x (where x is larger than the list size) ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
-   Expected: No medical report is edited. Message of invalid person index will be shown.
-.. Test case: `editreport 1 ot/ od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
-   Expected: No medical report is edited. Message of invalid title will be shown.
-.. Test case: `editreport 1 ot/Asthma od/01012018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
-   Expected: No medical report is edited. Message of invalid date will be shown.
-.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/ ` +
-   Expected: No medical report is edited. Message of invalid information will be shown.
-.. Test case: `editreport 1 ot/Flu od/03-03-2018 t/Cough d/03-03-2018 i/Prescribed AAA medicine, next appointment is on 04-04-2018.` +
-   Expected: No medical report is edited. Message of medical report not found will be shown.
-.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
-   Expected: No medical report is edited. Message of unable to edit existing report with the same title and date will be shown.
-
-=== Saving data
-
-. Dealing with missing/corrupted data files
-
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
-
-_{ more test cases ... }_
 
 === Adding appointment to a patient
 
@@ -2197,3 +2153,47 @@ If new date specified of Medical History to be edited already exists, error deta
 Expected: *PASS* +
 If previous Medical History entry exists, and new date specified is not used, the entry chosen will be
 edited with new date 05-05-2015, new allergy of grass and new previous country visited as Canada and the patient has expired.
+
+=== Adding medical report to a person
+
+. Adding a medical report to a person while all persons are listed.
+
+.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Test case: `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: Medical report titled Asthma and dated 01-01-2018 with report information is added to person at index 1. Message of medical report being successfully added is shown.
+.. Test case: `addreport 0 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: No medical report is added. Message of invalid command format will be shown.
+.. Other incorrect addreport commands to try: `addreport`, `addreport x` (where x is smaller than or equal to the list size) +
+   Expected: Similar to previous.
+.. Test case: `addreport x (where x is larger than the list size) t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.` +
+   Expected: No medical report is added. Message of invalid person index will be shown.
+.. Test case: `addreport 1 t/ d/01-01-2018 i/prescribed XXX medicine, next appointment on 02-02-2018.`
+   Expected: No medical report is added. Message of invalid title will be shown.
+.. Test case: `addreport 1 t/Asthma d/01012018 i/prescribed XXX medicine, next appointment on 02-02-2018.`
+   Expected: No medical report is added. Message of invalid date will be shown.
+.. Test case: `addreport 1 t/Asthma d/01-01-2018 i/ `
+   Expected: No medical report is added. Message of invalid information will be shown.
+
+=== Editing an existing medical report of a person
+
+. Editing an existing medical report of a person while all persons are listed.
+
+.. Prerequisites: At least one person in the list must have a medical report added. Two medical reports titled Asthma, dated 01-01-2018 and titled Depression, dated 02-02-2018 with report information have been added to person at index 1.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: Existing medical report titled Asthma and dated 01-01-2018 is edited for person at index 1. Message of medical report being successfully edited is shown.
+.. Test case: `editreport 0 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid command format will be shown.
+.. Other incorrect editreport commands to try: `editreport`, `editreport x` (where x is smaller than or equal to the list size) +
+   Expected: Similar to previous.
+.. Test case: `editreport x (where x is larger than the list size) ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid person index will be shown.
+.. Test case: `editreport 1 ot/ od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid title will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01012018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of invalid date will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/ ` +
+   Expected: No medical report is edited. Message of invalid information will be shown.
+.. Test case: `editreport 1 ot/Flu od/03-03-2018 t/Cough d/03-03-2018 i/Prescribed AAA medicine, next appointment is on 04-04-2018.` +
+   Expected: No medical report is edited. Message of medical report not found will be shown.
+.. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
+   Expected: No medical report is edited. Message of unable to edit existing report with the same title and date will be shown.
