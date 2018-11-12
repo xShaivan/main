@@ -1,6 +1,7 @@
 package seedu.address.model.medicalreport;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 //@@author chewkahmeng
 /**
@@ -22,6 +23,7 @@ public class Title {
     */
     public Title(String title) {
         requireNonNull(title);
+        checkArgument(isValidTitle(title), MESSAGE_TITLE_CONSTRAINTS);
         fullTitle = title;
     }
 
@@ -48,9 +50,5 @@ public class Title {
     @Override
     public int hashCode() {
         return fullTitle.hashCode();
-    }
-
-    public boolean isFull() {
-        return true;
     }
 }

@@ -1,6 +1,7 @@
-package seedu.address.model.timetable;
+package seedu.address.model.appt;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 //@@author brandonccm1996
 /**
@@ -8,7 +9,7 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class ApptVenue {
-    public static final String MESSAGE_NAME_CONSTRAINTS =
+    public static final String MESSAGE_VENUE_CONSTRAINTS =
             "Appt venues can take any values, and it should not be blank.";
 
     public static final String VENUE_VALIDATION_REGEX = "[^\\s].*";
@@ -16,6 +17,7 @@ public class ApptVenue {
 
     public ApptVenue(String apptVenue) {
         requireNonNull(apptVenue);
+        checkArgument(isValidVenue(apptVenue), MESSAGE_VENUE_CONSTRAINTS);
         value = apptVenue;
     }
 

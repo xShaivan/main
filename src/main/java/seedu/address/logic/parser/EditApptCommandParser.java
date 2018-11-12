@@ -14,7 +14,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditApptCommand;
 import seedu.address.logic.commands.EditApptCommand.EditApptDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.timetable.ApptDateTime;
+import seedu.address.model.appt.ApptDateTime;
 
 //@@author brandonccm1996
 /**

@@ -13,14 +13,14 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
+import seedu.address.model.appt.ApptDateTime;
 import seedu.address.model.person.Person;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
-import seedu.address.model.timetable.ApptDateTime;
 
 //@@author brandonccm1996
 /**
- * Deletes an appointment from a person's timetable.
+ * Deletes an appointment from a person's schedule.
  */
 public class DeleteApptCommand extends Command {
     public static final String COMMAND_WORD = "deleteappt";
@@ -34,7 +34,8 @@ public class DeleteApptCommand extends Command {
             + PREFIX_APPT_START + "16-09-2018 15:00";
 
     public static final String MESSAGE_DELETE_APPT_SUCCESS = "Removed appt from Person: %1$s";
-    public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to delete cannot be found.";
+    public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to delete cannot be found for the "
+            + "patient.";
 
     private final Index index;
     private final ApptDateTime apptStart;
