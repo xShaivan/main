@@ -488,12 +488,12 @@ Step 5. The `addappt` command will call `Model#updatePerson()` to update the pat
 The following sequence diagram shows how the addappt operation works:
 
 .Sequence diagram for addappt operation
-image::AddApptSequenceDiagram.png[width="800"]
+image::AddApptSequenceDiagram.png[width="750"]
 
 The following activity diagram shows how the addappt operation works:
 
 .Activity diagram for add appt operation
-image::AddApptActivityDiagram.png[width="800"]
+image::AddApptActivityDiagram.png[width="750"]
 
 ==== Design Considerations
 ===== Aspect: Data structure to store appointments
