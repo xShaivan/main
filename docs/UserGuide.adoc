@@ -223,6 +223,7 @@ Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+.Example of addhist command
 image::addhist.png[width="790"]
 
 Examples:
@@ -247,6 +248,7 @@ Format: `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE h
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+.Example of edithist command
 image::edithist.png[width="790"]
 
 Examples:
@@ -490,6 +492,12 @@ medical history entries to exist after the medical history entry which contains 
 
 .Current Implementation which allows medical history entries after patient's expiry
 image::medhistoryV2.png[width="500"]
+
+=== Integration of medical report and medical history
+
+For medical reports and medical history entries that share the same date, users will be able to link their medical reports to their medical history. +
+In the case of multiple health checkups in a single day (e.g. X-ray, Cardiogram), multiple medical reports will be generated.
+The medical history entry of the same date will allow those medical reports to be attached to it.
 
 === Further checks for appointment timing clashes
 `addappt` and `editappt` commands currently will only check if there are appointment timing clashes for a patient. There is currently no check for appointment timing clashes for a venue or for a doctor in charge i.e. if the same venue or same doctor is booked for multiple appointments at the same time. These features will be coming in the v2.0 release of Health Book.
