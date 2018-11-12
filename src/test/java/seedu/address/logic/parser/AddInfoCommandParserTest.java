@@ -35,7 +35,7 @@ public class AddInfoCommandParserTest {
     private AddInfoCommandParser parser = new AddInfoCommandParser();
 
     @Test
-    public void parseMissingPartsFailure() {
+    public void parse_missingParts_failure() {
         // no index specified
         assertParseFailure(parser, VALID_NRIC_AMY, MESSAGE_INVALID_FORMAT);
 
@@ -47,7 +47,7 @@ public class AddInfoCommandParserTest {
     }
 
     @Test
-    public void parseInvalidPreambleFailure() {
+    public void parse_invalidPreamble_failure() {
         assertParseFailure(parser, "-1" + NRIC_DESC_AMY, MESSAGE_INVALID_FORMAT);
 
         assertParseFailure(parser, "0" + NRIC_DESC_AMY, MESSAGE_INVALID_FORMAT);
@@ -58,7 +58,7 @@ public class AddInfoCommandParserTest {
     }
 
     @Test
-    public void parseAllFieldsSpecifiedSuccess() {
+    public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + NRIC_DESC_AMY + DOB_DESC_AMY + HEIGHT_DESC_AMY + WEIGHT_DESC_AMY
                 + GENDER_DESC_AMY + BLOODTYPE_DESC_AMY + OCCUPATION_DESC_AMY + MARITAL_STATUS_DESC_AMY;

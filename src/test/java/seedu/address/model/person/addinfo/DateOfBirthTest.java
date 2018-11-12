@@ -12,15 +12,14 @@ import seedu.address.testutil.Assert;
 public class DateOfBirthTest {
 
     @Test
-    public void constructorNullThrowsNullPointerException() {
+    public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new DateOfBirth(null));
     }
 
     @Test
-    public void constructorInvalidDateOfBirthThrowsDateTimeParseException() {
+    public void constructor_invalidDateOfBirth_throwsDateTimeParseException() {
         Assert.assertThrows(DateTimeParseException.class, () -> new DateOfBirth("50-01-1970")); // invalid date
         Assert.assertThrows(DateTimeParseException.class, () -> new DateOfBirth("01-20-1970")); // invalid month
-        //Assert.assertThrows(DateTimeParseException.class, () -> new DateOfBirth("01-01-0000")); // invalid year
     }
 
     @Test

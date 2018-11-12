@@ -192,130 +192,130 @@ public class ParserUtilTest {
 
     //@@author xhxh96
     @Test
-    public void parseNricNullThrowsNullPointerException() {
+    public void parseNric_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseNric((String) null));
     }
 
     @Test
-    public void parseNricInvalidValueThrowsParseException() {
+    public void parseNric_invalidValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseNric(INVALID_NRIC));
     }
 
     @Test
-    public void parseNricIncorrectValueThrowsParseException() {
+    public void parseNric_incorrectValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseNric(INCORRECT_NRIC));
     }
 
     @Test
-    public void parseNricValidValueWithoutWhitespaceReturnsNric() throws Exception {
+    public void parseNric_validValueWithoutWhitespace_returnsNric() throws Exception {
         Nric expectedNric = new Nric(VALID_NRIC);
         assertEquals(expectedNric, ParserUtil.parseNric(VALID_NRIC));
     }
 
     @Test
-    public void parseNricValidValueWithWhitespaceReturnsTrimmedNric() throws Exception {
+    public void parseNric_validValueWithWhitespace_returnsTrimmedNric() throws Exception {
         String nricWithWhitespace = WHITESPACE + VALID_NRIC + WHITESPACE;
         Nric expectedNric = new Nric(VALID_NRIC);
         assertEquals(expectedNric, ParserUtil.parseNric(nricWithWhitespace));
     }
 
     @Test
-    public void parseDateOfBirthInvalidValueThrowsParseException() {
+    public void parseDateOfBirth_invalidValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseDateOfBirth(INVALID_DATE_OF_BIRTH));
     }
 
     @Test
-    public void parseDateOfBirthIncorrectValueThrowsDateTimeParseException() {
+    public void parseDateOfBirth_incorrectValue_throwsDateTimeParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseDateOfBirth(INCORRECT_DATE_OF_BIRTH));
     }
 
     @Test
-    public void parseDateOfBirthValidValueWithoutWhitespaceReturnsDateOfBirth() throws Exception {
+    public void parseDateOfBirth_validValueWithoutWhitespace_returnsDateOfBirth() throws Exception {
         DateOfBirth expectedDateOfBirth = new DateOfBirth(VALID_DATE_OF_BIRTH);
         assertEquals(expectedDateOfBirth, ParserUtil.parseDateOfBirth(VALID_DATE_OF_BIRTH));
     }
 
     @Test
-    public void parseHeightInvalidValueThrowsParseException() {
+    public void parseHeight_invalidValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseHeight(INVALID_HEIGHT_WEIGHT));
     }
 
     @Test
-    public void parseHeightValidValueWithoutWhitespaceReturnsHeight() throws Exception {
+    public void parseHeight_validValueWithoutWhitespace_returnsHeight() throws Exception {
         Height expectedHeight = new Height(VALID_HEIGHT_WEIGHT);
         assertEquals(expectedHeight, ParserUtil.parseHeight(VALID_HEIGHT_WEIGHT));
     }
 
     @Test
-    public void parseHeightValidValueWithWhitespaceReturnsTrimmedHeight() throws Exception {
+    public void parseHeight_validValueWithWhitespace_returnsTrimmedHeight() throws Exception {
         String heightWithWhitespace = WHITESPACE + VALID_HEIGHT_WEIGHT;
         Height expectedHeight = new Height(VALID_HEIGHT_WEIGHT);
         assertEquals(expectedHeight, ParserUtil.parseHeight(heightWithWhitespace));
     }
 
     @Test
-    public void parseWeightInvalidValueThrowsParseException() {
+    public void parseWeight_invalidValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseWeight(INVALID_HEIGHT_WEIGHT));
     }
 
     @Test
-    public void parseWeightValidValueWithoutWhitespaceReturnsHeight() throws Exception {
+    public void parseWeight_validValueWithoutWhitespace_returnsHeight() throws Exception {
         Weight expectedWeight = new Weight(VALID_HEIGHT_WEIGHT);
         assertEquals(expectedWeight, ParserUtil.parseWeight(VALID_HEIGHT_WEIGHT));
     }
 
     @Test
-    public void parseWeightValidValueWithWhitespaceReturnsTrimmedHeight() throws Exception {
+    public void parseWeight_validValueWithWhitespace_returnsTrimmedHeight() throws Exception {
         String weightWithWhitespace = WHITESPACE + VALID_HEIGHT_WEIGHT;
         Weight expectedWeight = new Weight(VALID_HEIGHT_WEIGHT);
         assertEquals(expectedWeight, ParserUtil.parseWeight(weightWithWhitespace));
     }
 
     @Test
-    public void parseGenderInvalidValueThrowsParseException() {
+    public void parseGender_invalidValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseGender(INVALID_GENDER));
     }
 
     @Test
-    public void parseGenderValidValueReturnsGender() throws Exception {
+    public void parseGender_validValue_returnsGender() throws Exception {
         Gender expectedGender = new Gender(VALID_GENDER);
         assertEquals(expectedGender, ParserUtil.parseGender(VALID_GENDER));
     }
 
     @Test
-    public void parseBloodTypeInvalidValueThrowsParseException() {
+    public void parseBloodType_invalidValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseBloodType(INVALID_BLOODTYPE));
     }
 
     @Test
-    public void parseBloodTypeIncorrectValueThrowsParseException() {
+    public void parseBloodType_incorrectValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseBloodType(INCORRECT_BLOODTYPE));
     }
 
     @Test
-    public void parseBloodTypeValidValueReturnBloodType() throws Exception {
+    public void parseBloodType_validValue_returnBloodType() throws Exception {
         BloodType expectedBloodType = new BloodType(VALID_BLOODTYPE);
         assertEquals(expectedBloodType, ParserUtil.parseBloodType(VALID_BLOODTYPE));
     }
 
     @Test
-    public void parseOccupationInvalidValueThrowsParseException() {
+    public void parseOccupation_invalidValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseOccupation(INVALID_OCCUPATION));
     }
 
     @Test
-    public void parseOccupationValidValueReturnOccupation() throws Exception {
+    public void parseOccupation_validValue_returnOccupation() throws Exception {
         Occupation expectedOccupation = new Occupation(VALID_OCCUPATION);
         assertEquals(expectedOccupation, ParserUtil.parseOccupation(VALID_OCCUPATION));
     }
 
     @Test
-    public void parseMaritalStatusInvalidValueThrowsParseException() {
+    public void parseMaritalStatus_invalidValue_throwsParseException() {
         Assert.assertThrows(ParseException.class, () -> ParserUtil.parseMaritalStatus(INVALID_MARITAL_STATUS));
     }
 
     @Test
-    public void parseMaritalStatusValidValueReturnsMaritalStatus() throws Exception {
+    public void parseMaritalStatus_validValueReturns_maritalStatus() throws Exception {
         MaritalStatus expectedMaritalStatus = new MaritalStatus(VALID_MARITAL_STATUS);
         assertEquals(expectedMaritalStatus, ParserUtil.parseMaritalStatus(VALID_MARITAL_STATUS));
     }

@@ -119,7 +119,7 @@ Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing t
 // tag::findcommand[]
 === Finding patients by specific category: `find`
 
-Finds patients by their personal (name, phone, email, address, tags and NRIC) or medical (medical Information, blood type, last country of visit and allergy) details.
+Filters patients by their personal (name, phone, email, address, tags and NRIC) or medical (medical Information, blood type, last country of visit and allergy) details.
 Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
 
 TIP: Patients can be found by any number of keywords (except 0)
@@ -433,7 +433,7 @@ Example:
 * `sort n/ 2` +
 Sort the patient list by their names in reverse order (Z → A).
 * `sort e/ 1` +
-Sort the patient list by their emails in alphabetical order (Z → A).
+Sort the patient list by their emails in alphabetical order (A → Z).
 // end::sortcommand[]
 
 === Selecting a patient: `select`
@@ -466,7 +466,7 @@ Toggling off the feature will cause the saved data file to be saved in plain-tex
 Format: `encrypt`
 
 [WARNING]
-If you have toggled on the encryption, it is important that you keep the `key.file` secure. Losing the `key.file` will cause the permanent loss of the saved data. Also, unauthorized personnel with access to the `key.file` will have access to the saved data.
+If you have toggled on encryption, it is important that you keep the `key` file secure. Losing the `key` file will cause the permanent loss of the saved data. Also, unauthorized personnel with access to the `key` file will have access to the saved data.
 
 
 Example:
@@ -478,9 +478,27 @@ image::encryption.png[width="800"]
 // end::dataencryption[]
 
 
-== FAQ
+== Future Enhancements in v2.0
 
-Empty.
+=== Disease/Injury tags can have spaces, commas and periods
+
+Users would be able to include more descriptive diseases and injuries without the constraint of it being one word. +
+This enhancement would be found in the `add` and `edit` command.
+
+Example:
+
+* `add n/Kenneth Tay p/73524475 e/TaylorSwift@example.com a/Potong Pasir, #08-25 t/Punctured Lungs t/Heart Attack` +
+Adds a person with name Kenneth Tay with Punctured Lungs and Heart Attack.
+* `edit 1 t/Broken Pelvis, Hairline Fracture` +
+Edits person at index 1 with a hairline fracture on the Pelvis.
+
+=== Restrict adding medical history after patient expires
+
+After a patient expires, there would be a check in the system for future `addhist` and `edithist` commands to prevent any
+medical history entries to exist after the medical history entry which contains the patient's expired discharge status.
+
+.Current Implementation which allows medical history entries after patient's expiry
+image::medhistoryV2.png[width="500"]
 
 == Command Summary
 
