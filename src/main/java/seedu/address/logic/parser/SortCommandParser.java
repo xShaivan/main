@@ -29,7 +29,7 @@ public class SortCommandParser implements Parser<SortCommand> {
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
 
-        if (nameKeywords.length < 2) {
+        if (nameKeywords.length != 2) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
