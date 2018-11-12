@@ -417,7 +417,7 @@ Step 5. Lastly, the `addhist` command will call `Model#commitAddressBook()` to u
 
 The following diagram shows how the `addhist` command works:
 
-.Sequence Diagram for `addhist` command
+.Sequence Diagram for addhist command
 image::AddHistSequenceDiagram.png[width="800"]
 
 // end::addhist[]
@@ -460,12 +460,6 @@ Step 3. The `edithist` command will obtain the set of entries in the medical his
 Step 4. The `edithist` command will call `Model#updatePerson()` to update the person with this new set of medical history entries. The `edithist` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user.
 
 Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
-
-
-The following diagram shows how the `edithist` command works:
-
-.Sequence Diagram for `edithist` command
-image::EditHistSequenceDiagram.png[width="800"]
 
 // end::edithist[]
 
