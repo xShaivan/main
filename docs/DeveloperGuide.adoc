@@ -464,7 +464,7 @@ Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to 
 // end::edithist[]
 
 // tag::addappt[]
-=== Add Appointment Feature
+=== AddAppointment Feature
 ==== Current Implementation
 
 The addappt mechanism is facilitated by `AddressBook` and `VersionedAddressBook`. It implements the following operations:
@@ -510,7 +510,7 @@ image::AddApptActivityDiagram.png[width="700"]
 // end::addappt[]
 
 // tag::addreport[]
-=== Add Medical Report Feature
+=== AddMedicalReport Feature
 ==== Current Implementation
 
 The addreport mechanism is facilitated by `VersionedAddressBook`.
@@ -542,7 +542,7 @@ image::AddMedicalReportSequenceDiagram.png[width="800"]
 // end::addreport[]
 
 // tag::editreport[]
-=== Edit Medical Report Feature
+=== EditMedicalReport Feature
 ==== Current Implementation
 The editreport mechanism is facilitated by `VersionedAddressBook`.
 
@@ -676,6 +676,11 @@ Upon exiting the program, `MainApp#stop` checks if the encryption has been enabl
 
 When users execute the `encrypt` command, the `AddressBookParser` returns `EncryptCommand` object to the `LogicManager`, which in turn executes the `EncryptCommand#execute` method. This method in turn gets the `UserPref` via `Model#getUserPref` and executes the `toggleEncryption` method, which in turn sets the `encryption` attribute in `UserPref` to either `true` or `false`, thereby enabling or disabling encryption.
 
+The following sequence diagram shows how the encryption works when the application is launched:
+
+.Sequence diagram for Encryption. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/EncryptCommandSD.png[here].
+image::EncryptCommandSD.png[width="400"]
+
 Given below is an example usage scenario on how `encrypt` works at each step:
 
 Step 1. A doctor launches the application for the the first time (by default encryption is disabled). A `SecretKey` is generated.
@@ -689,11 +694,6 @@ Step 4. The doctor exits the program.
 Step 5. Before the application fully exits, the `MainApp#stop` method asserts that encryption has been enabled. A temporary `healthbook.xml` file is generated. The same method will call `XmlUtil#loadDecryptedXmlFile` to load the temporary `healthbook.xml` before calling `XmlUtil#encryptDocument` to encrypt the file data. A `key` file is generated containing the `SecretKey` used for the encryption.
 
 Step 6. `MainApp#stop` then deletes the temporary `healthbook.xml` file before fully exiting the application.
-
-The following sequence diagram shows how the encryption works when the application is launched:
-
-.Sequence diagram for Encryption. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/EncryptCommandSD.png[here].
-image::EncryptCommandSD.png[width="400"]
 
 === Design Considerations
 ==== Aspect: Loading of Saved Data
@@ -2199,6 +2199,11 @@ If new date specified of Medical History to be edited already exists, error deta
 Expected: *PASS* +
 If previous Medical History entry exists, and new date specified is not used, the entry chosen will be
 edited with new date 05-05-2015, new allergy of grass and new previous country visited as Canada and the patient has expired.
+
+.. Test case: `edithist 1 hsod/12-12-2012 hsd/12-12-2012 hsds/d` +
+Expected: *PASS* +
+If previous Medical History entry exists, discharge status will be updated to discharged.
+However, current implementation does not auto refresh the discharge status for the entry. Users are required to click on the personcard to manually refresh the infopanel.
 
 === Adding Medical Report to a Patient
 
