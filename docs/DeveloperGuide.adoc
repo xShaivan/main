@@ -357,9 +357,9 @@ If any of the arguments contain invalid data, the program will not process any d
 
 Step 2. The `AddressBookParser` makes a call to `AddInfoCommandParser` together with the `String` input.
 
-Step 3. The `AddInfoCommandParser` then looks out for the pre-determined set of arguments in the `String` input. If any of the arguments are found, a call will be made to the `ParserUtil` class which extracts the data meant for the particular argument.
+Step 3. The `AddInfoCommandParser` then looks out for the pre-determined set of arguments in the `String` input. If any of the arguments are found, data after the argument will be extracted.
 
-Step 4. The `ParserUtil` class then checks for the validity of the data being parsed. If the data is valid, the class for that data will be initialized and added into an `AddInfoPersonDescriptor` object. If the data is not valid, a `ParseException` will be thrown, which will be handled by the `UIManager` requesting user the correct the data.
+Step 4. The `ParserUtil` class then checks for the validity of the data being extracted and parsed. If the data is valid, the class for that data will be initialized and added into an `AddInfoPersonDescriptor` object. If the data is not valid, a `ParseException` will be thrown, which will be handled by the `UIManager` requesting user the correct the data.
 
 Step 5. A `Person` object will be retrieved from the `lastShownList` at the appropriate index. The retrieved `Person` object will then retrieve the updated information from the `AddInfoPersonDescriptor` object created previously.
 
@@ -367,8 +367,17 @@ Step 6. The `Person` will now have an updated additional information.
 
 The following sequence diagram summarizes what happens when an user executes a new command:
 
-.Sequence Diagram for `addinfo` command. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/AddInfoCommandSD.png[here].
-image::AddInfoCommandSD.png[width="1000"]
+.Sequence Diagram for addinfo command. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/AddInfoCommandSD.png[here].
+image::AddInfoCommandSD.png[width="600"]
+
+=== Design Considerations:
+==== Aspect: Data Type for Additional Information
+* **Alternative 1:** Store all data type as `String`.
+** Pros: Easy to implement; easy to understand
+** Cons: Hard to enforce valid data input (Can only be done with Regular Expression, which can be very tedious); `String` is not useful in getting accessory information and operations (eg. Storing Date of Birth in `String` makes calculating age and sorting by Date of Birth difficult).
+* **Alternative 2 (current choice):** Use custom data type for each additional information (enumeration, LocalDate etc).
+** Pros: Easier to enforce valid data input; accessory information can be retrieved from and accessory operations can be executed on those data types.
+** Cons: More difficult to implement; adds unnecessary complexity (especially with enumeration).
 // end::addinfo[]
 
 // tag::addhist[]
@@ -408,7 +417,7 @@ Step 5. Lastly, the `addhist` command will call `Model#commitAddressBook()` to u
 
 The following diagram shows how the `addhist` command works:
 
-.Sequence Diagram for `addhist` command
+.Sequence Diagram for addhist command
 image::AddHistSequenceDiagram.png[width="800"]
 
 // end::addhist[]
@@ -451,12 +460,6 @@ Step 3. The `edithist` command will obtain the set of entries in the medical his
 Step 4. The `edithist` command will call `Model#updatePerson()` to update the person with this new set of medical history entries. The `edithist` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user.
 
 Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
-
-
-The following diagram shows how the `edithist` command works:
-
-.Sequence Diagram for `edithist` command
-image::EditHistSequenceDiagram.png[width="800"]
 
 // end::edithist[]
 
@@ -570,7 +573,7 @@ Step 5. Lastly, the `editreport` command will call `Model#commitAddressBook()` t
 === Find feature
 ==== Current Implementation
 
-The find mechanism is facilitated by `ModelManager`. It extends `AddressBook` and filters the `internalList` of patients. Additionally,
+The find mechanism is facilitated by `ModelManager`. It extends `AddressBook` and filters the `internalList` of patients in `UniquePersonList`. Additionally,
 it implements `ModelManager#updateFilteredPersonList()` and `ModelManager#getFilteredPersonList()` operations with the the 2 input parameters (prefix and keyword) before finding the patients
 accordingly.
 
@@ -588,7 +591,7 @@ Step 2. The doctor executes `find hsa/ alcohol nut` command to to filter patient
 [WARNING]
 If the command format is invalid, an error message will be shown to prompt the user of the correct format.
 
-Step 3. The `find` command parser will translate the input `hsa/` into allergy and find patients with "alcohol" and "nut" predicates in their allergy.
+Step 3. The `find` command parser will translate the input `hsa/` into method `AllergyContainsKeywordsPredicate` which find patients with "alcohol" and "nut" predicates in their allergy.
 
 [NOTE]
 There must be more than one keyword and the prefix is case sensitive.
@@ -608,8 +611,8 @@ image::FindActivityDiagram.png[width="800"]
 === Sort feature
 ==== Current Implementation
 
-The sort mechanism is facilitated by `ModelManager`. It extends `AddressBook` and sorts the `internalList` of patients. Additionally,
-it implements `ModelManager#updateSortedPersonList` operation with the the 2 input parameters (prefix and order) before sorting the patients
+The sort mechanism is facilitated by `ModelManager`. It extends `AddressBook` and sorts the `internalList` of patients in `UniquePersonList`. Additionally,
+it implements `ModelManager#updateSortedPersonList` operation with the 2 input parameters (prefix and order) before sorting the patients
 accordingly.
 
 This operation is exposed in the `Model` interface as `Model#updateSortedPersonList()`.
@@ -630,7 +633,7 @@ Step 3. The `sort` command will call `Model#updateSortedPersonList()` to update 
 
 Step 4. The patients list will then be sorted by `sortPersons()` in `UniquePersonList`.
 
-Step 5. The final patient list result generated will be sorted accordingly to the doctor's input.
+Step 5. The final patient list result generated will be sorted accordingly to the doctor's input: Patient list sorted by their names in the reverse order.
 
 The following sequence diagram summarizes the activity when a user (doctor) executes a new `sort` command:
 
@@ -653,18 +656,18 @@ Upon running the program, `MainApp#initSecretKey` checks if encryption has been 
 
 However, if encryption is not enabled, or should there be an error reading the `key` file, or that the `key` file does not exist, `MainApp#initSecretKey` will then proceed to generate a new `SecretKey` object using `SecretKetUtil#getSecretKey`.
 
-Next, `MainApp#initModelManager` will be executed. This method will also check if encryption has been enabled using `preferences.json` file. If encryption is enabled, it will attempt to look for `healthbook_encrypted.xml` file. If `healthbook_encrypted.xml` file exist, the same method will first load the `.xml` file using `XmlUtil#loadEncryptedXmlFile`, before attempting to decrypt the encrypted `.xml` file using the `key` file with the method `XmlUtil#decryptDocument`. A temporary `healthbook.xml` will be generated to be consumed by the program.
+Next, `MainApp#initModelManager` will be executed. This method will also check if encryption has been enabled using `preferences.json` file. If encryption is enabled, it will attempt to look for `healthbook_encrypted.xml` file. If `healthbook_encrypted.xml` file exist, the same method will first load the `.xml` file using `XmlUtil#loadEncryptedXmlFile`, before attempting to decrypt the encrypted `.xml` file using the `SecretKey` object with the method `XmlUtil#decryptDocument`. A temporary `healthbook.xml` will be generated to be consumed by the program.
 
 However, if `healthbook_encrypted.xml` does not exist, `MainApp#initModeManager` assumes that user runs the program for the first time, and proceed to load in sample data. If the `healthbook_encrypted.xml` does exist, but could not be decrypted successfully, Health Book will be launched without any patient data. An error pertaining to the failure to decrypt the `.xml` file will also be logged.
 
-Upon exiting the program, `MainApp#stop` checks if the encryption has been enabled. If the encryption has been enabled, it will call `XmlUtil#loadDecryptedXmlFile` which loads the temporary `healthbook.xml` file before encrypting the temporary `healthbook.xml` file with `XmlUtil#encryptDocument` method. It will then proceed to destroy the temporary `healthbook.xml` file and generate a `key` file based on the `SecretKey` that was generated when the application launched.
+Upon exiting the program, `MainApp#stop` checks if the encryption has been enabled. If the encryption has been enabled, it will call `XmlUtil#loadDecryptedXmlFile` which loads the temporary `healthbook.xml` file before encrypting the temporary `healthbook.xml` file with `XmlUtil#encryptDocument` method. It will then proceed to destroy the temporary `healthbook.xml` file and generate a `key` file based on the `SecretKey` object and the encrypted `healthbook_encrypted.xml` file.
 
 When users execute the `encrypt` command, the `AddressBookParser` returns `EncryptCommand` object to the `LogicManager`, which in turn executes the `EncryptCommand#execute` method. This method in turn gets the `UserPref` via `Model#getUserPref` and executes the `toggleEncryption` method, which in turn sets the `encryption` attribute in `UserPref` to either `true` or `false`, thereby enabling or disabling encryption.
 
 The following sequence diagram shows how the encryption works when the application is launched:
 
 .Sequence diagram for Encryption. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/EncryptCommandSD.png[here].
-image::EncryptCommandSD.png[width="800"]
+image::EncryptCommandSD.png[width="600"]
 
 Given below is an example usage scenario on how `encrypt` works at each step:
 
@@ -679,6 +682,17 @@ Step 4. The doctor exits the program.
 Step 5. Before the application fully exits, the `MainApp#stop` method asserts that encryption has been enabled. A temporary `healthbook.xml` file is generated. The same method will call `XmlUtil#loadDecryptedXmlFile` to load the temporary `healthbook.xml` before calling `XmlUtil#encryptDocument` to encrypt the file data. A `key` file is generated containing the `SecretKey` used for the encryption.
 
 Step 6. `MainApp#stop` then deletes the temporary `healthbook.xml` file before fully exiting the application.
+
+=== Design Considerations
+==== Aspect: Loading of Saved Data
+* **Alternative 1 (current choice):** Encrypted `.xml` file will be decrypted and stored as a temporary file `healthbook.xml`, which will be used by the application during startup to load the saved patient data.
+** Pros: Easy to implement - no major changes required for input/output operations.
+** Cons: Users are still able to retrieve the unencrypted file when using the application.
+
+* **Alternative 2:** Encrypted `.xml` file will be decrypted, with the decrypted data being processed by the application immediately for the loading of saved patient data.
+** Pros: Unencrypted `.xml` file will never be retrievable.
+** Cons: Difficult to implement given the time constraint, as it involves major restructuring of the input/output operation of the application.
+
 // end::dataencryption[]
 
 === Logging
@@ -1768,7 +1782,7 @@ Use case ends.
 
 *MSS*
 
-1.  User requests to find a patient in the list by a category. (eg. name, phone, blood type, medical information)
+1.  User requests to filter patients in the list by a category. (eg. name, phone, blood type, medical information)
 2.  System shows user a list of patients who are in requested category.
 +
 Use case ends.
@@ -1776,7 +1790,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to find patient.
+* 1a. User uses the wrong format to find patient (i.e. Keying in the wrong parameters after "find")".
 +
 [none]
 ** 1a1. System shows error message that format is wrong and shows correct format of finding patients.
@@ -2229,3 +2243,53 @@ edited with new date 05-05-2015, new allergy of grass and new previous country v
    Expected: No medical report is edited. Message of medical report not found will be shown.
 .. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
    Expected: No medical report is edited. Message of unable to edit existing report with the same title and date will be shown.
+
+=== Filtering Patients list by find
+
+. Finding patients through specific categories while all patients are listed.
+
+.. Test case: `find n/` +
+   Expected: The patient list remains the same, message of invalid format will be shown.
+.. Test case: `find n/ alex` +
+   Expected: Patient list will display Alex Yeoh's profile with success message.
+.. Test case: `find z/ ` +
+   Expected: The patient list remains the same, message of invalid format will be shown.
+.. Test case: `find z/ peanut` +
+   Expected: The patient list remains the same, message of invalid prefix will be shown.
+
+=== Sorting Patients list by sort
+
+. Sorting patients through specific categories in specific order while all/some patients are listed.
+
+.. Test case: `sort n/` +
+   Expected: The patient list remains the same, message of invalid format will be shown.
+.. Test case: `sort n/ 1` +
+   Expected: Patient list will display sorted patients by name in alphabetical order with success message.
+.. Test case: `sort z/ ` +
+   Expected: The patient list remains the same, message of invalid format will be shown.
+.. Test case: `sort z/ 1` +
+   Expected: The patient list remains the same, message of invalid prefix will be shown.
+.. Test case: `sort n/ 3` +
+   Expected: The patient list remains the same, message of invalid order will be shown.
+.. Test case: `sort z/ 3` +
+   Expected: The patient list remains the same, message of invalid prefix will be shown.
+.. Test case: `sort ic/ 1` +
+   Expected: Patients with empty NRIC field will be at the top of the list while rest will be sorted by alphabetical order.
+.. Test case: `sort ic/ 2` +
+   Expected: Patients with empty NRIC field will be at the bottom of the list while rest will be sorted by reverse order.
+
+=== Encrypting
+
+. Sorting patients through specific categories in specific order while all/some patients are listed.
+
+[NOTE]
+Place the `.jar` file in a newly created directory before executing the following test case.
+
+.. Test case: `encrypt`, followed by making some changes to address book, followed by `exit` +
+   Expected: `healthbook_encrypted.xml` and `key` should be generated in `/data` folder. Open up `healthbook_encrypted.xml` file to check that the file indeed contains cipher text.
+
+[NOTE]
+Only execute the following test case after the previous test case
+
+.. Test case: `encrypt`, followed by making some changes to address book, followed by `exit` +
+   Expected: `healthbook_encrypted.xml` and `key` should have been removed. `healthbook.xml` should be generated. Open up the `healthbook.xml` to check that the file contains patient data in plain text.
