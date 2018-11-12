@@ -485,12 +485,12 @@ Step 4. The `addappt` command will obtain the patient's existing set of appointm
 
 Step 5. The `addappt` command will call `Model#updatePerson()` to update the patient with this new set of appointments. The `addappt` command will also call `Model#updateFilteredPersonList()` to update the list that is being showed to the user to show all patients. Lastly, the `addappt` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
-The following sequence diagram shows how the addappt operation works:
+The following sequence diagram captures the interactions that goes on between multiple classes during the addappt operation :
 
 .Sequence diagram for addappt operation
 image::AddApptSequenceDiagram.png[width="700"]
 
-The following activity diagram shows how the addappt operation works:
+The following activity diagram shows the workflow for both the user and the system during the addappt operation:
 
 .Activity diagram for add appt operation
 image::AddApptActivityDiagram.png[width="700"]
