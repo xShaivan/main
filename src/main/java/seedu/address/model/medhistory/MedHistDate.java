@@ -1,8 +1,8 @@
 package seedu.address.model.medhistory;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.util.DateTimeUtil.DATE_VALIDATION_REGEX;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.model.util.DateTimeUtil.DATE_VALIDATION_REGEX;
 
 import java.time.LocalDate;
 
