@@ -165,7 +165,6 @@ public class SampleDataUtil {
     /**
      * Returns a report set containing the list of reports given.
      */
-    // TODO: (MedicalReport) MIGHT CONVERT TO USE STREAM IN FUTURE
     public static Set<MedicalReport> getReportSet(MedicalReport ... reports) {
         Set<MedicalReport> reportSet = new TreeSet<>(new ReportComparator());
         for (MedicalReport report : reports) {
@@ -178,7 +177,6 @@ public class SampleDataUtil {
     /**
      * Returns an appt set containing the list of appts given.
      */
-    // TODO: (Appt) MIGHT CONVERT TO USE STREAM IN FUTURE
     public static Set<Appt> getApptSet(Appt... appts) {
         Set<Appt> apptSet = new TreeSet<>(new ApptComparator());
         for (Appt appt : appts) {

@@ -34,7 +34,8 @@ public class DeleteApptCommand extends Command {
             + PREFIX_APPT_START + "16-09-2018 15:00";
 
     public static final String MESSAGE_DELETE_APPT_SUCCESS = "Removed appt from Person: %1$s";
-    public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to delete cannot be found.";
+    public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to delete cannot be found for the "
+            + "patient.";
 
     private final Index index;
     private final ApptDateTime apptStart;

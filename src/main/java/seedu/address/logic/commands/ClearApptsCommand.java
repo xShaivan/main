@@ -24,14 +24,14 @@ public class ClearApptsCommand extends Command {
     public static final String COMMAND_WORD = "clearappts";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Clears all appts that are before the date provided for all persons in the health book.\n"
+            + ": Clears all appts that end before or on the date provided for all persons in the health book.\n"
             + "Parameters: " + PREFIX_APPT_DATE + "DATE\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_APPT_DATE + "16-09-2018";
 
-    public static final String MESSAGE_CLEAR_OLD_APPTS_SUCCESS = "Any past appointments before or on the specified "
+    public static final String MESSAGE_CLEAR_OLD_APPTS_SUCCESS = "Any appointments ending before or on the specified "
             + "date have been deleted.";
-    public static final String MESSAGE_NO_OLD_APPTS = "There are no appointments before or on the specified date "
-            + "to be deleted.";
+    public static final String MESSAGE_NO_OLD_APPTS = "There are no appointments ending before or on the specified "
+            + "date to be deleted.";
 
     private final ApptDate dateInput;
 
@@ -46,33 +46,48 @@ public class ClearApptsCommand extends Command {
         boolean hasApptsToBeCleared = false;
 
         for (Person personToEdit : addressBook.getPersonList()) {
-            Set<Appt> apptsCopy = new TreeSet<>(new ApptComparator());
             Set<Appt> oldAppts = personToEdit.getAppts();
 
             for (Appt appt : oldAppts) {
-                apptsCopy.add(appt);
                 if (appt.getEnd().value.toLocalDate().compareTo(dateInput.value) <= 0) {
-                    apptsCopy.remove(appt);
                     hasApptsToBeCleared = true;
+                    break;
                 }
             }
 
-            Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(),
-                    personToEdit.getEmail(), personToEdit.getAddress(), personToEdit.getMedicalReports(),
-                    personToEdit.getMedHistory(), apptsCopy, personToEdit.getNric(), personToEdit.getDateOfBirth(),
-                    personToEdit.getHeight(), personToEdit.getWeight(), personToEdit.getGender(),
-                    personToEdit.getBloodType(), personToEdit.getOccupation(), personToEdit.getMaritalStatus(),
-                    personToEdit.getTags());
-
-            model.updatePerson(personToEdit, editedPerson);
+            if (hasApptsToBeCleared) {
+                break;
+            }
         }
 
         if (!hasApptsToBeCleared) {
             throw new CommandException(MESSAGE_NO_OLD_APPTS);
         }
+        else {
+            for (Person personToEdit : addressBook.getPersonList()) {
+                Set<Appt> apptsCopy = new TreeSet<>(new ApptComparator());
+                Set<Appt> oldAppts = personToEdit.getAppts();
 
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        model.commitAddressBook();
-        return new CommandResult(MESSAGE_CLEAR_OLD_APPTS_SUCCESS);
+                for (Appt appt : oldAppts) {
+                    apptsCopy.add(appt);
+                    if (appt.getEnd().value.toLocalDate().compareTo(dateInput.value) <= 0) {
+                        apptsCopy.remove(appt);
+                    }
+                }
+
+                Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(),
+                        personToEdit.getEmail(), personToEdit.getAddress(), personToEdit.getMedicalReports(),
+                        personToEdit.getMedHistory(), apptsCopy, personToEdit.getNric(), personToEdit.getDateOfBirth(),
+                        personToEdit.getHeight(), personToEdit.getWeight(), personToEdit.getGender(),
+                        personToEdit.getBloodType(), personToEdit.getOccupation(), personToEdit.getMaritalStatus(),
+                        personToEdit.getTags());
+
+                model.updatePerson(personToEdit, editedPerson);
+            }
+
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            model.commitAddressBook();
+            return new CommandResult(MESSAGE_CLEAR_OLD_APPTS_SUCCESS);
+        }
     }
 }

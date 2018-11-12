@@ -3,6 +3,14 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_BLOODTYPE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_DOB;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_GENDER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_HEIGHT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_MARITAL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_OCCUPATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_WEIGHT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DRNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
@@ -69,9 +77,24 @@ public class CommandTestUtil {
 
     public static final String VALID_NRIC_AMY = "S9799909J";
     public static final String VALID_NRIC_BOB = "S9880095F";
-
     public static final String VALID_DATE_OF_BIRTH_AMY = "10-02-1986";
     public static final String VALID_DATE_OF_BIRTH_BOB = "01-05-2005";
+    public static final String VALID_HEIGHT_AMY = "168";
+    public static final String VALID_WEIGHT_AMY = "60.5";
+    public static final String VALID_GENDER_AMY = "F";
+    public static final String VALID_BLOODTYPE_AMY = "O+";
+    public static final String VALID_OCCUPATION_AMY = "Nurse";
+    public static final String VALID_MARITAL_STATUS_AMY = "S";
+
+    public static final String NRIC_DESC_AMY = " " + PREFIX_ADD_INFO_NRIC + VALID_NRIC_AMY;
+    public static final String NRIC_DESC_BOB = " " + PREFIX_ADD_INFO_NRIC + VALID_NRIC_BOB;
+    public static final String DOB_DESC_AMY = " " + PREFIX_ADD_INFO_DOB + VALID_DATE_OF_BIRTH_AMY;
+    public static final String HEIGHT_DESC_AMY = " " + PREFIX_ADD_INFO_HEIGHT + VALID_HEIGHT_AMY;
+    public static final String WEIGHT_DESC_AMY = " " + PREFIX_ADD_INFO_WEIGHT + VALID_WEIGHT_AMY;
+    public static final String GENDER_DESC_AMY = " " + PREFIX_ADD_INFO_GENDER + VALID_GENDER_AMY;
+    public static final String BLOODTYPE_DESC_AMY = " " + PREFIX_ADD_INFO_BLOODTYPE + VALID_BLOODTYPE_AMY;
+    public static final String OCCUPATION_DESC_AMY = " " + PREFIX_ADD_INFO_OCCUPATION + VALID_OCCUPATION_AMY;
+    public static final String MARITAL_STATUS_DESC_AMY = " " + PREFIX_ADD_INFO_MARITAL + VALID_MARITAL_STATUS_AMY;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
