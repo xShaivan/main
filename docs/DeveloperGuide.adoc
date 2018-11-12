@@ -35,7 +35,7 @@ IntelliJ by default has Gradle and JavaFx plugins installed. +
 Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plugins` to re-enable them.
 
 
-=== Setting Up Project In Your Computer
+=== Setting Up Project
 
 . Fork this repo, and clone the fork to your computer
 . Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first)
@@ -49,7 +49,7 @@ Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plu
 . Open a console and run the command `gradlew processResources` (Mac/Linux: `./gradlew processResources`). It should finish with the `BUILD SUCCESSFUL` message. +
 This will generate all resources required by the application and tests.
 
-=== Verifying the Setup
+=== Verifying Setup
 
 . Run the `seedu.address.MainApp` and try a few commands
 . <<Testing,Run the tests>> to ensure they all pass.
@@ -1252,7 +1252,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 (For all use cases below, the *System* is the `Health Book`, unless specified otherwise)
 
-=== Use case: Viewing of Available Commands: `help`
+=== Use Case: Viewing of Available Commands: `help`
 
 *MSS*
 
@@ -1261,7 +1261,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 +
 Use case ends.
 
-=== Use case: Adding a Patient: `add`
+=== Use Case: Adding a Patient: `add`
 
 *MSS*
 
@@ -1280,7 +1280,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Listing All Patients: `list`
+=== Use Case: Listing All Patients: `list`
 
 *MSS*
 
@@ -1299,7 +1299,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing Basic Information of Patient: `edit`
+=== Use Case: Editing Basic Information of Patient: `edit`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1327,7 +1327,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Deleting a Patient: `delete`
+=== Use Case: Deleting a Patient: `delete`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1355,7 +1355,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Selecting a Patient: `select`
+=== Use Case: Selecting a Patient: `select`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1376,7 +1376,7 @@ Use case ends.
 Use case ends.
 
 // tag::addinfousecase[]
-=== Use case: Adding Additional Information of Patient: `addinfo`
+=== Use Case: Adding Additional Information of Patient: `addinfo`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1406,7 +1406,7 @@ Use case ends.
 // end::addinfousecase[]
 
 // tag::medhistoryusecases[]
-=== Use case: Adding of Medical History: `addhist`
+=== Use Case: Adding of Medical History: `addhist`
 Assume that user has already requested the System to display a list of medical reports for a patient.
 
 *MSS*
@@ -1450,7 +1450,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing of Medical History: `edithist`
+=== Use Case: Editing of Medical History: `edithist`
 Assume that user has already requested the System to display a list of medical reports for a patient.
 
 *MSS*
@@ -1512,7 +1512,7 @@ Use case ends.
 // end::medhistoryusecases[]
 
 // tag::apptusecases[]
-=== Use case: Adding an Appointment for a Patient: `addappt`
+=== Use Case: Adding an Appointment for a Patient: `addappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1556,7 +1556,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing an Appointment for a Patient: `editappt`
+=== Use Case: Editing an Appointment for a Patient: `editappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
