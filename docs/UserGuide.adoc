@@ -21,15 +21,16 @@ By: `Team T12-2`      Since: `Aug 2018`      Licence: `MIT`
 
 == Introduction
 
-Health Book is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface is utilized mainly for the input*, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
+Health Book is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface (CLI) is utilized mainly for the input*, while *Graphical User Interface (GUI) is used mainly to display the output*. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
 
-== Quick Start (to be edited in the future)
+== Quick Start
 
 .  Ensure you have Java version `9` or later installed in your Computer.
 .  Download the latest `healthbook.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your Health Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
+.User interface of Health Book
 image::Ui.png[width="790"]
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
