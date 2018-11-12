@@ -2277,3 +2277,19 @@ edited with new date 05-05-2015, new allergy of grass and new previous country v
    Expected: Patients with empty NRIC field will be at the top of the list while rest will be sorted by alphabetical order.
 .. Test case: `sort ic/ 2` +
    Expected: Patients with empty NRIC field will be at the bottom of the list while rest will be sorted by reverse order.
+
+=== Encrypting
+
+. Sorting patients through specific categories in specific order while all/some patients are listed.
+
+[NOTE]
+Place the `.jar` file in a newly created directory before executing the following test case.
+
+.. Test case: `encrypt`, followed by making some changes to address book, followed by `exit` +
+   Expected: `healthbook_encrypted.xml` and `key` should be generated in `/data` folder. Open up `healthbook_encrypted.xml` file to check that the file indeed contains cipher text.
+
+[NOTE]
+Only execute the following test case after the previous test case
+
+.. Test case: `encrypt`, followed by making some changes to address book, followed by `exit` +
+   Expected: `healthbook_encrypted.xml` and `key` should have been removed. `healthbook.xml` should be generated. Open up the `healthbook.xml` to check that the file contains patient data in plain text.
