@@ -116,46 +116,6 @@ Edits the phone number and email address of the 1st patient to be `91234567` and
 * `edit 2 n/Betsy Crower t/` +
 Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags.
 
-// tag::findcommand[]
-=== Finding patients by specific category: `find`
-
-Filters patients by their personal (name, phone, email, address, tags and NRIC) or medical (medical Information, blood type, last country of visit and allergy) details.
-Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
-
-TIP: Patients can be found by any number of keywords (except 0)
-
-[WARNING]
-Don't forget to include the space between `PREFIX/` and `KEYWORD`
-
-****
-* The search is case insensitive. e.g. `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the specified detail is searched.
-* Only one category per find is allowed.
-* Only full words will be matched. e.g. `Han` will not match `Hans`
-* Only above-mentioned details can be utilised. e.g. Date of Birth is not applicable.
-* Patients matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-****
-
-[NOTE]
-====
-.Available Prefixes
-- Personal detail prefixes: n/ (Name) p/ (Phone) e/ (Email) a/ (Address) t/ (tag) ic/ (NRIC)
-- Medical detail prefixes: i/ (MedInfo) hsa/ (Allergy) hsb/ (BloodType) hsc/ (LastCountry)
-====
-
-Examples:
-
-* `find n/ John` +
-Returns `john` and `John Doe`
-* `find n/ BeTsY Tim John` +
-Returns any patient having names `Betsy`, `Tim`, or `John`
-* `find ic/ S9876543T`
-Returns any patient whose NRIC is S9876543T.
-* `find t/ asthma`
-Returns any patient who is tagged with asthma.
-// end::findcommand[]
-
 === Deleting a patient : `delete`
 
 Deletes the specified patient from the health book. +
@@ -175,6 +135,79 @@ Deletes the 2nd person in the Health Book.
 * `find n/ Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
+
+=== Selecting a patient: `select`
+
+Selects the patient identified by the index number used in the displayed person list and displays the selected patient's information. +
+Format: `select INDEX`
+
+****
+* Selects the patient and displays the information for the patient at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Example:
+
+* `list` +
+`select 2` +
+Selects the 2nd person in the health book.
+
+// tag::addinfocommands[]
+=== Adding Additional Information of Patient: `addinfo`
+
+Add/Edit the following additional information: NRIC, Date Of Birth (in DD-MMY-YYY format), height (cm), weight (kg),
+gender, occupation, and marital status. +
+
+[NOTE]
+`age` field will be auto-calculated once Date Of Birth is populated. It will be displayed on the UI in parenthesis under Date of Birth field.+
+
+Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION] [m/MARITAL_STATUS]`
+
+****
+.Constraints for `[i/NRIC]`:
+* Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
+* NRIC input must comply to ICA's NRIC checksum algorithm
+
+.Constraints for `[d/DOB]`:
+* Must be in the format `dd-MM-YYYY`
+* Must not be before 01-01-1900.
+
+.Constraints for `[h/HEIGHT]
+* Must be a numerical input.
+* Floating point numbers are accepted.
+* Input all `height` data in centimeters.
+
+.Constraints for `[w/WEIGHT]
+* Must be a numerical input.
+* Floating point numbers are accepted.
+* Input all `weight` data in kilograms.
+
+.Constraints for `[b/BLOOD TYPE]`
+* Input must either be `A+`, `A-`, `AB+`, `AB-`, `B+`, `B-`, `O+` or `O-`.
+* Excluding the `+`/`-` from the input will not be accepted.
+
+.Constraints for `[g/GENDER]`
+* Input must either be `M` (for Male) or `F` (for Female).
+
+.Constraints for `[o/OCCUPATION]`
+* Must not contain any numeric and special characters including whitespaces (Eg. Nurse and Doctor or Wood-Logger are not accepted input).
+
+.Constraints for `[m/MARITAL_STATUS]`
+* Must be either `M` for Married, `S` for Single or `D` for Divorced.
+****
+
+[NOTE]
+The `addinfo` command not only adds, but also edits the additional information of each patient by overwriting existing information. For instance, if a patient already has the `NRIC` data, running `addinfo [PATIENT_INDEX] i/S9696531A` will overwrite the existing `NRIC` data with `S9696531A`.
+
+Examples:
+
+* `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M` +
+For patient at index 2, populate NRIC field with S91234567A, date of birth field
+with 01-01-1990, height field with 154, gender field with Male.
+// end::addinfocommands[]
+* `addinfo 1 d/31-12-2001 o/Doctor b/AB+ m/M` +
+For patient at index 1 populate the date of birth field with 31-12-2001, occupation with doctor, blood type with AB+ and marital status as married.
 
 // tag::addhist[]
 === Adding patient's medical history: `addhist`
@@ -245,10 +278,7 @@ for a diabetes checkup by Dr Tan.
 .GUI after adding an appointment to a patient with no existing appointments
 image::AddApptUGPic.png[width="600"]
 
-** If the first patient previously had appointments, the new appointment will be added to his schedule and shown on the GUI together with his other appointments in order of start time (from earliest to latest). The GUI will look as follows:
-
-.GUI after adding an appointment to a patient with existing appointments
-image::AddApptUGPic2.png[width="600"]
+** If the first patient previously had appointments, the new appointment will be added to his schedule and shown on the GUI together with his other appointments in order of start time (from earliest to latest).
 
 === Editing an appointment for a patient: `editappt`
 
@@ -267,12 +297,6 @@ Example:
 * `editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
 Edits the appointment that starts on 16-09-2018 at 15:00, to now run from 16-09-2018 14:00-14:30 instead
 and be at Consultation Room 13 for the 2nd person in the list.
-
-[NOTE]
-`addappt` and `editappt` commands will display an error message if the user adds in an appointment with the end date and time before the start date and time, or if the patient has multiple appointments that have timing clashes.
-
-[WARNING]
-`addappt` and `editappt` commands will only check if there are appointment timing clashes for a patient. There is currently no check for appointment timing clashes for a venue or for a doctor in charge i.e. if the same venue or same doctor is booked for multiple appointments at the same time. These features will be coming in the v2.0 release of Health Book.
 
 === Deleting an appointment for a patient: `deleteappt`
 
@@ -302,62 +326,6 @@ Example:
 
 [NOTE]
 The `clearappts` command will delete appointments based on their end date, not their start date. Thus, the command `clearappts d/16-09-2018` will not delete an appointment that starts on 16-09-2018 and ends on 17-09-2018.
-
-// tag::addinfocommands[]
-=== Adding Additional Information of Patient: `addinfo`
-
-Add/Edit the following additional information: NRIC, Date Of Birth (in DD-MMY-YYY format), height (cm), weight (kg),
-gender, occupation, and marital status. +
-
-[NOTE]
-`age` field will be auto-calculated once Date Of Birth is populated. It will be displayed on the UI in parenthesis under Date of Birth field.+
-
-Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION] [m/MARITAL_STATUS]`
-
-****
-.Constraints for `[i/NRIC]`:
-* Must start with 'S' or 'T' followed by 7 digits before ending with an alphabet
-* NRIC input must comply to ICA's NRIC checksum algorithm
-
-.Constraints for `[d/DOB]`:
-* Must be in the format `dd-MM-YYYY`
-* Must not be before 01-01-1900.
-
-.Constraints for `[h/HEIGHT]
-* Must be a numerical input.
-* Floating point numbers are accepted.
-* Input all `height` data in centimeters.
-
-.Constraints for `[w/WEIGHT]
-* Must be a numerical input.
-* Floating point numbers are accepted.
-* Input all `weight` data in kilograms.
-
-.Constraints for `[b/BLOOD TYPE]`
-* Input must either be `A+`, `A-`, `AB+`, `AB-`, `B+`, `B-`, `O+` or `O-`.
-* Excluding the `+`/`-` from the input will not be accepted.
-
-.Constraints for `[g/GENDER]`
-* Input must either be `M` (for Male) or `F` (for Female).
-
-.Constraints for `[o/OCCUPATION]`
-* Must not contain any numeric and special characters including whitespaces (Eg. Nurse and Doctor or Wood-Logger are not accepted input).
-
-.Constraints for `[m/MARITAL_STATUS]`
-* Must be either `M` for Married, `S` for Single or `D` for Divorced.
-****
-
-[NOTE]
-The `addinfo` command not only adds, but also edits the additional information of each patient by overwriting existing information. For instance, if a patient already has the `NRIC` data, running `addinfo [PATIENT_INDEX] i/S9696531A` will overwrite the existing `NRIC` data with `S9696531A`.
-
-Examples:
-
-* `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M` +
-For patient at index 2, populate NRIC field with S91234567A, date of birth field
-with 01-01-1990, height field with 154, gender field with Male.
-// end::addinfocommands[]
-* `addinfo 1 d/31-12-2001 o/Doctor b/AB+ m/M` +
-For patient at index 1 populate the date of birth field with 31-12-2001, occupation with doctor, blood type with AB+ and marital status as married.
 
 // tag::reportcommands[]
 === Adding of Medical Report: `addreport`
@@ -403,6 +371,46 @@ Edits title, date and information of existing medical report titled Asthma and d
 image::EditReport.png[width="790"]
 // end::reportcommands[]
 
+// tag::findcommand[]
+=== Finding patients by specific category: `find`
+
+Finds patients by their personal (name, phone, email, address, tags and NRIC) or medical (medical Information, blood type, last country of visit and allergy) details.
+Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
+
+TIP: Patients can be found by any number of keywords (except 0)
+
+[WARNING]
+Don't forget to include the space between `PREFIX/` and `KEYWORD`
+
+****
+* The search is case insensitive. e.g. `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* Only the specified detail is searched.
+* Only one category per find is allowed.
+* Only full words will be matched. e.g. `Han` will not match `Hans`
+* Only above-mentioned details can be utilised. e.g. Date of Birth is not applicable.
+* Patients matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+****
+
+[NOTE]
+====
+.Available Prefixes
+- Personal detail prefixes: n/ (Name) p/ (Phone) e/ (Email) a/ (Address) t/ (tag) ic/ (NRIC)
+- Medical detail prefixes: i/ (MedInfo) hsa/ (Allergy) hsb/ (BloodType) hsc/ (LastCountry)
+====
+
+Examples:
+
+* `find n/ John` +
+Returns `john` and `John Doe`
+* `find n/ BeTsY Tim John` +
+Returns any patient having names `Betsy`, `Tim`, or `John`
+* `find ic/ S9876543T`
+Returns any patient whose NRIC is S9876543T.
+* `find t/ asthma`
+Returns any patient who is tagged with asthma.
+// end::findcommand[]
+
 // tag::sortcommand[]
 === Sorting patients list: `sort`
 
@@ -436,24 +444,6 @@ Sort the patient list by their names in reverse order (Z → A).
 Sort the patient list by their emails in alphabetical order (A → Z).
 // end::sortcommand[]
 
-=== Selecting a patient: `select`
-
-Selects the patient identified by the index number used in the displayed person list and displays the selected patient's information. +
-Format: `select INDEX`
-
-****
-* Selects the patient and displays the information for the patient at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index *must be a positive integer* `1, 2, 3, ...`
-****
-
-Example:
-
-* `list` +
-`select 2` +
-Selects the 2nd person in the health book.
-
-
 // tag::dataencryption[]
 === Encrypting Patient Data: `encrypt`
 
@@ -477,7 +467,6 @@ Depending on the current setting of encryption, this will toggle on or off the e
 image::encryption.png[width="800"]
 // end::dataencryption[]
 
-
 == Future Enhancements in v2.0
 
 === Disease/Injury tags can have spaces, commas and periods
@@ -499,6 +488,9 @@ medical history entries to exist after the medical history entry which contains 
 
 .Current Implementation which allows medical history entries after patient's expiry
 image::medhistoryV2.png[width="500"]
+
+=== Further checks for appointment timing clashes
+`addappt` and `editappt` commands currently will only check if there are appointment timing clashes for a patient. There is currently no check for appointment timing clashes for a venue or for a doctor in charge i.e. if the same venue or same doctor is booked for multiple appointments at the same time. These features will be coming in the v2.0 release of Health Book.
 
 == Command Summary
 
