@@ -8,8 +8,6 @@
 
 == PROJECT: Health Book
 
----
-
 == Overview
 
 Health Book is a desktop address book application targeted at health care professionals who seek to retrieve their patients' personal details and health-related information all in one place.
