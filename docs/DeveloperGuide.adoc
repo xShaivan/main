@@ -452,9 +452,6 @@ Step 4. The `edithist` command will call `Model#updatePerson()` to update the pe
 
 Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to update the addressBookStateList and currentStatePointer.
 
-
-The following diagram shows how the `edithist` command works:
-
 // end::edithist[]
 
 // tag::addappt[]
