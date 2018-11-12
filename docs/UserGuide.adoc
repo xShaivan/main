@@ -21,15 +21,16 @@ By: `Team T12-2`      Since: `Aug 2018`      Licence: `MIT`
 
 == Introduction
 
-Health Book is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface is utilized mainly for the input*, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
+Health Book is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface (CLI) is utilized mainly for the input*, while *Graphical User Interface (GUI) is used mainly to display the output*. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
 
-== Quick Start (to be edited in the future)
+== Quick Start
 
 .  Ensure you have Java version `9` or later installed in your Computer.
 .  Download the latest `healthbook.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your Health Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
+.User interface of Health Book
 image::Ui.png[width="790"]
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
@@ -511,13 +512,12 @@ e.g. `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #0
 * *List* : `list`
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]` +
 e.g. `edit 1 p/91234567 e/johndoe@example.com`
-* *Find* : `find PREFIX/ KEYWORD [MORE_KEYWORDS]` +
-e.g. `find n/ john` +
-e.g. `find n/ BeTsY Tim John` +
-e.g. `find ic/ S9876543T` +
-e.g. `find t/ asthma`
 * *Delete* : `delete INDEX` +
 e.g. `delete 2`
+* *Select* : `select INDEX` +
+e.g. select 1
+* *Add Information* : `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
+e.g. `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M``
 * *Add Medical History* : `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS` +
 `addhist 1 hsd/10-10-2010 hsa/Alcohol hsc/Kuwait hsds/d`
 * *Edit Medical History* : `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS` +
@@ -528,15 +528,18 @@ e.g. `addappt 1 s/16-09-2018 15:00 e/16-09-2018 15:30 v/Consultation Room 12 i/D
 e.g.`editappt 2 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13`
 * *Delete Appt* : `deleteappt INDEX s/START` +
 e.g. `deleteappt 2 s/16-09-2018 15:00`
-* *Add Information* : `addinfo INDEX [n/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [o/OCCUPATION] [m/MARITAL_STATUS] [f/FAMILY_MEMBER_INDEX]` +
-e.g. `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M``
+* *Clear Appts* : `clearappts d/DATE` +
+e.g. `clearappts d/16-09-2018`
 * *Add Medical Report* : `addreport INDEX [t/TITLE] [d/DATE] [i/INFORMATION]` +
 e.g. `addreport 1 t/Asthma d/01-01-2018 i/Prescribed XXX medicine, next appointment on 02-02-2018.`
 * *Edit Medical Report* : `editreport INDEX ot/Title od/ORIGINAL DATE [t/TITLE] [d/DATE] [i/INFORMATION]` +
 e.g. `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.`
+* *Find* : `find PREFIX/ KEYWORD [MORE_KEYWORDS]` +
+e.g. `find n/ john` +
+e.g. `find n/ BeTsY Tim John` +
+e.g. `find ic/ S9876543T` +
+e.g. `find t/ asthma`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
 e.g. `sort e/ 1`
-* *Select* : `select INDEX` +
-e.g. select 1
 * *Encrypt*: `encrypt`
