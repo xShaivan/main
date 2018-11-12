@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY1;
 import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY2;
+import static seedu.address.testutil.TypicalMedHistory.MEDHISTORY_INVALID_DATE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.Test;
@@ -22,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.util.DateTimeUtil;
 import seedu.address.testutil.PersonBuilder;
 
 //@@author xShaivan
@@ -153,5 +155,29 @@ public class AddHistCommandTest {
         assertFalse(standardCommand.equals(new AddHistCommand(INDEX_SECOND_PERSON, MEDHISTORY1)));
         // different remark -> returns false
         assertFalse(standardCommand.equals(new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY2)));
+    }
+
+    @Test
+    public void isDuplicateMedHistory() {
+        // not duplicate Medical History -> returns false
+        assertFalse(AddHistCommand.isDuplicateMedHistory(MEDHISTORY1, MEDHISTORY2));
+        // duplicate Medical History -> returns true
+        assertTrue(AddHistCommand.isDuplicateMedHistory(MEDHISTORY1, MEDHISTORY1));
+    }
+
+    @Test
+    public void isDuplicateMedHistDate() {
+        // not duplicate Medical History Date -> returns false
+        assertFalse(AddHistCommand.isDuplicateMedHistDate(MEDHISTORY1, MEDHISTORY2));
+        // duplicate Medical History Date -> returns true
+        assertTrue(AddHistCommand.isDuplicateMedHistDate(MEDHISTORY1, MEDHISTORY1));
+    }
+
+    @Test
+    public void isInvalidMedHistDate() {
+        // not invalid Medical History Date -> returns false
+        assertFalse(DateTimeUtil.isInvalidMedHistDate(MEDHISTORY1));
+        // invalid Medical History Date -> returns true
+        assertTrue(DateTimeUtil.isInvalidMedHistDate(MEDHISTORY_INVALID_DATE));
     }
 }
