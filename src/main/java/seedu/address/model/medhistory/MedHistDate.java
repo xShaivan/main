@@ -15,10 +15,10 @@ import seedu.address.model.util.DateTimeUtil;
  */
 
 public class MedHistDate {
-    public final LocalDate value;
-
     public static final String MESSAGE_MEDHISTDATE_CONSTRAINTS =
             "MedHistDate must comply with dd-MM-yyyy format";
+    
+    public final LocalDate value;
 
     /**
      * Constructs an {@code MedHistDate}.
