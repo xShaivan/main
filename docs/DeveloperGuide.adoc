@@ -369,6 +369,15 @@ The following sequence diagram summarizes what happens when an user executes a n
 
 .Sequence Diagram for `addinfo` command. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/AddInfoCommandSD.png[here].
 image::AddInfoCommandSD.png[width="600"]
+
+=== Design Considerations:
+==== Aspect: Data Type for Additional Information
+* **Alternative 1:** Store all data type as `String`.
+** Pros: Easy to implement; easy to understand
+** Cons: Hard to enforce valid data input (Can only be done with Regular Expression, which can be very tedious); `String` is not useful in getting accessory information and operations (eg. Storing Date of Birth in `String` makes calculating age and sorting by Date of Birth difficult).
+* **Alternative 2 (current choice):** Use custom data type for each additional information (enumeration, LocalDate etc).
+** Pros: Easier to enforce valid data input; accessory information can be retrieved from and accessory operations can be executed on those data types.
+** Cons: More difficult to implement; adds unnecessary complexity (especially with enumeration).
 // end::addinfo[]
 
 // tag::addhist[]
@@ -679,6 +688,17 @@ Step 4. The doctor exits the program.
 Step 5. Before the application fully exits, the `MainApp#stop` method asserts that encryption has been enabled. A temporary `healthbook.xml` file is generated. The same method will call `XmlUtil#loadDecryptedXmlFile` to load the temporary `healthbook.xml` before calling `XmlUtil#encryptDocument` to encrypt the file data. A `key` file is generated containing the `SecretKey` used for the encryption.
 
 Step 6. `MainApp#stop` then deletes the temporary `healthbook.xml` file before fully exiting the application.
+
+=== Design Considerations
+==== Aspect: Loading of Saved Data
+* **Alternative 1 (current choice):** Encrypted `.xml` file will be decrypted and stored as a temporary file `healthbook.xml`, which will be used by the application during startup to load the saved patient data.
+** Pros: Easy to implement - no major changes required for input/output operations.
+** Cons: Users are still able to retrieve the unencrypted file when using the application.
+
+* **Alternative 2:** Encrypted `.xml` file will be decrypted, with the decrypted data being processed by the application immediately for the loading of saved patient data.
+** Pros: Unencrypted `.xml` file will never be retrievable.
+** Cons: Difficult to implement given the time constraint, as it involves major restructuring of the input/output operation of the application.
+
 // end::dataencryption[]
 
 === Logging
