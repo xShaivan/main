@@ -68,7 +68,7 @@ include::../UserGuide.adoc[tag=dataencryption]
 
 include::../DeveloperGuide.adoc[tag=addinfo]
 
-include::../DeveloperGUide.adoc[tag=dataencryption]
+include::../DeveloperGuide.adoc[tag=dataencryption]
 
 include::../DeveloperGuide.adoc[tag=addinfousecase]
 
