@@ -47,7 +47,7 @@ The application provides both a Command Line Interface (CLI) for input of data a
 
 |============================
 
-== Summary of contributions
+== Summary of Contributions
 
 * *Major enhancement*: Added *the ability to add/edit additional information*.
 ** What it does: Allows users to selectively add or edit additional information of patients that are not required for the creation of a patient profile in Health Book.
@@ -72,7 +72,7 @@ The application provides both a Command Line Interface (CLI) for input of data a
 ** Enhancements to existing features:
 *** Increased code coverage from 78% to 82% (Pull requests https://github.com/CS2113-AY1819S1-T12-2/main/pull/213[#213])
 ** Community:
-*** PRs review with non-trivial comments:
+*** PRs review with non-trivial comments: (Pull request https://github.com/CS2113-AY1819S1-T12-2/main/pull/50[#50])
 *** Reported bugs and suggestions for other teams in class(Issue https://github.com/CS2113-AY1819S1-T16-2/main/issues/103[#103], https://github.com/CS2113-AY1819S1-T16-2/main/issues/93[#93], https://github.com/CS2113-AY1819S1-T16-2/main/issues/98[#98])
 
 == Contributions to the User Guide

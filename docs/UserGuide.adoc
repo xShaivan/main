@@ -162,6 +162,8 @@ gender, occupation, and marital status. +
 [NOTE]
 `age` field will be auto-calculated once Date Of Birth is populated. It will be displayed on the UI in parenthesis under Date of Birth field.+
 
+.Using the addinfo command. Notice that the age is displayed beside the date of birth in parenthesis.
+image::addinfo.png[width="600"]
 Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION] [m/MARITAL_STATUS]`
 
 ****
@@ -205,9 +207,9 @@ Examples:
 * `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M` +
 For patient at index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male.
-// end::addinfocommands[]
 * `addinfo 1 d/31-12-2001 o/Doctor b/AB+ m/M` +
 For patient at index 1 populate the date of birth field with 31-12-2001, occupation with doctor, blood type with AB+ and marital status as married.
+// end::addinfocommands[]
 
 // tag::addhist[]
 === Adding patient's medical history: `addhist`
