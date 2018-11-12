@@ -18,19 +18,19 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
 import seedu.address.model.person.Person;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
 
 //@@author brandonccm1996
 /**
- * Adds an appointment to a person's timetable.
+ * Adds an appointment to a person's schedule.
  */
 public class AddApptCommand extends Command {
 
     public static final String COMMAND_WORD = "addappt";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to a patient's timetable, the"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to a patient's schedule, the"
             + " patient will be identified by the index number used in the last person listing.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_APPT_START + "START "
@@ -46,7 +46,8 @@ public class AddApptCommand extends Command {
             + PREFIX_APPT_DRNAME + "Dr Tan";
 
     public static final String MESSAGE_ADD_APPT_SUCCESS = "Added appt to Person: %1$s";
-    public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt.";
+    public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt "
+            + "for the specified patient.";
     public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time.";
 
     private final Index index;

@@ -3,15 +3,26 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_BLOODTYPE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_DOB;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_GENDER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_HEIGHT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_MARITAL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_NRIC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_OCCUPATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_INFO_WEIGHT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DRNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_VENUE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INFO;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,9 +77,24 @@ public class CommandTestUtil {
 
     public static final String VALID_NRIC_AMY = "S9799909J";
     public static final String VALID_NRIC_BOB = "S9880095F";
-
     public static final String VALID_DATE_OF_BIRTH_AMY = "10-02-1986";
     public static final String VALID_DATE_OF_BIRTH_BOB = "01-05-2005";
+    public static final String VALID_HEIGHT_AMY = "168";
+    public static final String VALID_WEIGHT_AMY = "60.5";
+    public static final String VALID_GENDER_AMY = "F";
+    public static final String VALID_BLOODTYPE_AMY = "O+";
+    public static final String VALID_OCCUPATION_AMY = "Nurse";
+    public static final String VALID_MARITAL_STATUS_AMY = "S";
+
+    public static final String NRIC_DESC_AMY = " " + PREFIX_ADD_INFO_NRIC + VALID_NRIC_AMY;
+    public static final String NRIC_DESC_BOB = " " + PREFIX_ADD_INFO_NRIC + VALID_NRIC_BOB;
+    public static final String DOB_DESC_AMY = " " + PREFIX_ADD_INFO_DOB + VALID_DATE_OF_BIRTH_AMY;
+    public static final String HEIGHT_DESC_AMY = " " + PREFIX_ADD_INFO_HEIGHT + VALID_HEIGHT_AMY;
+    public static final String WEIGHT_DESC_AMY = " " + PREFIX_ADD_INFO_WEIGHT + VALID_WEIGHT_AMY;
+    public static final String GENDER_DESC_AMY = " " + PREFIX_ADD_INFO_GENDER + VALID_GENDER_AMY;
+    public static final String BLOODTYPE_DESC_AMY = " " + PREFIX_ADD_INFO_BLOODTYPE + VALID_BLOODTYPE_AMY;
+    public static final String OCCUPATION_DESC_AMY = " " + PREFIX_ADD_INFO_OCCUPATION + VALID_OCCUPATION_AMY;
+    public static final String MARITAL_STATUS_DESC_AMY = " " + PREFIX_ADD_INFO_MARITAL + VALID_MARITAL_STATUS_AMY;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -79,13 +105,14 @@ public class CommandTestUtil {
     // MedHistory
     public static final String VALID_HISTORY_DATE = "10-10-2010";
     public static final String VALID_HISTORY_DATE2 = "20-10-2010";
+    public static final String VALID_HISTORY_OLD_DATE = "10-10-1990";
     public static final String VALID_HISTORY_ALLERGY = "Pollen";
     public static final String VALID_HISTORY_ALLERGY2 = "Alcohol";
     public static final String VALID_HISTORY_COUNTRY = "USA";
     public static final String VALID_HISTORY_COUNTRY2 = "Russia";
     public static final String VALID_HISTORY_DISCHARGE_STATUS = "d";
     public static final String VALID_HISTORY_DISCHARGE_STATUS2 = "a";
-    //public static final String VALID_HISTORY_DISCHARGE_STATUS3 = "Patient has expired.";
+    public static final String INVALID_HISTORY_DATE = "10-10-2020";
 
     //Medical Report
     public static final String VALID_TITLE1 = "Asthma";
@@ -98,13 +125,26 @@ public class CommandTestUtil {
     public static final String VALID_INFO2 = "Prescribed XXX medicine, next appointment on 03-03-2018.";
     public static final String VALID_INFO3 = "Prescribed XXX medicine, next appointment on 04-04-2018.";
 
+    public static final String VALID_TITLE_WPREFIX = " " + PREFIX_TITLE + VALID_TITLE1;
+    public static final String VALID_DATE_WPREFIX = " " + PREFIX_DATE + VALID_DATE1;
+    public static final String VALID_INFO_WPREFIX = " " + PREFIX_INFO + VALID_INFO1;
+
+    // empty string not allowed for title
+    public static final String INVALID_TITLE_WPREFIX = " " + PREFIX_TITLE + " ";
+    // date not in dd-MM-yy format
+    public static final String INVALID_DATE_WPREFIX = " " + PREFIX_DATE + "01/01/2018";
+    // empty string not allowed for information
+    public static final String INVALID_INFO_WPREFIX = " " + PREFIX_INFO + " ";
+
     // Appt
     public static final String VALID_START_APPT1 = "01-01-2018 14:00";
     public static final String VALID_START_APPT2 = "02-02-2018 15:00";
     public static final String VALID_START_APPT3 = "03-03-2018 16:00";
+    public static final String VALID_START_APPT4 = "03-03-2018 15:30";
     public static final String VALID_END_APPT1 = "01-01-2018 15:00";
     public static final String VALID_END_APPT2 = "02-02-2018 16:00";
     public static final String VALID_END_APPT3 = "03-03-2018 17:00";
+    public static final String VALID_END_APPT4 = "03-03-2018 16:30";
     public static final String VALID_VENUE_APPT1 = "Consultation Room 1";
     public static final String VALID_VENUE_APPT2 = "Consultation Room 2";
     public static final String VALID_VENUE_APPT3 = "Consultation Room 3";

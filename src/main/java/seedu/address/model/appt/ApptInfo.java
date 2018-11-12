@@ -1,6 +1,7 @@
-package seedu.address.model.timetable;
+package seedu.address.model.appt;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 //@@author brandonccm1996
 /**
@@ -9,7 +10,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class ApptInfo {
 
-    public static final String MESSAGE_NAME_CONSTRAINTS =
+    public static final String MESSAGE_INFO_CONSTRAINTS =
             "Appt info can take any values, and it should not be blank.";
 
     public static final String APPTINFO_VALIDATION_REGEX = "[^\\s].*";
@@ -17,6 +18,7 @@ public class ApptInfo {
 
     public ApptInfo(String apptInfo) {
         requireNonNull(apptInfo);
+        checkArgument(isValidApptInfo(apptInfo), MESSAGE_INFO_CONSTRAINTS);
         value = apptInfo;
     }
 

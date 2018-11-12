@@ -21,13 +21,13 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
+import seedu.address.model.appt.ApptDateTime;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 import seedu.address.model.person.Person;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
-import seedu.address.model.timetable.ApptDateTime;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
 
 //@@author brandonccm1996
 /**
@@ -42,7 +42,7 @@ public class EditApptCommand extends Command {
             + " and the start time provided. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_APPT_ORIGINAL_START + "ORIGINAL START"
+            + PREFIX_APPT_ORIGINAL_START + "ORIGINAL START "
             + "[" + PREFIX_APPT_START + "START] "
             + "[" + PREFIX_APPT_END + "END] "
             + "[" + PREFIX_APPT_VENUE + "VENUE] "
@@ -55,9 +55,11 @@ public class EditApptCommand extends Command {
             + PREFIX_APPT_VENUE + "Consultation Room 13";
 
     public static final String MESSAGE_EDIT_APPT_SUCCESS = "Edited appt for Person: %1$s";
-    public static final String MESSAGE_APPT_CLASH = "The appt you are adding clashes with the timing of another appt.";
+    public static final String MESSAGE_APPT_CLASH = "The appt you are editing will clash with the timing of another "
+            + "appt for the specified patient.";
     public static final String MESSAGE_INVALID_TIME = "The end time of an appt must be after the start time.";
-    public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to edit cannot be found.";
+    public static final String MESSAGE_APPT_NOT_FOUND = "The appt you are trying to edit cannot be found for the "
+            + "patient.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     private final Index index;
@@ -224,7 +226,7 @@ public class EditApptCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(apptStart, apptEnd, apptVenue, apptVenue, apptDrName);
+            return CollectionUtil.isAnyNonNull(apptStart, apptEnd, apptVenue, apptInfo, apptDrName);
         }
 
         public void setStart(ApptDateTime apptStart) {

@@ -6,11 +6,11 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_INFO_APPT1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_START_APPT1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VENUE_APPT1;
 
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptDateTime;
-import seedu.address.model.timetable.ApptDrName;
-import seedu.address.model.timetable.ApptInfo;
-import seedu.address.model.timetable.ApptVenue;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptDateTime;
+import seedu.address.model.appt.ApptDrName;
+import seedu.address.model.appt.ApptInfo;
+import seedu.address.model.appt.ApptVenue;
 
 //@@author brandonccm1996
 /**

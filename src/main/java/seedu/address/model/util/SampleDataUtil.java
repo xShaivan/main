@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.appt.Appt;
+import seedu.address.model.appt.ApptComparator;
 import seedu.address.model.medhistory.MedHistory;
 import seedu.address.model.medhistory.MedHistoryComparator;
 import seedu.address.model.medicalreport.MedicalReport;
@@ -25,8 +27,6 @@ import seedu.address.model.person.addinfo.Nric;
 import seedu.address.model.person.addinfo.Occupation;
 import seedu.address.model.person.addinfo.Weight;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.timetable.Appt;
-import seedu.address.model.timetable.ApptComparator;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -45,35 +45,92 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, new Height("180"), EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
-                    getTagSet("asthma")),
+                    new Address("Blk 30 Geylang Street 29, #06-40"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, new Height("180"), EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("asthma")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), getReportSet(),
+                    new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), getReportSet(),
                     getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
                     EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
                     getTagSet("asthma", "diabetes")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
-                    getTagSet("cancer")),
+                    new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("cancer")),
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), getReportSet(),
+                    new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), getReportSet(),
                     getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
                     EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
-                    getTagSet("stroke")),
+                    getTagSet("stroke", "cancer")),
+            new Person(new Name("Elizabeth Tan"), new Phone("95430492"), new Email("elitan@example.com"),
+                    new Address("Blk 123 West Coast Street 20, #05-192"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("dengue", "asthma")),
+            new Person(new Name("Frank Lee"), new Phone("84886329"), new Email("franklee@example.com"),
+                    new Address("Blk 324 Jurong East Street 10, #13-300"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("aids")),
+            new Person(new Name("Gary Lim"), new Phone("81813212"), new Email("garylim@example.com"),
+                    new Address("Blk 192 Punggol Ave 32, #07-122"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("aids")),
+            new Person(new Name("Hansel Chong"), new Phone("85042190"), new Email("hanselchong@example.com"),
+                    new Address("Blk 327 Aljunied Road 21, #05-121"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("dementia", "arthritis")),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                new Address("Blk 47 Tampines Street 20, #17-35"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
-                    getTagSet("diabetes")),
+                    new Address("Blk 47 Tampines Street 20, #17-35"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("diabetes")),
+            new Person(new Name("John Doe"), new Phone("83453116"), new Email("johndoe@example.com"),
+                    new Address("Blk 12 Bedok Street 10, #01-111"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("diabetes")),
+            new Person(new Name("Kasper Wong"), new Phone("98100065"), new Email("kasper@example.com"),
+                    new Address("Blk 67 Bukit Batok Street 12, #12-099"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("eczema", "asthma")),
+            new Person(new Name("Luke Wong"), new Phone("98100061"), new Email("luke@example.com"),
+                    new Address("Blk 67 Bukit Batok Street 12, #12-099"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("chickenpox")),
+            new Person(new Name("Mandy Poh"), new Phone("98439679"), new Email("mandywong@example.com"),
+                    new Address("Blk 524 Sengkang Road 43, #07-099"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("stroke")),
+            new Person(new Name("Nara White"), new Phone("91292667"), new Email("narawhite@example.com"),
+                    new Address("Blk 89 Lakeside Street 56, #09-785"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("aids")),
+            new Person(new Name("Oliver Johnson"), new Phone("94565690"), new Email("oliver@example.com"),
+                    new Address("Blk 53 Lavender Road 56, #05-235"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("dengue", "aids")),
+            new Person(new Name("Peter Loh"), new Phone("84989292"), new Email("peter@example.com"),
+                    new Address("Blk 67 Kallang Street 32, #01-434"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("dengue")),
+            new Person(new Name("Quinn Toh"), new Phone("80740951"), new Email("quinn@example.com"),
+                    new Address("Blk 61 Kallang Street 12, #04-122"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("dengue")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"), getReportSet(),
-                    getMedHistorySet(), getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT,
-                    EMPTY_GENDER, EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
-                    getTagSet("malaria"))
+                    new Address("Blk 45 Aljunied Street 85, #11-31"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS,
+                    getTagSet("leukaemia", "aids")),
+            new Person(new Name("Sammy Tan"), new Phone("85427890"), new Email("sammytan@example.com"),
+                    new Address("Blk 12 Boon Lay Street 21, #11-232"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("arthritis")),
+            new Person(new Name("Troy Lim"), new Phone("93233246"), new Email("troylim@example.com"),
+                    new Address("Blk 90 Pioneer Street 30, #03-445"), getReportSet(), getMedHistorySet(),
+                    getApptSet(), EMPTY_NRIC, EMPTY_DATE_OF_BIRTH, EMPTY_HEIGHT, EMPTY_WEIGHT, EMPTY_GENDER,
+                    EMPTY_BLOODTYPE, EMPTY_OCCUPATION, EMPTY_MARITAL_STATUS, getTagSet("chickenpox"))
         };
     }
 
@@ -108,7 +165,6 @@ public class SampleDataUtil {
     /**
      * Returns a report set containing the list of reports given.
      */
-    // TODO: (MedicalReport) MIGHT CONVERT TO USE STREAM IN FUTURE
     public static Set<MedicalReport> getReportSet(MedicalReport ... reports) {
         Set<MedicalReport> reportSet = new TreeSet<>(new ReportComparator());
         for (MedicalReport report : reports) {
@@ -121,7 +177,6 @@ public class SampleDataUtil {
     /**
      * Returns an appt set containing the list of appts given.
      */
-    // TODO: (Appt) MIGHT CONVERT TO USE STREAM IN FUTURE
     public static Set<Appt> getApptSet(Appt... appts) {
         Set<Appt> apptSet = new TreeSet<>(new ApptComparator());
         for (Appt appt : appts) {
