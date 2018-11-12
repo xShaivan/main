@@ -190,6 +190,7 @@ Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+.Example of addhist command
 image::addhist.png[width="790"]
 
 Examples:
@@ -213,8 +214,6 @@ Format: `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE h
 * Note: Discharge Status  code only accepts *d*, *a*, *e* as inputs to represent discharged, admitted or expired.
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
-
-image::edithist.png[width="790"]
 
 Examples:
 
