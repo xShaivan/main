@@ -16,9 +16,9 @@ The application is fully written in Java, allowing cross-platform compatibility.
 === Problem Statement
 Health care professionals deal with hundreds and thousands of patients on a daily basis. Not only do they have to attend to the patients physically, they need to have a clear understanding of each patient's health related issues, in addition to basic bio data.
 
-Currently, most health care professionals rely on paper documents that contains such data for each patients. Not only do they have to perform the menial task of searching through the piles of patient documents, sometimes, they have to look through the entire patient document to get what they need to know about the patient.
+Currently, most health care professionals rely on paper documents that contain such data for each patients. Not only do they have to perform the menial task of searching through the piles of patient documents, sometimes, they have to look through the entire patient document to get what they need to know about the patient.
 
-Health Book is aimed at solving such administrative woes of health care professionals. By digitizing such data into an application, health care professionals can easily retrieve the patient data that they need, as well as the specific information that they need for each patient.
+Health Book is aimed at solving such administrative woes of health care professionals. By digitizing such data into an application, health care professionals can easily retrieve the required patient data.
 
 === Team Composition:
 [cols="1,2,3", options="header"]
@@ -42,15 +42,12 @@ Health Book is aimed at solving such administrative woes of health care professi
 |Feature|Description
 
 |Manage Patient |Create, edit or delete a patient profile
-|List Patient |Shows the list of all patient profile
-|Select Patient | Select a patient to view its entire profile
-|Add Additional Information| Add or edit additional information such as patient's bio-data
+|Manage Additional Information| Add or edit additional information such as patient's bio-data
 |Manage Medical History| Create, edit or delete a patient's medical history
 |Manage Medical Appointment| Create, edit or delete a patient's medical appointment
 |Manage Medical Report| Create, edit or delete a patient's medical report
-|Find/Sort | Manipulate how patients are presented with find that filters the patient or sort which arranges the patients based on the parameters used
+|Find/Sort Patient | Filter or arrange patient list based on parameters
 |Encryption| Encrypt patient's data so that the saved data is not human-readable.
-
 
 |============================
 
@@ -72,9 +69,6 @@ Health Book is aimed at solving such administrative woes of health care professi
 
 * *Other contributions*:
 
-**  Role of Domain Expert:
-*** In-charged of gathering user requirements
-*** In-charged of managing version control system workflow
 ** Project management:
 *** Managed the use of issue tracker and kanban board.
 *** Managed the use of Continuous Integration tools.
@@ -82,7 +76,7 @@ Health Book is aimed at solving such administrative woes of health care professi
 ** Enhancements to existing features:
 *** Increased code coverage from 78% to 82% (Pull requests https://github.com/CS2113-AY1819S1-T12-2/main/pull/213[#213])
 ** Tools:
-*** Integrated AppVeyor and Coverall.
+*** Integrated Travis, Codacy, AppVeyor and Coverall.
 ** Community:
 *** PRs review with non-trivial comments:
 *** Reported bugs and suggestions for other teams in class(Issue https://github.com/CS2113-AY1819S1-T16-2/main/issues/103[#103], https://github.com/CS2113-AY1819S1-T16-2/main/issues/93[#93], https://github.com/CS2113-AY1819S1-T16-2/main/issues/98[#98])

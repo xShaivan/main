@@ -464,6 +464,7 @@ Example:
 * `encrypt` +
 Depending on the current setting of encryption, this will toggle on or off the encryption. Refer message box to understand if encryption has been toggled on or off.
 
+.Using the encrypt command. Notice that the encryption setting is displayed in the message box after executing the command.
 image::encryption.png[width="800"]
 // end::dataencryption[]
 
