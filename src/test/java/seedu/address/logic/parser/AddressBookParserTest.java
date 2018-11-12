@@ -161,15 +161,17 @@ public class AddressBookParserTest {
         thrown.expectMessage(MESSAGE_UNKNOWN_COMMAND);
         parser.parseCommand("unknownCommand");
     }
+    //@@author xShaivan
     @Test
-    public void parseCommandaddhist() throws Exception {
+    public void parseCommand_addHist() throws Exception {
         MedHistory medhistory = new MedHistoryBuilder().build();
         AddHistCommand command = (AddHistCommand) parser.parseCommand(MedHistoryUtil.getAddHistCommand(medhistory));
         assertEquals(new AddHistCommand(INDEX_FIRST_PERSON, medhistory), command);
     }
 
+    //@@author xhxh96
     @Test
-    public void parseCommandAddInfo() throws Exception {
+    public void parseCommand_addInfo() throws Exception {
         Person person = new PersonBuilder().withNric("S3719668A").withDateOfBirth("27-02-1996").build();
         AddInfoPersonDescriptor descriptor = new AddInfoPersonDescriptorBuilder(person).build();
         AddInfoCommand command = (AddInfoCommand) parser.parseCommand(AddInfoCommand.COMMAND_WORD + " "
