@@ -64,6 +64,7 @@ image::../images/Ui.png[width="800"]
 |===
 
 include::../UserGuide.adoc[tag=findcommand]
+
 include::../UserGuide.adoc[tag=sortcommand]
 
 == Contributions to the Developer Guide
@@ -73,7 +74,9 @@ include::../UserGuide.adoc[tag=sortcommand]
 |===
 
 include::../DeveloperGuide.adoc[tag=find]
+
 include::../DeveloperGuide.adoc[tag=sort]
 
 include::../DeveloperGuide.adoc[tag=findusecase]
+
 include::../DeveloperGuide.adoc[tag=sortusecase]
