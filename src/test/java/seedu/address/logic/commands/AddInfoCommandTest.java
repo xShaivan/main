@@ -28,26 +28,6 @@ public class AddInfoCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
-
-    /*
-    @Test
-    public void executeAllFieldsSpecifiedUnfilteredListSuccess() {
-        Person editedPerson = new PersonBuilder().build();
-        AddInfoPersonDescriptor descriptor = new AddInfoPersonDescriptorBuilder(editedPerson).build();
-        AddInfoCommand addInfoCommand = new AddInfoCommand(INDEX_FIRST_PERSON, descriptor);
-
-
-        String expectedMessage = String.format(AddInfoCommand.MESSAGE_ADD_INFO_SUCCESS, editedPerson);
-
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.updatePerson(model.getFilteredPersonList().get(0), editedPerson);
-        expectedModel.commitAddressBook();
-
-        assertCommandSuccess(addInfoCommand, model, commandHistory, expectedMessage, expectedModel);
-    }
-    */
-
-
     @Test
     public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);

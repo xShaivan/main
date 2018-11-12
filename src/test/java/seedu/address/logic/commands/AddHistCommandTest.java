@@ -37,7 +37,7 @@ public class AddHistCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void executeaddRemarkUnfilteredListsuccess() {
+    public void execute_addMedHistoryUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withMedHistories(MEDHISTORY1).build();
         AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY1);
@@ -48,7 +48,7 @@ public class AddHistCommandTest {
         assertCommandSuccess(addHistCommand, model, commandHistory, expectedMessage, expectedModel);
     }
     @Test
-    public void executefilteredListsuccess() {
+    public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
@@ -62,7 +62,7 @@ public class AddHistCommandTest {
     }
 
     @Test
-    public void executeinvalidPersonIndexUnfilteredListfailure() {
+    public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, MEDHISTORY2);
         assertCommandFailure(addHistCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -72,7 +72,7 @@ public class AddHistCommandTest {
      * but smaller than size of Health Book
      */
     @Test
-    public void executeinvalidPersonIndexFilteredListfailure() {
+    public void execute_invalidPersonIndexFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
@@ -81,7 +81,7 @@ public class AddHistCommandTest {
         assertCommandFailure(addHistCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
     @Test
-    public void executeUndoRedovalidIndexUnfilteredListsuccess() throws Exception {
+    public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person modifiedPerson = new PersonBuilder(personToModify).withMedHistories(MEDHISTORY1).build();
         AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY1);
@@ -97,18 +97,6 @@ public class AddHistCommandTest {
         expectedModel.redoAddressBook();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
-    //temporarily omit
-    /*
-    @Test
-    public void executeUndoRedoinvalidIndexUnfilteredListfailure() {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        AddHistCommand addHistCommand = new AddHistCommand(outOfBoundIndex, EMPTY_MEDHISTORY);
-        // execution failed -> address book state not added into model
-        assertCommandFailure(addHistCommand, model, commandHistory, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        // single address book state in model -> undoCommand and redoCommand fail
-        assertCommandFailure(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_FAILURE);
-        assertCommandFailure(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_FAILURE);
-    }*/
     /**
      * 1. Modifies {@code Person#addhist} from a filtered list.
      * 2. Undo the modification.
@@ -117,7 +105,7 @@ public class AddHistCommandTest {
      * 4. Redo the modification. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
      */
     @Test
-    public void executeUndoRedovalidIndexFilteredListsamePersonDeleted() throws Exception {
+    public void executeUndoRedo_validIndexFilteredList_samePersonDeleted() throws Exception {
         AddHistCommand addHistCommand = new AddHistCommand(INDEX_FIRST_PERSON, MEDHISTORY1);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         showPersonAtIndex(model, INDEX_THIRD_PERSON);
@@ -134,7 +122,6 @@ public class AddHistCommandTest {
         // redo -> modifies same second person in unfiltered person list
         expectedModel.redoAddressBook();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
-
     }
 
     @Test
