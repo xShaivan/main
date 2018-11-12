@@ -639,6 +639,18 @@ The following sequence diagram summarizes the activity when a user (doctor) exec
 
 .Sequence diagram for Sort operation
 image::SortActivityDiagram.png[width="800"]
+
+==== Design Considerations
+
+===== Aspect: Data structure to support the sort commands
+
+* **Alternative 1 (current choice):** Uses comparator on List data structure to sort the observable filtered list through sort method implemented in `UniquePersonList`.
+** Pros: Easy to implement.
+** Cons: Many different comparators need to be done for each of the different categories.
+* **Alternative 2:** Patient list can be stored in a set instead of list
+** Pros: This reduces the implementation comparators as the patient list will be sorted by names by default when using set.
+** Cons: Accessing individual data (especially when editing specific patient data) will be tedious and challenging to extract.
+
 // end::sort[]
 
 
