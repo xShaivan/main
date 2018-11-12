@@ -20,7 +20,6 @@ import org.junit.BeforeClass;
 import org.junit.ClassRule;
 
 import guitests.guihandles.CommandBoxHandle;
-import guitests.guihandles.InfoPanelHandle;
 import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.MainWindowHandle;
 import guitests.guihandles.PersonListPanelHandle;
@@ -103,10 +102,6 @@ public abstract class AddressBookSystemTest {
 
     public MainMenuHandle getMainMenu() {
         return mainWindowHandle.getMainMenu();
-    }
-
-    public InfoPanelHandle getInfoPanel() {
-        return mainWindowHandle.getInfoPanel();
     }
 
     public StatusBarFooterHandle getStatusBarFooter() {
