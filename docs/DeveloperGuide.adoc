@@ -570,7 +570,7 @@ Step 5. Lastly, the `editreport` command will call `Model#commitAddressBook()` t
 === Find feature
 ==== Current Implementation
 
-The find mechanism is facilitated by `ModelManager`. It extends `AddressBook` and filters the `internalList` of patients. Additionally,
+The find mechanism is facilitated by `ModelManager`. It extends `AddressBook` and filters the `internalList` of patients in `UniquePersonList`. Additionally,
 it implements `ModelManager#updateFilteredPersonList()` and `ModelManager#getFilteredPersonList()` operations with the the 2 input parameters (prefix and keyword) before finding the patients
 accordingly.
 
@@ -588,7 +588,7 @@ Step 2. The doctor executes `find hsa/ alcohol nut` command to to filter patient
 [WARNING]
 If the command format is invalid, an error message will be shown to prompt the user of the correct format.
 
-Step 3. The `find` command parser will translate the input `hsa/` into allergy and find patients with "alcohol" and "nut" predicates in their allergy.
+Step 3. The `find` command parser will translate the input `hsa/` into method `AllergyContainsKeywordsPredicate` which find patients with "alcohol" and "nut" predicates in their allergy.
 
 [NOTE]
 There must be more than one keyword and the prefix is case sensitive.
@@ -608,8 +608,8 @@ image::FindActivityDiagram.png[width="800"]
 === Sort feature
 ==== Current Implementation
 
-The sort mechanism is facilitated by `ModelManager`. It extends `AddressBook` and sorts the `internalList` of patients. Additionally,
-it implements `ModelManager#updateSortedPersonList` operation with the the 2 input parameters (prefix and order) before sorting the patients
+The sort mechanism is facilitated by `ModelManager`. It extends `AddressBook` and sorts the `internalList` of patients in `UniquePersonList`. Additionally,
+it implements `ModelManager#updateSortedPersonList` operation with the 2 input parameters (prefix and order) before sorting the patients
 accordingly.
 
 This operation is exposed in the `Model` interface as `Model#updateSortedPersonList()`.
@@ -630,7 +630,7 @@ Step 3. The `sort` command will call `Model#updateSortedPersonList()` to update 
 
 Step 4. The patients list will then be sorted by `sortPersons()` in `UniquePersonList`.
 
-Step 5. The final patient list result generated will be sorted accordingly to the doctor's input.
+Step 5. The final patient list result generated will be sorted accordingly to the doctor's input: Patient list sorted by their names in the reverse order.
 
 The following sequence diagram summarizes the activity when a user (doctor) executes a new `sort` command:
 
@@ -1768,7 +1768,7 @@ Use case ends.
 
 *MSS*
 
-1.  User requests to find a patient in the list by a category. (eg. name, phone, blood type, medical information)
+1.  User requests to filter patients in the list by a category. (eg. name, phone, blood type, medical information)
 2.  System shows user a list of patients who are in requested category.
 +
 Use case ends.
@@ -1776,7 +1776,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. User uses the wrong format to find patient.
+* 1a. User uses the wrong format to find patient (i.e. Keying in the wrong parameters after "find")".
 +
 [none]
 ** 1a1. System shows error message that format is wrong and shows correct format of finding patients.
@@ -2229,3 +2229,37 @@ edited with new date 05-05-2015, new allergy of grass and new previous country v
    Expected: No medical report is edited. Message of medical report not found will be shown.
 .. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
    Expected: No medical report is edited. Message of unable to edit existing report with the same title and date will be shown.
+
+=== Filtering Patients list by find
+
+. Finding patients through specific categories while all patients are listed.
+
+.. Test case: `find n/` +
+   Expected: The patient list remains the same, message of invalid format will be shown.
+.. Test case: `find n/ alex` +
+   Expected: Patient list will display Alex Yeoh's profile with success message.
+.. Test case: `find z/ ` +
+   Expected: The patient list remains the same, message of invalid format will be shown.
+.. Test case: `find z/ peanut` +
+   Expected: The patient list remains the same, message of invalid prefix will be shown.
+
+=== Sorting Patients list by sort
+
+. Sorting patients through specific categories in specific order while all/some patients are listed.
+
+.. Test case: `sort n/` +
+   Expected: The patient list remains the same, message of invalid format will be shown.
+.. Test case: `sort n/ 1` +
+   Expected: Patient list will display sorted patients by name in alphabetical order with success message.
+.. Test case: `sort z/ ` +
+   Expected: The patient list remains the same, message of invalid format will be shown.
+.. Test case: `sort z/ 1` +
+   Expected: The patient list remains the same, message of invalid prefix will be shown.
+.. Test case: `sort n/ 3` +
+   Expected: The patient list remains the same, message of invalid order will be shown.
+.. Test case: `sort z/ 3` +
+   Expected: The patient list remains the same, message of invalid prefix will be shown.
+.. Test case: `sort ic/ 1` +
+   Expected: Patients with empty NRIC field will be at the top of the list while rest will be sorted by alphabetical order.
+.. Test case: `sort ic/ 2` +
+   Expected: Patients with empty NRIC field will be at the bottom of the list while rest will be sorted by reverse order.

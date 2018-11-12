@@ -412,7 +412,8 @@ Returns any patient who is tagged with asthma.
 // end::findcommand[]
 
 // tag::sortcommand[]
-=== Sorting patients list: `sort`
+
+=== Sorting Patients List: `sort`
 
 Sorts the list of patients according to a specific prefix category in ascending or descending order. +
 Format: `sort PREFIX/ ORDER_INDEX`
