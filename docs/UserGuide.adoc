@@ -478,9 +478,27 @@ image::encryption.png[width="800"]
 // end::dataencryption[]
 
 
-== FAQ
+== Future Enhancements in v2.0
 
-Empty.
+=== Disease/Injury tags can have spaces, commas and periods
+
+Users would be able to include more descriptive diseases and injuries without the constraint of it being one word. +
+This enhancement would be found in the `add` and `edit` command.
+
+Example:
+
+* `add n/Kenneth Tay p/73524475 e/TaylorSwift@example.com a/Potong Pasir, #08-25 t/Punctured Lungs t/Heart Attack` +
+Adds a person with name Kenneth Tay with Punctured Lungs and Heart Attack.
+* `edit 1 t/Broken Pelvis, Hairline Fracture` +
+Edits person at index 1 with a hairline fracture on the Pelvis.
+
+=== Restrict adding medical history after patient expires
+
+After a patient expires, there would be a check in the system for future `addhist` and `edithist` commands to prevent any
+medical history entries to exist after the medical history entry which contains the patient's expired discharge status.
+
+.Current Implementation which allows medical history entries after patient's expiry
+image::medhistoryV2.png[width="500"]
 
 == Command Summary
 

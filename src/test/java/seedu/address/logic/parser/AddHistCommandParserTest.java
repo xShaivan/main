@@ -24,7 +24,7 @@ public class AddHistCommandParserTest {
     private AddHistCommandParser parser = new AddHistCommandParser();
 
     @Test
-    public void parseindexSpecifiedsuccess() {
+    public void parse_indexSpecified_success() {
         // have medical history
         Index targetIndex = INDEX_FIRST_PERSON;
         AddHistCommand expectedCommand = new AddHistCommand(INDEX_FIRST_PERSON, new MedHistoryBuilder().build());
@@ -35,7 +35,7 @@ public class AddHistCommandParserTest {
                 + " " + PREFIX_HISTORY_DISCHARGE_STATUS + VALID_HISTORY_DISCHARGE_STATUS, expectedCommand);
     }
     @Test
-    public void parsemissingCompulsoryFieldfailure() {
+    public void parse_missingCompulsoryField_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHistCommand.MESSAGE_USAGE);
         // no parameters
         assertParseFailure(parser, AddHistCommand.COMMAND_WORD, expectedMessage);

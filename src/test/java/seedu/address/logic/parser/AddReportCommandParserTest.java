@@ -32,7 +32,7 @@ public class AddReportCommandParserTest {
     private Index targetIndex = INDEX_FIRST_PERSON;
 
     @Test
-    public void parseIndexSpecifiedWithAllCompulsoryFieldsSuccess() {
+    public void parse_indexSpecifiedWithAllCompulsoryFields_success() {
         AddMedicalReportCommand expectedCommand =
                 new AddMedicalReportCommand(INDEX_FIRST_PERSON, new ReportBuilder().build());
         assertParseSuccess(parser, targetIndex.getOneBased() + VALID_TITLE_WPREFIX
@@ -40,7 +40,7 @@ public class AddReportCommandParserTest {
     }
 
     @Test
-    public void parseMissingCompulsoryFieldFailure() {
+    public void parse_missingCompulsoryField_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMedicalReportCommand.MESSAGE_USAGE);
 
         // no parameters
@@ -64,7 +64,7 @@ public class AddReportCommandParserTest {
     }
 
     @Test
-    public void parseInvalidValueFailure() {
+    public void parse_invalidValue_failure() {
         // invalid title
         assertParseFailure(parser, targetIndex.getOneBased() + INVALID_TITLE_WPREFIX
                 + VALID_DATE_WPREFIX + VALID_INFO_WPREFIX, MESSAGE_TITLE_CONSTRAINTS);
@@ -79,7 +79,7 @@ public class AddReportCommandParserTest {
     }
 
     @Test
-    public void parseInvalidIndexFailure() {
+    public void parse_invalidIndex_failure() {
         // negative index
         assertParseFailure(parser, "-2" + VALID_TITLE_WPREFIX
                 + VALID_DATE_WPREFIX + VALID_INFO_WPREFIX, MESSAGE_INVALID_FORMAT);
