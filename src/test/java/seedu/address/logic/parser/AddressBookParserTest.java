@@ -79,14 +79,15 @@ public class AddressBookParserTest {
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
+    //@@author chewkahmeng
     @Test
-    public void parseCommandaddreport() throws Exception {
+    public void parseCommand_addReport() throws Exception {
         MedicalReport report = new ReportBuilder().build();
         AddMedicalReportCommand command =
                 (AddMedicalReportCommand) parser.parseCommand(ReportUtil.getAddMedicalReportCommand(report));
         assertEquals(new AddMedicalReportCommand(INDEX_FIRST_PERSON, report), command);
     }
-
+    //@@author
     @Test
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
@@ -150,15 +151,17 @@ public class AddressBookParserTest {
         thrown.expectMessage(MESSAGE_UNKNOWN_COMMAND);
         parser.parseCommand("unknownCommand");
     }
+    //@@author xShaivan
     @Test
-    public void parseCommandaddhist() throws Exception {
+    public void parseCommand_addHist() throws Exception {
         MedHistory medhistory = new MedHistoryBuilder().build();
         AddHistCommand command = (AddHistCommand) parser.parseCommand(MedHistoryUtil.getAddHistCommand(medhistory));
         assertEquals(new AddHistCommand(INDEX_FIRST_PERSON, medhistory), command);
     }
 
+    //@@author xhxh96
     @Test
-    public void parseCommandAddInfo() throws Exception {
+    public void parseCommand_addInfo() throws Exception {
         Person person = new PersonBuilder().withNric("S3719668A").withDateOfBirth("27-02-1996").build();
         AddInfoPersonDescriptor descriptor = new AddInfoPersonDescriptorBuilder(person).build();
         AddInfoCommand command = (AddInfoCommand) parser.parseCommand(AddInfoCommand.COMMAND_WORD + " "
