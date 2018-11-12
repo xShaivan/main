@@ -163,6 +163,8 @@ gender, occupation, and marital status. +
 [NOTE]
 `age` field will be auto-calculated once Date Of Birth is populated. It will be displayed on the UI in parenthesis under Date of Birth field.+
 
+.Using the addinfo command. Notice that the age is displayed beside the date of birth in parenthesis.
+image::addinfo.png[width="600"]
 Format: `addinfo INDEX [i/NRIC] [d/DOB] [h/HEIGHT] [w/WEIGHT] [g/GENDER] [b/BLOOD TYPE] [o/OCCUPATION] [m/MARITAL_STATUS]`
 
 ****
@@ -206,9 +208,9 @@ Examples:
 * `addinfo 2 i/S9696531A d/01-01-1990 h/154 g/M` +
 For patient at index 2, populate NRIC field with S91234567A, date of birth field
 with 01-01-1990, height field with 154, gender field with Male.
-// end::addinfocommands[]
 * `addinfo 1 d/31-12-2001 o/Doctor b/AB+ m/M` +
 For patient at index 1 populate the date of birth field with 31-12-2001, occupation with doctor, blood type with AB+ and marital status as married.
+// end::addinfocommands[]
 
 // tag::addhist[]
 === Adding patient's medical history: `addhist`
@@ -224,6 +226,7 @@ Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+.Example of addhist command
 image::addhist.png[width="790"]
 
 Examples:
@@ -248,6 +251,7 @@ Format: `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE h
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+.Example of edithist command
 image::edithist.png[width="790"]
 
 Examples:
@@ -347,7 +351,7 @@ Adds a new medical report for patient at index 1 titled Asthma, dated 01-01-2018
 ** Entering the command above will add a medical report for the patient at index 1 of the displayed person list and the user interface will look as follows:
 
 .Adding a medical report for a patient.
-image::AddReport.png[width="790"]
+image::AddReport.png[width="600"]
 
 === Editing of Medical Report: `editreport`
 
@@ -369,7 +373,7 @@ Edits title, date and information of existing medical report titled Asthma and d
 ** Entering the command above will edit the existing medical report shown in the 'addreport' example above and the user interface will look as follows:
 
 .Editing an existing medical report.
-image::EditReport.png[width="790"]
+image::EditReport.png[width="600"]
 // end::reportcommands[]
 
 // tag::findcommand[]
@@ -413,7 +417,8 @@ Returns any patient who is tagged with asthma.
 // end::findcommand[]
 
 // tag::sortcommand[]
-=== Sorting patients list: `sort`
+
+=== Sorting Patients List: `sort`
 
 Sorts the list of patients according to a specific prefix category in ascending or descending order. +
 Format: `sort PREFIX/ ORDER_INDEX`
@@ -465,7 +470,8 @@ Example:
 * `encrypt` +
 Depending on the current setting of encryption, this will toggle on or off the encryption. Refer message box to understand if encryption has been toggled on or off.
 
-image::encryption.png[width="800"]
+.Using the encrypt command. Notice that the encryption setting is displayed in the message box after executing the command.
+image::encryption.png[width="600"]
 // end::dataencryption[]
 
 == Future Enhancements in v2.0
@@ -489,6 +495,12 @@ medical history entries to exist after the medical history entry which contains 
 
 .Current Implementation which allows medical history entries after patient's expiry
 image::medhistoryV2.png[width="500"]
+
+=== Integration of medical report and medical history
+
+For medical reports and medical history entries that share the same date, users will be able to link their medical reports to their medical history. +
+In the case of multiple health checkups in a single day (e.g. X-ray, Cardiogram), multiple medical reports will be generated.
+The medical history entry of the same date will allow those medical reports to be attached to it.
 
 === Further checks for appointment timing clashes
 `addappt` and `editappt` commands currently will only check if there are appointment timing clashes for a patient. There is currently no check for appointment timing clashes for a venue or for a doctor in charge i.e. if the same venue or same doctor is booked for multiple appointments at the same time. These features will be coming in the v2.0 release of Health Book.
@@ -530,3 +542,4 @@ e.g. `find t/ asthma`
 * *Sort* : `sort PREFIX/ ORDER_INDEX` +
 e.g. `sort n/ 2`
 e.g. `sort e/ 1`
+* *Encrypt*: `encrypt`
