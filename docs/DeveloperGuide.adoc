@@ -678,9 +678,6 @@ When users execute the `encrypt` command, the `AddressBookParser` returns `Encry
 
 The following sequence diagram shows how the encryption works when the application is launched:
 
-.Sequence diagram for Encryption. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/EncryptCommandSD.png[here].
-image::EncryptCommandSD.png[width="400"]
-
 Given below is an example usage scenario on how `encrypt` works at each step:
 
 Step 1. A doctor launches the application for the the first time (by default encryption is disabled). A `SecretKey` is generated.
@@ -694,6 +691,10 @@ Step 4. The doctor exits the program.
 Step 5. Before the application fully exits, the `MainApp#stop` method asserts that encryption has been enabled. A temporary `healthbook.xml` file is generated. The same method will call `XmlUtil#loadDecryptedXmlFile` to load the temporary `healthbook.xml` before calling `XmlUtil#encryptDocument` to encrypt the file data. A `key` file is generated containing the `SecretKey` used for the encryption.
 
 Step 6. `MainApp#stop` then deletes the temporary `healthbook.xml` file before fully exiting the application.
+
+.Sequence diagram for Encryption. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/EncryptCommandSD.png[here].
+image::EncryptCommandSD.png[width="400"]
+
 
 === Design Considerations
 ==== Aspect: Loading of Saved Data
