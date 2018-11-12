@@ -298,9 +298,6 @@ Example:
 Edits the appointment that starts on 16-09-2018 at 15:00, to now run from 16-09-2018 14:00-14:30 instead
 and be at Consultation Room 13 for the 2nd person in the list.
 
-[NOTE]
-`addappt` and `editappt` commands will display an error message if the user adds in an appointment with the end date and time before the start date and time, or if the patient has multiple appointments that have timing clashes.
-
 === Deleting an appointment for a patient: `deleteappt`
 
 Deletes a specified appointment in the specified patient’s schedule. +
@@ -469,7 +466,6 @@ Depending on the current setting of encryption, this will toggle on or off the e
 
 image::encryption.png[width="800"]
 // end::dataencryption[]
-
 
 == Future Enhancements in v2.0
 
