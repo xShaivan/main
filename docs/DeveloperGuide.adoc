@@ -1785,6 +1785,7 @@ Use case ends.
 // end::medhistoryusecases[]
 
 // tag::sortusecase[]
+
 === Use case: Sorting patients list: `sort`
 Assume that user has already requested the System to display a list of patients.
 
@@ -1800,7 +1801,7 @@ Use case ends.
 
 *Extensions*
 [none]
-* 1a. User uses the wrong format to sort patient.
+* 1a. User uses the wrong format to sort patient. (i.e. entering "sort" without any parameters.)
 +
 [none]
 ** 1a1. System shows error message that format is wrong and shows correct format of sorting patients.
@@ -1811,7 +1812,7 @@ Use case ends.
 * 1b. User chooses to sort by a category which the prefix of the category does not exist (i.e. the prefix does not exist or correspond to any category ie “z/”).
 +
 [none]
-** 1b1. System shows error message that format is wrong and shows correct format of sorting patients with available prefixes.
+** 1b1. System shows error message that prefix is wrong.
 +
 Use case ends.
 
@@ -1822,6 +1823,23 @@ Use case ends.
 ** 1c1. System shows an error message that the order index does not exist.
 +
 Use case ends.
+
+[none]
+* 1d. User chooses to sort by a patients' NRIC by either order but none of the patients have the NRIC field filled.
++
+[none]
+** 1d1. System shows the original list of patients without sorting anything.
++
+Use case ends.
+
+[none]
+* 1e. User chooses to sort by a patients' NRIC by alphabetical order but only some patients have the NRIC field filled.
++
+[none]
+** 1e1. System shows a list where patients with empty NRIC fields will be at the top and patients with NRIC filled will be sorted accordingly below the former patients.
++
+Use case ends.
+
 // end::sortusecase[]
 
 === Use case: Selecting a patient: `select`
