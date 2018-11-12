@@ -17,7 +17,7 @@ import seedu.address.testutil.ReportBuilder;
 public class MedicalReportTest {
 
     @Test
-    public void constructorNullThrowsNullPointerException() {
+    public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new MedicalReport(null, null, null));
     }
 

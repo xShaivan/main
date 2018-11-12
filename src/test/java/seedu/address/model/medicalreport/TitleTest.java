@@ -11,12 +11,12 @@ import seedu.address.testutil.Assert;
 public class TitleTest {
 
     @Test
-    public void constructorNullThrowsNullPointerException() {
+    public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new Title(null));
     }
 
     @Test
-    public void constructorInvalidTitleThrowsIllegalArgumentException() {
+    public void constructor_invalidTitle_throwsIllegalArgumentException() {
         String invalidTitle = "";
         Assert.assertThrows(IllegalArgumentException.class, () -> new Title(invalidTitle));
     }

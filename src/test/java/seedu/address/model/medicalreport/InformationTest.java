@@ -11,12 +11,12 @@ import seedu.address.testutil.Assert;
 public class InformationTest {
 
     @Test
-    public void constructorNullThrowsNullPointerException() {
+    public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new Information(null));
     }
 
     @Test
-    public void constructorInvalidInformationThrowsIllegalArgumentException() {
+    public void constructor_invalidInformation_throwsIllegalArgumentException() {
         String invalidInformation = "";
         Assert.assertThrows(IllegalArgumentException.class, () -> new Information(invalidInformation));
     }

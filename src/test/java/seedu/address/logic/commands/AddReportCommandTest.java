@@ -33,7 +33,7 @@ public class AddReportCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void executeAddReportUnfilteredListSuccess() {
+    public void execute_addReportUnfilteredList_success() {
 
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withMedicalReports(REPORT_EXAMPLE1).build();
@@ -51,7 +51,7 @@ public class AddReportCommandTest {
     }
 
     @Test
-    public void executeFilteredListSuccess() {
+    public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
@@ -70,7 +70,7 @@ public class AddReportCommandTest {
     }
 
     @Test
-    public void executeInvalidPersonIndexUnfilteredListFailure() {
+    public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AddMedicalReportCommand addMedicalReportCommand = new AddMedicalReportCommand(outOfBoundIndex, REPORT_EXAMPLE2);
 
@@ -83,7 +83,7 @@ public class AddReportCommandTest {
      * but smaller than size of address book
      */
     @Test
-    public void executeInvalidPersonIndexFilteredListFailure() {
+    public void execute_invalidPersonIndexFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
@@ -95,7 +95,7 @@ public class AddReportCommandTest {
     }
 
     @Test
-    public void executeUndoRedoValidIndexUnfilteredListSuccess() throws Exception {
+    public void execute_undoRedoValidIndexUnfilteredList_success() throws Exception {
         Person personToModify = model.getFilteredPersonList().get(INDEX_THIRD_PERSON.getZeroBased());
         Person modifiedPerson = new PersonBuilder(personToModify).withMedicalReports(REPORT_EXAMPLE1).build();
         AddMedicalReportCommand addMedicalReportCommand =
@@ -117,7 +117,7 @@ public class AddReportCommandTest {
     }
 
     @Test
-    public void executeUndoRedoInvalidIndexUnfilteredListFailure() {
+    public void execute_undoRedoInvalidIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AddMedicalReportCommand addMedicalReportCommand = new AddMedicalReportCommand(outOfBoundIndex, REPORT_EXAMPLE3);
 
@@ -138,7 +138,7 @@ public class AddReportCommandTest {
      * 4. Redo the modification. This ensures {@code RedoCommand} modifies the person object regardless of indexing.
      */
     @Test
-    public void executeUndoRedoValidIndexFilteredListSamePersonDeleted() throws Exception {
+    public void execute_undoRedoValidIndexFilteredListSamePersonDeleted_success() throws Exception {
         AddMedicalReportCommand addMedicalReportCommand =
                 new AddMedicalReportCommand(INDEX_FIRST_PERSON, REPORT_EXAMPLE1);
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
@@ -162,7 +162,7 @@ public class AddReportCommandTest {
     }
 
     @Test
-    public void executeReportTitleDateClashUnfilteredListFailure() {
+    public void execute_reportTitleDateClashUnfilteredList_failure() {
         Person personToModify = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person modifiedPerson = new PersonBuilder(personToModify).withMedicalReports(REPORT_EXAMPLE3).build();
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());

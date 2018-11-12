@@ -11,12 +11,12 @@ import seedu.address.testutil.Assert;
 public class ReportDateTest {
 
     @Test
-    public void constructorNullThrowsNullPointerException() {
+    public void constructor_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> new ReportDate(null));
     }
 
     @Test
-    public void constructorInvalidDateThrowsIllegalArgumentException() {
+    public void constructor_invalidDate_throwsIllegalArgumentException() {
         String invalidDate = "";
         Assert.assertThrows(IllegalArgumentException.class, () -> new ReportDate(invalidDate));
     }
