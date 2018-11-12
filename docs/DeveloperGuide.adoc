@@ -18,7 +18,7 @@ endif::[]
 
 By: `Team T12-2`      Since: `Aug 2018`      Licence: `MIT`
 
-== Setting up
+== Setting Up
 
 === Prerequisites
 
@@ -35,7 +35,7 @@ IntelliJ by default has Gradle and JavaFx plugins installed. +
 Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plugins` to re-enable them.
 
 
-=== Setting up the project in your computer
+=== Setting Up Project In Your Computer
 
 . Fork this repo, and clone the fork to your computer
 . Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first)
@@ -49,14 +49,14 @@ Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plu
 . Open a console and run the command `gradlew processResources` (Mac/Linux: `./gradlew processResources`). It should finish with the `BUILD SUCCESSFUL` message. +
 This will generate all resources required by the application and tests.
 
-=== Verifying the setup
+=== Verifying the Setup
 
 . Run the `seedu.address.MainApp` and try a few commands
 . <<Testing,Run the tests>> to ensure they all pass.
 
-=== Configurations to do before writing code
+=== Configurations to Do Before Writing Code
 
-==== Configuring the coding style
+==== Configuring the Coding Style
 
 This project follows https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc[oss-generic coding standards]. IntelliJ's default style is mostly compliant with ours but it uses a different import order from ours. To rectify,
 
@@ -69,7 +69,7 @@ This project follows https://github.com/oss-generic/process/blob/master/docs/Cod
 
 Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> document to configure Intellij to check style-compliance as you write code.
 
-==== Updating documentation to match your fork
+==== Updating Documentation to Match Your Fork
 
 After forking the repo, the documentation will still have the SE-EDU branding and refer to the `se-edu/addressbook-level4` repo.
 
@@ -155,7 +155,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 image::LogicClassDiagram.png[width="800"]
 
 [discrete]
-==== Events-Driven nature of the design
+==== Events-Driven Nature of the Design
 
 The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the command `delete 1`.
 
@@ -176,7 +176,7 @@ Note how the event is propagated through the `EventsCenter` to the `Storage` and
 The sections below give more details of each component.
 
 [[Design-Ui]]
-=== UI component
+=== UI Component
 
 .Structure of the UI Component
 image::UiClassDiagram.png[width="800"]
@@ -194,7 +194,7 @@ The `UI` component,
 * Responds to events raised from various parts of the App and updates the UI accordingly.
 
 [[Design-Logic]]
-=== Logic component
+=== Logic Component
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
@@ -214,7 +214,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 image::DeletePersonSdForLogic.png[width="800"]
 
 [[Design-Model]]
-=== Model component
+=== Model Component
 
 .Structure of the Model Component
 image::ModelClassDiagram.png[width="800"]
@@ -234,7 +234,7 @@ As a more OOP model, we can store a `Tag` list in `Address Book`, which `Person`
 image:ModelClassBetterOopDiagram.png[width="800"]
 
 [[Design-Storage]]
-=== Storage component
+=== Storage Component
 
 .Structure of the Storage Component
 image::StorageClassDiagram.png[width="800"]
@@ -247,7 +247,7 @@ The `Storage` component,
 * can save the Address Book data in xml format and read it back.
 
 [[Design-Commons]]
-=== Common classes
+=== Common Classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
@@ -256,7 +256,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 This section describes some noteworthy details on how certain features are implemented.
 
 // tag::undoredo[]
-=== Undo/Redo feature
+=== Undo/Redo Feature
 ==== Current Implementation
 
 The undo/redo mechanism is facilitated by `VersionedAddressBook`.
@@ -316,7 +316,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 
 ==== Design Considerations
 
-===== Aspect: How undo & redo executes
+===== Aspect: How Undo & Redo Executes
 
 * **Alternative 1 (current choice):** Saves the entire address book.
 ** Pros: Easy to implement.
@@ -325,7 +325,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
 ** Cons: We must ensure that the implementation of each individual command are correct.
 
-===== Aspect: Data structure to support the undo/redo commands
+===== Aspect: Data Structure to Support the Undo/Redo Commands
 
 * **Alternative 1 (current choice):** Use a list to store the history of address book states.
 ** Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.
@@ -336,7 +336,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 // end::undoredo[]
 
 // tag::addinfo[]
-=== Additional Information feature
+=== Additional Information Feature
 ==== Current Implementation
 The `addinfo` command is facilitated by the `LogicManager` which calls upon `AddressBookParser` for the execution of commands. It extends the `AddressBookParser` with the `addinfo` command.
 
@@ -381,7 +381,7 @@ image::AddInfoCommandSD.png[width="600"]
 // end::addinfo[]
 
 // tag::addhist[]
-=== Add Medical History features
+=== Add Medical History Features
 ==== Current Implementation
 
 The `addhist` mechanism is facilitated by `VersionedAddressBook`.
@@ -423,7 +423,7 @@ image::AddHistSequenceDiagram.png[width="800"]
 // end::addhist[]
 
 // tag::edithist[]
-=== Edit Medical History feature
+=== Edit Medical History Feature
 ==== Current Implementation
 
 The `edithist` mechanism works almost similarly to the `addhist` mechanism.
@@ -464,7 +464,7 @@ Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to 
 // end::edithist[]
 
 // tag::addappt[]
-=== AddAppointment feature
+=== AddAppointment Feature
 ==== Current Implementation
 
 The addappt mechanism is facilitated by `AddressBook` and `VersionedAddressBook`. It implements the following operations:
@@ -510,7 +510,7 @@ image::AddApptActivityDiagram.png[width="700"]
 // end::addappt[]
 
 // tag::addreport[]
-=== AddMedicalReport feature
+=== AddMedicalReport Feature
 ==== Current Implementation
 
 The addreport mechanism is facilitated by `VersionedAddressBook`.
@@ -542,7 +542,7 @@ image::AddMedicalReportSequenceDiagram.png[width="800"]
 // end::addreport[]
 
 // tag::editreport[]
-=== EditMedicalReport feature
+=== EditMedicalReport Feature
 ==== Current Implementation
 The editreport mechanism is facilitated by `VersionedAddressBook`.
 
@@ -570,7 +570,7 @@ Step 5. Lastly, the `editreport` command will call `Model#commitAddressBook()` t
 // end::editreport[]
 
 // tag::find[]
-=== Find feature
+=== Find Feature
 ==== Current Implementation
 
 The find mechanism is facilitated by `ModelManager`. It extends `AddressBook` and filters the `internalList` of patients in `UniquePersonList`. Additionally,
@@ -608,7 +608,7 @@ image::FindActivityDiagram.png[width="800"]
 // end::find[]
 
 // tag::sort[]
-=== Sort feature
+=== Sort Feature
 ==== Current Implementation
 
 The sort mechanism is facilitated by `ModelManager`. It extends `AddressBook` and sorts the `internalList` of patients in `UniquePersonList`. Additionally,
@@ -847,7 +847,7 @@ Thanks to the https://github.com/TestFX/TestFX[TestFX] library we use, our GUI t
 
 To run tests in headless mode, open a console and run the command `gradlew clean headless allTests` (Mac/Linux: `./gradlew clean headless allTests`)
 
-=== Types of tests
+=== Types of Tests
 
 We have two types of tests:
 
@@ -912,12 +912,12 @@ Suggested path for new programmers:
 2. Next, add a feature that touches multiple components to learn how to implement an end-to-end feature across all components. <<GetStartedProgramming-RemarkCommand>> explains how to go about adding such a feature.
 
 [[GetStartedProgramming-EachComponent]]
-=== Improving each component
+=== Improving Each Component
 
 Each individual exercise in this section is component-based (i.e. you would not need to modify the other components to get it to work).
 
 [discrete]
-==== `Logic` component
+==== `Logic` Component
 
 *Scenario:* You are in charge of `logic`. During dog-fooding, your team realize that it is troublesome for the user to type the whole command in order to execute a command. Your team devise some strategies to help cut down the amount of typing necessary, and one of the suggestions was to implement aliases for the command words. Your job is to implement such aliases.
 
@@ -938,7 +938,7 @@ Do take a look at <<Design-Logic>> before attempting to modify the `Logic` compo
 ****
 
 [discrete]
-==== `Model` component
+==== `Model` Component
 
 *Scenario:* You are in charge of `model`. One day, the `logic`-in-charge approaches you for help. He wants to implement a command such that the user is able to remove a particular tag from everyone in the address book, but the model API does not support such a functionality at the moment. Your job is to implement an API method, so that your teammate can use your API to implement his command.
 
@@ -960,7 +960,7 @@ Do take a look at <<Design-Model>> before attempting to modify the `Model` compo
 ****
 
 [discrete]
-==== `Ui` component
+==== `Ui` Component
 
 *Scenario:* You are in charge of `ui`. During a beta testing session, your team is observing how the users use your address book application. You realize that one of the users occasionally tries to delete non-existent tags from a contact, because the tags all look the same visually, and the user got confused. Another user made a typing mistake in his command, but did not realize he had done so because the error message wasn't prominent enough. A third user keeps scrolling down the list, because he keeps forgetting the index of the last person in the list. Your job is to implement improvements to the UI to solve all these problems.
 
@@ -1035,7 +1035,7 @@ image::getting-started-ui-status-after.png[width="500"]
 ****
 
 [discrete]
-==== `Storage` component
+==== `Storage` Component
 
 *Scenario:* You are in charge of `storage`. For your next project milestone, your team plans to implement a new feature of saving the address book to the cloud. However, the current implementation of the application constantly saves the address book after the execution of each command, which is not ideal if the user is working on limited internet connection. Your team decided that the application should instead save the changes to a temporary local backup file first, and only upload to the cloud after the user closes the application. Your job is to implement a backup API for the address book storage.
 
@@ -1053,7 +1053,7 @@ Do take a look at <<Design-Storage>> before attempting to modify the `Storage` c
 ****
 
 [[GetStartedProgramming-RemarkCommand]]
-=== Creating a new command: `remark`
+=== Creating a New Command: `remark`
 
 By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major components of the app.
 
@@ -1252,7 +1252,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 (For all use cases below, the *System* is the `Health Book`, unless specified otherwise)
 
-=== Use case: Viewing of available commands: `help`
+=== Use case: Viewing of Available Commands: `help`
 
 *MSS*
 
@@ -1261,7 +1261,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 +
 Use case ends.
 
-=== Use case: Adding a patient: `add`
+=== Use case: Adding a Patient: `add`
 
 *MSS*
 
@@ -1280,7 +1280,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Listing all patients: `list`
+=== Use case: Listing All Patients: `list`
 
 *MSS*
 
@@ -1299,7 +1299,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing basic information of patient: `edit`
+=== Use case: Editing Basic Information of Patient: `edit`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1327,7 +1327,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Deleting a patient: `delete`
+=== Use case: Deleting a Patient: `delete`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1355,7 +1355,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Selecting a patient: `select`
+=== Use case: Selecting a Patient: `select`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1376,7 +1376,7 @@ Use case ends.
 Use case ends.
 
 // tag::addinfousecase[]
-=== Use case: Adding additional information of patient: `addinfo`
+=== Use case: Adding Additional Information of Patient: `addinfo`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1512,7 +1512,7 @@ Use case ends.
 // end::medhistoryusecases[]
 
 // tag::apptusecases[]
-=== Use case: Adding an appointment for a patient: `addappt`
+=== Use case: Adding an Appointment for a Patient: `addappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1556,7 +1556,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing an appointment for a patient: `editappt`
+=== Use case: Editing an Appointment for a Patient: `editappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1608,7 +1608,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Deleting an appointment for a patient: `deleteappt`
+=== Use Case: Deleting an Appointment for a Patient: `deleteappt`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1645,7 +1645,7 @@ Use case ends.
 Use case ends.
 // end::apptusecases[]
 
-=== Use case: Clearing appointments for all patients: `clearappts`
+=== Use Case: Clearing Appointments for All Patients: `clearappts`
 *MSS*
 
 1.  User requests to delete all appointments that end on or before a specific date for all patients in the health book.
@@ -1672,7 +1672,7 @@ Use case ends.
 Use case ends.
 
 // tag::reportusecases[]
-=== Use case: Adding of Medical Report: `addreport`
+=== Use Case: Adding of Medical Report: `addreport`
 Assume that user has already requested the System to display a list of patients.
 
 *MSS*
@@ -1724,7 +1724,7 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Editing of Medical Report: `editreport`
+=== Use Case: Editing of Medical Report: `editreport`
 Assume that user has already requested the System to display a list of medical reports for a patient.
 
 *MSS*
@@ -1778,7 +1778,7 @@ Use case ends.
 // end::reportusecases[]
 
 // tag::findusecase[]
-=== Use case: Finding patients by categories: `find`
+=== Use Case: Finding Patients by Categories: `find`
 
 *MSS*
 
@@ -1824,7 +1824,7 @@ Use case ends.
 
 // tag::sortusecase[]
 
-=== Use case: Sorting patients list: `sort`
+=== Use Case: Sorting Patients List: `sort`
 Assume that user has already requested the System to display a list of patients.
 
 [NOTE]
@@ -1881,7 +1881,7 @@ Use case ends.
 // end::sortusecase[]
 
 // tag::dataencryptionusecase[]
-=== Use case: Data Encryption: `encrypt`
+=== Use Case: Data Encryption: `encrypt`
 Assume that user has launched the application with the default settings (encryption toggled off).
 
 *MSS*
@@ -1923,12 +1923,12 @@ Use case ends.
 .  System data is only stored locally and not on the cloud.
 
 [discrete]
-=== Quality requirements
+=== Quality Requirements
 .  The layout of the system will be simple and understandable by even doctors who are not proficient with computer systems.
 .  Data encryption can be toggled based on user's preference.
 
 [discrete]
-=== Notes about project scope
+=== Notes about Project Scope
 .  The product is not required to handle the printing of reports/profile pages.
 
 [appendix]
@@ -1984,7 +1984,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 _{ more test cases ... }_
 
-=== Deleting a person
+=== Deleting a Person
 
 . Deleting a person while all persons are listed
 
@@ -1998,7 +1998,7 @@ _{ more test cases ... }_
 
 _{ more test cases ... }_
 
-=== Saving data
+=== Saving Data
 
 . Dealing with missing/corrupted data files
 
@@ -2006,7 +2006,7 @@ _{ more test cases ... }_
 
 _{ more test cases ... }_
 
-=== Adding additional information to a person
+=== Adding Additional Information to a Person
 
 . Adding a additional information (NRIC, Date of Birth, Height, Weight, Gender, Blood Type, Occupation and Marital Status) are listed.
 
@@ -2056,7 +2056,7 @@ _{ more test cases ... }_
 .. Test case: `addinfo 1 m/x` where x is any input other than S, M or D +
    Expected: No additional infomation is added. Message of correct marital status input is shown.
 
-=== Adding appointment to a patient
+=== Adding Appointment to a Patient
 
 . Adding an appointment to a patient while all patients are listed
 
@@ -2082,7 +2082,7 @@ Add an appointment to the first patient using the command `addappt 1 s/16-09-201
 .. Test case: `addappt 1 s/16-09-2018 15:30 e/16-09-2018 16:00 v/Consultation Room 12 i/Diabetes Checkup d/Dr Tan` +
    Expected: An appointment from 16-09-2018 15:30 to 16-09-2018 16:00 at Consultation Room 12 for a Diabetes Checkup by Dr Tan is added to the patient at index 1 in the list. A message that the appointment is successfully added is shown.
 
-=== Editing appointment for a patient
+=== Editing Appointment for a Patient
 
 . Editing an appointment for a patient while all patients are listed
 .. Prerequisites: List all patients using the `list` command. Multiple persons in the list. Ensure that the first patient does not have any appointments. +
@@ -2104,7 +2104,7 @@ Add 2 appointments to the first person using the following 2 commands: +
 .. Test case: `editappt 1 os/16-09-2018 15:00 s/16-09-2018 14:00 e/16-09-2018 14:30 v/Consultation Room 13` +
    Expected: The appointment originally starting at 16-09-2018 15:00 is now edited to start at 16-09-2018 14:00, end at 16-09-2018 14:30, and be held at Consultation Room 13 instead. A message that the appointment is successfully edited is shown.
 
-=== Deleting appointment for a patient
+=== Deleting Appointment for a Patient
 
 . Deleting an appointment for a patient while all patients are listed
 .. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first patient does not have any appointments. +
@@ -2118,7 +2118,7 @@ Add an appointment to the first patient using the command `addappt 1 s/16-09-201
 .. Test case: `deleteappt 1 s/16-09-2018 15:00` +
    Expected: The appointment starting at 16-09-2018 15:00 will be deleted. A message that the appointment is successfully deleted is shown.
 
-=== Clearing appointments for all patients
+=== Clearing Appointments for All Patients
 
 . Clearing appointments for all patients while all patients are listed
 .. Prerequisites: List all patients using the `list` command. Multiple patients in the list. Ensure that the first 3 patients do not have any appointments. +
@@ -2136,7 +2136,7 @@ Add 2 appointments each to the first 3 patients using the following 6 commands: 
 .. Test case: `clearappts d/16-08-2018` +
    Expected: No appointments are deleted. An error message is shown telling the user that there are no appointments on or before the specified date to be deleted.
 
-=== Adding medical history to patient
+=== Adding Medical History to Patient
 
 . Adding medical history to a non-existent patient
 
@@ -2173,7 +2173,7 @@ Invalid Discharge Status. Error details specifies valid discharge status for use
 Expected: *PASS* +
 Medical History entered for first patient on the list with date of 08-11-2018, alcohol allergy, Kuwait as last country visited and is currently discharged.
 
-=== Editing medical history of patient
+=== Editing Medical History of Patient
 
 . Editing medical history to a non-existent patient
 
@@ -2200,7 +2200,7 @@ Expected: *PASS* +
 If previous Medical History entry exists, and new date specified is not used, the entry chosen will be
 edited with new date 05-05-2015, new allergy of grass and new previous country visited as Canada and the patient has expired.
 
-=== Adding medical report to a person
+=== Adding Medical Report to a Patient
 
 . Adding a medical report to a person while all persons are listed.
 
@@ -2220,7 +2220,7 @@ edited with new date 05-05-2015, new allergy of grass and new previous country v
 .. Test case: `addreport 1 t/Asthma d/01-01-2018 i/ `
    Expected: No medical report is added. Message of invalid information will be shown.
 
-=== Editing an existing medical report of a person
+=== Editing an Existing Medical Report of a Patient
 
 . Editing an existing medical report of a person while all persons are listed.
 
@@ -2244,7 +2244,7 @@ edited with new date 05-05-2015, new allergy of grass and new previous country v
 .. Test case: `editreport 1 ot/Asthma od/01-01-2018 t/Depression d/02-02-2018 i/Prescribed AAA medicine, next appointment is on 03-03-2018.` +
    Expected: No medical report is edited. Message of unable to edit existing report with the same title and date will be shown.
 
-=== Filtering Patients list by find
+=== Filtering Patients List by find
 
 . Finding patients through specific categories while all patients are listed.
 
@@ -2257,7 +2257,7 @@ edited with new date 05-05-2015, new allergy of grass and new previous country v
 .. Test case: `find z/ peanut` +
    Expected: The patient list remains the same, message of invalid prefix will be shown.
 
-=== Sorting Patients list by sort
+=== Sorting Patients List by sort
 
 . Sorting patients through specific categories in specific order while all/some patients are listed.
 
@@ -2278,7 +2278,7 @@ edited with new date 05-05-2015, new allergy of grass and new previous country v
 .. Test case: `sort ic/ 2` +
    Expected: Patients with empty NRIC field will be at the bottom of the list while rest will be sorted by reverse order.
 
-=== Encrypting
+=== Encryption
 
 . Sorting patients through specific categories in specific order while all/some patients are listed.
 

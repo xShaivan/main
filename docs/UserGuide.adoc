@@ -23,12 +23,12 @@ By: `Team T12-2`      Since: `Aug 2018`      Licence: `MIT`
 
 Health Book is an address book application that is *catered for healthcare professionals who seek to retrieve their patients’ personal information and health-related information* all in one place. *Command Line Interface is utilized mainly for the input*, while GUI is used mainly to display the output. By combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
 
-== Quick Start (to be edited in the future)
+== Quick Start
 
 .  Ensure you have Java version `9` or later installed in your Computer.
 .  Download the latest `healthbook.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your Health Book.
-.  Double-click the file to start the app. The GUI should appear in a few seconds.
+.  Double-click the file to start the app. The GUI should appear in a few seconds with sample data being loaded by default.
 +
 image::Ui.png[width="790"]
 +
@@ -73,12 +73,12 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 ====
 
-=== Viewing of available commands : `help`
+=== Viewing of Available Commands : `help`
 
 Displays the list of commands available. +
 Format: `help`
 
-=== Adding a person: `add`
+=== Adding a Patient: `add`
 
 Create a new patient entry into the health book +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
@@ -91,12 +91,12 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/Diabetes e/betsycrowe@example.com a/Newgate Street p/1234567 t/Asthma`
 
-=== Listing all patients : `list`
+=== Listing all Patients : `list`
 
 Shows a list of all persons in the health book. +
 Format: `list`
 
-=== Editing basic information of patient person : `edit`
+=== Editing Basic Information of Patient: `edit`
 
 Edits an existing patient in the health book. +
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
@@ -116,7 +116,7 @@ Edits the phone number and email address of the 1st patient to be `91234567` and
 * `edit 2 n/Betsy Crower t/` +
 Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags.
 
-=== Deleting a patient : `delete`
+=== Deleting a Patient : `delete`
 
 Deletes the specified patient from the health book. +
 Format: `delete INDEX`
@@ -136,7 +136,7 @@ Deletes the 2nd person in the Health Book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
-=== Selecting a patient: `select`
+=== Selecting a Patient: `select`
 
 Selects the patient identified by the index number used in the displayed person list and displays the selected patient's information. +
 Format: `select INDEX`
@@ -212,7 +212,7 @@ For patient at index 1 populate the date of birth field with 31-12-2001, occupat
 // end::addinfocommands[]
 
 // tag::addhist[]
-=== Adding patient's medical history: `addhist`
+=== Adding Patient's Medical History: `addhist`
 
 Adds a medical history entry for a patient. +
 Format: `addhist INDEX hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS`
@@ -236,7 +236,7 @@ The patient is discharged and allowed to return home.
 // end::addhist[]
 
 // tag::edithist[]
-=== Editing patient's medical history: `edithist`
+=== Editing Patient's Medical History: `edithist`
 
 Edits an existing medical history entry of a patient. +
 Format: `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE hsa/ALLERGY hsc/PREVIOUS_COUNTRY_VISITED hsds/DISCHARGE_STATUS`
@@ -262,7 +262,7 @@ The patient has been admitted to a hospital.
 // end::edithist[]
 
 // tag::apptcommands[]
-=== Adding an appointment for a patient: `addappt`
+=== Adding Appointment for Patient: `addappt`
 
 Adds an appointment into the specified patient's schedule. +
 Format: `addappt INDEX s/START e/END v/VENUE i/INFO d/DOCTOR_NAME`
@@ -284,7 +284,7 @@ image::AddApptUGPic.png[width="600"]
 
 ** If the first patient previously had appointments, the new appointment will be added to his schedule and shown on the GUI together with his other appointments in order of start time (from earliest to latest).
 
-=== Editing an appointment for a patient: `editappt`
+=== Editing Appointment for Patient: `editappt`
 
 Edits a specified appointment in the specified patient's schedule. +
 Format: `editappt INDEX os/ORIGINAL_START [s/START] [e/END] [v/VENUE] [i/INFO] [d/DOCTOR_NAME]`
@@ -302,7 +302,7 @@ Example:
 Edits the appointment that starts on 16-09-2018 at 15:00, to now run from 16-09-2018 14:00-14:30 instead
 and be at Consultation Room 13 for the 2nd person in the list.
 
-=== Deleting an appointment for a patient: `deleteappt`
+=== Deleting Appointment for Patient: `deleteappt`
 
 Deletes a specified appointment in the specified patient’s schedule. +
 Format: `deleteappt INDEX s/START`
@@ -318,7 +318,7 @@ Example:
 Deletes the appointment that starts on 16-09-2018 at 15:00 for the 2nd person in the list.
 // end::apptcommands[]
 
-=== Clearing appointments for all patients: `clearappts`
+=== Clearing Appointments for All Patients: `clearappts`
 
 Deletes all appointments that end on or before the specified date for all patients in the health book. +
 Format: `clearappts d/DATE`
@@ -376,7 +376,7 @@ image::EditReport.png[width="600"]
 // end::reportcommands[]
 
 // tag::findcommand[]
-=== Finding patients by specific category: `find`
+=== Finding Patients by Specific Category: `find`
 
 Finds patients by their personal (name, phone, email, address, tags and NRIC) or medical (medical Information, blood type, last country of visit and allergy) details.
 Format: `find PREFIX/ KEYWORD [MORE_KEYWORDS]`
@@ -475,7 +475,7 @@ image::encryption.png[width="600"]
 
 == Future Enhancements in v2.0
 
-=== Disease/Injury tags can have spaces, commas and periods
+=== Disease/Injury Tags can Have Spaces, Commas and Periods
 
 Users would be able to include more descriptive diseases and injuries without the constraint of it being one word. +
 This enhancement would be found in the `add` and `edit` command.
@@ -487,7 +487,7 @@ Adds a person with name Kenneth Tay with Punctured Lungs and Heart Attack.
 * `edit 1 t/Broken Pelvis, Hairline Fracture` +
 Edits person at index 1 with a hairline fracture on the Pelvis.
 
-=== Restrict adding medical history after patient expires
+=== Restrict Adding Medical History After Patient Expires
 
 After a patient expires, there would be a check in the system for future `addhist` and `edithist` commands to prevent any
 medical history entries to exist after the medical history entry which contains the patient's expired discharge status.
@@ -495,13 +495,13 @@ medical history entries to exist after the medical history entry which contains 
 .Current Implementation which allows medical history entries after patient's expiry
 image::medhistoryV2.png[width="500"]
 
-=== Integration of medical report and medical history
+=== Integration of Medical Report and Medical History
 
 For medical reports and medical history entries that share the same date, users will be able to link their medical reports to their medical history. +
 In the case of multiple health checkups in a single day (e.g. X-ray, Cardiogram), multiple medical reports will be generated.
 The medical history entry of the same date will allow those medical reports to be attached to it.
 
-=== Further checks for appointment timing clashes
+=== Further Checks for Clashes in Appointment Timing
 `addappt` and `editappt` commands currently will only check if there are appointment timing clashes for a patient. There is currently no check for appointment timing clashes for a venue or for a doctor in charge i.e. if the same venue or same doctor is booked for multiple appointments at the same time. These features will be coming in the v2.0 release of Health Book.
 
 == Command Summary
