@@ -31,7 +31,7 @@ public class EditReportCommandParserTest {
     private EditMedicalReportCommandParser parser = new EditMedicalReportCommandParser();
 
     @Test
-    public void parseMissingPartsFailure() {
+    public void parse_missingParts_failure() {
         assertParseFailure(parser, VALID_TITLE1, MESSAGE_INVALID_FORMAT);
     }
 
@@ -41,7 +41,7 @@ public class EditReportCommandParserTest {
     }
 
     @Test
-    public void parseAllFieldsSpecifiedSuccess() {
+    public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + " " + PREFIX_ORIGINAL_TITLE + VALID_TITLE1 + " "
                 + PREFIX_ORIGINAL_DATE + VALID_DATE1 + " " + VALID_TITLE_WPREFIX + " "
