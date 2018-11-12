@@ -23,9 +23,12 @@ The purpose of this portfolio is to document my contributions towards the Health
 
 == Overview
 
-Health Book is an application written in Java catered to healthcare professionals in retrieving patients’ personal information and health-related information all in one place. Command Line Interface (CLI) is utilized mainly for user input, while Graphical User Interface (GUI) is used mainly to display the output. Combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
+.Start up page of Health Book
+image::../images/Ui.png[width="800"]
 
-.The main features of HealthBook includes:
+Health Book is an application written in Java catered to *healthcare professionals* in _retrieving patients’ personal information and health-related information all in one place_. Command Line Interface (CLI) is utilized mainly for user input, while Graphical User Interface (GUI) is used mainly to display the output. Combining these 2 interfaces, Health Book aims to provide healthcare professionals with the speed and efficiency obtained from a CLI while retaining the systematic view of information through the GUI.
+
+.Table of Features
 |===
 |Feature |Description
 
@@ -47,9 +50,6 @@ Health Book is an application written in Java catered to healthcare professional
 
 Their usages can be found in the user guide: https://cs2113-ay1819s1-t12-2.github.io/main/UserGuide.html[Click Here]
 
-.Start up page of Health Book
-image::../images/Ui.png[width="800"]
-
 == Summary of contributions
 
 * *Major enhancement*: added *the ability to find patients by personal (name, phone, email, address, tags and NRIC) and medical details (medical Information, blood type, last country of visit and allergy).*
@@ -69,7 +69,7 @@ image::../images/Ui.png[width="800"]
 *** Role of UI Lead: Managed the presentation and layout of the Health Book application to ensure the user interface can be easily utilized by healthcare professionals regardless of their technical background.
 *** Wrote tests to increase coverage by 1.6%: https://github.com/CS2113-AY1819S1-T12-2/main/pull/142[#142]
 ** Enhancements to existing features:
-*** Created a java class for Blood Type: https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/model/person/addinfo/BloodType.java[Blood Type class]
+*** Created a java class for Blood Type: https://github.com/CS2113-AY1819S1-T12-2/main/blob/master/src/main/java/seedu/address/model/person/addinfo/BloodType.java[Blood Type]
 ** Documentation:
 *** Updated User Guide and Developer Guide: https://github.com/CS2113-AY1819S1-T12-2/main/pull/114[#114], https://github.com/CS2113-AY1819S1-T12-2/main/pull/135[#135]
 ** Community:
