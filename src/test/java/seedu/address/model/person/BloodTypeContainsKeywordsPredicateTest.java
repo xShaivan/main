@@ -42,7 +42,7 @@ public class BloodTypeContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_BloodTypeContainsKeywords_returnsTrue() {
+    public void test_bloodTypeContainsKeywords_returnsTrue() {
 
         // One keyword
         BloodTypeContainsKeywordsPredicate predicate =
@@ -60,7 +60,7 @@ public class BloodTypeContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_BloodTypeDoesNotContainKeywords_returnsFalse() {
+    public void test_bloodTypeDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         BloodTypeContainsKeywordsPredicate predicate =
                 new BloodTypeContainsKeywordsPredicate(Collections.emptyList());

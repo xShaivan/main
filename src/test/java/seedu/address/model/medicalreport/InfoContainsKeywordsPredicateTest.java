@@ -44,7 +44,7 @@ public class InfoContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_InfoContainsKeywords_returnsTrue() {
+    public void test_infoContainsKeywords_returnsTrue() {
         // One keyword
         InfoContainsKeywordsPredicate predicate =
                 new InfoContainsKeywordsPredicate(Collections.singletonList("Sars"));
@@ -73,7 +73,7 @@ public class InfoContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void testInfoDoesNotContainKeywordsreturnsFalse() {
+    public void test_infoDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         InfoContainsKeywordsPredicate predicate =
                 new InfoContainsKeywordsPredicate(Collections.emptyList());
