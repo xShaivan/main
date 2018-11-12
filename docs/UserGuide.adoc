@@ -215,6 +215,9 @@ Format: `edithist INDEX hsod/OLD_MEDICAL_HISTORY_DATE hsd/MEDICAL_HISTORY_DATE h
 * ALLERGY and PREVIOUS_COUNTRY inputs can be omitted if there are no changes since the last entry.
 ****
 
+.Example of edithist command
+image::edithist.png[width="790"]
+
 Examples:
 
 * `edithist 1 hsod/10-10-2010 hsd/10-10-2015 hsa/Chocolate hsc/Russia hsds/a`

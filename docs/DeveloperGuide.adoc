@@ -408,7 +408,7 @@ Step 5. Lastly, the `addhist` command will call `Model#commitAddressBook()` to u
 
 The following diagram shows how the `addhist` command works:
 
-.Sequence Diagram for `addhist` command
+.Sequence Diagram for addhist command
 image::AddHistSequenceDiagram.png[width="800"]
 
 // end::addhist[]
@@ -454,9 +454,6 @@ Step 5. Lastly, the `edithist` command will call `Model#commitAddressBook()` to 
 
 
 The following diagram shows how the `edithist` command works:
-
-.Sequence Diagram for `edithist` command
-image::EditHistSequenceDiagram.png[width="800"]
 
 // end::edithist[]
 
