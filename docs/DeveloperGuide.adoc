@@ -346,11 +346,9 @@ The command then looks for the `String` after the arguments which represents the
 
 Upon handling all the arguments, an `addInfoPersonDescriptor` object will be created. This is essentially a facade object that contains all the attributes of the `Person` to be edited, with its updated attributes. There will then be a mapping of the `addInfoPersonDescriptor` to a new `Person` object facilitated by the method `AddInfoCommand#createEditedPerson`.
 
-Finally, the `Model#updatePerson` copies attribute of the new `Person` object created above to the `Person` to be edited.
+Finally, the `Model#updatePerson` "copies" attribute of the new `Person` object created above to the `Person` to be edited by calling the `VersionedAddressBook#updatePerson` which sets the new `Person` object to the `Person` to be edited using `UniquePersonList#SetPerson`.
 
 Given below is an example usage scenario and how the `addinfo` command works at each step.
-
-TODO: Add in class diagrams for each step.
 
 Step 1. User executes `addinfo 5 ic/S1234567Z g/M d/01-01-1970` to modify the `Nric`, `Gender`, and `DateOfBirth` attributes of the 5th person in the `PersonCardList` view.
 
@@ -367,8 +365,10 @@ Step 5. A `Person` object will be retrieved from the `lastShownList` at the appr
 
 Step 6. The `Person` will now have an updated additional information.
 
-The following activity diagram summarizes what happens when an user executes a new command:
-<diagram here>
+The following sequence diagram summarizes what happens when an user executes a new command:
+
+.Sequence Diagram for `addinfo` command.
+image::AddInfoCommandSD.png[width="1000"]
 // end::addinfo[]
 
 // tag::addhist[]
@@ -637,9 +637,14 @@ image::SortActivityDiagram.png[width="800"]
 // tag::dataencryption[]
 === Data Encryption
 ==== Current Implementation
-The encryption library used is http://santuario.apache.org/[Apache Santuario]. Using AES 128-bit symmetric encryption, the encryption mechanism is facilitated by `XmlUtil`, `SecurityKey` and the file `preferences.json`.
+The encryption library used is http://santuario.apache.org/[Apache Santuario]. It extends the existing `XmlUtil` with methods that encrypt and decrypt `.xml` files.
 
-Upon running the program, `MainApp#initSecretKey` checks if encryption has been enabled using value of key `encryption` in `preferences.json` file. If it is `true`, encryption is enabled and the method then checks if `key` file exist. The method will attempt to read the `key` file using `SecretKeyUtil#ReadSecretKey` and save the key into a `SecretKey` object should there be an existing `key`file.
+Using AES 128-bit symmetric encryption, the encryption mechanism is facilitated by `XmlUtil`, `SecurityKey` and the file `preferences.json`.
+
+[NOTE]
+While the file `preferences.json` file is not used during the actual encryption process, the file is used to initialize the attributes of `UserPrefs` object which determines the encryption process.
+
+Upon running the program, `MainApp#initSecretKey` checks if encryption has been enabled using value of the attribute `encryption` in `UserPrefs` object. If it is `true`, encryption is enabled and the method then checks if `key` file exist. The method will attempt to read the `key` file using `SecretKeyUtil#ReadSecretKey` and save the key into a `SecretKey` object should there be an existing `key` file.
 
 However, if encryption is not enabled, or should there be an error reading the `key` file, or that the `key` file does not exist, `MainApp#initSecretKey` will then proceed to generate a new `SecretKey` object using `SecretKetUtil#getSecretKey`.
 
@@ -648,6 +653,13 @@ Next, `MainApp#initModelManager` will be executed. This method will also check i
 However, if `healthbook_encrypted.xml` does not exist, `MainApp#initModeManager` assumes that user runs the program for the first time, and proceed to load in sample data. If the `healthbook_encrypted.xml` does exist, but could not be decrypted successfully, Health Book will be launched without any patient data. An error pertaining to the failure to decrypt the `.xml` file will also be logged.
 
 Upon exiting the program, `MainApp#stop` checks if the encryption has been enabled. If the encryption has been enabled, it will call `XmlUtil#loadDecryptedXmlFile` which loads the temporary `healthbook.xml` file before encrypting the temporary `healthbook.xml` file with `XmlUtil#encryptDocument` method. It will then proceed to destroy the temporary `healthbook.xml` file and generate a `key` file based on the `SecretKey` that was generated when the application launched.
+
+When users execute the `encrypt` command, the `AddressBookParser` returns `EncryptCommand` object to the `LogicManager`, which in turn executes the `EncryptCommand#execute` method. This method in turn gets the `UserPref` via `Model#getUserPref` and executes the `toggleEncryption` method, which in turn sets the `encryption` attribute in `UserPref` to either `true` or `false`, thereby enabling or disabling encryption.
+
+The following sequence diagram shows how the encryption works when the application is launched:
+
+.Sequence diagram for Encryption
+image::EncryptCommandSD.png[width="800"]
 
 Given below is an example usage scenario on how `encrypt` works at each step:
 

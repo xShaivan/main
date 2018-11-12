@@ -466,7 +466,7 @@ Toggling off the feature will cause the saved data file to be saved in plain-tex
 Format: `encrypt`
 
 [WARNING]
-If you have toggled on the encryption, it is important that you keep the `key.file` secure. Losing the `key.file` will cause the permanent loss of the saved data. Also, unauthorized personnel with access to the `key.file` will have access to the saved data.
+If you have toggled on encryption, it is important that you keep the `key` file secure. Losing the `key` file will cause the permanent loss of the saved data. Also, unauthorized personnel with access to the `key` file will have access to the saved data.
 
 
 Example:
