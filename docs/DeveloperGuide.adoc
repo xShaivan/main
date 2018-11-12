@@ -642,7 +642,7 @@ image::SortActivityDiagram.png[width="800"]
 
 ==== Design Considerations
 
-===== Aspect: Data structure to support the sort commands
+===== Aspect: Data Structure to Support Sort Command
 
 * **Alternative 1 (current choice):** Uses comparator on List data structure to sort the observable filtered list through sort method implemented in `UniquePersonList`.
 ** Pros: Easy to implement.
