@@ -79,14 +79,15 @@ public class AddressBookParserTest {
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
+    //@@author chewkahmeng
     @Test
-    public void parseCommandaddreport() throws Exception {
+    public void parseCommand_addReport() throws Exception {
         MedicalReport report = new ReportBuilder().build();
         AddMedicalReportCommand command =
                 (AddMedicalReportCommand) parser.parseCommand(ReportUtil.getAddMedicalReportCommand(report));
         assertEquals(new AddMedicalReportCommand(INDEX_FIRST_PERSON, report), command);
     }
-
+    //@@author
     @Test
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
