@@ -357,9 +357,9 @@ If any of the arguments contain invalid data, the program will not process any d
 
 Step 2. The `AddressBookParser` makes a call to `AddInfoCommandParser` together with the `String` input.
 
-Step 3. The `AddInfoCommandParser` then looks out for the pre-determined set of arguments in the `String` input. If any of the arguments are found, a call will be made to the `ParserUtil` class which extracts the data meant for the particular argument.
+Step 3. The `AddInfoCommandParser` then looks out for the pre-determined set of arguments in the `String` input. If any of the arguments are found, data after the argument will be extracted.
 
-Step 4. The `ParserUtil` class then checks for the validity of the data being parsed. If the data is valid, the class for that data will be initialized and added into an `AddInfoPersonDescriptor` object. If the data is not valid, a `ParseException` will be thrown, which will be handled by the `UIManager` requesting user the correct the data.
+Step 4. The `ParserUtil` class then checks for the validity of the data being extracted and parsed. If the data is valid, the class for that data will be initialized and added into an `AddInfoPersonDescriptor` object. If the data is not valid, a `ParseException` will be thrown, which will be handled by the `UIManager` requesting user the correct the data.
 
 Step 5. A `Person` object will be retrieved from the `lastShownList` at the appropriate index. The retrieved `Person` object will then retrieve the updated information from the `AddInfoPersonDescriptor` object created previously.
 
@@ -367,7 +367,7 @@ Step 6. The `Person` will now have an updated additional information.
 
 The following sequence diagram summarizes what happens when an user executes a new command:
 
-.Sequence Diagram for `addinfo` command. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/AddInfoCommandSD.png[here].
+.Sequence Diagram for addinfo command. A full resolution of the diagram is available https://cs2113-ay1819s1-t12-2.github.io/main/images/AddInfoCommandSD.png[here].
 image::AddInfoCommandSD.png[width="600"]
 
 === Design Considerations:
@@ -656,11 +656,11 @@ Upon running the program, `MainApp#initSecretKey` checks if encryption has been 
 
 However, if encryption is not enabled, or should there be an error reading the `key` file, or that the `key` file does not exist, `MainApp#initSecretKey` will then proceed to generate a new `SecretKey` object using `SecretKetUtil#getSecretKey`.
 
-Next, `MainApp#initModelManager` will be executed. This method will also check if encryption has been enabled using `preferences.json` file. If encryption is enabled, it will attempt to look for `healthbook_encrypted.xml` file. If `healthbook_encrypted.xml` file exist, the same method will first load the `.xml` file using `XmlUtil#loadEncryptedXmlFile`, before attempting to decrypt the encrypted `.xml` file using the `key` file with the method `XmlUtil#decryptDocument`. A temporary `healthbook.xml` will be generated to be consumed by the program.
+Next, `MainApp#initModelManager` will be executed. This method will also check if encryption has been enabled using `preferences.json` file. If encryption is enabled, it will attempt to look for `healthbook_encrypted.xml` file. If `healthbook_encrypted.xml` file exist, the same method will first load the `.xml` file using `XmlUtil#loadEncryptedXmlFile`, before attempting to decrypt the encrypted `.xml` file using the `SecretKey` object with the method `XmlUtil#decryptDocument`. A temporary `healthbook.xml` will be generated to be consumed by the program.
 
 However, if `healthbook_encrypted.xml` does not exist, `MainApp#initModeManager` assumes that user runs the program for the first time, and proceed to load in sample data. If the `healthbook_encrypted.xml` does exist, but could not be decrypted successfully, Health Book will be launched without any patient data. An error pertaining to the failure to decrypt the `.xml` file will also be logged.
 
-Upon exiting the program, `MainApp#stop` checks if the encryption has been enabled. If the encryption has been enabled, it will call `XmlUtil#loadDecryptedXmlFile` which loads the temporary `healthbook.xml` file before encrypting the temporary `healthbook.xml` file with `XmlUtil#encryptDocument` method. It will then proceed to destroy the temporary `healthbook.xml` file and generate a `key` file based on the `SecretKey` that was generated when the application launched.
+Upon exiting the program, `MainApp#stop` checks if the encryption has been enabled. If the encryption has been enabled, it will call `XmlUtil#loadDecryptedXmlFile` which loads the temporary `healthbook.xml` file before encrypting the temporary `healthbook.xml` file with `XmlUtil#encryptDocument` method. It will then proceed to destroy the temporary `healthbook.xml` file and generate a `key` file based on the `SecretKey` object and the encrypted `healthbook_encrypted.xml` file.
 
 When users execute the `encrypt` command, the `AddressBookParser` returns `EncryptCommand` object to the `LogicManager`, which in turn executes the `EncryptCommand#execute` method. This method in turn gets the `UserPref` via `Model#getUserPref` and executes the `toggleEncryption` method, which in turn sets the `encryption` attribute in `UserPref` to either `true` or `false`, thereby enabling or disabling encryption.
 

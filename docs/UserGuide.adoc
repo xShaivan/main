@@ -539,3 +539,4 @@ e.g. `sort n/ 2`
 e.g. `sort e/ 1`
 * *Select* : `select INDEX` +
 e.g. select 1
+* *Encrypt*: `encrypt`
