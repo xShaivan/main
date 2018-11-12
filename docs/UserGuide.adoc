@@ -245,10 +245,7 @@ for a diabetes checkup by Dr Tan.
 .GUI after adding an appointment to a patient with no existing appointments
 image::AddApptUGPic.png[width="600"]
 
-** If the first patient previously had appointments, the new appointment will be added to his schedule and shown on the GUI together with his other appointments in order of start time (from earliest to latest). The GUI will look as follows:
-
-.GUI after adding an appointment to a patient with existing appointments
-image::AddApptUGPic2.png[width="600"]
+** If the first patient previously had appointments, the new appointment will be added to his schedule and shown on the GUI together with his other appointments in order of start time (from earliest to latest).
 
 === Editing an appointment for a patient: `editappt`
 

@@ -490,6 +490,11 @@ The following sequence diagram shows how the addappt operation works:
 .Sequence diagram for addappt operation
 image::AddApptSequenceDiagram.png[width="800"]
 
+The following activity diagram shows how the addappt operation works:
+
+.Activity diagram for add appt operation
+image::AddApptActivityDiagram.png[width="800"]
+
 ==== Design Considerations
 ===== Aspect: Data structure to store appointments
 * **Alternative 1 (current choice):** Use a Treeset with a comparator function to store appointments in order of start time
