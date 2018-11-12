@@ -28,7 +28,7 @@ Health Book is an application written in Java catered to *healthcare professiona
 .Start up page of Health Book
 image::../images/Ui.png[width="800"]
 
-. List of Health Book's main features
+.List of Health Book's main features
 |===
 |Feature |Description
 
